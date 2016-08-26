@@ -1,11 +1,17 @@
 name: "Anthony A. Boyles"
+output_dir: .
+include: "*.Rmd"
 navbar:
   title: "Anthony A. Boyles"
   left:
-    - text: "Home"
+    - text: "Essays"
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Essays"
-      href: essays.html
-      
+    - text: "Meta"
+      href: README.html
+output:
+  html_document:
+    theme: flatly
+    toc: false
+    code_folding: hide
