@@ -1,0 +1,38 @@
+---
+title: "The Monte Hall Problem and Optimal Guessing Strategy on the GRE"
+---
+
+Epistemic Status: **Completely Certain**, Status: **Deprecated**, Last Modified: **`r file.info("MonteHallGREGuessing.Rmd")$mtime`**
+
+I was teaching a GRE class today when I was struck by a sudden inspiration: the quantitative comparison problems are basically [Monty Hall Problems](http://en.wikipedia.org/wiki/Monty_Hall_problem). For those who don't know, Monty Hall was the host of the TV game show _Let's Make a Deal_. In the show, a contestant (you) were offered three distinct doors. One concealed a new car. The other two hid goats. You would select a door, and then Hall would pick one of the other two doors, and open it. It would invariably contain a goat, thereby leaving two doors, behind one of which awaited the hallowed car. He then offers you a choice: you could keep your selected door, or you could swap for the remaining door. 
+
+The problem is calculating the optimal strategy. The intuitive approach is to assume that your winning probability is uniform across your choices, and therefore it wouldn't really matter what you did--you'd win 50% of the time. This is entirely incorrect. At the moment you selected your door, your probability of winning with that door was 1/3, or about 33%. Everyone can generally agree on this point. The problem is that when Hall eliminates one of the wrong doors, _your probability of being correct doesn't change_. In other words, the probability of winning with your door remains 33%, but the probability of winning with the other door (i.e. by switching) becomes 2/3 or about 67%. Therefore, the only rational strategy is to switch every time. (A mixed strategy only wins with probability 5/9).
+
+So, what does this have to do with guessing on the GRE? [Quantitative Comparisons](http://www.ets.org/gre/general/prepare/sample_questions/quantitative/comparison) or "Quant Comps" all follow basically this format:
+
+$$x + 2y > 8$$
+
+|Column A|Column B|
+|:-------|:-------|
+|$$2x+4y$$|$$20$$|
+
+A) The quantity in Column A is larger.
+B) The quantity in Column B is larger.
+C) The two quantities are equal.
+D) The relationship cannot be determined.</pre>
+
+In writing the answer choices for these problems, the ETS left out one critical piece of information: A, B, orC must be true _for all values of x_ in order to be correct. In other words, if we use every possible value of x and y, we will uniformly generate the answer every time we try. If we can pick any two pairs of numbers such that they lead to different conclusions, then the answer must be D. However, this can be a tall order. The trick to approaching these when they involve Algebra is to select a set of numbers which satisfy the conditions given, and then to eliminate answer choices based on the numerical comparison of the two columns. For example, I could say for this one that _x_ = 3 and _y_ = 7. Thus the inequality is
+
+$$(3) + 2(7) > 8$$
+
+which is verifiably true. Because these numbers are valid, we can calculate the value in Column A, which is
+
+$$2(3) + 4(7) = 34$$
+
+Since 34 is greater than 20, we can be certain that of the answer choices, B or C cannot possibly be correct. We have not, however, demonstrated that A is the correct answer. It could still be D.
+
+When we started the problem, there was a uniform distribution of probability across the answer choices. We know this because it is hardwired into the test to be so. We implicitly selected D as our answer (just as we selected a door above), and then by eliminated 2/3 of the remaining answers (just as Monty Hall did with the goat door). The probability of D being correct is still 25%, but **the probability of A being the correct answer is now 75%**. Armed with only this information, it would be easy to guess your way to a statistically better score. Go figure.
+
+PS) The answer to this one in particular is D. Sorry if you guessed!
+
+[I cross-posted this at the [xkcd forum](http://forums.xkcd.com/viewtopic.php?f=17&t=69293) to stir up some controversy.]

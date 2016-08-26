@@ -1,0 +1,23 @@
+---
+title: "Life Cheat Codes"
+---
+
+Status: **Perpetually Incomplete**, Epistemic Status: **Uncertain**, Last Revision: **`r file.info("LifeCheatCodes.Rmd")$mtime`**
+
+## Happiness
+
+*   Make close friends
+
+## Life Extension
+
+*   Intermittently Fast
+*   Sign up for Cryonics
+
+## Expertise
+
+*   Listen to Audiobooks (sped up)
+
+## Productivity
+
+*   Automation, automation, automation!
+*   Experiment with Nootropics

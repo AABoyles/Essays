@@ -1,0 +1,170 @@
+---
+title: "Good Policies"
+---
+
+Status: **Perpetually Incomplete**, Epistemic Status: **Uncertain**, Last Revision: **`r file.info("GoodPolicies.Rmd")$mtime`**
+
+Around July 2014, I started keeping a list of the policy changes I broadly advocation. As the list grew longer, I realized that I was building a fairly comprehensive political platform. "Fairly comprehensive" does not, however, mean "complete."
+
+# Defense
+
+Prioritize spending to combat global catastrophic risk. Start with a Manhattan Project for the AI Values Alignment problem.
+Second Priority given to individual mortal risk--Socio-Medical R&D, Accident Reduction, etc.
+Tertiary Priority given to national defense, emphasis on illicit WMD interdiction, acquisition, and destruction.
+Kill the Air Force--subsume its assets into the Army and Navy.
+Kill all Missile Defense Systems.
+End development and cancel purchase orders for all F-35s.
+
+# Education
+
+Pay teachers at a competitive rate relative to other highly-trained professionals--lawyers, for example.
+Institute year-round schooling. The current schedule of school-free summers creates gaps which wealthy children have filled with camps and other stimulating school-like activities while poor children tend to stay home, deepening the chasm between the social classes.
+Set up more neighborhood schools with smaller campuses and fewer students--Research suggests the school size is more strongly correlated with student performance than student/teacher ratio.
+Mandate vaccinations for all public school attendees.
+Order school schedules according to student sleeping schedules: Elementary (K-3) starts early, Middle (4-6) later, Jr. High (7-9) later still, and High (10-12) latest.
+Freely feed all students breakfast and lunch.
+Replace cursive writing curriculum with typing skills on Dvorak keyboards.
+Segregate classes according to birth season, resulting in student groups for which the default age differential is no more than 3 or 4 months (permitting less mature students to move back to the next-younger class, and more mature students to advance symmetrically).
+
+# Tax policy
+
+Institute a Guaranteed Basic Income, and tie its value to the CPI at the local level, ensuring that every single American lives at slightly above the poverty line. Allow an option to opt-out for those who are working, in exchange for a tax credit of the same amount.
+Simplify tax code: reduce it to three chapters: Earned Income, Capital Gains, and Estates.
+End corporate taxation, and supplement government revenue with increased capital gains taxes.
+Replace tiered taxation system with a continuous function, something to the tune of
+
+[latex]Tax Rate=frac{72}{1+e^{7-frac{x}{9}}}[/latex]
+
+where x is the filer's income percentile.
+
+Institute IRS auto-filing on periodically-collected taxes, with an override option for those wishing to file manually.
+Eliminate 529 Education accounts.
+
+# Wages and Worker's Rights
+
+Make tipping illegal. Research shows that people tend not to reward/punish service workers based on their performance so much as they tip based on the mood they're in and how they feel about the worker's race and gender. This makes tipping policies racist and sexist. Additionally, the Corruption Perceptions Index is strongly correlated with the presence of tipping culture.
+Mandate that all workers receive at least minimum wage, including formerly tipped positions and workers of differing abilities.
+Peg the minimum wage to BLS estimates of Consumer Price Index.
+End Unemployment and Disability Insurance programs and institute a Guaranteed Basic Income.
+Expand SNAP benefits while enacting stricter guards to prevent SNAP benefits from going to soft drinks, candy, cookies, snack crackers, and ice cream.
+
+# Open Borders
+
+Stop the flow of illegal immigrants by letting everyone in through legal checkpoints.
+Fire CBP Agents and their managers on any allegation of wrong-doing. Aggressively pursue criminal charges against agents.
+
+# Infrastructure
+
+Create a Civilian Conservation Corp. Make sure all America's roads, bridges, plumbing, power and fiber-optics are safe.
+Immediately legalize all autonomous vehicle technologies, and begin to mandate that certain roads only be accessible by autonomous vehicles. Increase mandates as human-piloted vehicles become scarce.
+Declare high-speed internet access to be a fundamental human right. Subsidize municipal projects to upgrade internet connection infrastructure.
+
+# Gender Non-discrimination
+
+Extend gender-based protections to people who do not necessarily identify with either of the culturally standard genders.
+Marriages for Polyamorous groups. More than two individuals are capable of entering into and sustaining loving, long-term relationships with members of a group. Marital protections should be available to such groups.
+Deprecate Marriage. It's an outdated institution designed to control the destinies of women.
+
+# Healthcare
+
+Build a Manhattan project of life extension research. Hire Aubrey de Gray as Chief scientist on the project.
+Government takeover. The problem which created America's financially-bloated healthcare system is the separation between provider, recipient, and payer. Bind the payer and the provider in a single-payer system. Eliminate Medicaid and Expand Medicare to cover everyone. Healthcare is free-for-all.
+Institute a federal medical records database, but hash its contents to preserve its queryability for research purposes and protect the identity of the patients.
+Automate diagnostics with evidence-based platforms to provide more accurate diagnostics and more rapid dispersal of targeted care. Mandate use of evidence-based, list-oriented diagnosis with safeguards for physician overrides. In the event of a physician override, make the physician criminally liable if the computational diagnostic was correct.
+Force the FDA to Reschedule Marijuana under the Controlled Substances Act. Legalize and regulate the production and trade of Marijuana.
+Decriminalize everything. Will people use drugs? Of course they will. Will more people use drugs? Possibly. BUT decriminalization will open the door for regulatory policy, allowing for US-based production, and killing an important revenue stream for the cartels in South America which have fueled the decades of dictatorships, civil wars, and bad policy.
+
+# Criminal Justice
+
+## Corrections
+
+End the Death Penalty.
+Reserve Prison Sentences for Violent Offenses, relying instead upon house arrests.
+Follow the Scandanavian prison model of rehabilitation first.
+End Private Prisons.
+End Prison Rape. (How?)
+
+## Policing
+
+Centralize police forces at the state level.
+Shift prosecutorial focus to violent crimes.
+Every law enforcement office in the country gets a data scientist.
+Implement counter-insurgency policing (unarmored police dispersed in crowds, not riot police protecting a line).
+Remove the rights of police to apply lethal force. Police have a battery of offensive weapons at their disposal to incapacitate--guns are an unnecessary addition to this. Institute mandatory criminal charges for police actions resulting deaths or severe injuries. If the act of killing was justified, let it be decided by a court.
+Mandatory first-person recording of all uniformed police time. Failure to tender footage in criminal investigation of police action should shift the assumption of innocence (until proven guilty) to an assumption of guilt.
+End Civil Asset Forfeiture. It's just institutionalized corruption.
+Increase Police Pay to reduce the incidence of Police corruption.
+End transfers of Military equipment to Police Departments.
+
+# Energy
+
+End all Corn Subsidies--let the markets decide what crops should be grown in the Midwest.
+Implement an aggressive Research Agenda on Nuclear Waste Transmutation.
+Begin construction on Petawatt-hour Nuclear Reactors (What? How?)
+Mandate Solar Energy production standards for all new, federally-constructed buildings.
+Expand existing incentive programs for solar electricity.
+Statehood Modifications
+
+# New States
+
+Give DC and Puerto Rico Full Statehood.
+Open an "Unincorporated State" to provide representation to the 400,000 other citizens living under US Sovereignty (and not in DC or Puerto Rico) without representation.
+Divisions in Existing States
+
+Divisions in Existing states seem extremely unlikely in the coming decades, as they require the consent of the legislature of the state to be fragmented and the National Congress. That said, divisions between existing states provide a vehicle for better distribution of representation.
+
+While many Proposals for State Divisions exist, these are the ones which seem to me to be most plausible and potentially beneficial to the Union:
+
+Split California into Six states.
+Split Texas into Five states.
+North Colorado
+Baja Arizona
+New York City
+Northern Virginia
+Western Maryland
+Upper Michigan
+
+# Money
+
+Cease all minting of coinage.
+Institute a phased reduction in the minting of bills, with intent to eliminate paper money transactions within a decade.
+
+# Voting
+
+Institute the National Popular Vote.
+Publicly fund all elections (i.e. Legislate around Citizens United).
+Make everyone vote in every election. Voters respond to their sense of malcontentment by abstaining from voting.
+Make Election Day a Federal Holiday.
+Move Voter Registration online.
+
+# Space Policy
+
+Begin Research on construction on massive, mobile space station capable of supporting large colonies of life with and without social control mechanisms (e.g. plan out reproductive schedule for inhabitants to minimize the size of the population while maximizing the genetic diversity). Couple with the Defense Department's Manhattan Project for Global Catastrophic Risk Reduction. Build a program capable of sending self-sustaining human colonies away from Earth permanently.
+Establish permanent Mars colony.
+Begin terraforming the Moon.
+Begin research on terraforming everything: Mars, Venus, Titan, Europa.
+
+# Supreme Court
+
+Amend the constitution to restructure the Supreme Court in the following ways:
+
+Every Justice serves a single 18-year term. That way, every president gets to nominate two per term.
+Justices may initiate a Constitutional Review of a law if they believe it may be unconstitutional, even if no case has been brought before them which calls into question the law's constitutionality.
+
+# Congress
+
+Institute the following procedural changes:
+
+Eliminate the Filibuster.
+
+# Foreign Affairs
+
+## Africa
+
+Commit massive funding to building sustainable African Infrastructure
+Commit massive funding to ending:
+Guinea Worm
+Polio
+Malaria
+Schistosomiasis
+Tuberculosis
