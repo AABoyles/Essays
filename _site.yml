@@ -1,0 +1,11 @@
+name: "Anthony A. Boyles"
+navbar:
+  title: "Anthony A. Boyles"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Essays"
+      href: essays.html
+      

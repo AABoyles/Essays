@@ -1,0 +1,60 @@
+---
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+---
+
+# Who are you?
+Hi, I’m Tony Boyles. By day, I’m a Data Scientist. By night, I'm a Dog Person. By the quiet recesses of my mind, I'm a transhumanist.
+
+# What's your background?
+I graduated from Emory Univeristy in Atlanta with a double Major in Computer Science and International Studies in 2010. While there, I recieved training in Statistics, System Dynamic Modeling, and Game Theory. Afterwards, I went straight on to do a Master’s of Science in International Affairs at Georgia Tech’s Sam Nunn School of International Affairs, which gave me more opportunities to pursue studies in Statistics, System Dynamic Modeling, Agent-Based Modeling, Path Gaming, GIS, and Neural Networks.
+
+While a graduate student, I worked for Georgia Tech Research Institute in Atlanta, GA. After graduating in late 2011, I moved to Boston and started working for Milcord llc. From there I married my college sweetheart and moved to Washington D.C.
+
+# What have you done?
+As a Graduate Student at Georgia Tech, I worked for the Georgia Tech Research Institute’s Office of Policy Analysis and Research. OPAR’s mission was to collect data and perform analysis on legislation regarding Science, Technology, and Innovation emerging from the US State Legislatures. There I built a Drupal-based platform for trained coders to enter data, validate inter-coder reliability, and publish the data, both as raw tables and visualizations.
+
+After graduating, I worked for Milcord llc, serving a contract for the Marine Corps. He assisted in many development development tasks for the MARCIMS platform. The most prominent of these development tasks was the construction of a powerful semantic-querying platform, designed to permit non-technical end users to represent complex queries with many dependencies as simple interactions with a map and table. Additionally, I built the geospatial infrastructure on top of a PostGIS database to allow arbitrary geospatial constraints to be specified on the map.
+
+In addition to this, he also supported a contract with Office of Naval Research, producing a novel constraint satisfaction tool for designing near-optimal routes for autonomous surveillance drones. This included the algorithmic design and server-side implementation, as well as the client-side development, which required maps, timelines, and a powerful-yet-intuitive constraint-specification interface.
+
+During a brief tenure with Concept Solutions, I worked with the Federal Aviation Administration to build a Next-Gen information awareness tool called NISIS. I designed the server-side API and contributed a significant portion of the client code for absorbing and displaying data from dozens of sources, including weather, flight schedules, 3-dimensional air space maps, and data entered directly from the application itself.
+
+I work for a small defense contractor called System of Systems Analytics, Inc., better known as “SoSACorp”. We work with complex social models of conflict and its effects on the economy and civilian population. My job title is “Computational Social Scientist”. I work on both sides of the social science team: I help develop models based on empirical evidence from the literature, and then build tools to visualize the results. Specifically, I deploy large-scale simulation experiments and engineer techniques for visualizing the outputs.
+
+# What’s your stack?
+In general, I’m not hung up on any of the technologies I regularly use. I believe in using the correct tool for the job.
+
+R for Statistics: ggplot2 for Static data visualizations, ggvis for Dynamic Visualizations with Shiny, dplyr and tidyr for data wrangling.
+Python for Scripting: There are a bunch of odd jobs I find myself solving in Python. Like text analysis (NLTK is easy, and spaCy is boss).
+Javascript for Web: D3 for any Data Visualization, OpenLayers for Mapping, jQuery and Underscore because Javascript is excruciating without them.
+PostGreSQL for Databases: I like the modularity and portability of database files (a la SQLite), but after that, SQL is SQL. However, PostGres brings PostGIS, which is just brilliant.
+LaTeX for Typesetting: Beamer for Presentations, BibLaTeX (with biber) for Citation Management. I can’t see ever replacing it; after all, Donald Knuth built it to last.
+In the past I’ve also used Clojure, Java, C++, and C (plus a few others I’m too embarrassed to mention).
+
+# What Hardware do you use?
+I spend most of my screen-time bouncing back-and-forth between an over-powered Dell laptop and a desktop that I really can’t say too much about.
+
+My phone is a Republic Wireless Moto X (First Gen), which is starting to age beyond its usefulness. I also carry a Kindle Paperwhite almost everywhere I go. It’s loaded with a huge library, one I predict will take me a few decades to get through. Sadly, I doubt the device itself will last that long. One wonders why Amazon loaded it with so much storage capacity and no ability to handle larger files (like the audiobooks I listened to on my Gen 2 Kindle).
+
+# And What Software?
+On my work machine, I’m running Ubuntu 16.04, which is adequate. Most of my time is spent in RStudio. I write non-R code in Atom, use vim for incidental editing, and every once in awhile get into a particular mood and use Jupyter. If I just want to bang something out, I'll probably write it in Python 3 on REPL.it.
+
+My personal machine is running Windows 10, because I mostly use it for gaming. I keep all of my personal files in Google Drive, except for code which is in repos on github. I try to keep as little as possible on my local machines so I don’t have to worry about backups, crashes and whatnot.
+
+# And Your Dream Setup?
+A credit card I don’t have to pay, linked to AWS and Google Cloud so I can spin up the servers for whatever projects I come up with, and leave them running full-time.
+
+As for local equipment, I’m quite well-off at the moment. I do like gadgets: I’d love to have an HTC Vive and Makerbot Replicator to play with. Oh, a Tesla Model S100D with Autopilot.
+
+# Can I see some of your work?
+Sure.
+
+# How can we get in touch?
+Email: Anthony@Boyles.cc
+Call: (617) 935-5515 (m)
+
+Or Via Social Media. If you can find a user named “aaboyles” on any given website, that’s almost certainly me.
