@@ -1,9 +1,5 @@
 ---
 title: "Essays"
-output:
-  html_document:
-    theme: flatly
-    toc: false
 ---
 
 ```{r setup, include=FALSE}
