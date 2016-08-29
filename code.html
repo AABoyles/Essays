@@ -1,18 +1,9 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="pandoc" />
-
-
-
-
 <title>Code</title>
-
 <script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -24,7 +15,6 @@
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
-
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
       href="site_libs/highlight/default.css"
@@ -42,9 +32,6 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
    }, 0);
 }
 </script>
-
-
-
 <style type="text/css">
 h1 {
   font-size: 34px;
@@ -70,15 +57,6 @@ h6 {
 .table th:not([align]) {
   text-align: left;
 }
-</style>
-
-<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
-
-</head>
-
-<body>
-
-<style type = "text/css">
 .main-container {
   max-width: 940px;
   margin-left: auto;
@@ -98,9 +76,6 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-</style>
-
-<style type="text/css">
 /* padding for bootstrap navbar */
 body {
   padding-top: 60px;
@@ -132,27 +107,22 @@ body {
   padding-top: 65px;
   margin-top: -65px;
 }
-</style>
 
+</style>
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+</head>
+
+<body>
 <script>
-// manage active state of menu based on current page
 $(document).ready(function () {
-  // active menu anchor
   href = window.location.pathname
   href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
+  if (href === "") href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
   menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
-
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
@@ -170,11 +140,6 @@ $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
-
-
-
-
-
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
@@ -205,53 +170,32 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div class="fluid-row" id="header"><h1 class="title toc-ignore">Code</h1></div>
 
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">Code</h1>
+<table id="myTable" class="table">
+  <thead><tr><th>Project</th><th>Description</th><th>Last Modified</th></tr></thead>
+</table>
 
 </div>
-
-
-<pre class="r"><code>datatable(NULL, callback = JS(&#39;$.getJSON(&quot;https://api.github.com/users/aaboyles/repos&quot;, function(results){
-  table.clear();
-  table.rows.add(results);
-});&#39;))</code></pre>
-<div id="htmlwidget-1acbe0c0d7152b7c2467" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1acbe0c0d7152b7c2467">{"x":null,"evals":[],"jsHooks":[]}</script>
-
-
-
-
-</div>
-
 <script>
-
-// add bootstrap table styles to pandoc tables
-$(document).ready(function () {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+$(document).ready(function(){
+  $('#myTable').DataTable({
+    order: [[ 2, "desc" ]],
+    ajax: {
+      url: "https://api.github.com/users/aaboyles/repos",
+      dataSrc: ""
+    },
+    columns: [
+      {data: "name",
+        render: function ( data, type, full, meta ) {
+          return '<a href="'+full.homepage+'">'+data+'</a>';
+        }
+      },
+      {data: "description"},
+      {data: "updated_at"}
+    ]
+  });
 });
-
 </script>
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
 </body>
 </html>
