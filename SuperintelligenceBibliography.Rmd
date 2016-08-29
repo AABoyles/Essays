@@ -1,5 +1,9 @@
 ---
 title: "Superintelligence Bibliography"
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 Status: **Incomplete**, Epistemic Status: **Relatively Certain**, Last Revision: **`r file.info("SuperintelligenceBibliography.Rmd")$mtime`**

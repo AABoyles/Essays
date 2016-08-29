@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Good Policies</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/default.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Essays</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="README.html">Meta</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Good Policies</h1>
+
+</div>
+
+
+<p>Status: <strong>Perpetually Incomplete</strong>, Epistemic Status: <strong>Uncertain</strong>, Last Revision: <strong>2016-08-26 12:24:09</strong></p>
+<p>Around July 2014, I started keeping a list of the policy changes I broadly advocation. As the list grew longer, I realized that I was building a fairly comprehensive political platform. “Fairly comprehensive” does not, however, mean “complete.”</p>
+<div id="defense" class="section level1">
+<h1>Defense</h1>
+<p>Prioritize spending to combat global catastrophic risk. Start with a Manhattan Project for the AI Values Alignment problem. Second Priority given to individual mortal risk–Socio-Medical R&amp;D, Accident Reduction, etc. Tertiary Priority given to national defense, emphasis on illicit WMD interdiction, acquisition, and destruction. Kill the Air Force–subsume its assets into the Army and Navy. Kill all Missile Defense Systems. End development and cancel purchase orders for all F-35s.</p>
+</div>
+<div id="education" class="section level1">
+<h1>Education</h1>
+<p>Pay teachers at a competitive rate relative to other highly-trained professionals–lawyers, for example. Institute year-round schooling. The current schedule of school-free summers creates gaps which wealthy children have filled with camps and other stimulating school-like activities while poor children tend to stay home, deepening the chasm between the social classes. Set up more neighborhood schools with smaller campuses and fewer students–Research suggests the school size is more strongly correlated with student performance than student/teacher ratio. Mandate vaccinations for all public school attendees. Order school schedules according to student sleeping schedules: Elementary (K-3) starts early, Middle (4-6) later, Jr. High (7-9) later still, and High (10-12) latest. Freely feed all students breakfast and lunch. Replace cursive writing curriculum with typing skills on Dvorak keyboards. Segregate classes according to birth season, resulting in student groups for which the default age differential is no more than 3 or 4 months (permitting less mature students to move back to the next-younger class, and more mature students to advance symmetrically).</p>
+</div>
+<div id="tax-policy" class="section level1">
+<h1>Tax policy</h1>
+<p>Institute a Guaranteed Basic Income, and tie its value to the CPI at the local level, ensuring that every single American lives at slightly above the poverty line. Allow an option to opt-out for those who are working, in exchange for a tax credit of the same amount. Simplify tax code: reduce it to three chapters: Earned Income, Capital Gains, and Estates. End corporate taxation, and supplement government revenue with increased capital gains taxes. Replace tiered taxation system with a continuous function, something to the tune of</p>
+<p>[latex]Tax Rate=frac{72}{1+e^{7-frac{x}{9}}}[/latex]</p>
+<p>where x is the filer’s income percentile.</p>
+<p>Institute IRS auto-filing on periodically-collected taxes, with an override option for those wishing to file manually. Eliminate 529 Education accounts.</p>
+</div>
+<div id="wages-and-workers-rights" class="section level1">
+<h1>Wages and Worker’s Rights</h1>
+<p>Make tipping illegal. Research shows that people tend not to reward/punish service workers based on their performance so much as they tip based on the mood they’re in and how they feel about the worker’s race and gender. This makes tipping policies racist and sexist. Additionally, the Corruption Perceptions Index is strongly correlated with the presence of tipping culture. Mandate that all workers receive at least minimum wage, including formerly tipped positions and workers of differing abilities. Peg the minimum wage to BLS estimates of Consumer Price Index. End Unemployment and Disability Insurance programs and institute a Guaranteed Basic Income. Expand SNAP benefits while enacting stricter guards to prevent SNAP benefits from going to soft drinks, candy, cookies, snack crackers, and ice cream.</p>
+</div>
+<div id="open-borders" class="section level1">
+<h1>Open Borders</h1>
+<p>Stop the flow of illegal immigrants by letting everyone in through legal checkpoints. Fire CBP Agents and their managers on any allegation of wrong-doing. Aggressively pursue criminal charges against agents.</p>
+</div>
+<div id="infrastructure" class="section level1">
+<h1>Infrastructure</h1>
+<p>Create a Civilian Conservation Corp. Make sure all America’s roads, bridges, plumbing, power and fiber-optics are safe. Immediately legalize all autonomous vehicle technologies, and begin to mandate that certain roads only be accessible by autonomous vehicles. Increase mandates as human-piloted vehicles become scarce. Declare high-speed internet access to be a fundamental human right. Subsidize municipal projects to upgrade internet connection infrastructure.</p>
+</div>
+<div id="gender-non-discrimination" class="section level1">
+<h1>Gender Non-discrimination</h1>
+<p>Extend gender-based protections to people who do not necessarily identify with either of the culturally standard genders. Marriages for Polyamorous groups. More than two individuals are capable of entering into and sustaining loving, long-term relationships with members of a group. Marital protections should be available to such groups. Deprecate Marriage. It’s an outdated institution designed to control the destinies of women.</p>
+</div>
+<div id="healthcare" class="section level1">
+<h1>Healthcare</h1>
+<p>Build a Manhattan project of life extension research. Hire Aubrey de Gray as Chief scientist on the project. Government takeover. The problem which created America’s financially-bloated healthcare system is the separation between provider, recipient, and payer. Bind the payer and the provider in a single-payer system. Eliminate Medicaid and Expand Medicare to cover everyone. Healthcare is free-for-all. Institute a federal medical records database, but hash its contents to preserve its queryability for research purposes and protect the identity of the patients. Automate diagnostics with evidence-based platforms to provide more accurate diagnostics and more rapid dispersal of targeted care. Mandate use of evidence-based, list-oriented diagnosis with safeguards for physician overrides. In the event of a physician override, make the physician criminally liable if the computational diagnostic was correct. Force the FDA to Reschedule Marijuana under the Controlled Substances Act. Legalize and regulate the production and trade of Marijuana. Decriminalize everything. Will people use drugs? Of course they will. Will more people use drugs? Possibly. BUT decriminalization will open the door for regulatory policy, allowing for US-based production, and killing an important revenue stream for the cartels in South America which have fueled the decades of dictatorships, civil wars, and bad policy.</p>
+</div>
+<div id="criminal-justice" class="section level1">
+<h1>Criminal Justice</h1>
+<div id="corrections" class="section level2">
+<h2>Corrections</h2>
+<p>End the Death Penalty. Reserve Prison Sentences for Violent Offenses, relying instead upon house arrests. Follow the Scandanavian prison model of rehabilitation first. End Private Prisons. End Prison Rape. (How?)</p>
+</div>
+<div id="policing" class="section level2">
+<h2>Policing</h2>
+<p>Centralize police forces at the state level. Shift prosecutorial focus to violent crimes. Every law enforcement office in the country gets a data scientist. Implement counter-insurgency policing (unarmored police dispersed in crowds, not riot police protecting a line). Remove the rights of police to apply lethal force. Police have a battery of offensive weapons at their disposal to incapacitate–guns are an unnecessary addition to this. Institute mandatory criminal charges for police actions resulting deaths or severe injuries. If the act of killing was justified, let it be decided by a court. Mandatory first-person recording of all uniformed police time. Failure to tender footage in criminal investigation of police action should shift the assumption of innocence (until proven guilty) to an assumption of guilt. End Civil Asset Forfeiture. It’s just institutionalized corruption. Increase Police Pay to reduce the incidence of Police corruption. End transfers of Military equipment to Police Departments.</p>
+</div>
+</div>
+<div id="energy" class="section level1">
+<h1>Energy</h1>
+<p>End all Corn Subsidies–let the markets decide what crops should be grown in the Midwest. Implement an aggressive Research Agenda on Nuclear Waste Transmutation. Begin construction on Petawatt-hour Nuclear Reactors (What? How?) Mandate Solar Energy production standards for all new, federally-constructed buildings. Expand existing incentive programs for solar electricity. Statehood Modifications</p>
+</div>
+<div id="new-states" class="section level1">
+<h1>New States</h1>
+<p>Give DC and Puerto Rico Full Statehood. Open an “Unincorporated State” to provide representation to the 400,000 other citizens living under US Sovereignty (and not in DC or Puerto Rico) without representation. Divisions in Existing States</p>
+<p>Divisions in Existing states seem extremely unlikely in the coming decades, as they require the consent of the legislature of the state to be fragmented and the National Congress. That said, divisions between existing states provide a vehicle for better distribution of representation.</p>
+<p>While many Proposals for State Divisions exist, these are the ones which seem to me to be most plausible and potentially beneficial to the Union:</p>
+<p>Split California into Six states. Split Texas into Five states. North Colorado Baja Arizona New York City Northern Virginia Western Maryland Upper Michigan</p>
+</div>
+<div id="money" class="section level1">
+<h1>Money</h1>
+<p>Cease all minting of coinage. Institute a phased reduction in the minting of bills, with intent to eliminate paper money transactions within a decade.</p>
+</div>
+<div id="voting" class="section level1">
+<h1>Voting</h1>
+<p>Institute the National Popular Vote. Publicly fund all elections (i.e. Legislate around Citizens United). Make everyone vote in every election. Voters respond to their sense of malcontentment by abstaining from voting. Make Election Day a Federal Holiday. Move Voter Registration online.</p>
+</div>
+<div id="space-policy" class="section level1">
+<h1>Space Policy</h1>
+<p>Begin Research on construction on massive, mobile space station capable of supporting large colonies of life with and without social control mechanisms (e.g. plan out reproductive schedule for inhabitants to minimize the size of the population while maximizing the genetic diversity). Couple with the Defense Department’s Manhattan Project for Global Catastrophic Risk Reduction. Build a program capable of sending self-sustaining human colonies away from Earth permanently. Establish permanent Mars colony. Begin terraforming the Moon. Begin research on terraforming everything: Mars, Venus, Titan, Europa.</p>
+</div>
+<div id="supreme-court" class="section level1">
+<h1>Supreme Court</h1>
+<p>Amend the constitution to restructure the Supreme Court in the following ways:</p>
+<p>Every Justice serves a single 18-year term. That way, every president gets to nominate two per term. Justices may initiate a Constitutional Review of a law if they believe it may be unconstitutional, even if no case has been brought before them which calls into question the law’s constitutionality.</p>
+</div>
+<div id="congress" class="section level1">
+<h1>Congress</h1>
+<p>Institute the following procedural changes:</p>
+<p>Eliminate the Filibuster.</p>
+</div>
+<div id="foreign-affairs" class="section level1">
+<h1>Foreign Affairs</h1>
+<div id="africa" class="section level2">
+<h2>Africa</h2>
+<p>Commit massive funding to building sustainable African Infrastructure Commit massive funding to ending: Guinea Worm Polio Malaria Schistosomiasis Tuberculosis</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
