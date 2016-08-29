@@ -2,6 +2,7 @@ name: "Anthony A. Boyles"
 output_dir: .
 lib_dir: site_libs
 include: "*.Rmd"
+bibliography: bibliography.bib
 navbar:
   title: "Anthony A. Boyles"
   left:
