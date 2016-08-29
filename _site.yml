@@ -17,3 +17,4 @@ output:
     toc: false
     code_folding: hide
     self_contained: false
+    css: site_libs/style.css
