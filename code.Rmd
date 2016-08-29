@@ -1,0 +1,19 @@
+---
+title: "Code"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("plyr")
+library("dplyr")
+library("magrittr")
+library("DT")
+library("stringr")
+```
+
+```{r}
+datatable(NULL, callback = JS('$.getJSON("https://api.github.com/users/aaboyles/repos", function(results){
+  table.clear();
+  table.rows.add(results);
+});'))
+```

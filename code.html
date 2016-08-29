@@ -11,7 +11,7 @@
 
 
 
-<title>Essays</title>
+<title>Code</title>
 
 <script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -217,27 +217,17 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Essays</h1>
+<h1 class="title toc-ignore">Code</h1>
 
 </div>
 
 
-<pre class="r"><code>cbind(
-  Name = list.files(&quot;.&quot;, &quot;*.Rmd&quot;),
-  ldply(list.files(&quot;.&quot;, &quot;*.Rmd&quot;, full.names = TRUE), file.info)
-) %&gt;%
-  filter(! Name %in% c(&quot;about.Rmd&quot;, &quot;code.Rmd&quot;, &quot;index.Rmd&quot;)) %&gt;%
-  arrange(desc(mtime)) %&gt;%
-  mutate(`Estimated Length (words)` = floor(size/5.1)) %&gt;%
-  select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %&gt;%
-  mutate(Name = paste0(&quot;&lt;a href=&#39;&quot;, str_sub(Name, 1, -5), &quot;.html&#39;&gt;&quot;,
-    Name %&gt;%
-      str_replace_all(&quot;([a-z])([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_replace_all(&quot;([A-Z]+)([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_sub(1, -5), &quot;&lt;/a&gt;&quot;)) %&gt;%
-  datatable(escape = FALSE)</code></pre>
-<div id="htmlwidget-c8c07d0ba9b13b327882" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c8c07d0ba9b13b327882">{"x":{"filter":"none","data":[["1","2","3","4","5"],["<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography\u003c/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing\u003c/a>","<a href='GoodPolicies.html'>Good Policies\u003c/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography\u003c/a>","<a href='CherylsBirthday.html'>Cheryls Birthday\u003c/a>"],[2277,872,2125,387,1191],["2016-08-29T17:26:33Z","2016-08-29T17:25:11Z","2016-08-29T17:08:53Z","2016-08-29T17:00:34Z","2016-08-29T16:39:50Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Name\u003c/th>\n      <th>Estimated Length (words)\u003c/th>\n      <th>Last Modified\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>datatable(NULL, callback = JS(&#39;$.getJSON(&quot;https://api.github.com/users/aaboyles/repos&quot;, function(results){
+  table.clear();
+  table.rows.add(results);
+});&#39;))</code></pre>
+<div id="htmlwidget-1acbe0c0d7152b7c2467" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1acbe0c0d7152b7c2467">{"x":null,"evals":[],"jsHooks":[]}</script>
 
 
 

@@ -16,7 +16,7 @@ cbind(
   Name = list.files(".", "*.Rmd"),
   ldply(list.files(".", "*.Rmd", full.names = TRUE), file.info)
 ) %>%
-  filter(! Name %in% c("about.Rmd", "index.Rmd")) %>%
+  filter(! Name %in% c("about.Rmd", "code.Rmd", "index.Rmd")) %>%
   arrange(desc(mtime)) %>%
   mutate(`Estimated Length (words)` = floor(size/5.1)) %>%
   select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %>%
