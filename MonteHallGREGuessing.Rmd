@@ -2,7 +2,15 @@
 title: "The Monte Hall Problem and Optimal Guessing Strategy on the GRE"
 ---
 
-Epistemic Status: **Completely Certain**, Status: **Deprecated**, Last Modified: **`r file.info("MonteHallGREGuessing.Rmd")$mtime`**
+```{r, results='asis'}
+source("infobox.R")
+meta <- list(
+  "Epistemic Status" = "Completely Certain",
+  "Status" = "Deprecated",
+  "Last Revision" = file.info("MonteHallGREGuessing.Rmd")$mtime
+)
+infobox(meta, tags$tr(tags$td(tags$b("Note:"), tags$span("While I am highly certain about the credibility of this technique, I've deprecated this article because the GRE has removed quantitative comparisons from its curriculum. I am leaving the essay up because I have yet to see any other practical application of the Monte Hall Problem."), colspan=2)))
+```
 
 I was teaching a GRE class today when I was struck by a sudden inspiration: the quantitative comparison problems are basically [Monty Hall Problems](http://en.wikipedia.org/wiki/Monty_Hall_problem). For those who don't know, Monty Hall was the host of the TV game show _Let's Make a Deal_. In the show, a contestant (you) were offered three distinct doors. One concealed a new car. The other two hid goats. You would select a door, and then Hall would pick one of the other two doors, and open it. It would invariably contain a goat, thereby leaving two doors, behind one of which awaited the hallowed car. He then offers you a choice: you could keep your selected door, or you could swap for the remaining door. 
 
@@ -14,7 +22,7 @@ $$x + 2y > 8$$
 
 |Column A|Column B|
 |:-------|:-------|
-|$$2x+4y$$|$$20$$|
+| 2x+4y  | 20     |
 
 A) The quantity in Column A is larger.
 B) The quantity in Column B is larger.

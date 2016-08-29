@@ -14,6 +14,9 @@
 <title>Good Policies</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -169,6 +172,100 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.9em;
+  padding-left: 5px;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -217,81 +314,181 @@ $(document).ready(function () {
 </div>
 
 
-<p>Status: <strong>Perpetually Incomplete</strong>, Epistemic Status: <strong>Uncertain</strong>, Last Revision: <strong>2016-08-29 10:26:43</strong></p>
+<pre class="r"><code>source(&quot;infobox.R&quot;)
+meta &lt;- list(
+  &quot;Status&quot; = &quot;Perpetually Incomplete&quot;,
+  &quot;Epistemic Status&quot; = &quot;&gt;50% Certain&quot;,
+  &quot;Last Revision&quot; = file.info(&quot;GoodPolicies.Rmd&quot;)$mtime
+)
+infobox(meta)</code></pre>
+<table class="infobox">
+<tbody>
+<tr>
+<td>
+<b>Status</b>
+</td>
+<td>Perpetually Incomplete</td>
+</tr>
+<tr>
+<td>
+<b>Epistemic Status</b>
+</td>
+<td>&gt;50% Certain</td>
+</tr>
+<tr>
+<td>
+<b>Last Revision</b>
+</td>
+<td>2016-08-29 13:08:53</td>
+</tr>
+</tbody>
+<tfoot></tfoot>
+</table>
 <p>Around July 2014, I started keeping a list of the policy changes I broadly advocation. As the list grew longer, I realized that I was building a fairly comprehensive political platform. “Fairly comprehensive” does not, however, mean “complete.”</p>
 <div id="defense" class="section level1">
 <h1>Defense</h1>
-<p>Prioritize spending to combat global catastrophic risk. Start with a Manhattan Project for the AI Values Alignment problem. Second Priority given to individual mortal risk–Socio-Medical R&amp;D, Accident Reduction, etc. Tertiary Priority given to national defense, emphasis on illicit WMD interdiction, acquisition, and destruction. Kill the Air Force–subsume its assets into the Army and Navy. Kill all Missile Defense Systems. End development and cancel purchase orders for all F-35s.</p>
+<p>Prioritize spending to combat global catastrophic risk. Start with a Manhattan Project for the AI Values Alignment problem.</p>
+<p>Second Priority given to individual mortal risk–Socio-Medical R&amp;D, Accident Reduction, etc.</p>
+<p>Tertiary Priority given to national defense, emphasis on illicit WMD interdiction, acquisition, and destruction.</p>
+<p>Kill the Air Force–subsume its assets into the Army and Navy.</p>
+<p>Kill all Missile Defense Systems.</p>
+<p>End development and cancel purchase orders for all F-35s.</p>
 </div>
 <div id="education" class="section level1">
 <h1>Education</h1>
-<p>Pay teachers at a competitive rate relative to other highly-trained professionals–lawyers, for example. Institute year-round schooling. The current schedule of school-free summers creates gaps which wealthy children have filled with camps and other stimulating school-like activities while poor children tend to stay home, deepening the chasm between the social classes. Set up more neighborhood schools with smaller campuses and fewer students–Research suggests the school size is more strongly correlated with student performance than student/teacher ratio. Mandate vaccinations for all public school attendees. Order school schedules according to student sleeping schedules: Elementary (K-3) starts early, Middle (4-6) later, Jr. High (7-9) later still, and High (10-12) latest. Freely feed all students breakfast and lunch. Replace cursive writing curriculum with typing skills on Dvorak keyboards. Segregate classes according to birth season, resulting in student groups for which the default age differential is no more than 3 or 4 months (permitting less mature students to move back to the next-younger class, and more mature students to advance symmetrically).</p>
+<p>Pay teachers at a competitive rate relative to other highly-trained professionals–lawyers, for example.</p>
+<p>Institute year-round schooling. The current schedule of school-free summers creates gaps which wealthy children have filled with camps and other stimulating school-like activities while poor children tend to stay home, deepening the chasm between the social classes.</p>
+<p>Set up more neighborhood schools with smaller campuses and fewer students–Research suggests the school size is more strongly correlated with student performance than student/teacher ratio.</p>
+<p>Mandate vaccinations for all public school attendees.</p>
+<p>Order school schedules according to student sleeping schedules: Elementary (K-3) starts early, Middle (4-6) later, Jr. High (7-9) later still, and High (10-12) latest.</p>
+<p>Freely feed all students breakfast and lunch.</p>
+<p>Replace cursive writing curriculum with typing skills on Dvorak keyboards.</p>
+<p>Segregate classes according to birth season, resulting in student groups for which the default age differential is no more than 3 or 4 months (permitting less mature students to move back to the next-younger class, and more mature students to advance symmetrically).</p>
 </div>
 <div id="tax-policy" class="section level1">
 <h1>Tax policy</h1>
-<p>Institute a Guaranteed Basic Income, and tie its value to the CPI at the local level, ensuring that every single American lives at slightly above the poverty line. Allow an option to opt-out for those who are working, in exchange for a tax credit of the same amount. Simplify tax code: reduce it to three chapters: Earned Income, Capital Gains, and Estates. End corporate taxation, and supplement government revenue with increased capital gains taxes. Replace tiered taxation system with a continuous function, something to the tune of</p>
-<p>[latex]Tax Rate=frac{72}{1+e^{7-frac{x}{9}}}[/latex]</p>
+<p>Institute a Guaranteed Basic Income, and tie its value to the CPI at the local level, ensuring that every single American lives at slightly above the poverty line. Allow an option to opt-out for those who are working, in exchange for a tax credit of the same amount.</p>
+<p>Simplify tax code: reduce it to three chapters: Earned Income, Capital Gains, and Estates.</p>
+<p>End corporate taxation, and supplement government revenue with increased capital gains taxes.</p>
+<p>Replace tiered taxation system with a continuous function, something to the tune of</p>
+<p><span class="math display">\[Tax Rate=\frac{72}{1+e^{7-\frac{x}{9}}}\]</span></p>
 <p>where x is the filer’s income percentile.</p>
-<p>Institute IRS auto-filing on periodically-collected taxes, with an override option for those wishing to file manually. Eliminate 529 Education accounts.</p>
+<p>Institute IRS auto-filing on periodically-collected taxes, with an override option for those wishing to file manually.</p>
+<p>Eliminate 529 Education accounts.</p>
 </div>
 <div id="wages-and-workers-rights" class="section level1">
 <h1>Wages and Worker’s Rights</h1>
-<p>Make tipping illegal. Research shows that people tend not to reward/punish service workers based on their performance so much as they tip based on the mood they’re in and how they feel about the worker’s race and gender. This makes tipping policies racist and sexist. Additionally, the Corruption Perceptions Index is strongly correlated with the presence of tipping culture. Mandate that all workers receive at least minimum wage, including formerly tipped positions and workers of differing abilities. Peg the minimum wage to BLS estimates of Consumer Price Index. End Unemployment and Disability Insurance programs and institute a Guaranteed Basic Income. Expand SNAP benefits while enacting stricter guards to prevent SNAP benefits from going to soft drinks, candy, cookies, snack crackers, and ice cream.</p>
+<p>Make tipping illegal. Research shows that people tend not to reward/punish service workers based on their performance so much as they tip based on the mood they’re in and how they feel about the worker’s race and gender. This makes tipping policies racist and sexist. Additionally, the Corruption Perceptions Index is strongly correlated with the presence of tipping culture.</p>
+<p>Mandate that all workers receive at least minimum wage, including formerly tipped positions and workers of differing abilities.</p>
+<p>Peg the minimum wage to BLS estimates of Consumer Price Index.</p>
+<p>End Unemployment and Disability Insurance programs and institute a Guaranteed Basic Income.</p>
+<p>Expand SNAP benefits while enacting stricter guards to prevent SNAP benefits from going to soft drinks, candy, cookies, snack crackers, and ice cream.</p>
 </div>
 <div id="open-borders" class="section level1">
 <h1>Open Borders</h1>
-<p>Stop the flow of illegal immigrants by letting everyone in through legal checkpoints. Fire CBP Agents and their managers on any allegation of wrong-doing. Aggressively pursue criminal charges against agents.</p>
+<p>Stop the flow of illegal immigrants by letting everyone in through legal checkpoints.</p>
+<p>Fire CBP Agents and their managers on any allegation of wrong-doing. Aggressively pursue criminal charges against agents.</p>
 </div>
 <div id="infrastructure" class="section level1">
 <h1>Infrastructure</h1>
-<p>Create a Civilian Conservation Corp. Make sure all America’s roads, bridges, plumbing, power and fiber-optics are safe. Immediately legalize all autonomous vehicle technologies, and begin to mandate that certain roads only be accessible by autonomous vehicles. Increase mandates as human-piloted vehicles become scarce. Declare high-speed internet access to be a fundamental human right. Subsidize municipal projects to upgrade internet connection infrastructure.</p>
+<p>Create a Civilian Conservation Corp. Make sure all America’s roads, bridges, plumbing, power and fiber-optics are safe.</p>
+<p>Immediately legalize all autonomous vehicle technologies, and begin to mandate that certain roads only be accessible by autonomous vehicles. Increase mandates as human-piloted vehicles become scarce.</p>
+<p>Declare high-speed internet access to be a fundamental human right. Subsidize municipal projects to upgrade internet connection infrastructure.</p>
 </div>
 <div id="gender-non-discrimination" class="section level1">
 <h1>Gender Non-discrimination</h1>
-<p>Extend gender-based protections to people who do not necessarily identify with either of the culturally standard genders. Marriages for Polyamorous groups. More than two individuals are capable of entering into and sustaining loving, long-term relationships with members of a group. Marital protections should be available to such groups. Deprecate Marriage. It’s an outdated institution designed to control the destinies of women.</p>
+<p>Extend gender-based protections to people who do not necessarily identify with either of the culturally standard genders.</p>
+<p>Marriages for Polyamorous groups. More than two individuals are capable of entering into and sustaining loving, long-term relationships with members of a group. Marital protections should be available to such groups.</p>
+<p>Deprecate Marriage. It’s an outdated institution designed to control the destinies of women.</p>
 </div>
 <div id="healthcare" class="section level1">
 <h1>Healthcare</h1>
-<p>Build a Manhattan project of life extension research. Hire Aubrey de Gray as Chief scientist on the project. Government takeover. The problem which created America’s financially-bloated healthcare system is the separation between provider, recipient, and payer. Bind the payer and the provider in a single-payer system. Eliminate Medicaid and Expand Medicare to cover everyone. Healthcare is free-for-all. Institute a federal medical records database, but hash its contents to preserve its queryability for research purposes and protect the identity of the patients. Automate diagnostics with evidence-based platforms to provide more accurate diagnostics and more rapid dispersal of targeted care. Mandate use of evidence-based, list-oriented diagnosis with safeguards for physician overrides. In the event of a physician override, make the physician criminally liable if the computational diagnostic was correct. Force the FDA to Reschedule Marijuana under the Controlled Substances Act. Legalize and regulate the production and trade of Marijuana. Decriminalize everything. Will people use drugs? Of course they will. Will more people use drugs? Possibly. BUT decriminalization will open the door for regulatory policy, allowing for US-based production, and killing an important revenue stream for the cartels in South America which have fueled the decades of dictatorships, civil wars, and bad policy.</p>
+<p>Build a Manhattan project of life extension research. Hire Aubrey de Gray as Chief scientist on the project.</p>
+<p>Government takeover. The problem which created America’s financially-bloated healthcare system is the separation between provider, recipient, and payer. Bind the payer and the provider in a single-payer system. Eliminate Medicaid and Expand Medicare to cover everyone. Healthcare is free-for-all.</p>
+<p>Institute a federal medical records database, but hash its contents to preserve its queryability for research purposes and protect the identity of the patients.</p>
+<p>Automate diagnostics with evidence-based platforms to provide more accurate diagnostics and more rapid dispersal of targeted care. Mandate use of evidence-based, list-oriented diagnosis with safeguards for physician overrides. In the event of a physician override, make the physician criminally liable if the computational diagnostic was correct.</p>
+<p>Force the FDA to Reschedule Marijuana under the Controlled Substances Act. Legalize and regulate the production and trade of Marijuana.</p>
+<p>Decriminalize everything. Will people use drugs? Of course they will. Will more people use drugs? Possibly. BUT decriminalization will open the door for regulatory policy, allowing for US-based production, and killing an important revenue stream for the cartels in South America which have fueled the decades of dictatorships, civil wars, and bad policy.</p>
 </div>
 <div id="criminal-justice" class="section level1">
 <h1>Criminal Justice</h1>
 <div id="corrections" class="section level2">
 <h2>Corrections</h2>
-<p>End the Death Penalty. Reserve Prison Sentences for Violent Offenses, relying instead upon house arrests. Follow the Scandanavian prison model of rehabilitation first. End Private Prisons. End Prison Rape. (How?)</p>
+<p>End the Death Penalty.</p>
+<p>Reserve Prison Sentences for Violent Offenses, relying instead upon house arrests.</p>
+<p>Follow the Scandanavian prison model of rehabilitation first.</p>
+<p>End Private Prisons.</p>
+<p>End Prison Rape. (How?)</p>
 </div>
 <div id="policing" class="section level2">
 <h2>Policing</h2>
-<p>Centralize police forces at the state level. Shift prosecutorial focus to violent crimes. Every law enforcement office in the country gets a data scientist. Implement counter-insurgency policing (unarmored police dispersed in crowds, not riot police protecting a line). Remove the rights of police to apply lethal force. Police have a battery of offensive weapons at their disposal to incapacitate–guns are an unnecessary addition to this. Institute mandatory criminal charges for police actions resulting deaths or severe injuries. If the act of killing was justified, let it be decided by a court. Mandatory first-person recording of all uniformed police time. Failure to tender footage in criminal investigation of police action should shift the assumption of innocence (until proven guilty) to an assumption of guilt. End Civil Asset Forfeiture. It’s just institutionalized corruption. Increase Police Pay to reduce the incidence of Police corruption. End transfers of Military equipment to Police Departments.</p>
+<p>Centralize police forces at the state level.</p>
+<p>Shift prosecutorial focus to violent crimes.</p>
+<p>Every law enforcement office in the country gets a data scientist.</p>
+<p>Implement counter-insurgency policing (unarmored police dispersed in crowds, not riot police protecting a line).</p>
+<p>Remove the rights of police to apply lethal force. Police have a battery of offensive weapons at their disposal to incapacitate–guns are an unnecessary addition to this. Institute mandatory criminal charges for police actions resulting deaths or severe injuries. If the act of killing was justified, let it be decided by a court.</p>
+<p>Mandatory first-person recording of all uniformed police time. Failure to tender footage in criminal investigation of police action should shift the assumption of innocence (until proven guilty) to an assumption of guilt.</p>
+<p>End Civil Asset Forfeiture. It’s just institutionalized corruption.</p>
+<p>Increase Police Pay to reduce the incidence of Police corruption.</p>
+<p>End transfers of Military equipment to Police Departments.</p>
 </div>
 </div>
 <div id="energy" class="section level1">
 <h1>Energy</h1>
-<p>End all Corn Subsidies–let the markets decide what crops should be grown in the Midwest. Implement an aggressive Research Agenda on Nuclear Waste Transmutation. Begin construction on Petawatt-hour Nuclear Reactors (What? How?) Mandate Solar Energy production standards for all new, federally-constructed buildings. Expand existing incentive programs for solar electricity. Statehood Modifications</p>
+<p>End all Corn Subsidies–let the markets decide what crops should be grown in the Midwest.</p>
+<p>Implement an aggressive Research Agenda on Nuclear Waste Transmutation.</p>
+<p>Begin construction on Petawatt-hour Nuclear Reactors (What? How?)</p>
+<p>Mandate Solar Energy production standards for all new, federally-constructed buildings.</p>
+<p>Expand existing incentive programs for solar electricity.</p>
 </div>
-<div id="new-states" class="section level1">
-<h1>New States</h1>
-<p>Give DC and Puerto Rico Full Statehood. Open an “Unincorporated State” to provide representation to the 400,000 other citizens living under US Sovereignty (and not in DC or Puerto Rico) without representation. Divisions in Existing States</p>
+<div id="statehood-modifications" class="section level1">
+<h1>Statehood Modifications</h1>
+<div id="new-states" class="section level2">
+<h2>New States</h2>
+<p>Give DC and Puerto Rico Full Statehood.</p>
+<p>Open an “Unincorporated State” to provide representation to the 400,000 other citizens living under US Sovereignty (and not in DC or Puerto Rico) without representation.</p>
+</div>
+<div id="divisions-in-existing-states" class="section level2">
+<h2>Divisions in Existing States</h2>
 <p>Divisions in Existing states seem extremely unlikely in the coming decades, as they require the consent of the legislature of the state to be fragmented and the National Congress. That said, divisions between existing states provide a vehicle for better distribution of representation.</p>
 <p>While many Proposals for State Divisions exist, these are the ones which seem to me to be most plausible and potentially beneficial to the Union:</p>
-<p>Split California into Six states. Split Texas into Five states. North Colorado Baja Arizona New York City Northern Virginia Western Maryland Upper Michigan</p>
+<ul>
+<li>Split California into Six states.</li>
+<li>Split Texas into Five states.</li>
+<li>North Colorado</li>
+<li>Baja Arizona</li>
+<li>New York City</li>
+<li>Northern Virginia</li>
+<li>Western Maryland</li>
+<li>Upper Michigan</li>
+</ul>
+</div>
 </div>
 <div id="money" class="section level1">
 <h1>Money</h1>
-<p>Cease all minting of coinage. Institute a phased reduction in the minting of bills, with intent to eliminate paper money transactions within a decade.</p>
+<p>Cease all minting of coinage.</p>
+<p>Institute a phased reduction in the minting of bills, with intent to eliminate paper money transactions within a decade.</p>
 </div>
 <div id="voting" class="section level1">
 <h1>Voting</h1>
-<p>Institute the National Popular Vote. Publicly fund all elections (i.e. Legislate around Citizens United). Make everyone vote in every election. Voters respond to their sense of malcontentment by abstaining from voting. Make Election Day a Federal Holiday. Move Voter Registration online.</p>
+<p>Institute the National Popular Vote.</p>
+<p>Publicly fund all elections (i.e. Legislate around Citizens United).</p>
+<p>Make everyone vote in every election. Voters respond to their sense of malcontentment by abstaining from voting.</p>
+<p>Make Election Day a Federal Holiday.</p>
+<p>Move Voter Registration online.</p>
 </div>
 <div id="space-policy" class="section level1">
 <h1>Space Policy</h1>
-<p>Begin Research on construction on massive, mobile space station capable of supporting large colonies of life with and without social control mechanisms (e.g. plan out reproductive schedule for inhabitants to minimize the size of the population while maximizing the genetic diversity). Couple with the Defense Department’s Manhattan Project for Global Catastrophic Risk Reduction. Build a program capable of sending self-sustaining human colonies away from Earth permanently. Establish permanent Mars colony. Begin terraforming the Moon. Begin research on terraforming everything: Mars, Venus, Titan, Europa.</p>
+<p>Begin Research on construction on massive, mobile space station capable of supporting large colonies of life with and without social control mechanisms (e.g. plan out reproductive schedule for inhabitants to minimize the size of the population while maximizing the genetic diversity). Couple with the Defense Department’s Manhattan Project for Global Catastrophic Risk Reduction. Build a program capable of sending self-sustaining human colonies away from Earth permanently.</p>
+<p>Establish permanent Mars colony.</p>
+<p>Begin terraforming the Moon.</p>
+<p>Begin research on terraforming everything: Mars, Venus, Titan, Europa.</p>
 </div>
 <div id="supreme-court" class="section level1">
 <h1>Supreme Court</h1>
 <p>Amend the constitution to restructure the Supreme Court in the following ways:</p>
-<p>Every Justice serves a single 18-year term. That way, every president gets to nominate two per term. Justices may initiate a Constitutional Review of a law if they believe it may be unconstitutional, even if no case has been brought before them which calls into question the law’s constitutionality.</p>
+<p>Every Justice serves a single 18-year term. That way, every president gets to nominate two per term.</p>
+<p>Justices may initiate a Constitutional Review of a law if they believe it may be unconstitutional, even if no case has been brought before them which calls into question the law’s constitutionality.</p>
 </div>
 <div id="congress" class="section level1">
 <h1>Congress</h1>
@@ -302,12 +499,22 @@ $(document).ready(function () {
 <h1>Foreign Affairs</h1>
 <div id="africa" class="section level2">
 <h2>Africa</h2>
-<p>Commit massive funding to building sustainable African Infrastructure Commit massive funding to ending: Guinea Worm Polio Malaria Schistosomiasis Tuberculosis</p>
+<p>Commit massive funding to building sustainable African Infrastructure</p>
+<p>Commit massive funding to ending:</p>
+<ul>
+<li>Guinea Worm</li>
+<li>Polio</li>
+<li>Malaria</li>
+<li>Schistosomiasis</li>
+<li>Tuberculosis</li>
+</ul>
 </div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 

@@ -5,8 +5,17 @@ output:
     toc_float: true
 ---
 
+```{r, results='asis'}
+source("infobox.R")
+meta <- list(
+  "Status" = "Complete",
+  "Last Revision" = file.info("about.Rmd")$mtime
+)
+infobox(meta)
+```
+
 # Who are you?
-Hi, I’m Tony Boyles. By day, I’m a Data Scientist. By night, I'm a Dog Person. By the quiet recesses of my mind, I'm a transhumanist.
+Hi, I’m Tony Boyles. I make a living by doing Data Science.
 
 # What's your background?
 I graduated from Emory Univeristy in Atlanta with a double Major in Computer Science and International Studies in 2010. While there, I recieved training in Statistics, System Dynamic Modeling, and Game Theory. Afterwards, I went straight on to do a Master’s of Science in International Affairs at Georgia Tech’s Sam Nunn School of International Affairs, which gave me more opportunities to pursue studies in Statistics, System Dynamic Modeling, Agent-Based Modeling, Path Gaming, GIS, and Neural Networks.
@@ -27,11 +36,12 @@ I work for a small defense contractor called System of Systems Analytics, Inc., 
 # What’s your stack?
 In general, I’m not hung up on any of the technologies I regularly use. I believe in using the correct tool for the job.
 
-R for Statistics: ggplot2 for Static data visualizations, ggvis for Dynamic Visualizations with Shiny, dplyr and tidyr for data wrangling.
-Python for Scripting: There are a bunch of odd jobs I find myself solving in Python. Like text analysis (NLTK is easy, and spaCy is boss).
-Javascript for Web: D3 for any Data Visualization, OpenLayers for Mapping, jQuery and Underscore because Javascript is excruciating without them.
-PostGreSQL for Databases: I like the modularity and portability of database files (a la SQLite), but after that, SQL is SQL. However, PostGres brings PostGIS, which is just brilliant.
-LaTeX for Typesetting: Beamer for Presentations, BibLaTeX (with biber) for Citation Management. I can’t see ever replacing it; after all, Donald Knuth built it to last.
+* R for Statistics: ggplot2 for Static data visualizations, dplyr and tidyr for data wrangling.
+* Python for Scripting: There are a bunch of odd jobs I find myself solving in Python. Like text analysis (NLTK is easy, and spaCy is boss).
+* Javascript for Web: D3 for any Data Visualization, OpenLayers or Leaflet for Mapping, jQuery and Underscore because Javascript is excruciating without them.
+* PostGreSQL for Databases: I like the modularity and portability of database files (a la SQLite), but after that, SQL is SQL. However, PostGres brings PostGIS, which is just brilliant.
+* LaTeX for Typesetting: Beamer for Presentations, BibLaTeX (with biber) for Citation Management. I can’t see ever replacing it; after all, Donald Knuth built it to last.
+
 In the past I’ve also used Clojure, Java, C++, and C (plus a few others I’m too embarrassed to mention).
 
 # What Hardware do you use?
@@ -47,7 +57,7 @@ My personal machine is running Windows 10, because I mostly use it for gaming. I
 # And Your Dream Setup?
 A credit card I don’t have to pay, linked to AWS and Google Cloud so I can spin up the servers for whatever projects I come up with, and leave them running full-time.
 
-As for local equipment, I’m quite well-off at the moment. I do like gadgets: I’d love to have an HTC Vive and Makerbot Replicator to play with. Oh, a Tesla Model S100D with Autopilot.
+I do like gadgets: I’d love to have an HTC Vive and Makerbot Replicator to play with. Oh, a Tesla Model S100D with Autopilot.
 
 # Can I see some of your work?
 Sure.

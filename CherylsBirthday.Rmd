@@ -6,6 +6,16 @@ output:
     toc: false
 ---
 
+```{r, results='asis'}
+source("infobox.R")
+meta <- list(
+  "Genre" = "Fiction",
+  "Status" = "Complete",
+  "Last Revision" = file.info("CherylsBirthday.Rmd")$mtime
+)
+infobox(meta)
+```
+
 "Hi! I'm Albert, and this is Bernard."  Cheryl looked up at the cheerful-looking couple of boys who had approached her desk. "We didn't recognize you from last year."
 
 "Hi! I'm Cheryl. I just moved here." she replied. She was slightly shy, and so appreciated the introduction.
@@ -73,5 +83,3 @@ After a moment, Cheryl said "What do you know?"
 "July 16th!" Daisy exclaimed happily. Cheryl grinned and gave Daisy the now-ceremonial high-five.
 
 Just then the bell rang. "OK, everyone. Take your seats!" said the teacher in Singaporean Mandarin. "Welcome to 5th grade."
-
-Genre: **Fiction**, Status: **Complete**, Last Revision: **`r file.info("CherylsBirthday.Rmd")$mtime`**
