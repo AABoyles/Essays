@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Mere Heroes</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/default.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Essays</a>
+</li>
+<li>
+  <a href="code.html">Code</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Mere Heroes</h1>
+
+</div>
+
+
+<pre class="r"><code>source(&quot;infobox.R&quot;)
+meta &lt;- list(
+  &quot;Last Revision&quot; = file.info(&quot;MereHeroes.Rmd&quot;)$mtime
+)
+infobox(meta, tags$tr(tags$td(tags$b(&quot;Note:&quot;), tags$span(&quot;Note: This is a personal re-writing of an essay originally penned by Eliezer Yudkowsky on LessWrong. As such, much of the text is exactly Yudkowsky&#39;s. Since I&#39;m presenting his ideas, I&#39;ve decided to preserve his words as well. Never-the-less, I have changed it, extensively in some ways. I don&#39;t know how to reconcile my ownership of this version of the text with the original, other to admit outright that I am explicitly committing plagiarism. If Yudkowsky himself objects, I will happily remove this essay at his request.&quot;), colspan=2)))</code></pre>
+<table class="infobox">
+<tbody>
+<tr>
+<td>
+<b>Last Revision</b>
+</td>
+<td>2016-08-29 15:41:16</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td colspan="2">
+<b>Note:</b>
+<span>Note: This is a personal re-writing of an essay originally penned by Eliezer Yudkowsky on LessWrong. As such, much of the text is exactly Yudkowsky's. Since I'm presenting his ideas, I've decided to preserve his words as well. Never-the-less, I have changed it, extensively in some ways. I don't know how to reconcile my ownership of this version of the text with the original, other to admit outright that I am explicitly committing plagiarism. If Yudkowsky himself objects, I will happily remove this essay at his request.</span>
+</td>
+</tr>
+</tfoot>
+</table>
+<p>As Christians tell the story, Jesus Christ could <a href="https://www.biblegateway.com/passage/?search=Matthew+14%3A22-33&amp;version=NRSV">walk on water</a>, <a href="https://www.biblegateway.com/passage/?search=Mark+4%3A35-41&amp;version=NIV">calm storms</a>, and <a href="https://www.biblegateway.com/passage/?search=Mark+5%3A1-20&amp;version=NRSV">exorcise demons</a>. It must have made for a comfortable life: Followers getting hungry? <a href="https://www.biblegateway.com/passage/?search=Matthew+14%3A13-21&amp;version=NRSV">Break some bread and pass it around</a>. Don’t like a tree? <a href="https://www.biblegateway.com/passage/?search=Mark+11%3A12-14%2C19-25&amp;version=NRSV">Curse it</a>. This charmed life ended, however, when <a href="https://www.biblegateway.com/passage/?search=John+18%3A3-14&amp;version=NRSV">Jesus accepted his arrest</a> and <a href="https://www.biblegateway.com/passage/?search=Luke+23%3A33-46&amp;version=NRSV">subsequent crucifixion</a>. Being nailed to a cross is <a href="https://en.wikipedia.org/wiki/Crucifixion#Details">not a comfortable way to die</a>. But as Christians tell the story, Jesus did this <a href="https://www.biblegateway.com/passage/?search=Luke+18%3A31-33&amp;version=NRSV"><em>knowing</em> he would come back to life three days later</a>, and <a href="https://www.biblegateway.com/passage/?search=John+20%3A17&amp;version=NRSV">then go to Heaven</a>.</p>
+<p>What if Jesus of Nazareth never walked on water, and defied the Judean Temple established by the powers of Rome, <em>in spite of his humanity</em>? Why would that deserve less honor than that which Christians confer to Jesus Christ? As Sam Harris put it in <a href="http://smile.amazon.com/End-Faith-Religion-Terror-Future/dp/0393327655/ref=sr_1_1?ie=UTF8&amp;qid=1451509971&amp;sr=8-1&amp;keywords=The+End+of+Faith">The End of Faith</a>:</p>
+<blockquote>
+<p>It is not enough that Jesus was a man who transformed himself to such a degree that the Sermon on the Mount could be his heart’s confession. He also had to be the Son of God, born of a virgin, and destined to return to earth trailing clouds of glory. The effect of such dogma is to place the example of Jesus forever out of reach. His teaching ceases to become a set of empirical claims about the linkage between ethics and spiritual insight and instead becomes a gratuitous, and rather gruesome, fairy tale. According to the dogma of Christianity, becoming just like Jesus is impossible.</p>
+</blockquote>
+<p>For contrast, let’s consider a mere hero: <a href="http://www.nleomf.org/officers/search/search-results/john-william-perry.html">John Perry</a> was a New York City police officer, and also a transhumanist. He had taken leave from his precinct one Tuesday in order to file his retirement papers. He was leaving the force at the young age of 38, after 8 years of service, to <a href="http://www.nypdangels.com/nypd/perry.htm">start his own law practice</a>. But on that Tuesday morning, John Perry got word that a plane had slammed into the World Trade Center. Instead of filing his retirement papers, John Perry donned his uniform one last time and rushed to Ground Zero to help. He was killed when the north tower fell.</p>
+<p>John Perry <a href="http://www.plumsite.com/johnperry.html">hoped to be cryonically preserved</a>; he had <em>genuine</em> hope of life everlasting. And John Perry put his life on the line anyway. John Perry <em>knew</em> he was risking his life every day on the job. Not because he expected any divine reward, but because there were other people in danger. His life was worth no more than theirs. I did not know John Perry. I do not know if he saw the world this way. But the fact that a transhumanist can still run selflessly into the lobby of a burning building says more about the human spirit than all the martyrs who ever hoped of heaven.</p>
+<p>Jesus deserves honor. He probably deserves more honor than Christians would grant him. But Jesus Christ anticipated his soul would survive, and so sacrificed a painful death on a cross and <a href="https://en.wikipedia.org/wiki/Harrowing_of_Hell">three days in hell</a>. John Perry was a transhumanist, and so sacrificed a painful death under a building and an eternity in oblivion. Why do we revere the actions of Jesus Christ, while forgetting the mere heroism of John Perry? Perhaps we judge our heroes by the magnitude of their powers, rather than the magnitude of their sacrifices. And that is a tragedy.</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
