@@ -1,0 +1,21 @@
+---
+title: "Be Cautious with You Effects"
+---
+
+I hold the moral significance of human-hours to be roughly equivalent across (almost) all (adult) humans. So, for a trivial example, wasting one person's time for two hours is approximately as morally bad as wasting two people's times for one hour.
+
+Imagine an organization. It employs on the order of 100,000 people, each of whom receives an official organizational email address. One day, one employee emails another about some matter of mild importance to the two of them (and no relevance to anyone else). However, in haste, the sender inadvertently added an extra recipient to the cc line. That extra address was, unfortunately, a mailing list to which every single employee of this organization is subscribed. All ~100,000 of them.
+
+There are a variety of responses to this error. The majority of recipients sensibly delete the email (as the cybersecurity training they all received instructed them to do). Some, feeling as though their inclusion in the conversation was more specific and intentional than it was, replied-to-all with variations of "I think you sent this e-mail to the wrong [NAME]." Others note this error, and, seeking to prevent still more from sending emails of this variety, begin sending emails of the style "Please stop replying-all to this thread." One third-order thinker goes so far as to send an email saying "Please stop sending e-mails telling us to stop replying-all to this thread." Some decide to join the party simply for the joy of trolling, sending memes and random filler. In all, approximately 500 emails are sent to each of 100,000 people.
+
+Let us conservatively estimate that each email commands the attention of an employee for an average one second. We can accordingly estimate that each e-mail cost the organization approximately...
+
+$$\frac{100,000 employees}{1}*\frac{1 second}{1 email}*\frac{1 hour}{3600 seconds}=27.8hours$$
+
+...in productivity. Expanded over a chain of 500 emails, the lost productivity climbs towards seven years worth of labor-loss. Assuming a mean annual salary of approximately $30,000, on the order of a million dollars is wasted.
+
+Flappy Bird
+
+Consider a highway which ordinarily serves about 600,000 commuters during the morning rush hour. Let us suppose that early on in the rush hour, a catastrophic accident occurs. No one was killed, but all the lanes were blocked and required approximately one hour to clear. The mean human lifespan is around 65 years [citation needed]. That means that a single human will live approximately $$\frac{65 years}{1}*\frac{365 days}{1 year}*\frac{24 hours}{1 day}=569,400 hours$$ Nearly 600,000 human-hours are forfeit. Even though no one was killed (or even badly injured), an entire human lifespan was wasted. To me, this is approximately as undesirable as having had someone killed in an accident with no adverse effects on traffic.
+
+Infinite Trolley Problem
