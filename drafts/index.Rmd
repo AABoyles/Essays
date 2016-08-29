@@ -1,0 +1,29 @@
+---
+title: "Drafts"
+---
+
+If you've stumbled upon this page, well done. This is the drafts directory. The quality of these varies from a few sentences (or a bare outline) to near-complete essays that I remain unwilling to publish. Note the phrase *unwilling to publish*. It means that I may not actually believe or endorse the content written here. I strongly encourage you *not* to read these; if nothing else, you have better things to do.
+
+```{r, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("plyr")
+library("dplyr")
+library("magrittr")
+library("DT")
+library("stringr")
+
+cbind(
+  Name = list.files(".", "*.Rmd"),
+  ldply(list.files(".", "*.Rmd", full.names = TRUE), file.info)
+) %>%
+  filter(! Name %in% c("index.Rmd")) %>%
+  arrange(desc(mtime)) %>%
+  mutate(`Estimated Length (words)` = floor(size/5.1)) %>%
+  select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %>%
+  mutate(Name = paste0("<a href='", str_sub(Name, 1, -5), ".html'>",
+    Name %>%
+      str_replace_all("([a-z])([A-Z])", "\\1 \\2") %>%
+      str_replace_all("([A-Z]+)([A-Z])", "\\1 \\2") %>%
+      str_sub(1, -5), "</a>")) %>%
+  datatable(escape = FALSE)
+```

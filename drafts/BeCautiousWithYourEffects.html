@@ -11,19 +11,14 @@
 
 
 
-<title>Drafts</title>
+<title>Be Cautious with You Effects</title>
 
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/htmlwidgets-0.7/htmlwidgets.js"></script>
-<script src="site_libs/datatables-binding-0.2/datatables.js"></script>
-<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -219,35 +214,20 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Drafts</h1>
+<h1 class="title toc-ignore">Be Cautious with You Effects</h1>
 
 </div>
 
 
-<p>If you’ve stumbled upon this page, well done. This is the drafts directory. The quality of these varies from a few sentences (or a bare outline) to near-complete essays that I remain unwilling to publish. Note the phrase <em>unwilling to publish</em>. It means that I may not actually believe or endorse the content written here. I strongly encourage you <em>not</em> to read these; if nothing else, you have better things to do.</p>
-<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE)
-library(&quot;plyr&quot;)
-library(&quot;dplyr&quot;)
-library(&quot;magrittr&quot;)
-library(&quot;DT&quot;)
-library(&quot;stringr&quot;)
-
-cbind(
-  Name = list.files(&quot;.&quot;, &quot;*.Rmd&quot;),
-  ldply(list.files(&quot;.&quot;, &quot;*.Rmd&quot;, full.names = TRUE), file.info)
-) %&gt;%
-  filter(! Name %in% c(&quot;index.Rmd&quot;)) %&gt;%
-  arrange(desc(mtime)) %&gt;%
-  mutate(`Estimated Length (words)` = floor(size/5.1)) %&gt;%
-  select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %&gt;%
-  mutate(Name = paste0(&quot;&lt;a href=&#39;&quot;, str_sub(Name, 1, -5), &quot;.html&#39;&gt;&quot;,
-    Name %&gt;%
-      str_replace_all(&quot;([a-z])([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_replace_all(&quot;([A-Z]+)([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_sub(1, -5), &quot;&lt;/a&gt;&quot;)) %&gt;%
-  datatable(escape = FALSE)</code></pre>
-<div id="htmlwidget-efbbc2025636084280d7" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-efbbc2025636084280d7">{"x":{"filter":"none","data":[["1","2"],["<a href='BeCautiousWithYourEffects.html'>Be Cautious With Your Effects\u003c/a>","<a href='LifeCheatCodes.html'>Life Cheat Codes\u003c/a>"],[572,80],["2016-08-29T20:22:38Z","2016-08-29T14:04:39Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Name\u003c/th>\n      <th>Estimated Length (words)\u003c/th>\n      <th>Last Modified\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>I hold the moral significance of human-hours to be roughly equivalent across (almost) all (adult) humans. So, for a trivial example, wasting one person’s time for two hours is approximately as morally bad as wasting two people’s times for one hour.</p>
+<p>Imagine an organization. It employs on the order of 100,000 people, each of whom receives an official organizational email address. One day, one employee emails another about some matter of mild importance to the two of them (and no relevance to anyone else). However, in haste, the sender inadvertently added an extra recipient to the cc line. That extra address was, unfortunately, a mailing list to which every single employee of this organization is subscribed. All ~100,000 of them.</p>
+<p>There are a variety of responses to this error. The majority of recipients sensibly delete the email (as the cybersecurity training they all received instructed them to do). Some, feeling as though their inclusion in the conversation was more specific and intentional than it was, replied-to-all with variations of “I think you sent this e-mail to the wrong [NAME].” Others note this error, and, seeking to prevent still more from sending emails of this variety, begin sending emails of the style “Please stop replying-all to this thread.” One third-order thinker goes so far as to send an email saying “Please stop sending e-mails telling us to stop replying-all to this thread.” Some decide to join the party simply for the joy of trolling, sending memes and random filler. In all, approximately 500 emails are sent to each of 100,000 people.</p>
+<p>Let us conservatively estimate that each email commands the attention of an employee for an average one second. We can accordingly estimate that each e-mail cost the organization approximately…</p>
+<p><span class="math display">\[\frac{100,000 employees}{1}*\frac{1 second}{1 email}*\frac{1 hour}{3600 seconds}=27.8hours\]</span></p>
+<p>…in productivity. Expanded over a chain of 500 emails, the lost productivity climbs towards seven years worth of labor-loss. Assuming a mean annual salary of approximately $30,000, on the order of a million dollars is wasted.</p>
+<p>Flappy Bird</p>
+<p>Consider a highway which ordinarily serves about 600,000 commuters during the morning rush hour. Let us suppose that early on in the rush hour, a catastrophic accident occurs. No one was killed, but all the lanes were blocked and required approximately one hour to clear. The mean human lifespan is around 65 years [citation needed]. That means that a single human will live approximately <span class="math display">\[\frac{65 years}{1}*\frac{365 days}{1 year}*\frac{24 hours}{1 day}=569,400 hours\]</span> Nearly 600,000 human-hours are forfeit. Even though no one was killed (or even badly injured), an entire human lifespan was wasted. To me, this is approximately as undesirable as having had someone killed in an accident with no adverse effects on traffic.</p>
+<p>Infinite Trolley Problem</p>
 
 
 
