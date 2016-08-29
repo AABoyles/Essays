@@ -7,8 +7,11 @@ navbar:
   left:
     - text: "Essays"
       href: index.html
+    - text: "Code"
+      href: code.html
     - text: "About"
       href: about.html
+  right:
     - text: "Meta"
       href: README.html
 output:
