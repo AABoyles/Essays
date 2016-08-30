@@ -230,7 +230,7 @@ $(document).ready(function () {
 ) %&gt;%
   filter(! Name %in% c(&quot;about.Rmd&quot;, &quot;code.Rmd&quot;, &quot;index.Rmd&quot;)) %&gt;%
   arrange(desc(mtime)) %&gt;%
-  mutate(`Estimated Length (words)` = floor(size/5.1)) %&gt;%
+  mutate(`Estimated Length (words)` = floor(size/7)) %&gt;%
   select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %&gt;%
   mutate(Name = paste0(&quot;&lt;a href=&#39;&quot;, str_sub(Name, 1, -5), &quot;.html&#39;&gt;&quot;,
     Name %&gt;%
@@ -238,8 +238,8 @@ $(document).ready(function () {
       str_replace_all(&quot;([A-Z]+)([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
       str_sub(1, -5), &quot;&lt;/a&gt;&quot;)) %&gt;%
   datatable(escape = FALSE)</code></pre>
-<div id="htmlwidget-ff6381658e47a98515e2" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ff6381658e47a98515e2">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7"],["<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data\u003c/a>","<a href='MereHeroes.html'>Mere Heroes\u003c/a>","<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography\u003c/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing\u003c/a>","<a href='GoodPolicies.html'>Good Policies\u003c/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography\u003c/a>","<a href='CherylsBirthday.html'>Cheryls Birthday\u003c/a>"],[990,966,2277,872,2125,387,1191],["2016-08-30T13:19:14Z","2016-08-29T19:41:16Z","2016-08-29T17:26:33Z","2016-08-29T17:25:11Z","2016-08-29T17:08:53Z","2016-08-29T17:00:34Z","2016-08-29T16:39:50Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Name\u003c/th>\n      <th>Estimated Length (words)\u003c/th>\n      <th>Last Modified\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-63e9396fed87d11a801c" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-63e9396fed87d11a801c">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9"],["<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography\u003c/a>","<a href='DesigningTheActuallySmartHouse.html'>Designing The Actually Smart House\u003c/a>","<a href='TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem\u003c/a>","<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data\u003c/a>","<a href='MereHeroes.html'>Mere Heroes\u003c/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing\u003c/a>","<a href='GoodPolicies.html'>Good Policies\u003c/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography\u003c/a>","<a href='CherylsBirthday.html'>Cheryls Birthday\u003c/a>"],[1632,3239,1635,721,704,635,1548,282,867],["2016-08-30T17:23:26Z","2016-08-30T16:37:06Z","2016-08-30T16:02:22Z","2016-08-30T13:19:14Z","2016-08-29T19:41:16Z","2016-08-29T17:25:11Z","2016-08-29T17:08:53Z","2016-08-29T17:00:34Z","2016-08-29T16:39:50Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Name\u003c/th>\n      <th>Estimated Length (words)\u003c/th>\n      <th>Last Modified\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 
 
