@@ -1,0 +1,27 @@
+---
+title: "The Anthropics of Nuclear Warfare"
+---
+
+Anthropic Logic (Observer Selection Effects)
+
+## The Sleeping Beauty Problem
+
+> [Sleeping Beauty](https://en.wikipedia.org/wiki/Sleeping_Beauty "Sleeping Beauty") volunteers to undergo the following experiment and is told all of the following details: On Sunday she will be put to sleep. Once or twice, during the experiment, Beauty will be awakened, interviewed, and put back to sleep with an amnesia-inducing drug that makes her forget that awakening. A [fair coin](https://en.wikipedia.org/wiki/Fair_coin "Fair coin") will be [tossed](https://en.wikipedia.org/wiki/Coin_flipping "Coin flipping") to determine which experimental procedure to undertake: if the coin comes up heads, Beauty will be awakened and interviewed on Monday only. If the coin comes up tails, she will be awakened and interviewed on Monday and Tuesday. In either case, she will be awakened on Wednesday without interview and the experiment ends.
+
+> Any time Sleeping Beauty is awakened and interviewed she will not be able tell which day it is or whether she has been awakened before. During the interview Beauty is asked: "What is your [credence](https://en.wikipedia.org/wiki/Credence_%28statistics%29 "Credence (statistics)") now for the proposition that the coin landed heads?".
+
+Rather than conceiving of a fixed history in which what has happened in the past must have happened, anthropics gives us a tool to assess the associated counterfactual situations.
+
+We observe that the Cold War between the United States and the Soviet Union did not culminate in a nuclear war.
+
+## The Coma Beauty Problem
+
+Let us suppose that Sleeping Beauty fell into a coma in the mid 1980's. It is now 30 years later, and some neurochemists have discovered a means to awakening her. They administer their new drug, and she wakes.
+
+Hoping to [ease her integration back into the world](https://www.youtube.com/watch?v=plgniAt36YY), the neurochemists adhere to the same testing protocol as the original experimenters and interview her as though she had been put to sleep earlier in the week. However, instead of asking about her credence about a coin flip, they explain that she was in a coma, and ask this, "What is your_[credence](https://en.wikipedia.org/wiki/Credence_%2528statistics%2529 "Credence (statistics)") now for the proposition that the Cold War resulted in a cataclysmic nuclear war?"
+
+The anthropic logic here is that an observer is vastly more likely to live in a world where catastrophic nuclear war has not occurred, as such a war would vastly reduce the number of observers capable of making the observation. Stated differently, it’s way more likely that an observer observes a universe in which a global thermonuclear war was never fought than that an observer observes a universe in which it has.
+
+Note that this says nothing about the _pre hoc_ probability of that war, other than that it was less than 1\. So, what _does_ this tell us? More or less nothing, I’m afraid.
+
+If you’re feeling ambitious, read Nick Bostrom’s Doctoral Dissertation, [Anthropic Bias](http://www.anthropic-principle.com/%3Fq%3Dbook/table_of_contents), for a much more in-depth exploration of the topic.

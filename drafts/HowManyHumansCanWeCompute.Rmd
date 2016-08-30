@@ -1,0 +1,15 @@
+---
+title: "How Many Humans Can We Compute?"
+---
+
+Landauer's principle, first argued in 1961 by Rolf Landauer of IBM, holds that "any logically irreversible manipulation of information, such as the erasure of a bit or the merging of two computation paths, must be accompanied by a corresponding entropy increase in non-information-bearing degrees of freedom of the information-processing apparatus or its environment" [10.1016/S1355-2198(03)00039-X]. Phrased more simply: if an observer loses information about a physical system, the observer loses the ability to extract work from that system.
+
+Landauer's principle asserts that there is a minimum possible amount of energy required to erase one bit of information, known as the <i>Landauer limit</i>: $kTln(2)$
+
+where <i>k</i> is the Boltzmann constant (approximately $1.38*10^{−23} J/K$), <i>T</i> is the temperature of the circuit in kelvin.
+
+According to the Landauer's principle (and more generally, the second law of thermodynamics), irreversible computing cannot continue to be made more energy efficient forever. As of 2011, computers have a computing efficiency of about 0.00001%. Assuming that the energy efficiency of computing will continue to double every 1.57 years, the Landauer bound will be reached around 2048.
+
+With reversible computing, however, Landauer's principle is not applicable. Reversible computational efficiency <em>is</em>, however, still bounded by the [Margolus–Levitin theorem](https://en.wikipedia.org/wiki/Margolus%E2%80%93Levitin_theorem). The processing rate cannot be higher than 6 × 10<sup>33</sup> operations per second per joule of energy. Or stating the bound for one bit: A quantum system of energy <i>E</i> needs at least a time of $\frac{h}{4E}$ to go from one state to an orthogonal state, where <em>h</em> is Planck's constant ($6.626*10^{−34}$ Js). [10.1016/S0167-2789(98)00054-2]
+
+By this theorem, Koomey's law has the potential to be valid for about 125 years.

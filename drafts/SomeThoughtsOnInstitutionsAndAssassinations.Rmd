@@ -1,0 +1,19 @@
+---
+title: "Some Thoughts On Institutions And Assassinations"
+---
+
+I'm very interested in assassination.  Not the anecdotal, secret society, conspiracy theory kind of stuff, but looking at assassination as a viable alternative to warfighting.  Why slaughter an entire country (and endure countless casualties of your own) when you can kill just one person?  No matter how you feel about the issue, ethically it almost seems ludicrous not to ask the question.
+
+In its simplest form, the model is structured as a normal-form strategic game.  In this game, there are 2 heads of distinct states. Each head of state views the policies of the other unfavorably, and has exhausted traditional negotiation methods for changing the unfavorable policies.  Thus, the leader is faced with the decision to attempt the assassination of the opposing leader:
+
+Where _L_ is the personal cost to the leader of being assassinated (_L_ < 0), and _c _<sub>i</sub> is the value of the concession that would be obtained if the opposing leader were deposed.  There are three pure-strategy Nash Equilibria: those two action profiles in which only one actor attempts assassination and the one in which they both do.  Played over time, leaders should decide to assassinate each other immediately (before the other can make the decision to do so), yielding the probable outcome that both leaders are assassinated.  However, we do not see this kind of brutal international politicking at the international level.  We must therefore refine the model.
+
+Merge Jones and Olken with Archigos (parse out leadership title), Polity (dig into exec variables), COW Intrastate and Interstate warfare.
+
+Relationship between leadership title and assassination,
+
+Relationship between Executive characteristics and assassination,
+
+Relationship between Intrastate warfare and assassination,
+
+Relationship between Interstate warfare and assassination,
