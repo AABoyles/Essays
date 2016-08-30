@@ -2,12 +2,12 @@
 title: "Estimation of the Probability of the Success of Cryonics"
 ---
 
-```{r, results='asis'}
+```{r, results='asis', eval=FALSE}
 source("infobox.R")
 meta <- list(
   "Status" = "Incomplete",
-  "Epistemic Status" = "Highly Speculative",
-  "Last Revision" = file.info("EstimationOfTheProbabilityOfTheSuccessOfCryonics.Rmd")$mtime
+  "Epistemic Status" = "Highly Speculative"
+  #"Last Revision" = file.info("EstimationOfTheProbabilityOfTheSuccessOfCryonics.Rmd")$mtime
 )
 infobox(meta)
 ```

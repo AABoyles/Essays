@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>You are a Computer. Get Over It.</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/default.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">You are a Computer. Get Over It.</h1>
+
+</div>
+
+
+<p>In his <a href="https://aeon.co/essays/your-brain-does-not-process-information-and-it-is-not-a-computer">recent piece for Aeon</a>, Robert Epstein claimed that brains are not computers. While I can be sympathetic to such claims (but ultimately reject them), Epstein’s piece is fraught with errors and should not go undiscussed.</p>
+<blockquote>
+<p>No matter how hard they try, brain scientists and cognitive psychologists will never find a copy of Beethoven’s 5th Symphony in the brain — or copies of words, pictures, grammatical rules or any other kinds of environmental stimuli.</p>
+</blockquote>
+<p>No matter how hard they try, computer scientists and musicians will never find a copy of Beethoven’s 5th Symphony on my cell phone. My cell phone <em>can</em> play it — the data is stored in an MP3 file, on a microSD card, plugged in just between the battery and the rest of the phone. A researcher trying to find the Symphony might pick through the data, but discover it contains only ones and zeros. Not a Symphony in sight. How, then, can the cell phone possibly emit noises like those of an orchestra playing Beethoven’s Fifth?</p>
+<p>The answer is that those ones and zeroes represent the information contained in the Symphony. As an added bonus, the phone also contains ones and zeroes that provide instructions for reading the MP3’s ones and zeroes (this is called a “program”). emitting noises like those of an orchestra playing Beethoven’s Fifth.</p>
+<blockquote>
+<p>The human brain isn’t really empty, of course. But it does <em>not</em> contain most of the things people think it does — not even simple things such as ‘memories’.</p>
+</blockquote>
+<p>Sure! Of course the brain doesn’t contain “memories”, any more than the cell phone contains “symphonies”. But the brain contains neurons and synapses which collectively encode <em>some</em> of the information in Beethoven’s Fifth Symphony. It doesn’t store that information nearly as precisely as the phone does (more on that later), but it does store some information. For example, using only the information I have stored in my brain, I can recreate some of the first movement (You probably can too! “duh-duh-duh duuuuuuuh”).</p>
+<p>A “memory” is information that a brain stores for future use. We don’t know exactly <em>how</em> the brain does this — we can’t yet build an artificial brain that encodes information using the same procedure. But that’s rather different from the situation in which we don’t know that the brain is doing at all. Aristotle famously believed the brain was an organ for cooling the blood.</p>
+<p>[The Dollar Example]</p>
+<p>When you are looking at something, light is passing into your eye, being caught by rods and cones, and then transmitted down your ocular nerve into your brain. The light is structured data.</p>
+<p>Your brain <em>does</em> contain an image of a dollar bill. You recall some specific details about the dollar: there are ornate “1”s on the corners, and an old man in a curly powdered wig in the middle. You don’t recall much more than this because you don’t <em>need to</em> recall much more than this. If your ability to eat dinner were determined by your ability to recall and/or replicate the bill, you’d get a lot more familiar with the moles on Washington’s face.</p>
+<p>Let us imagine, for a moment, that we are the artists in the dollar bill experiment. How do you perform the task? I would look at a detail on the bill, and then look at the blank space in which I am to draw the bill, and replicate that detail. Repeat that procedure until I have replicated all the details of the bill in the highest fidelity of which I am confident in my own artistic prowess.</p>
+<p>Notice that at each step in the process, I look at the blank space where I am to draw the feature at which I last looked. I don’t look at the bill and draw its features at the same time. In other words, I must have memorized the detail long enough to transcribe it into my copy of the bill.</p>
+<p>In the end, the dollar bill experiment amounts to little more than a cognitive hat trick. If we were interested in</p>
+<blockquote>
+<p>The idea, advanced by several scientists, that specific memories are somehow stored in <em>individual neurons</em> is preposterous; if anything, that assertion just pushes the problem of memory to an even more challenging level: how and where, after all, is the memory stored in the cell?</p>
+</blockquote>
+<p>This is one of the few points on which I can agree with Epstein. The neuron doesn’t <em>contain</em> information any more than a skin cell contains information (ignoring, of course, the 800MB of data in our DNA).</p>
+<p>However, the neuron does occupy some space, and that space can be mapped to information storage. Moreover, a neuron beside another neuron can generate a connection. This connection</p>
+<p>The most amusing thing about Epstein’s rejection of the computational metaphor with regard to information storage is that he utterly fails to acknowledge that computers routinely employ distributed storage (as anyone who’s ever defragmented a hard drive should know).</p>
+<p>Epstein conspicuously fails to offer an alternative vocabulary for describing the activities of the brain.</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -2,12 +2,12 @@
 title: "A Gentle Introduction to the Simulation Argument"
 ---
 
-```{r, results='asis'}
+```{r, results='asis', eval=FALSE}
 source("infobox.R")
 meta <- list(
   "Status" = "Incomplete",
-  "Epistemic Status" = "Highly Speculative",
-  "Last Revision" = file.info("AGentleIntroductionToTheSimulationArgument.Rmd")$mtime
+  "Epistemic Status" = "Highly Speculative"
+  #"Last Revision" = file.info("AGentleIntroductionToTheSimulationArgument.Rmd")$mtime
 )
 infobox(meta)
 ```

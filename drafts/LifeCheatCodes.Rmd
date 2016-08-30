@@ -2,7 +2,7 @@
 title: "Life Cheat Codes"
 ---
 
-Status: **Perpetually Incomplete**, Epistemic Status: **Uncertain**, Last Revision: **`r file.info("LifeCheatCodes.Rmd")$mtime`**
+Status: **Perpetually Incomplete**, Epistemic Status: **Uncertain**
 
 ## Happiness
 

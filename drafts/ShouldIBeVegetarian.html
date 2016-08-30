@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Should I Be a Vegetarian?</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/default.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Should I Be a Vegetarian?</h1>
+
+</div>
+
+
+<p>I am going vegetarian. It’s not a late new year’s resolution or anything like that–more like a plunge into a lifestyle choice that I’ve been orbiting for a long time.<a href="http://archinte.jamanetwork.com/article.aspx?articleid=1710093">Vegetarians live longer</a> (and vegans longer still, although pescetarians seem to live longest). Moreover, I have a compelling health-related reason for ceasing to eat meat: a minor-but-chronic medical condition which will be at least partly ameliorated by cutting meat out of my diet. But I’d be lying if I said that was my primary motivation. My primary motivation is moral: I believe that animals have a non-zero moral significance, and that we all have a moral obligation to avoid <a href="http://reducing-suffering.org/how-much-direct-suffering-is-caused-by-various-animal-foods/">reducing the well-being of other morally significant entities</a>.</p>
+<p>My current opinion is that the most important determinant of moral significance is self-awareness (although I hold this belief weakly, if anyone wants to <a href="http://anthony.boyles.cc/contact/">persuade me otherwise</a>). <a href="http://www.sciencedirect.com/science/article/pii/S0003347209003571">Pigs may be self-aware</a>. This means that the routine consumption of pig meat is extremely likely to be a <a href="http://link.springer.com/article/10.1007/s10677-015-9567-7">moral catastrophe</a>. When I think of eating pig flesh, I think of eating dog flesh. Anyone who’s spent an hour with me can figure out that I’m (<a href="https://scontent-iad3-1.xx.fbcdn.net/hphotos-xlf1/v/t35.0-12/11899273_10205252722053382_1304188206_o.jpg?oh=cd96c8fa7057417895b4b720ba623af3&amp;oe=5699413E">very much</a>) a dog-person. But dogs are, writ large, far less intelligent than pigs. They have always, unambiguously, failed the <a href="https://en.wikipedia.org/wiki/Mirror_test">Mirror Self-Recognition test</a> (put a dog in an unfamiliar environment with a mirror to <a href="https://www.youtube.com/results?search_query=Dog+Mirror">observe this effect yourself</a>). So my threshold for consuming intelligent animals is below the intelligence required for self-awareness. I don’t know where, exactly, that threshold is for me, nor do I know where it should be to <a href="http://intelligence.org/files/TDT.pdf">prevent reflective regret</a>. However, I don’t feel bad about eating commonly-consumed animals other than pigs. I have no great intuitive moral spasms while eating beef, poultry, or fish. Why, then, should I set the bar for my moral uncertainty so low?</p>
+<p>Will MacAskill wrote <a href="http://commonsenseatheism.com/wp-content/uploads/2014/03/MacAskill-Normative-Uncertainty.pdf">his dissertation</a> on moral decision making under uncertainty. He concludes that we should be <em>extremely conservative</em> about making decisions with morally uncertain outcomes. To illustrate this in <a href="http://fourhourworkweek.com/2015/11/22/will-macaskill/">his podcast with Tim Ferriss</a>, he proposes a situation in which you’re driving near a school, and need to turn a sharp corner. You could make the turn at 60mph–your car is able to do this without jeopardizing you or the car. But if a child is playing on the street onto which you’re turning, you will certainly hit and kill the child. Alternately, if you made the turn at 20mph, you would spend considerably longer driving through that turn, but it would give your reflexes enough time to stop the car if a child were there, saving the child’s life. So, even if there’s a teeny, tiny probability that a child is around the corner, there’s sufficient moral uncertainty to justify turning the corner slowly every time.</p>
+<p>I’ve held these beliefs about the moral significance of the contents of my meals for awhile now, and failed to alter my patterns of decisions based on them. I have failed because I am very good at <a href="http://lesswrong.com/lw/ju/rationalization/">Rationalization</a>. For example, chickens are smaller than cows <sup><a href="https://en.wikipedia.org/wiki/Wikipedia:Citation_needed">[<em>citation needed</em>]</a></sup>. A single chicken will yield enough meat for a minimum of one meal. A cow, by contrast, will yield enough meat for perhaps a hundred meals. If we value the lives of the chicken and cow approximately equally, we should obviously eat lots of beef and almost no chicken, since we derive one hundred times the calories for the same moral cost. I, however, do not value the lives of the cow and the chicken equally. If a chicken is less than 1/100 as significant as a cow, we should eschew beef in favor of chicken. If a chicken is more significant than that, we should abandon chicken for beef. So, which principled position have I adopted? Neither, I’m afraid. My true decision criteria wasn’t moral; it was hedonistic. I’ve been able to adjust my beliefs to these conflicting arguments to select my conclusion (I should eat <em>this meat dish</em>, for which I just happen to be in the mood). The moral gymnastics through which I put myself to make that conclusion were simply wasted effort. Rationalization is not a skill of which one should be proud.</p>
+<p>I’m lucky that my current diet side-steps a lot of thorny, ethical naval-gazing. I don’t care for <a href="http://blogs.scientificamerican.com/guest-blog/want-to-kill-fewer-animals-give-up-eggs-not-meat/">eggs</a>, so I pass on dishes featuring them prominently. When I do buy eggs, I buy cage-free eggs.</p>
+<p>To put this into perspective, I’m extremely excited about the prospect of laboratory-grown meat. I expect that by the time it begins to saturate the consumer market, I will no longer be gastronomically able to eat meat. This is a sacrifice I am currently willing to make_._ Implying (honestly) that I wasn’t willing to make that sacrifice in the past. Which gives me pause: if I’m electing to make a relatively permanent change to my diet, Others have written about the <a href="http://slatestarcodex.com/2015/01/04/ethics-offsets/">purchase of offsets</a> as an <a href="http://slatestarcodex.com/2015/09/23/vegetarianism-for-meat-eaters/">alternative to vegetarianism</a>. I find these arguments to be compelling and their conclusions to be broadly correct. Why, then, should I prefer to make this dramatic, uncomfortable change in lieu of that simpler, cheaper, and easier one? To answer this, consider a being which is vastly more intelligent and self-aware than humans. I’ll call it <a href="http://gameofthrones.wikia.com/wiki/Macumber">Macumber</a>. I would probably consider this being to be vastly more morally important than the average human. Let us also assume that it loves the taste of human meat. One day it descends upon my house, reaches in, and grabs me. I cry out: “No! Please, no! Don’t I also possess moral significance?” Macumber responds, “Of course you do. I’ve donated <a href="http://www.givewell.org/international/top-charities/AMF#Costperlifesaved">$2838</a> to the <a href="https://www.againstmalaria.com/">Against Malaria Foundation</a> to offset the moral effect of my consumption of you.” I would not be greatly comforted by this offset as Macumber skewered me for roasting.</p>
+<p>So, as a Macumber, I’m going vegetarian. I hope that wiser, more powerful, more important entities will chose similarly. I expect to fail. Eliminating an entire food group is hard. But I plan to <a href="http://mindingourway.com/failing-with-abandon/">fail well</a>, as close to the mark as possible, so that one day soon I’ll eat my last meal with meat in it.</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

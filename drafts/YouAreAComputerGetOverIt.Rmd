@@ -1,0 +1,39 @@
+---
+title: "You are a Computer. Get Over It."
+---
+
+In his [recent piece for Aeon](https://aeon.co/essays/your-brain-does-not-process-information-and-it-is-not-a-computer), Robert Epstein claimed that brains are not computers. While I can be sympathetic to such claims (but ultimately reject them), Epstein’s piece is fraught with errors and should not go undiscussed.
+
+> No matter how hard they try, brain scientists and cognitive psychologists will never find a copy of Beethoven’s 5th Symphony in the brain — or copies of words, pictures, grammatical rules or any other kinds of environmental stimuli.
+
+No matter how hard they try, computer scientists and musicians will never find a copy of Beethoven’s 5th Symphony on my cell phone. My cell phone _can_ play it — the data is stored in an MP3 file, on a microSD card, plugged in just between the battery and the rest of the phone. A researcher trying to find the Symphony might pick through the data, but discover it contains only ones and zeros. Not a Symphony in sight. How, then, can the cell phone possibly emit noises like those of an orchestra playing Beethoven’s Fifth?
+
+The answer is that those ones and zeroes represent the information contained in the Symphony. As an added bonus, the phone also contains ones and zeroes that provide instructions for reading the MP3’s ones and zeroes (this is called a “program”). emitting noises like those of an orchestra playing Beethoven’s Fifth.
+
+> The human brain isn’t really empty, of course. But it does _not_ contain most of the things people think it does — not even simple things such as ‘memories’.
+
+Sure! Of course the brain doesn’t contain “memories”, any more than the cell phone contains “symphonies”. But the brain contains neurons and synapses which collectively encode _some_ of the information in Beethoven’s Fifth Symphony. It doesn’t store that information nearly as precisely as the phone does (more on that later), but it does store some information. For example, using only the information I have stored in my brain, I can recreate some of the first movement (You probably can too! “duh-duh-duh duuuuuuuh”).
+
+A “memory” is information that a brain stores for future use. We don’t know exactly _how_ the brain does this — we can’t yet build an artificial brain that encodes information using the same procedure. But that’s rather different from the situation in which we don’t know that the brain is doing at all. Aristotle famously believed the brain was an organ for cooling the blood.
+
+[The Dollar Example]
+
+When you are looking at something, light is passing into your eye, being caught by rods and cones, and then transmitted down your ocular nerve into your brain. The light is structured data.
+
+Your brain _does_ contain an image of a dollar bill. You recall some specific details about the dollar: there are ornate “1”s on the corners, and an old man in a curly powdered wig in the middle. You don’t recall much more than this because you don’t _need to_ recall much more than this. If your ability to eat dinner were determined by your ability to recall and/or replicate the bill, you’d get a lot more familiar with the moles on Washington’s face.
+
+Let us imagine, for a moment, that we are the artists in the dollar bill experiment. How do you perform the task? I would look at a detail on the bill, and then look at the blank space in which I am to draw the bill, and replicate that detail. Repeat that procedure until I have replicated all the details of the bill in the highest fidelity of which I am confident in my own artistic prowess.
+
+Notice that at each step in the process, I look at the blank space where I am to draw the feature at which I last looked. I don’t look at the bill and draw its features at the same time. In other words, I must have memorized the detail long enough to transcribe it into my copy of the bill.
+
+In the end, the dollar bill experiment amounts to little more than a cognitive hat trick. If we were interested in
+
+> The idea, advanced by several scientists, that specific memories are somehow stored in _individual neurons_ is preposterous; if anything, that assertion just pushes the problem of memory to an even more challenging level: how and where, after all, is the memory stored in the cell?
+
+This is one of the few points on which I can agree with Epstein. The neuron doesn’t _contain_ information any more than a skin cell contains information (ignoring, of course, the 800MB of data in our DNA).
+
+However, the neuron does occupy some space, and that space can be mapped to information storage. Moreover, a neuron beside another neuron can generate a connection. This connection 
+
+The most amusing thing about Epstein’s rejection of the computational metaphor with regard to information storage is that he utterly fails to acknowledge that computers routinely employ distributed storage (as anyone who’s ever defragmented a hard drive should know).
+
+Epstein conspicuously fails to offer an alternative vocabulary for describing the activities of the brain.
