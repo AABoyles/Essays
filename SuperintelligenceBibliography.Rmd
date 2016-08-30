@@ -6,7 +6,6 @@ output:
     toc_float: true
 ---
 
-Status: **Incomplete**, Epistemic Status: **Relatively Certain**, Last Revision: **`r file.info("SuperintelligenceBibliography.Rmd")$mtime`**
 ```{r, results='asis'}
 source("infobox.R")
 meta <- list(
@@ -17,45 +16,45 @@ meta <- list(
 infobox(meta)
 ```
 
-This follows my self-education in Machine Intelligence, specifically as I would have ordered these materials if I were to start from the beginning again.  This is roughly ordered by technical difficulty: the less technical books are at the top, and more technical works follow at the bottom.  At the end, I've also included a section of books I simply wouldn't bother with at all. This is going to have significant overlap with [MIRI's Research Guide](http://intelligence.org/research-guide/), albeit with more non technical discussions about Machine Intelligences and General Intelligence.  I intend to update it as often as I consume literature which is either useful for the study of Machine Superintelligence, or seem like it should be but isn't (by virtue of being bad, misleading, or adding no value beyond other works already listed here).
+This follows my self-education in Machine Intelligence, specifically as I would have ordered these materials if I were to start from the beginning again.  This is roughly ordered by technical difficulty: the less technical books are at the top, and more technical works follow at the bottom.  At the end, I've also included a section of books I simply wouldn't bother with at all. This is going to have significant overlap with [MIRI's Research Guide](http://intelligence.org/research-guide/), albeit with more non technical discussions about Machine Intelligences and General Intelligence.  I intend to update it as often as I consume literature which is either useful for the study of Machine Superintelligence, or seem like it should be but isn't (by virtue of being bad, misleading, or adding no value beyond other works already listed here).
 
 ## Why Should We Study AI?
 
-Machine Superintelligence falls into a class of dangerous things called Existential Risks. Basically, and existential risk is a thing that could wipe out humanity if it happened. Unfriendly AI is an Existential Risk.  But unlike other Existential Risks, Machine Superintelligence also possesses the possibility of causing unbounded favorable changes for humanity, including working out protections against other Existential Risks. The best broad introduction to the problems of Machine Superintelligence comes from a little science blog called [Wait, but Why?](http://waitbutwhy.com/)
+Machine Superintelligence falls into a class of dangerous things called Existential Risks. Basically, and existential risk is a thing that could wipe out humanity if it happened. Unfriendly AI is an Existential Risk.  But unlike other Existential Risks, Machine Superintelligence also possesses the possibility of causing unbounded favorable changes for humanity, including working out protections against other Existential Risks. The best broad introduction to the problems of Machine Superintelligence comes from a little science blog called [Wait, but Why?](http://waitbutwhy.com/)
 
-*   _Wait, but Why? [The AI Revolution: The Road to Superintelligence](http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html),_ _[Our Immortality or Extinction](http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-2.html)_
-*   Muelhauser, Luke. [A reply to _Wait But Why_ on machine superintelligence](http://lukemuehlhauser.com/a-reply-to-wait-but-why-on-machine-superintelligence/)
+*   _Wait, but Why? [The AI Revolution: The Road to Superintelligence](http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html),_ _[Our Immortality or Extinction](http://waitbutwhy.com/2015/01/artificial-intelligence-revolution-2.html)_
+*   Muelhauser, Luke. [A reply to _Wait But Why_ on machine superintelligence](http://lukemuehlhauser.com/a-reply-to-wait-but-why-on-machine-superintelligence/)
 
-*   Armstrong, Stuart. <span style="text-decoration-line: underline;">[Smarter than Us: The Rise of Machine Intelligence](http://www.amazon.com/dp/1939311098/ref=as_li_ss_tl?tag=miri05-20)</span>
+*   Armstrong, Stuart. <span style="text-decoration-line: underline;">[Smarter than Us: The Rise of Machine Intelligence](http://www.amazon.com/dp/1939311098/ref=as_li_ss_tl?tag=miri05-20)</span>
 
-*   Bostrom, Nick. [What happens when our computers get smarter than we are?](http://www.ted.com/talks/nick_bostrom_what_happens_when_our_computers_get_smarter_than_we_are) (2015 TED Talk)
+*   Bostrom, Nick. [What happens when our computers get smarter than we are?](http://www.ted.com/talks/nick_bostrom_what_happens_when_our_computers_get_smarter_than_we_are) (2015 TED Talk)
 *   Bostrom, Nick. [Superintelligence - Authors@Google](https://www.youtube.com/watch?v=pywF6ZzsghI)
 *   Boyles, Tony. [How to Read Superintelligence](https://storify.com/AABoyles/how-to-read-bostrom-s-superintelligence)
 *   Bostrom, Nick. [<span style="text-decoration-line: underline;">Superintelligence</span>](http://smile.amazon.com/Superintelligence-Dangers-Strategies-Nick-Bostrom-ebook/dp/B00LOOCGB2/ref=tmm_kin_title_0?_encoding=UTF8&amp;sr=&amp;qid=)
-*   Bostrom, Nick. _[The Superintelligent Will: Motivated Instrumental Rational in Advanced Artificial Agents](http://www.nickbostrom.com/superintelligentwill.pdf)_ (2012)
+*   Bostrom, Nick. _[The Superintelligent Will: Motivated Instrumental Rational in Advanced Artificial Agents](http://www.nickbostrom.com/superintelligentwill.pdf)_ (2012)
 
 ## What epistemological tools will we need?
 
 ### Rationality
 
-This first one may seem a bit surprising. Our brains are full of amusing little traps--Inconsistencies in our decision-making algorithms. These are called "biases." Rationality is the ability to identify, circumvent, and/or ultimately counteract these biases. We don't want biases to impede our ability to recognize potentially catastrophic pitfalls on the road to a Superintelligence.
+This first one may seem a bit surprising. Our brains are full of amusing little traps--Inconsistencies in our decision-making algorithms. These are called "biases." Rationality is the ability to identify, circumvent, and/or ultimately counteract these biases. We don't want biases to impede our ability to recognize potentially catastrophic pitfalls on the road to a Superintelligence.
 
-*   Gloor, Lucas. [Rationality: the Science of Winning, Part I](http://reg-charity.org/rationality-i/), [Part II](http://reg-charity.org/rationality-ii/), [Part III](http://reg-charity.org/rationality-iii/)
-*   Yudkowsky, Eliezer. [Harry Potter and the Methods of Rationality](http://hpmor.com/) - In an effort to spread rationality, Eliezer Yudkowsky wrote a Harry Potter Fan Fiction that gives the reader a powerful first-person perspective of a Rationalist boy-genius occupying the same time and space as the original Harry Potter.  It's very long but quite fun to read.
-*   Soares, Nates. [Desire is the Direction, Rationality is the Magnitude](http://lesswrong.com/lw/m07/desire_is_the_direction_rationality_is_the/), [Blind Artifacts](http://lesswrong.com/lw/m0p/blind_artifacts/), [Ephemeral Correspondence](http://lesswrong.com/lw/m0x/ephemeral_correspondence/), [The Path of the Rationalist](http://lesswrong.com/lw/m19/the_path_of_the_rationalist/) - Nate Soares wrote a series of four essays designed to provide aspiring rationalists with the background to understand Rationality as its methods are introduced.
-*   Yudkowsky, Eliezer. [Rationality: From AI to Zombies](https://intelligence.org/rationality-ai-zombies/) - Eliezer Yudkowsky spent the years between 2006 and 2009 writing near-daily blog posts as tutorials for identifying, understanding, and ultimately transcending bias, first at the group economics blog [Overcoming Bias](http://www.overcomingbias.com/) and then at the group rationality blog [LessWrong](http://lesswrong.com/top/?t=all).  These posts were organized into a set of so-called "Sequences," which have been the foundational content of the LessWrong community.  These sequences were subsequently edited and assembled into a more cohesive book.
+*   Gloor, Lucas. [Rationality: the Science of Winning, Part I](http://reg-charity.org/rationality-i/), [Part II](http://reg-charity.org/rationality-ii/), [Part III](http://reg-charity.org/rationality-iii/)
+*   Yudkowsky, Eliezer. [Harry Potter and the Methods of Rationality](http://hpmor.com/) - In an effort to spread rationality, Eliezer Yudkowsky wrote a Harry Potter Fan Fiction that gives the reader a powerful first-person perspective of a Rationalist boy-genius occupying the same time and space as the original Harry Potter.  It's very long but quite fun to read.
+*   Soares, Nates. [Desire is the Direction, Rationality is the Magnitude](http://lesswrong.com/lw/m07/desire_is_the_direction_rationality_is_the/), [Blind Artifacts](http://lesswrong.com/lw/m0p/blind_artifacts/), [Ephemeral Correspondence](http://lesswrong.com/lw/m0x/ephemeral_correspondence/), [The Path of the Rationalist](http://lesswrong.com/lw/m19/the_path_of_the_rationalist/) - Nate Soares wrote a series of four essays designed to provide aspiring rationalists with the background to understand Rationality as its methods are introduced.
+*   Yudkowsky, Eliezer. [Rationality: From AI to Zombies](https://intelligence.org/rationality-ai-zombies/) - Eliezer Yudkowsky spent the years between 2006 and 2009 writing near-daily blog posts as tutorials for identifying, understanding, and ultimately transcending bias, first at the group economics blog [Overcoming Bias](http://www.overcomingbias.com/) and then at the group rationality blog [LessWrong](http://lesswrong.com/top/?t=all).  These posts were organized into a set of so-called "Sequences," which have been the foundational content of the LessWrong community.  These sequences were subsequently edited and assembled into a more cohesive book.
 
 ### Game Theory
 
-Telling an AI how to behave might work, but it's not a plan upon which we should count. We'll be much better off with an Intelligence that is imbued with a provably favorable approach to decision making.  This includes its calculus about our thinking processes. This kind of thinking is typical of non-cooperative Game Theory.
+Telling an AI how to behave might work, but it's not a plan upon which we should count. We'll be much better off with an Intelligence that is imbued with a provably favorable approach to decision making.  This includes its calculus about our thinking processes. This kind of thinking is typical of non-cooperative Game Theory.
 
 *   Davis, Morton D. <span style="text-decoration-line: underline;">[Game Theory: A Nontechnical Introduction](http://smile.amazon.com/Game-Theory-Nontechnical-Introduction-Mathematics-ebook/dp/B008TVLME0/ref=sr_1_1?s=digital-text&ie=UTF8&qid=1422630584&sr=1-1&keywords=game+theory+a+nontechnical+introduction&pebp=1422630590363&peasin=B008TVLME0)</span>.
 *   Osborne, Martin and Ariel Rubinstein. <span style="text-decoration-line: underline;">[A Course in Game Theory](http://www.economics.utoronto.ca/osborne/cgt/index.html)</span>.
-*   Axelrod, Robert. <span style="text-decoration-line: underline;">[The Evolution of Cooperation](http://smile.amazon.com/Evolution-Cooperation-Revised-Robert-Axelrod-ebook/dp/B00AHFJ5VS/ref=tmm_kin_title_0?_encoding=UTF8&sr=1-1&qid=1422630418)</span>. (2006)
+*   Axelrod, Robert. <span style="text-decoration-line: underline;">[The Evolution of Cooperation](http://smile.amazon.com/Evolution-Cooperation-Revised-Robert-Axelrod-ebook/dp/B00AHFJ5VS/ref=tmm_kin_title_0?_encoding=UTF8&sr=1-1&qid=1422630418)</span>. (2006)
 
 ### Decision Theory
 
-Game Theory tends to fixate on the calculation of equilibrium given rational actors (for whom "rational" [simply means](http://en.wikipedia.org/wiki/Rational_choice_theory#Actions.2C_assumptions.2C_and_individual_preferences) "exhibits a consistent preference ordering without circular transitivities").  By contrast, Decision Theory employs much of the same mathematical formulations to engineer more favorable outcomes under circumstances in which traditional economic logic makes less sense. One of the most Fundamental problems in Decision Theory is [Newcomb's Problem](http://en.wikipedia.org/wiki/Newcomb%27s_paradox).
+Game Theory tends to fixate on the calculation of equilibrium given rational actors (for whom "rational" [simply means](http://en.wikipedia.org/wiki/Rational_choice_theory#Actions.2C_assumptions.2C_and_individual_preferences) "exhibits a consistent preference ordering without circular transitivities").  By contrast, Decision Theory employs much of the same mathematical formulations to engineer more favorable outcomes under circumstances in which traditional economic logic makes less sense. One of the most Fundamental problems in Decision Theory is [Newcomb's Problem](http://en.wikipedia.org/wiki/Newcomb%27s_paradox).
 
 *   Yudkowsky, Eliezer. [Timeless Decision Theory](https://intelligence.org/files/TDT.pdf)
 *   Yudkowsky et al. [Robust Cooperation in the Prisoner's Dilemma: Program Equilibrium via Provability Logic](http://arxiv.org/abs/1401.5577). Arxiv
@@ -68,18 +67,18 @@ Game Theory tends to fixate on the calculation of equilibrium given rational act
 
 ## How do we Implement it?
 
-Artificial Intelligence is a fairly specific subfield of Computer Science.  The Market Share for AI applications has exploded in the past couple of years (in particular, [Deep Learning](http://www.iro.umontreal.ca/~bengioy/dlbook/)).  While these applications are still very far removed from the software required to build a Machine Superintelligence, they form the strongest foundation for ultimately building one.
+Artificial Intelligence is a fairly specific subfield of Computer Science.  The Market Share for AI applications has exploded in the past couple of years (in particular, [Deep Learning](http://www.iro.umontreal.ca/~bengioy/dlbook/)).  While these applications are still very far removed from the software required to build a Machine Superintelligence, they form the strongest foundation for ultimately building one.
 
-*   Russell, Stewart and Peter Norvig. [AI: A Modern Approach](http://smile.amazon.com/Artificial-Intelligence-Modern-Approach-ebook/dp/B008VIWTIY/ref=tmm_kin_title_0?ie=UTF8&qid=1353970431&sr=8-1&sa-no-redirect=1)
+*   Russell, Stewart and Peter Norvig. [AI: A Modern Approach](http://smile.amazon.com/Artificial-Intelligence-Modern-Approach-ebook/dp/B008VIWTIY/ref=tmm_kin_title_0?ie=UTF8&qid=1353970431&sr=8-1&sa-no-redirect=1)
 
 ### AIXI
 
-*   Hutter, Marcus. _[A Theory of Universal Artificial Intelligence based on Algorithmic Complexity](http://arxiv.org/abs/cs/0004001)_. (2001) - Building a General AI is a difficult problem. Marcus Hutter lowered the bar a bit by devising an algorithmic formalization of [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor).
+*   Hutter, Marcus. _[A Theory of Universal Artificial Intelligence based on Algorithmic Complexity](http://arxiv.org/abs/cs/0004001)_. (2001) - Building a General AI is a difficult problem. Marcus Hutter lowered the bar a bit by devising an algorithmic formalization of [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor).
 
 ### Other
 
 *   Wissner-Gross, A.D. [A New Equation for Intelligence](http://www.ted.com/talks/alex_wissner_gross_a_new_equation_for_intelligence). (2014 TED Talk)
-*   Wissner-Gross, A.D. and C.E. Freer. _[Causal Entropic Forces](http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.110.168702)_. Phys. Rev. Lett. 110 [[ungated]](http://www.alexwg.org/link?url=http%3A%2F%2Fwww.alexwg.org%2Fpublications%2FPhysRevLett_110-168702.pdf)
+*   Wissner-Gross, A.D. and C.E. Freer. _[Causal Entropic Forces](http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.110.168702)_. Phys. Rev. Lett. 110 [[ungated]](http://www.alexwg.org/link?url=http%3A%2F%2Fwww.alexwg.org%2Fpublications%2FPhysRevLett_110-168702.pdf)
 
 ## How do we move Forward?
 
@@ -88,8 +87,8 @@ Artificial Intelligence is a fairly specific subfield of Computer Science.  The
 
 ## References I would Skip
 
-There are a lot of people writing about AI, and they have lots of good ideas.  There are some bad ideas, but mostly there are useless ideas.  If something I have read doesn't contribute to the conversation (but seems popular enough not to ignore), it goes here.  Sorry, Ray Kurzweil.
+There are a lot of people writing about AI, and they have lots of good ideas.  There are some bad ideas, but mostly there are useless ideas.  If something I have read doesn't contribute to the conversation (but seems popular enough not to ignore), it goes here.  Sorry, Ray Kurzweil.
 
 *   Kurzweil, Ray. <span style="text-decoration-line: underline;">[The Age of Spiritual Machines](http://smile.amazon.com/Age-Spiritual-Machines-Computers-Intelligence-ebook/dp/B002CIY8JW/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=&qid=)</span>
-*   Barrat, James. [Our Final Invention](http://smile.amazon.com/Our-Final-Invention-Artificial-Intelligence-ebook/dp/B00CQYAWRY/ref=pd_sim_351_5?ie=UTF8&refRID=0DJBFWW8B70JXPV2XTMX) - Barrat does an excellent job of introducing the problems of Superintelligence (although he occasionally warps the lexicon of the field in some weird ways). Unfortunately, as he trudges further into the book, the themes, points, and perspectives become increasingly scattered. This permits an interesting system of dialogues between experts from a series of interviews he did (with many of the names mentioned on this page), but leaves us without a cohesive picture of the control problem and the route to solutions. In lieu of this, I'd recommend reading Armstrong's <span style="text-decoration: underline;">Smarter Than Us</span> (see above).
+*   Barrat, James. [Our Final Invention](http://smile.amazon.com/Our-Final-Invention-Artificial-Intelligence-ebook/dp/B00CQYAWRY/ref=pd_sim_351_5?ie=UTF8&refRID=0DJBFWW8B70JXPV2XTMX) - Barrat does an excellent job of introducing the problems of Superintelligence (although he occasionally warps the lexicon of the field in some weird ways). Unfortunately, as he trudges further into the book, the themes, points, and perspectives become increasingly scattered. This permits an interesting system of dialogues between experts from a series of interviews he did (with many of the names mentioned on this page), but leaves us without a cohesive picture of the control problem and the route to solutions. In lieu of this, I'd recommend reading Armstrong's <span style="text-decoration: underline;">Smarter Than Us</span> (see above).
 *   Chace, Calum. [Surviving AI](http://smile.amazon.com/Surviving-AI-promise-artificial-intelligence/dp/0993211623/ref=sr_1_1?ie=UTF8&qid=1449343792&sr=8-1&keywords=Surviving+AI) - This is an non-fictional exposition to accompany Chace's novel, [Pandora's Brain](http://smile.amazon.com/Pandoras-Brain-Calum-Chace-ebook/dp/B00U4S4W7A/ref=sr_1_2?ie=UTF8&qid=1449343792&sr=8-2&keywords=Surviving+AI). While I haven't read the fictional counterpart, Surviving AI is a perfectly adequate introduction to the AI control problem and its relationship to the broader AI community. Unfortunately, it doesn't accomplish this even as well as Barrat's <span style="text-decoration: underline;">Our Final Invention</span> (see above).
