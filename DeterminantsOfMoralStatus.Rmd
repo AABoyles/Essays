@@ -1,0 +1,17 @@
+---
+title: "Determinants of Moral Status"
+---
+
+In modern philosophy, there's this magical stuff called "moral status." It's kinda-sorta like how important it is to keep something alive. In general, we assign humans more moral status than other animals, and most animals more moral status than most plants. It would be nice if we could figure out a single thing that gave us a satisfactory ordering of moral status over basically everything. But we probably can't do that: the ways we value things are way more complex than that. But we might be able to construct a function that provides satisfactory estimates of moral status over some arbitrary scale. But what variables fit into this function?
+
+## Uniqueness
+
+Who has greater moral status: 99.99% of humans or .01% of humans? Given no other information, the decision is trivial. 99.99% of humans should enjoy approximately 9999 times as much moral status as 0.01% of humanity. If you're faced with the decision to kill 9999 humans or 1 human, please please please pick the latter. Imagine a Global Catastrophe that killed 9999 out of every 10,000 humans.  It could be anything: an asteroid strike, a global pandemic, a super-volcanic eruption. Pick your favorite. The last .01% of humanity enjoys far more moral status than any human prior to the cataclysm. This is because the survivors are the inheritors of _humanity_'s moral status.
+
+## Ability to Affect the Future
+
+Imagine a human trapped in an otherwise empty box, tumbling towards a black hole. That person will never again be able to contact the world outside the box. This person has lost a significant chunk of moral status. If they were to take a poison or shoot themselves, few people would question the morality of their decision. Their moral status isn't reduced to zero--if that were the case, then everyone's status would probably collapse to zero (unless we can generate some negentropy or escape into a younger universe).
+
+## Instrumentality
+
+How much moral status does the continued existence of a person, place, or thing preserve? This is very closely related to uniqueness, and uniqueness may be modeled as a subset of instrumentality.
