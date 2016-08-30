@@ -15,24 +15,13 @@
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
-<style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+code {
+  white-space: pre;
 }
-</script>
-<style type="text/css">
+pre:not([class]) {
+  background-color: white;
+}
 h1 {
   font-size: 34px;
 }
@@ -86,7 +75,6 @@ body {
   padding-top: 65px;
   margin-top: -65px;
 }
-
 .section h2 {
   padding-top: 65px;
   margin-top: -65px;
@@ -107,7 +95,6 @@ body {
   padding-top: 65px;
   margin-top: -65px;
 }
-
 </style>
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 </head>
@@ -121,66 +108,7 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
   menuAnchor.parent().addClass('active');
   menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-<div class="container-fluid main-container">
 
-<!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Essays</a>
-</li>
-<li>
-  <a href="code.html">Code</a>
-</li>
-<li>
-  <a href="about.html">About</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="README.html">Meta</a>
-</li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
-
-<div class="fluid-row" id="header"><h1 class="title toc-ignore">Code</h1></div>
-
-<table id="myTable" class="table">
-  <thead><tr><th>Project</th><th>Description</th><th>Last Modified</th></tr></thead>
-</table>
-
-</div>
-<script>
-$(document).ready(function(){
   $('#myTable').DataTable({
     order: [[ 2, "desc" ]],
     ajax: {
@@ -199,5 +127,36 @@ $(document).ready(function(){
   });
 });
 </script>
+<div class="container-fluid main-container">
+
+  <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Essays</a></li>
+          <li><a href="code.html">Code</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="README.html">Meta</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container -->
+  </div><!--/.navbar -->
+  
+  <div class="fluid-row" id="header"><h1 class="title toc-ignore">Code</h1></div>
+  
+  <table id="myTable" class="display table">
+    <thead><tr><th>Project</th><th>Description</th><th>Last Modified</th></tr></thead>
+  </table>
+</div>
 </body>
 </html>
