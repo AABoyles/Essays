@@ -11,19 +11,14 @@
 
 
 
-<title>Drafts</title>
+<title>On Diversifying Your Moral Portfolio</title>
 
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/htmlwidgets-0.7/htmlwidgets.js"></script>
-<script src="site_libs/datatables-binding-0.2/datatables.js"></script>
-<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -219,35 +214,21 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Drafts</h1>
+<h1 class="title toc-ignore">On Diversifying Your Moral Portfolio</h1>
 
 </div>
 
 
-<p>If you’ve stumbled upon this page, well done. This is the drafts directory. The quality of these varies from a few sentences (or a bare outline) to near-complete essays that I remain unwilling to publish. Note the phrase <em>unwilling to publish</em>. It means that I may not actually believe or endorse the content written here. I strongly encourage you <em>not</em> to read these; if nothing else, you have better things to do.</p>
-<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE)
-library(&quot;plyr&quot;)
-library(&quot;dplyr&quot;)
-library(&quot;magrittr&quot;)
-library(&quot;DT&quot;)
-library(&quot;stringr&quot;)
-
-cbind(
-  Name = list.files(&quot;.&quot;, &quot;*.Rmd&quot;),
-  ldply(list.files(&quot;.&quot;, &quot;*.Rmd&quot;, full.names = TRUE), file.info)
-) %&gt;%
-  filter(! Name %in% c(&quot;index.Rmd&quot;)) %&gt;%
-  arrange(desc(mtime)) %&gt;%
-  mutate(`Estimated Length (words)` = floor(size/7)) %&gt;%
-  select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %&gt;%
-  mutate(Name = paste0(&quot;&lt;a href=&#39;&quot;, str_sub(Name, 1, -5), &quot;.html&#39;&gt;&quot;,
-    Name %&gt;%
-      str_replace_all(&quot;([a-z])([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_replace_all(&quot;([A-Z]+)([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_sub(1, -5), &quot;&lt;/a&gt;&quot;)) %&gt;%
-  datatable(escape = FALSE)</code></pre>
-<div id="htmlwidget-3cb97b4c4418b1345cc9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3cb97b4c4418b1345cc9">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12"],["<a href='TheImportanceOfMoralConsistency.html'>The Importance Of Moral Consistency\u003c/a>","<a href='OnDiversifyingYourMoralPortfolio.html'>On Diversifying Your Moral Portfolio\u003c/a>","<a href='DesigningGoodInstitutions.html'>Designing Good Institutions\u003c/a>","<a href='TrueHeroesAndVillains.html'>True Heroes And Villains\u003c/a>","<a href='RuminationsOnABurrito.html'>Ruminations On A Burrito\u003c/a>","<a href='EstimationOfTheProbabilityOfTheSuccessOfCryonics.html'>Estimation Of The Probability Of The Success Of Cryonics\u003c/a>","<a href='AGentleIntroductionToTheSimulationArgument.html'>A Gentle Introduction To The Simulation Argument\u003c/a>","<a href='LifeCheatCodes.html'>Life Cheat Codes\u003c/a>","<a href='YouAreAComputerGetOverIt.html'>You Are A Computer Get Over It\u003c/a>","<a href='DeterminantsOfMoralStatus.html'>Determinants Of Moral Status\u003c/a>","<a href='ShouldIBeVegetarian.html'>Should I Be Vegetarian\u003c/a>","<a href='BeCautiousWithYourEffects.html'>Be Cautious With Your Effects\u003c/a>"],[631,303,284,476,407,787,656,49,730,308,1050,417],["2016-08-30T18:00:27Z","2016-08-30T17:34:24Z","2016-08-30T17:30:34Z","2016-08-30T17:28:06Z","2016-08-30T17:25:32Z","2016-08-30T13:54:21Z","2016-08-30T13:53:56Z","2016-08-30T13:52:07Z","2016-08-30T13:46:25Z","2016-08-30T13:19:14Z","2016-08-30T13:19:14Z","2016-08-29T20:22:38Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Name\u003c/th>\n      <th>Estimated Length (words)\u003c/th>\n      <th>Last Modified\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Most non-profits are statistical scams. It’s not that they don’t want to or mean to do valuable work, but they fail to be the most effective non-profit for their stated goals. Thus, every dollar donated to them is a dollar that could have been given to a more effective non-profit.</p>
+<p>The moral significance of the work of non-profits varies over several orders of magnitude.</p>
+<p>But we have a huge amount of uncertainty about how effective any intervention really is. This is especially true for comparing existential risk mitigation to public health interventions. Someone who values human life should donate to the charity that turns the least money into the most lives saved. That means malaria nets. But the value of a human life should not vary based on the time at which it is lived, and the human population could expand considerably, so existential risk mitigation is more important. But no existential risk mitigation nonprofit has ever demonstrably saved anyone. In other words, we have a high degree of uncertainty about the relative effectiveness of the two causes.</p>
+<p>One strategy for mitigating this concern is to diversify your moral portfolio. Let’s say you are planning to make a donation, but you’re uncertain about the optimal charity given your values. Fortunately, you feel strongly that the maximally effective intervention is one of four charities. You estimate that each of these has a roughly 1/4 of being the optimal target for your intervention.</p>
+<script src="//repl.it/embed/Cg3y/5.js"></script>
+<p>Things to note:</p>
+<p>The diversified payoff is guaranteed to be greater than 25% of the maximal payoff, which should make intuitive sense. It’s one-quarter of the maximal payoff, which is huge, plus a quarter of each of the other payoffs, which are tiny by comparison.</p>
+<p>The random payoff can be a little bit higher (factor of 4) than the diversified payoff, but it can be orders of magnitude (factor of 100) lower than the diversified payoff.</p>
+<p>The Expected Value of Random and Diversified strategies is equal.</p>
+<p>So, if you are very confident that</p>
 
 
 

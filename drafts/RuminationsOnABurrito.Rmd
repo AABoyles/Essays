@@ -1,0 +1,22 @@
+---
+title: "Ruminations on a Burrito"
+---
+
+I LOVE Burritos. It’s a vice. For about $10, I can have a glorious lunch which makes me happy and satiates my appetite for hours.
+
+It’s a useful price-point. I don’t need to think too hard about spending $10, even if I do it frequently. I know that’s an expression of gross privilege, and I’m sorry to present it.
+
+How much privilege is it? GiveWell estimates that the cost to prevent a single death from Malaria by distributing Long-Lasting Insecticide Nets (LLINs) is approximately $3500. I can’t find a clear mapping from LLINs to Disability-Adjusted Life Years (DALYs), so let’s just assume it’s on the order of $100/DALY. My burrito cost $10, so I can buy something like 1/10 of a DALY (or 5.2 DAL-Weeks) instead of that burrito.
+
+Now, how much would a DALY have to cost in order to make that burrito in the ballpark of effective? I estimate that I could survive for two weeks without food (all other environmental factors held constant). So a life-sustaining Chipotle Burrito is worth something like 2 DAL-Weeks to someone without access to cheaper sources of food.
+
+What would the world look like if Chipotle Burritos were as effective as LLINs?
+
+Imagine a poor person donating $10 to a wealthy person. (You need not imagine too hard: This may be more-or-less actually happening.) This is a regressive donation. How wealthy would you need to be to make donations that weren’t regressive?
+I enjoy a higher standard of living than the super-wealthy of 100 years ago. Technological progress has made this possible. An interesting example of this is the internet. How much would someone have to pay you to never use the internet again? For me, it’s on the order of a billion dollars. I’d need vastly more money than I could possibly ever spend in person, purely as a protection against the malaise of everyone else enjoying the party and me being locked outside. This is roughly equivalent to possessing something worth a billion dollars.
+
+Now, the internet I value so highly didn’t exist when I was born, let alone a century ago. Technological progress over the comparatively brief span of my life has given me assets that are vastly more valuable than amounts of money I could plausibly have received charitably. Therefore, technological progress is more valuable than receiving donations. At least, that’s true for the global upper-middle class. But what about the poor?
+
+The World is Getting Better. This is not necessarily comforting news to those who are surviving terrible lives, but the entire point of the mantra is that there are fewer such people.
+
+All this to say that the $10 I spend on my lunch isn’t remotely effective, and it probably won’t be for awhile yet. But within my lifetime, it could be. And that’s a possibility worth celebrating. How about burritos?

@@ -18,7 +18,7 @@ cbind(
 ) %>%
   filter(! Name %in% c("index.Rmd")) %>%
   arrange(desc(mtime)) %>%
-  mutate(`Estimated Length (words)` = floor(size/5.1)) %>%
+  mutate(`Estimated Length (words)` = floor(size/7)) %>%
   select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %>%
   mutate(Name = paste0("<a href='", str_sub(Name, 1, -5), ".html'>",
     Name %>%

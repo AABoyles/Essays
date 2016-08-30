@@ -1,0 +1,29 @@
+---
+title: "Designing Good Institutions"
+---
+
+We (humans) have developed many institutions to accomplish many things.
+
+## Good Institutions Optimize ...Something
+
+A Good Institution should seek to optimize something. Different schools of thought offer different things to optimize. For example, nationalism seeks to maximize the prestige of the state and its people. Communism seeks to minimize the probability of inter-class conflict. Anarchism seeks to minimize (ultimately eliminating) the role of governing institutions altogether. And so on.
+
+Caveat Emptor: For this discussion, I’m going to pick on two schools of thought, which I’ll call “Socialism” and “Liberalism”. The arguments I attribute to each are my own, and the titles are more about choosing a proximate location on a spectrum of freedoms afforded to individuals, rather than actually engaging with these actual schools of thought. Accordingly, you should not trust these representations of these schools of thought, and instead seek out works that belong to them if you’re interested in the salient ideas.
+
+### Socialism: Good Institutions Maximize Social Welfare
+
+### Liberalism: Good Institutions Maximize Social Freedoms
+
+Social Freedom is a means to social welfare. People tend to understand how best to improve their own circumstances (theory behind GiveDirectly, Guaranteed Minimum Income).
+
+## Good Institutions Mitigate Human Flaws
+
+Social freedoms lead to suboptimal outcomes in collective action problems. A Good Institution recognizes collective action problems within its realm of concern, and devises policies to entice or force people to Pareto optimal solutions.
+
+## Good (and Bad) Institutions Cost Money
+
+Religious Institutions collect donations, employing the command of God.
+
+Governing Institutions collect taxes, employing the command of people with guns who will punish you.
+
+Good Institutions collect as much money as they need, which may be less than the amount of money they spend.

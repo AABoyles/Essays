@@ -1,0 +1,23 @@
+---
+title: "On Diversifying Your Moral Portfolio"
+---
+
+Most non-profits are statistical scams. It’s not that they don’t want to or mean to do valuable work, but they fail to be the most effective non-profit for their stated goals. Thus, every dollar donated to them is a dollar that could have been given to a more effective non-profit.
+
+The moral significance of the work of non-profits varies over several orders of magnitude.
+
+But we have a huge amount of uncertainty about how effective any intervention really is. This is especially true for comparing existential risk mitigation to public health interventions. Someone who values human life should donate to the charity that turns the least money into the most lives saved. That means malaria nets. But the value of a human life should not vary based on the time at which it is lived, and the human population could expand considerably, so existential risk mitigation is more important. But no existential risk mitigation nonprofit has ever demonstrably saved anyone. In other words, we have a high degree of uncertainty about the relative effectiveness of the two causes.
+
+One strategy for mitigating this concern is to diversify your moral portfolio. Let’s say you are planning to make a donation, but you’re uncertain about the optimal charity given your values. Fortunately, you feel strongly that the maximally effective intervention is one of four charities. You estimate that each of these has a roughly 1/4 of being the optimal target for your intervention.
+
+<script src="//repl.it/embed/Cg3y/5.js"></script>
+
+Things to note:
+
+The diversified payoff is guaranteed to be greater than 25% of the maximal payoff, which should make intuitive sense. It’s one-quarter of the maximal payoff, which is huge, plus a quarter of each of the other payoffs, which are tiny by comparison.
+
+The random payoff can be a little bit higher (factor of 4) than the diversified payoff, but it can be orders of magnitude (factor of 100) lower than the diversified payoff.
+
+The Expected Value of Random and Diversified strategies is equal.
+
+So, if you are very confident that
