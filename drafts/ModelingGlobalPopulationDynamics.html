@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Modeling Global Population Dynamics</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/default.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Modeling Global Population Dynamics</h1>
+
+</div>
+
+
+<p>System dynamic modeling is a methodology in which values are defined by the causal relationships between variables. These values can then be tested against empirical records, and used to forecast future effects. This sort of modeling works very well with anything that can be defined in terms of population counts. The global human population model is simple application, having only a single population (that is, humans), and a fixed number of means by which that number can change. Gains are defined by births, and losses by deaths. A system dynamic representation of this model at its simplest might take the form:</p>
+<p>The rectangle (or stock) at the center of the diagram represents the entire (quick) human population. The flow to the left of the box indicates births increasing the number of humans in the population, and the flow to the right indicates deaths decreasing the total population. The two circles at the top-left and right converters define the rates at which births and deaths occur. Each line between the shapes indicates directed mathematical relationship between the two values. For example, observe that Births are related to both the Global Population and the Birthrate. This relationship can be represented as:</p>
+<p>Deaths would be represented likewise, substituting birth terms for death terms. The combination of these two factors with the Global Population would yield the global population across discrete changes in time. This equation,</p>
+<p>represents n as the discrete time unit. These variables represent real values, which can be empirically measured. This study employs the data collected by the World Bank in the World Development Indices to complete this picture. To start with, consider birthrate. Over the 49 year period from 1960-2009, the value drops from 4.91 to 2.52. That’s a change of 2.39, or a mean change of .049 annually. But what does this number actually mean? The Word Development Indicator explanation reads, “The average number of births per woman.” This definition creates two new problems. This first is that the number of living people alive at any given time is given, but the number of women is not. The second is much more subtle: this value is evaluated over steps of time (in this case, years), but the rate is measured over a woman’s lifespan. Compensating for this discrepancy requires a variable which represents the mean female lifespan.</p>
+<p>where:</p>
+<p>Where the numerical values are derived from time series regressions on the data for female life expectancy and fertility rate. As for the percent of the population which is female, it stagnates at approximately 49.7, so a fixed value should suffice.</p>
+<p>Now, all that remains is to define the death rate and test the model. The global death rate has fallen prodigiously in the last fifty years. That said, the best-fitting relationship is a truly nonlinear relationship—the rate of improvement has slowed as time progressed. As such, this model fits a prediction curve using exponential regression, yielding:</p>
+<p>This curve gives a strikingly good fit to the data at hand:</p>
+<p>With all of the requisite empirical values established and relationships defined, the model is ready to be validated against the empirical record. The global population grew from approximately 3 billion in 1960 to 6.775 billion in 2009.</p>
+<p>This model attempts to replicate the data from a phenomenon which is strikingly linear of the sampled time period. The prediction, however, is slightly nonlinear. System Dynamic modeling is excellent at representing nonlinear phenomena, so it’s a little gratuitous to use it in a linear case. Never the less, the model preforms very well:</p>
+<p>We can see here the R-squared of .98, indicating a high degree of accuracy. The Beta is pretty good as well–if it were perfect, we would see a beta of exactly 1. However, it seems to underperform a simple linear regression over the same data:</p>
+<p>In which t is time (i.e. years since 2009) and the intercept is the approximate 2009 population.</p>
+<p>Despite outperforming the System Dynamic model over the data available, the linear projection fails on two fronts: first, if we use it to infer the global population backwards in time, we find that humanity first walked the Earth around 1920 C.E., clearly an absurd proposition. Secondly, it is equally uninformative about the future state of the human population.</p>
+<p>In lieu of comparing the system dynamic model with one which makes no sense outside of a narrow time horizon, other data must be employed against which to compare. The U.N. publishes a biannual prediction of the global population trajectory. The U.N. employs three creatively-named models: “high,” “medium,” and “low.” High is a worst-case scenario. It’s basically a prediction that Malthus was right, and populations grow exponentially. This outcome would be inconvenient–lots of starvation, poor sanitation, and generally bad conditions with few per capita resources to improve upon them. Medium is much sunnier–it represents the world in which we want to live. Around the year 2050, the human population stabilizes near 9 billion. Low represents the unknown unknowns: war, famine, disease, disaster ravage the human population in the next 40 years.</p>
+<p>Here are the three U.N. estimates, along with the linear estimate and the System Dynamic Model specified above over the next 90 years:</p>
+<p>Observe nearly-uniform, fanning-out effect. As time progresses, the predictions of the model diverge sharply from each other. Only the low model begins to fall, while the medium converges on 9 billion, and the top three forecasts (System Dynamic, Linear, and the UN’s High, respectively in increasing order) continue to increase at varying speeds. In 2004 the UN published projections out to 2300, against which the other models may be further validated.</p>
+<p>Low and Medium have both held their positions for centuries, and it looks like the System Dynamic model approaches a point of convergence, but linear keeps growing and high is skyrocketing.</p>
+<p>There are important sources of distinction between my model and the U.N.’s. The UN possesses an immediate advantage in that its models may start projecting based on data which is empirically accurate for the current year. Because my model was calibrated on the data from the prior 50 years, I must start with the year 1960 and project to 2010 and beyond. This means the number I have for this year’s population is probably a little inflated, so the model on the whole is relatively high. The other is that my model continues to project expectations into the realm of unlikelihood–for example, by 2300, the System Dynamic model suggests the mean female lifespan should be over 100, and still rising.</p>
+<p>This brings us to a terminal question: will this model indicate that the global population converges? To start, we must collapse the simultaneous equations of the model into a single function. This is possible because each equation in the model is contingent only upon other values in the system (none of which are feedback process except the canonical Births and Deaths), time (represented as the variable n), or the dependent variable, GlobalPop. So the final function should show the relationship between time and Global Population.</p>
+<p>First, the global population is equal to last year’s population plus the births minus the deaths, a quintessential gain-loss model.</p>
+<p>Births (actually births per capita) should be the more complicated of the two:</p>
+<p>Thus, combined:</p>
+<p>Now, for death, the GlobalPop variable can be factored out in the same manner as was done above for births. Doing so reduces deaths (again, deaths per capita) to the deathrate. So,</p>
+<p>Thus, combined:</p>
+<p>Consider the limit of second half of the expression (that which is multiplied by GlobalPop at n-1) as n approaches infinity. If the output reaches 1, then an equilibrium state exists. If not, then the global population should continue to fluctuate forever. Let’s see:</p>
+<p>Both the expressions representing Births and Deaths converge on 0, so the equilibrium state exists. How big is it? How long will it take? Equilibrium is the point at which the global population no longer changes from year to year, or if it does, it begins to do so cyclically. There aren’t any cyclical parameters in the model, and there aren’t enough independent variables for cyclicality to emerge organically, so a single point of convergence is the most likely outcome in this case. In other words, the global population will reach some number and stick to it. Algebraically, we can represent this as:</p>
+<p>There are three approaches to solving this system: Assuming the above is true, all cases of GlobalPop at any time other than may be substituted for GlobalPop at time n, and the resultant polynomial function may be solved. Alternately, the Calculus may be employed, and the salient equation differentiated to identify whatever minima or maxima might induce a stable conclusion. Finally, a simple simulation may be run over an arbitrarily large number of years (or steps) to identify the same minima or maxima. Because this system is fundamentally deterministic (the model, not the modeled phenomena), this need only be done once: every run of this simulation will produce exactly the same results.</p>
+<p>The global population should reach a maxima sometime in the 23rd century. But this is not a equilibrium: it’s a tipping point. Someday, birthrates will have slowed down more than deathrates, so that even though people live longer (in excess of 1700 years by the end), they procreate so infrequently that the human species dies off relatively quickly. This brings that information derived from the earlier limit approach into sharp relief: If no one is being born, and no one is dying, that’s either because humans have effectively become impotent immortals, or there aren’t any humans left. The model indicates the latter is the final fate of humanity.</p>
+<p>There are a few sources of error in this assessment, which should gives pause before considering these conclusions with any seriousness:</p>
+<p>The life expectancy is latent–it describes the life expectancy of people born in that year, not the life expectancy of people living in that year. We didn’t describe the female percentage of the population with a function, which makes it inflexible.</p>
+<p>The linear and exponential models we use to generate many of the coefficients for the equations of the final model are imperfect.</p>
+<p>The data are imperfect: the World Development Indicators are calculated using a completely different methodology, which one hopes would be fairly accurate. Even so, it would be logistically impossible to count every single person on the planet at a fixed point in time–people are born and die every minute. The WDIs are correct to the ballpark (as are the models we devise from them), but only so.</p>
+<p>Even so, this model presents a solid, nontrivial foundation for System Dynamic Modeling based upon, and validated against, empirical data. System Dynamic modeling represents the causal linkages between variables, thereby creating much more compelling forecasts. The divergence of model results from reality indicate the absence of other critical causal factors in the model or the overestimation of the effectiveness of some modeled causal pathway(s). I claim the results of this model could survive an exogenous shock to many of the variables represented, while the linear model lacks any flexibility to compensate for such exogenous shocks.</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
