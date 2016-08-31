@@ -9,8 +9,9 @@ Now take a deep breath. The following day, roughly 150,000 more people died. Tha
 ```{r}
 daysSince <- as.numeric(Sys.Date()-as.Date("2001-09-11"))
 dailyGrossMortality <- 1.6e5
+dead <- signif(daysSince * dailyGrossMortality, 2)
 ```
 
-Every day since 9-11-2001, [approximately `r dailyGrossMortality` people have died](https://en.wikipedia.org/wiki/Mortality_rate). There have been `r daysSince` days since then. `formatC(signif(daysSince * dailyGrossMortality, 2), format="d", big.mark=',')` people have died. That's more than the [entire population of Europe](https://www.google.com/search?q=Population+of+Europe), snuffed out. Try (and fail) to wrap your head around that number. It's just too overwhelming. Our brains don't (and can't) work that way.
+Every day since 9-11-2001, [approximately `r dailyGrossMortality` people have died](https://en.wikipedia.org/wiki/Mortality_rate). There have been `r daysSince` days since then. `r formatC(dead, format="d", big.mark=',')` people have died. That's more than the [entire population of Europe](https://www.google.com/search?q=Population+of+Europe), snuffed out. Try (and fail) to wrap your head around that number. It's just too overwhelming. Our brains don't (and can't) work that way.
 
 Instead, just think for a moment how different the world might be if we were able to prioritize our spending on things that stopped people from dying (like evidence-based public health campaigns and medical research), instead of things that make easy re-election campaigns (like defense spending). Think about all the people who could have been alive right now. It's much bigger than the people who were killed on 9-11 itself. So, sure, [#NeverForget](https://www.facebook.com/hashtag/neverforget), but be sure not to forget the rest of humanity in the process.
