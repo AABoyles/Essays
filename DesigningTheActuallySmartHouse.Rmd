@@ -1,6 +1,19 @@
 ---
 title: "Designing the Actually Smart House"
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
+
+```{r, results='asis'}
+source("infobox.R")
+meta <- list(
+  "Status" = "Nearly Complete",
+  "Last Revision" = file.info("DesigningTheActuallySmartHouse.Rmd")$mtime
+)
+infobox(meta)
+```
 
 I have two goals for automating my home: First, I want to waste less energy. Second, I want to do fewer things. In general, existing home automation products fail to accomplish these goals well. Some products connect some of our devices to the internet (and through it, to other connected products), but this by itself doesn’t serve either of my goals. You can control all of your internet-connected things from your smartphone, but that still obligates you to **do** something. In other words, _automation_ in home automation is a lie.
 

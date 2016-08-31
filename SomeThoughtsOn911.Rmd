@@ -2,16 +2,26 @@
 title: "Some Thoughts on 9-11"
 ---
 
-On this day in 2001, 2977 people were [killed by terrorists](https://en.wikipedia.org/wiki/September_11_attacks). Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. People that might have collectively lived another 160,000 years. 2977 lives that were needlessly cut short.
+```{r}
+medianAge <- 36.8
+lifeExpectancy <- 70.17
+casualties <- 2977
+lifeYearsLost <- signif((lifeExpectancy - medianAge) * casualties, 2)
+```
 
-Now take a deep breath. The following day, roughly 150,000 more people died. That's 50 TIMES the number of people killed 9-11. Now make yourself feel the size of THAT number. That's vastly more people than you will ever meet in your lifetime, and more than triple the size of my hometown. Three small towns not too far from where you are right now, wiped off the map.
+On this day in 2001, 2977 people were [killed by terrorists](https://en.wikipedia.org/wiki/September_11_attacks). Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. People that might have collectively lived another `r formatC(lifeYearsLost, format="d", big.mark=',')` years. 2977 lives that were needlessly cut short.
+
+```{r}
+dailyGrossMortality <- 1.6e5
+```
+
+Now take a deep breath. The following day, roughly `r formatC(dailyGrossMortality, format="d", big.mark=',')` more people died. That's 50 TIMES the number of people killed by terrorists on 9-11. Try to make yourself feel the size of THAT number. That's vastly more people than you will ever meet in your lifetime. It's more than triple the size of my hometown. Imagine three small towns not too far from where you are right now, wiped off the map.
 
 ```{r}
 daysSince <- as.numeric(Sys.Date()-as.Date("2001-09-11"))
-dailyGrossMortality <- 1.6e5
 dead <- signif(daysSince * dailyGrossMortality, 2)
 ```
 
-Every day since 9-11-2001, [approximately `r dailyGrossMortality` people have died](https://en.wikipedia.org/wiki/Mortality_rate). There have been `r daysSince` days since then. `r formatC(dead, format="d", big.mark=',')` people have died. That's more than the [entire population of Europe](https://www.google.com/search?q=Population+of+Europe), snuffed out. Try (and fail) to wrap your head around that number. It's just too overwhelming. Our brains don't (and can't) work that way.
+Every day since 9-11-2001, [approximately `r formatC(dailyGrossMortality, format="d", big.mark=',')` people have died](https://en.wikipedia.org/wiki/Mortality_rate). There have been `r daysSince` days since then, meaning `r formatC(dead, format="d", big.mark=',')` people have died. That's more than the [entire population of Europe](https://www.google.com/search?q=Population+of+Europe), snuffed out. Try (and fail) to wrap your head around that number. It's just too overwhelming. Our brains don't (and can't) work that way.
 
-Instead, just think for a moment how different the world might be if we were able to prioritize our spending on things that stopped people from dying (like evidence-based public health campaigns and medical research), instead of things that make easy re-election campaigns (like defense spending). Think about all the people who could have been alive right now. It's much bigger than the people who were killed on 9-11 itself. So, sure, [#NeverForget](https://www.facebook.com/hashtag/neverforget), but be sure not to forget the rest of humanity in the process.
+Instead, just think for a moment how different the world might be if we were able to prioritize our spending on things that stopped people from dying (like evidence-based public health campaigns and medical research), instead of things that make easy re-election campaigns (like defense spending). Think about all the people who could have been alive right now. It's much bigger than the people who were killed on 9-11 itself. So, sure, [#NeverForget](https://www.facebook.com/hashtag/neverforget), but don't forget the rest of humanity in the process.
