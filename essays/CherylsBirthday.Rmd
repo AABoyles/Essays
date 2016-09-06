@@ -1,9 +1,5 @@
 ---
 title: "Cheryl's Birthday"
-output:
-  html_document:
-    theme: flatly
-    toc: false
 ---
 
 ```{r, results='asis'}
