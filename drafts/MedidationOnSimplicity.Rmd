@@ -1,0 +1,71 @@
+---
+title: "How I Lost My Faith"
+---
+
+> The probability a hyopthesis is true is proportional to the complexity of that hypothesis.
+
+Aristotle writes in his Posterior Analytics, "We may assume the superiority ceteris paribus [other things being equal] of the demonstration which derives from fewer postulates or hypotheses."
+
+Ptolemy (c. AD 90 – c. AD 168) stated, "We consider it a good principle to explain the phenomena by the simplest hypothesis possible."
+
+Phrases such as "It is vain to do with more what can be done with fewer" and "A plurality is not to be posited without necessity" were commonplace in 13th-century scholastic writing.
+
+Robert Grosseteste, in his Commentary on Aristotle's *Posterior Analytics* (written c. 1217–1220), declared "That is better and more valuable which requires fewer, other circumstances being equal... For if one thing were demonstrated from many and another thing from fewer equally known premises, clearly that is better which is from fewer because it makes us know quickly, just as a universal demonstration is better than particular because it produces knowledge from fewer premises. Similarly in natural science, in moral science, and in metaphysics the best is that which needs no premises and the better that which needs the fewer, other circumstances being equal."
+
+The Summa Theologica of Thomas Aquinas (1225–1274) states that "it is superfluous to suppose that what can be accounted for by a few principles has been produced by many".
+
+The Indian Hindu philosopher Madhva (1238–1317) in verse 400 of his Vishnu-Tattva-Nirnaya says: "To make two suppositions when one is enough is to err by way of excessive supposition".
+
+## Occam's Razor
+
+William of Ockham (circa 1287–1347) was an English Franciscan friar and theologian, an influential medieval philosopher and a nominalist. His popular fame as a great logician rests chiefly on the maxim attributed to him and known as Ockham's razor. The term razor refers to distinguishing between two hypotheses either by "shaving away" unnecessary assumptions or cutting apart two similar conclusions.
+
+While it has been claimed that Ockham's razor is not found in any of his writings, one can cite statements such as Numquam ponenda est pluralitas sine necessitate [Plurality must never be posited without necessity], which occurs in his theological work on the 'Sentences of Peter Lombard'.
+
+This principle is sometimes phrased as "plurality should not be posited without necessity". In his Summa Totius Logicae, Ockham cites the principle of economy, "It is futile to do with more things that which can be done with fewer".
+
+Nevertheless, the precise words sometimes attributed to Ockham, "entities must not be multiplied beyond necessity", are absent in his extant works; this particular phrasing comes from John Punch, who described the principle as a "common axiom" of the Scholastics.
+
+To quote Isaac Newton, "We are to admit no more causes of natural things than such as are both true and sufficient to explain their appearances. Therefore, to the same natural effects we must, as far as possible, assign the same causes."
+
+Bertrand Russell offers a particular version of Occam's razor: "Whenever possible, substitute constructions out of known entities for inferences to unknown entities."
+
+The widespread layman's formulation that "the simplest explanation is usually the correct one".
+
+## Solomonoff Induction
+
+All computable theories which perfectly describe previous observations are used to calculate the probability of the next observation, with more weight put on the shorter computable theories.
+
+The Kolmogorov complexity of an object (such as a piece of text) is the length of the shortest computer program (in a predetermined programming language) that produces the object as output. Consider, for example, the string "ab" repeated sixteen times, for a string of 32 characters, like so:
+
+> abababababababababababababababab
+
+It requires 32 characters to store that string. However, we could achieve storage gains by instead storing an *algorithm* to generate that string
+
+```{python}
+print("ab"*16)
+```
+
+Now, let us consider a second string:
+
+> myrfqwonuoewjcrazezmbkhmqbffoobo
+
+This one, like the last, is composed 32 lower-case letters. However, unlike the last one, there is no algorithm to generate this string, shorter than the string itself. (Side note: this string was generated from [random.org](https://www.random.org/strings/?num=2&len=16&loweralpha=on&unique=off&format=html&rnd=new), using atmospheric noise. There may exist a short seed which could cause this number, but that is extremely unlikely.)
+
+## Perfect Bayesian Reasoning
+
+Marcus Hutter invented AIXI
+
+Every phenomenon has an infinite number of explanatory hypotheses. Each new piece of evidence requires updating each hypothesis. Accordingly, AIXI is not computable with finite computing power.
+
+## God
+
+There's a school of thought in theist faiths which, when confronted with legitimate reason to doubt belief in God, appeal to the thing that started the universe. Science does not yet offer us any robust information about what happened "before" the beginning of our universe. Accordingly, they call whatever caused the universe "God".
+
+OK, fine. So "God" is whatever stuff or process caused the universe. But what about all the other stuff you believe about God? Your God has vastly higher empirical content than the simplest processes that could have caused the universe.
+
+The moment I realized this, my belief in God collapsed. I cannot rebuild it.
+
+The truth is that I haven't really believed in God since I was a teenager (and possibly prior to that, though I can't recall my childhood metaphysical beliefs well enough to make a strong statement either way). What I believed was that to believe in God is a good and virtuous thing, therefore I should believe in God, therefore I did believe in God. This is what Daniel Dennett terms "belief-in-belief".
+
+It's OK not to know everything. To understand the boundaries of your knowledge is a virtue.

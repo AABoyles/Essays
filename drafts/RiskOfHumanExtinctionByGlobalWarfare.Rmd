@@ -1,0 +1,33 @@
+---
+title: "Estimating the Risk of Human Extinction by Catastrophic Global Warfare"
+---
+
+Most of the Great Filter candidates lack any empirical evidence, and thus are tantamount to impossible to estimate.  We have comparatively excellent data on warfare.
+
+[![The cumulative frequency of wars strongly correlates with the magnitude of said wars.](/imgs/ModelingSizeOfWars.png "I get SO much analytic leverage from this figure.")](https://www.cambridge.org/core/journals/american-political-science-review/article/modeling-the-size-of-wars-from-billiard-balls-to-sandpiles/84FFC9F035902B95419977608C5A628A)
+
+Over the course of 177 years, we fought 97 interstate wars varying in magnitude from thousands of casualties to millions. But in order for infighting amongst our species to be the filter that finally gets us, we would need a war three orders of magnitude larger than that: We would see a war which cost billions of lives.
+
+$$log P(S>s)=1.27-0.41 log s$$
+
+$$log P(S>s)=1.27-0.41(10)$$
+
+$$log P(S>s)=-2.83$$
+
+$$P(S>s)=.00148$$
+
+So, our probability of experiencing a war which eliminates all (or almost all) humanity in any given 177 years is around .15%.
+
+## Annual Probability
+
+Given that this is the cumulative risk for that time, we can compute the annual probability by determining the probability value which is 
+
+$$1-P(S>s)=(1-x)^{177}$$
+
+Using $P(S>s)$ and solving for $x$ gives us $x = 8.5*10^-6$
+
+So, how far do we have to look to see the War to end all Wars (by virtue of ending humanity)? That depends on the probability with which you would see that war. Say we want to have a 50% chance of seeing this war.
+
+$$.5=(1-[8.5*10^{-6}])^x$$
+
+$_x_ = \text{81,546 years}$

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>How I Lost My Faith</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/default.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">How I Lost My Faith</h1>
+
+</div>
+
+
+<blockquote>
+<p>The probability a hyopthesis is true is proportional to the complexity of that hypothesis.</p>
+</blockquote>
+<p>Aristotle writes in his Posterior Analytics, “We may assume the superiority ceteris paribus [other things being equal] of the demonstration which derives from fewer postulates or hypotheses.”</p>
+<p>Ptolemy (c. AD 90 – c. AD 168) stated, “We consider it a good principle to explain the phenomena by the simplest hypothesis possible.”</p>
+<p>Phrases such as “It is vain to do with more what can be done with fewer” and “A plurality is not to be posited without necessity” were commonplace in 13th-century scholastic writing.</p>
+<p>Robert Grosseteste, in his Commentary on Aristotle’s <em>Posterior Analytics</em> (written c. 1217–1220), declared “That is better and more valuable which requires fewer, other circumstances being equal… For if one thing were demonstrated from many and another thing from fewer equally known premises, clearly that is better which is from fewer because it makes us know quickly, just as a universal demonstration is better than particular because it produces knowledge from fewer premises. Similarly in natural science, in moral science, and in metaphysics the best is that which needs no premises and the better that which needs the fewer, other circumstances being equal.”</p>
+<p>The Summa Theologica of Thomas Aquinas (1225–1274) states that “it is superfluous to suppose that what can be accounted for by a few principles has been produced by many”.</p>
+<p>The Indian Hindu philosopher Madhva (1238–1317) in verse 400 of his Vishnu-Tattva-Nirnaya says: “To make two suppositions when one is enough is to err by way of excessive supposition”.</p>
+<div id="occams-razor" class="section level2">
+<h2>Occam’s Razor</h2>
+<p>William of Ockham (circa 1287–1347) was an English Franciscan friar and theologian, an influential medieval philosopher and a nominalist. His popular fame as a great logician rests chiefly on the maxim attributed to him and known as Ockham’s razor. The term razor refers to distinguishing between two hypotheses either by “shaving away” unnecessary assumptions or cutting apart two similar conclusions.</p>
+<p>While it has been claimed that Ockham’s razor is not found in any of his writings, one can cite statements such as Numquam ponenda est pluralitas sine necessitate [Plurality must never be posited without necessity], which occurs in his theological work on the ‘Sentences of Peter Lombard’.</p>
+<p>This principle is sometimes phrased as “plurality should not be posited without necessity”. In his Summa Totius Logicae, Ockham cites the principle of economy, “It is futile to do with more things that which can be done with fewer”.</p>
+<p>Nevertheless, the precise words sometimes attributed to Ockham, “entities must not be multiplied beyond necessity”, are absent in his extant works; this particular phrasing comes from John Punch, who described the principle as a “common axiom” of the Scholastics.</p>
+<p>To quote Isaac Newton, “We are to admit no more causes of natural things than such as are both true and sufficient to explain their appearances. Therefore, to the same natural effects we must, as far as possible, assign the same causes.”</p>
+<p>Bertrand Russell offers a particular version of Occam’s razor: “Whenever possible, substitute constructions out of known entities for inferences to unknown entities.”</p>
+<p>The widespread layman’s formulation that “the simplest explanation is usually the correct one”.</p>
+</div>
+<div id="solomonoff-induction" class="section level2">
+<h2>Solomonoff Induction</h2>
+<p>All computable theories which perfectly describe previous observations are used to calculate the probability of the next observation, with more weight put on the shorter computable theories.</p>
+<p>The Kolmogorov complexity of an object (such as a piece of text) is the length of the shortest computer program (in a predetermined programming language) that produces the object as output. Consider, for example, the string “ab” repeated sixteen times, for a string of 32 characters, like so:</p>
+<blockquote>
+<p>abababababababababababababababab</p>
+</blockquote>
+<p>It requires 32 characters to store that string. However, we could achieve storage gains by instead storing an <em>algorithm</em> to generate that string</p>
+<pre class="python"><code>print(&quot;ab&quot;*16)</code></pre>
+<pre><code>## abababababababababababababababab</code></pre>
+<p>Now, let us consider a second string:</p>
+<blockquote>
+<p>myrfqwonuoewjcrazezmbkhmqbffoobo</p>
+</blockquote>
+<p>This one, like the last, is composed 32 lower-case letters. However, unlike the last one, there is no algorithm to generate this string, shorter than the string itself. (Side note: this string was generated from <a href="https://www.random.org/strings/?num=2&amp;len=16&amp;loweralpha=on&amp;unique=off&amp;format=html&amp;rnd=new">random.org</a>, using atmospheric noise. There may exist a short seed which could cause this number, but that is extremely unlikely.)</p>
+</div>
+<div id="perfect-bayesian-reasoning" class="section level2">
+<h2>Perfect Bayesian Reasoning</h2>
+<p>Marcus Hutter invented AIXI</p>
+<p>Every phenomenon has an infinite number of explanatory hypotheses. Each new piece of evidence requires updating each hypothesis. Accordingly, AIXI is not computable with finite computing power.</p>
+</div>
+<div id="god" class="section level2">
+<h2>God</h2>
+<p>There’s a school of thought in theist faiths which, when confronted with legitimate reason to doubt belief in God, appeal to the thing that started the universe. Science does not yet offer us any robust information about what happened “before” the beginning of our universe. Accordingly, they call whatever caused the universe “God”.</p>
+<p>OK, fine. So “God” is whatever stuff or process caused the universe. But what about all the other stuff you believe about God? Your God has vastly higher empirical content than the simplest processes that could have caused the universe.</p>
+<p>The moment I realized this, my belief in God collapsed. I cannot rebuild it.</p>
+<p>The truth is that I haven’t really believed in God since I was a teenager (and possibly prior to that, though I can’t recall my childhood metaphysical beliefs well enough to make a strong statement either way). What I believed was that to believe in God is a good and virtuous thing, therefore I should believe in God, therefore I did believe in God. This is what Daniel Dennett terms “belief-in-belief”.</p>
+<p>It’s OK not to know everything. To understand the boundaries of your knowledge is a virtue.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
