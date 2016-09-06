@@ -1,0 +1,23 @@
+body {
+  padding-top: 70px !important;
+}
+
+img {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+.infobox {
+  float: right;
+  margin: 10px;
+  max-width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  border-spacing: 0;
+  border-collapse: inherit;
+}
+
+.infobox td {
+  padding: 5px;
+}
