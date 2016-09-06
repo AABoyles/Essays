@@ -11,14 +11,19 @@
 
 
 
-<title>Some Thoughts on 9-11</title>
+<title>Essays</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/htmlwidgets-0.7/htmlwidgets.js"></script>
+<script src="site_libs/datatables-binding-0.2/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -184,18 +189,18 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Essays</a>
+  <a href="../index.html">Essays</a>
 </li>
 <li>
-  <a href="code.html">Code</a>
+  <a href="../code.html">Code</a>
 </li>
 <li>
-  <a href="about.html">About</a>
+  <a href="../about.html">About</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="README.html">Meta</a>
+  <a href="../README.html">Meta</a>
 </li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -214,22 +219,28 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Some Thoughts on 9-11</h1>
+<h1 class="title toc-ignore">Essays</h1>
 
 </div>
 
 
-<pre class="r"><code>medianAge &lt;- 36.8
-lifeExpectancy &lt;- 70.17
-casualties &lt;- 2977
-lifeYearsLost &lt;- signif((lifeExpectancy - medianAge) * casualties, 2)</code></pre>
-<p>On this day in 2001, 2977 people were <a href="https://en.wikipedia.org/wiki/September_11_attacks">killed by terrorists</a>. Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. People that might have collectively lived another 99,000 years. 2977 lives that were needlessly cut short.</p>
-<pre class="r"><code>dailyGrossMortality &lt;- 1.6e5</code></pre>
-<p>Now take a deep breath. The following day, roughly 160,000 more people died. That’s 50 TIMES the number of people killed by terrorists on 9-11. Try to make yourself feel the size of THAT number. That’s vastly more people than you will ever meet in your lifetime. It’s more than triple the size of my hometown. Imagine three small towns not too far from where you are right now, wiped off the map.</p>
-<pre class="r"><code>daysSince &lt;- as.numeric(Sys.Date()-as.Date(&quot;2001-09-11&quot;))
-dead &lt;- signif(daysSince * dailyGrossMortality, 2)</code></pre>
-<p>Every day since 9-11-2001, <a href="https://en.wikipedia.org/wiki/Mortality_rate">approximately 160,000 people have died</a>. There have been 5468 days since then, meaning 870,000,000 people have died. That’s more than the <a href="https://www.google.com/search?q=Population+of+Europe">entire population of Europe</a>, snuffed out. Try (and fail) to wrap your head around that number. It’s just too overwhelming. Our brains don’t (and can’t) work that way.</p>
-<p>Instead, just think for a moment how different the world might be if we were able to prioritize our spending on things that stopped people from dying (like evidence-based public health campaigns and medical research), instead of things that make easy re-election campaigns (like defense spending). Think about all the people who could have been alive right now. It’s much bigger than the people who were killed on 9-11 itself. So, sure, <a href="https://www.facebook.com/hashtag/neverforget">#NeverForget</a>, but don’t forget the rest of humanity in the process.</p>
+<pre class="r"><code>cbind(
+  Name = list.files(&quot;.&quot;, &quot;*.Rmd&quot;),
+  ldply(list.files(&quot;.&quot;, &quot;*.Rmd&quot;, full.names = TRUE), file.info)
+) %&gt;%
+  filter(! Name %in% c(&quot;index.Rmd&quot;)) %&gt;%
+  arrange(desc(mtime)) %&gt;%
+  mutate(`Estimated Length (words)` = floor(size/7)) %&gt;%
+  select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %&gt;%
+  mutate(Name = paste0(&quot;&lt;a href=&#39;&quot;, str_sub(Name, 1, -5), &quot;.html&#39;&gt;&quot;,
+    Name %&gt;%
+      str_replace_all(&quot;([a-z])([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
+      str_replace_all(&quot;([A-Z]+)([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
+      str_replace_all(&quot;([a-z]+)([0-9]+)&quot;, &quot;\\1 \\2&quot;) %&gt;%
+      str_sub(1, -5), &quot;&lt;/a&gt;&quot;)) %&gt;%
+  datatable(escape = FALSE)</code></pre>
+<div id="htmlwidget-2631f664e4051d67727b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2631f664e4051d67727b">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10"],["<a href='CherylsBirthday.html'>Cheryls Birthday\u003c/a>","<a href='DesigningTheActuallySmartHouse.html'>Designing The Actually Smart House\u003c/a>","<a href='SomeThoughtsOn911.html'>Some Thoughts On 911\u003c/a>","<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography\u003c/a>","<a href='TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem\u003c/a>","<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data\u003c/a>","<a href='MereHeroes.html'>Mere Heroes\u003c/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing\u003c/a>","<a href='GoodPolicies.html'>Good Policies\u003c/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography\u003c/a>"],[890,3274,325,1632,1635,721,704,635,1548,282],["2016-09-06T15:19:49Z","2016-08-31T17:59:02Z","2016-08-31T16:32:53Z","2016-08-30T17:23:26Z","2016-08-30T16:02:22Z","2016-08-30T13:19:14Z","2016-08-29T19:41:16Z","2016-08-29T17:25:11Z","2016-08-29T17:08:53Z","2016-08-29T17:00:34Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Name\u003c/th>\n      <th>Estimated Length (words)\u003c/th>\n      <th>Last Modified\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 
 

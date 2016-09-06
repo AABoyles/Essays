@@ -13,14 +13,14 @@ library("stringr")
 
 ```{r}
 cbind(
-  Name = list.files("essays/", "*.Rmd"),
-  ldply(list.files("essays/", "*.Rmd", full.names = TRUE), file.info)
+  Name = list.files(".", "*.Rmd"),
+  ldply(list.files(".", "*.Rmd", full.names = TRUE), file.info)
 ) %>%
-  filter(! Name %in% c("about.Rmd", "code.Rmd", "index.Rmd")) %>%
+  filter(! Name %in% c("index.Rmd")) %>%
   arrange(desc(mtime)) %>%
   mutate(`Estimated Length (words)` = floor(size/7)) %>%
   select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %>%
-  mutate(Name = paste0("<a href='essays/", str_sub(Name, 1, -5), ".html'>",
+  mutate(Name = paste0("<a href='", str_sub(Name, 1, -5), ".html'>",
     Name %>%
       str_replace_all("([a-z])([A-Z])", "\\1 \\2") %>%
       str_replace_all("([A-Z]+)([A-Z])", "\\1 \\2") %>%

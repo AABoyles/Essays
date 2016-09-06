@@ -69,17 +69,23 @@ Daisy, not feeling at all confident, asked "Can I have a hint?"
 Cheryl nodded obligingly, but said nothing. Instead, she took a piece of paper, drew a table on it, and handed it to Daisy.  Daisy took a long, considering look and the helpful-but-uninformative data structure.
 
 ```{r}
-knitr::kable(read.csv(textConnection('Month,14,15,16,17,18,19
-May,"-","15","16","-","-","19"
-June,"-","-","","17","18","-"
-July,"14","-","16","-","-","-"
-August,"14","15","-","17","-","-"')), )
+knitr::kable(
+  data.frame(
+    Month = c("May", "June", "July", "August"),
+    `14th`= c("-"  , "-"   , "14"  , "14"),
+    `15th`= c("15" , "-"   , "-"   , "15"),
+    `16th`= c("16" , "-"   , "16"  , "-" ),
+    `17th`= c("-"  , "17"  , "-"   , "17"),
+    `18th`= c("-"  , "18"  , "-"   , "-" ),
+    `19th`= c("19" , "-"   , "-"   , "-" )
+  )
+)
 ```
 
 After a moment, Cheryl said "What do you know?"
 
-*What do I know?* thought Daisy. *I know that this puzzle is crazy.* Never-the-less, Daisy was now resigned to working through the logic as best as she could. *If Albert knew the Month, and he knew that Bernard couldn't know the date, the only way that could be true is if all of the days in the correct month were in another month. That means any month with a day that isn't in any other month can't be the correct month.  So I can stop worrying about... May and June.* She drew a horizontal line through those months. *OK, now, that was enough information for Bernard to figure out the answer, which means that the answer couldn't be a date that July and August shared.* She crossed out the row with the 14s in it, leaving only July 16th and August 15 and 17. *Now, knowing that Bernard could figure it out from that was enough information for Albert to figure it out.  If Albert had known that the Month was August, then he wouldn't have been able to deduce the date. Since August has two possible dates left, that meant the answer must be...*
+*What do I know?* thought Daisy. *I know that this puzzle is crazy.* Never-the-less, Daisy was now resigned to working through the logic as best as she could. *If Albert knew the Month, and he knew that Bernard couldn't know the date, the only way that could be true is if all of the days in the correct month were in another month. That means any month with a day that isn't in any other month can't be the correct month.  So I can stop worrying about... May and June.* She drew a horizontal line through those months. *OK, now, that was enough information for Bernard to figure out the answer, which means that the answer couldn't be a date that July and August shared.* She crossed out the column with the 14s in it, leaving only July 16th and August 15 and 17. *Now, knowing that Bernard could figure it out from that was enough information for Albert to figure it out.  If Albert had known that the Month was August, then he wouldn't have been able to deduce the date. Since August has two possible dates left, that meant the answer must be...*
 
-"July 16th!" Daisy exclaimed happily. Cheryl grinned and gave Daisy the now-ceremonial high-five.
+"July 16th!" Daisy exclaimed happily. Cheryl grinned and gave Daisy the now-traditional high-five.
 
 Just then the bell rang. "OK, everyone. Take your seats!" said the teacher in Singaporean Mandarin. "Welcome to 5th grade."
