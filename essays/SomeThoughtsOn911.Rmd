@@ -9,13 +9,13 @@ casualties <- 2977
 lifeYearsLost <- signif((lifeExpectancy - medianAge) * casualties, 2)
 ```
 
-On this day in 2001, 2977 people were [killed by terrorists](https://en.wikipedia.org/wiki/September_11_attacks). Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. People that might have collectively lived another `r formatC(lifeYearsLost, format="d", big.mark=',')` years. 2977 lives that were needlessly cut short.
+On this day in 2001, `r casualties` people were [killed by terrorists](https://en.wikipedia.org/wiki/September_11_attacks). Stop for a moment, and try to feel the size of that number. You are one person. `r casualties` people is `r casualties` times the number of people you are. `r casualties` lives were needlessly cut short. Collectively, those people might have lived another `r formatC(lifeYearsLost, format="d", big.mark=',')` years.
 
 ```{r}
 dailyGrossMortality <- 1.6e5
 ```
 
-Now take a deep breath. The following day, roughly `r formatC(dailyGrossMortality, format="d", big.mark=',')` more people died. That's 50 TIMES the number of people killed by terrorists on 9-11. Try to make yourself feel the size of THAT number. That's vastly more people than you will ever meet in your lifetime. It's more than triple the size of my hometown. Imagine three small towns not too far from where you are right now, wiped off the map.
+Now take a deep breath. The following day, roughly `r formatC(dailyGrossMortality, format="d", big.mark=',')` more people died. That's more than `r floor(dailyGrossMortality/casualties)` times the number of people killed by terrorists on 9-11. Try to make yourself feel the size of THAT number. That's vastly more people than you will ever meet in your lifetime. It's more than triple the size of my hometown. Imagine three small towns not too far from where you are right now, wiped off the map.
 
 ```{r}
 daysSince <- as.numeric(Sys.Date()-as.Date("2001-09-11"))

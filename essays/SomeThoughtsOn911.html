@@ -95,6 +95,7 @@ button.code-folding-btn:focus {
 }
 </style>
 
+
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
@@ -223,9 +224,9 @@ $(document).ready(function () {
 lifeExpectancy &lt;- 70.17
 casualties &lt;- 2977
 lifeYearsLost &lt;- signif((lifeExpectancy - medianAge) * casualties, 2)</code></pre>
-<p>On this day in 2001, 2977 people were <a href="https://en.wikipedia.org/wiki/September_11_attacks">killed by terrorists</a>. Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. People that might have collectively lived another 99,000 years. 2977 lives that were needlessly cut short.</p>
+<p>On this day in 2001, 2977 people were <a href="https://en.wikipedia.org/wiki/September_11_attacks">killed by terrorists</a>. Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. 2977 lives were needlessly cut short. Collectively, those people might have lived another 99,000 years.</p>
 <pre class="r"><code>dailyGrossMortality &lt;- 1.6e5</code></pre>
-<p>Now take a deep breath. The following day, roughly 160,000 more people died. That’s 50 TIMES the number of people killed by terrorists on 9-11. Try to make yourself feel the size of THAT number. That’s vastly more people than you will ever meet in your lifetime. It’s more than triple the size of my hometown. Imagine three small towns not too far from where you are right now, wiped off the map.</p>
+<p>Now take a deep breath. The following day, roughly 160,000 more people died. That’s more than 53 times the number of people killed by terrorists on 9-11. Try to make yourself feel the size of THAT number. That’s vastly more people than you will ever meet in your lifetime. It’s more than triple the size of my hometown. Imagine three small towns not too far from where you are right now, wiped off the map.</p>
 <pre class="r"><code>daysSince &lt;- as.numeric(Sys.Date()-as.Date(&quot;2001-09-11&quot;))
 dead &lt;- signif(daysSince * dailyGrossMortality, 2)</code></pre>
 <p>Every day since 9-11-2001, <a href="https://en.wikipedia.org/wiki/Mortality_rate">approximately 160,000 people have died</a>. There have been 5474 days since then, meaning 880,000,000 people have died. That’s more than the <a href="https://www.google.com/search?q=Population+of+Europe">entire population of Europe</a>, snuffed out. Try (and fail) to wrap your head around that number. It’s just too overwhelming. Our brains don’t (and can’t) work that way.</p>
@@ -242,6 +243,7 @@ dead &lt;- signif(daysSince * dailyGrossMortality, 2)</code></pre>
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 
