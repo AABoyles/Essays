@@ -2,9 +2,33 @@
 title: "Estimating the Risk of Human Extinction by Catastrophic Global Warfare"
 ---
 
-Most of the Great Filter candidates lack any empirical evidence, and thus are tantamount to impossible to estimate.  We have comparatively excellent data on warfare.
+The Pew Research Center performed [a survey](http://people-press.org/reports/pdf/625.pdf) polling people about the fate of the world in 2050\. The results are fascinating, but there's [one in particular](http://people-press.org/report/?pageid=1740) I'd like to pull apart. 58% of people believe there will likely be another world war between now and then. We can calculate the probability that such a war will occur within this time frame.  Back in the 40's, a Meteorologist named [Lewis Fry Richardson](http://en.wikipedia.org/wiki/Lewis_Fry_Richardson) figured out that armed conflict follows a Power Law Distribution.  The bigger the war, the less likely such a war will ever occur.  Thus we can calculate the probability that some random war meets the scale of a world war (more than 10 million casualties).
+
+Lars Erik Cederman [replicated this result](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&rep=rep1&type=pdf) in a paper in which he took the [Correlates of War](http://www.correlatesofwar.org/) for an even more accurate fit than Richardson found.  He generated this graph to describe it:
 
 [![The cumulative frequency of wars strongly correlates with the magnitude of said wars.](/imgs/ModelingSizeOfWars.png "I get SO much analytic leverage from this figure.")](https://www.cambridge.org/core/journals/american-political-science-review/article/modeling-the-size-of-wars-from-billiard-balls-to-sandpiles/84FFC9F035902B95419977608C5A628A)
+
+So, let's assume that the term "World War" means a war in which the scale of casualties is measured in the tens of millions, like the prior two world wars.  That means that for the purposes of the above equation, $log s approx 7$.  For simplicity's sake, let's also define the inequality $S>s$ as W (for World war). Plugging this into Cederman's Model:
+
+$$\log{P(S>s)}=1.27-.41 \log s$$
+
+$$log P(W)=1.27-.41(7)$$
+
+$$log P(W)=-1.6$$
+
+$$P(W)approx0.025$$
+
+Thus the probability that any random war will reach the scale of a World War is .025 (or 2.5%).  OK, so what about those random wars?  The Correlates of War project lists 86 interstate conflicts that had 1000 or more fatalities over the course of 185 years (1816-2001).  That's a rate of approximately $86/185 =.465$ wars per year.  So we should expect $.465*40 approx 19$ wars.  Now, what is the probability that one of those will be World War III? This is a variation on the [Birthday Problem](http://en.wikipedia.org/wiki/Birthday_problem).  We can't calculate the probability that the big war is in our upcoming wars directly.  However, we can calculate the probability that our set of predicted wars does not contain WWIII. The probability of the first war being the big war is approximately 2.5%.  So the probability of the second war being the big war is 2.5%.  And so on.  Now, the probability that the first war or the second war is the big war is not 2.5% + 2.5% (as is the intuition).  If that were the case, we would see a world war within 41 wars with probability greater than 1, which is paradoxical.  However, the probability that neither the first war nor the second war is the big war is $.975*.975=.951$.  So, a generic equation for the probability that a World War does not exist given _n_ wars would be
+
+$$P(\neg W|n)=.975^n$$
+
+Now, from here it's just a small logical step to the probability that a World war occurs within _n_ wars.  It either doesn't happen (the probability we just calculated), or it does (the probability that's left).  So a generic equation for the probability that some war in _n_ wars is a World War is
+
+$$P(W|n)=1-(.975^n)$$
+
+We can use this equation to figure out if our estimate of 19 wars within the next 40 years contains world war.  Just set _n_ = 19\.  So there's a $1-(.975^{19})=.382$ chance we _will_ see a World war in any given modern 40 year span, the next 40 years included.  58% of the population is probably wrong.
+
+Most of the Great Filter candidates lack any empirical evidence, and thus are tantamount to impossible to estimate.  We have comparatively excellent data on warfare.
 
 Over the course of 177 years, we fought 97 interstate wars varying in magnitude from thousands of casualties to millions. But in order for infighting amongst our species to be the filter that finally gets us, we would need a war three orders of magnitude larger than that: We would see a war which cost billions of lives.
 
