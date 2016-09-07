@@ -1,0 +1,27 @@
+---
+title: "Benefit/Difficulty Ratios"
+---
+
+Whenever I think of a problem that vexes humanity, I ask myself this question: what's the ratio of the solution's benefit to its difficulty? For succinctness, let's call this the B/D ratio. So, what is a B/D ratio?
+
+In economics, there's a commonly-used metric called the cost-benefit ratio. For any decision, there will be costs and there will be benefits. An optimal decision is one in which the cost-benefit ratio is minimized; that is, you get the biggest bang for your buck.
+
+The Benefit/Difficulty ratio is similar. (In fact, if you define *cost* and *difficulty* as the same thing, they're exactly inverses of each other.)
+
+Public Health risks (like smoking or driving cars), catastrophic risks (like global climate change), and existential risks (like Unfriendly AI or a large meteor collision) are all difficult problems.
+
+## A Tale of Two Issues
+
+The United States has a lot of Gun Violence. The CDC estimates that 33,636 people in the United States were killed by firearms in 2013.
+
+However, the citizens of the United States hold increasingly incorrect beliefs about the relationship between the proliferation of guns and the incidence of gun violence. This means that affecting policy change that will mitigate the dangers of gun violence is tantamount to impossible. Gun Control is a windmill that American progressives can't help jousting.
+
+Meanwhile, roughly the same number of people are killed in car crashes each year. I believe (with a high degree of confidence) that fully autonomous vehicles will vastly reduce (and eventually eliminate) deaths caused by vehicular accidents on public roadways.
+
+Gun restrictions have a moderate benefit, but very high difficulty. Large scale adoption of autonomous vehicles has a similarly-sized benefit, and a comparatively low difficulty. Thus, the better course of action is to pursue autonomous vehicles and more-or-less ignore gun violence. And yet, the Democratic Party has elected to target gun violence, and largely neglected the development of safer driving technologies like autonomous vehicles.
+
+## Bigger than Guns and Cars
+
+In contrast to Heart Disease, which killed approximately one order of magnitude more Americans.
+
+In contrast to Malaria, which killed approximately twice as many people again.
