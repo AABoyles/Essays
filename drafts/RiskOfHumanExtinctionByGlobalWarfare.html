@@ -95,6 +95,7 @@ button.code-folding-btn:focus {
 }
 </style>
 
+
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
@@ -219,8 +220,20 @@ $(document).ready(function () {
 </div>
 
 
-<p>Most of the Great Filter candidates lack any empirical evidence, and thus are tantamount to impossible to estimate. We have comparatively excellent data on warfare.</p>
+<p>The Pew Research Center performed <a href="http://people-press.org/reports/pdf/625.pdf">a survey</a> polling people about the fate of the world in 2050. The results are fascinating, but there’s <a href="http://people-press.org/report/?pageid=1740">one in particular</a> I’d like to pull apart. 58% of people believe there will likely be another world war between now and then. We can calculate the probability that such a war will occur within this time frame. Back in the 40’s, a Meteorologist named <a href="http://en.wikipedia.org/wiki/Lewis_Fry_Richardson">Lewis Fry Richardson</a> figured out that armed conflict follows a Power Law Distribution. The bigger the war, the less likely such a war will ever occur. Thus we can calculate the probability that some random war meets the scale of a world war (more than 10 million casualties).</p>
+<p>Lars Erik Cederman <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&amp;rep=rep1&amp;type=pdf">replicated this result</a> in a paper in which he took the <a href="http://www.correlatesofwar.org/">Correlates of War</a> for an even more accurate fit than Richardson found. He generated this graph to describe it:</p>
 <p><a href="https://www.cambridge.org/core/journals/american-political-science-review/article/modeling-the-size-of-wars-from-billiard-balls-to-sandpiles/84FFC9F035902B95419977608C5A628A"><img src="/imgs/ModelingSizeOfWars.png" title="I get SO much analytic leverage from this figure." alt="The cumulative frequency of wars strongly correlates with the magnitude of said wars." /></a></p>
+<p>So, let’s assume that the term “World War” means a war in which the scale of casualties is measured in the tens of millions, like the prior two world wars. That means that for the purposes of the above equation, <span class="math inline">\(log s approx 7\)</span>. For simplicity’s sake, let’s also define the inequality <span class="math inline">\(S&gt;s\)</span> as W (for World war). Plugging this into Cederman’s Model:</p>
+<p><span class="math display">\[\log{P(S&gt;s)}=1.27-.41 \log s\]</span></p>
+<p><span class="math display">\[log P(W)=1.27-.41(7)\]</span></p>
+<p><span class="math display">\[log P(W)=-1.6\]</span></p>
+<p><span class="math display">\[P(W)approx0.025\]</span></p>
+<p>Thus the probability that any random war will reach the scale of a World War is .025 (or 2.5%). OK, so what about those random wars? The Correlates of War project lists 86 interstate conflicts that had 1000 or more fatalities over the course of 185 years (1816-2001). That’s a rate of approximately <span class="math inline">\(86/185 =.465\)</span> wars per year. So we should expect <span class="math inline">\(.465*40 approx 19\)</span> wars. Now, what is the probability that one of those will be World War III? This is a variation on the <a href="http://en.wikipedia.org/wiki/Birthday_problem">Birthday Problem</a>. We can’t calculate the probability that the big war is in our upcoming wars directly. However, we can calculate the probability that our set of predicted wars does not contain WWIII. The probability of the first war being the big war is approximately 2.5%. So the probability of the second war being the big war is 2.5%. And so on. Now, the probability that the first war or the second war is the big war is not 2.5% + 2.5% (as is the intuition). If that were the case, we would see a world war within 41 wars with probability greater than 1, which is paradoxical. However, the probability that neither the first war nor the second war is the big war is <span class="math inline">\(.975*.975=.951\)</span>. So, a generic equation for the probability that a World War does not exist given <em>n</em> wars would be</p>
+<p><span class="math display">\[P(\neg W|n)=.975^n\]</span></p>
+<p>Now, from here it’s just a small logical step to the probability that a World war occurs within <em>n</em> wars. It either doesn’t happen (the probability we just calculated), or it does (the probability that’s left). So a generic equation for the probability that some war in <em>n</em> wars is a World War is</p>
+<p><span class="math display">\[P(W|n)=1-(.975^n)\]</span></p>
+<p>We can use this equation to figure out if our estimate of 19 wars within the next 40 years contains world war. Just set <em>n</em> = 19. So there’s a <span class="math inline">\(1-(.975^{19})=.382\)</span> chance we <em>will</em> see a World war in any given modern 40 year span, the next 40 years included. 58% of the population is probably wrong.</p>
+<p>Most of the Great Filter candidates lack any empirical evidence, and thus are tantamount to impossible to estimate. We have comparatively excellent data on warfare.</p>
 <p>Over the course of 177 years, we fought 97 interstate wars varying in magnitude from thousands of casualties to millions. But in order for infighting amongst our species to be the filter that finally gets us, we would need a war three orders of magnitude larger than that: We would see a war which cost billions of lives.</p>
 <p><span class="math display">\[log P(S&gt;s)=1.27-0.41 log s\]</span></p>
 <p><span class="math display">\[log P(S&gt;s)=1.27-0.41(10)\]</span></p>
@@ -248,6 +261,7 @@ $(document).ready(function () {
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 

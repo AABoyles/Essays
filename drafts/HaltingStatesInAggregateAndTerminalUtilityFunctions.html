@@ -11,7 +11,7 @@
 
 
 
-<title>Life Cheat Codes</title>
+<title>Halting States in Aggregative and Terminal Utilities</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -215,37 +215,25 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Life Cheat Codes</h1>
+<h1 class="title toc-ignore">Halting States in Aggregative and Terminal Utilities</h1>
 
 </div>
 
 
-<p>Status: <strong>Perpetually Incomplete</strong>, Epistemic Status: <strong>Uncertain</strong></p>
-<div id="happiness" class="section level2">
-<h2>Happiness</h2>
-<ul>
-<li>Make close friends</li>
-</ul>
+<p>Consider a generic utility function: <span class="math display">\[U(x)=Sigma_{i:1to n}beta_i x_i\]</span> In which <span class="math inline">\(x\)</span> is a vector of <span class="math inline">\(n\)</span> characteristics of the present state of the Universe and <span class="math inline">\(beta_i\)</span> is the weight assigned to the <span class="math inline">\(i\)</span>th characteristic.</p>
+<div id="halting-states-and-characteristics" class="section level2">
+<h2>Halting States and Characteristics</h2>
+<p>Let us define a halting state as an agent’s status as either operating or halted. Accordingly, the halting characteristic is some characteristic <span class="math inline">\(x_h\)</span> which refers to the agent’s halting status.</p>
 </div>
-<div id="life-extension" class="section level2">
-<h2>Life Extension</h2>
-<ul>
-<li>Intermittently Fast</li>
-<li>Sign up for Cryonics</li>
-</ul>
+<div id="terminal-utility-calculations" class="section level2">
+<h2>Terminal Utility Calculations</h2>
+<p>Now, consider an AI which implements this Utility function. Specifically, let us consider an AI that maximizes <span class="math inline">\(U(x)\)</span> over its entire lifespan.</p>
 </div>
-<div id="expertise" class="section level2">
-<h2>Expertise</h2>
-<ul>
-<li>Listen to Audiobooks (sped up)</li>
-</ul>
-</div>
-<div id="productivity" class="section level2">
-<h2>Productivity</h2>
-<ul>
-<li>Automation, automation, automation!</li>
-<li>Experiment with Nootropics</li>
-</ul>
+<div id="aggregate-utility-calculations" class="section level2">
+<h2>Aggregate Utility Calculations</h2>
+<p>Now, consider an AI which implements this Utility function, but maximizes <span class="math inline">\(\sum_{i=0}^t U_i(x)\)</span> for all times <span class="math inline">\(t\)</span> (hence, “aggregate”).</p>
+<p>In any discrete time step <span class="math inline">\(i\)</span>, an agent can receive a utility between 0 and 1 for the state of the universe. Thus orders related to halting will yield some positive utility, but result in less total utility for any constant discounting factor greater than 0.</p>
+<p>Thus, a discounting factor of 0 makes an aggregative utility calculation isomorphic to a terminal utility calculation.</p>
 </div>
 
 
