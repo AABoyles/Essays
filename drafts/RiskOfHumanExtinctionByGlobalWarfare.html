@@ -220,34 +220,42 @@ $(document).ready(function () {
 </div>
 
 
-<p>The Pew Research Center performed <a href="http://people-press.org/reports/pdf/625.pdf">a survey</a> polling people about the fate of the world in 2050. The results are fascinating, but there’s <a href="http://people-press.org/report/?pageid=1740">one in particular</a> I’d like to pull apart. 58% of people believe there will likely be another world war between now and then. We can calculate the probability that such a war will occur within this time frame. Back in the 40’s, a Meteorologist named <a href="http://en.wikipedia.org/wiki/Lewis_Fry_Richardson">Lewis Fry Richardson</a> figured out that armed conflict follows a Power Law Distribution. The bigger the war, the less likely such a war will ever occur. Thus we can calculate the probability that some random war meets the scale of a world war (more than 10 million casualties).</p>
-<p>Lars Erik Cederman <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&amp;rep=rep1&amp;type=pdf">replicated this result</a> in a paper in which he took the <a href="http://www.correlatesofwar.org/">Correlates of War</a> for an even more accurate fit than Richardson found. He generated this graph to describe it:</p>
-<p><a href="https://www.cambridge.org/core/journals/american-political-science-review/article/modeling-the-size-of-wars-from-billiard-balls-to-sandpiles/84FFC9F035902B95419977608C5A628A"><img src="/imgs/ModelingSizeOfWars.png" title="I get SO much analytic leverage from this figure." alt="The cumulative frequency of wars strongly correlates with the magnitude of said wars." /></a></p>
-<p>So, let’s assume that the term “World War” means a war in which the scale of casualties is measured in the tens of millions, like the prior two world wars. That means that for the purposes of the above equation, <span class="math inline">\(log s approx 7\)</span>. For simplicity’s sake, let’s also define the inequality <span class="math inline">\(S&gt;s\)</span> as W (for World war). Plugging this into Cederman’s Model:</p>
-<p><span class="math display">\[\log{P(S&gt;s)}=1.27-.41 \log s\]</span></p>
-<p><span class="math display">\[log P(W)=1.27-.41(7)\]</span></p>
-<p><span class="math display">\[log P(W)=-1.6\]</span></p>
-<p><span class="math display">\[P(W)approx0.025\]</span></p>
-<p>Thus the probability that any random war will reach the scale of a World War is .025 (or 2.5%). OK, so what about those random wars? The Correlates of War project lists 86 interstate conflicts that had 1000 or more fatalities over the course of 185 years (1816-2001). That’s a rate of approximately <span class="math inline">\(86/185 =.465\)</span> wars per year. So we should expect <span class="math inline">\(.465*40 approx 19\)</span> wars. Now, what is the probability that one of those will be World War III? This is a variation on the <a href="http://en.wikipedia.org/wiki/Birthday_problem">Birthday Problem</a>. We can’t calculate the probability that the big war is in our upcoming wars directly. However, we can calculate the probability that our set of predicted wars does not contain WWIII. The probability of the first war being the big war is approximately 2.5%. So the probability of the second war being the big war is 2.5%. And so on. Now, the probability that the first war or the second war is the big war is not 2.5% + 2.5% (as is the intuition). If that were the case, we would see a world war within 41 wars with probability greater than 1, which is paradoxical. However, the probability that neither the first war nor the second war is the big war is <span class="math inline">\(.975*.975=.951\)</span>. So, a generic equation for the probability that a World War does not exist given <em>n</em> wars would be</p>
-<p><span class="math display">\[P(\neg W|n)=.975^n\]</span></p>
-<p>Now, from here it’s just a small logical step to the probability that a World war occurs within <em>n</em> wars. It either doesn’t happen (the probability we just calculated), or it does (the probability that’s left). So a generic equation for the probability that some war in <em>n</em> wars is a World War is</p>
-<p><span class="math display">\[P(W|n)=1-(.975^n)\]</span></p>
-<p>We can use this equation to figure out if our estimate of 19 wars within the next 40 years contains world war. Just set <em>n</em> = 19. So there’s a <span class="math inline">\(1-(.975^{19})=.382\)</span> chance we <em>will</em> see a World war in any given modern 40 year span, the next 40 years included. 58% of the population is probably wrong.</p>
 <p>Most of the Great Filter candidates lack any empirical evidence, and thus are tantamount to impossible to estimate. We have comparatively excellent data on warfare.</p>
-<p>Over the course of 177 years, we fought 97 interstate wars varying in magnitude from thousands of casualties to millions. But in order for infighting amongst our species to be the filter that finally gets us, we would need a war three orders of magnitude larger than that: We would see a war which cost billions of lives.</p>
-<p><span class="math display">\[log P(S&gt;s)=1.27-0.41 log s\]</span></p>
-<p><span class="math display">\[log P(S&gt;s)=1.27-0.41(10)\]</span></p>
-<p><span class="math display">\[log P(S&gt;s)=-2.83\]</span></p>
-<p><span class="math display">\[P(S&gt;s)=.00148\]</span></p>
-<p>So, our probability of experiencing a war which eliminates all (or almost all) humanity in any given 177 years is around .15%.</p>
-<div id="annual-probability" class="section level2">
-<h2>Annual Probability</h2>
-<p>Given that this is the cumulative risk for that time, we can compute the annual probability by determining the probability value which is</p>
-<p><span class="math display">\[1-P(S&gt;s)=(1-x)^{177}\]</span></p>
-<p>Using <span class="math inline">\(P(S&gt;s)\)</span> and solving for <span class="math inline">\(x\)</span> gives us <span class="math inline">\(x = 8.5*10^-6\)</span></p>
-<p>So, how far do we have to look to see the War to end all Wars (by virtue of ending humanity)? That depends on the probability with which you would see that war. Say we want to have a 50% chance of seeing this war.</p>
-<p><span class="math display">\[.5=(1-[8.5*10^{-6}])^x\]</span></p>
-<p><span class="math inline">\(_x_ = \text{81,546 years}\)</span></p>
+<div id="the-outside-view" class="section level2">
+<h2>The Outside View</h2>
+<p>Back in the 40’s, a Meteorologist named <a href="http://en.wikipedia.org/wiki/Lewis_Fry_Richardson">Lewis Fry Richardson</a> figured out that armed conflict follows a Power Law Distribution. <em>The bigger the war, the less likely it is that such a war will occur</em>. This point should be pretty intuitive. Lars Erik Cederman <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&amp;rep=rep1&amp;type=pdf">replicated this result</a> in a paper in which he took the casualty estimates from the <a href="http://www.correlatesofwar.org/">Correlates of War</a>. He generated this graph to describe it:</p>
+<p><a href="https://www.cambridge.org/core/journals/american-political-science-review/article/modeling-the-size-of-wars-from-billiard-balls-to-sandpiles/84FFC9F035902B95419977608C5A628A"><img src="/imgs/ModelingSizeOfWars.png" title="I get SO much analytic leverage from this figure." alt="The cumulative frequency of wars strongly correlates with the magnitude of said wars." /></a></p>
+<p>Note the equation describing the regression model:</p>
+<p><span class="math display">\[\log{P(S&gt;s)}=1.27-.41 \log s\]</span></p>
+<p>If we accept this model at face value, we must bring many assumptions along with it. Most prominently, we’ll assume that wars are independent events, and that the technical ability to scale wars upward is static. Both of these are false, but provide a useful analytical ground upon which to build.</p>
+<p>So, using Cederman’s model, we can calculate the probability that a random war will end up being of a certain size (i.e. number of casualties). Let us consider the case of an existentially risky war–that is, one in which the entire population of humans was destroyed. At the time of writing (September 2016), the <a href="http://www.census.gov/popclock/?intcmp=home_pop">US Census Bureau estimates</a> the Global Population to be around 7.338 Billion. The <a href="https://esa.un.org/unpd/wpp/DataQuery/">UN estimates</a> that the global popultation in 2016 will eclipse 7.432 Billion. Let’s split the difference and say that there are approximately 7.385 billion people.</p>
+<p>Here we’ve accumulated a third important assumption: the global population is static. Again, this is false: it has consistently grown throughout recorded history, save for a moderate recession caused by the black plague. We will investigate this phenomenon in due course, but for now, let it suffice to assume that the global population is (and will continue to be) approximately stagnant at its current level. Setting the magnitude of of the relevant war (<span class="math inline">\(s\)</span>), we get:</p>
+<p><span class="math display">\[\log P(S&gt;s)=1.27-.41 \log (7.385 * 10^9)\]</span></p>
+<p>And solving for <span class="math inline">\(P(S&gt;s)\)</span> gives us <span class="math inline">\(P(S&gt;s)\approx0.001675\)</span>. Thus the probability that any random war will reach the scale of an existential threat is on the order of <span class="math inline">\(.001675\)</span>.</p>
+<p>Note the word <em>random</em>. We can’t calculate the probability that the big war is in our upcoming wars directly. However, we can calculate the probability that our set of predicted wars does not contain WWIII (This is a variation on the <a href="http://en.wikipedia.org/wiki/Birthday_problem">Birthday Problem</a>.) The probability of the first war being existentially risky is approximately <span class="math inline">\(.001675\)</span>. So the probability of the second war being the big war is <span class="math inline">\(.001675\)</span>. And so on (recalling our assumption that wars are independent events). Now, the probability that neither the first war nor the second war is the war which destroys humanity is <span class="math inline">\((1-.001675)^2 \approx.9967\)</span>. Generalizing this formulation:</p>
+<p><span class="math display">\[P(S&gt;s|n)=(1-10^{1.27-.41*\log s})^n\]</span></p>
+<p>Now, from here it’s just a small logical step to the probability that a war of given magnitude occurs within <span class="math inline">\(n\)</span> wars.</p>
+<p><span class="math display">\[P(S&lt;=s|n)=1-(1-10^{1.27-.41*\log s})^n\]</span></p>
+<p>So, how far do we have to look to see the War to end all Wars (by virtue of ending humanity)? More or less fortunately, we cannot estimate this directly: we can only propose probabilities over numbers of wars. So, for example, let’s say we’re curious about the time frame for which an existentially risky war is 50% likely. Using our previous estimates for the magnitude of an existentially risky war:</p>
+<p><span class="math display">\[P(S&lt;=s|n) = .5 \approx 1- (1 - .001675)^n\]</span></p>
+<p>Solving for <span class="math inline">\(n\)</span> gives us <span class="math inline">\(n \approx 413.5\)</span>. So an existentially risky war should occur (with probability .5) within 414 wars or so.</p>
+</div>
+<div id="dealing-with-population-dynamics" class="section level2">
+<h2>Dealing with Population Dynamics</h2>
+<p>The global population has grown significantly in the last 10,000 years. As the global population grows, the probability of an existentially risky war drops. Partly, this is because the trend of the probability of a war is inversely correlated with the number of casualties that war will cause.</p>
+<div id="bang-pow" class="section level3">
+<h3>Bang, Pow</h3>
+<p>There is further reason to be optimistic: even a global thermonuclear war is unlikely to destroy every living population humans capable of repopulating the Earth. The greatest danger of an existentially risky war is a scenario in which the human population is decimated (“bang”), and a second catastrophic risk (“pow”) finishes off the feeble population. For example, consider a war which kills all but a few tens of thousands of humans. A second war of sufficient magnitude to destroy humanity is vastly more likely, simply by virtue of fewer humans existing to be killed. Neither of these catastrophes need be wars, either. Any global catastrophic risk that doesn’t completely wipe out humanity will suffice: a pandemic, near-Earth object collision, or supervolcanic eruption come to mind.</p>
+</div>
+<div id="dealing-with-population-decline" class="section level3">
+<h3>Dealing with Population Decline</h3>
+<p>As birth control has become available, fertility rates have dropped, well below the replacement rate in some advanced economies.</p>
+</div>
+</div>
+<div id="dealing-with-new-technology" class="section level2">
+<h2>Dealing with New Technology</h2>
+<p>This outside view provides a rather rosy perspective on the probability of war as existential risk. However, we have thus far neglected the progress of technology.</p>
+<p>Humanity has only recently developed the technology to cause disasters on the scale of the entire population. Prior to the dawn of the nuclear era, industrialized warfare threatened hundreds of millions, and killed tens of millions. Prior to the dawn of flight, ground and naval warfare only meaningfully threatened millions of people at once.</p>
 </div>
 
 
