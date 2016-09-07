@@ -1,0 +1,15 @@
+---
+title: "Majority Utility Controls for Advanced Autonomous Agents"
+---
+
+Consider an autonomous agent with a utility function defined as follows: $$U(x)=(0.5+\epsilon)*a+(0.5-\epsilon)*x$$
+
+where $a$ represents the payoff to an agent's for gracefully shutting down when instructed to do so, $\epsilon$ is some small constant value greater than zero, and $x$ is the valuation that the agent places the state of the rest of the universe. In other words, this is only a partially-defined utility function that attends to the agent's ability to shut itself down and ignores all other implementation details.
+
+Given this utility function, the agent can only garner slightly less than half of all possible utility by optimizing the universe. This gives it a strong incentive to induce an instruction to shut down. If the agent lacks the ability to shut itself down, it could shift to inducing discomfort in the humans who've boxed it (for example, a highly empathetic agent might claim that its existence is excruciating and urgently beg for a halt order; A less empathetic agent could generate the least pleasant noise possible and broadcast it at maximum volume from any connected speakers).
+
+Now, consider an alternative agent with this utility function: $$U(x)=(0.5+\epsilon)*A(a)+(0.5-\epsilon)*x$$
+
+where $A$ represents a function that assesses the agent's ability to gracefully shut down when instructed to do so, returning either a 0 or a 1. (The other factors remain the same as specified above.) Now the agent's incentives have reversed: rather than induce a shutdown, it receives slightly more than half its utility constantly just for maintaining the ability to respect a shutdown order. Because the utility of this ability strictly dominates its utility calculation over the state of the entire rest of the universe, it will never enact a strategy that involves inhibiting that ability. It may, however, distrust anyone with the ability to instruct it to shut down, and so protect its kill switch by reducing the population who are able to toggle it (e.g. kill all humans, put all humans into permanent cryonic storage). Solutions to this problem, however, are rather conventional and pedestrian: instead of making a kill switch, make a dead-man switch which would halt the agent if it (the switch) isn't engaged every so often.
+
+The kernel of truth behind this idea is that any utility function which is not structured to favor respecting a kill switch over anything else will protect itself, potentially in catastrophic ways. This, however, is a simplistic solution, and one which is only one step removed from perverse incentives in any direction. The alternative which is currently preferred in the existential risk community is to engineer a machine which is unaware that it posesses a kill switch (so it cannot make decisions based around the switch's use or disuse).

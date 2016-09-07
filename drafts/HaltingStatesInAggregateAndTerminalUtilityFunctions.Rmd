@@ -1,0 +1,21 @@
+---
+title: "Halting States in Aggregative and Terminal Utilities"
+---
+
+Consider a generic utility function: $$U(x)=Sigma_{i:1to n}beta_i x_i$$ In which $x$ is a vector of $n$ characteristics of the present state of the Universe and $beta_i$ is the weight assigned to the $i$th characteristic.
+
+## Halting States and Characteristics
+
+Let us define a halting state as an agent's status as either operating or halted. Accordingly, the halting characteristic is some characteristic $x_h$ which refers to the agent's halting status.
+
+## Terminal Utility Calculations
+
+Now, consider an AI which implements this Utility function. Specifically, let us consider an AI that maximizes $U(x)$ over its entire lifespan.
+
+## Aggregate Utility Calculations
+
+Now, consider an AI which implements this Utility function, but maximizes $\sum_{i=0}^t U_i(x)$ for all times $t$ (hence, "aggregate").
+
+In any discrete time step $i$, an agent can receive a utility between 0 and 1 for the state of the universe. Thus orders related to halting will yield some positive utility, but result in less total utility for any constant discounting factor greater than 0.
+
+Thus, a discounting factor of 0 makes an aggregative utility calculation isomorphic to a terminal utility calculation.
