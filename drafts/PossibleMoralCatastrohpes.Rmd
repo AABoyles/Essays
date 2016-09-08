@@ -1,0 +1,109 @@
+---
+title: "Possible Moral Catastrophes"
+---
+
+[The Slavery Example]
+
+Please take note: I do not believe that all of these are moral catastrophes on par with the moral catastrophes of the past. In fact, I (sometimes vehemently) disagree with the worldview which advances 
+
+Possible Moral Catastrophes:
+
+## Existential Risk Denial
+
+While most people are plainly ignorant of existential risks to humanity, some are aware of the theory of existential risk and actively disdain the ideas. While a degree of this is necessary for healthy academic discourse, stalwart opposition can be taken too far. In particular, *ad hominem* and *ad poplum* attacks on the community are particularly effective at disenchanting people from engaging with their ideas [citation needed].
+
+### Why it is
+
+Lots and lots of human lives at stake
+
+### Why it isn't
+
+Pascal's Mugging
+
+Maybe public attention to existential risk doesn't help existential risk mitigation efforts anyway.
+
+## Inhibiting Life Extension Research
+
+### Why it is
+
+Lots and lots of human life-years at stake
+
+### Why it isn't
+
+"Deathism" may be inextricable from society.
+
+## Shitty International Public Health
+
+### Why it is
+
+Tons of kids die from Malaria
+
+### Why it isn't
+
+It's easy to take pot-shots at non-profits that aren't doing an awesome job of preventing people from dying, but designing and delivering an effective intervention is really hard. We shouldn't look at the distributers of malaria nets as the bad guys because they take a paycheck every two weeks, while kids are still dying.
+
+International Public Health is actually pretty good, and getting better fast.
+
+We couldn't organize institutions to do better sooner.
+
+## Abortion
+
+### Why it is
+
+Lots and lots of human life-years at stake
+
+### Why it isn't
+
+Diminished moral significance of fetuses
+
+Abortion substitutes for infanticide, which is a far greater moral atrocity
+
+## Humanitarian Emergencies
+
+[Syria Example]
+
+[Venezuela Example]
+
+### Why it is
+
+Very high certainty, many living humans
+
+### Why it isn't
+
+
+
+## Drug Regulation
+
+### Why it is
+
+[Scott Alexander](http://slatestarcodex.com/2016/09/07/reverse-voxsplaining-brand-name-drugs/):
+
+> In 2060 there will probably be 420 million Americans and 523 million Europeans. And suppose that whatever changes we make in drug regulations today last for one human lifespan, so that everybody has a chance to be 55-60. So about a billion people each losing about 0.7 years of their life equals 700 million life-years. Since some people live in countries outside the US and Europe [citation needed] and they also benefit from First-World-invented medications, let’s round this up to about a billion life-years lost.
+
+> What was the worst thing that ever happened? One strong contender is Mao’s Great Leap Forward, in which ineffective agricultural reforms and very effective purges killed 45 million people. Most of these people were probably already adults, and lifespan in Mao’s China wasn’t too high, so let’s say that each death from the Great Leap Forward cost what would otherwise be twenty healthy life years. In that case, the worst thing that has ever happened until now cost 45 million * 20 = 900 million life-years.
+
+> Once again, RAND’s calculations plus my own Fermi estimate suggest that prescription drug price regulation would cost one billion life-years, which would very slightly edge out Communist China for the title of Worst Thing Ever.
+
+### Why it isn't
+
+Requires very good information (or very strong assumptions) about counterfactuals.
+
+## Factory Farming
+
+### Why it is
+
+Lots of suffering
+
+### Why it isn't
+
+Diminished moral significance of animals
+
+## Wild Animal Suffering
+
+### Why it is
+
+Lots of suffering
+
+### Why it isn't
+
+Diminished moral significance of animals
