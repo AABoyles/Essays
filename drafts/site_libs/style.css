@@ -21,3 +21,7 @@ img {
 .infobox td {
   padding: 5px;
 }
+
+.plotly {
+  margin: 0 auto;
+}
