@@ -6,9 +6,79 @@ Most of the Great Filter candidates lack any empirical evidence, and thus are ta
 
 ## The Outside View
 
-Back in the 40's, a Meteorologist named [Lewis Fry Richardson](http://en.wikipedia.org/wiki/Lewis_Fry_Richardson) figured out that armed conflict follows a Power Law Distribution. *The bigger the war, the less likely it is that such a war will occur*. This point should be pretty intuitive. Lars Erik Cederman [replicated this result](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&rep=rep1&type=pdf) in a paper in which he took the casualty estimates from the [Correlates of War](http://www.correlatesofwar.org/). He generated this graph to describe it:
+Back in the 40's, a Meteorologist named [Lewis Fry Richardson](http://en.wikipedia.org/wiki/Lewis_Fry_Richardson) figured out that armed conflict follows a Power Law Distribution. *The bigger the war, the less likely it is that such a war will occur*. This point should be pretty intuitive. Lars Erik Cederman [replicated this result](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&rep=rep1&type=pdf) in a paper in which he took the casualty estimates from the [Correlates of War](http://www.correlatesofwar.org/). Cederman, however, restricted the scope of his study to interstate warfare, 
 
-[![The cumulative frequency of wars strongly correlates with the magnitude of said wars.](/imgs/ModelingSizeOfWars.png "I get SO much analytic leverage from this figure.")](https://www.cambridge.org/core/journals/american-political-science-review/article/modeling-the-size-of-wars-from-billiard-balls-to-sandpiles/84FFC9F035902B95419977608C5A628A)
+```{r, message=FALSE}
+## Download and Merge COW Datasets
+library("readr")
+library("magrittr")
+library("dplyr")
+library("ShRoud")
+library("plotly")
+
+interstatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/inter-state-war-data/at_download/file") %>%
+  mutate(StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)) %>%
+  group_by(WarNum, WarName) %>%
+  summarise(
+    StartYear = min(min(StartYear1), min(StartYear2)),
+    EndYear = max(max(EndYear1), max(EndYear2)),
+    TotalCombatDeaths = sum(BatDeath)
+  ) %>%
+  mutate(Type = "Interstate")
+
+intrastatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/intra-state-war-data-v4-1/at_download/file") %>%
+  mutate(
+    BatDeath = SideADeaths + SideBDeaths, 
+    StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)
+  ) %>%
+  group_by(WarNum, WarName) %>%
+  summarise(
+    StartYear = min(min(StartYear1), min(StartYear2)),
+    EndYear = max(max(EndYear1), max(EndYear2)),
+    TotalCombatDeaths = sum(BatDeath)
+  ) %>%
+  filter(TotalCombatDeaths > 0) %>%
+  mutate(Type = "Intrastate")
+
+extrastatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/extra-state-war-data/at_download/file") %>%
+  mutate(
+    BatDeath = BatDeath + NonStateDeaths,
+    StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)
+  ) %>%
+  group_by(WarNum, WarName) %>%
+  summarise(
+    StartYear = min(min(StartYear1), min(StartYear2)),
+    EndYear = max(max(EndYear1), max(EndYear2)),
+    TotalCombatDeaths = sum(BatDeath)
+  ) %>%
+  filter(TotalCombatDeaths > 0) %>%
+  mutate(Type = "Extrastate")
+
+nonstatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/non-state-war-data-1/at_download/file") %>%
+  select(WarNum, WarName, StartYear, EndYear, TotalCombatDeaths) %>%
+  filter(TotalCombatDeaths > 0) %>%
+  mutate(Type = "Nonstate")
+
+wars <- as.data.frame(interstatewars) %>%
+  rbind(as.data.frame(intrastatewars)) %>%
+  rbind(as.data.frame(extrastatewars)) %>%
+  rbind(as.data.frame(nonstatewars)) %>%
+  filter(TotalCombatDeaths > 1000) %>%
+  mutate(logDeaths = log10(TotalCombatDeaths)) %>%
+  arrange(desc(logDeaths)) %>%
+  mutate(logRank = max0(log10(1:n())))
+
+plot_ly(wars, x = logDeaths, y = logRank, text = paste0(WarName, " (", StartYear, "-", EndYear, ")<br />", prettyNum(TotalCombatDeaths, big.mark = ","), " casualties"), mode = "markers", color = Type)
+```
+
+```{r}
+library("intubate")
+library("ShRoud")
+
+wars %>%
+  ntbt_lm(logRank ~ logDeaths) %>%
+  summary()
+```
 
 Note the equation describing the regression model:
 
@@ -32,15 +102,62 @@ Now, from here it's just a small logical step to the probability that a war of g
 
 $$P(S<=s|n)=1-(1-10^{1.27-.41*\log s})^n$$
 
-So, how far do we have to look to see the War to end all Wars (by virtue of ending humanity)? More or less fortunately, we cannot estimate this directly: we can only propose probabilities over numbers of wars. So, for example, let's say we're curious about the time frame for which an existentially risky war is 50% likely. Using our previous estimates for the magnitude of an existentially risky war:
+So, how far do we have to look to see the War to end all Wars (by virtue of ending humanity)? More or less fortunately, we cannot estimate this directly: we can only estimate probabilities over numbers of wars. Using our previous estimates for the magnitude of an existentially risky war:
 
 $$P(S<=s|n) = .5 \approx 1- (1 - .001675)^n$$
 
-Solving for $n$ gives us $n \approx 413.5$. So an existentially risky war should occur (with probability .5) within 414 wars or so.
+We can plot this function:
+
+```{r}
+#TODO: Fix the Axis Titles
+plot_ly(x = 1:1000, y = 1-(1-.001675)^(1:1000), type = "line")
+```
+
+So, for example, let's say we're curious about the time frame for which an existentially risky war is 50% likely. Solving for $n$ gives us $n \approx 413.5$ (which we can confirm visually using the above plot). So an existentially risky war should occur (with probability .5) within 414 wars or so.
 
 ## Dealing with Population Dynamics
 
-The global population has grown significantly in the last 10,000 years. As the global population grows, the probability of an existentially risky war drops. Partly, this is because the trend of the probability of a war is inversely correlated with the number of casualties that war will cause.
+```{r, message=FALSE}
+pop <- read_csv("http://ourworldindata.org/wp-content/uploads/nvd3/nvd3_lineChart_Kremer_CSV_WorldPop_MillionYears/Kremer_CSV_WorldPop_MillionYears.csv") %>%
+  filter(year >= 1800, year < 2016) %>%
+  group_by(year) %>%
+  summarise(population = mean(c(`World Population after 1000 CE (Kremer's estimates)`, `World Population 1950-2013 (US Census)`, `UN Projection (Medium) - 2012 Revision`), na.rm=TRUE)*1e6)
+
+plot_ly(pop, x=year, y=population, type="line")
+```
+
+A note on data quality: following 1950, we have relatively good, precise data about the global population. Prior to that, we have more-or-less just good guesses, born out of heroic research efforts. Between these guesses, there isn't much hope for any precision. Accordingly, we should treat any conclusions which rely upon precise estimates of the global population as suspect.
+
+For present purposes, simply being within 1/10 of an order of magnitude should suffice. Sadly, we cannot even claim this level of certainty. In order to fit our population estimates, we'll use [Sergey Kapitza's phenomonological model of global population growth](https://web.archive.org/web/20090511041230/http://srs.dl.ac.uk/SPEAKERS/KAPITZA/Uspekhi_96.html), which can be roughly stated as:
+
+$$N\approx4.43*10^9*\arctan{\frac{42}{2007-Y}}$$
+
+```{r, message=FALSE}
+population <- function(year){
+  C <- 1.86e11
+  T <- 2007
+  tau <- 42
+  return(C/tau*atan(tau/(T-year)))
+}
+
+extrapolated <- data.frame(
+  year = 1800:2007,
+  estimate = population(1800:2007)
+) %>% 
+  left_join(pop)
+
+plot_ly(extrapolated, x=year, y=estimate, type="line")
+```
+
+```{r}
+extrapolated %>%
+  ntbt_lm(estimate ~ population) %>%
+  summary()
+
+plot_ly(extrapolated, x = population, y = estimate, type = "scatter", mode = "markers")
+```
+
+Recall that this was analysis predicated on the assumption that the global population will endure many wars without changing significantly. This is obviously false: any war will reduce the population, but by a tiny amount relative to the speed of population growth. The global population has grown significantly in the last 200 years. As the global population grows, the probability of an existentially risky war drops. This is partly because the trend of the probability of a war is inversely correlated with the number of casualties that war will cause.
 
 ### Bang, Pow
 
@@ -48,10 +165,21 @@ There is further reason to be optimistic: even a global thermonuclear war is unl
 
 ### Dealing with Population Decline
 
-As birth control has become available, fertility rates have dropped, well below the replacement rate in some advanced economies.
+As birth control has become available, fertility rates have dropped, well below the replacement rate in some advanced economies. There is a possibility that humanity will experience a natural population decline in the near-distant future.
 
 ## Dealing with New Technology
 
 This outside view provides a rather rosy perspective on the probability of war as existential risk. However, we have thus far neglected the progress of technology.
 
 Humanity has only recently developed the technology to cause disasters on the scale of the entire population. Prior to the dawn of the nuclear era, industrialized warfare threatened hundreds of millions, and killed tens of millions. Prior to the dawn of flight, ground and naval warfare only meaningfully threatened millions of people at once.
+
+```{r}
+## Merge in Annual Global Population Estimates
+## Show largest body count over time
+## Is our ability to scale warfare growing faster than our population growth?
+## If no, then an existentially risky war may not actually be meaningfully possible until population trends change.
+```
+
+```{r}
+
+```
