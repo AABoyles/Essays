@@ -1,20 +1,43 @@
 ---
 title: "Estimating the Risk of Human Extinction by Catastrophic Global Warfare"
+bibliography: ../bibliography.bib
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
+
+# Introduction
 
 Most of the Great Filter candidates lack any empirical evidence, and thus are tantamount to impossible to estimate. We have comparatively excellent data on warfare.
 
 ## The Outside View
 
-Back in the 40's, a Meteorologist named [Lewis Fry Richardson](http://en.wikipedia.org/wiki/Lewis_Fry_Richardson) figured out that armed conflict follows a Power Law Distribution. *The bigger the war, the less likely it is that such a war will occur*. This point should be pretty intuitive. Lars Erik Cederman [replicated this result](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&rep=rep1&type=pdf) in a paper in which he took the casualty estimates from the [Correlates of War](http://www.correlatesofwar.org/). Cederman, however, restricted the scope of his study to interstate warfare, 
+One of the most robust empirical properties of conflict (of which we are presently aware) is the 
+
+[Lewis Fry Richardson](http://en.wikipedia.org/wiki/Lewis_Fry_Richardson) figured out that incidents of violence follow a Power-Law Distribution [@Richardson1948-de]. Stated simply, the larger a war, the less common wars of at least that size will be.
 
 ```{r, message=FALSE}
-## Download and Merge COW Datasets
-library("readr")
+library("HistData")
 library("magrittr")
 library("dplyr")
 library("ShRoud")
 library("plotly")
+data(Quarrels)
+
+Quarrels %>%
+  group_by(logDeaths) %>%
+  summarise(numWars = n()) %>%
+  arrange(desc(logDeaths)) %>%
+  mutate(logLargerWars = 7*max0(log10(cumsum(numWars)))) %>%
+  plot_ly(x=logDeaths, y=logLargerWars, type="point", mode="markers")
+```
+
+Richardson also plotted this against estimates of the global murder rate, proposing that more-or-less all incidents of deadly violence were exemplars of a single, continuous phenomenon.
+
+```{r, message=FALSE}
+## Download and Merge COW Datasets
+library("readr")
 
 interstatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/inter-state-war-data/at_download/file") %>%
   mutate(StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)) %>%
@@ -73,7 +96,6 @@ plot_ly(wars, x = logDeaths, y = logRank, text = paste0(WarName, " (", StartYear
 
 ```{r}
 library("intubate")
-library("ShRoud")
 
 wars %>%
   ntbt_lm(logRank ~ logDeaths) %>%
@@ -82,40 +104,44 @@ wars %>%
 
 Note the equation describing the regression model:
 
-$$\log{P(S>s)}=1.27-.41 \log s$$
+$$\log{P(S>s)}\approx2.017-.633 \log s$$
 
-If we accept this model at face value, we must bring many assumptions along with it. Most prominently, we'll assume that wars are independent events, and that the technical ability to scale wars upward is static. Both of these are false, but provide a useful analytical ground upon which to build.
+If we accept this model at face value, we must bring many assumptions along with it. Most prominently, we'll assume that wars are independent events, and that the technical ability to scale wars upward is static. Both of these are false, but provide a useful analytical ground upon which to build. In particular, we'll revisit the second assumption (regarding the technical capability to scale violence upward).
 
-So, using Cederman's model, we can calculate the probability that a random war will end up being of a certain size (i.e. number of casualties). Let us consider the case of an existentially risky war--that is, one in which the entire population of humans was destroyed. At the time of writing (September 2016), the [US Census Bureau estimates](http://www.census.gov/popclock/?intcmp=home_pop) the Global Population to be around 7.338 Billion. The [UN estimates](https://esa.un.org/unpd/wpp/DataQuery/) that the global popultation in 2016 will eclipse 7.432 Billion. Let's split the difference and say that there are approximately 7.385 billion people.
+So, using this model, we can calculate the probability that a random war will end up being of a certain size (i.e. number of casualties). Let us consider the case of an existentially risky war--that is, one in which the entire population of humans was destroyed. At the time of writing (September 2016), the [US Census Bureau estimates](http://www.census.gov/popclock/?intcmp=home_pop) the Global Population to be around 7.338 Billion. The [UN estimates](https://esa.un.org/unpd/wpp/DataQuery/) that the global popultation in 2016 will eclipse 7.432 Billion. Let's split the difference and say that there are approximately 7.385 billion people.
 
 Here we've accumulated a third important assumption: the global population is static. Again, this is false: it has consistently grown throughout recorded history, save for a moderate recession caused by the black plague. We will investigate this phenomenon in due course, but for now, let it suffice to assume that the global population is (and will continue to be) approximately stagnant at its current level. Setting the magnitude of of the relevant war ($s$), we get:
 
-$$\log P(S>s)=1.27-.41 \log (7.385 * 10^9)$$
+$$\log P(S>s)\approx2.017-.633 \log (7.385 * 10^9)$$
 
-And solving for $P(S>s)$ gives us $P(S>s)\approx0.001675$. Thus the probability that any random war will reach the scale of an existential threat is on the order of $.001675$.
+```{r, message=FALSE}
+pOfEWar <- 10^(2.017-.633*log10(7.785e9))
+```
 
-Note the word *random*. We can't calculate the probability that the big war is in our upcoming wars directly. However, we can calculate the probability that our set of predicted wars does not contain WWIII (This is a variation on the [Birthday Problem](http://en.wikipedia.org/wiki/Birthday_problem).) The probability of the first war being existentially risky is approximately $.001675$. So the probability of the second war being the big war is $.001675$. And so on (recalling our assumption that wars are independent events). Now, the probability that neither the first war nor the second war is the war which destroys humanity is $(1-.001675)^2 \approx.9967$. Generalizing this formulation:
+Solving this equation for the given magnitude gives us the probability that any random war will reach the scale of an existential threat. This probability is $P(S>s)\approx`r pOfEWar`$
 
-$$P(S>s|n)=(1-10^{1.27-.41*\log s})^n$$
+Note the word *random*. We can't calculate the probability that the big war is in our upcoming wars directly. However, we can calculate the probability that a given number of predicted wars does not contain WWIII (This is a variation on the [Birthday Problem](http://en.wikipedia.org/wiki/Birthday_problem).) The probability of the first war being existentially risky is approximately $`r pOfEWar`$. Because these wars are independent (an assumption which is inextricable from the model), the probability of the second war being existentially risky is also $`r pOfEWar`$, and so on for all subsequent conflicts. The probability that neither the first war *nor* the second war is existentially risky is $(1-`r pOfEWar`)^2 \approx`r (1-pOfEWar)^2`$. Generalizing this formulation, we get the probability that an existentially risky war does not occur within a given number ($n$) of wars:
 
-Now, from here it's just a small logical step to the probability that a war of given magnitude occurs within $n$ wars.
+$$P(S>s|n)\approx(1-10^{2.017-.633\log s})^n$$
 
-$$P(S<=s|n)=1-(1-10^{1.27-.41*\log s})^n$$
+From here, it's just a small logical step to the probability that a war of given magnitude occurs within $n$ wars.
 
-So, how far do we have to look to see the War to end all Wars (by virtue of ending humanity)? More or less fortunately, we cannot estimate this directly: we can only estimate probabilities over numbers of wars. Using our previous estimates for the magnitude of an existentially risky war:
+$$P(S<=s|n)\approx1-(1-10^{2.017-.633\log s})^n$$
 
-$$P(S<=s|n) = .5 \approx 1- (1 - .001675)^n$$
+[Note the change in syntax on the left side of the formula, indicating that every war $S_i$ in a set of $n$ wars is smaller than a hypothetical war $s$] So, how far do we have to look to see the War to end all wars (by virtue of ending humanity)? More or less fortunately, we cannot estimate this directly: we can only estimate probabilities over numbers of wars. Using our previous estimates for the magnitude of an existentially risky war:
+
+$$P(S<=s|n) = .5 \approx 1- (1 - `r pOfEWar`)^n$$
 
 We can plot this function:
 
 ```{r}
 #TODO: Fix the Axis Titles
-plot_ly(x = 1:1000, y = 1-(1-.001675)^(1:1000), type = "line")
+plot_ly(x = 1:100000, y = 1-(1-pOfEWar)^(1:100000), type = "line")
 ```
 
-So, for example, let's say we're curious about the time frame for which an existentially risky war is 50% likely. Solving for $n$ gives us $n \approx 413.5$ (which we can confirm visually using the above plot). So an existentially risky war should occur (with probability .5) within 414 wars or so.
+So, for example, let's say we're curious about the time frame for which an existentially risky war is 50% likely. Solving for $n$ gives us $n \approx 12160.13$ (which we can confirm visually using the above plot). So an existentially risky war should occur (with probability .5) within 12161 wars or so.
 
-## Dealing with Population Dynamics
+# Population Dynamics
 
 ```{r, message=FALSE}
 pop <- read_csv("http://ourworldindata.org/wp-content/uploads/nvd3/nvd3_lineChart_Kremer_CSV_WorldPop_MillionYears/Kremer_CSV_WorldPop_MillionYears.csv") %>%
@@ -142,34 +168,125 @@ population <- function(year){
 
 extrapolated <- data.frame(
   year = 1800:2007,
-  estimate = population(1800:2007)
+  population = population(1800:2007)
 ) %>% 
   left_join(pop)
 
-plot_ly(extrapolated, x=year, y=estimate, type="line")
+plot_ly(extrapolated, x=year, y=population, type="line")
 ```
 
-```{r}
-extrapolated %>%
-  ntbt_lm(estimate ~ population) %>%
-  summary()
+The global population model is a simple gain-loss model.  Gains are defined by births, and losses by deaths.  It's predicated on the fact that are only these two ways to change the global population (i.e. humanity's total population count is unaffected by migration, [divine ascension](http://en.wikipedia.org/wiki/Entering_heaven_alive), etc...).
 
-plot_ly(extrapolated, x = population, y = estimate, type = "scatter", mode = "markers")
-```
+$$B_n=P_n(\Delta B_n)$$
+
+Where $B_n$ is the number of births at time $n$, $P_n$ is the Population at time $n$, and $\Delta B_n$ is the birthrate at time $n$. 
+
+$$D_n=P_n(\Delta D_n)$$
+
+$$P_{n+1}=P_n+B_n-D_n$$
+
+Thus,
+
+$$P_{n+1}=P_n(1+\Delta B_n-\Delta D_n)$$
+
+Now, in order to define these numerical values, we must consult some statistics.  For this, there is the [World Development Indicators](http://data.worldbank.org/indicator?display=graph).  I parsed the very same into separate datasets not so long ago, but this time it'll be easier to just use the graphs.  For that, Google has set up a really nifty [Public Data Explorer](http://www.google.com/publicdata/directory).  To start with, let's look at [Birthrate](http://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=l&strail=false&nselm=h&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&rdim=country&ifdim=country&tstart=-291844800000&tend=1285992000000&uniSize=0.035&iconSize=0.5&icfg).  The graph looks pretty nonlinear, the take home point is that it's trending downwards.  As such, we can represent it linearly with the knowledge that this may be something to revisit later on the the model construction.  Over the 49 year period from 1960-2009, the value drops from 4.91 to 2.52.  That's a change of  2.39, or a mean change of .049 annually.  But what does this number actually mean?
+
+> The average number of births per woman.
+
+This creates two new problems.  The first is pretty clear: We will know how many people there are at any given time, but not how many women.  We'll have to include another converter to capture this fact.  The second is much more subtle: this is evaluated over steps of time (in this case, years).  But the rate is measured over a woman's lifespan.  So we also must include a variable which represents the mean female lifespan.  All told, here's our model:
+
+$$L_n=54.6+.345n$$
+
+$$\Delta B_n=\frac{4.91-.049n}{L_n}$$
+
+Where the numerical values are derived from time series regressions on the data for [female life expectancy](http://data.worldbank.org/indicator/SP.DYN.LE00.FE.IN/countries?display=graph) and [fertility rate](http://data.worldbank.org/indicator/SP.DYN.TFRT.IN/countries?display=graph).  As for the [percent of the population which is female](http://data.worldbank.org/indicator/SP.POP.TOTL.FE.ZS/countries/1W?display=graph), it looks to be roughly stagnant around 49.7, so a fixed value should be good enough. Now all that remains is to define the Deathrate and test the model.  Deathrate presents a new problem--a [truly nonlinear relationship](http://data.worldbank.org/indicator/SP.DYN.CDRT.IN/countries/1W?display=graph).  As such, we'll divide it by 1000 to give us a per capita probability of death per year, and fit the prediction curve using exponential regression, giving us this equation:
+
+$$\Delta D_n=\frac{.018907}{n^{0.21}}$$
+
+With all of our values set and relationships defined, its high time we tested this puppy out!  We'll set the initial population equal to the population in 1960, [approximately 3 billion](http://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=l&strail=false&nselm=h&met_y=sp_pop_totl&scale_y=lin&ind_y=false&rdim=country&ifdim=country&tstart=-291758400000&tend=1286078400000&uniSize=0.035&iconSize=0.5&icfg).  We should see population growth up to today's estimate of 6.775 billion.  Let's check it out, shall we?
+
+Two dangling observations: First, we started out modeling a phenomena which is strikingly linear.  Second, our prediction is slightly nonlinear.
+
+1. The life expectancy is latent--it describes the life expectancy of people _born_ in that year, not the life expectancy of people _living_ in that year.
+2. We didn't describe the female percentage of the population with a function, which makes it entirely inflexible.
+3. The pseudo-linear models we use to generate many of the coefficients are imperfect (though admittedly very good in this case).
+4. The data are imperfect: the World Development Indicators are calculated using a completely different methodology, which one hopes would be fairly accurate.  Even so, it would be logistically impossible to count every single person on the planet at a fixed point in time--people are born and die every minute.  The WDIs are correct to the ballpark (as are the models we devise from them), but only so.
+
+Even so, I claim we've accomplished something moderately cool.  We've set up a complex equation set which predicts the global population, controlling for life expectancy, fertility, proportion of the population which is female, and per capita deathrate.  Our model could survive an exogenous shock to any of these, while the linear model is left scratching its head.  System Dynamic modeling is cool because it is necessarily representative of the causal linkages between variables, thereby creating much more compelling forecasts.  This model hinges upon the irrefutable causality between births, deaths, and population size.
+
+As a follow-up to  on the measurement of the global population using system-dynamic modeling and regression techniques on data from the World Bank, I decided to point my model in the opposing direction.  I mean we can use exactly the same model to forecast the population into the future. To start, we must find some data to compare against.  The U.N. publishes [a biannual prediction](http://esa.un.org/unpd/wpp/index.htm) of the global population trajectory.  The employ three creatively-named models: "high," "medium," and "low."  High is a worst-case scenario.  It's basically a prediction that [Malthus](http://en.wikipedia.org/wiki/Thomas_Robert_Malthus#An_Essay_on_the_Principle_of_Population) was right, and populations grow exponentially.  Medium is a little sunnier--it's really the world we want to live in.  [The idea](http://www.ted.com/talks/hans_rosling_on_global_population_growth.html) is that around 2050 we round out to about 9 Billion and we stay there, more or less.  High would be inconvenient--lots of starvation, bad sanitation, generally bad conditions with little to do to improve them, but Low is the real downer.  What if something went catastrophically wrong?  War, disease, disaster--take your pick.  Low is the image of the world picking up the pieces. Against these models, I will compare two of my own: the system dynamic model I built, and the linear model that outperformed it.  By the way, that linear model is strikingly simple:
+
+$$P_t=76254816t+6895889018$$
+
+In which t is time (i.e. years since 2009) and the intercept is the approximate 2009 population.  So, let's take a look at the next 90 years: Interesting.  We have a uniform, fanning-out effect.  That means we all disagree pretty enthusiastically.  Only the low model begins to fall, while the medium converges on 9 Billion, and the top three forecasts (mine, the linear model, and the UN's high, respectively in increasing order) continue to increase at varying speeds.  OK, what if we look a little farther forward?  Back in 2004 the UN published [a projection to 2300](http://www.un.org/esa/population/publications/longrange2/WorldPop2300final.pdf).  Let's see what the world looks like then: Now this is interesting: Low and medium have both held their positions for a couple of centuries, and it looks like mine is getting to a point of convergence, but linear keeps growing (as linear models are wont to do) and high is skyrocketing.  We must have cured death or something at that point. There are important sources of distinction between my model and the U.N.'s.  The UN possesses an immediate advantage in that its models may start projecting based on data which is empirically accurate for the current year.  Because my model was calibrated on the data from the prior 50 years, I must start with the year 1960 and project to 2010 and beyond.  This means the number I have for this year's population is probably a little inflated, so the model on the whole is relatively high.  The other is that my model continues to project expectations into the realm of unlikelihood--by 2300, my model suggests the mean female lifespan should be over 100, and still rising.  Even so, it may accidentally prove to be the most accurate of them all, if for entirely spurious reasons.  As they say, "All models are wrong." Last night's post brought me a to final question on [the population model](http://nortalktoowise.com/2011/10/measuring-global-population-using-system-dynamics/) [with which I've been tinkering](http://nortalktoowise.com/2011/10/forecasting-the-global-population/).  Will my model converge?  There are two ways to answer this question.  The first is kinda sorta calculus.  To start, we must collapse all those equations from the model into a single function.  We can do this because each equation in the model is contingent only upon other values in the system (none of which are feedback process except the canonical Births and Deaths), time (represented as the variable _n_), or the dependent variable, _P_.  So the final function should show the relationship between time and Global Population. First, the global population is equal to last year's population plus the births minus the deaths.  The quintessential gain-loss model.
+
+$$P_n=P_{n-1}(1+Births-Deaths)$$
+
+Let's start by unwrapping _Births_ (actually _births per capita_), which should be the more complicated of the two:
+
+$$B_n=FemaleProportionPop \Delta B_n$$
+
+$$\Delta B_n=\frac{4.91-.049n}{MeanLifespan}$$
+
+$$MeanLifespan=54.6+.345n$$
+
+So, if we cram these together:
+
+$$B_n=\frac{.497(4.91-.049n)}{54.6+.345n}$$
+
+Now, for _death_, if we remove the _P_ variable the way we did for _births_ (since it was pre-factored out in the equation 1), _deaths_ (again, deaths per capita) is simply equal to the _deathrate_.  So,
+
+$$D_n=.018907n^{-0.21}$$
+
+Thus, if we put this all together:
+
+$$P_n=P_{n-1}*(1+\frac{.497*(4.91-.049n)}{54.6+.345n}-.018907n^{-0.21})$$
+
+Since we can't easily calculate P into infinity this way (without some heavy-duty computation), let's just think about the second half of the expression, and measure what happens as _n_ approaches infinity.  If the output (which is basically a global population multiplier) hits 1, then an equilibrium state exists.  If not, then the global population should continue to fluctuate forever.  Let's see:
+
+$$f(n)=1+\frac{.497*(4.91-.049n)}{54.6+.345n}-.018907n^{-0.21}$$
+
+$$\lim_{n \to \infty}f(n)=1+0-0$$
+
+Interesting.  Both Births and Deaths converge on 0, so the equilibrium state exists.  How big is it?  How long will it take? Equilibrium is the point at which the global population no longer changes from year to year, or if it does, it begins to do so cyclically.  There aren't any cyclical parameters in the model, and there aren't enough independent variables for cyclicality to emerge organically, so my suspicion is that we should see a single point of convergence.  In other words, the global population will reach some number and stick to it.  Algebraically, we can represent this as:
+
+$$P_{n}=P_{n-1}$$
+
+or, since we're solving for _n*_, the equilibrium condition, we know P at _n_ is equal to the P at _n_-1\.  Thus we can divide both sides of the equation by P and voila!
+
+$$1=1+\frac{.497*(4.91-.049n)}{54.6+.345n}-.018907n^{-0.21}$$
+
+$$0=\frac{.497*(4.91-.049n)}{54.6+.345n}-.018907n^{-0.21}$$
+
+$$.018907n^{-0.21}=\frac{.497*(4.91-.049n)}{54.6+.345n}$$
+
+We have now reached a substantively interesting and intuitively obvious point: equilibrium is the state of the population in which the number of annual births _equals_ the number of deaths.  Moving on:
+
+$$.018907n^{-0.21}(54.6+.345n)=.497*(4.91-.049n)$$
+
+Ah, time to pull out the good ol' fashioned calculator!
+
+$$1.0323222n^{-0.21}+.006523n^{.79}=2.44027-0.024353n$$
+
+$$1.0323222n^{-0.21}+.006523n^{.79}+0.024353n-2.44027=0$$
 
 Recall that this was analysis predicated on the assumption that the global population will endure many wars without changing significantly. This is obviously false: any war will reduce the population, but by a tiny amount relative to the speed of population growth. The global population has grown significantly in the last 200 years. As the global population grows, the probability of an existentially risky war drops. This is partly because the trend of the probability of a war is inversely correlated with the number of casualties that war will cause.
 
-### Bang, Pow
+## Growth
 
-There is further reason to be optimistic: even a global thermonuclear war is unlikely to destroy every living population humans capable of repopulating the Earth. The greatest danger of an existentially risky war is a scenario in which the human population is decimated ("bang"), and a second catastrophic risk ("pow") finishes off the feeble population. For example, consider a war which kills all but a few tens of thousands of humans. A second war of sufficient magnitude to destroy humanity is vastly more likely, simply by virtue of fewer humans existing to be killed. Neither of these catastrophes need be wars, either. Any global catastrophic risk that doesn't completely wipe out humanity will suffice: a pandemic, near-Earth object collision, or supervolcanic eruption come to mind.
+## Stagnation
 
-### Dealing with Population Decline
+[Malthus]
+
+## Decline
 
 As birth control has become available, fertility rates have dropped, well below the replacement rate in some advanced economies. There is a possibility that humanity will experience a natural population decline in the near-distant future.
 
-## Dealing with New Technology
+# Technological Progress
 
 This outside view provides a rather rosy perspective on the probability of war as existential risk. However, we have thus far neglected the progress of technology.
+
+Lars Erik Cederman [replicated this result](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&rep=rep1&type=pdf) in a paper in which he took the casualty estimates from the [Correlates of War](http://www.correlatesofwar.org/).
 
 Humanity has only recently developed the technology to cause disasters on the scale of the entire population. Prior to the dawn of the nuclear era, industrialized warfare threatened hundreds of millions, and killed tens of millions. Prior to the dawn of flight, ground and naval warfare only meaningfully threatened millions of people at once.
 
@@ -180,11 +297,7 @@ Humanity has only recently developed the technology to cause disasters on the sc
 ## If no, then an existentially risky war may not actually be meaningfully possible until population trends change.
 ```
 
-```{r}
-
-```
-
-## The Anthropic Logic of Peace
+# The Anthropic Logic of Peace
 
 The Cold War marked an important threshold in the history of the warfare: namely, the first time it which it became conceivable that humanity could launch a war it might not survive.
 
@@ -198,3 +311,4 @@ What this should communicate is that the probability of a catastrophic nuclear w
 
 Our assessments of the probabilities of these events resulting in a thermonuclear war should far exceed those suggested by the statistical model.
 
+# References
