@@ -27,7 +27,7 @@ data(Quarrels)
 
 Quarrels %>%
   group_by(logDeaths) %>%
-  summarise(numWars = n()) %>%
+  dplyr::summarise(numWars = n()) %>%
   arrange(desc(logDeaths)) %>%
   mutate(logLargerWars = 7*max0(log10(cumsum(numWars)))) %>%
   plot_ly(x=logDeaths, y=logLargerWars, type="point", mode="markers")
@@ -41,10 +41,10 @@ library("readr")
 
 interstatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/inter-state-war-data/at_download/file") %>%
   mutate(StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)) %>%
-  group_by(WarNum, WarName) %>%
-  summarise(
-    StartYear = min(min(StartYear1), min(StartYear2)),
-    EndYear = max(max(EndYear1), max(EndYear2)),
+  group_by(WarName) %>%
+  dplyr::summarise(
+    StartYear = min(c(StartYear1, StartYear2)),
+    EndYear = max(c(EndYear1, EndYear2)),
     TotalCombatDeaths = sum(BatDeath)
   ) %>%
   mutate(Type = "Interstate")
@@ -54,10 +54,10 @@ intrastatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/int
     BatDeath = SideADeaths + SideBDeaths, 
     StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)
   ) %>%
-  group_by(WarNum, WarName) %>%
-  summarise(
-    StartYear = min(min(StartYear1), min(StartYear2)),
-    EndYear = max(max(EndYear1), max(EndYear2)),
+  group_by(WarName) %>%
+  dplyr::summarise(
+    StartYear = min(c(StartYear1, StartYear2)),
+    EndYear = max(c(EndYear1, EndYear2)),
     TotalCombatDeaths = sum(BatDeath)
   ) %>%
   filter(TotalCombatDeaths > 0) %>%
@@ -68,17 +68,17 @@ extrastatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/ext
     BatDeath = BatDeath + NonStateDeaths,
     StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)
   ) %>%
-  group_by(WarNum, WarName) %>%
-  summarise(
-    StartYear = min(min(StartYear1), min(StartYear2)),
-    EndYear = max(max(EndYear1), max(EndYear2)),
+  group_by(WarName) %>%
+  dplyr::summarise(
+    StartYear = min(c(StartYear1, StartYear2)),
+    EndYear = max(c(EndYear1, EndYear2)),
     TotalCombatDeaths = sum(BatDeath)
   ) %>%
   filter(TotalCombatDeaths > 0) %>%
   mutate(Type = "Extrastate")
 
 nonstatewars <- read_csv("http://www.correlatesofwar.org/data-sets/COW-war/non-state-war-data-1/at_download/file") %>%
-  select(WarNum, WarName, StartYear, EndYear, TotalCombatDeaths) %>%
+  select(WarName, StartYear, EndYear, TotalCombatDeaths) %>%
   filter(TotalCombatDeaths > 0) %>%
   mutate(Type = "Nonstate")
 
@@ -89,9 +89,10 @@ wars <- as.data.frame(interstatewars) %>%
   filter(TotalCombatDeaths > 1000) %>%
   mutate(logDeaths = log10(TotalCombatDeaths)) %>%
   arrange(desc(logDeaths)) %>%
-  mutate(logRank = max0(log10(1:n())))
-
-plot_ly(wars, x = logDeaths, y = logRank, text = paste0(WarName, " (", StartYear, "-", EndYear, ")<br />", prettyNum(TotalCombatDeaths, big.mark = ","), " casualties"), mode = "markers", color = Type)
+  dplyr::mutate(logRank = max0(log10(1:n()))) %T>%
+  plot_ly(x = logDeaths, y = logRank,
+    text = paste0(WarName, " (", StartYear, "-", EndYear, ")<br />", prettyNum(TotalCombatDeaths, big.mark = ","), " casualties"),
+    mode = "markers", color = Type)
 ```
 
 ```{r}
@@ -147,9 +148,8 @@ So, for example, let's say we're curious about the time frame for which an exist
 pop <- read_csv("http://ourworldindata.org/wp-content/uploads/nvd3/nvd3_lineChart_Kremer_CSV_WorldPop_MillionYears/Kremer_CSV_WorldPop_MillionYears.csv") %>%
   filter(year >= 1800, year < 2016) %>%
   group_by(year) %>%
-  summarise(population = mean(c(`World Population after 1000 CE (Kremer's estimates)`, `World Population 1950-2013 (US Census)`, `UN Projection (Medium) - 2012 Revision`), na.rm=TRUE)*1e6)
-
-plot_ly(pop, x=year, y=population, type="line")
+  dplyr::summarise(population = mean(c(`World Population after 1000 CE (Kremer's estimates)`, `World Population 1950-2013 (US Census)`, `UN Projection (Medium) - 2012 Revision`), na.rm=TRUE)*1e6) %T>%
+  plot_ly(x=year, y=population, type="line")
 ```
 
 A note on data quality: following 1950, we have relatively good, precise data about the global population. Prior to that, we have more-or-less just good guesses, born out of heroic research efforts. Between these guesses, there isn't much hope for any precision. Accordingly, we should treat any conclusions which rely upon precise estimates of the global population as suspect.
@@ -170,9 +170,8 @@ extrapolated <- data.frame(
   year = 1800:2007,
   population = population(1800:2007)
 ) %>% 
-  left_join(pop)
-
-plot_ly(extrapolated, x=year, y=population, type="line")
+  left_join(pop) %T>%
+  plot_ly(x=year, y=population, type="line")
 ```
 
 The global population model is a simple gain-loss model.  Gains are defined by births, and losses by deaths.  It's predicated on the fact that are only these two ways to change the global population (i.e. humanity's total population count is unaffected by migration, [divine ascension](http://en.wikipedia.org/wiki/Entering_heaven_alive), etc...).
