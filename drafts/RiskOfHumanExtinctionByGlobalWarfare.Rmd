@@ -183,3 +183,18 @@ Humanity has only recently developed the technology to cause disasters on the sc
 ```{r}
 
 ```
+
+## The Anthropic Logic of Peace
+
+The Cold War marked an important threshold in the history of the warfare: namely, the first time it which it became conceivable that humanity could launch a war it might not survive.
+
+It is also conceivable that the effects of direct nuclear strikes in concert with nuclear fallout and the subsequent nuclear winter might extinguish humanity with very high probability, and reduce the number of observer-moments on Earth with practical certainty. By this reasoning, it should not seem surprising that the world emerged from the cold war unscathed, because that's the only way we could make an observation about it either way.
+
+What this should communicate is that the probability of a catastrophic nuclear war may have been much higher, and we only survived as a fluke. The history of nuclear accidents suggests that this is possible, and perhaps even likely.
+
+[Cuban Missle Crisis]
+
+[Stanislav Petrov]
+
+Our assessments of the probabilities of these events resulting in a thermonuclear war should far exceed those suggested by the statistical model.
+
