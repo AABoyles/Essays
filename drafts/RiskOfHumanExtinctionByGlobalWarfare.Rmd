@@ -34,6 +34,8 @@ One of the most robust empirical properties of conflict (of which we are present
 
 [Lewis Fry Richardson](http://en.wikipedia.org/wiki/Lewis_Fry_Richardson) figured out that incidents of violence follow a Power-Law Distribution [@Richardson1948-de]. Stated simply, the larger a war, the less common wars of at least that size will be.
 
+Richardson also plotted this against estimates of the global murder rate, proposing that more-or-less all incidents of deadly violence were exemplars of a single, continuous phenomenon.
+
 ```{r Quarrels}
 data(Quarrels)
 
@@ -46,6 +48,8 @@ Quarrels %>%
   rbind(data.frame(LogRangeOfMagnitude = c(3, 0, 0), LogNumberOfDeadlyQuarrels = c(2.1, 6.9, 7.1))) %>%
   plot_ly(x = LogRangeOfMagnitude, y = LogNumberOfDeadlyQuarrels, mode="markers")
 ```
+
+(Note that the two points at the upper-left of the graph are estimates of the global murder rate, and the point with the LogRangeOfMagnitude of 3 is, as best I can tell, an estimate Richardson based on a linear inference and not an actual measurement.)
 
 The Correlates of War Project tracks conflict from 1800 to 2010.
 
@@ -64,7 +68,27 @@ interstatewars <- read_csv("../data-cache/interstate.csv") %>%
     TotalCombatDeaths = sum(BatDeath)
   ) %>%
   mutate(Type = "Interstate")
+
+wars <- interstatewars %>%
+  dplyr::filter(TotalCombatDeaths > 1000) %>%
+  dplyr::mutate(logDeaths = log10(TotalCombatDeaths)) %>%
+  dplyr::arrange(desc(logDeaths)) %>%
+  dplyr::mutate(logRank = max0(log10(1:n())))
+
+fit <- lm(logRank ~ logDeaths, data = interstatewars)
+
+plot_ly(wars, x = logDeaths, y = logRank, mode = "markers", color = Type,
+  text = paste0(
+    WarName, " (", StartYear, "-", EndYear, ")<br />",
+    prettyNum(TotalCombatDeaths, big.mark = ","), " casualties")) %>%
+  add_trace(data = wars, x = logDeaths, y = fitted(fit), mode = "lines")
 ```
+
+Thus far, it seems as though only *international* conflict has generated the conditions necessary for industrialized warfare of the scale that could constitute an existential risk (for example, a counterfactual thermonuclear exchange between the US and the Soviet Union). However, we can at least conceive of a set of circumstances in which a non-interstate political conflict initiates existentially risky conditions.
+
+For example, the Soviet Union constructed an autonomous launching system for its nuclear missiles called the "Dead Hand". It is rumored to still be operational. A domestic terrorist could, hypothetically, execute a nuclear attack targeting some element of the Russian Government. This attack would create the conditions required to activate the Dead Hand (if it is still operational), leading to a dangerous thermonuclear assault (even if the other nuclear powers didn't respond in kind).
+
+In other words, international conflict was the breeding ground for existentially risky weaponry, but it may be a subset of violent incidents, any one of which may scale upwards to an existential risk to humanity.
 
 ```{r IntrastateCOW}
 if(!file.exists("../data-cache/intrastate.csv")){
@@ -122,34 +146,21 @@ wars <- as.data.frame(interstatewars) %>%
   rbind(as.data.frame(intrastatewars)) %>%
   rbind(as.data.frame(extrastatewars)) %>%
   rbind(as.data.frame(nonstatewars)) %>%
-  filter(TotalCombatDeaths > 1000) %>%
-  mutate(logDeaths = log10(TotalCombatDeaths)) %>%
-  arrange(desc(logDeaths)) %>%
-  dplyr::mutate(logRank = max0(log10(1:n()))) %T>%
-  plot_ly(x = logDeaths, y = logRank,
-    text = paste0(
-      WarName, " (", StartYear, "-", EndYear, ")<br />",
-      prettyNum(TotalCombatDeaths, big.mark = ","), " casualties"),
-    mode = "markers", color = Type)
+  dplyr::filter(TotalCombatDeaths > 1000) %>%
+  dplyr::mutate(logDeaths = log10(TotalCombatDeaths)) %>%
+  dplyr::arrange(desc(logDeaths)) %>%
+  dplyr::mutate(logRank = max0(log10(1:n())))
+
+fitAll   <- wars %>% ntbt_lm(logRank ~ logDeaths)
+
+plot_ly(wars, x = logDeaths, y = logRank, mode = "markers", color = Type,
+  text = paste0(
+    WarName, " (", StartYear, "-", EndYear, ")<br />",
+    prettyNum(TotalCombatDeaths, big.mark = ","), " casualties")) %>%
+  add_trace(data = wars, x = logDeaths, y = fitted(fitAll), mode = "lines")
 ```
 
-The Correlates of War is not the only project to attempt to catalogue and measure political carnage.
-
-```{r}
-if(!file.exists("../data-cache/ged41.csv")){
-  download.file("http://ucdp.uu.se/downloads/ged/ged41-csv.zip", "../data-cache/ged41-csv.zip")
-  unzip("../data-cache/ged41-csv.zip", exdir = "../data-cache/")
-}
-Upsala <- read_csv("../data-cache/ged41.csv")
-```
-
-Upsala
-
-Richardson also plotted this against estimates of the global murder rate, proposing that more-or-less all incidents of deadly violence were exemplars of a single, continuous phenomenon.
-
-This presents a problem of counting. As Richardson observed, counting deaths by violence becomes increasingly difficult as you scale downwards [-@Richardson1948-de]. This is because of the comparative commonality of violence at small scales. It is tragically impractical to attempt to count all murders.
-
-In response to this lack of data quality, Peter Brecke has committed heroic efforts to data collection, attempting to push the threshold of quality data on violent incidents down to skirmishes as small as 32 (that is, $10^{1.5}$) fatalities.
+This presents a problem of counting. As Richardson observed, counting deaths by violence becomes increasingly difficult as you scale downwards [-@Richardson1948-de]. This is because of the comparative commonality of violence at small scales. It is tragically impractical to attempt to count all murders. Fortunately, the Correlates of War is not the only project to attempt to catalogue and measure political carnage. In response to this lack of data quality, Peter Brecke has committed heroic efforts to data collection, attempting to push the threshold of quality data on violent incidents down to skirmishes as small as 32 (that is, $10^{1.5}$) fatalities.
 
 ```{r ConflictCatalog}
 # This probably won't work. Just open data-cache/ConflictCatalog18vars.xls in Excel and hit "save", and then try it.
@@ -163,11 +174,7 @@ To jump upwards towards the margins of measurable violence, [MURDER RATES]
 
 http://www.cgeh.nl/sites/default/files/homicide.xlsx
 
-```{r WarsPowerLawModel}
-wars %>%
-  ntbt_lm(logRank ~ logDeaths) %>%
-  summary()
-```
+
 
 Note the equation describing the regression model:
 
