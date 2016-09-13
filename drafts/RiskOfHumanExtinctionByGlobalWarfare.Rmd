@@ -17,7 +17,7 @@ library("dplyr")
 library("fuzzyjoin")
 library("plotly")
 library("intubate")
-opts_knit$set(message = FALSE)
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
 
 # Introduction
@@ -28,7 +28,10 @@ We have better data on the nature of natural existential risks. (Are near-Earth 
 
 Warfare sits at the cross-section of these two conditions. It is both fundamentally anthropogenic, and a measurable phenomenon with a (sadly) rich historical record. Accordingly, we have comparatively excellent data on warfare.
 
-## The Outside View
+# Existential Risks
+
+
+# The Probability of War
 
 One of the most robust empirical properties of conflict (of which we are presently aware) is its power-law distribution (see for example [-@Bohorquez2009-jf]).
 
@@ -75,7 +78,7 @@ wars <- interstatewars %>%
   dplyr::arrange(desc(logDeaths)) %>%
   dplyr::mutate(logRank = max0(log10(1:n())))
 
-fit <- lm(logRank ~ logDeaths, data = interstatewars)
+fit <- lm(logRank ~ logDeaths, data = wars)
 
 plot_ly(wars, x = logDeaths, y = logRank, mode = "markers", color = Type,
   text = paste0(
@@ -164,7 +167,7 @@ This presents a problem of counting. As Richardson observed, counting deaths by 
 
 ```{r ConflictCatalog}
 # This probably won't work. Just open data-cache/ConflictCatalog18vars.xls in Excel and hit "save", and then try it.
-if(!file.exists("../data-cache/Conflict%20Catalog%2018%20vars.xls")){
+if(!file.exists("../data-cache/ConflictCatalog18vars.xls")){
   download.file("http://www.cgeh.nl/sites/default/files/Conflict%20Catalog%2018%20vars.xls", destfile = "../data-cache/ConflictCatalog18vars.xls")
 }
 ConflictCatalog <- read_excel("../data-cache/ConflictCatalog18vars.xls")
@@ -217,35 +220,30 @@ So, for example, let's say we're curious about the time frame for which an exist
 
 # Population Dynamics
 
-```{r, message=FALSE}
-pop <- read_csv("http://ourworldindata.org/wp-content/uploads/nvd3/nvd3_lineChart_Kremer_CSV_WorldPop_MillionYears/Kremer_CSV_WorldPop_MillionYears.csv") %>%
-  filter(year >= 1800, year < 2016) %>%
-  group_by(year) %>%
-  dplyr::summarise(population = mean(c(`World Population after 1000 CE (Kremer's estimates)`, `World Population 1950-2013 (US Census)`, `UN Projection (Medium) - 2012 Revision`), na.rm=TRUE)*1e6) %T>%
-  plot_ly(x=year, y=population, type="line")
+In general, predicting the size of a population is a fraught modeling exercise. On the one hand, we have extremely good information about the means by which populations grow (i.e. births) and shrink (deaths), and demographers have been conducting sophicticated research for a long time. On the other hand, measuring these is a difficult task. Prior to 1950, we have more-or-less just good guesses, born out of heroic research efforts.
+
+We should treat any conclusions which rely upon precise estimates of the global population as suspect. For present purposes, simply being within about 10% of the "correct" value should suffice. and our confidence in the estimates drops significantly as we look back in time further than around 1950. Never-the-less, many have attempted to construct meaningfully useful estimates, and these tend to be largely in agreement:
+
+```{r populationData, message=FALSE}
+if(!file.exists("../data/PopEstimates.csv")){
+  #TODO: Throw an Error
+}
+
+pop <- read_csv("../data/PopEstimates.csv") %>%
+  filter(Year > 1800, Year < 2016)
+
+pop %>%
+  gather(Estimator, Estimate, `United States Census Bureau (2015)`:`Kapitza (1996)`) %>%
+  plot_ly(x=Year, y=Estimate, color=Estimator, type="line")
 ```
 
-A note on data quality: following 1950, we have relatively good, precise data about the global population. Prior to that, we have more-or-less just good guesses, born out of heroic research efforts. Between these guesses, there isn't much hope for any precision. Accordingly, we should treat any conclusions which rely upon precise estimates of the global population as suspect.
-
-For present purposes, simply being within 1/10 of an order of magnitude should suffice. Sadly, we cannot even claim this level of certainty. In order to fit our population estimates, we'll use [Sergey Kapitza's phenomonological model of global population growth](https://web.archive.org/web/20090511041230/http://srs.dl.ac.uk/SPEAKERS/KAPITZA/Uspekhi_96.html), which can be roughly stated as:
+One which I find particularly worth highlighting is [Sergey Kapitza's phenomonological model of global population growth](https://web.archive.org/web/20090511041230/http://srs.dl.ac.uk/SPEAKERS/KAPITZA/Uspekhi_96.html), which can be roughly stated as:
 
 $$N\approx4.43*10^9*\arctan{\frac{42}{2007-Y}}$$
 
-```{r, message=FALSE}
-population <- function(year){
-  C <- 1.86e11
-  T <- 2007
-  tau <- 42
-  return(C/tau*atan(tau/(T-year)))
-}
+where $N$ is the estimate of the Global Population, and $Y$ is the year.
 
-extrapolated <- data.frame(
-  year = 1800:2007,
-  population = population(1800:2007)
-) %>% 
-  left_join(pop) %T>%
-  plot_ly(x=year, y=population, type="line")
-```
+Rather than rely exclusively upon any of these estimates, I've opted to merge and average them.
 
 The global population model is a simple gain-loss model.  Gains are defined by births, and losses by deaths.  It's predicated on the fact that are only these two ways to change the global population (i.e. humanity's total population count is unaffected by migration, [divine ascension](http://en.wikipedia.org/wiki/Entering_heaven_alive), etc...).
 
@@ -292,17 +290,21 @@ $$P_t=76254816t+6895889018$$
 
 In which t is time (i.e. years since 2009) and the intercept is the approximate 2009 population.  So, let's take a look at the next 90 years: Interesting.  We have a uniform, fanning-out effect.  That means we all disagree pretty enthusiastically.  Only the low model begins to fall, while the medium converges on 9 Billion, and the top three forecasts (mine, the linear model, and the UN's high, respectively in increasing order) continue to increase at varying speeds.  OK, what if we look a little farther forward?  Back in 2004 the UN published [a projection to 2300](http://www.un.org/esa/population/publications/longrange2/WorldPop2300final.pdf).  Let's see what the world looks like then: Now this is interesting: Low and medium have both held their positions for a couple of centuries, and it looks like mine is getting to a point of convergence, but linear keeps growing (as linear models are wont to do) and high is skyrocketing.  We must have cured death or something at that point. There are important sources of distinction between my model and the U.N.'s.  The UN possesses an immediate advantage in that its models may start projecting based on data which is empirically accurate for the current year.  Because my model was calibrated on the data from the prior 50 years, I must start with the year 1960 and project to 2010 and beyond.  This means the number I have for this year's population is probably a little inflated, so the model on the whole is relatively high.  The other is that my model continues to project expectations into the realm of unlikelihood--by 2300, my model suggests the mean female lifespan should be over 100, and still rising.  Even so, it may accidentally prove to be the most accurate of them all, if for entirely spurious reasons.  As they say, "All models are wrong." Last night's post brought me a to final question on [the population model](http://nortalktoowise.com/2011/10/measuring-global-population-using-system-dynamics/) [with which I've been tinkering](http://nortalktoowise.com/2011/10/forecasting-the-global-population/).  Will my model converge?  There are two ways to answer this question.  The first is kinda sorta calculus.  To start, we must collapse all those equations from the model into a single function.  We can do this because each equation in the model is contingent only upon other values in the system (none of which are feedback process except the canonical Births and Deaths), time (represented as the variable _n_), or the dependent variable, _P_.  So the final function should show the relationship between time and Global Population. First, the global population is equal to last year's population plus the births minus the deaths.  The quintessential gain-loss model.
 
-$$P_n=P_{n-1}(1+Births-Deaths)$$
+$$P_n=P_{n-1}(1+B_n-D_n)$$
 
 Let's start by unwrapping _Births_ (actually _births per capita_), which should be the more complicated of the two:
 
-$$B_n=FemaleProportionPop \Delta B_n$$
+$$B_n=F \Delta B_n$$
 
-$$\Delta B_n=\frac{4.91-.049n}{MeanLifespan}$$
+Where $F$ is the proportion of the human population which is female.
 
-$$MeanLifespan=54.6+.345n$$
+$$\Delta B_n=\frac{4.91-.049n}{L_n}$$
 
-So, if we cram these together:
+Recalling that:
+
+$$L_n=54.6+.345n$$
+
+We can combine these equations, yielding:
 
 $$B_n=\frac{.497(4.91-.049n)}{54.6+.345n}$$
 
@@ -336,8 +338,6 @@ We have now reached a substantively interesting and intuitively obvious point: e
 
 $$.018907n^{-0.21}(54.6+.345n)=.497*(4.91-.049n)$$
 
-Ah, time to pull out the good ol' fashioned calculator!
-
 $$1.0323222n^{-0.21}+.006523n^{.79}=2.44027-0.024353n$$
 
 $$1.0323222n^{-0.21}+.006523n^{.79}+0.024353n-2.44027=0$$
@@ -354,7 +354,7 @@ Recall that this was analysis predicated on the assumption that the global popul
 
 As birth control has become available, fertility rates have dropped, well below the replacement rate in some advanced economies. There is a possibility that humanity will experience a natural population decline in the near-distant future.
 
-# Technological Progress
+# The Effects of Technological Progress
 
 This outside view provides a rather rosy perspective on the probability of war as existential risk. However, we have thus far neglected the progress of technology.
 
@@ -379,6 +379,8 @@ Humanity has only recently developed the technology to cause disasters on the sc
 
 Violence itself is trending downward. It's not at all clear why.
 
+A decline in violence depresses the probability of wars.
+
 # The Anthropic Logic of Peace
 
 The Cold War marked an important threshold in the history of the warfare: namely, the first time it which it became conceivable that humanity could launch a war it might not survive.
@@ -391,6 +393,10 @@ What this should communicate is that the probability of a catastrophic nuclear w
 
 [Stanislav Petrov]
 
+[Vasily Arkhipov]
+
 Our assessments of the probabilities of these events resulting in a thermonuclear war should far exceed those suggested by the statistical model.
+
+# Conclusion
 
 # References
