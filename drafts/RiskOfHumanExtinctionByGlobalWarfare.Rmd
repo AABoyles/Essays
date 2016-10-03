@@ -14,9 +14,10 @@ library("readr")
 library("readxl")
 library("magrittr")
 library("dplyr")
+library("tidyr")
 library("fuzzyjoin")
-library("plotly")
 library("intubate")
+library("plotly")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
 
@@ -49,7 +50,7 @@ Quarrels %>%
   dplyr::summarise(LogNumberOfDeadlyQuarrels = log10(n())) %>%
   filter(LogRangeOfMagnitude >= 4) %>%
   rbind(data.frame(LogRangeOfMagnitude = c(3, 0, 0), LogNumberOfDeadlyQuarrels = c(2.1, 6.9, 7.1))) %>%
-  plot_ly(x = LogRangeOfMagnitude, y = LogNumberOfDeadlyQuarrels, mode="markers")
+  plot_ly(x = ~LogRangeOfMagnitude, y = ~LogNumberOfDeadlyQuarrels, mode="markers")
 ```
 
 (Note that the two points at the upper-left of the graph are estimates of the global murder rate, and the point with the LogRangeOfMagnitude of 3 is, as best I can tell, an estimate Richardson based on a linear inference and not an actual measurement.)
@@ -80,11 +81,11 @@ wars <- interstatewars %>%
 
 fit <- lm(logRank ~ logDeaths, data = wars)
 
-plot_ly(wars, x = logDeaths, y = logRank, mode = "markers", color = Type,
-  text = paste0(
-    WarName, " (", StartYear, "-", EndYear, ")<br />",
-    prettyNum(TotalCombatDeaths, big.mark = ","), " casualties")) %>%
-  add_trace(data = wars, x = logDeaths, y = fitted(fit), mode = "lines")
+#plot_ly(wars, x = ~logDeaths, y = ~logRank, mode = "markers", color = ~Type,
+#  text = paste0(
+#    ~WarName, " (", ~StartYear, "-", ~EndYear, ")<br />",
+#    ~TotalCombatDeaths, " casualties")) %>%
+#  add_trace(x = ~logDeaths, y = fitted(fit), mode = "lines")
 ```
 
 Thus far, it seems as though only *international* conflict has generated the conditions necessary for industrialized warfare of the scale that could constitute an existential risk (for example, a counterfactual thermonuclear exchange between the US and the Soviet Union). However, we can at least conceive of a set of circumstances in which a non-interstate political conflict initiates existentially risky conditions.
@@ -156,11 +157,11 @@ wars <- as.data.frame(interstatewars) %>%
 
 fitAll   <- wars %>% ntbt_lm(logRank ~ logDeaths)
 
-plot_ly(wars, x = logDeaths, y = logRank, mode = "markers", color = Type,
-  text = paste0(
-    WarName, " (", StartYear, "-", EndYear, ")<br />",
-    prettyNum(TotalCombatDeaths, big.mark = ","), " casualties")) %>%
-  add_trace(data = wars, x = logDeaths, y = fitted(fitAll), mode = "lines")
+#plot_ly(wars, x = ~logDeaths, y = ~logRank, mode = "markers", color = Type,
+#  text = paste0(
+#    WarName, " (", StartYear, "-", EndYear, ")<br />",
+#    prettyNum(TotalCombatDeaths, big.mark = ","), " casualties")) %>%
+#  add_trace(data = wars, x = logDeaths, y = fitted(fitAll), mode = "lines")
 ```
 
 This presents a problem of counting. As Richardson observed, counting deaths by violence becomes increasingly difficult as you scale downwards [-@Richardson1948-de]. This is because of the comparative commonality of violence at small scales. It is tragically impractical to attempt to count all murders. Fortunately, the Correlates of War is not the only project to attempt to catalogue and measure political carnage. In response to this lack of data quality, Peter Brecke has committed heroic efforts to data collection, attempting to push the threshold of quality data on violent incidents down to skirmishes as small as 32 (that is, $10^{1.5}$) fatalities.
@@ -213,7 +214,7 @@ We can plot this function:
 
 ```{r}
 #TODO: Fix the Axis Titles
-plot_ly(x = 1:100000, y = 1-(1-pOfEWar)^(1:100000), type = "line")
+plot_ly(x = 1:100*1000, y = 1-(1-pOfEWar)^(1:100*1000))
 ```
 
 So, for example, let's say we're curious about the time frame for which an existentially risky war is 50% likely. Solving for $n$ gives us $n \approx 12160.13$ (which we can confirm visually using the above plot). So an existentially risky war should occur (with probability .5) within 12161 wars or so.
@@ -234,7 +235,7 @@ pop <- read_csv("../data/PopEstimates.csv") %>%
 
 pop %>%
   gather(Estimator, Estimate, `United States Census Bureau (2015)`:`Kapitza (1996)`) %>%
-  plot_ly(x=Year, y=Estimate, color=Estimator, type="line")
+  plot_ly(x=~Year, y=~Estimate, color=~Estimator)
 ```
 
 One which I find particularly worth highlighting is [Sergey Kapitza's phenomonological model of global population growth](https://web.archive.org/web/20090511041230/http://srs.dl.ac.uk/SPEAKERS/KAPITZA/Uspekhi_96.html), which can be roughly stated as:
