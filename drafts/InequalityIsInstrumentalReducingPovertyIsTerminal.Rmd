@@ -1,0 +1,144 @@
+---
+title: "Inequality is Instrumental. Poverty is Terminal."
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, message=FALSE}
+library("ShRoud")
+library("magrittr")
+library("dplyr")
+library("intubate")
+library("ineq")
+library("plotly")
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+
+source("../infobox.R")
+infobox(list("Epistemic Status"="Highly Uncertain"))
+```
+
+# Introduction
+
+I think there's a good chance that the national conversation on inequality is missing an important point, and may be doing so at the risk of passing over otherwise viable policies.
+
+This whole diatribe was prompted, in part, by the [recent Wells Fargo debacle](http://fortune.com/.../12/wells-fargo-cfpb-carrie-tolstedt/). In case you're unfamiliar with it, the Consumer Financial Protection Bureau just won a $180 million case against Wells Fargo. The accusation was that Wells Fargo was engaging in unlawful account-opening practices, doing things like opening multiple accounts for consumers who only authorized the opening of one. This was a direct outgrowth of Wells Fargo's internal policies pressuring employees to meet certain account-opening quotas, or lose their jobs. Wells Fargo claims that it fired over 5300 employees over the last five years for unethically opening these accounts. In the meanwhile, Carrie Tolstedt, the executive who architected the employee incentive policy that led to this misbehavior retired with a \$126 million severance package.
+
+I've spoken to people who are upset by the unceremonious firing of 5300 employees, but outraged by the severance bonus collected by Tolstedt. To me, this was exactly backwards: it's certainly in very bad taste for Tolstedt to collect such an obscene amount of money, but that in itself doesn't hurt anyone's livelihood. Throwing 5300 households into financial turmoil does hurt people's livelihood, and that is what outrages me.
+
+# Inequality and Poverty
+
+Imagine a world in which there are 100 people. The 11 poorest people live in terrible conditions, eating only 1200 calories per day on average. By contrast, the wealthiest person is *obscenely* wealthy, controlling more wealth than the 90 poorest people. This is a world with a very high degree of inequality. It looks something like this:
+
+```{r}
+base = 1.06
+
+data <- data.frame(
+    x = 1:100,
+    y = base^(1:100)/base^100
+)
+
+data %>%
+  plot_ly(x=~x, y=~y) %>%
+  add_bars()
+```
+
+Each bar shows the amount of wealth held by the xth wealthiest person *and* everyone poorer than them. In contrast, let's consider a world in which wealth is uniformly distributed. It looks like this:
+
+```{r}
+data.frame(
+    x = 1:100,
+    y = 1:100/100
+  ) %>%
+plot_ly(x=~x, y=~y) %>%
+  add_bars()
+```
+
+Note that the bar grows by the same amount at every step. One standard metric of inequality is called the Gini Coefficient. The Gini coefficient of the first graph is `r formatC(ineq(1.1^(1:100)), digits = 2)`. The Gini coefficient of the second graph is 0. In other words, the second graph is something like an ideal communist society, and the first is the world we actually live in.
+
+There are, broadly speaking, two strategies to reducing this inequality. You can 1) increase the wealth of the poor people, or 2) decrease the wealth of the rich person. Since it's easier, let's focus on strategy 2 for a moment.
+
+This is a fun strategy. We get to blame someone who is well-off for all of our problems! We probably won't even be wrong! So, we grab the rich person, drag them to court and tell the government all about all the horrible things they've done. They get slapped with crushing fines on top of crushing legal bills, and they aren't so rich anymore. We all go home, delightedly thinking "justice has been served."
+
+The only problem is what happens when we get home. The 11 poorest people are still poor, hungry and miserable. The easy strategy for solving inequality didn't help them at all. Their problem was never inequality. It was poverty.
+
+Inequality is a red herring. Let's talk about fixing poverty.
+
+# Inequality as a Terminal Value
+
+Inequality itself [may be a bad thing](http://www.imf.org/external/pubs/ft/wp/2016/wp16121.pdf). distributions have overwhelming impact on the velocity of the median dollar, net spending, and thus net employment availability, demand for labor, and ultimate net income for the median person.
+
+I noticed soon after I posted this that I rather neglected the welfare of people 12 thru 99. My defense for this decision is admittedly weak, but non-trivial: their problems are less important to me than the problems of the poorest.
+
+But if we consider the health of the economy as a driver of the welfare of everyone (except, arguably, the excessively rich), then a healthy economy is helpful (and potentially vital) to the cause of global welfare improvement.
+
+> Unless you punish schemes to transfer wealth upward via fraud, which are fairly ubiquitous, you won't be able to outpace the rate at which your attempts to cure poverty are siphoned up by the rentiers.
+
+Some industries ARE highly effective at siphoning money upwards (high risk credit markets, for instance). But whenever I start thinking about high-risk credit, I bump into a problem. This is a market niche because there is a real and urgent need for it. If we eliminate payday and auto title lenders, what will poor people who rely upon these institutions do? There are some hopeful answers to this question (Lending Clubs, for example), but they haven't been able to supplant the lecherous practices against which they're competing.
+
+However, this isn't the entire picture. This, so far as I can tell, is contingent upon viewing the economy as a zero-sum game. The economy is slow because wealthy people have wealth and they don't spend it as rapidly as poorer people (everyone else) does. While the latter statement is empirically true, the former is false. It is possible to *create* value, as well as to steal it. Some industries are very good at creating value; technology, for example.
+
+But back to the question at hand: does this all mean that inequality is a more important problem than poverty?
+
+I think not. Imagine a world in which all practical avenues to upward money siphons has been sufficiently restricted, so that it's easier to make money using comparatively honest means (selling useful things at market prices, for example). That doesn't obviate the world of its Bill Gateses and Mark Zuckerburgs. They are wealthy because they made things that other people would then buy for billions of dollars.
+
+However, if we imagine a world in which everyone possessed sufficient income to ensure their access to safe housing and adequate nutrition (*cough* UBI *cough*), that also doesn't obviate us of the super-rich. It does, however, eliminate some of the worst burdens of deep poverty.
+
+This could continue to be a world with deep inequality. But its problems wouldn't share the same level of moral importance as that of the world we live in today.
+
+So I'm all for eliminating upward siphons (depending upon how we define "upward siphon"). I just don't labor under the belief that the health of the economy should take precedence over the well-being of its consumers.
+
+There may be a version of this argument (highly unequal wealth distributions lead to anemic macroeconomic conditions) that can convince me that inequality holds primacy over poverty in importance, but my threshold is going to be a lot higher than yours, Jordan. In order for macroeconomic distortions resulting from inequality to be more urgent than poverty, those distortions must reach all the way down to the quality of life of the impoverished. I can imagine economic fictions in which this could happen, but I'm bounded by only a passing familiarity with macroeconomics. Even so, they don't seem especially plausible to me.
+
+For example, let's consider a perfectly unequal society. No one owns anything, except for one person who owns everything.
+
+```{r}
+data.frame(
+    x = 1:100,
+    y = c(rep(0, 99), 1)
+  ) %>%
+plot_ly(x=~x, y=~y) %>%
+  add_bars()
+```
+
+[Note that the y-axis is a proportion in this case. This example is scale-invariant, so you can set the value of the entire world to whatever you want.]
+
+This is a distopian hellscape in which 99 people scratch a living off of rocks, necessarily stealing from the only person with anything to steal. It's Gini Coefficient is `r ineq(c(rep(0, 99), 1))`.
+
+Now, instead of that world, let's say that the bottom 99 people each hold \$10,000 in wealth, and the top person holds \$10 billion (or trillion--it doesn't matter so long as it's arbitrarily high). Like this:
+
+```{r}
+data.frame(
+    x = 1:100,
+    y = c(cumsum(rep(10000, 99)), 1e10)
+  ) %>%
+plot_ly(x=~x, y=~y) %>%
+  add_bars()
+```
+
+Let's further imagine that [the poverty line is around \$1.90 per day](https://en.wikipedia.org/wiki/Poverty_threshold). Given an investment of $10,000, one only needs an average return of `r log(10001.9/10000)*100`% per day to generate enough income to exceed that poverty line. With a more reasonable forecast of 3% annual interest
+
+```{r}
+matrix(
+    rep(1:20*1000, each=100) * 1:100/10,
+  nrow = 100,
+  ncol = 20
+  ) %>%
+plot_ly(z = ., type = "surface") %>%
+  add_surface(z = as.matrix(rep(1.90, times=2000), nrow=100, ncol=20))
+```
+
+This is also a staggeringly unequal society, with a Gini coefficient of `r formatC(ineq(c(cumsum(rep(10000, 99)), 1e10)), digits=2)`. However, the quality of life enjoyed by the bottom 99 is higher than the quality of life enjoyed by the poorest people above the poverty line today.
+
+I think that this example is instructive.
+
+> Or use the money from the fines to help the poorest people? That's generally the idea, not to levy spiteful fines.
+
+> ... what? No one is suggesting just destroying the rich person's wealth. The point is that you take some of that wealth and GIVE IT TO THOSE STARVING PEOPLE. Reducing inequality is the very direct solution to poverty.
+
+I *know* no one is proposing burning money.
+
+<iframe src="https://player.vimeo.com/video/175819562#t=259s" class="center-block" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+Well, I'm not anyway.
