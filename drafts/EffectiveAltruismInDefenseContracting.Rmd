@@ -1,0 +1,28 @@
+---
+title: "Effective Altruism in Defense Contracting"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+There is a non-zero probability that your job kills people. In the Defense and Intelligence communities, you'll tend to be much more acutely aware of that possibility. It is possible to be a Utilitarian Effective Altruist in the Defense or Intelligence Community.
+
+# Doing a Good Job
+
+Some jobs in the defense sector are unequivocally devoted to saving or preserving lives. These are good, and you should try to get one of these! They are also few and far between.
+
+# Doing a Bad Job Poorly
+
+Some jobs are unequivocally devoted to killing people in one way or another. While this should make any human-valuing utilitarian blanch, there is an obvious solution: protest the goal with your superiors. When that doesn't result in any improvement on the moral status of the job, you should leave it. Unfortunately, life has a funny way of making this difficult. Maybe you just have no savings and student loans, a mortgage, or other overwhelming debt to keep up with. Maybe your only skill is coding in COBOL, and the [only job in the world that requires COBOL is in the US Navy](http://www.fedtechmagazine.com/article/2014/06/governments-cobol-conundrum). Whatever your circumstances, you just can't find a way out of your morally bankrupt position. What then?
+
+Let's imagine that you didn't get this job, and somebody else did. Somebody with a skill level similar to yours and no moral hangups about using it. Now let's suppose you started to do the job, but less effectively than some other hire could. Every iota of effort you don't put into the job (that someone else would have) is a victory. It would not surprise me to learn that there were federal contractors who've gone entire careers without producing a single unit of value (by any outside metric). Accountability for labor in contracting is absolutely dismal. However, there are some important constraints in how far you can take this strategy.
+
+There are some positions for which this is entirely unsustainable. Drone operators, for example, hold an ultimate power. They control missions which, in theory, assassinate terrorists. As a drone operator, you could literally *not hit a button* and some people would be alive for it. However, the conspicuous lack of explosion will likely draw the attention of your superior, and you'll all but certainly be displaced from your position after multiple such failures.
+
+# Doing a Morally Ambiguous Job
+
+Estimate the moral effects of the job. If positive, continue with vigor. If negative, you have some recourse:
+
+* If the moral impact of the job is small, you can possibly offset it by increasing your donations.
+* If the moral impact of the job is large, 
