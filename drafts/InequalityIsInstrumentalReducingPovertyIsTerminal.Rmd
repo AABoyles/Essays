@@ -16,7 +16,7 @@ library("plotly")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 
 source("../infobox.R")
-infobox(list("Epistemic Status"="Highly Uncertain"))
+infobox(list("Epistemic Status"="Highly Uncertain", "Epistemic Activity"="Splitting Hairs"))
 ```
 
 # Introduction
