@@ -34,39 +34,37 @@ So it's worth exploring whether certain interventions will result in a net impro
 
 What I want to figure out is how to reduce all-cause mortality (as estimated in randomized trials on healthy adult human populations for which there are enough trials to do a random-effects/multilevel model), so I can estimate a posterior predictive interval of the benefit of an intervention, letting me compare mortality reduction with intervention cost, from which I can compute an expected value. Whew, that's a head-full. Let's break out those constraints individually:
 
-1. reduce "all-cause mortality",
+*1. reduce "all-cause mortality",*
 
 ACM is the end-point of choice for life-extension because it is both closest to what we care about (additional life) and it is the hardest of all end-points - it is difficult to cheat, miscount, or not notice, and by being simple, consistent, and unambiguous, avoids many failure modes such as subgroup hacking or dropping outliers or tweaking covariates (either a larger fraction of the controls are dead or not). It can also typically be extracted from most studies, even if they otherwise fail to report much of the data.
 
 Average reduction in all-cause mortality is also excellent for ignoring any zero-sum tradeoffs: it's no good if reported benefits are only because the doctors writing up a trial kept slicing deaths by different categorizations of causes until they finally found a _p_<0.05 or if the gains only appear by excluding some deaths as 'irrelevant' or if the gains in one cause of death comes at the expense of another cause (is it really helpful to avoid death by heart attack if the intervention just means you die of cancer instead?).
 
-For example, one primate study of caloric restriction found benefits only if it [excluded a bunch of deaths in the CR group](http://junkfoodscience.blogspot.com/2009/07/calorie-restrictive-eating-for-longer.html) and defined them as not age-related, ignoring "monkeys who died while taking blood samples under anesthesia, from injuries or from infections, such as gastritis and endometriosis." (Even in the [followup paper](http://www.nature.com/ncomms/2014/140401/ncomms4557/full/ncomms4557.html "'Caloric restriction reduces age-related and all-cause mortality in rhesus monkeys', Colman et al 2015") several years later, the all-cause mortality reduction is much smaller than the "age-related" subcategory.)
-
 From a life-extension perspective, it is irrelevant if an intervention reduces some kinds of diseases while making one much more prone to dying from routine causes such as injuries or minor operations under anesthesia (especially since, in modern societies, one is all-but certain to undergo some surgery at some point).
 
 In short, an intervention either reduces all-cause mortality or it doesn't.
 
-2. as estimated in randomized trials,
+*2. as estimated in randomized trials,*
 
 [Correlation is not causation]() and correlates only rarely turn out to be usefully causal. With aging, the situation is especially severe since aging is the exponential increase in mortality with time as all bodily systems gradually begin to fail; one cannot simply take a correlation of some chemical with aging or mortality and expect an intervention on it to have more than a minute chance of making a difference, since most (if not nearly every) chemical or substance or biomarker will change with age.
 
 The best way to insulate our conclusions from selection effects is to perform large, controlled experiments, rather than to rely upon natural data.
 
-3. on healthy adult human populations
+*3. on healthy adult human populations*
 
-Studies of interventions in the sick are also unhelpful, as any observable benefits from such an intervention hopefully come from the particular disorder being treated. One challenge for this criteria is studies done in elderly populations. Because death rates amongst the elderly are so high, they offer higher power to detect reductions in mortality. However, that death rate is high because of the aging process itself, and so subjects will tend to have many chronic conditions and diseases as well. These confound otherwise useful results, and thus must be treated with some caution.
+Studies of interventions in the sick are unhelpful, as any observable benefits from such an intervention hopefully come from the particular disorder being treated. One challenge for this criteria is studies done in elderly populations. Because death rates amongst the elderly are so high, they offer higher power to detect reductions in mortality. However, that death rate is high because of the aging process itself, and so subjects will tend to have many chronic conditions and diseases as well. These confound otherwise useful results, and thus must be treated with some caution.
 
 Animal studies are also unhelpful as [results tend to be unreliable across species](). One particularly noteworthy source of unreliability is that some species age in entirely different ways than humans. Perhaps it is better to say that humans naturally live unusually long lives for animals, and thus age in very different ways than other organisms.
 
-4. for which there are enough trials to do a random-effects/multilevel model, so one can extract a posterior predictive interval of the benefit,
+*4. for which there are enough trials to do a random-effects/multilevel model, so we can extract a posterior predictive interval of the benefit,*
 
 It's important to include heterogeneity from population to population as part of the uncertainty. One of the subtleties often missed in dealing with modeling is that a 95% CI around a parameter is not a CI around the outcome or result.
 
-5. letting one compare mortality reduction against intervention cost,
+*5. letting us compare mortality reduction against intervention cost,*
 
 For making decisions, the costs of the intervention must be taken into account. A taxing exercise regimen may be proven to increase longevity, but is that of any value of the regimen takes away much more of your life than it gives back? It may be that no matter whether our certainty is 99% or 99.99% that it works, we would never choose to embark on that regimen. On the other hand, for a cheap enough intervention, we may be willing to accept substantially lower probability: baby aspirin, for example, costs \$7 & <10 seconds each morning / <60 minutes a year and we might be willing to use it if our final probability of any benefit is a mere 50%.
 
-6. then yielding an expected value of the intervention (and if <\$0, perhaps further analysis about whether it has a reasonable chance of ever becoming profitable and what the Value of Information might be of further trials)
+*6. then yielding an expected value of the intervention (and if <\$0, perhaps further analysis about whether it has a reasonable chance of ever becoming profitable and what the Value of Information might be of further trials)*
 
 If an intervention passes all these criteria, we can be highly confident that we will gain life, rather than lose it.
 
@@ -76,26 +74,33 @@ Fortunately, there are a few interventions which may meet these stringent requir
 
 # Interventions
 
-Evaluated:
+Evaluated Supplements/Medications:
 
 * [vitamin D](#vitamin-d)
 * [metformin](#metformin)
 
-Possible interventions:
+Possible Supplements/Medications:
 
-* [Nicotinamide Riboside]()
-* [Pterostilbene]()
-* [Resveratrol]()
 * [Aspirin]()
+* [Rapamycin](http://en.wikipedia.org/wiki/rapamycin)
+* [Nicotinamide Riboside]()
+* [Resveratrol]()
+* [Pterostilbene]()
 * [Bisphosphonate](http://en.wikipedia.org/wiki/Bisphosphonate)
 * [D-Glucosamine](http://www.ncbi.nlm.nih.gov/pubmed/?term=22828954)
 * [Magnesium](http://www.ncbi.nlm.nih.gov/pubmed/?term=24259558)
 * [Lithium Chloride](http://www.ncbi.nlm.nih.gov/pubmed/?term=21301855)
-* [Rapamycin](http://en.wikipedia.org/wiki/rapamycin)
-* [Alcohol](http://en.wikipedia.org/wiki/Long-term%20effects%20of%20alcohol%20consumption)
-* [Aerobic Exercise]()
-* [Caloric Restriction](http://en.wikipedia.org/wiki/caloric%20restriction)
+
+Possible Dietary Modifications:
+
 * [Diet](http://www.nejm.org/action/showImage?doi=10.1056%2FNEJMoa1200303&iid=f01)
+* [Caloric Restriction](http://en.wikipedia.org/wiki/caloric%20restriction)
+* [Alcohol](http://en.wikipedia.org/wiki/Long-term%20effects%20of%20alcohol%20consumption)
+
+Possible Lifestyle Modifications:
+
+* [Aerobic Exercise]()
+* [Resistance Exercise]()
 * [Castration](http://en.wikipedia.org/wiki/Castration%23Medical%20consequences)
 
 In the exceedingly unlikely case that I exhaust all of these, there's the...
@@ -166,21 +171,13 @@ gainsVsRR <- data.frame(RR=rrs, Gain=sapply(rrs, lifeExpectancyGain))
 plot_ly(gainsVsRR, x=~RR, y=~Gain, type = 'scatter', mode = 'lines')
 ```
 
-If we plot a lot of samples of RR vs gain to get some intuition, it looks like a logarithmic curve. So if we needed better performance we could replace two integrals by 4 arithmetic operations:
+Side note: it looks like a logarithmic curve. If we needed better computational performance, we could exploit this property to replace the integrals with cheaper arithmetic operations:
 
 ```{r}
 gainlm <- gainsVsRR %>%
   ntbt_lm(Gain ~ log(RR))
 
-summary(gainlm)
-```
-
-Indeed, the linear model turns out to fit extremely well.
-
-```{r}
-lifeExpectancyGainLogApproximation <- function(RR) 0.0009609580 - 9.3742723770*log(RR)
-
-abs(lifeExpectancyGain(.85) - lifeExpectancyGainLogApproximation(.85))-1*365
+lifeExpectancyGainLogApproximation <- function(RR) predict(gainlm, data.frame(RR=RR))
 ```
 
 Anyway, with this conversion of risk to years of gained life, we can see how much bang we get:
@@ -306,11 +303,11 @@ for (RR in seq(0.80, 0.95, by=0.01)) {
 
 ## Prior on RRs
 
-Useful interventions are rare and our analyses should incorporate a skeptical informative prior reflecting our knowledge that it is highly unlikely that any particular intervention will genuinely increase life expectancy; in particular, RRs <0.5 (or >2.0) are rare. Since there are no previous compilations of randomized effects for interventions on all-cause mortality in healthy people to use for priors, I fall back on general-purpose but still informative skeptical priors found to work well across many problems by [Gelman et al 2008](http://projecteuclid.org/download/pdfview_1/euclid.aoas/1231424214 "A weakly informative default prior distribution for logistic and other regression models") & [Pedroza et al 2015](./doc/statistics/2015-pedroza.pdf "Performance of informative priors skeptical of large treatment effects in clinical trials: A simulation study"): the Cauchy(0, 2.5<sup>2) and Normal(0, 0.35<sup>2) priors.
+Useful interventions are rare and our analyses should incorporate a skeptical informative prior reflecting our knowledge that it is highly unlikely that any particular intervention will genuinely increase life expectancy; in particular, RRs <0.5 (or >2.0) are rare. Since there are no previous compilations of randomized effects for interventions on all-cause mortality in healthy people to use for priors, I fall back on general-purpose but still informative skeptical priors found to work well across many problems by [Gelman et al 2008](http://projecteuclid.org/download/pdfview_1/euclid.aoas/1231424214 "A weakly informative default prior distribution for logistic and other regression models") & [Pedroza et al 2015](./doc/statistics/2015-pedroza.pdf "Performance of informative priors skeptical of large treatment effects in clinical trials: A simulation study"): the Cauchy(0, 2.5^2) and Normal(0, 0.35^2) priors.
 
 # Vitamin D
 
-A review of vitamin D meta-analyses reporting on all-cause mortality yields a meta-analytic result of RR=0.96 with little heterogeneity or signs of bias. Reproducing it as a Bayesian random-effects meta-analysis gives a posterior predictive probability P=84% that RR<1.0\. The expected life expectancy gain is 0.33 years or \$16,800, while total cost of vitamin D supplementation is estimated at \$761, for a profit of \$15,300\. The probability of being profitable is estimated at P=83%. The optimal beginning age is 24yo.
+A review of vitamin D meta-analyses reporting on all-cause mortality yields a meta-analytic result of RR=0.96 with little heterogeneity or signs of bias. Reproducing it as a Bayesian random-effects meta-analysis gives a posterior predictive probability P=84% that RR<1.0. The expected life expectancy gain is 0.33 years or \$16,800, while total cost of vitamin D supplementation is estimated at \$761, for a profit of \$15,300. The probability of being profitable is estimated at P=83%. The optimal beginning age is 24yo.
 
 ## Background
 
@@ -318,7 +315,7 @@ Vitamin D3 and vitamin D2 have been researched intensively ever since their disc
 
 The downside is that the literature is so large and heterogeneous that it's hard to deal with and for many of the uses investigated, there is conflicting evidence. We are fortunate, however: the large research area of bone fractures/[falls](http://en.wikipedia.org/wiki/Falls%20in%20older%20adults "Wikipedia: Falls in older adults")/osteoporosis in the elderly (collectively, leading causes of death & disability) means many (relatively) large RCTs in (relatively) healthy people are available with meaningful death rates reported. For particularly comprehensive reviews, see [Newberry et al 2014](https://www.ncbi.nlm.nih.gov/books/NBK253540/ "Vitamin D and Calcium: A Systematic Review of Health Outcomes (Update)") and [Theodoratou et al 2014](http://www.bmj.com/content/348/bmj.g2035.full "Vitamin D and multiple health outcomes: umbrella review of systematic reviews and meta-analyses of observational studies and randomised trials").
 
-In addition, vitamin D3 also has considerable plausibility for being profitable: it can be taken in extremely large doses (>10-100x normal daily doses) without much sign of toxicity (leading to a fair number of trials which ensure compliance by just injecting mega-doses of vitamin D every month or year), [hypervitaminosis D](http://en.wikipedia.org/wiki/hypervitaminosis%20D "Wikipedia: hypervitaminosis D") is rare and not usually fatal, side-effects are rare and minimal, it is already taken by many millions of healthy and sick people without noticeable problems, and vitamin D costs ~\$15/year.
+In addition, vitamin D3 also has considerable plausibility for being profitable: it can be taken in extremely large doses (>10-100x normal daily doses) without much sign of toxicity (leading to a fair number of trials which ensure compliance by just injecting mega-doses of vitamin D every month or year), [hypervitaminosis D](http://en.wikipedia.org/wiki/hypervitaminosis%20D) is rare and not usually fatal, side-effects are rare and minimal, it is already taken by many millions of healthy and sick people without noticeable problems, and vitamin D costs ~\$15/year.
 
 ## Causality
 
@@ -339,23 +336,13 @@ vitaminD <- data.frame(
   "Calcium"=c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 )
 
-rem <- rma(measure="RR", ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths),
-           data=vitaminD, method="REML")
-rem
+rma(measure="RR", ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths), data=vitaminD, method="REML")
 ```
 
 Since I^2=0, this is equivalent to a fixed-effect meta-analysis:
 
 ```{r}
-fem <- rma(measure="RR", ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths),
-           data=vitaminD, method="FE")
-fem
-```
-
-```{r}
-exp(-0.0719)
-exp(-0.0354)
-exp(0.0011)
+rma(measure="RR", ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths), data=vitaminD, method="FE")
 ```
 
 (Oddly, the per-study mortality rates in the Bolland forest plot/table don't add up to the claimed totals, but are short by a few dozen each; since the RR calculated by `metafor` works out to be about the same, I assume it has something to do with how Bolland decided to handle including multiple subgroups from studies and is not important.)
@@ -366,7 +353,7 @@ Turning from frequentist to Bayesian methods, we could take the fixed-effect at 
 bayes.prop.test(c(sum(vitaminD$E.deaths), sum(vitaminD$C.deaths)), c(sum(vitaminD$E.n), sum(vitaminD$C.n)))
 ```
 
-Using BFA has the downside that an I<sup>2=0 doesn't guarantee that there is no heterogeneity (it'd be surprising if there wasn't) and gives an overly narrow predictive distribution, and BFA doesn't easily include our informative priors. We can switch to [bayesmeta](https://cran.r-project.org/web/packages/bayesmeta/index.html) which is easier to use than JAGS since it's built on metafor:
+Using BFA has the downside that an I^2=0 doesn't guarantee that there is no heterogeneity (it'd be surprising if there wasn't) and gives an overly narrow predictive distribution, and BFA doesn't easily include our informative priors. We can switch to [bayesmeta](https://cran.r-project.org/web/packages/bayesmeta/index.html) which is easier to use than JAGS since it's built on metafor:
 
 ```{r}
 brem <- escalc(measure="RR", ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths), data=vitaminD) %>%
@@ -421,7 +408,7 @@ vitaminDTotalCost
 
 To go into some more detail about the dosing issue, ne of the more recent meta-analyses to discuss dose in connection with all-cause mortality, [Autier 2014](http://www.gwern.net/docs/vitamind/2014-autier.pdf), says
 
-> …Results of meta-analyses and pooled analyses consistently showed that supplementation could significantly reduce the risk of all-cause mortality, with relative risks ranging from 0.93 to 0.96 (table 4). Most trials included elderly women and a sizeable proportion of individuals were living in institutions. Decreases in risks of death were not associated with trial duration and baseline 25(OH)D concentration.<sup>13 Mortality reductions in trials that used doses of 10-20 μg [400-800IU] per day of vitamin D seemed greater than were reductions noted with higher doses.<sup>13,14
+> …Results of meta-analyses and pooled analyses consistently showed that supplementation could significantly reduce the risk of all-cause mortality, with relative risks ranging from 0.93 to 0.96 (table 4). Most trials included elderly women and a sizeable proportion of individuals were living in institutions. Decreases in risks of death were not associated with trial duration and baseline 25(OH)D concentration. Mortality reductions in trials that used doses of 10-20 μg [400-800IU] per day of vitamin D seemed greater than were reductions noted with higher doses.(13,14)
 > 
 > *   13\. Bjelakovic G, Gluud LL, Nikolova D, et al. "Vitamin D supplementation for prevention of mortality in adults". Cochrane Database Syst Rev 2011; 7: CD007470\. [[2014](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD007469.pub2/pdf) update]
 > *   14\. Rejnmark L, Avenell A, Masud T, et al. ["Vitamin D with calcium reduces mortality: patient level pooled analysis of 70,528 patients from eight major vitamin D trials"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3410276/). J Clin Endocrinol Metab 2012; 97: 2670-81.
@@ -476,7 +463,7 @@ Overall, metformin is promising and under my set of assumptions, profitable for 
 
 ### Causality
 
-Metformin has not been much tested in healthy adult populations, although there are a few anecdotes of prophylactic use (eg [James Watson](http://www.nytimes.com/2016/05/15/magazine/warburg-effect-an-old-idea-revived-starve-cancer-to-death.html "'I think there's no doubt that insulin is pro-cancer', Watson says, with respect to the link between obesity, diabetes and cancer. 'It's as good a hypothesis as we have now.' Watson takes metformin for cancer prevention; among its many effects, metformin works to lower insulin levels.")) and a good deal of media attention has been given to a trial planned to launch in 2016: "Targeting Aging with Metformin" (TAME; [profile of proponent Barzilai](http://news.sciencemag.org/biology/2015/09/feature-man-who-wants-beat-back-aging "The man who wants to beat back aging: Nir Barzilai hopes to persuade FDA to bless the proposed anti-aging trial, which is unconventional in its goals and design."), [interview](http://healthspancampaign.org/2015/04/28/dr-nir-barzilai-on-the-tame-study/), [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition")[<sup>3](#fn3), [Barzilai et al 2016](./docs/2016-barzilai.pdf "Metformin as a Tool to Target Aging") advocacy paper). There are some meta-analyses of past clinical trials of diabetic patients, which include estimates for ACM. Interpretation is difficult due to generally small numbers of deaths, differences in what metformin was being compared to, and the generally diseased subjects, but the picture looks mixed:
+Metformin has not been much tested in healthy adult populations, although there are a few anecdotes of prophylactic use (eg [James Watson](http://www.nytimes.com/2016/05/15/magazine/warburg-effect-an-old-idea-revived-starve-cancer-to-death.html "'I think there's no doubt that insulin is pro-cancer', Watson says, with respect to the link between obesity, diabetes and cancer. 'It's as good a hypothesis as we have now.' Watson takes metformin for cancer prevention; among its many effects, metformin works to lower insulin levels.")) and a good deal of media attention has been given to a trial planned to launch in 2016: "Targeting Aging with Metformin" (TAME; [profile of proponent Barzilai](http://news.sciencemag.org/biology/2015/09/feature-man-who-wants-beat-back-aging "The man who wants to beat back aging: Nir Barzilai hopes to persuade FDA to bless the proposed anti-aging trial, which is unconventional in its goals and design."), [interview](http://healthspancampaign.org/2015/04/28/dr-nir-barzilai-on-the-tame-study/), [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition"), [Barzilai et al 2016](./docs/2016-barzilai.pdf "Metformin as a Tool to Target Aging") advocacy paper). There are some meta-analyses of past clinical trials of diabetic patients, which include estimates for ACM. Interpretation is difficult due to generally small numbers of deaths, differences in what metformin was being compared to, and the generally diseased subjects, but the picture looks mixed:
 
 1.  Saenz et al 2005, ["Metformin monotherapy for type 2 diabetes mellitus"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD002966.pub3/epdf/standard); withdrawn by the Cochrane Collaboration (apparently due to obsolescence)
 
@@ -698,7 +685,7 @@ The current supplement *du jour* for life-extension enthusiasts is called Basis.
 
 It's composed of Nicotinamide Riboside (250mg/pill) and Pterostilbene (50mg/pill). However, they claim that the [current batch's doses](https://www.elysiumhealth.com/basis) are more like 277mg/pill and 59mg/pill respectively.
 
-It's interesting to me in part because it is comparatively expensive. Elysium Health is selling a subscription model in which Basis may be purchased annually (\$480), semi-annually (\$45), monthly (\$50), or a la carte (\$60). These prices are, [surprisingly](https://smile.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=Nicotinamide+Riboside) [competitive](https://smile.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=Pterostilbene) with other supplement providers offering the same chemicals at similar dosages.
+It's interesting to me in part because it is comparatively expensive. Elysium Health is selling a subscription model in which Basis may be purchased annually (\$480), semi-annually (\$45), monthly (\$50), or a la carte (\$60). These prices are, [surprisingly](https://smile.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=Nicotinamide+Riboside) [competitive](https://smile.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=Pterostilbene) with other supplement providers offering the same supplements at similar dosages.
 
 # Pterostilbene
 
@@ -718,6 +705,8 @@ Rapamycin is famous for life-extension results in animal experiments (especially
 # Caloric Restriction
 
 Caloric Restriction is promising, but current randomized studies are too short to show any effect on mortality (e.g. in [Ravussin et al 2015](http://biomedgerontology.oxfordjournals.org/content/70/9/1097.full). For example, no one died, so there is no all-cause mortality estimate.
+
+For example, one primate study of caloric restriction found benefits only if it [excluded a bunch of deaths in the CR group](http://junkfoodscience.blogspot.com/2009/07/calorie-restrictive-eating-for-longer.html) and defined them as not age-related, ignoring "monkeys who died while taking blood samples under anesthesia, from injuries or from infections, such as gastritis and endometriosis." (Even in the [followup paper](http://www.nature.com/ncomms/2014/140401/ncomms4557/full/ncomms4557.html "'Caloric restriction reduces age-related and all-cause mortality in rhesus monkeys', Colman et al 2015") several years later, the all-cause mortality reduction is much smaller than the "age-related" subcategory.)
 
 # Castration
 
