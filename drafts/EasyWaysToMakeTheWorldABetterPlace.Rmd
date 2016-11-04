@@ -1,0 +1,49 @@
+---
+title: "Easy Ways to Make the World a Better Place"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r, results='asis', eval=FALSE}
+source("infobox.R")
+meta <- list(
+  "Status" = "Fairly Complete",
+  "Epistemic Status" = "Highly Confident",
+  "First Version" = "2016-11-04 13:57:17 EDT"
+)
+infobox(meta)
+```
+
+There are a ton of simple, uncontroversial ways to make the world a better place. So you should go do some of them!
+
+# Donate Wisely
+
+I used to donate to a bunch of different charities. You've probably heard of most of them. But I realized something: I had no idea what *effect* my donations were having. I valued the goals of the charities to which I was donating, but goals don't correspond to outcomes.
+
+It turns out that some charities are [much, much better](https://www.givingwhatwecan.org/sites/givingwhatwecan.org/files/attachments/moral_imperative.pdf) at achieving their goals than others. A few years ago, some [pretty smart people](http://givewell.org/) started looking through tons of literature and charity disclosures and public data to figured out what the most effective charities are. The simplest way to donate wisely? [Follow their advice](http://www.givewell.org/charities/top-charities).
+
+# Vote
+
+Voting is an [incredibly valuable use of your time](https://80000hours.org/2016/11/why-the-hour-you-spend-voting-is-the-most-socially-impactful-of-all/). If one of the major party candidates can sway even tiny fractions of the US Federal Budget toward causes you care about, your vote may be worth tens of thousands of dollars.
+
+If you haven't registered to vote, [you should get on that](https://vote.gov/)! If you haven't voted in awhile, [your registration may have been purged](https://ballotpedia.org/Voter_caging_and_purging#Voter_purging), and you may need to re-register. [Google's handy tool](https://g.co/kgs/sXUJkP) can help you figure out if you need to register.
+
+# Register to be an Organ Donor
+
+It takes five minutes to [register to be an Organ Donor](https://www.donatelife.net/). However, if when you die your organs can be harvested, that five minutes can literally save as many as eight lives.
+
+# Donate Blood
+
+You don't need to be dead to make use of your body to help people. You can make a blood donation once every six weeks.
+
+Also, one weird, fun fact: blood from younger people is better. Seriously! There are some people who are looking at ways to use blood donations from young people to extend the life of older people. And the coolest part about that is that it isn't a 1:1 trade. Donating blood doesn't reduce your lifespan, it just increases it for the recipient.
+
+# Learn First Aid
+
+[Want to Fight Terrorism? Learn First Aid.](https://www.washingtonpost.com/news/wonk/wp/2013/04/18/want-to-fight-terrorism-learn-first-aid/)
+
+# Bonus: Go Meta
+
+If you do all of these things, you might save X lives. However, if you can convince someone else to do all of these things, they might save X lives, too! This is called "Going Meta".
