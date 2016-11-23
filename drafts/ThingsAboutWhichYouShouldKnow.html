@@ -19,13 +19,13 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -153,7 +153,6 @@ $(document).ready(function () {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -162,10 +161,8 @@ $(document).ready(function () {
 
 <!-- code folding -->
 <style type="text/css">
-.code-folding-btn { margin-bottom: -22px; }
-.code-folding-btn.collapsed { margin-bottom: 4px; }
+.code-folding-btn { margin-bottom: 4px; }
 </style>
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
@@ -226,15 +223,22 @@ $(document).ready(function () {
 </div>
 
 
-<p><a href="https://en.wikipedia.org/wiki/Drake_equation">The Drake Equation</a> (but don’t waste too much time <a href="http://xkcd.com/384/">thinking about it</a>)</p>
-<p>Catastrophic Risk</p>
-<p>Existential Risk</p>
-<p><a href="https://en.wikipedia.org/wiki/Great_Filter">The Great Filter</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Doomsday_argument">The Doomsday Argument</a></p>
+<p><a href="">Catastrophic Risk</a></p>
+<p><a href="">Existential Risk</a></p>
 <p><a href="https://en.wikipedia.org/wiki/Kardashev_scale">The Kardashev Scale</a></p>
-<p>Dyson Sphere</p>
-<p>Matrioshka Brain</p>
+<p><a href="https://en.wikipedia.org/wiki/Drake_equation">The Drake Equation</a>(but don’t waste too much time <a href="http://xkcd.com/384/">thinking about it</a>)</p>
+<p><a href="https://en.wikipedia.org/wiki/Great_Filter">The Great Filter</a></p>
+<p><a href="">Anthropic Decision Theory</a></p>
+<p><a href="">Self-Sampling Assumption</a></p>
+<p><a href="">Self-Indication Assumption</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Doomsday_argument">The Doomsday Argument</a></p>
+<p><a href="">Dyson Sphere</a></p>
+<p><a href="">Matrioshka Brain</a></p>
 <p><a href="http://en.wikipedia.org/wiki/Simulation_hypothesis">The Simulation Hypothesis</a></p>
+<p><a href="">The Simulation Argument</a></p>
+<p><a href="">Novikov Self-Consistency</a></p>
+<p><a href="">Everett Branching</a></p>
+<p><a href="">Tegmark Levels</a></p>
 
 
 
@@ -244,8 +248,11 @@ $(document).ready(function () {
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
 
 

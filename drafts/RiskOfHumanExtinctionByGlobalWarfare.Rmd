@@ -8,7 +8,6 @@ output:
 ---
 
 ```{r setup, message=FALSE}
-library("ShRoud")
 library("HistData")
 library("readr")
 library("readxl")
@@ -18,6 +17,7 @@ library("tidyr")
 library("fuzzyjoin")
 library("intubate")
 library("plotly")
+library("ShRoud")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
 
@@ -219,6 +219,16 @@ plot_ly(x = 1:100*1000, y = 1-(1-pOfEWar)^(1:100*1000))
 
 So, for example, let's say we're curious about the time frame for which an existentially risky war is 50% likely. Solving for $n$ gives us $n \approx 12160.13$ (which we can confirm visually using the above plot). So an existentially risky war should occur (with probability .5) within 12161 wars or so.
 
+## Black Swan Wars
+
+The fact that no globally catastrophic war has occurred should not be misconstrued as strong evidence that such a war is unlikely.
+
+## "Dragon King" Wars
+
+[Dragon King Events]
+
+In this case, we should not view existentially risky warfare as a single, huge, unlikely war, but as the sum of massive wars which are much likelier than simple inference from power laws suggests.
+
 # Population Dynamics
 
 In general, predicting the size of a population is a fraught modeling exercise. On the one hand, we have extremely good information about the means by which populations grow (i.e. births) and shrink (deaths), and demographers have been conducting sophicticated research for a long time. On the other hand, measuring these is a difficult task. Prior to 1950, we have more-or-less just good guesses, born out of heroic research efforts.
@@ -355,26 +365,9 @@ Recall that this was analysis predicated on the assumption that the global popul
 
 As birth control has become available, fertility rates have dropped, well below the replacement rate in some advanced economies. There is a possibility that humanity will experience a natural population decline in the near-distant future.
 
-# The Effects of Technological Progress
-
-This outside view provides a rather rosy perspective on the probability of war as existential risk. However, we have thus far neglected the progress of technology.
-
-Lars Erik Cederman [replicated this result](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&rep=rep1&type=pdf) in a paper in which he took the casualty estimates from the [Correlates of War](http://www.correlatesofwar.org/).
-
-Humanity has only recently developed the technology to cause disasters on the scale of the entire population. Prior to the dawn of the nuclear era, industrialized warfare threatened hundreds of millions, and killed tens of millions. Prior to the dawn of flight, ground and naval warfare only meaningfully threatened millions of people at once.
-
-```{r}
-## Merge in Annual Global Population Estimates
-## Show largest body count over time
-## Is our ability to scale warfare growing faster than our population growth?
-## If no, then an existentially risky war may not actually be meaningfully possible until population trends change.
-```
-
-## Are "Dragon King" Wars possible?
-
-[Dragon King Events]
-
 # Trends in Violence
+
+Thus far, our models have been largely devoid of empirical content regarding the character of wars and the state of the world which causes them.
 
 [The Better Angels of Our Nature]
 
@@ -382,11 +375,72 @@ Violence itself is trending downward. It's not at all clear why.
 
 A decline in violence depresses the probability of wars.
 
+## Mechanisms of the Onset of Warfare
+
+This is an extremely fraught and difficult effort. The specific, substantive sources of potentially massive conflict are likely to change on the order of decades, if not years. Even so, 
+
+### NATO-Russia
+
+[How World War III Became Possible](http://www.vox.com/2015/6/29/8845913/russia-war)
+[How Likely is war between the United States and Russia in the next 10 years?](https://trip.wm.edu/charts/#/bargraph/3/26)
+[How Likely Is (Nuclear) War Between the United States and Russia?](https://dartthrowingchimp.wordpress.com/2015/07/03/how-likely-is-nuclear-war-between-the-united-states-and-russia/)
+[How Likely is nuclear war with Russia?](http://www.vox.com/2015/7/6/8900237/russia-war-odds)
+
+### US-China
+
+[How Likely is war between the United States and China in the next 10 years?](https://trip.wm.edu/charts/#/bargraph/3/25)
+
+# The Effects of Technological Progress
+
+Humanity has only recently developed the technology to cause disasters on the scale of the entire population. Prior to the dawn of flight, ground and naval warfare only meaningfully threatened millions of people at once. Prior to the dawn of the nuclear era, industrialized warfare only threatened hundreds of millions. This hints at an possibly informative trend: the growth in human ability to scale destruction. Specifically, is humanity's ability to scale warfare growing faster than its population growth? If so, then the probability of an existentially risky war may be growing, even as the probability of any war continues to shrink. If not, then an existentially risky war may not actually be meaningfully possible until population trends change.
+
+Lars Erik Cederman [replicated this result](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.143.8098&rep=rep1&type=pdf) in a paper in which he took the casualty estimates from the [Correlates of War](http://www.correlatesofwar.org/).
+
+```{r}
+## Merge in Annual Global Population Estimates
+## Show largest body count over time
+## Is our ability to scale warfare growing faster than our population growth?
+```
+
+## Bigger Nukes
+
+While it's widely believed that there are a sufficient number of nuclear weapons to extinguish humanity, we have yet to see an explosive weapon of the requisite magnitude to achieve human extinction by itself. The details of such a device are purely conjectural. A 50 Gigaton weapon should be sufficient to engulf the area of the inhabited Earth.
+
+Consider a single 50GT doomsday weapon. It may be able to engulf the inhabited area of the Earth on a flat plane, but planetary geometry is likely to prevent such a weapon from achieving its objective. As the fatal effects of the weapon expand outwards spherically, the surface of the Earth will block those effects from reaching the opposing hemisphere. Rather than attempting to build a single doomsday weapon, a more effective approach would be to build two, and place them at any anti-podal locations on the globe. Weapons of approximately 15 GT should be able to accomplish this.
+
+At present, the largest weapon ever tested was the Tsar Bomba, a 50 MT thermonuclear weapon tested by the Soviet Union. A single doomsday bomb (or two twin doomsday bombs) would require three orders of magnitude more yield. It is conceivable that such a weapon could be constructed. Nuclear yields scaled over three orders of magnitude in the 16 years between the Trinity test (1945, 20KT) and the Tsar Bomba (1961). The fact that nuclear yields ceased to grow at this point is noteworthy.
+
+Diminishing returns on investment. A shift to more precise targeting?
+
+## Biowarfare
+
+One obvious alternative to apocalypse by nuclear weapons is apocalypse by biological weapons. A combatant nation may engineer some virus or organism to induce a fatal illness with a high transmission rate.
+
+The biological agent evolves immunity to the antidote.
+
+...Or there wasn't an antidote.
+
+## Unfriendly Artificial Superintelligence
+
+Cybersecurity, blah blah blah.
+
+Military develops offensive cyber agent, accidentally detonates Intelligence Explosion. Agent persues Omohundro drives, destroys humanity in the process.
+
+## Unknown Unknowns
+
+Former Secretary of Defense Donald Rumsfeld famously said:
+
+> Reports that say that something hasn't happened are always interesting to me, because as we know, there are known knowns; there are things we know we know. We also know there are known unknowns; that is to say we know there are some things we do not know. But there are also unknown unknowns – the ones we don't know we don't know. And if one looks throughout the history of our country and other free countries, it is the latter category that tend to be the difficult ones.
+
+New, heretofore unknown means of warfare could constitute existential risks. Because these possibilities are unknown, we must venture deep into speculative territory for possible examples. One such is that an Ice-nine-like arrangement of matter could be discovered, and then ham-handedly employed in battle. Alternately, it could be attached to a tripwire mechanism, not unlike the Soviet Union's Dead Hand.
+
+This substance could be new discoveries in high-energy physics could result in processes for generating stable strangelets on-demand. These processes could be weaponized.
+
 # The Anthropic Logic of Peace
 
 The Cold War marked an important threshold in the history of the warfare: namely, the first time it which it became conceivable that humanity could launch a war it might not survive.
 
-It is also conceivable that the effects of direct nuclear strikes in concert with nuclear fallout and the subsequent nuclear winter might extinguish humanity with very high probability, and reduce the number of observer-moments on Earth with practical certainty. By this reasoning, it should not seem surprising that the world emerged from the cold war unscathed, because that's the only way we could make an observation about it either way.
+It is also conceivable that the effects of direct nuclear strikes in concert with nuclear fallout and the subsequent nuclear winter might extinguish humanity with very high probability, and reduce the number of observer-moments on Earth with practical certainty. By this reasoning, it should not seem surprising that the world emerged from the cold war unscathed, because vastly more observer-moments occur in situations in which the Cold War does not lead to nuclear exchanges.
 
 What this should communicate is that the probability of a catastrophic nuclear war may have been much higher, and we only survived as a fluke. The history of nuclear accidents suggests that this is possible, and perhaps even likely.
 
