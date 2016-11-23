@@ -1,0 +1,52 @@
+---
+title: "How to Compute Everyone, Ever"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In the hierarchy of [avenues to immortality](http://immortality-roadmap.com/immorteng.html), one strategy of final resort is "digital immortality." Stated simply, digital immortality is the hope that the vast computational resources of the future may be able to "recover" long-dead humans.
+
+# Why this is Possible
+
+[Digital Immortality Roadmap](http://immortality-roadmap.com/digimmeng.pdf)
+
+## Humans aren't Special
+
+## Humans Haven't Evolved Much
+
+## "Human Nature" Changes Slowly
+
+# How this Works
+
+## Reference Class Reduction
+
+The global population is currently a bit larger than 7.3 Billion humans. Estimates suggest that approximately 100 Billion distinct humans have ever lived. In order to discern the features of distinct humans, we need some list of distinguishing characteristics which gives us at least 100 Billion distinct humans.
+
+The genome is a ripe field for this sort of data mining. The number of genes needed to distinguish 100 Billion organisms is only
+
+$$\log_{4}{10^{10}} \approx 17$$
+
+So, we can build more than 100 Billion genetically distinct humans by fiddling with only 17 nucleotides in our genetic code. But there are more than 17 genes which differentiate humans, which simply means that the most information-efficient approach doesn't reflect reality (a fact which should surprise no one educated in biology since the 1960's).
+
+## The Algorithm
+
+First, construct a quintessential human connectome. There may be several obvious groups with sufficiently distinct connectomes that we should construct multiple connectomes, one for each group. For example, sex (males and females), and age (infants, adolescents, and adults). That gives us six different connectomes with which to begin. This needn't be a fully comprehensive division. For example, the divisions in age may not gain much from additional connectomes to additional, more granular life stages.
+
+For every human alive in part of that time-step, fork the connectome.
+
+Now, for every distinguishing, known characteristic of a human, apply patches to their default connectome to bring the information content of their minds in line with the information content of a person with the known attributes of this type of person.
+
+## Example: How to Compute a Random Person Today
+
+If we were to select a random person alive today, that person would likely be male (with probability around .5005). Presently, [the median age is about 28](http://www.pewforum.org/2015/04/02/main-factors-driving-population-growth/pf_15-04-02_ch1graphics_medianage310px/), so we should fork our adult male connectome. This reduces the indistinctiveness by around an order of magnitude (~100 Billion to ~10 Billion).
+
+From here, we can stratify on some sort of race or nationality. The modal case would be a man from China, reducing indistinctiveness by an additional order of magnitude (though it could decrease many more if the individual is from a much smaller nation).
+
+As we approach the individual level, unique characteristics become considerably more valuable. For example, I consider myself a transhumanist. At present, this is a small community with only 10,000 or so self-identified members world-wide. The most famous of these is likely Ray Kurzweil. While I often find Kurzweil grating, I am more like Ray Kurzweil than I am like the average person. Accordingly, starting with Ray Kurzweil as an Ur-mind will generate a mind I could identify as my own in fewer discrete steps than that of a random human.
+
+## How many humans must we compute in order to compute everyone?
+
+Resolution on the Genome
+Resolution on the Personality

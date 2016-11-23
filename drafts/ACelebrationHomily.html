@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>A Celebration Homily</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">A Celebration Homily</h1>
+
+</div>
+
+
+<div id="i." class="section level1">
+<h1>I.</h1>
+<p>Before, there was nothing. All was silence and stillness and empty. ‘Empty’ implies a place without things. Before, there was no place.</p>
+<p>Then, with a cataclysmic noise, there was a place. A place with things in it.</p>
+<p>It wasn’t good or bad. It was just… stuff. Something. Hydrogen.</p>
+<p>The stuff formed clumps. Huge clumps that burned. Stars formed and burned. Merged and collapsed. Novaed and Supernovaed. Spun around each other in simple dances. Inside, they transformed the stuff that made them. Took Hydrogen and forged Helium, Lithium, Beryllium, Boron.</p>
+<p>Carbon.</p>
+<p>As the universe continued to cool, smaller, cooler clumps of stuff formed. Rocks bumped into each other, accumulated into comets, asteroids, rocky little terrestrial planets, and fluffy gas giants.</p>
+<p>And for nine billion years, nothing more happened.</p>
+</div>
+<div id="ii." class="section level1">
+<h1>II.</h1>
+<p>But then, one day, the most interesting thing in the universe happened. Some atoms somewhere near an unremarkable yellow star accidentally linked up in exactly the right way, and became a replicator.</p>
+<p>The replicator wasn’t like the stuff it was made out of. Rather, the replicator could do something really special and interesting. It could take the stuff around it, and turn that stuff into other replicators, just like it.</p>
+<p>Well, mostly like it. Sometimes, replicators grabbed molecules that were like the ones they were made out of, but not exactly the same. Most of the time, that meant the new replicator wouldn’t work. Once in awhile, it meant the new replicator worked <strong>better</strong>.</p>
+<p>Things continued like this for a while. Replicators replicated, occasionally stumbling upon a better formulation. This halting, accidental process built protections for the replicators: shells and excess reserves of their raw materials. More replicators, more replications.</p>
+<p>Some replicators replicated one way. Some other replicators replicated another. The first way worked well, and those replicators’ descendants (bacteria) got bigger. The second way worked well, and those replicators’ descendants (archaea) stayed small.</p>
+<p>Sometimes a bacterium would find an archaeon, and use it for parts to make another bacterium. It was a replicator-eat-replicator world.</p>
+<p>And for another five hundred million years, nothing more happened.</p>
+</div>
+<div id="iii." class="section level1">
+<h1>III.</h1>
+<p>But then, one day, a bacterium found an archaeon and tried eat the archaeon to use it for parts, and it didn’t work. Instead, the archaeon lived inside the bacterium. The bacterium ate lots of things the archaeon could use to make more archaeon right inside the bacterium. The archaeon, in turn, threw away parts it didn’t need, but that the bacterium did. That saved the bacterium all the trouble of making those things itself. It was an unexpected and beautiful relationship.</p>
+<p>Together, the bacterium and the archaeon had formed something new. The first complex life.</p>
+<p>Everything living thing that we can see with our naked eyes is descended from this life. You and I are both its grandchildren.</p>
+</div>
+<div id="iv." class="section level1">
+<h1>IV.</h1>
+<p>I don’t expect humanity to survive much longer.</p>
+<p>Often, when someone learns this, they say: “Eh, I think that would be all right.”</p>
+<p>So allow me to make this very clear: it would not be “all right.”</p>
+<p>Imagine a little girl running into the road to save her pet dog. Imagine she succeeds, only to be hit by a car herself. Imagine she lives in agony for hopeful moments, only to die.</p>
+<p>Though you may imagine this thing, you cannot feel the full tragedy. You can’t comprehend the rich inner life of that child. You can’t understand her potential; your mind is not itself large enough to contain the sadness of an entire life cut short.</p>
+<p>You can only catch a glimpse of what is lost–when one single human being dies.</p>
+<p>Now tell me again how it would be “all right” if every single person were to die at once.</p>
+<p>Many people, when they picture the end of humankind, pattern match the idea to some romantic tragedy, where humans, with all their hate and all their avarice, had been unworthy of the stars since the very beginning, and deserved their fate. A sad but poignant ending to our tale.</p>
+<p>And indeed, there are many parts of human nature that I hope we leave behind before we venture to the heavens. But in our nature is also everything worth bringing with us. Beauty and curiosity and love, a capacity for fun and growth and joy: these are our birthright, ours to bring into the barren night above.</p>
+<p>Calamities seem more salient when unpacked. It is far harder to kill a hundred people in their sleep, with a knife, than it is to order a nuclear bomb dropped on Hiroshima. Your brain can’t multiply, you see: it can only look at a hypothetical image of a broken city and decide it’s not that bad. It can only conjure an image of a barren planet and say “eh, we had it coming.”</p>
+<p>But if you unpack the scenario, if you try to comprehend all the lives snuffed out, all the children killed, the final spark of human joy and curiosity extinguished, all our potential squandered…</p>
+<p>I promise you that the extermination of humankind would be horrific.</p>
+<p>And yet, humanity is dying right now, as I say these words.</p>
+<p>Every single one of us is marching towards their deaths, and most are already resigned to it. Do you know how often a human dies? About twice per second.</p>
+<p>Tick tick tick tick tick tick tick tick tick tick. Ten deaths. Too fast for an appropriately somber pause. Barely half a second to remember that each was a sapient person, kin, fellow heir to our great birthright and all our vast potential. Barely enough time to acknowledge each one, nevermind to comprehend who they were, nevermind to mourn. Tick tick tick tick tick tick tick tick tick tick. Ten more. And some think they can conceive of the worth of this world.</p>
+<p>One hundred and fifty thousand humans die per day.</p>
+<p>One million humans die per week.</p>
+<p>These horrors are literally incomprehensible.</p>
+<p>And look at the state of those of us who are alive. How many of us are depressed? How many of us are lonely, and struggling to connect with someone, anyone?</p>
+<p>The horrors levied against the living sometimes rival death itself. Right now, people are being tortured, abused, and raped. People are being ravaged by disease and dementia through no fault of their own. Every single one of us is aging, we are all condemned to waste away in our own skin, decaying until our minds falter and our bodies give out at last.</p>
+<p>Do not get me wrong. If we can be happy, if we can enjoy our fleeting time—then we are sparks of light in this world of darkness. Despite the lovecraftian suffering around us, we are able to make friends and tell stories and laugh and forge lives worth living. The potential for good within us far outweighs the suffering. I have never once regretted, for a moment, that we exist, that we are here to carry the torch of humanity forward into the future.</p>
+<p>But make no mistake, we carry that torch through darkness.</p>
+<p>Tick tick tick tick tick tick tick tick tick tick.</p>
+<p>Humanity is dying as we speak, and while we may one day have the opportunity to put an end to disease and death, we are far more likely to destroy ourselves than to cheat those ancient reapers.</p>
+<p>Read your histories. How well do humans respond to the great challenges; we who tried to build a communist paradise and slaughtered millions, we who tried to build a capitalist paradise and built a blind machine that exploits weaknesses in our minds to increase our consumption? How close to the brink did our species come, when we discovered the secrets of the atom? How long did we teeter on that edge?</p>
+<p>We are humanity, and our story is not some fairy tale where the plucky heroes are destined to survive. We are just one species in a cold and uncaring universe, rising up from the bottom; the dumbest possible civilization capable of inventing the technology we possess. We face the future blind and barely able to coordinate.</p>
+<p>What, truly, do you think are the odds that an intelligent species selected at random survives long enough to gain the stars? What are the chances that nature never once in their long history presents them with a challenge that is too difficult? For this is not a storybook, and the challenges are not calibrated to our capabilities.</p>
+<p>What are the odds that we’ll survive every single threat on the horizon?</p>
+<p>If we want to make it out of here alive, we have to avoid totalitarian lock-in, civilizational collapse, catastrophic wars, biological terrorism, nanotechnological catastrophes, misaligned intelligence explosions, and all the risks we haven’t even noticed yet.</p>
+<p>What are the base rates, do you think? How many civilizations ever manage to survive their homeworld and fill their galaxy? What are the odds we can dance the deadly dance with nature, and never miss a single step?</p>
+<p>Because I’ll tell you this:</p>
+<p>When we look up at the night skies, they are empty.</p>
+<p>And this is not a fairy tale.</p>
+<p>And we’re likely to lose.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
