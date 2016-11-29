@@ -1,18 +1,19 @@
 ---
 title: "Things About Which You Should Know"
+author: "Anthony A. Boyles"
 ---
 
-[Catastrophic Risk]()
+[Catastrophic Risk](https://en.wikipedia.org/wiki/Global_catastrophic_risk)
 
-[Existential Risk]()
+[Existential Risk](http://www.nickbostrom.com/existential/risks.html)
 
 [The Kardashev Scale](https://en.wikipedia.org/wiki/Kardashev_scale)
 
-[The Drake Equation](https://en.wikipedia.org/wiki/Drake_equation)(but don't waste too much time [thinking about it](http://xkcd.com/384/)) 
+[The Drake Equation](https://en.wikipedia.org/wiki/Drake_equation)
 
 [The Great Filter](https://en.wikipedia.org/wiki/Great_Filter)
 
-[Anthropic Decision Theory]()
+[Anthropic Decision Theory](https://arxiv.org/abs/1110.6437)
 
 [Self-Sampling Assumption]()
 
@@ -20,16 +21,16 @@ title: "Things About Which You Should Know"
 
 [The Doomsday Argument](https://en.wikipedia.org/wiki/Doomsday_argument)
 
-[Dyson Sphere]()
+[Dyson Sphere](https://en.wikipedia.org/wiki/Dyson_sphere)
 
-[Matrioshka Brain]()
+[Matrioshka Brain](https://en.wikipedia.org/wiki/Matrioshka_brain)
 
 [The Simulation Hypothesis](http://en.wikipedia.org/wiki/Simulation_hypothesis)
 
-[The Simulation Argument]()
+[The Simulation Argument](http://simulation-argument.com/)
 
-[Novikov Self-Consistency]()
+[Novikov Self-Consistency](https://en.wikipedia.org/wiki/Novikov_self-consistency_principle)
 
-[Everett Branching]()
+[Everett Branching](https://wiki.lesswrong.com/wiki/Everett_branch)
 
-[Tegmark Levels]()
+[Tegmark Levels](https://arxiv.org/abs/0905.1283)

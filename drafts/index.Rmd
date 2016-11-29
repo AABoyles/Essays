@@ -4,8 +4,7 @@ title: "Drafts"
 
 If you've stumbled upon this page, well done. This is the drafts directory. The quality of these varies from a few sentences (or a bare outline) to near-complete essays that I remain unwilling to publish. Note the phrase *unwilling to publish*. It means that I may not actually believe or endorse the content written here. I strongly encourage you *not* to read these; if nothing else, you have better things to do.
 
-```{r, message=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r, message=FALSE, echo=FALSE}
 library("plyr")
 library("dplyr")
 library("magrittr")

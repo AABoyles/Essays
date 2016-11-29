@@ -1,0 +1,32 @@
+---
+title: "When is it Rational to Fear?"
+author: "Document Author"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+Is fear of X rational? It depends heavily on your substantive knowledge about X.
+
+First off, let us define "rationality" in a relatively conventional, economic sense. It is rational to do something if the expected value of that action is positive. The expected value is the sum of all possible outcomes, multiplied by their probabilities. So, for example, let's imagine a game in which we bet on the outcome of a coin flip. If it's heads, I'll give you \$20. If it's tails, you'll give me \$10. Your expected value of playing is $.5*(-10) + .5*(20) = 5$, which is positive. Hence, (your) playing this game is rational. (Note that mine is not.)
+
+If X could be dangerous, then we can estimate the probability of X being dangerous at around .5. Either it is dangerous, or it isn't. But {Dangerous, Not Dangerous} is a terrible reference class. Instead, let's find a better reference class: of all the instances of X in the world, how many are dangerous? From this, we can estimate the the probability of danger from a given instance of X is the fraction of instances which are dangerous over the number of instances. (Assume "dangerous" is a proxy for "will kill you").
+
+For example, given no other substantive information, Skydiving could be dangerous, therefore we can estimate that it is dangerous with probability .5. The cost of skydiving being dangerous is the value you place on the rest of your life. Let's say it's worth \$1000 to you. Also, let's say if skydiving doesn't kill you, it's really fun, so the benefit you get from skydiving is \$1. So, is it rational to skydive?
+
+$$.5(-1000) + .5(1) = -499.5$$
+Definitely not rational. However, I calculated this with *no empirical information about skydiving*. If we do the tiniest amount of research, we'll find that in 2015, 21 skydives killed the diver, out of 4.2 million jumps (http://www.uspa.org/facts-faqs/safety). Accordingly, my estimate of the probability skydiving being dangerous should not be .5, but rather $21/4200000=.000005$. So, is it rational to skydive?
+
+$$.000005(-1000) + .999995(1) = .999990$$
+
+Yup! The fun is totally worth the risk, once we have some substantive information about the magnitude of the risk.
+
+As an aside, if you're completely certain it is rational to fear something, one of three things is going on:
+
+1. The thing is obviously and uncontroversially dangerous (like skydiving without a parachute).
+2. You're wrong.
+3. 
+
+So, if someone tells you it is [rational to fear something](https://twitter.com/GenFlynn/status/703387702998278144), there are only two possibilities: either this person believes this, which proves they are incredibly stupid, or they do not, which proves they are incredibly dishonest.

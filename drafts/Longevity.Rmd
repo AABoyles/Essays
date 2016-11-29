@@ -1,5 +1,6 @@
 ---
 title: "Longevity"
+bibliography: Longevity.bib
 output:
   html_document:
     toc: true
@@ -58,7 +59,7 @@ In short, an intervention either reduces all-cause mortality or it doesn't.
 
 *2. as estimated in randomized trials,*
 
-[Correlation is not causation]() and correlates only rarely turn out to be usefully causal. With aging, the situation is especially severe since aging is the exponential increase in mortality with time as all bodily systems gradually begin to fail; one cannot simply take a correlation of some chemical with aging or mortality and expect an intervention on it to have more than a minute chance of making a difference, since most (if not nearly every) chemical or substance or biomarker will change with age.
+[Correlation is not causation]() and correlates rarely turn out to be causal. With aging, the situation is especially severe since aging is the exponential increase in mortality with time as all bodily systems gradually begin to fail; one cannot simply take a correlation of some chemical with aging or mortality and expect an intervention on it to have more than a minute chance of making a difference, since most (if not nearly every) chemical or substance or biomarker will change with age.
 
 The best way to insulate our conclusions from selection effects is to perform large, controlled experiments, rather than to rely upon natural data.
 
@@ -137,20 +138,40 @@ valueOfDALY <- 50000
 
 ## Population survival curve
 
-To work with life expectancies and changes in it, I take a standard [Gompertz curve](http://en.wikipedia.org/wiki/Gompertz%20curve) model of age-related mortality, using a fit of the modern Dutch population given in [Cramer & Kaas 2013](https://www.uva.nl/binaries/content/assets/subsites/amsterdam-school-of-economics-research-institute/uva-econometrics/dp-2013/1303.pdf).
+To work with life expectancies and changes in it, let's compute a standard [Gompertz curve](http://en.wikipedia.org/wiki/Gompertz%20curve) model of age-related mortality, using a the [US Social Security Administration's 2013 Actuarial Tables](https://www.ssa.gov/oact/STATS/table4c6.html).
 
-```{r}
-S <- function(t, RR=1) exp(-((RR*0.000016443)/log(1.1124) * (1.1124^t - 1)))
+```{r ActuarialTable}
+gendered_actuarial <- read_csv("../data/actuarial.csv") %>%
+  gather("Gender", "SurvivingFraction", `Male Number of lives`, `Female Number of lives`) %>%
+  mutate(
+    Gender = ifelse(Gender == "Male Number of lives", "Male", "Female"),
+    SurvivingFraction = SurvivingFraction
+  )
 
-data.frame(Age = 0:120, SurvivingFraction = sapply(0:120, S)) %>%
-  plot_ly(x = ~Age, y = ~SurvivingFraction, type = 'scatter', mode = 'lines')
+plot_ly(gendered_actuarial, x = ~Age, y = ~SurvivingFraction/100000, type = 'scatter', mode = 'lines', color = ~Gender)
 ```
 
-It is also useful to draw random samples from a Gompertz-distribution of age-at-deaths, which can be used for generative model-related things like power simulations:
+From this, we can see that women at every age have higher survival rates than men of the same age. However, rather than stratify everythin on gender, I'm just going to combine the two surviving groups. It's a blunt approach, but it's hardly the worst available option. Let's compare this to an estimate of survival fractions of Dutch adults @Cramer2013-xo.
+
+```{r GompertzCurve}
+S <- function(t, RR=1) exp(-(RR*0.000016443)/log(1.1124) * (1.1124^t - 1))
+actuarial <- gendered_actuarial %>%
+  group_by(Age) %>%
+  summarise(American = sum(SurvivingFraction)/200000) %>%
+  mutate(Dutch = S(Age))
+
+plot_ly(actuarial, x = ~Age) %>%
+  add_trace(y = ~Dutch, name = "Dutch", mode = 'lines') %>%
+  add_trace(y = ~American, name = "American", mode = 'lines')
+```
+
+Here we can see that Dutch people are less likely to die throughout early and middle age, but Americans are less likely to die later in life. This reversal happens sometime around age 67.
+
+It is also useful to draw random samples from a Gompertz-distribution of age-at-deaths, which can be used for generative model-related things like power simulations.
 
 ```{r GompertzSimulation}
 ## the `min` is because past age 104, hazard>1 which is wrong, so need a ceiling
-H <- function(t, RR) min(1, (0 + (RR*0.000016443)*1.1124^t))
+H <- function(t, RR) min(1, (RR*0.000016443)*1.1124^t)
 
 ## for each possible age, randomly sample a life event according to that age's hazard;
 ## then the subject dies at the age at which their first FALSE is found.
@@ -159,9 +180,6 @@ rgompertz <- function(n, RR=1) {
   ageHazards <- sapply(0:120, function(t) H(t, RR))
   replicate(n, Position(`!`, sapply(ageHazards, function(h) sample(c(TRUE,FALSE), 1, prob=c(1-h, h)))))
 }
-
-mean(rgompertz(1000))
-mean(rgompertz(1000, RR=0.50))
 ```
 
 ### Converting risk reduction to average life expectancy gain
@@ -190,7 +208,7 @@ plot_ly(gainsVsRR, x=~RR, y=~Gain, type = 'scatter', mode = 'lines')
 gainlm <- gainsVsRR %>%
   ntbt_lm(Gain ~ log(RR))
 
-lifeExpectancyGainLogApproximation <- function(RR) predict(gainlm, data.frame(RR=RR))
+lifeExpectancyGainApproximation <- function(RR) predict(gainlm, data.frame(RR=RR))
 ```
 
 
