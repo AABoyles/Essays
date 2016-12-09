@@ -10,153 +10,69 @@
 
 
 
-
 <title>Designing the Actually Smart House</title>
-
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
+<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
+<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
+<script src="site_libs/material-0.1/material.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { font-weight: bold; } /* Keyword */
+code > span.dt { color: #800000; } /* DataType */
+code > span.dv { color: #0000ff; } /* DecVal */
+code > span.bn { color: #0000ff; } /* BaseN */
+code > span.fl { color: #800080; } /* Float */
+code > span.ch { color: #ff00ff; } /* Char */
+code > span.st { color: #dd0000; } /* String */
+code > span.co { color: #808080; font-style: italic; } /* Comment */
+code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
+code > span.fu { color: #000080; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #ff00ff; } /* SpecialChar */
+code > span.vs { color: #dd0000; } /* VerbatimString */
+code > span.ss { color: #dd0000; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #808080; font-style: italic; } /* Documentation */
+code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -164,110 +80,52 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
 
+</head>
 
+<body>
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.9em;
-  padding-left: 5px;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
+<div class="header-panel shadow z-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+        <div id="header">
+    <h1 class="title">Designing the Actually Smart House</h1>
+                </div>
+    </div>
+</div>
 </div>
 </div>
 
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
-
+<div class="container-fluid main-container">
+    <div class="row">
+      <nav class="col-xs-3 menu" id="toc">
+        <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#the-end-goal">The End Goal</a></li>
+        <li><a href="#heating-ventilation-and-air-conditioning">Heating, Ventilation, and Air Conditioning</a></li>
+        <li><a href="#the-hub">The Hub</a></li>
+        <li><a href="#controlling-the-circus">Controlling the Circus</a></li>
+        <li><a href="#the-well-quantified-self">The Well-Quantified-Self</a></li>
+        <li><a href="#water-heating">Water Heating</a></li>
+        <li><a href="#laundry">Laundry</a></li>
+        <li><a href="#smart-toilet">Smart Toilet</a></li>
+        <li><a href="#lighting">Lighting</a></li>
+        <li><a href="#vacuuming">Vacuuming</a></li>
+        <li><a href="#lawn-mowing">Lawn Mowing</a></li>
+        <li><a href="#gardening">Gardening</a></li>
+        </ul>
+      </nav>
+     <div class="pages col-xs-9">
+     <div class="row">
+       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -302,29 +160,14 @@ div.tocify {
 </div><!--/.navbar -->
 
 
-<div class="fluid-row" id="header">
-
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">Designing the Actually Smart House</h1>
-
-</div>
-
-
-<pre class="r"><code>source(&quot;infobox.R&quot;)
-meta &lt;- list(
-  &quot;Status&quot; = &quot;Nearly Complete&quot;,
-  &quot;Last Revision&quot; = file.info(&quot;DesigningTheActuallySmartHouse.Rmd&quot;)$mtime
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+meta &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Nearly Complete&quot;</span>,
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;DesigningTheActuallySmartHouse.Rmd&quot;</span>)$mtime
 )
-infobox(meta)</code></pre>
+<span class="kw">infobox</span>(meta)</code></pre></div>
 <table class="infobox">
 <tbody>
 <tr>
@@ -337,14 +180,15 @@ infobox(meta)</code></pre>
 <td>
 <b>Last Revision</b>
 </td>
-<td>2016-08-31 13:59:02</td>
+<td>2016-12-09 16:29:39</td>
 </tr>
 </tbody>
 <tfoot></tfoot>
 </table>
 <p>I have two goals for automating my home: First, I want to waste less energy. Second, I want to do fewer things. In general, existing home automation products fail to accomplish these goals well. Some products connect some of our devices to the internet (and through it, to other connected products), but this by itself doesn’t serve either of my goals. You can control all of your internet-connected things from your smartphone, but that still obligates you to <strong>do</strong> something. In other words, <em>automation</em> in home automation is a lie.</p>
-<div id="the-end-goal" class="section level2">
-<h2>The End Goal</h2>
+</div>
+<div id="the-end-goal" class="section level1">
+<h1>The End Goal</h1>
 <p>I want a house which operates responsively and autonomously. It would <a href="https://www.hunterdouglas.com/">lighten</a> and warm the house in the morning, reducing my incentives to remain in bed. It would make a <a href="http://www.belkin.com/us/F7C050-Belkin/p/P-F7C050%3Bjsessionid%3D54D857A190E9FBC629A8A55C4173C306/">pot of coffee</a>: one cup to drink at home and two more for my thermos, but more if I had visitors. A <a href="http://www.usa.philips.com/c-m-li/light-therapy/wake-up-light/all%23filters%3DWAKEUP_LIGHT_SU%252C2015%252C2014%252C2013%252C2012%252C2011%252C2010%252C2009%26sliders%3D%26support%3D%26price%3D%26priceBoxes%3D%26page%3D%26layout%3D12.subcategory.p-grid-icon">multisensory alarm</a> would wake me in the morning at the <a href="http://www.withings.com/us/en/store/details/70035401">approximately optimal time</a>, given <a href="https://help.fitbit.com/articles/en_US/Help_article/1314">how long I’d slept, how well I’d slept</a>, and <a href="https://calendar.google.com/">when my earliest obligation for that day</a> was.</p>
 <p>As I walk to the bathroom, it would turn on lights just before I can see them and turn them off as I leave their range. It would start the shower to my favorite temperature, along with some music. If the shower was <a href="https://nebia.com/">quiet</a>, it might read me <a href="https://smile.amazon.com/gp/help/customer/display.html%3FnodeId%3D201601880%26sa-no-redirect%3D1">some news headlines</a> or my current <a href="http://www.audible.com/">audiobook</a>.</p>
 <p>Since my waking up always gets the dogs up, it would let them out the backdoor for morning constitutionals, and <a href="https://smile.amazon.com/PetSafe-Healthy-Simply-12-Meal-Automatic/dp/B00VIXRB6O/ref%3Dpd_sbs_199_1%3Fie%3DUTF8%26psc%3D1%26refRID%3DJSWWZHVXS74NB6GANE6D">pour food for them</a> once they get back in. As I leave for work, it would lock the house behind me, opening only to let the dogs out or in, as they desired. <a href="https://nest.com/support/article/What-is-Auto-Away">The AC would kick off</a>. Then the bots jump to action: <a href="http://www.irobot.com/For-the-Home/Vacuuming/Roomba.aspx">a Roomba vacuums</a>, <a href="http://www.irobot.com/For-the-Home/Mopping.aspx">another mops</a>, a third amuses the dogs (if they’re showing it any interest). A <a href="https://smile.amazon.com/gp/search/ref%3Dsr_hi_eb%3Frh%3Dn%253A2972638011%252Cn%253A551242%252Cn%253A128066011%252Cn%253A13638738011%26ie%3DUTF8%26qid%3D1472045791">bot mows the lawn</a> when the grass is long and conditions are dry.</p>
@@ -352,16 +196,16 @@ infobox(meta)</code></pre>
 <p>While the sun sets, the power source <a href="http://www.solarcity.com/residential/backup-power-supply">transitions from solar to battery</a>. Its modest amount of power storage is more than sufficient to operate the interior lights near me within the house, as well as the entertainment center for a few hours before I go to bed, and continue the air conditioner and refrigerator after I retire.</p>
 <p>The whole system wastes little power when it has no chores to accomplish, and accumulates chores only through my interactions with it (and the ordinary wear of time). I believe this is mostly possible with current technology, but no one has attempted to engineer it, instead opting to build smart gadgets to add on to or replace dumb gadgets or infrastructure. Let’s pick those apart, piece by piece.</p>
 </div>
-<div id="heating-ventilation-and-air-conditioning" class="section level2">
-<h2>Heating, Ventilation, and Air Conditioning</h2>
+<div id="heating-ventilation-and-air-conditioning" class="section level1">
+<h1>Heating, Ventilation, and Air Conditioning</h1>
 <p>With respect to energy savings, I believe the home automation gadget market has started in the right place. Namely, Heating, Ventilation and Air Conditioning systems, which <a href="http://www.eia.gov/todayinenergy/detail.cfm%3Fid%3D10271">eat the lion’s share of home energy</a>. <a href="https://nest.com/">Nest</a> arguably kicked off this revolution in home automation with its <a href="https://nest.com/thermostat/meet-nest-thermostat/">smart thermostat</a>. Sadly, the company seems to have <a href="http://arstechnica.com/gadgets/2016/06/nests-time-at-alphabet-a-virtually-unlimited-budget-with-no-results/">more-or-less squandered</a> its head-start in the market. There are <a href="https://www.ecobee.com/">other</a> <a href="http://yourhome.honeywell.com/home/Products/Thermostats/7-Day-Programmable/Wi-Fi%2BSmart%2BThermostat.htm">promising</a> <a href="http://www.emersonclimate.com/en-us/products/thermostats/sensi/Pages/sensi-wifi-thermostat.aspx">smart</a> <a href="https://customer.honeywell.com/en-US/Pages/Product.aspx%3Fcat%3DHonECC%2520Catalog%26pid%3DYTH8320ZW1007/U%26category%3DZ-WaveTouchscreen%26catpath%3D1.3.12.1.8">thermostats</a> on the market, but so far as I can tell, Nest maintains one strong advantage…</p>
-<div id="works-with-nest" class="section level3">
-<h3>“<a href="https://workswith.nest.com/">Works with Nest</a>”</h3>
+<div id="works-with-nest" class="section level2">
+<h2>“<a href="https://workswith.nest.com/">Works with Nest</a>”</h2>
 <p>As a first-mover in connected home automation, Nest has become the hub of the smart house. While many smart products rely on a <a href="http://www.wink.com/products/wink-hub/">hub of some sort or other</a>, the Nest Thermostat is a cool device that does something independent of the other smart devices connected to it. Accordingly, consumers are motivated to buy it for intrinsic reasons rather than as an annoyance attached to the thing they actually want. It’s generally situated in a fairly central location in the house, giving it access to some exceedingly valuable data. More on that in a moment. Finally, the developers sensibly built an open API, inviting other product manufacturers to build products that integrate with the Nest. They’ve branded this interoperability “<a href="https://workswith.nest.com/">Works with Nest</a>.”</p>
 </div>
 </div>
-<div id="the-hub" class="section level2">
-<h2>The Hub</h2>
+<div id="the-hub" class="section level1">
+<h1>The Hub</h1>
 <p>So the Nest has (for the time being) won the competition to become the hub for your own personal corner of the internet of things. But it’s worth asking if this is a solution that is actually what we want, or just something that makes sense given the path we’re on? For example, Nest interoperability with other devices generally revolves around a single piece of data the Nest collects: The Nest knows when you’re home. It tells all your other devices when you’re home. But there are lots and lots of ways to tell if I’m home or away. Is my phone’s WiFi connected to my router? Is my phone’s GPS signal at my home? Is my Phone’s Bluetooth connected to a device that I leave in my home? Am I scheduled to be away from home on my Google Calendar? Have I checked in to someplace on Facebook or Foursquare within driving time’s distance from my home? While none of these is a slam dunk for determining my home/away status, taken together they can equate to powerful statistical model which should know if I’m home with extremely high accuracy, and good precision. (I’ll get back to this in a moment.)</p>
 <p>I want a hub device which is centrally-located, attractive, interactive, and useful. In other words, I want the <a href="https://smile.amazon.com/Amazon-Echo-Bluetooth-Speaker-with-WiFi-Alexa/dp/B00X4WHP5E/ref%3Dsr_1_1%3Fie%3DUTF8%26qid%3D1471464232%26sr%3D8-1%26keywords%3DEcho">Amazon Echo</a>. Echo is ideally suiting to being the smart house hub. It does a variety of useful things using exclusively voice commands, and it’s quite good at understanding those commands. Gadgets integrated with Echo can be turned on or off, and their settings can be modified. All with no more trouble than it would be to instruct a person to do these things.</p>
 <p>But the Echo doesn’t do this one thing that I really, really wish it did. It isn’t a Router.</p>
@@ -378,71 +222,124 @@ infobox(meta)</code></pre>
 <p>Why should I have multiple of these things in a central location in my house? I want a router with Alexa or Google Now on it. The fact that Google hasn’t managed to piece this together (instead devising <a href="https://home.google.com/">their own competitor to the Echo</a>) perplexes me.</p>
 <p>I will mention that there’s one big problem that this doesn’t solve. In addition to being ugly, routers must be tethered to cable modems, which require cable jacks, which tend to be in isolated corners of a house. So you’ve got to run an ugly cable to the central location in the house, or leave the router in an untrafficked corner of the basement, and just deal with the crappy signal on the other side of the house. I don’t know how to solve this problem properly, and I dislike any of the obvious hacks (re-wiring the house, using extension cords, or adding range extenders) for fixing it.</p>
 </div>
-<div id="controlling-the-circus" class="section level2">
-<h2>Controlling the Circus</h2>
+<div id="controlling-the-circus" class="section level1">
+<h1>Controlling the Circus</h1>
 <p>In general, most “smart” devices really aren’t. Rather, they’re “connected” devices. You can control them with your smartphone. Woohoo. To improve (slightly) on this situation, a plucky little startup called <a href="https://ifttt.com/">IFTTT</a> started quietly integrating smart device APIs into a little webapp. The idea is that you give people the ability to set up rules. If This Then That. So, for example, I have a rule that whenever the humidity forecast exceeds 50%, a <a href="http://www.belkin.com/us/F7C027-Belkin/p/P-F7C027/">WeMo Switch</a> automatically turns on my dehumidifier.</p>
 <p>IFTTT improves the smart device concept substantially, and it sits in the ideal market space for the kind of next-generation IoT management that I have in mind. I’ve already outlined a use for such a tool in describing how I want the house to determine if I’m there or not. Instead of setting up rigid rules based on schedules and triggers, I want to be able to provide <em>indicators</em> of my status, and <em>responses</em> to statuses.</p>
 <p>For a simple example, let’s say I want the house to behave in certain ways when I’m on vacation. This is distinct from the way I want the house to behave when I’m at work or otherwise away for comparatively brief periods. Indicators that I am on vacation may be things like a vacation event blocking off multiple days on my Google Calendar, or a plane flight on my calendar, with a return flight more than 24 hours later. Or my phone’s GPS records locations at driving speeds more than three hours driving hours away from my house. All of these can be integrated into a statistical estimate of my vacation status, and then corrected via a simple app if it is incorrect, which would provide additional training to the algorithm so it would be less likely to make that mistake in the future.</p>
 <p>To specify the “certain ways” my vacation status should affect the behaviors of my smart things, I could set responses at the device level. For example, perhaps I’d like my robotic vacuum to do the floors twice: once soon after I leave, and once shortly before I return. If I’m arriving home in the morning or early afternoon, I might like a pot of coffee awaiting me. Etc.</p>
 <p>While this is all certainly an achievable dream with existing software, it not one that I’ve seen anyone attempt to comprehensively realize. Accordingly, I’m afraid rule-based controls will be (more or less) the sole means of coordinating interactions between “smart” things for the near future.</p>
 </div>
-<div id="the-well-quantified-self" class="section level2">
-<h2>The Well-Quantified-Self</h2>
+<div id="the-well-quantified-self" class="section level1">
+<h1>The Well-Quantified-Self</h1>
 <p>There’s a small, additional piece of functionality that sort of goes along with this vision. I have yet to find an <a href="http://emberify.com/blog/lifelogging-apps-2016/">autonomous life-logging app</a> that I found satisfactory. I’d love for my phone to record structured data on my activities, simply by recording my GPS locations, Facebook and Foursquare checkins, Google Calendar events, explicit interactions with connected devices, etc. Secondarily, I’d be interested in a similar autonomous event-logging platform showing what my devices were doing at any given time. A few years ago, <a href="http://www.getsaga.com/">Saga</a> was pretty close to what I envision, but it looks suspiciously like abandonware (now 16 months since its last update).</p>
 </div>
-<div id="water-heating" class="section level2">
-<h2>Water Heating</h2>
+<div id="water-heating" class="section level1">
+<h1>Water Heating</h1>
 <p>It seems to me that the engineers behind the smart house have missed the opportunity to reduce water heating costs (The second-most prominent energy drain). I don’t need hot water around the clock. I need it in the mornings when I shower, and in the evenings when I run my laundry machine and dishwasher. The easiest way to get this is to switch to a <a href="http://www.homedepot.com/s/tankless%252520water%252520heater%3FNCNI-5">tankless heater</a>. But we can do better than that!</p>
 <p>Heatworks produces a Tankless, electric heater called the <a href="http://myheatworks.com/collections/water-heaters/products/heatworks-model-1">Heatworks Model 1</a>, which you install at the point of use (basically, one at your Kitchen Sink, one in each bathroom, and possibly one adjoining your laundry machine).</p>
 </div>
-<div id="laundry" class="section level2">
-<h2>Laundry</h2>
+<div id="laundry" class="section level1">
+<h1>Laundry</h1>
 <p>Speaking of your laundry machine, there are two really good targets for automating laundry. The first is knowing how to treat the type of load the machine currently contains. Current machines impose a cognitive load on their users by requiring that users understand the settings the machine requires to launder the materials in it properly. I believe that a machine can do this well by itself, using a combination of optical (for color and volume) and weight (for fabric type estimation) sensors. This type of sensing can also extend to determining the optimal settings for drying the clothes. There exist single machines which claim to wash and dry clothes, but they tend <a href="https://smile.amazon.com/s/ref%3Dsr_st_featured-rank%3Frh%3Dn%253A2619525011%252Cn%253A!2619526011%252Cn%253A2383576011%252Cn%253A13755271%26qid%3D1471970233%26sort%3Dfeatured-rank">not to review well</a>. Despite this, the combination is desirable because it completes two discrete actions on the laundry without requiring intervention by the user in the middle of the process (not to mention requiring half the space of the Washer-Dryer combo).</p>
 <p>The second is folding. While there was promising proof-of-concept for <a href="https://www.youtube.com/watch%3Fv%3Dgy5g33S0Gzo">laundry folding robotics</a> a few years ago, it didn’t look like a product was coming to market. Until <a href="https://www.foldimate.com/">Foldimate</a>, that is. You place each article in the grips of the machine, and it folds them, emitting a dainty cube of folded clothes when complete. But Foldimate is not the solution I want. I wish there were an automated process which would gather the clothes I shed, launder them optimally, dry them efficiently, and place them <a href="https://smile.amazon.com/dp/B00KK0PICK/ref%3Ddp-kindle-redirect%3F_encoding%3DUTF8%26btkr%3D1">tidily</a> in my drawers (or closet, as the article requires). Sadly, I believe this dream may still be decades away.</p>
 </div>
-<div id="smart-toilet" class="section level2">
-<h2>Smart Toilet</h2>
+<div id="smart-toilet" class="section level1">
+<h1>Smart Toilet</h1>
 <p>Since we’re talking about water, Yeah, let’s go there. There are two features I’d really like to see in a smart toilet. The first is data collection. Seriously, bear with me: you may be able to infer quite a lot about your digestive health simply from the weight and volume of your excrement. The scale toilet seat <a href="http://www.yankodesign.com/2009/01/07/fat-before-a-visit-to-the-loo-skinny-after/">has been imagined</a>, but I can’t find any indication that anyone is attempting to bring it to the market. A simple set of ascending sensors (just like those used in your car’s gas tank) could measure the volume of the toilet’s contents. A toilet that could infer the phase of matter of its contents could also reduce its own flow volume, saving water. A scale supporting the bowl (but not the seat) could tare after every flush is complete, leaving it ready to measure the weight of the next visitor’s output. Moreover, that approach would free up the seat to accommodate the other thing I want from my smart toilet: a bidet.</p>
 <p>The United States seems to be lagging far behind the rest of the world in the <a href="https://www.bidet.org/pages/bidet-buying-guide">bidet business</a>. I’ve never tried one personally, but I feel like a bidet attachment is a strong candidate for desirable smart home improvements. While the bidet doesn’t really need to respond to anything other than the user, nor should it record any data, it offers the possibility of automating away most of the work of wiping, trading large wasteful uses of toilet paper for smaller, cheaper expenses of water.</p>
 </div>
-<div id="lighting" class="section level2">
-<h2>Lighting</h2>
+<div id="lighting" class="section level1">
+<h1>Lighting</h1>
 <p>The fundamental thing I want from my lighting system is for it to turn on while I’m there, and turn off when I leave. This can be accomplished by old-school (non-connected) home automation technologies like the <a href="http://www.leviton.com/OA_HTML/SectionDisplay.jsp%3Fsection%3D38557%26minisite%3D10251">Leviton occupancy-sensing wall switches</a> (of which I’m a big fan). Alternately, you can get smart switches without occupancy-sensing, like the <a href="http://www.belkin.com/us/F7C030-Belkin/p/P-F7C030%3Bjsessionid%3D68FCC9FA139BD26DC3A4EE0EA0C832A4/">Belkin WeMo Light Switch</a>. But I think there’s a huge opportunity to bring these two technologies together.</p>
 <p>The problem with occupancy sensing is that you must already be within proximity of the light switch to toggle it. But if you had smart, connected occupancy sensors, you could daisy-chain them together so that as you walked through a hallway, the hallway could detect you, turn on the hall light, and then signal to the switch in your destination room that you’re en route, which would accordingly turn on before you could arrive. I don’t see any products indicating this type of functionality is in development, but one can dream, right?</p>
 <p>If we skip the automation and focus on features, colored, connected light solutions (like the <a href="http://www2.meethue.com/en-us/">Phillips Hue</a>) could be cool. Extended to its full potential, I love the idea of lights that interact with the film you’re watching. Can you imagine seeing a police car on-screen, along with the tell-tale flashing red and blue lights bouncing around the room? The problem with this is that it requires either an additional data stream accompanying the film (good luck with that), or an extremely well-trained algorithm working in real-time to infer the appropriate light-scape (which would be horribly annoying every time it screwed up).</p>
 <p>This rosy view of the possibility of responsive, interactive colored lighting notwithstanding, I don’t see any significant practical application for Hue at present, independent of rule-based power toggling (which I’d prefer be handled by occupancy-sensing switches, as discussed above).</p>
 </div>
-<div id="vacuuming" class="section level2">
-<h2>Vacuuming</h2>
+<div id="vacuuming" class="section level1">
+<h1>Vacuuming</h1>
 <p>Robotic Vacuum cleaners have been on the consumer market for a long time, now. Unfortunately, they aren’t yet connected to the larger home automation ecosystem in any meaningful way. I want a robot vacuum that can run exclusively when I’m not around to trip on it. We can sort of hack around this by setting the Roomba’s scheduler, but (to me) the point of automation is that it is <em>responsive</em> to your behaviors, not dependent on your interacting routinely with its controls.</p>
 <p>For example, I can schedule the Roomba to run every morning at 10am, long after I’ve usually left for work. Usually. But when Saturday rolls around, I’d prefer it didn’t run at all, since I’m likely to be home at that time. So I change the scheduler to exclude Saturdays. Now it’s fine, except that next Monday is a holiday, and it’s running again. There’s no sense setting the scheduler since I won’t routinely be home Mondays, but it’s either that or let it run while I’m around. Having it running while I’m around is a minor nuisance, but it’s a nuisance that could be avoided if only the Roomba tapped into a centralized, statistical estimation of whether I was home or not.</p>
 </div>
-<div id="lawn-mowing" class="section level2">
-<h2>Lawn Mowing</h2>
+<div id="lawn-mowing" class="section level1">
+<h1>Lawn Mowing</h1>
 <p><a href="https://smile.amazon.com/gp/search/ref%3Dsr_hi_eb%3Frh%3Dn%253A2972638011%252Cn%253A551242%252Cn%253A128066011%252Cn%253A13638738011%26ie%3DUTF8%26qid%3D1472045791">Robotic Lawn mowing</a> seems like a logical next step after robotic vacuuming. While the iRobot corporation (purveyors of the Roomba) has been <a href="http://www.roboticstrends.com/article/irobot_robot_lawn_mower_too_little_too_late">developing to break into this market</a>, there’s already a <a href="https://smile.amazon.com/gp/search/ref%3Dsr_hi_eb%3Frh%3Dn%253A2972638011%252Cn%253A551242%252Cn%253A128066011%252Cn%253A13638738011%26ie%3DUTF8%26qid%3D1472045791">lively selection available</a> (provided you don’t mind burying a low-voltage line around the perimeter of your lawn).</p>
 </div>
-<div id="gardening" class="section level2">
-<h2>Gardening</h2>
+<div id="gardening" class="section level1">
+<h1>Gardening</h1>
 <p>Commercial automation for farming has been advancing for decades, but there hasn’t been nearly as much progress on the consumer side. <a href="https://farmbot.io/">Farmbot</a> looks poised to attempt to change that.</p>
 <p>On a more pedestrian note, Automated sprinkler systems</p>
 </div>
 
-
-
-</div>
-</div>
-
-</div>
+    </div>
+    <div class="col-xs-2">
+        <div class="btn-toolbar">
+    <div class="btn-group">
+    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
+    <ul class="dropdown-menu" style="min-width: 50px;">
+    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
+    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+    </ul>
+    </div>
+    </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    </div>
+  </div>
 
 <script>
-
-// add bootstrap table styles to pandoc tables
 $(document).ready(function () {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+
+    var images = $('.pages img');
+  images.filter(function() {
+      if ($(this).parent().attr("class") == "figure") {
+          return(false)
+      } else {
+          return(true);
+      }
+  }).wrap("<div class='figure'></div>");
+  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
+  $('.figure').addClass('panel panel-default');
+  
+    $('.pages img')
+ 	  .addClass("image-lb");
+  $('.pages').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      delegate: 'img',
+	      gallery: {enabled: false },
+          removalDelay: 500,
+          callbacks: {
+              beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+              }
+          },
+          mainClass: 'mfp-move-from-top',
+	      image: {
+	        verticalFit: true,
+            titleSrc: 'alt'
+	      }
+ 	    });
+ 	
+    window.page = window.location.hash;
+    if (window.page != "") {
+      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+    }
+
+    /* init material bootstrap js */
+    $.material.init();
 });
-
-
 </script>
+
+
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

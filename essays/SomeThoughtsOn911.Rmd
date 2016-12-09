@@ -2,6 +2,8 @@
 title: "Some Thoughts on 9-11"
 ---
 
+# Some Thoughts on 9-11
+
 ```{r}
 casualties <- 2977  #https://en.wikipedia.org/wiki/September_11_attacks
 

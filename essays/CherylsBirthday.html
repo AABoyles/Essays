@@ -10,150 +10,69 @@
 
 
 
-
 <title>Cheryl’s Birthday</title>
-
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
+<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
+<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
+<script src="site_libs/material-0.1/material.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { font-weight: bold; } /* Keyword */
+code > span.dt { color: #800000; } /* DataType */
+code > span.dv { color: #0000ff; } /* DecVal */
+code > span.bn { color: #0000ff; } /* BaseN */
+code > span.fl { color: #800080; } /* Float */
+code > span.ch { color: #ff00ff; } /* Char */
+code > span.st { color: #dd0000; } /* String */
+code > span.co { color: #808080; font-style: italic; } /* Comment */
+code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
+code > span.fu { color: #000080; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #ff00ff; } /* SpecialChar */
+code > span.vs { color: #dd0000; } /* VerbatimString */
+code > span.ss { color: #dd0000; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #808080; font-style: italic; } /* Documentation */
+code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -161,16 +80,40 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
 
+</head>
+
+<body>
+
+<div class="header-panel shadow z-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+        <div id="header">
+    <h1 class="title">Cheryl’s Birthday</h1>
+                </div>
+    </div>
+</div>
+</div>
+</div>
 
 
-
+<div class="container-fluid main-container">
+    <div class="row">
+      <nav class="col-xs-3 menu" id="toc">
+        <ul>
+        <li><a href="#cheryls-birthday">Cheryl’s Birthday</a></li>
+        </ul>
+      </nav>
+     <div class="pages col-xs-9">
+     <div class="row">
+       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -205,30 +148,15 @@ $(document).ready(function () {
 </div><!--/.navbar -->
 
 
-<div class="fluid-row" id="header">
-
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">Cheryl’s Birthday</h1>
-
-</div>
-
-
-<pre class="r"><code>source(&quot;infobox.R&quot;)
-meta &lt;- list(
-  &quot;Genre&quot; = &quot;Fiction&quot;,
-  &quot;Status&quot; = &quot;Complete&quot;,
-  &quot;Last Revision&quot; = file.info(&quot;CherylsBirthday.Rmd&quot;)$mtime
+<div id="cheryls-birthday" class="section level1">
+<h1>Cheryl’s Birthday</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+meta &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="st">&quot;Genre&quot;</span> =<span class="st"> &quot;Fiction&quot;</span>,
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Complete&quot;</span>,
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;CherylsBirthday.Rmd&quot;</span>)$mtime
 )
-infobox(meta)</code></pre>
+<span class="kw">infobox</span>(meta)</code></pre></div>
 <table class="infobox">
 <tbody>
 <tr>
@@ -247,7 +175,7 @@ infobox(meta)</code></pre>
 <td>
 <b>Last Revision</b>
 </td>
-<td>2016-09-06 15:37:02</td>
+<td>2016-12-09 16:18:42</td>
 </tr>
 </tbody>
 <tfoot></tfoot>
@@ -278,17 +206,17 @@ infobox(meta)</code></pre>
 <p>Cheryl looked up for just a second, and then replied “You can figure it out too!”</p>
 <p>Daisy, not feeling at all confident, asked “Can I have a hint?”</p>
 <p>Cheryl nodded obligingly, but said nothing. Instead, she took a piece of paper, drew a table on it, and handed it to Daisy. Daisy took a long, considering look and the helpful-but-uninformative data structure.</p>
-<pre class="r"><code>knitr::kable(
-  data.frame(
-    Month = c(&quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;August&quot;),
-    `14th`= c(&quot;-&quot;  , &quot;-&quot;   , &quot;14&quot;  , &quot;14&quot;),
-    `15th`= c(&quot;15&quot; , &quot;-&quot;   , &quot;-&quot;   , &quot;15&quot;),
-    `16th`= c(&quot;16&quot; , &quot;-&quot;   , &quot;16&quot;  , &quot;-&quot; ),
-    `17th`= c(&quot;-&quot;  , &quot;17&quot;  , &quot;-&quot;   , &quot;17&quot;),
-    `18th`= c(&quot;-&quot;  , &quot;18&quot;  , &quot;-&quot;   , &quot;-&quot; ),
-    `19th`= c(&quot;19&quot; , &quot;-&quot;   , &quot;-&quot;   , &quot;-&quot; )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(
+  <span class="kw">data.frame</span>(
+    <span class="dt">Month =</span> <span class="kw">c</span>(<span class="st">&quot;May&quot;</span>, <span class="st">&quot;June&quot;</span>, <span class="st">&quot;July&quot;</span>, <span class="st">&quot;August&quot;</span>),
+    <span class="st">`</span><span class="dt">14th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;-&quot;</span>  , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;14&quot;</span>  , <span class="st">&quot;14&quot;</span>),
+    <span class="st">`</span><span class="dt">15th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;15&quot;</span> , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;15&quot;</span>),
+    <span class="st">`</span><span class="dt">16th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;16&quot;</span> , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;16&quot;</span>  , <span class="st">&quot;-&quot;</span> ),
+    <span class="st">`</span><span class="dt">17th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;-&quot;</span>  , <span class="st">&quot;17&quot;</span>  , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;17&quot;</span>),
+    <span class="st">`</span><span class="dt">18th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;-&quot;</span>  , <span class="st">&quot;18&quot;</span>  , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;-&quot;</span> ),
+    <span class="st">`</span><span class="dt">19th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;19&quot;</span> , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;-&quot;</span> )
   )
-)</code></pre>
+)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -344,21 +272,77 @@ infobox(meta)</code></pre>
 <p><em>What do I know?</em> thought Daisy. <em>I know that this puzzle is crazy.</em> Never-the-less, Daisy was now resigned to working through the logic as best as she could. <em>If Albert knew the Month, and he knew that Bernard couldn’t know the date, the only way that could be true is if all of the days in the correct month were in another month. That means any month with a day that isn’t in any other month can’t be the correct month. So I can stop worrying about… May and June.</em> She drew a horizontal line through those months. <em>OK, now, that was enough information for Bernard to figure out the answer, which means that the answer couldn’t be a date that July and August shared.</em> She crossed out the column with the 14s in it, leaving only July 16th and August 15 and 17. <em>Now, knowing that Bernard could figure it out from that was enough information for Albert to figure it out. If Albert had known that the Month was August, then he wouldn’t have been able to deduce the date. Since August has two possible dates left, that meant the answer must be…</em></p>
 <p>“July 16th!” Daisy exclaimed happily. Cheryl grinned and gave Daisy the now-traditional high-five.</p>
 <p>Just then the bell rang. “OK, everyone. Take your seats!” said the teacher in Singaporean Mandarin. “Welcome to 5th grade.”</p>
-
-
-
-
 </div>
 
+    </div>
+    <div class="col-xs-2">
+        <div class="btn-toolbar">
+    <div class="btn-group">
+    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
+    <ul class="dropdown-menu" style="min-width: 50px;">
+    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
+    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+    </ul>
+    </div>
+    </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    </div>
+  </div>
+
 <script>
-
-// add bootstrap table styles to pandoc tables
 $(document).ready(function () {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+
+    var images = $('.pages img');
+  images.filter(function() {
+      if ($(this).parent().attr("class") == "figure") {
+          return(false)
+      } else {
+          return(true);
+      }
+  }).wrap("<div class='figure'></div>");
+  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
+  $('.figure').addClass('panel panel-default');
+  
+    $('.pages img')
+ 	  .addClass("image-lb");
+  $('.pages').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      delegate: 'img',
+	      gallery: {enabled: false },
+          removalDelay: 500,
+          callbacks: {
+              beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+              }
+          },
+          mainClass: 'mfp-move-from-top',
+	      image: {
+	        verticalFit: true,
+            titleSrc: 'alt'
+	      }
+ 	    });
+ 	
+    window.page = window.location.hash;
+    if (window.page != "") {
+      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+    }
+
+    /* init material bootstrap js */
+    $.material.init();
 });
-
-
 </script>
+
+
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

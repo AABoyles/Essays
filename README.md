@@ -1,8 +1,8 @@
-## What is this?
+# What is this?
 
 This repository contains my collected essays. It is also a partly self-contained build system for them, using RMarkdown. I'm planning to abstract away the scaffolding for the build system at some point, but for now I'm just figuring out how the thing should work.
 
-## How can I use it?
+# How can I use it?
 
 If you want to build a website based off of this one, just clone the respository and remove all of the html files, along with all the Rmd files EXCEPT for index.Rmd. Then add your own collection of R Markdown documents (or plain markdown documents). Set the contents of the header menu in `_site.yml`. And then all you need to do is:
 
@@ -12,7 +12,7 @@ rmarkdown::render_site()
 
 RMarkdown will assemble the site, and it's ready to go to Github Pages, S3, or whatever other simple file-storage server you like.
 
-## Why did you build this?
+# Why did you build this?
 
 I wanted:
 

@@ -2,6 +2,8 @@
 title: "How Good Are Things?"
 ---
 
+# Introduction
+
 Scott Alexander recently [posted his perspective](http://slatestarcodex.com/2015/12/24/how-bad-are-things/) on what I'll call _social optimism_.
 
 Tyler Cowen linked to it, with this note: "Arguably this post needs a broader sense of what makes a life valuable, still one of the more interesting blog posts of the last year." I think that the post deserves a slightly more nuanced and expanded handling than that.

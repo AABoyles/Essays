@@ -10,150 +10,32 @@
 
 
 
-
 <title>The Honest Truth about the Trolley Problem</title>
-
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
+<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
+<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
+<script src="site_libs/material-0.1/material.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -161,16 +43,43 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
 
+</head>
+
+<body>
+
+<div class="header-panel shadow z-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+        <div id="header">
+    <h1 class="title">The Honest Truth about the Trolley Problem</h1>
+                </div>
+    </div>
+</div>
+</div>
+</div>
 
 
-
+<div class="container-fluid main-container">
+    <div class="row">
+      <nav class="col-xs-3 menu" id="toc">
+        <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#i.">I.</a></li>
+        <li><a href="#ii.">II.</a></li>
+        <li><a href="#iii.">III.</a></li>
+        </ul>
+      </nav>
+     <div class="pages col-xs-9">
+     <div class="row">
+       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -205,23 +114,8 @@ $(document).ready(function () {
 </div><!--/.navbar -->
 
 
-<div class="fluid-row" id="header">
-
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">The Honest Truth about the Trolley Problem</h1>
-
-</div>
-
-
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
 <p>I think it’s time we faced a hard truth about the <a href="https://en.wikipedia.org/wiki/Trolley_problem">Trolley Problem</a>. Consider:</p>
 <ol style="list-style-type: decimal">
 <li>If you asked me what I would do in the Trolley Problem, I would tell you that I would pull the lever.</li>
@@ -233,21 +127,22 @@ $(document).ready(function () {
 <li>If I were <em>actually</em> in the fat man variant of the Trolley Problem, I would <em>not</em> push the fat man.</li>
 </ol>
 <p>In other words, I’m <em>definitely</em> a utilitarian, but I’m kinda, sorta lying about being a utilitarian.</p>
-<div id="i." class="section level2">
-<h2>I.</h2>
+</div>
+<div id="i." class="section level1">
+<h1>I.</h1>
 <p>There aren’t many people who rebel against the classic formulation of the Trolley problem. But people seem to hate the fat man variant, and fight against the circumstances of the problem as soon as you point out the moral inconsistency to which it leads. The problem with the fat man variant is that it strains credulity. If a trolley were actually barreling towards five unsuspecting, utterly clueless people, impeding said trolley by dropping a fat man in front of it isn’t going to save our quintet of hopelessly inattentive fools. Sadly, I think, most of the thought experiments in moral philosophy exhibit this issue.</p>
 <p>While I don’t have time to discuss every thought experiment in the field, there are a lot of examples. Just to pick on another one, let’s look at a variant of the <a href="http://www.utilitarian.net/singer/by/199704--.htm">drowning child problem</a>. Say, for example, that I wish to maximize human life-years. I’m wearing a $10,000 suit which I mean to sell, and use the money to <a href="https://www.againstmalaria.com/">buy long-lasting insecticide nets</a>, saving <a href="http://www.givewell.org/international/top-charities/amf%23Costperlifesaved">approximately three lives</a> from malaria. However, en route to the place in which I mean to sell the suit, I pass a stream in which I see a small child drowning. I could save the child, but I know that if I get the suit wet, it will get muddy and shrink and lose almost all of its value. Because the child will live at most one life, whereas the people I save from malaria will live three, the utilitarian course of action is to avoid the stream, sell the suit, and donate the money.</p>
 <p>But this runs strongly against our moral intuitions, and so we can rationalize our way to saving the drowning child. Nobody routinely wears $10,000 suits, so the situation is unrealistic. The resale value of the suit would be a fraction of that, so you’d save fewer than three lives (very pessimistically, less than one life, which justifies saving the drowning child). Water damage to a suit, even a very fine suit, is likely to be largely reversible. Etc.</p>
 <p>What’s actually going on in your head is <em>not</em> these rationalizations. It sounds more like this: “Oh no, there’s a child in front of me, <em>drowning!</em> I had better save her!” When the utilitarian onlooker points out that more lives could be saved if you do not save the child, your brain rejects that reasoning on the basis that not saving drowning children is <a href="https://en.wikipedia.org/wiki/Disgust%23Morality">disgusting</a>. All the other logic follows, but it’s the drowning child’s <em>availability</em> (related: <a href="https://en.wikipedia.org/wiki/Availability_heuristic">availability heuristic</a>) coupled with that sense of disgust that actually makes the decision for you.</p>
 <p>The error in the decision process is that we decide and then justify, rather than weigh the options and then decide. This leaves us vulnerable to moral <a href="https://en.wikipedia.org/wiki/Money_pump">dutch book scams</a>. I don’t know that I’ve heard this particular issue discussed in literature, but if I were inventing the term, I’d call it something like “presence bias”. You see, the drowning child is <em>present</em>. Her life or death is a decision <em>you</em> must consciously and immediately make, and then live with the consequences. The people who die of malaria because of your decision to save the drowning child aren’t present, even though their lives and deaths are just as real and just as morally significant.</p>
 </div>
-<div id="ii." class="section level2">
-<h2>II.</h2>
+<div id="ii." class="section level1">
+<h1>II.</h1>
 <p>In order to dissolve some of these, we ask people to accept the circumstances of the thought experiment at face value. We ask people to trust that there’s a reason the experiment is structured in this way, and disallows most criticism of this variety. In short, we ask people to consider themselves to occupy <a href="http://lesswrong.com/lw/2k/the_least_convenient_possible_world/">The Least Convenient Possible World</a>.</p>
 <p>As a utilitarian, here’s the annoying thing: <em>those rationalizations are correct</em>. Rationalizations often are! We have spent much time devising a canon of thought experiments cleverly designed to force people into morally inconsistent decisions, but I don’t think we’ve spent enough time dealing with the fact that these thought experiments are really good at illustrating moral conundrums, and really, <em>really</em> bad at representing the kinds of morally-important decisions people make on a daily basis.</p>
 <p>To me, the most obvious example of this phenomenon is <a href="http://philosophyfaculty.ucsd.edu/faculty/rarneson/Courses/thomsonTROLLEY.pdf">the thought experiment of the unwilling organ donor</a>:</p>
 <blockquote>
-<p> Imagine yourself to be a surgeon, a truly great surgeon. Among other things you do, you transplant organs, and you are such a great surgeon that the organs you transplant always take. At the moment you have five patients who need organs. Two need one lung each, two need a kidney each, and the fifth needs a heart. If they do not get those organs today, they will all die; if you find organs for them today, you can transplant the organs and they will all live. But where to find the lungs, the kidneys, and the heart? The time is almost up when a report is brought to you that a young man who has just come into your clinic for his yearly check-up has exactly the right blood-type, and is in excellent health. Lo, you have a possible donor. All you need do is cut him up and distribute his parts among the five who need them. You ask, but he says, “Sorry. I deeply sympathize, but no.” Would it be morally permissible for you to operate anyway?</p>
+<p>Imagine yourself to be a surgeon, a truly great surgeon. Among other things you do, you transplant organs, and you are such a great surgeon that the organs you transplant always take. At the moment you have five patients who need organs. Two need one lung each, two need a kidney each, and the fifth needs a heart. If they do not get those organs today, they will all die; if you find organs for them today, you can transplant the organs and they will all live. But where to find the lungs, the kidneys, and the heart? The time is almost up when a report is brought to you that a young man who has just come into your clinic for his yearly check-up has exactly the right blood-type, and is in excellent health. Lo, you have a possible donor. All you need do is cut him up and distribute his parts among the five who need them. You ask, but he says, “Sorry. I deeply sympathize, but no.” Would it be morally permissible for you to operate anyway?</p>
 </blockquote>
 <p>[Ed. Note: There’s an important bug in this formulation of the experiment. If the five patients are all matches for the young man, <em>the five patients are all matches for each other</em>. The correct escape hatch is to dissect one of the patients for her organs, saving four people and leaving the healthy young fellow alone. For the purposes of this discussion, let’s assume the story has been modified in some way to prohibit this possibility.]</p>
 <p>The “gut” answer is that it would <em>not</em> be moral to harvest the young man’s organs. In the real world, organs do need to be precise (and thereby relatively rare) matches for their new hosts. And even then, they will often be rejected. In the real world, the young man can live one quality life, or the patients can live five much less long, much more miserable lives. In the real world, harvesting a healthy, living person’s organs is illegal, and thereby comes with morally-significant consequences (like a reduced ability to practice medicine, imprisonment, or death).</p>
@@ -255,8 +150,8 @@ $(document).ready(function () {
 <p>These thought experiments are terrible because they’re designed to push you into a decision that have a clear, morally-optimal outcome if you accept the circumstances of the situation, but the circumstances run against the grain of our intuitions about these types of situations. They’ve been <a href="http://www.faculty.virginia.edu/haidtlab/articles/manuscripts/haidt.bjorklund.working-paper.when%2520intuition%2520finds%2520no%2520reason.pub603.doc">carefully crafted to subvert protestations</a> based on exogenous information. Their terrible-ness is a feature, not a bug. If it weren’t, people would always select the morally-optimal course of action and all the moral philosophers would be out of jobs.</p>
 <p>So, if our thought experiments are terrible, why don’t we try to come up with some more real-world examples? OK, here’s one: You can donate money to <a href="http://www.givewell.org/charities/top-charities">the charity that is most efficient at saving people’s lives</a>, or you can do <a href="https://www.amazon.com/">literally anything else with your money</a>.</p>
 </div>
-<div id="iii." class="section level2">
-<h2>III.</h2>
+<div id="iii." class="section level1">
+<h1>III.</h1>
 <p>Many philosophers have pointed out that utilitarianism is <a href="https://en.wikipedia.org/wiki/Utilitarianism%23Too_demanding">philosophically demanding</a>. Unlike <a href="http://plato.stanford.edu/entries/ethics-deontological/">deontological moral codes</a>, which <a href="http://plato.stanford.edu/entries/ethics-deontological/%23AdvDeoThe">allow freedom within the bounds of their rules</a>, utilitarianism demands that people optimize something based on some set of values to the exclusion of other values against which moral calculations are not made.</p>
 <p>I attended <a href="https://www.youtube.com/watch%3Fv%3DqsAOlPLlw1M">a lecture by Peter Singer</a> in which he fielded a question to the effect of, “You periodically fly between the US and Australia to visit your grandchildren. Why not donate the money you spend on flights to effective causes?” Singer first justified his routine flight schedule with a mention of his lecture circuit, which does indeed have a rather high expected value for effective charities. However, he also voluntarily conceded that his Australia trips didn’t necessarily serve this purpose, but that he loves his grandkids and enjoys spending time with them. The patriarch of <a href="https://smile.amazon.com/Writings-Ethical-Life-Peter-Singer/dp/0060007443/ref%3Dsr_1_1%3Fie%3DUTF8%26qid%3D1471881176%26sr%3D8-1%26keywords%3DWritings%2Bon%2Ban%2BEthical%2BLife">practiced, ethical living</a> to the extreme still exhibits the same moral foibles as all the rest of us.</p>
 <p>Which brings us back to me. I live a lavish lifestyle. It isn’t spectacularly lavish by current Western standards: I live in a comfortable 3 bedroom, 1.5 bathroom single family home near Washington D.C., on which I pay a mortgage which is approximately equal to the price of renting a similar home in the same area. But there are cheaper housing options. I could rent a one-bedroom or studio comparatively close by for half as much as I pay in mortgage payments. By donating that money, I could <em>save multiple lives</em>. Every year.</p>
@@ -268,20 +163,75 @@ $(document).ready(function () {
 </div>
 </div>
 
-
-
-
-</div>
+    </div>
+    <div class="col-xs-2">
+        <div class="btn-toolbar">
+    <div class="btn-group">
+    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
+    <ul class="dropdown-menu" style="min-width: 50px;">
+    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
+    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+    </ul>
+    </div>
+    </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    </div>
+  </div>
 
 <script>
-
-// add bootstrap table styles to pandoc tables
 $(document).ready(function () {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+
+    var images = $('.pages img');
+  images.filter(function() {
+      if ($(this).parent().attr("class") == "figure") {
+          return(false)
+      } else {
+          return(true);
+      }
+  }).wrap("<div class='figure'></div>");
+  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
+  $('.figure').addClass('panel panel-default');
+  
+    $('.pages img')
+ 	  .addClass("image-lb");
+  $('.pages').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      delegate: 'img',
+	      gallery: {enabled: false },
+          removalDelay: 500,
+          callbacks: {
+              beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+              }
+          },
+          mainClass: 'mfp-move-from-top',
+	      image: {
+	        verticalFit: true,
+            titleSrc: 'alt'
+	      }
+ 	    });
+ 	
+    window.page = window.location.hash;
+    if (window.page != "") {
+      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+    }
+
+    /* init material bootstrap js */
+    $.material.init();
 });
-
-
 </script>
+
+
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

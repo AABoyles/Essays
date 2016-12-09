@@ -1,10 +1,8 @@
 ---
 title: "Designing the Actually Smart House"
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
+
+# Introduction
 
 ```{r, results='asis'}
 source("infobox.R")
@@ -17,7 +15,7 @@ infobox(meta)
 
 I have two goals for automating my home: First, I want to waste less energy. Second, I want to do fewer things. In general, existing home automation products fail to accomplish these goals well. Some products connect some of our devices to the internet (and through it, to other connected products), but this by itself doesn’t serve either of my goals. You can control all of your internet-connected things from your smartphone, but that still obligates you to **do** something. In other words, _automation_ in home automation is a lie.
 
-## The End Goal
+# The End Goal
 
 I want a house which operates responsively and autonomously. It would [lighten](https://www.hunterdouglas.com/) and warm the house in the morning, reducing my incentives to remain in bed. It would make a [pot of coffee](http://www.belkin.com/us/F7C050-Belkin/p/P-F7C050%3Bjsessionid%3D54D857A190E9FBC629A8A55C4173C306/): one cup to drink at home and two more for my thermos, but more if I had visitors. A [multisensory alarm](http://www.usa.philips.com/c-m-li/light-therapy/wake-up-light/all%23filters%3DWAKEUP_LIGHT_SU%252C2015%252C2014%252C2013%252C2012%252C2011%252C2010%252C2009%26sliders%3D%26support%3D%26price%3D%26priceBoxes%3D%26page%3D%26layout%3D12.subcategory.p-grid-icon) would wake me in the morning at the [approximately optimal time](http://www.withings.com/us/en/store/details/70035401), given [how long I’d slept, how well I’d slept](https://help.fitbit.com/articles/en_US/Help_article/1314), and [when my earliest obligation for that day](https://calendar.google.com/) was.
 
@@ -31,15 +29,15 @@ While the sun sets, the power source [transitions from solar to battery](http://
 
 The whole system wastes little power when it has no chores to accomplish, and accumulates chores only through my interactions with it (and the ordinary wear of time). I believe this is mostly possible with current technology, but no one has attempted to engineer it, instead opting to build smart gadgets to add on to or replace dumb gadgets or infrastructure. Let’s pick those apart, piece by piece.
 
-## Heating, Ventilation, and Air Conditioning
+# Heating, Ventilation, and Air Conditioning
 
 With respect to energy savings, I believe the home automation gadget market has started in the right place. Namely, Heating, Ventilation and Air Conditioning systems, which [eat the lion’s share of home energy](http://www.eia.gov/todayinenergy/detail.cfm%3Fid%3D10271). [Nest](https://nest.com/) arguably kicked off this revolution in home automation with its [smart thermostat](https://nest.com/thermostat/meet-nest-thermostat/). Sadly, the company seems to have [more-or-less squandered](http://arstechnica.com/gadgets/2016/06/nests-time-at-alphabet-a-virtually-unlimited-budget-with-no-results/) its head-start in the market. There are [other](https://www.ecobee.com/) [promising](http://yourhome.honeywell.com/home/Products/Thermostats/7-Day-Programmable/Wi-Fi%2BSmart%2BThermostat.htm) [smart](http://www.emersonclimate.com/en-us/products/thermostats/sensi/Pages/sensi-wifi-thermostat.aspx) [thermostats](https://customer.honeywell.com/en-US/Pages/Product.aspx%3Fcat%3DHonECC%2520Catalog%26pid%3DYTH8320ZW1007/U%26category%3DZ-WaveTouchscreen%26catpath%3D1.3.12.1.8) on the market, but so far as I can tell, Nest maintains one strong advantage…
 
-### "[Works with Nest](https://workswith.nest.com/)"
+## "[Works with Nest](https://workswith.nest.com/)"
 
 As a first-mover in connected home automation, Nest has become the hub of the smart house. While many smart products rely on a [hub of some sort or other](http://www.wink.com/products/wink-hub/), the Nest Thermostat is a cool device that does something independent of the other smart devices connected to it. Accordingly, consumers are motivated to buy it for intrinsic reasons rather than as an annoyance attached to the thing they actually want. It’s generally situated in a fairly central location in the house, giving it access to some exceedingly valuable data. More on that in a moment. Finally, the developers sensibly built an open API, inviting other product manufacturers to build products that integrate with the Nest. They’ve branded this interoperability "[Works with Nest](https://workswith.nest.com/)."
 
-## The Hub
+# The Hub
 
 So the Nest has (for the time being) won the competition to become the hub for your own personal corner of the internet of things. But it’s worth asking if this is a solution that is actually what we want, or just something that makes sense given the path we’re on? For example, Nest interoperability with other devices generally revolves around a single piece of data the Nest collects: The Nest knows when you’re home. It tells all your other devices when you’re home. But there are lots and lots of ways to tell if I’m home or away. Is my phone’s WiFi connected to my router? Is my phone’s GPS signal at my home? Is my Phone’s Bluetooth connected to a device that I leave in my home? Am I scheduled to be away from home on my Google Calendar? Have I checked in to someplace on Facebook or Foursquare within driving time’s distance from my home? While none of these is a slam dunk for determining my home/away status, taken together they can equate to powerful statistical model which should know if I’m home with extremely high accuracy, and good precision. (I’ll get back to this in a moment.)
 
@@ -63,7 +61,7 @@ Why should I have multiple of these things in a central location in my house? I 
 
 I will mention that there’s one big problem that this doesn’t solve. In addition to being ugly, routers must be tethered to cable modems, which require cable jacks, which tend to be in isolated corners of a house. So you’ve got to run an ugly cable to the central location in the house, or leave the router in an untrafficked corner of the basement, and just deal with the crappy signal on the other side of the house. I don’t know how to solve this problem properly, and I dislike any of the obvious hacks (re-wiring the house, using extension cords, or adding range extenders) for fixing it.
 
-## Controlling the Circus
+# Controlling the Circus
 
 In general, most "smart" devices really aren’t. Rather, they’re "connected" devices. You can control them with your smartphone. Woohoo. To improve (slightly) on this situation, a plucky little startup called [IFTTT](https://ifttt.com/) started quietly integrating smart device APIs into a little webapp. The idea is that you give people the ability to set up rules. If This Then That. So, for example, I have a rule that whenever the humidity forecast exceeds 50%, a [WeMo Switch](http://www.belkin.com/us/F7C027-Belkin/p/P-F7C027/) automatically turns on my dehumidifier.
 
@@ -75,29 +73,29 @@ To specify the "certain ways" my vacation status should affect the behaviors of 
 
 While this is all certainly an achievable dream with existing software, it not one that I’ve seen anyone attempt to comprehensively realize. Accordingly, I’m afraid rule-based controls will be (more or less) the sole means of coordinating interactions between "smart" things for the near future.
 
-## The Well-Quantified-Self
+# The Well-Quantified-Self
 
 There’s a small, additional piece of functionality that sort of goes along with this vision. I have yet to find an [autonomous life-logging app](http://emberify.com/blog/lifelogging-apps-2016/) that I found satisfactory. I’d love for my phone to record structured data on my activities, simply by recording my GPS locations, Facebook and Foursquare checkins, Google Calendar events, explicit interactions with connected devices, etc. Secondarily, I’d be interested in a similar autonomous event-logging platform showing what my devices were doing at any given time. A few years ago, [Saga](http://www.getsaga.com/) was pretty close to what I envision, but it looks suspiciously like abandonware (now 16 months since its last update).
 
-## Water Heating
+# Water Heating
 
 It seems to me that the engineers behind the smart house have missed the opportunity to reduce water heating costs (The second-most prominent energy drain). I don’t need hot water around the clock. I need it in the mornings when I shower, and in the evenings when I run my laundry machine and dishwasher. The easiest way to get this is to switch to a [tankless heater](http://www.homedepot.com/s/tankless%252520water%252520heater%3FNCNI-5). But we can do better than that!
 
 Heatworks produces a Tankless, electric heater called the [Heatworks Model 1](http://myheatworks.com/collections/water-heaters/products/heatworks-model-1), which you install at the point of use (basically, one at your Kitchen Sink, one in each bathroom, and possibly one adjoining your laundry machine).
 
-## Laundry
+# Laundry
 
 Speaking of your laundry machine, there are two really good targets for automating laundry. The first is knowing how to treat the type of load the machine currently contains. Current machines impose a cognitive load on their users by requiring that users understand the settings the machine requires to launder the materials in it properly. I believe that a machine can do this well by itself, using a combination of optical (for color and volume) and weight (for fabric type estimation) sensors. This type of sensing can also extend to determining the optimal settings for drying the clothes. There exist single machines which claim to wash and dry clothes, but they tend [not to review well](https://smile.amazon.com/s/ref%3Dsr_st_featured-rank%3Frh%3Dn%253A2619525011%252Cn%253A!2619526011%252Cn%253A2383576011%252Cn%253A13755271%26qid%3D1471970233%26sort%3Dfeatured-rank). Despite this, the combination is desirable because it completes two discrete actions on the laundry without requiring intervention by the user in the middle of the process (not to mention requiring half the space of the Washer-Dryer combo).
 
 The second is folding. While there was promising proof-of-concept for [laundry folding robotics](https://www.youtube.com/watch%3Fv%3Dgy5g33S0Gzo) a few years ago, it didn’t look like a product was coming to market. Until [Foldimate](https://www.foldimate.com/), that is. You place each article in the grips of the machine, and it folds them, emitting a dainty cube of folded clothes when complete. But Foldimate is not the solution I want. I wish there were an automated process which would gather the clothes I shed, launder them optimally, dry them efficiently, and place them [tidily](https://smile.amazon.com/dp/B00KK0PICK/ref%3Ddp-kindle-redirect%3F_encoding%3DUTF8%26btkr%3D1) in my drawers (or closet, as the article requires). Sadly, I believe this dream may still be decades away.
 
-## Smart Toilet
+# Smart Toilet
 
 Since we’re talking about water, Yeah, let’s go there. There are two features I’d really like to see in a smart toilet. The first is data collection. Seriously, bear with me: you may be able to infer quite a lot about your digestive health simply from the weight and volume of your excrement. The scale toilet seat [has been imagined](http://www.yankodesign.com/2009/01/07/fat-before-a-visit-to-the-loo-skinny-after/), but I can’t find any indication that anyone is attempting to bring it to the market. A simple set of ascending sensors (just like those used in your car’s gas tank) could measure the volume of the toilet’s contents. A toilet that could infer the phase of matter of its contents could also reduce its own flow volume, saving water. A scale supporting the bowl (but not the seat) could tare after every flush is complete, leaving it ready to measure the weight of the next visitor’s output. Moreover, that approach would free up the seat to accommodate the other thing I want from my smart toilet: a bidet.
 
 The United States seems to be lagging far behind the rest of the world in the [bidet business](https://www.bidet.org/pages/bidet-buying-guide). I’ve never tried one personally, but I feel like a bidet attachment is a strong candidate for desirable smart home improvements. While the bidet doesn’t really need to respond to anything other than the user, nor should it record any data, it offers the possibility of automating away most of the work of wiping, trading large wasteful uses of toilet paper for smaller, cheaper expenses of water.
 
-## Lighting
+# Lighting
 
 The fundamental thing I want from my lighting system is for it to turn on while I’m there, and turn off when I leave. This can be accomplished by old-school (non-connected) home automation technologies like the [Leviton occupancy-sensing wall switches](http://www.leviton.com/OA_HTML/SectionDisplay.jsp%3Fsection%3D38557%26minisite%3D10251) (of which I’m a big fan). Alternately, you can get smart switches without occupancy-sensing, like the [Belkin WeMo Light Switch](http://www.belkin.com/us/F7C030-Belkin/p/P-F7C030%3Bjsessionid%3D68FCC9FA139BD26DC3A4EE0EA0C832A4/). But I think there’s a huge opportunity to bring these two technologies together.
 
@@ -107,17 +105,17 @@ If we skip the automation and focus on features, colored, connected light soluti
 
 This rosy view of the possibility of responsive, interactive colored lighting notwithstanding, I don’t see any significant practical application for Hue at present, independent of rule-based power toggling (which I’d prefer be handled by occupancy-sensing switches, as discussed above).
 
-## Vacuuming
+# Vacuuming
 
 Robotic Vacuum cleaners have been on the consumer market for a long time, now. Unfortunately, they aren’t yet connected to the larger home automation ecosystem in any meaningful way. I want a robot vacuum that can run exclusively when I’m not around to trip on it. We can sort of hack around this by setting the Roomba’s scheduler, but (to me) the point of automation is that it is _responsive_ to your behaviors, not dependent on your interacting routinely with its controls.
 
 For example, I can schedule the Roomba to run every morning at 10am, long after I’ve usually left for work. Usually. But when Saturday rolls around, I’d prefer it didn’t run at all, since I’m likely to be home at that time. So I change the scheduler to exclude Saturdays. Now it’s fine, except that next Monday is a holiday, and it’s running again. There’s no sense setting the scheduler since I won’t routinely be home Mondays, but it’s either that or let it run while I’m around. Having it running while I’m around is a minor nuisance, but it’s a nuisance that could be avoided if only the Roomba tapped into a centralized, statistical estimation of whether I was home or not.
 
-## Lawn Mowing
+# Lawn Mowing
 
 [Robotic Lawn mowing](https://smile.amazon.com/gp/search/ref%3Dsr_hi_eb%3Frh%3Dn%253A2972638011%252Cn%253A551242%252Cn%253A128066011%252Cn%253A13638738011%26ie%3DUTF8%26qid%3D1472045791) seems like a logical next step after robotic vacuuming. While the iRobot corporation (purveyors of the Roomba) has been [developing to break into this market](http://www.roboticstrends.com/article/irobot_robot_lawn_mower_too_little_too_late), there’s already a [lively selection available](https://smile.amazon.com/gp/search/ref%3Dsr_hi_eb%3Frh%3Dn%253A2972638011%252Cn%253A551242%252Cn%253A128066011%252Cn%253A13638738011%26ie%3DUTF8%26qid%3D1472045791) (provided you don’t mind burying a low-voltage line around the perimeter of your lawn).
 
-## Gardening
+# Gardening
 
 Commercial automation for farming has been advancing for decades, but there hasn’t been nearly as much progress on the consumer side. [Farmbot](https://farmbot.io/) looks poised to attempt to change that.
 

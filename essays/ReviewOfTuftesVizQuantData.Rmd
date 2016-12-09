@@ -2,6 +2,8 @@
 title: "Review of Tufte's Visual Display of Quantitative Information"
 ---
 
+# Introduction
+
 I received a hardback copy of Tufte's [The Visual Display of Quantitative Information](http://smile.amazon.com/Visual-Display-Quantitative-Information/dp/0961392142/ref=sr_1_1?s=books&ie=UTF8&qid=1451697611&sr=1-1&keywords=the+visual+display+of+quantitative+information) from my wife for Christmas, and amidst all the holiday celebrations and family visits, I didn't get a chance to sit down with it until today. Having finally done so, however, I inadvertently consumed nearly the entire volume in a single sitting. 
 If you haven't heard of him, [Ed Tufte](http://www.edwardtufte.com/tufte/index) is regarded as something of a messiah to Data visualization. I had never actually read any of his written works, though I had knowingly inherited many of his stylistic preferences by proxy of his other disciples. Writ large, I found the book to be largely devoid of surprises: Tufte's style is more-or-less what one might expect Tufte's style to be. Data visualization is good for circumstances in which tables are cumbersome, and bad for circumstances in which tables are more succinct. Relational graphics (in which multivariate data is presented) are king, though maps and time-series plots are also critically important. Visually misleading or distracting coloration (e.g. cross-hatching) is bad. [Don't lie with statistical](http://smile.amazon.com/How-Lie-Statistics-Darrell-Huff/dp/0393310728/ref=sr_1_1?s=books&ie=UTF8&qid=1451698516&sr=1-1&keywords=how+to+lie+with+statistics) graphics.
 

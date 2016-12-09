@@ -1,11 +1,8 @@
 ---
 title: "Estimating the Risk of Human Extinction by Catastrophic Global Warfare"
-bibliography: ../bibliography.bib
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
+
+# Introduction
 
 ```{r setup, message=FALSE}
 library("HistData")
@@ -20,8 +17,6 @@ library("plotly")
 library("ShRoud")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
-
-# Introduction
 
 Most anthropogenic existential risks lack empirical evidence, and thus are tantamount to difficult to estimate. For example, a technological "singularity" is termed singularity for precisely the same reason that black hole cores are called singularities. Namely, that are conditions under which our models break down, and we are effectively incapable of making good predictions beyond them.
 

@@ -1,10 +1,8 @@
 ---
 title: "It Isn't Aliens"
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
+
+# Introduction
 
 There are a lot of interesting mysteries in the astronomy world right now. Why does the light emmitted by [Tabby's Star](https://en.wikipedia.org/wiki/KIC_8462852) vary cyclically? What caused the [spike in radiation from HD164595](http://www.centauri-dreams.org/?p=36248)?
 
@@ -121,3 +119,5 @@ We don't know yet.
 P(Aliens|Evidence) = P(Aliens) * P(Evidence|Aliens) / P(Evidence)
 
 The answer is that our evidence is vastly smaller than the threshold we should require to conclude that intelligent, technologically sophisticated aliens exist in our light cone.
+
+# References

@@ -2,6 +2,8 @@
 title: "Halting States in Aggregative and Terminal Utilities"
 ---
 
+# Introduction
+
 Consider a generic utility function: $$U(x)=Sigma_{i:1to n}beta_i x_i$$ In which $x$ is a vector of $n$ characteristics of the present state of the Universe and $beta_i$ is the weight assigned to the $i$th characteristic.
 
 ## Halting States and Characteristics

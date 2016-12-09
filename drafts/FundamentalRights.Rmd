@@ -2,6 +2,8 @@
 title: "Fundamental Rights"
 ---
 
+# Introduction
+
 I believe that fundamental human rights extend far beyond the conventional American conception. The Declaration of Independence famously enumerated the “inalienable rights” as “Life, Liberty, and the Pursuit of Happiness.”
 
 ## Life

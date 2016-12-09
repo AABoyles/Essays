@@ -2,6 +2,8 @@
 title: "Power and Morality in Westeros and Middle Earth"
 ---
 
+# Introduction
+
 There are clearly good characters: Gandalf, Aragorn, Sam.  There are clearly evil characters: Sauron, Saruman.
 Tolkein’s handling of morality isn’t overly simplistic.  Saruman rose through the ranks of Middle Earth’s few wizards to become the leader of the order.
 
@@ -14,3 +16,5 @@ In George Martin’s world, we are presented with a group of people we are to be
 In contrast, Martin also introduces “bad guys,” the Lannisters.  However, just as the Starks are dragged downward, the Lannisters are morally promoted: Tyrion deals respectfully with the Starks, Jaime saves Brienne from being raped.  Even Cersei’s actions can be explained as we delve into her mind.  We only see principled evil in the character of Joffrey.
 
 And to those principled characters, Martin offers exactly the same fate: unceremonious execution.
+
+# References

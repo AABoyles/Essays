@@ -2,6 +2,8 @@
 title: "You are a Computer. Get Over It."
 ---
 
+# Introduction
+
 In his [recent piece for Aeon](https://aeon.co/essays/your-brain-does-not-process-information-and-it-is-not-a-computer), Robert Epstein claimed that brains are not computers. While I can be sympathetic to such claims (but ultimately reject them), Epstein’s piece is fraught with errors and should not go undiscussed.
 
 > No matter how hard they try, brain scientists and cognitive psychologists will never find a copy of Beethoven’s 5th Symphony in the brain — or copies of words, pictures, grammatical rules or any other kinds of environmental stimuli.
@@ -37,3 +39,5 @@ However, the neuron does occupy some space, and that space can be mapped to info
 The most amusing thing about Epstein’s rejection of the computational metaphor with regard to information storage is that he utterly fails to acknowledge that computers routinely employ distributed storage (as anyone who’s ever defragmented a hard drive should know).
 
 Epstein conspicuously fails to offer an alternative vocabulary for describing the activities of the brain.
+
+# References

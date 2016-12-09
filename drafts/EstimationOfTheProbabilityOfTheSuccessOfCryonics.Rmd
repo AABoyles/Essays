@@ -2,6 +2,8 @@
 title: "Estimation of the Probability of the Success of Cryonics"
 ---
 
+# Introduction
+
 ```{r, results='asis', eval=FALSE}
 source("infobox.R")
 meta <- list(

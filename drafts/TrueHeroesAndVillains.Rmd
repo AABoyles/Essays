@@ -2,23 +2,25 @@
 title: "True Heroes and Villains"
 ---
 
+# Introduction
+
 I am the hero of my own story. You are the hero of your story.
 
-## True Villains
+# True Villains
 
 One of the most useful rhetorical devices in any argument is a quintessential evil. This, more often than not, is a mustachioed villain. As horrible luck would have it, the world produced such a character in the person of Adolf Hitler.
 Now, Adolf Hitler intentionally caused the deaths of tens of millions of people, many in horrifying, torturous conditions. But if we peel moral judgment away from Hitler’s actions for a moment, what was Adolf Hitler to Adolf Hitler? The answer (for my purposes) is that Hitler was the hero of his own internal narrative. Hitler sought to shape the course of the world according to his values. In this respect, he was briefly the most successful individual in the world. The combination of his success and the diametric opposition of his values to the values of most humans today make Hitler an ideal villain.
 
-Other famously “evil” leaders also held values which they sought to maximize at the expense of the populations that were murdered by their policies. Josef Stalin, Mao Tse-Tung, Pol Pot, and Kim Il Sung, all uncontroversially evil men.
-The problem with calling them “evil” and labelling them as “villains” is that they all sought to maximize whatever their values advocated. Every one of them thought they were doing good.
+Other famously "evil" leaders also held values which they sought to maximize at the expense of the populations that were murdered by their policies. Josef Stalin, Mao Tse-Tung, Pol Pot, and Kim Il Sung, all uncontroversially evil men.
+The problem with calling them "evil" and labelling them as "villains" is that they all sought to maximize whatever their values advocated. Every one of them thought they were doing good.
 
-## Pathology of Villainy
+# Pathology of Villainy
 
 Why can I claim with confidence that evil people believe themselves good? It is the nature of values. Let us consider a "true villain" as someone who seeks to do the most "bad" possible in the world. This badness-maximization must be motivated by some set of values. For example, consider simply valuing human life (which is actually incredibly fraught and complex, but at least most people will ascribe to some version of that value without too much pushing). A true villain to people who value human life is someone who shares this value of human life and, despite their values, seeks to minimize human life. In other words, true villainy is really just economic irrationality.
 
 More specifically, it is irrationality which, rather than skewing decisions a bit away from optimality, swaps every maximization with minimization or vice versa. Humans are famously irrational in a widely cataloged variety of ways, but so far as I know, no bias causes humans to systematically seek the exact opposite of their own values. Accordingly, humans really can’t (seriously) self-identify as villains.
 
-## True Heroes
+# True Heroes
 
 I value a certain set of things. I have not thought deeply enough to say with confidence that I value the absolutely correct things, but I value valuing the correct things. 
 

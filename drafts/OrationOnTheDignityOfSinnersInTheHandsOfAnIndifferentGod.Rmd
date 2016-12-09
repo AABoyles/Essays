@@ -2,6 +2,8 @@
 title: "Oration on the Dignity of Sinners in the Hands of an Indifferent God"
 ---
 
+# Introduction
+
 Have you ever read [Sinners in the Hands of an Angry God](http://www.gutenberg.org/files/34632/34632-h/34632-h.htm#V) by Jonathan Edwards?
 
 Edwards' conception of God is wrong. God is not angry. Nor is God happy. God is blind, insane, and utterly indifferent. Edwards' God is Death.
@@ -9,3 +11,5 @@ Edwards' conception of God is wrong. God is not angry. Nor is God happy. God is 
 Have you ever read [Oration on the Dignity of Man](http://bactra.org/Mirandola/) by Pico della Mirandola?
 
 In the transcendental hierarchy, humans alone posess the means to observe that they could be better, and will themselves towards that betterness. We aren't necessarily very good at it, but it is a skill and a burden which is uniquely ours.
+
+# References

@@ -2,8 +2,12 @@
 title: "Optimize Moral Decision Making with Fables"
 ---
 
+# Introduction
+
 My current model of moral argument is that we test whether something incites our sense of disgust, then query our brains for analogies that throw that sense of disgust/non-disgust into sharper relief. (See Haidt’s The Righteous Mind)
 
 This is both natural and dangerous. By consigning ourselves to intuitive (rather than explicit) moral reasoning, we behave in morally inconsistent ways (e.g. trolley problem/fat man variant).
 
 Is it possible to raise a human with a specific canon of analogies to increase aptitude toward morally consistent behaviors?
+
+# References

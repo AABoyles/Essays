@@ -2,6 +2,8 @@
 title: "How To Save the Universe"
 ---
 
+# Introduction
+
 In his recent article "[Save the Universe](http://aeon.co/magazine/science/how-to-save-the-universe-from-certain-death/)," Michael Hanlon grapples with an uncomfortable truth about reality: we are doomed.  If intelligent life doesn't plan for its indefinite future, the universe will extinguish it. And then extinguish itself. And then there will be nothing. And there will be no metaphysical distinction between our universe and universes in which intelligent life never existed.
 
 ## Transcendence by Simulation

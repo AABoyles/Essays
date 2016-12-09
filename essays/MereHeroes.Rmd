@@ -2,6 +2,8 @@
 title: "Mere Heroes"
 ---
 
+# Mere Heroes
+
 ```{r, results='asis'}
 source("infobox.R")
 meta <- list(

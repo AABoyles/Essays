@@ -1,6 +1,8 @@
 ---
-title: "How I Lost My Faith"
+title: "Meditation on Simplicity"
 ---
+
+# Introduction
 
 > The probability a hyopthesis is true is proportional to the complexity of that hypothesis.
 
@@ -16,7 +18,7 @@ The Summa Theologica of Thomas Aquinas (1225–1274) states that "it is superflu
 
 The Indian Hindu philosopher Madhva (1238–1317) in verse 400 of his Vishnu-Tattva-Nirnaya says: "To make two suppositions when one is enough is to err by way of excessive supposition".
 
-## Occam's Razor
+# Occam's Razor
 
 William of Ockham (circa 1287–1347) was an English Franciscan friar and theologian, an influential medieval philosopher and a nominalist. His popular fame as a great logician rests chiefly on the maxim attributed to him and known as Ockham's razor. The term razor refers to distinguishing between two hypotheses either by "shaving away" unnecessary assumptions or cutting apart two similar conclusions.
 
@@ -32,7 +34,7 @@ Bertrand Russell offers a particular version of Occam's razor: "Whenever possibl
 
 The widespread layman's formulation that "the simplest explanation is usually the correct one".
 
-## Solomonoff Induction
+# Solomonoff Induction
 
 All computable theories which perfectly describe previous observations are used to calculate the probability of the next observation, with more weight put on the shorter computable theories.
 
@@ -52,13 +54,13 @@ Now, let us consider a second string:
 
 This one, like the last, is composed 32 lower-case letters. However, unlike the last one, there is no algorithm to generate this string, shorter than the string itself. (Side note: this string was generated from [random.org](https://www.random.org/strings/?num=2&len=16&loweralpha=on&unique=off&format=html&rnd=new), using atmospheric noise. There may exist a short seed which could cause this number, but that is extremely unlikely.)
 
-## Perfect Bayesian Reasoning
+# Perfect Bayesian Reasoning
 
 Marcus Hutter invented AIXI
 
 Every phenomenon has an infinite number of explanatory hypotheses. Each new piece of evidence requires updating each hypothesis. Accordingly, AIXI is not computable with finite computing power.
 
-## God
+# God
 
 There's a school of thought in theist faiths which, when confronted with legitimate reason to doubt belief in God, appeal to the thing that started the universe. Science does not yet offer us any robust information about what happened "before" the beginning of our universe. Accordingly, they call whatever caused the universe "God".
 
@@ -69,3 +71,5 @@ The moment I realized this, my belief in God collapsed. I cannot rebuild it.
 The truth is that I haven't really believed in God since I was a teenager (and possibly prior to that, though I can't recall my childhood metaphysical beliefs well enough to make a strong statement either way). What I believed was that to believe in God is a good and virtuous thing, therefore I should believe in God, therefore I did believe in God. This is what Daniel Dennett terms "belief-in-belief".
 
 It's OK not to know everything. To understand the boundaries of your knowledge is a virtue.
+
+# References

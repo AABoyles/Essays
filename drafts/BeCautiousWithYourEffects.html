@@ -10,149 +10,32 @@
 
 
 
-
 <title>Be Cautious with You Effects</title>
-
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
+<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
+<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
+<script src="site_libs/material-0.1/material.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -160,18 +43,42 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
+<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
 
+</head>
+
+<body>
+
+<div class="header-panel shadow z-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+        <div id="header">
+    <h1 class="title">Be Cautious with You Effects</h1>
+                </div>
+    </div>
+</div>
+</div>
+</div>
 
 
-
+<div class="container-fluid main-container">
+    <div class="row">
+      <nav class="col-xs-3 menu" id="toc">
+        <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#flappy-bird">Flappy Bird</a></li>
+        <li><a href="#infinite-trolley-problem">Infinite Trolley Problem</a></li>
+        </ul>
+      </nav>
+     <div class="pages col-xs-9">
+     <div class="row">
+       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -206,50 +113,92 @@ $(document).ready(function () {
 </div><!--/.navbar -->
 
 
-<div class="fluid-row" id="header">
-
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">Be Cautious with You Effects</h1>
-
-</div>
-
-
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
 <p>I hold the moral significance of human-hours to be roughly equivalent across (almost) all (adult) humans. So, for a trivial example, wasting one person’s time for two hours is approximately as morally bad as wasting two people’s times for one hour.</p>
 <p>Imagine an organization. It employs on the order of 100,000 people, each of whom receives an official organizational email address. One day, one employee emails another about some matter of mild importance to the two of them (and no relevance to anyone else). However, in haste, the sender inadvertently added an extra recipient to the cc line. That extra address was, unfortunately, a mailing list to which every single employee of this organization is subscribed. All ~100,000 of them.</p>
 <p>There are a variety of responses to this error. The majority of recipients sensibly delete the email (as the cybersecurity training they all received instructed them to do). Some, feeling as though their inclusion in the conversation was more specific and intentional than it was, replied-to-all with variations of “I think you sent this e-mail to the wrong [NAME].” Others note this error, and, seeking to prevent still more from sending emails of this variety, begin sending emails of the style “Please stop replying-all to this thread.” One third-order thinker goes so far as to send an email saying “Please stop sending e-mails telling us to stop replying-all to this thread.” Some decide to join the party simply for the joy of trolling, sending memes and random filler. In all, approximately 500 emails are sent to each of 100,000 people.</p>
 <p>Let us conservatively estimate that each email commands the attention of an employee for an average one second. We can accordingly estimate that each e-mail cost the organization approximately…</p>
 <p><span class="math display">\[\frac{100,000 employees}{1}*\frac{1 second}{1 email}*\frac{1 hour}{3600 seconds}=27.8hours\]</span></p>
 <p>…in productivity. Expanded over a chain of 500 emails, the lost productivity climbs towards seven years worth of labor-loss. Assuming a mean annual salary of approximately $30,000, on the order of a million dollars is wasted.</p>
-<p>Flappy Bird</p>
+</div>
+<div id="flappy-bird" class="section level1">
+<h1>Flappy Bird</h1>
 <p>Consider a highway which ordinarily serves about 600,000 commuters during the morning rush hour. Let us suppose that early on in the rush hour, a catastrophic accident occurs. No one was killed, but all the lanes were blocked and required approximately one hour to clear. The mean human lifespan is around 65 years [citation needed]. That means that a single human will live approximately <span class="math display">\[\frac{65 years}{1}*\frac{365 days}{1 year}*\frac{24 hours}{1 day}=569,400 hours\]</span> Nearly 600,000 human-hours are forfeit. Even though no one was killed (or even badly injured), an entire human lifespan was wasted. To me, this is approximately as undesirable as having had someone killed in an accident with no adverse effects on traffic.</p>
-<p>Infinite Trolley Problem</p>
-
-
-
-
+</div>
+<div id="infinite-trolley-problem" class="section level1">
+<h1>Infinite Trolley Problem</h1>
 </div>
 
+    </div>
+    <div class="col-xs-2">
+        <div class="btn-toolbar">
+    <div class="btn-group">
+    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
+    <ul class="dropdown-menu" style="min-width: 50px;">
+    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
+    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+    </ul>
+    </div>
+    </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    </div>
+  </div>
+
 <script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
-}
 $(document).ready(function () {
-  bootstrapStylePandocTables();
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+
+    var images = $('.pages img');
+  images.filter(function() {
+      if ($(this).parent().attr("class") == "figure") {
+          return(false)
+      } else {
+          return(true);
+      }
+  }).wrap("<div class='figure'></div>");
+  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
+  $('.figure').addClass('panel panel-default');
+  
+    $('.pages img')
+ 	  .addClass("image-lb");
+  $('.pages').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      delegate: 'img',
+	      gallery: {enabled: false },
+          removalDelay: 500,
+          callbacks: {
+              beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+              }
+          },
+          mainClass: 'mfp-move-from-top',
+	      image: {
+	        verticalFit: true,
+            titleSrc: 'alt'
+	      }
+ 	    });
+ 	
+    window.page = window.location.hash;
+    if (window.page != "") {
+      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+    }
+
+    /* init material bootstrap js */
+    $.material.init();
 });
-
-
 </script>
+
+
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

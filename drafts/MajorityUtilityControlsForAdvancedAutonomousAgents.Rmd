@@ -2,6 +2,8 @@
 title: "Majority Utility Controls for Advanced Autonomous Agents"
 ---
 
+# Introduction
+
 Consider an autonomous agent with a utility function defined as follows: $$U(x)=(0.5+\epsilon)*a+(0.5-\epsilon)*x$$
 
 where $a$ represents the payoff to an agent's for gracefully shutting down when instructed to do so, $\epsilon$ is some small constant value greater than zero, and $x$ is the valuation that the agent places the state of the rest of the universe. In other words, this is only a partially-defined utility function that attends to the agent's ability to shut itself down and ignores all other implementation details.

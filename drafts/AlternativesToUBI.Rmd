@@ -1,9 +1,6 @@
 ---
 title: "Some Alternatives to Universal Basic Income"
-output: html_document
 ---
-
-
 
 # The Problem to Solve
 

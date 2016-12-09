@@ -10,149 +10,32 @@
 
 
 
-
 <title>On the Moral Consequences of Abortion</title>
-
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
+<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
+<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
+<script src="site_libs/material-0.1/material.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -160,18 +43,44 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
+<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
 
+</head>
+
+<body>
+
+<div class="header-panel shadow z-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+        <div id="header">
+    <h1 class="title">On the Moral Consequences of Abortion</h1>
+                </div>
+    </div>
+</div>
+</div>
+</div>
 
 
-
+<div class="container-fluid main-container">
+    <div class="row">
+      <nav class="col-xs-3 menu" id="toc">
+        <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#a-simple-model">A Simple Model</a></li>
+        <li><a href="#a-comprehensive-model">A Comprehensive Model</a></li>
+        <li><a href="#where-we-end-up">Where We End Up</a></li>
+        <li><a href="#references">References</a></li>
+        </ul>
+      </nav>
+     <div class="pages col-xs-9">
+     <div class="row">
+       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -206,33 +115,19 @@ $(document).ready(function () {
 </div><!--/.navbar -->
 
 
-<div class="fluid-row" id="header">
-
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">On the Moral Consequences of Abortion</h1>
-
-</div>
-
-
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
 <p><a href="http://www.cdc.gov/mmwr/preview/mmwrhtml/ss6311a1.htm?s_cid=ss6311a1_w">Hundreds of thousands of women</a> have abortions annually. If we assign a non-zero moral significance to the fetuses, abortion should clearly be <a href="http://effectivereaction.wordpress.com/2014/12/31/blind-spots-compartmentalizing/">fertile ground for effective altruism</a>. If we assign fetuses the same moral significance as healthy humans with approximately average intelligence, the massive number of abortions drowns out all other causes of death in the United States. While American politics tends to organize people into diametrically opposed camps, Americans’ perspectives on abortion tend to be <a href="http://www.vox.com/a/abortion-decision-statistics-opinions">far more nuanced than pro-choice or pro-life</a>. Peter Singer lays out a <a href="http://www.utilitarian.net/singer/by/1993----.htm">consistent moral framework</a> aligning moral status with intelligence. This creates a lot of uncomfortable policy consequences. Among these, it causes Singer to endorse infanticide as a justifiable action while rejecting the killing of other highly intelligent adult animals. If you’re unfamiliar with Singer’s logic, this may come across as completely at odds with the spirit of Singer’s own charity evaluator, <a href="http://www.thelifeyoucansave.org/">The Life You Can Save</a>. If we assign human fetuses even a tiny fraction of the moral significance that we assign to post-birth humans, abortion becomes a highly important issue. This is <a href="http://econlog.econlib.org/archives/2015/04/where_are_the_p.html">oddly not a popular opinion</a> amongst utilitarians. This line of moral calculus clearly favors more restrictive abortion policy, but abortions <em>can</em> be moral within this school of thought. To see why, let’s evaluate the moral costs of various abortion policies.</p>
-<div id="constructing-a-simple-model" class="section level2">
-<h2>Constructing a Simple Model</h2>
+</div>
+<div id="a-simple-model" class="section level1">
+<h1>A Simple Model</h1>
 <p>An aborted foetus will, at worst, forego a complete, healthy life of average span. For the purposes of this discussion, let’s assume <a href="http://www.cdc.gov/nchs/data/nvsr/nvsr64/nvsr64_02.pdf">that’s about 80 years</a>. Thus, the Expected Loss (<span class="math inline">\(E_{Loss}\)</span>) of the most permissive use of this policy results in a loss of 80 DALYs.</p>
 <p><span class="math display">\[E_{Loss}=80\]</span></p>
 <p>This model is fundamental to the pro-life movement: it implies that abortion unequivocally causes people to die. It is this moral absolutism which also makes the model categorically invalid. It focuses exclusively on the life that the fetus loses, without regard for the costs to the mother. The expected loss must therefore be assessed as the sum of the costs that an abortion imposes upon a fetus <em>and</em> the costs that the unterminated pregnancy imposes upon the mother. To formalize this, we’ll use the following equation for the remainder of this post.</p>
 <p><span class="math display">\[E_{Loss}(C_f,C_m)=C_f-C_m\]</span></p>
 <p>Where <span class="math inline">\(C_f\)</span> represents the cost of the abortion to the fetus and <span class="math inline">\(C_m\)</span> represents the costs to the mother of carrying the fetus to term.</p>
-<div id="threatened-mothers" class="section level3">
-<h3>Threatened Mothers</h3>
+<div id="threatened-mothers" class="section level2">
+<h2>Threatened Mothers</h2>
 <p>In building out our model, let us first consider the simple case of a doomed mother. If she elects to carry the fetus to term, she will certainly die. Thus, the cost to the mother is best estimated as the difference between her current total life expectancy and her age.</p>
 <p><span class="math display">\[C_m=80-A_m\]</span></p>
 <p>Stated differently, the cost to the mother is the number of years the mother would have lived had she been able to abort. Certainty of death in labor, however, is too strong an assumption. Let’s instead include a variable <span class="math display">\[t_m\]</span> representing the threat to the mother. This is an estimate of the probability that the mother will die if the child is carried to term.</p>
@@ -240,8 +135,8 @@ $(document).ready(function () {
 <p><span class="math display">\[E_{Loss}(C_f,A_m,t_m)=C_f-(80-A_m)*t_m\]</span></p>
 <p>People uncomfortable with supporting the most permissive policies on abortion will often argue that it should be permissible for women who are the victims of rape or incest. In the case of rape victims, a significant psychological cost is imposed upon the mother regardless of her decision. Arguments can be made either way about the mother’s optimal strategy when facing the decision of whether to abort or carry the child to term. There may be evolutionary reasons to prefer not to carry these children to term: If there is a genetic predisposition to committing rapes, then abortion provides a natural counter-pressure to prevent these traits from propagating across populations. In the interest of keeping the model small, I won’t include these factors directly, though they may prove to be worth-while extensions in the future.</p>
 </div>
-<div id="threatened-fetuses" class="section level3">
-<h3>Threatened Fetuses</h3>
+<div id="threatened-fetuses" class="section level2">
+<h2>Threatened Fetuses</h2>
 <p>Copying the model for the cost to the mother, the cost to the fetus is its life expectancy (since its age for this purpose is simply zero) moderated by an assessment of the probability that it will die during gestation, delivery, or the days or weeks following. (It’s worth mentioning here that the threat to the fetus is increased in cases of incest.)</p>
 <p><span class="math display">\[C_f=80*t_f\]</span></p>
 <p><span class="math display">\[E_{Loss}(t_f,C_m)=80*t_f-C_m\]</span></p>
@@ -251,36 +146,91 @@ $(document).ready(function () {
 <p>At this point, moral ambiguity effectively disappears. I can’t see any economically justifiable reason (endogenous to the mother-fetus dyad) to force women to carry non-viable fetuses to term. There may be exogenous reasons to do so (the mother’s religious beliefs, the possibility of harvesting viable organs for donations from the fetus, etc.)</p>
 </div>
 </div>
-<div id="a-comprehensive-model" class="section level2">
-<h2>A Comprehensive Model</h2>
+<div id="a-comprehensive-model" class="section level1">
+<h1>A Comprehensive Model</h1>
 <p><span class="math display">\[E_{Loss}(t_f,A_m,t_m)=80*t_f-(80-A_m)*t_m\]</span></p>
 <p><span class="math display">\[E_{Loss}(t_f,t_m,A_m)=80*t_f-80*t_m+A_m*t_m\]</span></p>
 <p>Terminations of pregnancies in which the threat to the fetus is high and threat to the mother is high will actually have negative expected losses: abortion may cause a longer, healthier life. A novel conclusion of this model is that by factoring in the age of the mother, we conclude that the younger a woman is, the less moral damage is caused by her decision to terminate a pregnancy. This effect is linear over the probability space of threat to the mother’s life.</p>
 </div>
-<div id="where-we-end-up" class="section level2">
-<h2>Where We End Up</h2>
+<div id="where-we-end-up" class="section level1">
+<h1>Where We End Up</h1>
 <p>One additional (as-yet exogenous) consideration is that child-rearing is an extremely costly activity. A couple aspiring to raise a child in the United States will spend approximately a <a href="http://www.cnpp.usda.gov/sites/default/files/expenditures_on_children_by_families/crc2013.pdf">quarter of a million dollars</a>. The cost of saving <a href="http://www.givewell.org/international/top-charities/AMF#Costperlifesaved">one life by buying Malaria nets</a> is estimated to be $3360USD. Thus, you can save…</p>
 <p><span class="math display">\[\frac{$250000}{1}*\frac{1 life}{$3360}\approx 74 lives\]</span></p>
 <p>…approximately 74 lives by <em>not</em> raising a child, and donating all the money you would have spent on that child to the Against Malaria Foundation. This hearkens to an interesting point: we can achieve a large magnitude of lives saved by outlawing abortion, but we can possibly achieve the same magnitude by mandating that each abortion be offset by the purchase of a life via an effective charity. While <a href="http://www.guttmacher.org/media/nr/2010/05/04/index.html">restrictions on abortions disproportionately affect poor women</a>, the pro-choice movement <a href="http://www.plannedparenthood.org/files/9914/2470/6601/PPFA_FY14_Final_990_-_public_inspection.pdf">may be able to offset the costs</a> for the poorest women seeking abortions. The cost could be issued as a lien against the father (creating positive externalities against rapists and would-be deadbeat dads). And while prohibitive, the price of the abortion would pale in comparison to the <a href="http://www.nytimes.com/2013/07/01/health/american-way-of-birth-costliest-in-the-world.html?pagewanted=all&amp;_r=0">price of delivery</a> (even for insured women). Employing a model like the one developed here, the government could assess discounts based on the expected losses, for example charging nothing to mothers seeking abortions of otherwise doomed fetuses. With approximately 1 million terminated pregnancies in the United States annually, enacting this policy would generate an an excess of $3 billion annually. This rather quickly overwhelms the major effective charities estimated <a href="http://www.givewell.org/international/technical/criteria/scalability">room-for-funding</a>. But as I say for all issues of <a href="http://transhumanist.cc/effective-altruism/overwhelming-effective-altruism/">overwhelming room-for-funding</a>, it’s a much better problem to have. I don’t know if this line of reasoning would stand up if the policies it suggested were implemented. Never-the-less, with moral consequences on the order of tens of millions of DALYs annually, I believe it is a question worth asking.</p>
 </div>
-
-
-
-
+<div id="references" class="section level1">
+<h1>References</h1>
 </div>
 
+    </div>
+    <div class="col-xs-2">
+        <div class="btn-toolbar">
+    <div class="btn-group">
+    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
+    <ul class="dropdown-menu" style="min-width: 50px;">
+    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
+    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+    </ul>
+    </div>
+    </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    </div>
+  </div>
+
 <script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
-}
 $(document).ready(function () {
-  bootstrapStylePandocTables();
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+
+    var images = $('.pages img');
+  images.filter(function() {
+      if ($(this).parent().attr("class") == "figure") {
+          return(false)
+      } else {
+          return(true);
+      }
+  }).wrap("<div class='figure'></div>");
+  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
+  $('.figure').addClass('panel panel-default');
+  
+    $('.pages img')
+ 	  .addClass("image-lb");
+  $('.pages').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      delegate: 'img',
+	      gallery: {enabled: false },
+          removalDelay: 500,
+          callbacks: {
+              beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+              }
+          },
+          mainClass: 'mfp-move-from-top',
+	      image: {
+	        verticalFit: true,
+            titleSrc: 'alt'
+	      }
+ 	    });
+ 	
+    window.page = window.location.hash;
+    if (window.page != "") {
+      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+    }
+
+    /* init material bootstrap js */
+    $.material.init();
 });
-
-
 </script>
+
+
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

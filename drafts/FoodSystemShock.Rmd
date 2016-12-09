@@ -2,6 +2,8 @@
 title: "Mitigating Food System Shock"
 ---
 
+# Introduction
+
 Food crises are not one-solution-fits-all disasters. Much depends on the circumstances under which a food crisis occurs. If the crisis is caused by a blight, the survival strategy we employ should not rely upon different strains of the same crop. Likewise, if it affects the growing environment of a large agricultural region or regions in some detrimental way, we cannot rely upon any crops coming from this region. Accordingly, a generalizable plan must employ a multi-pronged approach, each prong of which is severable from the larger plan if it is rendered impossible by the circumstances. The plan must also be prepared to address the effects of the crisis across various time spans, from a mere season to permanent changes for the indefinite future, if need be. Most importantly, while new technologies are being developed more rapidly than at any prior point in human history, we cannot count on any specific technological breakthrough to save humanity. We must be prepared to work with only the resources we have on hand at present.
 
 The first line of defense against mass starvation should be subsidies for crops that generate more calories. If a replacement crop yields more edible calories per area than the blighted crop, this could actually result in a net increase in the world calorie production. For example, if wheat crops were to fail, corn yields almost double the number of calories per square area per time. Potatoes nearly triple wheat's calorie yield. Thus, altering our farmed output would appreciably alter diets, but it need not threaten lives while the land is still arable. This approach also enjoys a legal advantage, in that Governments all over the world already do this routinely.

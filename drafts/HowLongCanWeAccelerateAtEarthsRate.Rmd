@@ -2,6 +2,8 @@
 title: "How Long Can We Accelerate at the Rate of Earth's Gravity?"
 ---
 
+# Introduction
+
 Earth's gravity causes us to accelerate downwards toward the Earth. It does so at a relatively specific rate: 9.8 meters per second per second. In other words, for every second that passes as we fall toward the Earth, our speed increases by 9.8 meters per second.
 
 This is relevant to space travel in a wide variety of contexts, but one that isn't widely discussed presently is _emulating_ gravity. We could, hypothetically, begin accelerating a spacecraft toward its destination at the rate of Earth's gravity. This would cause our bodies to fall through the spacecraft at the same rate we fall toward the Earth. In effect, it would feel (with respect to gravity) like we were standing on the Earth's surface. This would be especially useful for inter-planetary travel.

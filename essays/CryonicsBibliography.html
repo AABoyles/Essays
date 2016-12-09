@@ -10,150 +10,69 @@
 
 
 
-
 <title>Cryonics Bibliography</title>
-
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
+<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
+<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
+<script src="site_libs/material-0.1/material.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { font-weight: bold; } /* Keyword */
+code > span.dt { color: #800000; } /* DataType */
+code > span.dv { color: #0000ff; } /* DecVal */
+code > span.bn { color: #0000ff; } /* BaseN */
+code > span.fl { color: #800080; } /* Float */
+code > span.ch { color: #ff00ff; } /* Char */
+code > span.st { color: #dd0000; } /* String */
+code > span.co { color: #808080; font-style: italic; } /* Comment */
+code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
+code > span.fu { color: #000080; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #ff00ff; } /* SpecialChar */
+code > span.vs { color: #dd0000; } /* VerbatimString */
+code > span.ss { color: #dd0000; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #808080; font-style: italic; } /* Documentation */
+code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -161,16 +80,46 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
 
+</head>
+
+<body>
+
+<div class="header-panel shadow z-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+        <div id="header">
+    <h1 class="title">Cryonics Bibliography</h1>
+                </div>
+    </div>
+</div>
+</div>
+</div>
 
 
-
+<div class="container-fluid main-container">
+    <div class="row">
+      <nav class="col-xs-3 menu" id="toc">
+        <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#why-should-we-consider-cryonics">Why Should We Consider Cryonics?</a></li>
+        <li><a href="#will-it-work">Will it Work?</a></li>
+        <li><a href="#how-does-it-work">How does it work?</a></li>
+        <li><a href="#how-do-i-sign-up">How do I sign up?</a></li>
+        <li><a href="#references-i-would-skip">References I Would Skip</a></li>
+        <li><a href="#references-i-havent-gotten-to-yet">References I haven’t gotten to yet</a></li>
+        </ul>
+      </nav>
+     <div class="pages col-xs-9">
+     <div class="row">
+       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -205,30 +154,15 @@ $(document).ready(function () {
 </div><!--/.navbar -->
 
 
-<div class="fluid-row" id="header">
-
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">Cryonics Bibliography</h1>
-
-</div>
-
-
-<pre class="r"><code>source(&quot;infobox.R&quot;)
-meta &lt;- list(
-  &quot;Status&quot; = &quot;Incomplete&quot;,
-  &quot;Epistemic Status&quot; = &quot;Uncertain&quot;,
-  &quot;Last Revision&quot; = file.info(&quot;CryonicsBibliography.Rmd&quot;)$mtime
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+meta &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
+  <span class="st">&quot;Epistemic Status&quot;</span> =<span class="st"> &quot;Uncertain&quot;</span>,
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;CryonicsBibliography.Rmd&quot;</span>)$mtime
 )
-infobox(meta)</code></pre>
+<span class="kw">infobox</span>(meta)</code></pre></div>
 <table class="infobox">
 <tbody>
 <tr>
@@ -247,14 +181,21 @@ infobox(meta)</code></pre>
 <td>
 <b>Last Revision</b>
 </td>
-<td>2016-08-29 13:00:34</td>
+<td>2016-12-09 16:28:06</td>
 </tr>
 </tbody>
 <tfoot></tfoot>
 </table>
 <p>This follows my self-education in Cryonics, specifically as I would have ordered these materials if I were to start from the beginning again. This is roughly ordered by technical difficulty: the less technical books are at the top, and more technical works follow at the bottom. At the end, I’ve also included a section of books I simply wouldn’t bother with at all, along with my notes about why they fall here.</p>
-<div id="why-should-we-consider-cryonics" class="section level2">
-<h2>Why Should We Consider Cryonics?</h2>
+<div id="if-you-only-read-one-thing" class="section level2">
+<h2>If you only read one thing…</h2>
+<ul>
+<li>Read the Wait but Why post, <a href="http://waitbutwhy.com/2016/03/cryonics.html">Why Cryonics Makes Sense</a>.</li>
+</ul>
+</div>
+</div>
+<div id="why-should-we-consider-cryonics" class="section level1">
+<h1>Why Should We Consider Cryonics?</h1>
 <p>Because living is awesome, of course!</p>
 <ul>
 <li><p><a href="http://www.evidencebasedcryonics.org/scientists-open-letter-on-cryonics/">The Open Letter on Cryonics</a> - There are a bunch of really smart people who openly affirm that Cryonics is a viable avenue to life extension.</p></li>
@@ -262,50 +203,126 @@ infobox(meta)</code></pre>
 <li><p>Eliezer Yudkowsky - <a href="http://lesswrong.com/lw/wq/you_only_live_twice/">You Only Live Twice</a></p></li>
 </ul>
 </div>
-<div id="will-it-work" class="section level2">
-<h2>Will it Work?</h2>
+<div id="will-it-work" class="section level1">
+<h1>Will it Work?</h1>
 <p>Probably. However, whether any specific cryonically-preserved individual will be recovered is far less certain.</p>
 </div>
-<div id="how-does-it-work" class="section level2">
-<h2>How does it work?</h2>
+<div id="how-does-it-work" class="section level1">
+<h1>How does it work?</h1>
 </div>
-<div id="how-do-i-sign-up" class="section level2">
-<h2>How do I sign up?</h2>
+<div id="how-do-i-sign-up" class="section level1">
+<h1>How do I sign up?</h1>
 <p>As far as I can tell, there are three agencies world-wide doing cryopreservation. They are:</p>
 <ul>
 <li><a href="http://cryonics.org/become.html">Cryonics Institute</a></li>
 <li><a href="http://www.alcor.org/BecomeMember/index.html">Alcor Life Extension Institution</a></li>
 <li><a href="http://www.kriorus.ru/en">KrioRus</a></li>
 </ul>
-<div id="paying-for-it" class="section level3">
-<h3>Paying for it</h3>
+<div id="paying-for-it" class="section level2">
+<h2>Paying for it</h2>
 <ul>
 <li>Life Insurance. Contact <a href="http://www.rudihoffman.com/">Rudi Hoffman</a>.</li>
+<li>Cash. If you’re pretty wealthy.</li>
 </ul>
 </div>
-<div id="making-arrangements-to-assure-your-cryopreservation" class="section level3">
-<h3>Making Arrangements to Assure Your Cryopreservation</h3>
+<div id="making-arrangements-to-assure-your-cryopreservation" class="section level2">
+<h2>Making Arrangements to Assure Your Cryopreservation</h2>
 </div>
 </div>
-<div id="references-i-would-skip" class="section level2">
-<h2>References I would Skip</h2>
+<div id="references-i-would-skip" class="section level1">
+<h1>References I Would Skip</h1>
 <p>There aren’t a lot of people writing or talking about cryonics. If something I have read doesn’t contribute to the conversation (but seems popular enough not to ignore), it goes here.</p>
 </div>
-
-
-
-
+<div id="references-i-havent-gotten-to-yet" class="section level1">
+<h1>References I haven’t gotten to yet</h1>
+<ul>
+<li>Engines of Creation by K. Eric Drexler</li>
+<li>Nanomedicine Volume I: Basic Capabilities by Robert A. Freitas</li>
+<li>Nanomedicine Volume IIA: Biocompatibility by Robert A. Freitas</li>
+<li>The Prospect of Immortality by Robert Ettinger</li>
+<li>The Scientific Conquest of Death - Essays on Infinite Lifespans, edited by the Immortality Institute.</li>
+<li>Forever for All by R. Michael Perry</li>
+<li>We Froze the First Man!</li>
+<li>Freezing People Ain’t Easy</li>
+</ul>
+<div id="bonus-fiction" class="section level2">
+<h2>Bonus: Fiction</h2>
+<ul>
+<li>The First Immortal by James Halperin</li>
+<li>Formerly Brandewyne by Jude Liebermann</li>
+</ul>
+</div>
 </div>
 
+    </div>
+    <div class="col-xs-2">
+        <div class="btn-toolbar">
+    <div class="btn-group">
+    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
+    <ul class="dropdown-menu" style="min-width: 50px;">
+    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
+    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+    </ul>
+    </div>
+    </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    </div>
+  </div>
+
 <script>
-
-// add bootstrap table styles to pandoc tables
 $(document).ready(function () {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+
+    var images = $('.pages img');
+  images.filter(function() {
+      if ($(this).parent().attr("class") == "figure") {
+          return(false)
+      } else {
+          return(true);
+      }
+  }).wrap("<div class='figure'></div>");
+  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
+  $('.figure').addClass('panel panel-default');
+  
+    $('.pages img')
+ 	  .addClass("image-lb");
+  $('.pages').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      delegate: 'img',
+	      gallery: {enabled: false },
+          removalDelay: 500,
+          callbacks: {
+              beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+              }
+          },
+          mainClass: 'mfp-move-from-top',
+	      image: {
+	        verticalFit: true,
+            titleSrc: 'alt'
+	      }
+ 	    });
+ 	
+    window.page = window.location.hash;
+    if (window.page != "") {
+      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+    }
+
+    /* init material bootstrap js */
+    $.material.init();
 });
-
-
 </script>
+
+
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

@@ -2,7 +2,7 @@
 title: "Bootstrapping"
 ---
 
-# Or, In Case of X-Risk, Press Button
+# In Case of X-Risk, Press Button
 
 There's a button labeled "In case of X-risk, press button." One day, an existential risk occurs which all but certainly will destroy all life on Earth (so, Grey goo or celestial catastrophe). The button gets pushed.
 

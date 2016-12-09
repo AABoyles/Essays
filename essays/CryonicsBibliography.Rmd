@@ -2,6 +2,8 @@
 title: "Cryonics Bibliography"
 ---
 
+# Introduction
+
 ```{r, results='asis'}
 source("infobox.R")
 meta <- list(
@@ -14,35 +16,56 @@ infobox(meta)
 
 This follows my self-education in Cryonics, specifically as I would have ordered these materials if I were to start from the beginning again. This is roughly ordered by technical difficulty: the less technical books are at the top, and more technical works follow at the bottom. At the end, I’ve also included a section of books I simply wouldn’t bother with at all, along with my notes about why they fall here.
 
-## Why Should We Consider Cryonics?
+## If you only read one thing...
+
+* Read the Wait but Why post, [Why Cryonics Makes Sense](http://waitbutwhy.com/2016/03/cryonics.html).
+
+# Why Should We Consider Cryonics?
 
 Because living is awesome, of course!
 
-*   [The Open Letter on Cryonics](http://www.evidencebasedcryonics.org/scientists-open-letter-on-cryonics/) - There are a bunch of really smart people who openly affirm that Cryonics is a viable avenue to life extension.
+* [The Open Letter on Cryonics](http://www.evidencebasedcryonics.org/scientists-open-letter-on-cryonics/) - There are a bunch of really smart people who openly affirm that Cryonics is a viable avenue to life extension.
 
-*   Robin Hanson - [We Agree: Get Froze!](http://www.overcomingbias.com/2008/12/we-agree-get-froze.html)
-*   Eliezer Yudkowsky - [You Only Live Twice](http://lesswrong.com/lw/wq/you_only_live_twice/)
+* Robin Hanson - [We Agree: Get Froze!](http://www.overcomingbias.com/2008/12/we-agree-get-froze.html)
+* Eliezer Yudkowsky - [You Only Live Twice](http://lesswrong.com/lw/wq/you_only_live_twice/)
 
-## Will it Work?
+# Will it Work?
 
 Probably. However, whether any specific cryonically-preserved individual will be recovered is far less certain.
 
-## How does it work?
+# How does it work?
 
-## How do I sign up?
+# How do I sign up?
 
 As far as I can tell, there are three agencies world-wide doing cryopreservation. They are:
 
-*   [Cryonics Institute](http://cryonics.org/become.html)
-*   [Alcor Life Extension Institution](http://www.alcor.org/BecomeMember/index.html)
-*   [KrioRus](http://www.kriorus.ru/en)
+* [Cryonics Institute](http://cryonics.org/become.html)
+* [Alcor Life Extension Institution](http://www.alcor.org/BecomeMember/index.html)
+* [KrioRus](http://www.kriorus.ru/en)
 
-### Paying for it
+## Paying for it
 
-*   Life Insurance. Contact [Rudi Hoffman](http://www.rudihoffman.com/).
+* Life Insurance. Contact [Rudi Hoffman](http://www.rudihoffman.com/).
+* Cash. If you're pretty wealthy.
 
-### Making Arrangements to Assure Your Cryopreservation
+## Making Arrangements to Assure Your Cryopreservation
 
-## References I would Skip
+# References I Would Skip
 
 There aren't a lot of people writing or talking about cryonics. If something I have read doesn’t contribute to the conversation (but seems popular enough not to ignore), it goes here.
+
+# References I haven't gotten to yet
+
+* Engines of Creation by K. Eric Drexler
+* Nanomedicine Volume I: Basic Capabilities by Robert A. Freitas
+* Nanomedicine Volume IIA: Biocompatibility by Robert A. Freitas
+* The Prospect of Immortality by Robert Ettinger
+* The Scientific Conquest of Death - Essays on Infinite Lifespans, edited by the Immortality Institute.
+* Forever for All by R. Michael Perry
+* We Froze the First Man!
+* Freezing People Ain't Easy
+
+## Bonus: Fiction
+
+* The First Immortal by James Halperin
+* Formerly Brandewyne by Jude Liebermann

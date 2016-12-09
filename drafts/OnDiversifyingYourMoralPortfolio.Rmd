@@ -2,6 +2,8 @@
 title: "On Diversifying Your Moral Portfolio"
 ---
 
+# Introduction
+
 Most non-profits are statistical scams. It’s not that they don’t want to or mean to do valuable work, but they fail to be the most effective non-profit for their stated goals. Thus, every dollar donated to them is a dollar that could have been given to a more effective non-profit.
 
 The moral significance of the work of non-profits varies over several orders of magnitude.
@@ -20,4 +22,4 @@ The random payoff can be a little bit higher (factor of 4) than the diversified 
 
 The Expected Value of Random and Diversified strategies is equal.
 
-So, if you are very confident that
+# References

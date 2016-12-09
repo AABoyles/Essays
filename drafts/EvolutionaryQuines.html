@@ -10,149 +10,69 @@
 
 
 
-
 <title>Evolutionary Quines</title>
-
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
+<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
+<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
+<script src="site_libs/material-0.1/material.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { font-weight: bold; } /* Keyword */
+code > span.dt { color: #800000; } /* DataType */
+code > span.dv { color: #0000ff; } /* DecVal */
+code > span.bn { color: #0000ff; } /* BaseN */
+code > span.fl { color: #800080; } /* Float */
+code > span.ch { color: #ff00ff; } /* Char */
+code > span.st { color: #dd0000; } /* String */
+code > span.co { color: #808080; font-style: italic; } /* Comment */
+code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
+code > span.fu { color: #000080; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #ff00ff; } /* SpecialChar */
+code > span.vs { color: #dd0000; } /* VerbatimString */
+code > span.ss { color: #dd0000; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #808080; font-style: italic; } /* Documentation */
+code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-</head>
-
-<body>
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -160,18 +80,40 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
+<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
 
+</head>
+
+<body>
+
+<div class="header-panel shadow z-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+        <div id="header">
+    <h1 class="title">Evolutionary Quines</h1>
+                </div>
+    </div>
+</div>
+</div>
+</div>
 
 
-
+<div class="container-fluid main-container">
+    <div class="row">
+      <nav class="col-xs-3 menu" id="toc">
+        <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        </ul>
+      </nav>
+     <div class="pages col-xs-9">
+     <div class="row">
+       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -206,49 +148,88 @@ $(document).ready(function () {
 </div><!--/.navbar -->
 
 
-<div class="fluid-row" id="header">
-
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">Evolutionary Quines</h1>
-
-</div>
-
-
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
 <p>The emergence of self-replicating molecules–a non-living precursor to life–is the most likely candidate for the Great Filter. To illustrate the logic behind this conclusion, let’s translate the problem into a analog upon which we perform experiments and direct analysis. In computer science, a <a href="http://www.nyx.net/~gthompso/quine.htm"><em>quine</em></a> is a program which “self-replicates” in a certain sense. That is, it emits exactly its own source code. Consider the following quine (the shortest I could find), written in Python:</p>
-<pre>_='_=%r;print _%%_';print _%_</pre>
-<p>That’s 29 Characters, each of which is necessary and irreplaceable to make the quine work. 11 of those characters are unique. Therefore, we could compress this program by encoding it into a characterset which used only [latex]lceil log_2(11)rceil=4[/latex] bits per character. This step is fairly generous: for contrast, the standard characterset for strings is ASCII, which contains 256 unique characters, requiring 8 bits per character. Now, in our maximally dense characterset, the quine is an ordered sequence of [latex]frac{4bits}{1char}*frac{29char}{1quine}=116bits/quine[/latex]. Now, suppose we flipped a coin 116 times. (Coin-Flipping is a <a href="http://www.stat.columbia.edu/~gelman/research/published/diceRev2.pdf">surprisingly excellent</a> source for randomly-selected bits.) If we map heads to 1 and tails to 0, the probability that we generate our quine is exactly [latex]frac{1}{2^{116}}[/latex] (or if it helps you visualize it in base 10, approximately [latex]10^{-34}[/latex]. If we don’t compress our alphabet to the minimum integral bit density, that probability drops to [latex]frac{1}{2^{232}}[/latex], or about [latex]10^{-69}[/latex]. To illustrate how unlikely this is, Scott Alexander <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">recently used a clever device</a> which I am now shamelessly going to steal. Imagine a researcher in a laboratory. Now imagine…</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">_<span class="op">=</span><span class="st">&#39;_=</span><span class="sc">%r</span><span class="st">;print _</span><span class="sc">%%</span><span class="st">_&#39;</span><span class="op">;</span><span class="bu">print</span> _<span class="op">%</span>_</code></pre></div>
+<pre><code>## _=&#39;_=%r;print _%%_&#39;;print _%_</code></pre>
+<p>That’s 29 Characters, each of which is necessary and irreplaceable to make the quine work. 11 of those characters are unique. Therefore, we could compress this program by encoding it into a characterset which used only <span class="math inline">\(\log_211\approx4\)</span> bits per character. This step is fairly generous: for contrast, the standard characterset for strings is ASCII, which contains 256 unique characters, requiring 8 bits per character. Now, in our maximally dense characterset, the quine is an ordered sequence of <span class="math inline">\(\frac{4bits}{1char}*\frac{29char}{1quine}=116bits/quine\)</span>. Now, suppose we flipped a coin 116 times. (Coin-Flipping is a <a href="http://www.stat.columbia.edu/~gelman/research/published/diceRev2.pdf">surprisingly excellent</a> source for randomly-selected bits.) If we map heads to 1 and tails to 0, the probability that we generate our quine is exactly <span class="math inline">\(\frac{1}{2^{116}}\)</span> (or if it helps you visualize it in base 10, approximately <span class="math inline">\(10^{-34}\)</span>. If we don’t compress our alphabet to the minimum integral bit density, that probability drops to <span class="math inline">\(\frac{1}{2^{232}}\)</span>, or about <span class="math inline">\(10^{-69}\)</span>. To illustrate how unlikely this is, Scott Alexander <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">recently used a clever device</a> which I am now shamelessly going to steal. Imagine a researcher in a laboratory. Now imagine…</p>
 <blockquote>
 <p>[…] a tornado roars into the laboratory. The researcher is sucked high into the air. There he is struck by a meteorite hurtling through the upper atmosphere, which knocks him onto the rooftop of a nearby building. […] His corpse is flung into the street nearby. As the rubble settles, his face is covered by a stray sheet of newspaper; the headline reads 2016 PRESIDENTIAL ELECTION ENDS WITH TRUMP AND SANDERS IN PERFECT TIE. Well, the per-second probability of getting sucked into the air by a <a href="https://what-if.xkcd.com/19/">tornado</a> is 10^-12; that of being struck by a <a href="https://what-if.xkcd.com/19/">meteorite</a> 10^-16. The chance of the next election being <a href="http://www.predictwise.com/politics/2016demnomination">Sanders vs. Trump</a> is 10^-4, and the chance of an election ending in <a href="http://fivethirtyeight.com/features/new-polls-raise-chance-of-electoral-college-tie/">an electoral tie</a> about 10^-2.</p>
 </blockquote>
-<p>Multiply all these probabilities together, and you get [latex]10^{-34}[/latex], the <em>same probability</em> as randomly assembling a quine <em>under the most convenient circumstances possible</em>. (Incidentally, <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">Alexander’s original example</a> mapped out a probability of 10^67, much closer to the more natural and less convenient scenario of using the full ASCII charset). In general, the number of planets in the universe is <a href="http://www.atlasoftheuniverse.com/universe.html">estimated</a> to be around [latex]10^{22}[/latex]. So the probability of ANY planet in this universe constructing a quine by flipping coins is something like [latex]10^{-12}[/latex]. I hope the last sentence sounds strange to you. Planets don’t flip coins. Flipping coins can’t, by itself, generate an executable computer program. More intrinsically, there are some important sources of non-randomness in actual evolution. The distribution of Carbon, Hydrogen and Oxygen in a planet’s environment, for one. Lots of things are wrong with the model, but the method it uses and probabilities it exposes are illustrative and useful. The most important piece of the analogy, however, is the qualitative <em>algorithm</em>. Likewise, thermodynamics is a reasonable source for random atomic activity, which was the only driving force for the creation of anything in entire the Universe. However, in the moment that first, fragile replicator was created, the most interesting thing in the history of the universe occurred. Suddenly, there was a <em>new algorithm</em> for building molecules. And all molecules which descended from that first replicator were generated using this new algorithm. Thus, subsequent evolutionary adaptations may have required discrete changes to the molecular structure with higher information complexity, but generated those changes using a FAR SUPERIOR search algorithm than the random algorithm which generated the replicator. To return to our quine, let’s be generous and say that the next candidate for the Great Filter requires just one bit more than was required to build the quine, so 116 bits of information. The algorithmic complexity to construct the quine randomly was [latex]O(2^n)[/latex], where n was the number of requisite bits. The algorithmic complexity to <em>adapt</em> the quine is much smaller. In all of these calculations, we have an important piece of missing information; a variable where we need a constant. That piece of information is the complexity of the simplest self-replicating molecule. If it were arbitrarily small (say, a <a href="https://en.wikipedia.org/wiki/Methane">methane</a> molecule) I would have to pare back my probability estimates considerably. But we know that methane is not self-replicating. The prevailing hypothesis is that the first replicator was most similar to a strand of modern RNA, to which ambient molecules would affix themselves and then detach when they had formed the complete strand. There’s a strong environmental component which I’m neglecting here. In order to self-replicate, the first replicator needed to be in an environment which was rich in assembled constituent molecules, something that is unlikely in itself.</p>
+<p>Multiply all these probabilities together, and you get <span class="math inline">\(10^{-34}\)</span>, the <em>same probability</em> as randomly assembling a quine <em>under the most convenient circumstances possible</em>. (Incidentally, <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">Alexander’s original example</a> mapped out a probability of 10^67, much closer to the more natural and less convenient scenario of using the full ASCII charset). In general, the number of planets in the universe is <a href="http://www.atlasoftheuniverse.com/universe.html">estimated</a> to be around <span class="math inline">\(10^{22}\)</span>. So the probability of ANY planet in this universe constructing a quine by flipping coins is something like <span class="math inline">\(10^{-12}\)</span>. I hope the last sentence sounds strange to you. Planets don’t flip coins. Flipping coins can’t, by itself, generate an executable computer program. More intrinsically, there are some important sources of non-randomness in actual evolution. The distribution of Carbon, Hydrogen and Oxygen in a planet’s environment, for one. Lots of things are wrong with the model, but the method it uses and probabilities it exposes are illustrative and useful. The most important piece of the analogy, however, is the qualitative <em>algorithm</em>. Likewise, thermodynamics is a reasonable source for random atomic activity, which was the only driving force for the creation of anything in entire the Universe. However, in the moment that first, fragile replicator was created, the most interesting thing in the history of the universe occurred. Suddenly, there was a <em>new algorithm</em> for building molecules. And all molecules which descended from that first replicator were generated using this new algorithm. Thus, subsequent evolutionary adaptations may have required discrete changes to the molecular structure with higher information complexity, but generated those changes using a FAR SUPERIOR search algorithm than the random algorithm which generated the replicator. To return to our quine, let’s be generous and say that the next candidate for the Great Filter requires just one bit more than was required to build the quine, so 116 bits of information. The algorithmic complexity to construct the quine randomly was <span class="math inline">\(O(2^n)\)</span>, where n was the number of requisite bits. The algorithmic complexity to <em>adapt</em> the quine is much smaller. In all of these calculations, we have an important piece of missing information; a variable where we need a constant. That piece of information is the complexity of the simplest self-replicating molecule. If it were arbitrarily small (say, a <a href="https://en.wikipedia.org/wiki/Methane">methane</a> molecule) I would have to pare back my probability estimates considerably. But we know that methane is not self-replicating. The prevailing hypothesis is that the first replicator was most similar to a strand of modern RNA, to which ambient molecules would affix themselves and then detach when they had formed the complete strand. There’s a strong environmental component which I’m neglecting here. In order to self-replicate, the first replicator needed to be in an environment which was rich in assembled constituent molecules, something that is unlikely in itself.</p>
 <p>Quines have been identified as a <a href="http://www.uncommondescent.com/biology/the-quine-dilemma-of-evolution/">basis for models of evolution</a> before. The problem with this approach is that the means of error production in a quine must be explicitly written into the quine itself. In a true evolutionary situation, errors in the quine would be as much products of the environment as they would products of the replicator itself.</p>
-
-
-
-
 </div>
 
+    </div>
+    <div class="col-xs-2">
+        <div class="btn-toolbar">
+    <div class="btn-group">
+    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
+    <ul class="dropdown-menu" style="min-width: 50px;">
+    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
+    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+    </ul>
+    </div>
+    </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    </div>
+  </div>
+
 <script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
-}
 $(document).ready(function () {
-  bootstrapStylePandocTables();
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+
+    var images = $('.pages img');
+  images.filter(function() {
+      if ($(this).parent().attr("class") == "figure") {
+          return(false)
+      } else {
+          return(true);
+      }
+  }).wrap("<div class='figure'></div>");
+  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
+  $('.figure').addClass('panel panel-default');
+  
+    $('.pages img')
+ 	  .addClass("image-lb");
+  $('.pages').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      delegate: 'img',
+	      gallery: {enabled: false },
+          removalDelay: 500,
+          callbacks: {
+              beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+              }
+          },
+          mainClass: 'mfp-move-from-top',
+	      image: {
+	        verticalFit: true,
+            titleSrc: 'alt'
+	      }
+ 	    });
+ 	
+    window.page = window.location.hash;
+    if (window.page != "") {
+      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+    }
+
+    /* init material bootstrap js */
+    $.material.init();
 });
-
-
 </script>
+
+
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

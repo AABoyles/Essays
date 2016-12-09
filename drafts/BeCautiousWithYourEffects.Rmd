@@ -2,6 +2,8 @@
 title: "Be Cautious with You Effects"
 ---
 
+# Introduction
+
 I hold the moral significance of human-hours to be roughly equivalent across (almost) all (adult) humans. So, for a trivial example, wasting one person's time for two hours is approximately as morally bad as wasting two people's times for one hour.
 
 Imagine an organization. It employs on the order of 100,000 people, each of whom receives an official organizational email address. One day, one employee emails another about some matter of mild importance to the two of them (and no relevance to anyone else). However, in haste, the sender inadvertently added an extra recipient to the cc line. That extra address was, unfortunately, a mailing list to which every single employee of this organization is subscribed. All ~100,000 of them.
@@ -14,8 +16,8 @@ $$\frac{100,000 employees}{1}*\frac{1 second}{1 email}*\frac{1 hour}{3600 second
 
 ...in productivity. Expanded over a chain of 500 emails, the lost productivity climbs towards seven years worth of labor-loss. Assuming a mean annual salary of approximately $30,000, on the order of a million dollars is wasted.
 
-Flappy Bird
+# Flappy Bird
 
 Consider a highway which ordinarily serves about 600,000 commuters during the morning rush hour. Let us suppose that early on in the rush hour, a catastrophic accident occurs. No one was killed, but all the lanes were blocked and required approximately one hour to clear. The mean human lifespan is around 65 years [citation needed]. That means that a single human will live approximately $$\frac{65 years}{1}*\frac{365 days}{1 year}*\frac{24 hours}{1 day}=569,400 hours$$ Nearly 600,000 human-hours are forfeit. Even though no one was killed (or even badly injured), an entire human lifespan was wasted. To me, this is approximately as undesirable as having had someone killed in an accident with no adverse effects on traffic.
 
-Infinite Trolley Problem
+# Infinite Trolley Problem

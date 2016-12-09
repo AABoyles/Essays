@@ -16,13 +16,6 @@ navbar:
     - text: "Meta"
       href: README.html
 output:
-  html_document:
-    theme: flatly
-    toc: false
-    code_folding: hide
-    self_contained: false
+  rmdformats::material:
     css: site_libs/style.css
-    include:
-      in_header: head.html
-      before_body: pre.html
-      after_body: post.html
+    code_folding: hide

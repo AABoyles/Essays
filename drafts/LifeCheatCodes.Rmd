@@ -2,22 +2,34 @@
 title: "Life Cheat Codes"
 ---
 
-Status: **Perpetually Incomplete**, Epistemic Status: **Uncertain**
+# Introduction
 
-## Happiness
+```{r, results='asis'}
+source("infobox.R")
+infobox(list(
+  "Status" = "Perpetually Incomplete",
+  "Epistemic Status" = "Speculative",
+  "First Revision" = "2016-08-29",
+  "Last Revision" = as.Date(file.info("drafts/Longevity.Rmd")$mtime)
+))
+```
 
-*   Make close friends
+# Happiness
 
-## Life Extension
+* Make close friends
 
-*   Intermittently Fast
-*   Sign up for Cryonics
+# Life Extension
 
-## Expertise
+* Intermittently Fast
+* Sign up for Cryonics
 
-*   Listen to Audiobooks (sped up)
+# Expertise
 
-## Productivity
+* Listen to Audiobooks (sped up)
 
-*   Automation, automation, automation!
-*   Experiment with Nootropics
+# Productivity
+
+* Automation, automation, automation!
+* Experiment with Nootropics
+
+# References

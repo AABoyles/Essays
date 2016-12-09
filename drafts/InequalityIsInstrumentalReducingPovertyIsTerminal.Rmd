@@ -1,10 +1,8 @@
 ---
 title: "Inequality is Instrumental. Poverty is Terminal."
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
+
+# Introduction
 
 ```{r setup, message=FALSE}
 library("ShRoud")
@@ -18,8 +16,6 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 source("../infobox.R")
 infobox(list("Epistemic Status"="Highly Uncertain", "Epistemic Activity"="Splitting Hairs"))
 ```
-
-# Introduction
 
 The US Consumer Financial Protection Bureau just won a [$180 million case against Wells Fargo](http://fortune.com/.../12/wells-fargo-cfpb-carrie-tolstedt/). The accusation was that Wells Fargo was engaging in unlawful account-opening practices, doing things like opening multiple accounts for consumers who only authorized the opening of one. This was a direct outgrowth of Wells Fargo's internal policies pressuring employees to meet certain account-opening quotas, or lose their jobs. Wells Fargo claims that it fired over 5300 employees over the last five years for unethically opening these accounts. In the meanwhile, Carrie Tolstedt, the executive who architected the employee incentive policy that led to this misbehavior retired with a \$126 million severance package.
 

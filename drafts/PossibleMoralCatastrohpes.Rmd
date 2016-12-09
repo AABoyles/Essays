@@ -2,79 +2,35 @@
 title: "Possible Moral Catastrophes"
 ---
 
+# Introduction
+
+One fundamental problem for Effective Altruists is identifying new causes which high moral significance. These as-yet-unidentified causes are collected referred to as [Cause X](https://www.effectivealtruism.org/moral-progress-and-cause-x/).
+
+http://effective-altruism.com/ea/137/three_heuristics_for_finding_cause_x/
+
 [The Slavery Example]
 
 Please take note: I do not believe that all of these are moral catastrophes on par with the moral catastrophes of the past. In fact, I (sometimes vehemently) disagree with the worldview which advances 
 
-Possible Moral Catastrophes:
-
-## Existential Risk Denial
-
-While most people are plainly ignorant of existential risks to humanity, some are aware of the theory of existential risk and actively disdain the ideas. While a degree of this is necessary for healthy academic discourse, stalwart opposition can be taken too far. In particular, *ad hominem* and *ad poplum* attacks on the community are particularly effective at disenchanting people from engaging with their ideas [citation needed].
-
-### Why it is
-
-Lots and lots of human lives at stake
-
-### Why it isn't
-
-Pascal's Mugging
-
-Maybe public attention to existential risk doesn't help existential risk mitigation efforts anyway.
-
-## Inhibiting Life Extension Research
-
-### Why it is
-
-Lots and lots of human life-years at stake
-
-### Why it isn't
-
-"Deathism" may be inextricable from society.
-
-## Shitty International Public Health
-
-### Why it is
-
-Tons of kids die from Malaria
-
-### Why it isn't
-
-It's easy to take pot-shots at non-profits that aren't doing an awesome job of preventing people from dying, but designing and delivering an effective intervention is really hard. We shouldn't look at the distributers of malaria nets as the bad guys because they take a paycheck every two weeks, while kids are still dying.
-
-International Public Health is actually pretty good, and getting better fast.
-
-We couldn't organize institutions to do better sooner.
-
-## Abortion
-
-### Why it is
-
-Lots and lots of human life-years at stake
-
-### Why it isn't
-
-Diminished moral significance of fetuses
-
-Abortion substitutes for infanticide, which is a far greater moral atrocity
-
-## Humanitarian Emergencies
+# Humanitarian Emergencies
 
 [Syria Example]
 
 [Venezuela Example]
 
-### Why it is
+A possible Cause X is the human rights abuses in [North Korea](https://en.wikipedia.org/wiki/North_Korea).
+
+## Why it is
 
 Very high certainty, many living humans
 
-### Why it isn't
+## Why it isn't
 
 
 
-## Drug Regulation
+# Drug Regulation
 
-### Why it is
+## Why it is
 
 [Scott Alexander](http://slatestarcodex.com/2016/09/07/reverse-voxsplaining-brand-name-drugs/):
 
@@ -84,26 +40,78 @@ Very high certainty, many living humans
 
 > Once again, RAND’s calculations plus my own Fermi estimate suggest that prescription drug price regulation would cost one billion life-years, which would very slightly edge out Communist China for the title of Worst Thing Ever.
 
-### Why it isn't
+## Why it isn't
 
 Requires very good information (or very strong assumptions) about counterfactuals.
 
-## Factory Farming
+# Abortion
 
-### Why it is
+## Why it is
+
+Lots and lots of human life-years at stake
+
+## Why it isn't
+
+Diminished moral significance of fetuses
+
+Abortion substitutes for infanticide, which is an equal-or-greater moral atrocity
+
+# Shitty International Public Health
+
+## Why it is
+
+Tons of kids die from Malaria
+
+## Why it isn't
+
+It's easy to take pot-shots at non-profits that aren't doing an awesome job of preventing people from dying, but designing and delivering an effective intervention is really hard. We shouldn't look at the distributers of malaria nets as the bad guys because they take a paycheck every two weeks, while kids are still dying.
+
+International Public Health is actually pretty good, and getting better fast.
+
+We couldn't organize institutions to do better sooner.
+
+# Factory Farming
+
+## Why it is
 
 Lots of suffering
 
-### Why it isn't
+## Why it isn't
 
 Diminished moral significance of animals
 
-## Wild Animal Suffering
+# Wild Animal Suffering
 
-### Why it is
+## Why it is
 
 Lots of suffering
 
-### Why it isn't
+## Why it isn't
 
 Diminished moral significance of animals
+
+# Inhibiting Life Extension Research
+
+## Why it is
+
+Lots and lots of human life-years at stake
+
+## Why it isn't
+
+"Deathism" may be inextricable from society.
+
+# Existential Risk Denial
+
+While most people are plainly ignorant of existential risks to humanity, some are aware of the theory of existential risk and actively disdain the ideas. While a degree of this is necessary for healthy academic discourse, stalwart opposition can be taken too far. In particular, *ad hominem* and *ad poplum* attacks on the community are particularly effective at disenchanting people from engaging with their ideas [citation needed].
+
+## Why it is
+
+Lots and lots of human lives at stake
+
+## Why it isn't
+
+Pascal's Mugging
+
+Maybe public attention to existential risk doesn't help existential risk mitigation efforts anyway.
+
+# References

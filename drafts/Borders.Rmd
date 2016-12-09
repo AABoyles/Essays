@@ -1,12 +1,9 @@
 ---
 title: "Borders"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 3
 bibliography: Borders.bib
 ---
+
+# Introduction
 
 ```{r setup, include=FALSE}
 library("CBPData")
@@ -14,8 +11,6 @@ library("dplyr")
 library("ggplot2")
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-# Introduction
 
 Specifically US Borders. Specifically, the US-Mexico Border.
 

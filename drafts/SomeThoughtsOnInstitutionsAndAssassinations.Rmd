@@ -2,6 +2,8 @@
 title: "Some Thoughts On Institutions And Assassinations"
 ---
 
+# Introduction
+
 I'm very interested in assassination.  Not the anecdotal, secret society, conspiracy theory kind of stuff, but looking at assassination as a viable alternative to warfighting.  Why slaughter an entire country (and endure countless casualties of your own) when you can kill just one person?  No matter how you feel about the issue, ethically it almost seems ludicrous not to ask the question.
 
 In their landmark paper on the effects of assassinations on democratic institutions, Jones and Olken offer a logistic model demonstrating that assassinations are predictable events.  Among the predictive variables were polity score, national wealth, and the natural logarithm of population.  It is this last finding which concerns me—Jones and Olken give no theoretical explanation as to why the natural logarithm of the population is predictive (where the population is less so).  On the topic of population , they offer only this:
@@ -31,3 +33,5 @@ Relationship between Intrastate warfare and assassination,
 Relationship between Interstate warfare and assassination,
 
 In broad strokes, this model captures the relationship between a population and its executive leader’s probability of experiencing an assassination attempt rather well.  That said, It degrades at the margins.  For example, in a state with a population approaching infinity, the probability of an assassination attempt approaches one (though the geographic distribution of such a population would severely limit the physical access required to execute an assassination attempt). I maintain that the marginal implications of this model are unimportant.
+
+# References

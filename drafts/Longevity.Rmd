@@ -1,11 +1,9 @@
 ---
 title: "Longevity"
 bibliography: Longevity.bib
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
+
+# Introduction
 
 ```{r, message=FALSE}
 library("plotly")
@@ -18,6 +16,8 @@ library("metafor")
 library("BayesianFirstAid")
 library("bayesmeta")
 library("knitr")
+library("readr")
+library("tidyr")
 ```
 
 ```{r, results='asis'}
@@ -41,7 +41,7 @@ Basically, public health is awesome, and we should be handing out WAY more money
 
 So, the other way to extend lives is to stop people from dying of natural causes. We don't know very well how to make that happen, but we have [a research agenda](https://en.wikipedia.org/wiki/Strategies_for_Engineered_Negligible_Senescence) that (we hope) can figure it out. Moreover, there are a lot of people who got rich, decided they want to live for a really long time too, and set up [well-funded companies](https://www.calicolabs.com/) and [non-profits](http://glennfoundation.org/) to search for other avenues to life extension. In the meanwhile, there are a small number of odd things that we have reasonable evidence extends lifespans.
 
-After more than a century of concerted effort and tinkering with a bewildering variety of thousands of interventions, it can safely be said that (almost?) all attempted interventions have failed, so the prior odds are strongly against any new one working. Even so, for those of us who want to give ourselves a fighting shot at extreme longevity, even tiny longevity advantages may be worthwhile. That's because we don't know how soon the big breakthrough will come that enables our oldest people to roar through their early 120's. If you're alive when the breathrough does happen, that gives you a non-zero probability of benefitting from it, and living a long time yourself. Alternately, if you die before the big breakthrough, you're almost certainly not going to benefit from it. This situation can possibly be mitigated by signing up for cryonics, but that's an exceedingly unpopular option.
+After more than a century of concerted effort and tinkering with a bewildering variety of thousands of interventions, it can safely be said that (almost?) all attempted interventions have failed, so the prior odds are strongly against any new one working. Even so, for those of us who want to give ourselves a fighting shot at extreme longevity, even tiny longevity advantages may be worthwhile. That's because we don't know how soon the big breakthrough will come that enables our oldest people to roar through their early 120's. If you're alive when the breathrough does happen, that gives you a non-zero probability of benefitting from it, and living a long time yourself. Alternately, if you die before the big breakthrough, you're almost certainly not going to benefit from it.
 
 So it's worth exploring whether certain interventions will result in a net improvement in your probability of living long enough to live indefinitely. However, this probability is likely to come at a non-trivial cost. As [Clement Freud once said](https://en.wikiquote.org/wiki/Clement_Freud#Sourced), "If you resolve to give up smoking, drinking and loving, you don't actually live longer; it just seems longer." (see also: ["Which Risks of Dying Are Worth Taking?"](http://www.spencergreenberg.com/2013/10/which-risks-of-dying-are-worth-taking/))
 
@@ -83,7 +83,7 @@ If an intervention passes all these criteria, we can be highly confident that we
 
 Of course, these criteria are stringent: we can, for example, exclude almost everything which might appear in an issue of Life Extension Magazine for being too small, conducted on animals or sick people, not being a randomized experiment, or reporting benefits only on an extremely specific biological endpoint like some cholesterol-related metric you've never heard of. Medical journals don't offer rich pickings either, as they understandably tend to focus on experiments done in sick people rather than healthy people (apparently there's more funding for the former - who knew?). And when a randomized experiment _is_ done in healthy adult humans, the experiment may either be too small or have run for too short a time, since annual mortality rates for many participant groups are 1% or less; for any sort of effect to show up, you want (very expensive, very rare) studies which enroll at least a thousand subjects for a decade or more. It would not be surprising if we must intone the ritual ending to all Cochrane Reviews, "there is insufficient evidence for a recommendation".
 
-Unfortunately, there are precious few interventions which meet these stringent requirements.
+Unfortunately, there are precious few interventions which meet these stringent requirements. Accordingly, I'll be looking at 
 
 # Interventions
 
@@ -113,6 +113,7 @@ Possible Dietary Modifications:
 * [Caloric Restriction](http://en.wikipedia.org/wiki/caloric%20restriction)
 * [Coffee/Caffeine](http://www.nejm.org/doi/full/10.1056/NEJMoa1112010#t=article)
 * [Alcohol](http://en.wikipedia.org/wiki/Long-term%20effects%20of%20alcohol%20consumption)
+* [Nuts]()
 
 Possible Lifestyle Modifications:
 
@@ -407,7 +408,7 @@ exp(c(-0.080152143106, -0.036152849917, 0.008768546338))
 Posterior predictive distribution of RR values including heterogeneity
 
 ```{r}
-rrPP <- exp(brem$rposterior(10000, predict=TRUE)[,2])
+rrPP <- exp(brem$rposterior(1000, predict=TRUE)[,2])
 ```
 
 Probability that vitamin D will reduce all-cause mortality in unobserved populations:

@@ -2,6 +2,8 @@
 title: "Probability is the Formalization of Belief"
 ---
 
+# Introduction
+
 When you say "belief," I hear something like "estimate of the distribution of probabilities over the entire possibility space for a particular topic." What on Earth does that actually mean? Consider an ordinary, fair, six-sided die. I believe that the die will
 
 The next time you talk about a belief, think of it as sharing a probability estimate. Put an actual number on it.
@@ -15,3 +17,5 @@ In the latter case, I can "believe" that a coin will come up either heads or tai
 If, by contrast, your probability estimate is .5, you're probably not thinking hard enough (unless you're talking about beliefs that partition exactly in half, like the outcomes of a coin flip). Someone can "believe" that a fair die will roll a 6 with probability .5 because there are two outcomes: either it will or it won't. However, the (6, not-6) outcome-space is the wrong reference class. Instead, we should compare the probabilities of every possible outcome (1:6). Thus, I believe with confidence 1/6 that any given fair die roll will come up 6. If you meet someone who believes their probability of rolling a 6 is .5, you should make some bets with them.
 
 When I say I "believe" something, it means I predict with greater than 50% probability that it is true.
+
+# References

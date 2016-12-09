@@ -1,9 +1,8 @@
 ---
-output:
-  html_document:
-    toc: true
-    toc_float: true
+title: About
 ---
+
+# Who are you?
 
 ```{r, results='asis'}
 source("infobox.R")
@@ -14,7 +13,6 @@ meta <- list(
 infobox(meta)
 ```
 
-# Who are you?
 Hi, I’m Tony Boyles. I make a living by doing Data Science.
 
 # What's your background?
@@ -60,10 +58,13 @@ A credit card I don’t have to pay, linked to AWS and Google Cloud so I can spi
 I do like gadgets: I’d love to have an HTC Vive and Makerbot Replicator to play with. Oh, a Tesla Model S100D with Autopilot.
 
 # Can I see some of your work?
-Sure.
+
+[Sure.](code.html)
 
 # How can we get in touch?
+
 Email: Anthony@Boyles.cc
+
 Call: (617) 935-5515 (m)
 
 Or Via Social Media. If you can find a user named “aaboyles” on any given website, that’s almost certainly me.

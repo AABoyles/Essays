@@ -2,6 +2,8 @@
 title: "The Honest Truth about the Trolley Problem"
 ---
 
+# Introduction
+
 I think it’s time we faced a hard truth about the [Trolley Problem](https://en.wikipedia.org/wiki/Trolley_problem). Consider:
 
 1.  If you asked me what I would do in the Trolley Problem, I would tell you that I would pull the lever.
@@ -14,7 +16,7 @@ However:
 
 In other words, I’m _definitely_ a utilitarian, but I’m kinda, sorta lying about being a utilitarian.
 
-## I.
+# I.
 
 There aren’t many people who rebel against the classic formulation of the Trolley problem. But people seem to hate the fat man variant, and fight against the circumstances of the problem as soon as you point out the moral inconsistency to which it leads. The problem with the fat man variant is that it strains credulity. If a trolley were actually barreling towards five unsuspecting, utterly clueless people, impeding said trolley by dropping a fat man in front of it isn’t going to save our quintet of hopelessly inattentive fools. Sadly, I think, most of the thought experiments in moral philosophy exhibit this issue.
 
@@ -26,7 +28,7 @@ What’s actually going on in your head is _not_ these rationalizations. It soun
 
 The error in the decision process is that we decide and then justify, rather than weigh the options and then decide. This leaves us vulnerable to moral [dutch book scams](https://en.wikipedia.org/wiki/Money_pump). I don’t know that I’ve heard this particular issue discussed in literature, but if I were inventing the term, I’d call it something like “presence bias”. You see, the drowning child is _present_. Her life or death is a decision _you_ must consciously and immediately make, and then live with the consequences. The people who die of malaria because of your decision to save the drowning child aren’t present, even though their lives and deaths are just as real and just as morally significant.
 
-## II.
+# II.
 
 In order to dissolve some of these, we ask people to accept the circumstances of the thought experiment at face value. We ask people to trust that there’s a reason the experiment is structured in this way, and disallows most criticism of this variety. In short, we ask people to consider themselves to occupy [The Least Convenient Possible World](http://lesswrong.com/lw/2k/the_least_convenient_possible_world/).
 
@@ -34,11 +36,11 @@ As a utilitarian, here’s the annoying thing: _those rationalizations are corre
 
 To me, the most obvious example of this phenomenon is [the thought experiment of the unwilling organ donor](http://philosophyfaculty.ucsd.edu/faculty/rarneson/Courses/thomsonTROLLEY.pdf):
 
->  Imagine yourself to be a surgeon, a truly great surgeon. Among other things you do, you transplant organs, and you are such a great surgeon that the organs you transplant always take. At the moment you have five patients who need organs. Two need one lung each, two need a kidney each, and the fifth needs a heart. If they do not get those organs today, they will all die; if you find organs for them today, you can transplant the organs and they will all live. But where to find the lungs, the kidneys, and the heart? The time is almost up when a report is brought to you that a young man who has just come into your clinic for his yearly check-up has exactly the right blood-type, and is in excellent health. Lo, you have a possible donor. All you need do is cut him up and distribute his parts among the five who need them. You ask, but he says, “Sorry. I deeply sympathize, but no.” Would it be morally permissible for you to operate anyway?
+> Imagine yourself to be a surgeon, a truly great surgeon. Among other things you do, you transplant organs, and you are such a great surgeon that the organs you transplant always take. At the moment you have five patients who need organs. Two need one lung each, two need a kidney each, and the fifth needs a heart. If they do not get those organs today, they will all die; if you find organs for them today, you can transplant the organs and they will all live. But where to find the lungs, the kidneys, and the heart? The time is almost up when a report is brought to you that a young man who has just come into your clinic for his yearly check-up has exactly the right blood-type, and is in excellent health. Lo, you have a possible donor. All you need do is cut him up and distribute his parts among the five who need them. You ask, but he says, “Sorry. I deeply sympathize, but no.” Would it be morally permissible for you to operate anyway?
 
 [Ed. Note: There’s an important bug in this formulation of the experiment. If the five patients are all matches for the young man, _the five patients are all matches for each other_. The correct escape hatch is to dissect one of the patients for her organs, saving four people and leaving the healthy young fellow alone. For the purposes of this discussion, let’s assume the story has been modified in some way to prohibit this possibility.]
 
-The “gut” answer is that it would _not_ be moral to harvest the young man’s organs. In the real world, organs do need to be precise (and thereby relatively rare) matches for their new hosts. And even then, they will often be rejected. In the real world, the young man can live one quality life, or the patients can live five much less long, much more miserable lives. In the real world, harvesting a healthy, living person’s organs is illegal, and thereby comes with morally-significant consequences (like a reduced ability to practice medicine, imprisonment, or death).
+The "gut" answer is that it would _not_ be moral to harvest the young man’s organs. In the real world, organs do need to be precise (and thereby relatively rare) matches for their new hosts. And even then, they will often be rejected. In the real world, the young man can live one quality life, or the patients can live five much less long, much more miserable lives. In the real world, harvesting a healthy, living person’s organs is illegal, and thereby comes with morally-significant consequences (like a reduced ability to practice medicine, imprisonment, or death).
 
 We could do some math to figure out which scenario resulted in more life-years lived, but the point remains: In our sanitized, inconvenient world where surgery is a perfected practice, organs are never rejected, and life-years need not be quality adjusted, it is morally correct to harvest this man’s organs. In fact, it isn’t just correct; it’s obligatory.
 
@@ -46,7 +48,7 @@ These thought experiments are terrible because they’re designed to push you in
 
 So, if our thought experiments are terrible, why don’t we try to come up with some more real-world examples? OK, here’s one: You can donate money to [the charity that is most efficient at saving people’s lives](http://www.givewell.org/charities/top-charities), or you can do [literally anything else with your money](https://www.amazon.com/).
 
-## III.
+# III.
 
 Many philosophers have pointed out that utilitarianism is [philosophically demanding](https://en.wikipedia.org/wiki/Utilitarianism%23Too_demanding). Unlike [deontological moral codes](http://plato.stanford.edu/entries/ethics-deontological/), which [allow freedom within the bounds of their rules](http://plato.stanford.edu/entries/ethics-deontological/%23AdvDeoThe), utilitarianism demands that people optimize something based on some set of values to the exclusion of other values against which moral calculations are not made.
 

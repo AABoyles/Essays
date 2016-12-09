@@ -2,9 +2,11 @@
 title: "On the Moral Consequences of Abortion"
 ---
 
+# Introduction
+
 [Hundreds of thousands of women](http://www.cdc.gov/mmwr/preview/mmwrhtml/ss6311a1.htm?s_cid=ss6311a1_w) have abortions annually.  If we assign a non-zero moral significance to the fetuses, abortion should clearly be [fertile ground for effective altruism](http://effectivereaction.wordpress.com/2014/12/31/blind-spots-compartmentalizing/). If we assign fetuses the same moral significance as healthy humans with approximately average intelligence, the massive number of abortions drowns out all other causes of death in the United States. While American politics tends to organize people into diametrically opposed camps, Americans' perspectives on abortion tend to be [far more nuanced than pro-choice or pro-life](http://www.vox.com/a/abortion-decision-statistics-opinions). Peter Singer lays out a [consistent moral framework](http://www.utilitarian.net/singer/by/1993----.htm) aligning moral status with intelligence.  This creates a lot of uncomfortable policy consequences.  Among these, it causes Singer to endorse infanticide as a justifiable action while rejecting the killing of other highly intelligent adult animals.  If you're unfamiliar with Singer's logic, this may come across as completely at odds with the spirit of Singer's own charity evaluator, [The Life You Can Save](http://www.thelifeyoucansave.org/). If we assign human fetuses even a tiny fraction of the moral significance that we assign to post-birth humans, abortion becomes a highly important issue.  This is [oddly not a popular opinion](http://econlog.econlib.org/archives/2015/04/where_are_the_p.html) amongst utilitarians.  This line of moral calculus clearly favors more restrictive abortion policy, but abortions _can_ be moral within this school of thought.  To see why, let's evaluate the moral costs of various abortion policies.
 
-## Constructing a Simple Model
+# A Simple Model
 
 An aborted foetus will, at worst, forego a complete, healthy life of average span.  For the purposes of this discussion, let's assume [that's about 80 years](http://www.cdc.gov/nchs/data/nvsr/nvsr64/nvsr64_02.pdf).  Thus, the Expected Loss ($E_{Loss}$) of the most permissive use of this policy results in a loss of 80 DALYs.
 
@@ -16,7 +18,7 @@ $$E_{Loss}(C_f,C_m)=C_f-C_m$$
 
 Where $C_f$ represents the cost of the abortion to the fetus and $C_m$ represents the costs to the mother of carrying the fetus to term.
 
-### Threatened Mothers
+## Threatened Mothers
 
 In building out our model, let us first consider the simple case of a doomed mother.  If she elects to carry the fetus to term, she will certainly die. Thus, the cost to the mother is best estimated as the difference between her current total life expectancy and her age.
 
@@ -30,7 +32,7 @@ $$E_{Loss}(C_f,A_m,t_m)=C_f-(80-A_m)*t_m$$
 
 People uncomfortable with supporting the most permissive policies on abortion will often argue that it should be permissible for women who are the victims of rape or incest. In the case of rape victims, a significant psychological cost is imposed upon the mother regardless of her decision.  Arguments can be made either way about the mother's optimal strategy when facing the decision of whether to abort or carry the child to term. There may be evolutionary reasons to prefer not to carry these children to term: If there is a genetic predisposition to committing rapes, then abortion provides a natural counter-pressure to prevent these traits from propagating across populations. In the interest of keeping the model small, I won't include these factors directly, though they may prove to be worth-while extensions in the future.
 
-### Threatened Fetuses
+## Threatened Fetuses
 
 Copying the model for the cost to the mother, the cost to the fetus is its life expectancy (since its age for this purpose is simply zero) moderated by an assessment of the probability that it will die during gestation, delivery, or the days or weeks following. (It's worth mentioning here that the threat to the fetus is increased in cases of incest.)
 
@@ -46,7 +48,7 @@ $$C_f\approx80*(1-1)=0$$
 
 At this point, moral ambiguity effectively disappears.  I can't see any economically justifiable reason (endogenous to the mother-fetus dyad) to force women to carry non-viable fetuses to term.  There may be exogenous reasons to do so (the mother's religious beliefs, the possibility of harvesting viable organs for donations from the fetus, etc.)
 
-## A Comprehensive Model
+# A Comprehensive Model
 
 $$E_{Loss}(t_f,A_m,t_m)=80*t_f-(80-A_m)*t_m$$
 
@@ -54,10 +56,12 @@ $$E_{Loss}(t_f,t_m,A_m)=80*t_f-80*t_m+A_m*t_m$$
 
 Terminations of pregnancies in which the threat to the fetus is high and threat to the mother is high will actually have negative expected losses: abortion may cause a longer, healthier life. A novel conclusion of this model is that by factoring in the age of the mother, we conclude that the younger a woman is, the less moral damage is caused by her decision to terminate a pregnancy. This effect is linear over the probability space of threat to the mother's life.
 
-## Where We End Up
+# Where We End Up
 
 One additional (as-yet exogenous) consideration is that child-rearing is an extremely costly activity. A couple aspiring to raise a child in the United States will spend approximately a [quarter of a million dollars](http://www.cnpp.usda.gov/sites/default/files/expenditures_on_children_by_families/crc2013.pdf). The cost of saving [one life by buying Malaria nets](http://www.givewell.org/international/top-charities/AMF#Costperlifesaved) is estimated to be $3360USD. Thus, you can save...
 
 $$\frac{$250000}{1}*\frac{1 life}{$3360}\approx 74 lives$$
 
 ...approximately 74 lives by _not_ raising a child, and donating all the money you would have spent on that child to the Against Malaria Foundation. This hearkens to an interesting point: we can achieve a large magnitude of lives saved by outlawing abortion, but we can possibly achieve the same magnitude by mandating that each abortion be offset by the purchase of a life via an effective charity. While [restrictions on abortions disproportionately affect poor women](http://www.guttmacher.org/media/nr/2010/05/04/index.html), the pro-choice movement [may be able to offset the costs](http://www.plannedparenthood.org/files/9914/2470/6601/PPFA_FY14_Final_990_-_public_inspection.pdf) for the poorest women seeking abortions. The cost could be issued as a lien against the father (creating positive externalities against rapists and would-be deadbeat dads). And while prohibitive, the price of the abortion would pale in comparison to the [price of delivery](http://www.nytimes.com/2013/07/01/health/american-way-of-birth-costliest-in-the-world.html?pagewanted=all&_r=0) (even for insured women).  Employing a model like the one developed here, the government could assess discounts based on the expected losses, for example charging nothing to mothers seeking abortions of otherwise doomed fetuses. With approximately 1 million terminated pregnancies in the United States annually, enacting this policy would generate an an excess of $3 billion annually. This rather quickly overwhelms the major effective charities estimated [room-for-funding](http://www.givewell.org/international/technical/criteria/scalability). But as I say for all issues of [overwhelming room-for-funding](http://transhumanist.cc/effective-altruism/overwhelming-effective-altruism/), it's a much better problem to have. I don't know if this line of reasoning would stand up if the policies it suggested were implemented. Never-the-less, with moral consequences on the order of tens of millions of DALYs annually, I believe it is a question worth asking.
+
+# References

@@ -2,9 +2,15 @@
 title: "Why Did Trump Win?"
 ---
 
+# Introduction
+
 # The Time for Change Model
 
+
+
 # It's the Economy, Stupid
+
+
 
 # The Primaries
 
@@ -46,35 +52,53 @@ Yup.
 
 ## Angry, Poor, Rural, Uneducated, Racist, Sexist, Male White People Voted
 
-Repeal the 19th Ammendment.
+Yup.
+
+As evidenced by the movement to Repeal the 19th Ammendment.
 
 # Minorities Didn't Vote
 
+Yup.
+
 ## Minorities Didn't Show Up
+
+Uncertain. I can't find a reliable data source that indicates whether or not minority voters attempted to vote.
 
 ## Voter Supression
 
 Voter ID laws.
 
-Voter Intimidation.
+Voter Intimidation. Following early reports of "election watchers" planning to garrison outside of polling stations, not a lot of coverage was devoted to anything these election watchers actually did.
+
+http://www.newyorker.com/magazine/2016/12/12/the-real-voting-scandal-of-2016
 
 # Third Party Spoilers
 
 ## Jill Stein
 
-Jill Stein's votes in [Michigan?] exceed Hillary Clinton's margins of loss.
+As Dave Wasserman [pointed out](https://twitter.com/Redistrict/status/804407177368715265), Jill Stein's votes tallies are large enough to flip back Clinton's lost midwestern firewall states.
+
+* [Clinton lost Michigan by 10,704 votes. Jill Stein got 51,463 votes.]()
+* [Clinton lost Wisconsin by 22,177 votes. Jill Stein got 31,006 votes.]()
+* [Clinton lost Pennsylvania by 46,765 votes. Jill Stein got 49,678]()
+
+Together, these three states consitute 46 Electoral votes. As Trump won with 306 votes in the electoral college, Stein dropping out and endorsing Clinton could have reduced Trump's edge in the Electoral College to 260, flipping the election. This triggered an outcry on the left, branding [Stein the Ralph Nader of 2016](http://theweek.com/speedreads/664953/jill-stein-officially-2016s-ralph-nader). While it's true that these margins seem to suggest a spoiled election, the implicit assumption is a little strong for my taste. Namely, the assumption is that Clinton would have won a huge proportion of those Stein voters. To flip Pennsylvania, for instance, Clinton would have needed at least 94.2% of Stein's voters.
+
+While I suspect that at least that percentage would prefer a Clinton presidency to a Trump Presidency, I don't believe that these people would have voted for Clinton over Johnson, some other unknown far-lefty, or writing in "Bernie Sanders". However, [CNN takes this one step further](http://www.cnn.com/2016/11/10/politics/gary-johnson-jill-stein-spoiler/), arguing that Clinton might have won Florida with a small margin of Johnson supporters...
 
 ## Gary Johnson, Libertarian
 
-[Vox called him](http://www.vox.com/2016/8/3/12367358/trump-republicans-gary-johnson) "The most orthodox conservative in the race".
+Even if Stein could plausibly be called a spoiler for Clinton, it's important to note that we should counterfactually provide the same analysis with Gary Johnson. [Vox called him](http://www.vox.com/2016/8/3/12367358/trump-republicans-gary-johnson) "The most orthodox conservative in the race". Based on the close association between the Republican Party and the Libertarian Party, I claim most Johnson voters would sooner have supported Trump than Clinton. Accordingly, convincing Johnson to drop out would have led to a Trump victory.
+
+Moreover, as Johnson uniformly garnered more votes than Stein, there's a more compelling case that had Clinton won, it would have been because Johnson was a spoiler for Trump.
 
 ## Evan McMullin, Independent Republican
 
-Perhaps the most interesting third party candidate was Evan McMullin. McMullin presented himself as the only establishment Republican willing to run against Trump. However, he was hardly a well-established establishment Republican. A former CIA officer turned Congressional staffer, McMullin took it upon himself to run in ideological opposition to Trump. McMullin was also a devout Mormon from Utah, which made him a viable candidate for that state's electoral votes.
+Perhaps the most interesting third party candidate was Evan McMullin. McMullin presented himself as the only establishment Republican willing to run against Trump. However, he was hardly a well-established establishment Republican. A former CIA officer turned Congressional staffer, McMullin took it upon himself to run in ideological opposition to Trump. McMullin was also a devout Mormon from Utah, which made him a [viable candidate for that state's electoral votes](http://fivethirtyeight.com/features/how-evan-mcmullin-could-win-utah-and-the-presidency/).
 
 It was clear that carrying Utah was still an extreme long shot for Clinton, even with McMullin in the race to split the republican vote. However, If the Democrats in Utah had coordinated an effort to vote McMullin instead of Clinton, they could plausibly have denied Trump Utah's six electoral votes. This, while a useful object lesson, does not represent a severe error on the part of the Democrats, as it was always unlikely to be a tipping point for the election.
 
-## Harambe, et al.
+## Other Candidates
 
 Didn't matter. Like, at all.
 
@@ -92,4 +116,6 @@ Yup. Clinton lead the National Popular Vote by more than 2 million votes.
 
 In [Tuesday shouldn't change the narrative](http://slatestarcodex.com/2016/11/07/tuesday-shouldnt-change-the-narrative/), Scott Alexander sensibly pointed out that no serious model gives Trump a negligible probability of victory, so a Trump victory is simply a matter of probability. Accordingly, our beliefs should not be greatly updated by the outcome. Rather, whatever narrative we would be telling in the wake of a Clinton victory, we should still believe all of those things.
 
-The point is that all of these things are true, and none of them represents the "fundamental reason" or the "root cause" of the outcome of the election. Claiming that they are is the wrong way to view the election, and will only lead us to obsess about the minutae of personality and politics, when the truth is more banal: Clinton got unlucky.
+The point is that all of these things are true, and none of them represents the "fundamental reason" or the "root cause" of the outcome of the election. Claiming that they are is the wrong way to view the election, and will only lead us to obsess about the minutae of personality and politics, when the truth is more banal: Trump got Lucky, Clinton did not.
+
+# References
