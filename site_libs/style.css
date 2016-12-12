@@ -5,17 +5,12 @@ img {
 }
 
 .infobox {
-  float: right;
-  margin: 10px;
   max-width: 30%;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  border-spacing: 0;
-  border-collapse: inherit;
+  float: right;
 }
 
-.infobox td {
-  padding: 5px;
+.infoboxtable {
+  margin-top: 0;
 }
 
 .plotly {

@@ -1,12 +1,12 @@
 library("htmltools")
 infobox <- function(meta, ...){
-  foo <- tags$table(class="infobox", tags$tbody(), tags$tfoot(...))
+  foo <- tags$table(class="panel-body table infoboxtable", tags$tbody(), tags$tfoot(...))
   for(i in 1:length(meta)){
     foo$children[[1]]$children[[i]] <- tags$tr(
       tags$td(tags$b(names(meta)[[i]])), tags$td(meta[[i]])
     )
   }
-  foo
+  tags$div(class="panel panel-default infobox", foo)
 }
 
 getFile <- function(path, url){
