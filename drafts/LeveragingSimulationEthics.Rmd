@@ -1,0 +1,39 @@
+---
+title: "Leveraging Simulation Ethics"
+---
+
+# Introduction
+
+Simulation Argument
+
+Simulation Hypothesis
+
+# Simulation Ethics
+
+Assume that we are living in a simulation.  Now assume that the simulation has been spawned by a machine superintelligence in the ur-universe. We'll call this the simulator.
+
+We live in a world in which horrible things happen to people.  If we live in a simulation, we can draw some inferences about the simulator.
+
+Either the simulator is simulating only some subset of humans to whom no atrocities occur, and the rest of us are zombies (in the philosophical sense, a la [@Chalmers95]) designed to advance the simulation in the correct manner while avoiding mind crimes.
+
+The simulator doesn't share our value set (or any value set proximate to them), and thus can't be used as a model target for value calculations.
+
+Let's start with the personal simulation. I'll call this the Truman Universe.
+
+If you are the primary agent in a world of empty facades, then the crimes you see reported aren't actually happening.  The crimes committed against you have been real, but they were all committed by the simulator.  If any of these constitutes a breach of a deontological boundary, then we can call it a mind crime. We conclude that the simulator is unfriendly. If they don't cross a deontological boundary, we can presume that the simulator is friendly and that whoever created the machine that spawned the simulation solved the safety problem.
+
+This would be an incredible valuable finding: It would create the solution to the value alignment problem that you would only need a superintelligence to act with the values that the intelligence driving the simulator would want.
+
+If the simulator isn't friendly, it isn't strictly unfriendly either.
+
+The probability of this is so remote, it's barely worth mentioning, but humanity could be an accidental byproduct of a much, much larger and more complex simulation.  In this case, the crimes against humanity we experience are merely effects of the laws of physics with which this simulated universe is imbued. Incidentally, it's sort of metaphysically not distinct from a universe whose "true nature" is exactly as we commonly perceive it: namely, that it is governed by a set of supreme laws (physics) and doesn't cut any corners.
+
+# Why We Shouldn't Use this Approach
+
+Making it work requires making very strong assumptions about the nature of reality. Assumptions roughly as strong as religious beliefs.
+
+It muddies our ability to exercise our values.  If we come to believe that some people are not agents because they have been the victims of moral atrocities and a friendly simulator would not permit that, it creates many perverse equilibria.
+
+Thus the general answer is "Probably not (and we could get into a lot of trouble by trying)."
+
+# References
