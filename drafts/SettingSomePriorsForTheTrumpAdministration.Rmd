@@ -1,0 +1,111 @@
+---
+title: "Setting Some Priors for the Trump Administration"
+---
+
+# Introduction
+
+The general tenor of the media has been pretty gloomy lately. I'm troubled that these narratives aren't making concrete criteria for their predictions about the Trump administration. The danger this presents is that we can retroactively point to some statistics which are "worse" and claim that this is proof that the Administration failed. To avoid this, we should explicitly list out the statistic, and preferably the source of that statistic, to creat an objective judgement criterion for each prediction.
+
+Accordingly, I'm going to lay out a few predictions with some statistics, so that they can be fairly scored by 2020.
+
+# Economy
+
+President Trump will harm the economy. How shall we judge this?
+
+**The dollar will fall, relative to the yuan.**
+
+The Chinese Yuan has been [losing ground](https://www.google.com/finance?q=CURRENCY%3ACNY&ei=tZR-WJGwCsmLe__FufAM) against the US Dollar since 2014. Note that the traditional metric is the dollar's valuation against the Euro. However, the growth of right-wing populism is as strong in Europe as it was to elect Trump in the United States. Accordingly, we may see some significant confounding with Eurozone member states and right-wing populaist leaders like Donald Trump. Accordingly, the Euro becomes a less stable and more confounded meterstick against which to measure the dollar. If President Trump is actually harming the US economy, this is one metric where that effect might shine through.
+
+**The Gini index of the US will be higher in 2020 than in 2016.**
+
+If Republican policies on taxes are implemented (which looks exceedingly likely at this point), then the poor and middle classes will assume a larger tax burden, resulting in greater inequality. This is measured using a statistic called the Gini Coefficient (or Gini Index).
+
+<iframe src="http://data.worldbank.org/share/widget?end=2013&indicators=SI.POV.GINI&locations=US&start=1986&view=chart" width='600' height='400' frameBorder='0' scrolling="no" />
+
+**Pres. Trump's personal wealth will grow faster than US GDP.**
+
+As of September 2016, [Forbes Estimates](http://www.forbes.com/sites/jenniferwang/2016/09/28/the-definitive-look-at-donald-trumps-wealth-new/#20232c2e7e2d) that Donald Trump holds approximately \$3.7 Billion in assets. Since the end of the Great Recession, the US has managed to scrape out an average of roughly 2% GDP annually. If we keep that pace, Pres. Trump's assets should grow to around \$4 Billion by 2020. Estimates of Donald Trump's net worth have a [pretty high variance](http://www.theatlantic.com/politics/archive/2011/04/weve-been-trying-figure-out-how-much-trump-worth-20-years/349875/). However, I expect Forbes will judge his holdings to be worth significantly more than $4 Billion in 2020, lending credence to the claims of effectively corrupt behavior by the President.
+
+*However...*
+
+**The GDP in 2020 will be higher in 2020 than in 2016.**
+
+It generally increases:
+
+<iframe width="600" height="400" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=l&amp;strail=false&amp;bcs=d&amp;nselm=h&amp;met_y=ny_gdp_mktp_cd&amp;scale_y=lin&amp;ind_y=false&amp;rdim=region&amp;idim=country:USA:CHN&amp;idim=region:ECS:LCN:MEA:SAS:SSF&amp;ifdim=region&amp;hl=en_US&amp;dl=en&amp;ind=false"></iframe>
+
+**Per-Captia GDP will be higher in 2020 than in 2016.**
+
+As noted above, the GDP generally increases, and it generally does so faster than the US Population.
+
+<iframe width="600" height="400" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=l&amp;strail=false&amp;bcs=d&amp;nselm=h&amp;met_y=ny_gdp_pcap_kd&amp;scale_y=lin&amp;ind_y=false&amp;rdim=region&amp;idim=country:USA:CHN&amp;idim=region:ECS:LCN:MEA:SAS:SSF&amp;ifdim=region&amp;hl=en_US&amp;dl=en&amp;ind=false"></iframe>
+
+# Foreign Relations
+
+The arena in which Donald Trump poses the greatest danger to the world is decidedly the international arena. 
+
+## Shootin' Wars
+
+While I doubt that Trump is itching to deploy US troops (in stark contrast to, say, Pres. George W. Bush), it is easy to imagine that the actions of a US president may incite wars of which the US is not a party. For example, Trump's ambiguity about his intentions to respect the US's obligations to its NATO allies may embolden 
+
+# Social
+
+These are as much predictions about the priorities of the Republican party as they are about Donald Trump.
+
+## Health and Healthcare
+
+**The Uninsured Rate will be higher in 2020 than in 2016.**
+
+*However...*
+
+**The Mortality Rate will be lower in 2020 than in 2016.**
+
+## Transphobia
+
+"Bathroom Bills" will pass in other states besides North Carolina. 
+
+## Reproductive Freedom
+
+Federal Funding of 
+
+*However...*
+
+## Gay Marriage
+
+Gay marriage will continue to be legal in 2020. Moreover, married gay couples will continue to increase in common-ness.
+
+In 2002, Gallup estimated that around [37% of adult couples in the US were cohabitating, while 63% were married](http://www.gallup.com/poll/109402/Age-24-Marriage-Wins.aspx?g_source=Cohabitation&g_medium=search&g_campaign=tiles). Though I don't have the data to support it, it seems likely that this number has been slowly increasing since then.
+
+In 2016, [Gallup measured the married/cohabitating distribution for gay couples](http://www.gallup.com/poll/193055/sex-marriages-one-year-supreme-court-verdict.aspx?g_source=Social%20Issues&g_medium=newsfeed&g_campaign=tiles), and found that it's quite close to 50-50, up from 33-66 prior to nationwide legalization. By 2020, I suspect that the rates will be approximately equal (i.e. married gay couples will be as common amongst gay couples as married straight couples are amongst straigth couples).
+
+
+# Governance
+
+## The Supreme Court
+
+*The Supreme Court will be more Conservative in 2020 than in 2016.*
+
+The mean Segal-Cover score of the Supreme court will fall. This isn't an especially strong prediction, as Scalia's score was considerably lower than the mean score, creating a liberal bias while his seat was unfilled. Accordingly, I offer a stronger form:
+
+*The Supreme Court will be more Conservative in 2020 than in 2015.*
+
+## The Federal Budget, Defecit, and Debt
+
+*Federal revenue will be lower in 2020 than in 2016.*
+
+*The defecit will be larger in 2020 than in 2016*
+
+Now that they have near-free-reign over the Federal Government, the Republicans are nearly silent about their concern for the nation's long-term solvency. Accordingly, they will curtail tax collection and enact federal spending, resulting in less revenue and more debt. This, in turn, causes:
+
+*The national debt will be larger in 2020 than in 2016.*
+
+This is perhaps the weakest of my predictions, if only because it is the most likely. The national debt has basically consistently grown.
+
+![""](https://upload.wikimedia.org/wikipedia/en/9/92/GDP_to_Federal_debt_of_the_United_States.png)
+
+If we adjust for GDP, the picture is a little more complicated.
+
+![""](https://upload.wikimedia.org/wikipedia/commons/0/05/51129-land-summaryfigure1%281%29.png)
+
+
+
