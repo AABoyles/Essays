@@ -16,7 +16,7 @@ However:
 
 In other words, I’m _definitely_ a utilitarian, but I’m kinda, sorta lying about being a utilitarian.
 
-# I.
+# Thought Experiments are Terrible.
 
 There aren’t many people who rebel against the classic formulation of the Trolley problem. But people seem to hate the fat man variant, and fight against the circumstances of the problem as soon as you point out the moral inconsistency to which it leads. The problem with the fat man variant is that it strains credulity. If a trolley were actually barreling towards five unsuspecting, utterly clueless people, impeding said trolley by dropping a fat man in front of it isn’t going to save our quintet of hopelessly inattentive fools. Sadly, I think, most of the thought experiments in moral philosophy exhibit this issue.
 
@@ -24,11 +24,11 @@ While I don’t have time to discuss every thought experiment in the field, ther
 
 But this runs strongly against our moral intuitions, and so we can rationalize our way to saving the drowning child. Nobody routinely wears $10,000 suits, so the situation is unrealistic. The resale value of the suit would be a fraction of that, so you’d save fewer than three lives (very pessimistically, less than one life, which justifies saving the drowning child). Water damage to a suit, even a very fine suit, is likely to be largely reversible. Etc.
 
-What’s actually going on in your head is _not_ these rationalizations. It sounds more like this: “Oh no, there’s a child in front of me, _drowning!_ I had better save her!” When the utilitarian onlooker points out that more lives could be saved if you do not save the child, your brain rejects that reasoning on the basis that not saving drowning children is [disgusting](https://en.wikipedia.org/wiki/Disgust%23Morality). All the other logic follows, but it’s the drowning child’s _availability_ (related: [availability heuristic](https://en.wikipedia.org/wiki/Availability_heuristic)) coupled with that sense of disgust that actually makes the decision for you.
+What’s actually going on in your head is _not_ these rationalizations. It sounds more like this: "Oh no, there’s a child in front of me, _drowning!_ I had better save her!" When the utilitarian onlooker points out that more lives could be saved if you do not save the child, your brain rejects that reasoning on the basis that not saving drowning children is [disgusting](https://en.wikipedia.org/wiki/Disgust%23Morality). All the other logic follows, but it’s the drowning child’s _availability_ (related: [availability heuristic](https://en.wikipedia.org/wiki/Availability_heuristic)) coupled with that sense of disgust that actually makes the decision for you.
 
 The error in the decision process is that we decide and then justify, rather than weigh the options and then decide. This leaves us vulnerable to moral [dutch book scams](https://en.wikipedia.org/wiki/Money_pump). I don’t know that I’ve heard this particular issue discussed in literature, but if I were inventing the term, I’d call it something like “presence bias”. You see, the drowning child is _present_. Her life or death is a decision _you_ must consciously and immediately make, and then live with the consequences. The people who die of malaria because of your decision to save the drowning child aren’t present, even though their lives and deaths are just as real and just as morally significant.
 
-# II.
+# No, really. Terrible.
 
 In order to dissolve some of these, we ask people to accept the circumstances of the thought experiment at face value. We ask people to trust that there’s a reason the experiment is structured in this way, and disallows most criticism of this variety. In short, we ask people to consider themselves to occupy [The Least Convenient Possible World](http://lesswrong.com/lw/2k/the_least_convenient_possible_world/).
 
@@ -48,7 +48,7 @@ These thought experiments are terrible because they’re designed to push you in
 
 So, if our thought experiments are terrible, why don’t we try to come up with some more real-world examples? OK, here’s one: You can donate money to [the charity that is most efficient at saving people’s lives](http://www.givewell.org/charities/top-charities), or you can do [literally anything else with your money](https://www.amazon.com/).
 
-# III.
+# And I'm a Hypocrite.
 
 Many philosophers have pointed out that utilitarianism is [philosophically demanding](https://en.wikipedia.org/wiki/Utilitarianism%23Too_demanding). Unlike [deontological moral codes](http://plato.stanford.edu/entries/ethics-deontological/), which [allow freedom within the bounds of their rules](http://plato.stanford.edu/entries/ethics-deontological/%23AdvDeoThe), utilitarianism demands that people optimize something based on some set of values to the exclusion of other values against which moral calculations are not made.
 

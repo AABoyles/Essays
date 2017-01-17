@@ -1,0 +1,41 @@
+---
+title: "How to Fix Health Tracking Apps"
+---
+
+# Introduction
+
+I recieved a new Motorla G4 Play for Christmas. This has proven to be the most valuable gift I have recieved in quite a long time, as my prior phone (curiously a G3 from the same line) was a staggeringly inadequate device. With this new-found flexibility enabled by a competent phone, I've delved into the world of health tracking apps. And I've got to say, I am not impressed.
+
+## Google Fit
+
+My first choice was [Google Fit](https://www.google.com/fit/).
+
+Theoretically, Google Fit has a [wide array of integrations](https://play.google.com/store/apps/collection/promotion_3000e6f_googlefit_all?hl=en). In practice, however, these don't give you many features above what is available in Google Fit by itself.
+
+## MyFitnessPal
+
+## Withings
+
+## S Health
+
+# The Features I Want
+
+What metrics can you record on a phone *passively*?
+
+* Location and Speed, from which you can infer probable activity
+* Accelerometry, from which you can infer Step Counts
+* Accelerometry and display use, from which you can infer sleep quality
+
+What metrics can you record on a phone *actively*?
+
+* Heart rate (via a clever trick with the phone's camera and flash)
+
+The widely-available base functionality of these apps is simple *tracking*. Most apps will record weight, activity trackers will record exercise, diet journals will record meals, period trackers will record menstrual cycles, sleep trackers will record sleeping and REM cycles, and position trackers will record locations during moving exercises (walking/running/biking). I want an app that will do all of those things. However, I want an app with even more general tracking. I want to be able to log arbitrary health-related statistics as I learn them. For example, I visited my opthamologist this morning for my annual checkup, and they took my blood pressure. I don't own a cuff, so I don't often get this metric and I'd have liked to record it. Annoyingly, I couldn't find any sane way to record this information.
+
+## Position Tracking
+
+I want full-time position tracking. This is a less-known [feature of Google Maps](https://www.google.com/maps/timeline), but it doesn't integrate with Google Fit. I want Fit to infer that I have gone to a place where I will ordinarily engage in some type relevant activity, and then "suggest" that to my timeline.
+
+## Guided Practice
+
+Guided practice modules would be very nice. I'm currently using [Calm](https://play.google.com/store/apps/details?id=com.calm.android) for Meditation and [Seven](https://play.google.com/store/apps/details?id=se.perigee.android.seven) for simple workouts. Both of these are free apps with paid content beyond a few basic routines. Ideally, I'd like 

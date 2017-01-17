@@ -4,14 +4,12 @@ title: "A Gentle Introduction to the Simulation Argument"
 
 # Introduction
 
-```{r, results='asis', eval=FALSE}
+```{r, results='asis'}
 source("infobox.R")
-meta <- list(
+infobox(list(
   "Status" = "Incomplete",
-  "Epistemic Status" = "Highly Speculative"
-  #"Last Revision" = file.info("AGentleIntroductionToTheSimulationArgument.Rmd")$mtime
-)
-infobox(meta)
+  "Last Revision" = file.info("AGentleIntroductionToTheSimulationArgument.Rmd")$mtime
+))
 ```
 
 Films like the Matrix and the Thirteenth Floor have introduced the idea of the simulated world into the modern science fiction audience. These films, however, contain the kernels of ideas form the basis for a very real ongoing philosophical dialog. This dialog was launched by Oxford University Professor of Philosophy Nick Bostrom with his paper, _[Are We Living in a Computer Simulation?](http://simulation-argument.com/)_ [10.1111/1467-9213.00309] In it, Bostrom builds the logical basis _the simulation argument_. The argument, in short, is that one of these propositions is true:
@@ -36,6 +34,9 @@ This proposition is also called the _simulation hypothesis_. If humanity develop
 
 # What if it's True?
 
-We can infer some interesting properties of the Universe, which in turn gives us testable predictions about cosmology [10.1140/epja/i2014-14148-0]. Weatherson Discusses, Accepts that he is a Simulation [10.1111/1467-9213.00323] Bostom clarifies that Bostrom does not accept that Bostrom is a Simulation [10.1093/analys/anp063] Bostrom Patches the Argument [10.1093/analys/anq107].
+We can infer some interesting properties of the Universe, which in turn gives us testable predictions about cosmology [10.1140/epja/i2014-14148-0].
+Weatherson Discusses, Accepts that he is a Simulation [10.1111/1467-9213.00323]
+Bostom clarifies that Bostrom does not accept that Bostrom is a Simulation [10.1093/analys/anp063]
+Bostrom Patches the Argument [10.1093/analys/anq107].
 
 # References

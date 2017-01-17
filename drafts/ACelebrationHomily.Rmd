@@ -32,7 +32,7 @@ Some replicators replicated one way. Some other replicators replicated another. 
 
 Sometimes a bacterium would find an archaeon, and use it for parts to make another bacterium. It was a replicator-eat-replicator world.
 
-And for another five hundred million years, nothing more happened.
+And for another half of a billion years, nothing more happened.
 
 But then, one day, a bacterium found an archaeon and tried eat the archaeon to use it for parts, and it didn't work. Instead, the archaeon lived inside the bacterium. The bacterium ate lots of things the archaeon could use to make more archaeon right inside the bacterium. The archaeon, in turn, threw away parts it didn't need, but that the bacterium did. That saved the bacterium all the trouble of making those things itself. It was an unexpected and beautiful relationship.
 
@@ -42,7 +42,7 @@ Everything living thing that we can see with our naked eyes is descended from th
 
 # Now
 
-Humans exist in a dangerous, adversarial environment. The brutal truth of our reality is that there is only one inviolate set of laws in the universe, the laws of physics, and the desperately want you dead.
+Humans exist in a dangerous, adversarial environment. The brutal truth of our reality is that there is only one inviolate set of laws in the universe: the laws of physics. And they *desperately* want you dead.
 
 We are likely to lose.
 

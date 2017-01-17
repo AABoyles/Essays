@@ -26,6 +26,12 @@ The gist of the argument is that the government needs to provide the programs an
 
 Old Workers Don't Transition, They Die. The labor market evolves away from automation by firing the employees who relied upon those jobs, and watching them die. New laborers entering the market simply avoid those industries for which labor is being automated away. (Is this True?)
 
+# A Negative Income Tax
+
+One problem with Universal Basic Income is that there are a variety of terms for it. Besides "UBI", there's also "Guaranteed Minimum Income".
+
+And then there's the Negative Income Tax.
+
 # A Fully Planned Economy
 
 One possible solution is a fully planned economy. We could consign 
@@ -41,3 +47,5 @@ The population of humans grows according to some curve. Following some event lik
 The sort of singularity which could pring this about is the advent of Atomically precise manufacturing.
 
 While this sort of utopia is a possibility, and one which I would hope to steer the future towards, 
+
+# The Likeliest Future
