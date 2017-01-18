@@ -156,12 +156,29 @@ $(document).ready(function () {
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
-meta &lt;-<span class="st"> </span><span class="kw">list</span>(
+<span class="kw">infobox</span>(<span class="kw">list</span>(
   <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
-  <span class="st">&quot;Epistemic Status&quot;</span> =<span class="st"> &quot;Highly Speculative&quot;</span>
-  <span class="co">#&quot;Last Revision&quot; = file.info(&quot;AGentleIntroductionToTheSimulationArgument.Rmd&quot;)$mtime</span>
-)
-<span class="kw">infobox</span>(meta)</code></pre></div>
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;AGentleIntroductionToTheSimulationArgument.Rmd&quot;</span>)$mtime
+))</code></pre></div>
+<div class="panel panel-default infobox">
+<table class="panel-body table infoboxtable">
+<tbody>
+<tr>
+<td>
+<b>Status</b>
+</td>
+<td>Incomplete</td>
+</tr>
+<tr>
+<td>
+<b>Last Revision</b>
+</td>
+<td>2016-12-14 13:47:41</td>
+</tr>
+</tbody>
+<tfoot></tfoot>
+</table>
+</div>
 <p>Films like the Matrix and the Thirteenth Floor have introduced the idea of the simulated world into the modern science fiction audience. These films, however, contain the kernels of ideas form the basis for a very real ongoing philosophical dialog. This dialog was launched by Oxford University Professor of Philosophy Nick Bostrom with his paper, <em><a href="http://simulation-argument.com/">Are We Living in a Computer Simulation?</a></em> [10.1111/1467-9213.00309] In it, Bostrom builds the logical basis <em>the simulation argument</em>. The argument, in short, is that one of these propositions is true:</p>
 <ol style="list-style-type: decimal">
 <li>Civilizations don’t survive long enough to create simulations, or</li>
