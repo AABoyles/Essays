@@ -193,43 +193,18 @@ $(document).ready(function () {
 <div id="foreign-relations" class="section level1">
 <h1>Foreign Relations</h1>
 <p>The arena in which Donald Trump poses the greatest danger to the world is decidedly the international arena.</p>
-<div id="shootin-wars" class="section level2">
-<h2>Shootin’ Wars</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wars &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;http://www.correlatesofwar.org/data-sets/COW-war/inter-state-war-data/at_download/file&quot;</span>) %&gt;%
-<span class="st">  </span><span class="kw">mutate</span>(
-    <span class="dt">StartYear1 =</span> <span class="kw">ifelse</span>(StartYear1 &lt;<span class="st"> </span><span class="dv">1</span>, <span class="ot">NA</span>, StartYear1),
-    <span class="dt">StartYear2 =</span> <span class="kw">ifelse</span>(StartYear2 &lt;<span class="st"> </span><span class="dv">1</span>, <span class="ot">NA</span>, StartYear2)
-  ) %&gt;%
-<span class="st">  </span><span class="kw">group_by</span>(WarName) %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(
-    <span class="dt">Participants =</span> <span class="kw">n</span>(),
-    <span class="dt">LogDeaths =</span> <span class="kw">log10</span>(<span class="kw">sum</span>(BatDeath)),
-    <span class="dt">Began =</span> <span class="kw">min</span>(StartYear1, StartYear2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
-    <span class="dt">Ended =</span> <span class="kw">max</span>(EndYear1, EndYear2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
-  ) %&gt;%
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Length =</span> Ended -<span class="st"> </span>Began +<span class="st"> </span><span class="dv">1</span>)</code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   .default = col_integer(),
-##   WarName = col_character(),
-##   StateName = col_character(),
-##   TransFrom = col_character()
-## )</code></pre>
-<pre><code>## See spec(...) for full column specifications.</code></pre>
-<p>The Correlates of War counts 95 distinct interstate wars fought between 1816 and 2007, or about one every two years, for a baseline expectation of 2 over the next four years.</p>
-<p>However, more recently, interstate wars have become considerably rarer.</p>
+<p><strong>At least one new interstate war will begin by 2020.</strong></p>
+<p>The Correlates of War counts 95 distinct interstate wars fought between 1816 and 2007, or about one every two years, for a baseline expectation of 2 over the next four years. However, more recently, interstate wars have become <a href="https://www.amazon.com/Better-Angels-Our-Nature-Violence-ebook/dp/B0052REUW0/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1484773017&amp;sr=1-1&amp;keywords=better+angels+of+our+nature">considerably rarer</a>.</p>
 <div class="figure">
 <img src="https://cdn-images-1.medium.com/max/800/0*y_hOa2btFnCSq9YO.jpg" />
 
 </div>
 <p>While war seems to be generally declining, this does not obviate the need for international institutions and policies that play a favorable role in that outcome. (In the same way, being dry under an umbrella is a bad argument for putting the umbrella away.)</p>
 <p>While I doubt that President Trump is itching to deploy US troops (in stark contrast to, say, Pres. George W. Bush), it is easy to imagine that the actions of a US president may incite wars of which the US is not a party. For example, Trump’s ambiguity about his intentions to respect the US’s obligations to its NATO allies may embolden Putin towards active conflict in the Balkans. Russia will fight three small local wars to seize power in these states (and possibly other former Soviet states).</p>
-<p>This is just one of a wide variety of ways in which the world may stumble into interstate warfare in the near future. And so, I’m going to put my chips on one or more new interstate wars in the next four years.</p>
-</div>
+<p>This is just one of a <a href="http://www.cfr.org/global/global-conflict-tracker/p32137#!/">wide variety of ways</a> in which the world may stumble into interstate warfare in the near future. And so, I’m going to put my chips on one or more new interstate wars in the next four years.</p>
 </div>
 <div id="social" class="section level1">
 <h1>Social</h1>
-<p>These are as much predictions about the priorities of the Republican party as they are about Donald Trump.</p>
 <div id="health-and-healthcare" class="section level2">
 <h2>Health and Healthcare</h2>
 <p><strong>The Uninsured Rate will be higher in 2020 than in 2016.</strong></p>
@@ -256,9 +231,6 @@ $(document).ready(function () {
 </div>
 <p>We can <a href="http://www.calculatedriskblog.com/2013/08/us-population-distribution-by-age-1900.html">infer from this plot</a> that the US in the coming decades is more like Japan today.</p>
 <p>You may notice that this has little to do with anything over which the President exerts any control. Please bear this in mind, moving forward.</p>
-</div>
-<div id="reproductive-freedom" class="section level2">
-<h2>Reproductive Freedom</h2>
 <p><strong>Abortion will continue to be legal in 2020.</strong></p>
 </div>
 <div id="gay-marriage" class="section level2">
@@ -291,12 +263,12 @@ budget &lt;-<span class="st"> </span><span class="kw">stfu</span>(<span class="k
 budget &lt;-<span class="st"> </span>budget[<span class="dv">3</span>:<span class="dv">118</span>,<span class="dv">1</span>:<span class="dv">3</span>] %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw">as.numeric</span>(Year))
 <span class="kw">ggplot</span>(budget, <span class="kw">aes</span>(Year, Receipts, <span class="dt">group =</span> <span class="dv">1</span>)) +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
-<p><img src="SettingSomePriorsForTheTrumpAdministration_files/figure-html/unnamed-chunk-3-1.png" width="576" /></p>
+<p><img src="SettingSomePriorsForTheTrumpAdministration_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
 <p>OK, so they do sometimes, but the two really good examples of declines in this graph are both during a single President’s tenure, and revenue was still higher at the end of his terms than it was at the beginning. Despite the general enthusiasm amongst Republicans for reducing the size of government during the Obama years, I suspect we’ll see the end of the Trump years with a larger, more expensive government.</p>
 <p><strong>The defecit will be larger in 2020 than in 2016.</strong></p>
 <p>Now that they have near-free-reign over the Federal Government, the Republicans are nearly silent about their concern for the nation’s long-term solvency. Rather, they will enact federal spending, resulting in less revenue and more debt.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(budget, <span class="kw">aes</span>(Year, Outlays-Receipts, <span class="dt">group =</span> <span class="dv">1</span>)) +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
-<p><img src="SettingSomePriorsForTheTrumpAdministration_files/figure-html/unnamed-chunk-4-1.png" width="576" /></p>
+<p><img src="SettingSomePriorsForTheTrumpAdministration_files/figure-html/unnamed-chunk-3-1.png" width="576" /></p>
 <p>This, in turn, causes:</p>
 <p><strong>The national debt will be larger in 2020 than in 2016.</strong></p>
 <p>This is perhaps the weakest of my predictions, if only because it is the most likely. The national debt has basically consistently grown.</p>
