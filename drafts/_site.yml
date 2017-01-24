@@ -16,6 +16,6 @@ navbar:
     - text: "Meta"
       href: ../README.html
 output:
-  rmdformats::material:
+  rmdformats::readthedown:
     css: site_libs/style.css
     code_folding: hide

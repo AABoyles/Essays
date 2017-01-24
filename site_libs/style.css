@@ -1,3 +1,7 @@
+#content, #table-of-contents{
+  margin-top:50px;
+}
+
 img {
   margin-right: auto;
   margin-left: auto;
@@ -5,13 +9,13 @@ img {
 }
 
 .infobox {
-  max-width: 30%;
   float: right;
   margin-left: 19px;
+  height: auto;
 }
 
-.infoboxtable {
-  margin-top: 0;
+.table-wrapper{
+  overflow-x: hidden;
 }
 
 .plotly {

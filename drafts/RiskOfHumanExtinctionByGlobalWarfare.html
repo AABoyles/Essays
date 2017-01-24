@@ -11,9 +11,7 @@
 
 
 <title>Estimating the Risk of Human Extinction by Catastrophic Global Warfare</title>
-<!-- Material Design fonts -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,12 +19,8 @@
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
 <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
-<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
-<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
-<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
-<script src="site_libs/material-0.1/material.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/htmlwidgets-0.8/htmlwidgets.js"></script>
@@ -75,57 +69,9 @@ code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Inf
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-<!-- tabsets -->
-<script src="/tabsets.js"></script>
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script src="/codefolding.js"></script>
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
-
 </head>
 
 <body>
-
-<div class="header-panel shadow z-2">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-3">
-        <div id="header">
-    <h1 class="title">Estimating the Risk of Human Extinction by Catastrophic Global Warfare</h1>
-                </div>
-    </div>
-</div>
-</div>
-</div>
-
-
-<div class="container-fluid main-container">
-    <div class="row">
-      <nav class="col-xs-3 menu" id="toc">
-        <ul>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#existential-risks">Existential Risks</a></li>
-        <li><a href="#the-probability-of-war">The Probability of War</a></li>
-        <li><a href="#population-dynamics">Population Dynamics</a></li>
-        <li><a href="#trends-in-violence">Trends in Violence</a></li>
-        <li><a href="#the-effects-of-technological-progress">The Effects of Technological Progress</a></li>
-        <li><a href="#the-anthropic-logic-of-peace">The Anthropic Logic of Peace</a></li>
-        <li><a href="#conclusion">Conclusion</a></li>
-        <li><a href="#references">References</a></li>
-        </ul>
-      </nav>
-     <div class="pages col-xs-9">
-     <div class="row">
-       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -159,7 +105,73 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
+<div id="content" data-toggle="wy-nav-shift">
 
+<!-- tabsets -->
+<script src="/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">Estimating the Risk of Human Extinction by Catastrophic Global Warfare</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Estimating the Risk of Human Extinction by Catastrophic Global Warfare</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#existential-risks">Existential Risks</a></li>
+      <li><a href="#the-probability-of-war">The Probability of War</a><ul>
+      <li><a href="#black-swan-wars">Black Swan Wars</a></li>
+      <li><a href="#dragon-king-wars">“Dragon King” Wars</a></li>
+      </ul></li>
+      <li><a href="#population-dynamics">Population Dynamics</a><ul>
+      <li><a href="#growth">Growth</a></li>
+      <li><a href="#stagnation">Stagnation</a></li>
+      <li><a href="#decline">Decline</a></li>
+      </ul></li>
+      <li><a href="#trends-in-violence">Trends in Violence</a><ul>
+      <li><a href="#mechanisms-of-the-onset-of-warfare">Mechanisms of the Onset of Warfare</a></li>
+      </ul></li>
+      <li><a href="#the-effects-of-technological-progress">The Effects of Technological Progress</a><ul>
+      <li><a href="#bigger-nukes">Bigger Nukes</a></li>
+      <li><a href="#biowarfare">Biowarfare</a></li>
+      <li><a href="#unfriendly-artificial-superintelligence">Unfriendly Artificial Superintelligence</a></li>
+      <li><a href="#unknown-unknowns">Unknown Unknowns</a></li>
+      </ul></li>
+      <li><a href="#the-anthropic-logic-of-peace">The Anthropic Logic of Peace</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+      <li><a href="#references">References</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;HistData&quot;</span>)
@@ -195,8 +207,8 @@ Quarrels %&gt;%
 <span class="st">  </span><span class="kw">filter</span>(LogRangeOfMagnitude &gt;=<span class="st"> </span><span class="dv">4</span>) %&gt;%
 <span class="st">  </span><span class="kw">rbind</span>(<span class="kw">data.frame</span>(<span class="dt">LogRangeOfMagnitude =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">LogNumberOfDeadlyQuarrels =</span> <span class="kw">c</span>(<span class="fl">2.1</span>, <span class="fl">6.9</span>, <span class="fl">7.1</span>))) %&gt;%
 <span class="st">  </span><span class="kw">plot_ly</span>(<span class="dt">x =</span> ~LogRangeOfMagnitude, <span class="dt">y =</span> ~LogNumberOfDeadlyQuarrels, <span class="dt">mode=</span><span class="st">&quot;markers&quot;</span>)</code></pre></div>
-<div id="htmlwidget-cfcc87db92d0af6fd05a" style="width:576px;height:576px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cfcc87db92d0af6fd05a">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"LogRangeOfMagnitude"},"yaxis":{"domain":[0,1],"title":"LogNumberOfDeadlyQuarrels"},"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[4,5,6,7,3,0,0],"y":[1.63346845557959,1.14612803567824,0.602059991327962,0.301029995663981,2.1,6.9,7.1],"mode":"markers","type":"scatter","marker":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<div id="htmlwidget-19f0bb4265daf9b73ea5" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-19f0bb4265daf9b73ea5">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"LogRangeOfMagnitude"},"yaxis":{"domain":[0,1],"title":"LogNumberOfDeadlyQuarrels"},"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[4,5,6,7,3,0,0],"y":[1.63346845557959,1.14612803567824,0.602059991327962,0.301029995663981,2.1,6.9,7.1],"mode":"markers","type":"scatter","marker":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
 <p>(Note that the two points at the upper-left of the graph are estimates of the global murder rate, and the point with the LogRangeOfMagnitude of 3 is, as best I can tell, an estimate Richardson based on a linear inference and not an actual measurement.)</p>
 <p>The Correlates of War Project tracks conflict from 1800 to 2010.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Download and Merge COW Datasets
@@ -313,8 +325,8 @@ ConflictCatalog &lt;-<span class="st"> </span><span class="kw">read_excel</span>
 <p>We can plot this function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#TODO: Fix the Axis Titles</span>
 <span class="kw">plot_ly</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">100</span>*<span class="dv">1000</span>, <span class="dt">y =</span> <span class="dv">1</span>-(<span class="dv">1</span>-pOfEWar)^(<span class="dv">1</span>:<span class="dv">100</span>*<span class="dv">1000</span>))</code></pre></div>
-<div id="htmlwidget-2234dee2e7d3b119da10" style="width:576px;height:576px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2234dee2e7d3b119da10">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1]},"yaxis":{"domain":[0,1]},"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000,21000,22000,23000,24000,25000,26000,27000,28000,29000,30000,31000,32000,33000,34000,35000,36000,37000,38000,39000,40000,41000,42000,43000,44000,45000,46000,47000,48000,49000,50000,51000,52000,53000,54000,55000,56000,57000,58000,59000,60000,61000,62000,63000,64000,65000,66000,67000,68000,69000,70000,71000,72000,73000,74000,75000,76000,77000,78000,79000,80000,81000,82000,83000,84000,85000,86000,87000,88000,89000,90000,91000,92000,93000,94000,95000,96000,97000,98000,99000,100000],"y":[0.0554023126888238,0.107735209126377,0.157168742071586,0.203863542967251,0.247971343902751,0.289635470658807,0.328991308436417,0.366166741783341,0.401282570147636,0.434452900408566,0.465785517660388,0.495382235453865,0.523339226633585,0.549747335846128,0.574692374734557,0.598255400778454,0.620512980685572,0.64153743919098,0.661397094072158,0.680156478143716,0.697876548953093,0.71461488685862,0.730425882133614,0.745360911704462,0.759468506097008,0.772794507133732,0.785382216894127,0.797272538422341,0.808504108639278,0.819113423891069,0.829134958541867,0.838601276996319,0.847543139515746,0.855989602171851,0.863968111262768,0.87150459249824,0.87862353524373,0.885348072097221,0.891700054057267,0.897700121526569,0.903367771381783,0.908721420327507,0.913778464740314,0.918555337197282,0.923067559872714,0.92732979497656,0.93135589239843,0.935158934712017,0.938751279686178,0.942144600440795,0.945349923377911,0.948377664011396,0.951237660811564,0.95393920717472,0.956491081621522,0.958901576322279,0.96117852404189,0.963329323591962,0.965360963872831,0.967280046583588,0.969092807673928,0.970805137607511,0.972422600502686,0.973950452212781,0.975393657404691,0.976756905691285,0.978044626870032,0.979261005317378,0.980409993585637,0.981495325246581,0.982520527023475,0.983488930250957,0.98440368170002,0.98526775380327,0.98608395431367,0.986854935428176,0.987583202405899,0.988271121708801,0.988920928691379,0.989534734864321,0.99011453475574,0.990662212392277,0.991179547421142,0.991668220892972,0.992129820724314,0.992565846857463,0.992977716134442,0.993366766900951,0.993734263355243,0.994081399656062,0.994409303802997,0.994719041301851,0.995011618626943,0.995287986491584,0.995549042937371,0.995795636252319,0.996028567727326,0.996248594259919,0.996456430813754,0.996652752741845],"type":"scatter","mode":"markers","marker":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<div id="htmlwidget-afb6f500dc4bc883fb57" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-afb6f500dc4bc883fb57">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1]},"yaxis":{"domain":[0,1]},"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000,21000,22000,23000,24000,25000,26000,27000,28000,29000,30000,31000,32000,33000,34000,35000,36000,37000,38000,39000,40000,41000,42000,43000,44000,45000,46000,47000,48000,49000,50000,51000,52000,53000,54000,55000,56000,57000,58000,59000,60000,61000,62000,63000,64000,65000,66000,67000,68000,69000,70000,71000,72000,73000,74000,75000,76000,77000,78000,79000,80000,81000,82000,83000,84000,85000,86000,87000,88000,89000,90000,91000,92000,93000,94000,95000,96000,97000,98000,99000,100000],"y":[0.0554023126888238,0.107735209126377,0.157168742071586,0.203863542967251,0.247971343902751,0.289635470658807,0.328991308436417,0.366166741783341,0.401282570147636,0.434452900408566,0.465785517660388,0.495382235453865,0.523339226633585,0.549747335846128,0.574692374734557,0.598255400778454,0.620512980685572,0.64153743919098,0.661397094072158,0.680156478143716,0.697876548953093,0.71461488685862,0.730425882133614,0.745360911704462,0.759468506097008,0.772794507133732,0.785382216894127,0.797272538422341,0.808504108639278,0.819113423891069,0.829134958541867,0.838601276996319,0.847543139515746,0.855989602171851,0.863968111262768,0.87150459249824,0.87862353524373,0.885348072097221,0.891700054057267,0.897700121526569,0.903367771381783,0.908721420327507,0.913778464740314,0.918555337197282,0.923067559872714,0.92732979497656,0.93135589239843,0.935158934712017,0.938751279686178,0.942144600440795,0.945349923377911,0.948377664011396,0.951237660811564,0.95393920717472,0.956491081621522,0.958901576322279,0.96117852404189,0.963329323591962,0.965360963872831,0.967280046583588,0.969092807673928,0.970805137607511,0.972422600502686,0.973950452212781,0.975393657404691,0.976756905691285,0.978044626870032,0.979261005317378,0.980409993585637,0.981495325246581,0.982520527023475,0.983488930250957,0.98440368170002,0.98526775380327,0.98608395431367,0.986854935428176,0.987583202405899,0.988271121708801,0.988920928691379,0.989534734864321,0.99011453475574,0.990662212392277,0.991179547421142,0.991668220892972,0.992129820724314,0.992565846857463,0.992977716134442,0.993366766900951,0.993734263355243,0.994081399656062,0.994409303802997,0.994719041301851,0.995011618626943,0.995287986491584,0.995549042937371,0.995795636252319,0.996028567727326,0.996248594259919,0.996456430813754,0.996652752741845],"type":"scatter","mode":"markers","marker":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
 <p>So, for example, let’s say we’re curious about the time frame for which an existentially risky war is 50% likely. Solving for <span class="math inline">\(n\)</span> gives us <span class="math inline">\(n \approx 12160.13\)</span> (which we can confirm visually using the above plot). So an existentially risky war should occur (with probability .5) within 12161 wars or so.</p>
 <div id="black-swan-wars" class="section level2">
 <h2>Black Swan Wars</h2>
@@ -340,8 +352,8 @@ pop &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="
 pop %&gt;%
 <span class="st">  </span><span class="kw">gather</span>(Estimator, Estimate, <span class="st">`</span><span class="dt">United States Census Bureau (2015)</span><span class="st">`</span>:<span class="st">`</span><span class="dt">Kapitza (1996)</span><span class="st">`</span>) %&gt;%
 <span class="st">  </span><span class="kw">plot_ly</span>(<span class="dt">x=</span>~Year, <span class="dt">y=</span>~Estimate, <span class="dt">color=</span>~Estimator)</code></pre></div>
-<div id="htmlwidget-f799f1d5e53afafb348f" style="width:576px;height:576px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f799f1d5e53afafb348f">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Year"},"yaxis":{"domain":[0,1],"title":"Estimate"},"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[1850,1900,1950,1970],"y":[1241000000,1633000000,2527000000,3637000000],"type":"scatter","mode":"markers","name":"Biraben (1980)","marker":{"fillcolor":"rgba(102,194,165,0.5)","color":"rgba(102,194,165,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1900,1920,1930,1940,1950,1962,1966,1970,1973],"y":[1668000000,1968000000,2145000000,2340000000,2486000000,3036000000,3288000000,3632000000,3860000000],"type":"scatter","mode":"markers","name":"Clark (1967)","marker":{"fillcolor":"rgba(211,164,122,0.5)","color":"rgba(211,164,122,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1900,1970],"y":[1680000000,3650000000],"type":"scatter","mode":"markers","name":"Durand (1974)","marker":{"fillcolor":"rgba(229,147,127,0.5)","color":"rgba(229,147,127,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1900,1910,1920,1930,1940,1950,1960,1970,1973,1980,1990,2000],"y":[1263000000,1654000000,1777000000,1912000000,2092000000,2307000000,2527960000,3042000000,3710000000,3923000000,4461000000,5308000000,6145000000],"type":"scatter","mode":"markers","name":"HYDE (2007)","marker":{"fillcolor":"rgba(156,159,194,0.5)","color":"rgba(156,159,194,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1820,1850,1870,1875,1900,1910,1913,1920,1925,1930,1940,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006],"y":[978731710,1157980287,1317804348,1364673820,1657016832,1810179854,1861471441,1992435086,2096967265,2212105977,2480533301,2813168438,2850709912,2889119354,2928421238,2968640626,3009803158,3051935040,3095063024,3139214386,3184416898,3230698796,3278088736,3326615746,3376309175,3427198621,3479313864,3532684776,3587341226,3643312977,3700629557,3759320129,3819413342,3880937164,3943918702,4008384006,4074357852,4141863511,4210922505,4281554332,4353776194,4427602692,4503045520,4580113137,4658810442,4739138424,4821093831,4904668820,4989850628,5076621246,5164957114,5254828841,5346200950,5439031672,5533272772,5628869441,5725760238,5823877103,5923145436,6023484262,6124806459,6227019087,6330023776,6433717209,6537991669,6642735659,6747834580,6853171462],"type":"scatter","mode":"markers","name":"Kapitza (1996)","marker":{"fillcolor":"rgba(194,150,199,0.5)","color":"rgba(194,150,199,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1820,1870,1900,1913,1920,1940,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009],"y":[1042000000,1276000000,1563000000,1793000000,1863000000,2299000000,2544000000,2571663000,2617949000,2665959000,2716927000,2769074000,2822502000,2879934000,2939254000,2995909000,3041507000,3082161000,3135787000,3201354000,3266477000,3333138000,3402224000,3471464000,3543086000,3615743000,3691157000,3769818000,3846499000,3922793000,3997677000,4070671000,4141445000,4213539000,4286317000,4363144000,4439529000,4514838000,4587307000,4676388000,4756521000,4837719000,4920968000,5006672000,5093306000,5180540000,5269029000,5351922000,5435722000,5518127000,5599396000,5681575000,5762212000,5842122000,5921366000,5999622000,6076558000,6154791000,6231704000,6308364000,6374056000,6462987000,6540214000,6616689000,6694832000,6764086000],"type":"scatter","mode":"markers","name":"Maddison (2008)","marker":{"fillcolor":"rgba(223,155,177,0.5)","color":"rgba(223,155,177,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1875,1900,1925,1950,1975,2000],"y":[1200000000,1325000000,1625000000,2000000000,2500000000,3900000000,5750000000],"type":"scatter","mode":"markers","name":"McEvedy & Jones (1978)","marker":{"fillcolor":"rgba(182,204,108,0.5)","color":"rgba(182,204,108,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1900,1950,1995,1997,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],"y":[1265000000,1656000000,2516000000,5760000000,5840000000,6067000000,6137000000,6215000000,6314000000,6396000000,6477000000,6555000000,6625000000,6705000000,6809972000,6892319000,6986951000,7057075000,7136796000,7238184000,7336435000],"type":"scatter","mode":"markers","name":"Population Reference Bureau (1973–2015)","marker":{"fillcolor":"rgba(209,217,69,0.5)","color":"rgba(209,217,69,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1900,1950,1985],"y":[1600000000,2400000000,5000000000],"type":"scatter","mode":"markers","name":"Tanton (1994)","marker":{"fillcolor":"rgba(253,215,61,0.5)","color":"rgba(253,215,61,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1900,1950,1970,1975],"y":[1200000000,1600000000,2400000000,3600000000,4000000000],"type":"scatter","mode":"markers","name":"Thomlinson (1975)","marker":{"fillcolor":"rgba(237,202,125,0.5)","color":"rgba(237,202,125,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1900,1910,1920,1930,1940,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],"y":[1262000000,1650000000,1750000000,1860000000,2070000000,2300000000,2525149000,2572850917,2619292068,2665865392,2713172027,2761650981,2811572031,2863042795,2916030167,2970395814,3026002942,3082830266,3141071531,3201178277,3263738832,3329122479,3397475247,3468521724,3541674891,3616108749,3691172616,3766754345,3842873611,3919182332,3995304922,4071020434,4146135850,4220816737,4295664825,4371527871,4449048798,4528234634,4608962418,4691559840,4776392828,4863601517,4953376710,5045315871,5138214688,5230000000,5320816667,5408908724,5494899570,5578865109,5661086346,5741822412,5821016750,5898688337,5975303657,6051478010,6127700428,6204147026,6280853817,6357991749,6435705595,6514094605,6593227977,6673105937,6753649228,6834721933,6916183482,6997998760,7080072417,7162119434,7243784000,7349472000],"type":"scatter","mode":"markers","name":"United Nations Department of Economic and Social Affairs (2015)","marker":{"fillcolor":"rgba(212,190,160,0.5)","color":"rgba(212,190,160,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],"y":[2557628654,2594939877,2636772306,2682053389,2730228104,2782098943,2835299673,2891349717,2948137248,3000716593,3043001508,3083966929,3140093217,3209827882,3281201306,3350425793,3420677923,3490333715,3562313822,3637159050,3712697742,3790326948,3866568653,3942096442,4016608813,4089083233,4160185010,4232084578,4304105753,4379013942,4451362735,4534410125,4614566561,4695736743,4774569391,4856462699,4940571232,5027200492,5114557167,5201440110,5288955934,5371585922,5456136278,5538268316,5618682132,5699202985,5779440593,5857972543,5935213248,6012074922,6088571383,6165219247,6242016348,6318590956,6395699509,6473044732,6551263534,6629913759,6709049780,6788214394,6866332358,6944055583,7022349283,7101027895,7178722893,7256490011],"type":"scatter","mode":"markers","name":"United States Census Bureau (2015)","marker":{"fillcolor":"rgba(179,179,179,0.5)","color":"rgba(179,179,179,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<div id="htmlwidget-4c32ab60344d35e7c14b" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4c32ab60344d35e7c14b">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Year"},"yaxis":{"domain":[0,1],"title":"Estimate"},"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[1850,1900,1950,1970],"y":[1241000000,1633000000,2527000000,3637000000],"type":"scatter","mode":"markers","name":"Biraben (1980)","marker":{"fillcolor":"rgba(102,194,165,0.5)","color":"rgba(102,194,165,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1900,1920,1930,1940,1950,1962,1966,1970,1973],"y":[1668000000,1968000000,2145000000,2340000000,2486000000,3036000000,3288000000,3632000000,3860000000],"type":"scatter","mode":"markers","name":"Clark (1967)","marker":{"fillcolor":"rgba(211,164,122,0.5)","color":"rgba(211,164,122,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1900,1970],"y":[1680000000,3650000000],"type":"scatter","mode":"markers","name":"Durand (1974)","marker":{"fillcolor":"rgba(229,147,127,0.5)","color":"rgba(229,147,127,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1900,1910,1920,1930,1940,1950,1960,1970,1973,1980,1990,2000],"y":[1263000000,1654000000,1777000000,1912000000,2092000000,2307000000,2527960000,3042000000,3710000000,3923000000,4461000000,5308000000,6145000000],"type":"scatter","mode":"markers","name":"HYDE (2007)","marker":{"fillcolor":"rgba(156,159,194,0.5)","color":"rgba(156,159,194,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1820,1850,1870,1875,1900,1910,1913,1920,1925,1930,1940,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006],"y":[978731710,1157980287,1317804348,1364673820,1657016832,1810179854,1861471441,1992435086,2096967265,2212105977,2480533301,2813168438,2850709912,2889119354,2928421238,2968640626,3009803158,3051935040,3095063024,3139214386,3184416898,3230698796,3278088736,3326615746,3376309175,3427198621,3479313864,3532684776,3587341226,3643312977,3700629557,3759320129,3819413342,3880937164,3943918702,4008384006,4074357852,4141863511,4210922505,4281554332,4353776194,4427602692,4503045520,4580113137,4658810442,4739138424,4821093831,4904668820,4989850628,5076621246,5164957114,5254828841,5346200950,5439031672,5533272772,5628869441,5725760238,5823877103,5923145436,6023484262,6124806459,6227019087,6330023776,6433717209,6537991669,6642735659,6747834580,6853171462],"type":"scatter","mode":"markers","name":"Kapitza (1996)","marker":{"fillcolor":"rgba(194,150,199,0.5)","color":"rgba(194,150,199,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1820,1870,1900,1913,1920,1940,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009],"y":[1042000000,1276000000,1563000000,1793000000,1863000000,2299000000,2544000000,2571663000,2617949000,2665959000,2716927000,2769074000,2822502000,2879934000,2939254000,2995909000,3041507000,3082161000,3135787000,3201354000,3266477000,3333138000,3402224000,3471464000,3543086000,3615743000,3691157000,3769818000,3846499000,3922793000,3997677000,4070671000,4141445000,4213539000,4286317000,4363144000,4439529000,4514838000,4587307000,4676388000,4756521000,4837719000,4920968000,5006672000,5093306000,5180540000,5269029000,5351922000,5435722000,5518127000,5599396000,5681575000,5762212000,5842122000,5921366000,5999622000,6076558000,6154791000,6231704000,6308364000,6374056000,6462987000,6540214000,6616689000,6694832000,6764086000],"type":"scatter","mode":"markers","name":"Maddison (2008)","marker":{"fillcolor":"rgba(223,155,177,0.5)","color":"rgba(223,155,177,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1875,1900,1925,1950,1975,2000],"y":[1200000000,1325000000,1625000000,2000000000,2500000000,3900000000,5750000000],"type":"scatter","mode":"markers","name":"McEvedy & Jones (1978)","marker":{"fillcolor":"rgba(182,204,108,0.5)","color":"rgba(182,204,108,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1900,1950,1995,1997,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],"y":[1265000000,1656000000,2516000000,5760000000,5840000000,6067000000,6137000000,6215000000,6314000000,6396000000,6477000000,6555000000,6625000000,6705000000,6809972000,6892319000,6986951000,7057075000,7136796000,7238184000,7336435000],"type":"scatter","mode":"markers","name":"Population Reference Bureau (1973–2015)","marker":{"fillcolor":"rgba(209,217,69,0.5)","color":"rgba(209,217,69,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1900,1950,1985],"y":[1600000000,2400000000,5000000000],"type":"scatter","mode":"markers","name":"Tanton (1994)","marker":{"fillcolor":"rgba(253,215,61,0.5)","color":"rgba(253,215,61,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1900,1950,1970,1975],"y":[1200000000,1600000000,2400000000,3600000000,4000000000],"type":"scatter","mode":"markers","name":"Thomlinson (1975)","marker":{"fillcolor":"rgba(237,202,125,0.5)","color":"rgba(237,202,125,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1850,1900,1910,1920,1930,1940,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],"y":[1262000000,1650000000,1750000000,1860000000,2070000000,2300000000,2525149000,2572850917,2619292068,2665865392,2713172027,2761650981,2811572031,2863042795,2916030167,2970395814,3026002942,3082830266,3141071531,3201178277,3263738832,3329122479,3397475247,3468521724,3541674891,3616108749,3691172616,3766754345,3842873611,3919182332,3995304922,4071020434,4146135850,4220816737,4295664825,4371527871,4449048798,4528234634,4608962418,4691559840,4776392828,4863601517,4953376710,5045315871,5138214688,5230000000,5320816667,5408908724,5494899570,5578865109,5661086346,5741822412,5821016750,5898688337,5975303657,6051478010,6127700428,6204147026,6280853817,6357991749,6435705595,6514094605,6593227977,6673105937,6753649228,6834721933,6916183482,6997998760,7080072417,7162119434,7243784000,7349472000],"type":"scatter","mode":"markers","name":"United Nations Department of Economic and Social Affairs (2015)","marker":{"fillcolor":"rgba(212,190,160,0.5)","color":"rgba(212,190,160,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"},{"x":[1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015],"y":[2557628654,2594939877,2636772306,2682053389,2730228104,2782098943,2835299673,2891349717,2948137248,3000716593,3043001508,3083966929,3140093217,3209827882,3281201306,3350425793,3420677923,3490333715,3562313822,3637159050,3712697742,3790326948,3866568653,3942096442,4016608813,4089083233,4160185010,4232084578,4304105753,4379013942,4451362735,4534410125,4614566561,4695736743,4774569391,4856462699,4940571232,5027200492,5114557167,5201440110,5288955934,5371585922,5456136278,5538268316,5618682132,5699202985,5779440593,5857972543,5935213248,6012074922,6088571383,6165219247,6242016348,6318590956,6395699509,6473044732,6551263534,6629913759,6709049780,6788214394,6866332358,6944055583,7022349283,7101027895,7178722893,7256490011],"type":"scatter","mode":"markers","name":"United States Census Bureau (2015)","marker":{"fillcolor":"rgba(179,179,179,0.5)","color":"rgba(179,179,179,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
 <p>One which I find particularly worth highlighting is <a href="https://web.archive.org/web/20090511041230/http://srs.dl.ac.uk/SPEAKERS/KAPITZA/Uspekhi_96.html">Sergey Kapitza’s phenomonological model of global population growth</a>, which can be roughly stated as:</p>
 <p><span class="math display">\[N\approx4.43*10^9*\arctan{\frac{42}{2007-Y}}\]</span></p>
 <p>where <span class="math inline">\(N\)</span> is the estimate of the Global Population, and <span class="math inline">\(Y\)</span> is the year.</p>
@@ -483,75 +495,19 @@ pop %&gt;%
 <div id="references" class="section level1">
 <h1>References</h1>
 </div>
+</div>
 
-    </div>
-    <div class="col-xs-2">
-        <div class="btn-toolbar">
-    <div class="btn-group">
-    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
-    <ul class="dropdown-menu" style="min-width: 50px;">
-    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
-    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
-    </ul>
-    </div>
-    </div>
-        </div>
-  </div>
-  </div>
-  </div>
-  <div class="row">
-    </div>
-  </div>
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
 
 <script>
 $(document).ready(function () {
-  // add bootstrap table styles to pandoc tables
-  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
-
-    var images = $('.pages img');
-  images.filter(function() {
-      if ($(this).parent().attr("class") == "figure") {
-          return(false)
-      } else {
-          return(true);
-      }
-  }).wrap("<div class='figure'></div>");
-  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
-  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
-  $('.figure').addClass('panel panel-default');
-  
-    $('.pages img')
- 	  .addClass("image-lb");
-  $('.pages').magnificPopup({
-	      type:'image',
-	      closeOnContentClick: false,
-	      delegate: 'img',
-	      gallery: {enabled: false },
-          removalDelay: 500,
-          callbacks: {
-              beforeOpen: function() {
-                // just a hack that adds mfp-anim class to markup
-                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
-              }
-          },
-          mainClass: 'mfp-move-from-top',
-	      image: {
-	        verticalFit: true,
-            titleSrc: 'alt'
-	      }
- 	    });
- 	
-    window.page = window.location.hash;
-    if (window.page != "") {
-      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
-    }
-
-    /* init material bootstrap js */
-    $.material.init();
-});
+ 	  });
 </script>
-
-
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

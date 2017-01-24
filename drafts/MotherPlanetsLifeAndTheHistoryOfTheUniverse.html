@@ -11,9 +11,7 @@
 
 
 <title>Mother Planets, Life, and the History of the Universe</title>
-<!-- Material Design fonts -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,12 +19,8 @@
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
 <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
-<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
-<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
-<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
-<script src="site_libs/material-0.1/material.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 
@@ -34,50 +28,9 @@
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-<!-- tabsets -->
-<script src="/tabsets.js"></script>
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script src="/codefolding.js"></script>
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
-
 </head>
 
 <body>
-
-<div class="header-panel shadow z-2">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-3">
-        <div id="header">
-    <h1 class="title">Mother Planets, Life, and the History of the Universe</h1>
-                </div>
-    </div>
-</div>
-</div>
-</div>
-
-
-<div class="container-fluid main-container">
-    <div class="row">
-      <nav class="col-xs-3 menu" id="toc">
-        <ul>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#references">References</a></li>
-        </ul>
-      </nav>
-     <div class="pages col-xs-9">
-     <div class="row">
-       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -111,7 +64,52 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
+<div id="content" data-toggle="wy-nav-shift">
 
+<!-- tabsets -->
+<script src="/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">Mother Planets, Life, and the History of the Universe</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Mother Planets, Life, and the History of the Universe</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#references">References</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Let’s assume, for a moment, that there is an Early Great Filter (i.e., we’ve made it past), and that no mother planet in the Universe has evolved life. (Define a <em>mother planet</em> is a planet upon which life has evolved, or will evolve.) If life is so unusual, the number of mother planets is given by the formula: <span class="math display">\[N_n=1/(1-P)\]</span> where <span class="math inline">\(N_n\)</span> is the number of mother planets in the universe, and P is the proportion of planets in the universe born after a given mother planet (i.e. Earth). All else being unknown, what’s the best guess for when in the life-cycle of the universe the Earth formed? Well, as with any point estimate from an otherwise unmeasured distribution, the best estimate is the median, or .5. Given this and P=.5, we can expect approximately two planets in the history of the universe to evolve life. It seems, however, that P is estimable, and decidedly not .5. In <a href="http://arxiv.org/pdf/1508.01202v1.pdf">On The History and Future of Cosmic Planet Formation</a>, Behroozi and Peeples estimate that P=.92. in other worlds looks like Earth had a head-start advantage over 92% of the other planets in the Universe. Thus, if the Earth was the only planet to evolve life so far, approximately [latex]1/(1-.92)=12.5[/latex] planets should be able to evolve life in the course of the Universe. If we alternately postulate that Earth is not unique among existing planets (i.e. life has already evolved elsewhere as well), we can modify the model to account for this fact: <span class="math display">\[N_e=N_n/(1-P)\]</span> where <span class="math inline">\(N_n\)</span> represents the number of mother planets estimated to already exist. These estimates can span widely, from 1 (i.e. Earth is unique, as explored above) to <span class="math inline">\(10^{22}\)</span> (or the best estimate for the number of planets already in the universe). Now, it is important to note that the authors propose broadly two mechanisms by which terrestrial planets might form: one standard and one novel. If the novel formation mechanism doesn’t bear out empirically, then the Earth was formed much closer to the conclusion of the universe’s window of opportunity for the formation of life (<span class="math inline">\(P\approx.2\)</span>). In this case, the predicted number of life-sustaining planets drops to 1.25.</p>
@@ -119,75 +117,19 @@ $(document).ready(function () {
 <div id="references" class="section level1">
 <h1>References</h1>
 </div>
+</div>
 
-    </div>
-    <div class="col-xs-2">
-        <div class="btn-toolbar">
-    <div class="btn-group">
-    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
-    <ul class="dropdown-menu" style="min-width: 50px;">
-    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
-    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
-    </ul>
-    </div>
-    </div>
-        </div>
-  </div>
-  </div>
-  </div>
-  <div class="row">
-    </div>
-  </div>
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
 
 <script>
 $(document).ready(function () {
-  // add bootstrap table styles to pandoc tables
-  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
-
-    var images = $('.pages img');
-  images.filter(function() {
-      if ($(this).parent().attr("class") == "figure") {
-          return(false)
-      } else {
-          return(true);
-      }
-  }).wrap("<div class='figure'></div>");
-  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
-  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
-  $('.figure').addClass('panel panel-default');
-  
-    $('.pages img')
- 	  .addClass("image-lb");
-  $('.pages').magnificPopup({
-	      type:'image',
-	      closeOnContentClick: false,
-	      delegate: 'img',
-	      gallery: {enabled: false },
-          removalDelay: 500,
-          callbacks: {
-              beforeOpen: function() {
-                // just a hack that adds mfp-anim class to markup
-                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
-              }
-          },
-          mainClass: 'mfp-move-from-top',
-	      image: {
-	        verticalFit: true,
-            titleSrc: 'alt'
-	      }
- 	    });
- 	
-    window.page = window.location.hash;
-    if (window.page != "") {
-      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
-    }
-
-    /* init material bootstrap js */
-    $.material.init();
-});
+ 	  });
 </script>
-
-
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

@@ -4,17 +4,23 @@ title: "Setting Some Priors for the Next Four Years"
 
 # Introduction
 
-The general tenor of the media has been pretty gloomy lately. I'm troubled that these narratives aren't making concrete criteria for their predictions about the Trump administration. The danger this presents is that we can retroactively point to some statistics which are "worse" and claim that this is proof that the Administration failed. To avoid this, we should explicitly list out the statistic, and preferably the source of that statistic, to creat an objective judgement criterion for each prediction.
-
-Accordingly, I'm going to lay out a few predictions with some statistics, so that they can be fairly scored by 2020.
-
-```{r, message=FALSE}
+```{r, results='asis', message=FALSE}
 library(dplyr)
 library(ShRoud)
 library(readr)
 library(readxl)
 library(ggplot2)
+
+source("infobox.R")
+infobox(list(
+  "Status" = "Incomplete",
+  "Last Revision" = file.info("SettingSomePriorsForTheTrumpAdministration.Rmd")$mtime
+))
 ```
+
+The general tenor of the media has been pretty gloomy lately. I'm troubled that these narratives aren't making concrete criteria for their predictions about the Trump administration. The danger this presents is that we can retroactively point to some statistics which are "worse" and claim that this is proof that the Administration failed. To avoid this, we should explicitly list out the statistic, and preferably the source of that statistic, to creat an objective judgement criterion for each prediction.
+
+Accordingly, I'm going to lay out a few predictions with some statistics, so that they can be fairly scored by 2020.
 
 # Economy
 
@@ -142,7 +148,9 @@ If I had the time, a more thorough analysis would run a Monte-Carlo simulation o
 I started this section by prognosticating that federal revenues would decline, but the data totally changed my mind. Federal Revenues basically don't decline:
 
 ```{r, warning=FALSE, message=FALSE}
-download.file("https://www.whitehouse.gov/sites/default/files/omb/budget/fy2017/assets/hist01z1.xls", "../data/FedBudget.xls")
+if(!file.exists("../data/FedBudget.xls")){
+  download.file("https://www.whitehouse.gov/sites/default/files/omb/budget/fy2017/assets/hist01z1.xls", "../data/FedBudget.xls")
+}
 budget <- stfu(read_excel("../data/FedBudget.xls", skip = 3))
 names(budget)[1] <- "Year"
 budget <- budget[3:118,1:3] %>%

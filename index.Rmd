@@ -2,8 +2,6 @@
 title: "Essays"
 ---
 
-# Essays
-
 ```{r, message=FALSE}
 library("plyr")
 library("dplyr")

@@ -1,12 +1,6 @@
 ---
 title: "Good Policies"
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
-
-# Introduction
 
 ```{r, results='asis'}
 source("infobox.R")
@@ -17,6 +11,8 @@ meta <- list(
 )
 infobox(meta)
 ```
+
+# Introduction
 
 Around July 2014, I started keeping a list of the policy changes I broadly advocation. As the list grew longer, I realized that I was building a fairly comprehensive political platform. "Fairly comprehensive" does not, however, mean "complete."
 
@@ -32,10 +28,9 @@ Kill the Air Force--subsume its assets into the Army and Navy.
 
 Kill all Missile Defense Systems.
 
-End development and cancel purchase orders for all F-35s.
+Prevent development of any weapons system acquisitions whose expected costs exceed \$100 Billion over the lifetime of the program. We don't need any new, trillion dollar F-35-type programs, and probably won't for a couple of decades.
 
 # Education
-
 
 Pay teachers at a competitive rate relative to other highly-trained professionals--lawyers, for example.
 
@@ -43,13 +38,13 @@ Institute year-round schooling. The current schedule of school-free summers crea
 
 Set up more neighborhood schools with smaller campuses and fewer students--Research suggests the school size is more strongly correlated with student performance than student/teacher ratio.
 
-Mandate vaccinations for all public school attendees.
+Mandate vaccinations for all non-immunocompromised public school attendees.
 
 Order school schedules according to student sleeping schedules: Elementary (K-3) starts early, Middle (4-6) later, Jr. High (7-9) later still, and High (10-12) latest.
 
 Freely feed all students breakfast and lunch.
 
-Replace cursive writing curriculum with typing skills on Dvorak keyboards.
+Replace cursive writing curriculum with typing skills.
 
 Segregate classes according to birth season, resulting in student groups for which the default age differential is no more than 3 or 4 months (permitting less mature students to move back to the next-younger class, and more mature students to advance symmetrically).
 
@@ -81,13 +76,13 @@ Peg the minimum wage to BLS estimates of Consumer Price Index.
 
 End Unemployment and Disability Insurance programs and institute a Guaranteed Basic Income.
 
-Expand SNAP benefits while enacting stricter guards to prevent SNAP benefits from going to soft drinks, candy, cookies, snack crackers, and ice cream.
+Expand SNAP benefits while enacting stricter guards to prevent SNAP benefits from going to high-sugar food stuffs.
 
 # Open Borders
 
 Stop the flow of illegal immigrants by letting everyone in through legal checkpoints.
 
-Fire CBP Agents and their managers on any allegation of wrong-doing. Aggressively pursue criminal charges against agents.
+Fire CBP Agents and their managers on any reasonable allegation of wrong-doing. Aggressively pursue criminal charges against agents.
 
 # Infrastructure
 
@@ -159,11 +154,9 @@ End all Corn Subsidies--let the markets decide what crops should be grown in the
 
 Implement an aggressive Research Agenda on Nuclear Waste Transmutation.
 
-Begin construction on Petawatt-hour Nuclear Reactors (What? How?)
-
 Mandate Solar Energy production standards for all new, federally-constructed buildings.
 
-Expand existing incentive programs for solar electricity.
+Expand existing incentive programs for consumer solar electricity and entrepreneurship.
 
 # Statehood Modifications
 
@@ -198,10 +191,6 @@ Institute a phased reduction in the minting of bills, with intent to eliminate p
 
 Institute the National Popular Vote.
 
-Publicly fund all elections (i.e. Legislate around Citizens United).
-
-Make everyone vote in every election. Voters respond to their sense of malcontentment by abstaining from voting.
-
 Make Election Day a Federal Holiday.
 
 Move Voter Registration online.
@@ -210,23 +199,21 @@ Move Voter Registration online.
 
 Begin Research on construction on massive, mobile space station capable of supporting large colonies of life with and without social control mechanisms (e.g. plan out reproductive schedule for inhabitants to minimize the size of the population while maximizing the genetic diversity). Couple with the Defense Department's Manhattan Project for Global Catastrophic Risk Reduction. Build a program capable of sending self-sustaining human colonies away from Earth permanently.
 
-Establish permanent Mars colony.
+Establish a permanent Moon colony.
 
-Begin terraforming the Moon.
+Establish a permanent Mars colony.
 
 Begin research on terraforming everything: Mars, Venus, Titan, Europa.
 
-# Supreme Court
+Begin terraforming the Moon.
 
-Amend the constitution to restructure the Supreme Court in the following ways:
+# Supreme Court
 
 Every Justice serves a single 18-year term. That way, every president gets to nominate two per term.
 
 Justices may initiate a Constitutional Review of a law if they believe it may be unconstitutional, even if no case has been brought before them which calls into question the law's constitutionality.
 
 # Congress
-
-Institute the following procedural changes:
 
 Eliminate the Filibuster.
 

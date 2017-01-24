@@ -11,9 +11,7 @@
 
 
 <title>Evolutionary Quines</title>
-<!-- Material Design fonts -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,12 +19,8 @@
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
 <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-<link href="site_libs/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
-<link href="site_libs/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap_material-0.1/material.min.js"></script>
-<script src="site_libs/bootstrap_material-0.1/ripples.min.js"></script>
-<link href="site_libs/material-0.1/material.css" rel="stylesheet" />
-<script src="site_libs/material-0.1/material.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 
@@ -71,49 +65,9 @@ code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Inf
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
-<!-- tabsets -->
-<script src="/tabsets.js"></script>
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script src="/codefolding.js"></script>
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
-
 </head>
 
 <body>
-
-<div class="header-panel shadow z-2">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-3">
-        <div id="header">
-    <h1 class="title">Evolutionary Quines</h1>
-                </div>
-    </div>
-</div>
-</div>
-</div>
-
-
-<div class="container-fluid main-container">
-    <div class="row">
-      <nav class="col-xs-3 menu" id="toc">
-        <ul>
-        <li><a href="#introduction">Introduction</a></li>
-        </ul>
-      </nav>
-     <div class="pages col-xs-9">
-     <div class="row">
-       <div class="col-xs-10">
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -147,7 +101,51 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
+<div id="content" data-toggle="wy-nav-shift">
 
+<!-- tabsets -->
+<script src="/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">Evolutionary Quines</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Evolutionary Quines</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>The emergence of self-replicating molecules–a non-living precursor to life–is the most likely candidate for the Great Filter. To illustrate the logic behind this conclusion, let’s translate the problem into a analog upon which we perform experiments and direct analysis. In computer science, a <a href="http://www.nyx.net/~gthompso/quine.htm"><em>quine</em></a> is a program which “self-replicates” in a certain sense. That is, it emits exactly its own source code. Consider the following quine (the shortest I could find), written in Python:</p>
@@ -160,75 +158,19 @@ $(document).ready(function () {
 <p>Multiply all these probabilities together, and you get <span class="math inline">\(10^{-34}\)</span>, the <em>same probability</em> as randomly assembling a quine <em>under the most convenient circumstances possible</em>. (Incidentally, <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">Alexander’s original example</a> mapped out a probability of 10^67, much closer to the more natural and less convenient scenario of using the full ASCII charset). In general, the number of planets in the universe is <a href="http://www.atlasoftheuniverse.com/universe.html">estimated</a> to be around <span class="math inline">\(10^{22}\)</span>. So the probability of ANY planet in this universe constructing a quine by flipping coins is something like <span class="math inline">\(10^{-12}\)</span>. I hope the last sentence sounds strange to you. Planets don’t flip coins. Flipping coins can’t, by itself, generate an executable computer program. More intrinsically, there are some important sources of non-randomness in actual evolution. The distribution of Carbon, Hydrogen and Oxygen in a planet’s environment, for one. Lots of things are wrong with the model, but the method it uses and probabilities it exposes are illustrative and useful. The most important piece of the analogy, however, is the qualitative <em>algorithm</em>. Likewise, thermodynamics is a reasonable source for random atomic activity, which was the only driving force for the creation of anything in entire the Universe. However, in the moment that first, fragile replicator was created, the most interesting thing in the history of the universe occurred. Suddenly, there was a <em>new algorithm</em> for building molecules. And all molecules which descended from that first replicator were generated using this new algorithm. Thus, subsequent evolutionary adaptations may have required discrete changes to the molecular structure with higher information complexity, but generated those changes using a FAR SUPERIOR search algorithm than the random algorithm which generated the replicator. To return to our quine, let’s be generous and say that the next candidate for the Great Filter requires just one bit more than was required to build the quine, so 116 bits of information. The algorithmic complexity to construct the quine randomly was <span class="math inline">\(O(2^n)\)</span>, where n was the number of requisite bits. The algorithmic complexity to <em>adapt</em> the quine is much smaller. In all of these calculations, we have an important piece of missing information; a variable where we need a constant. That piece of information is the complexity of the simplest self-replicating molecule. If it were arbitrarily small (say, a <a href="https://en.wikipedia.org/wiki/Methane">methane</a> molecule) I would have to pare back my probability estimates considerably. But we know that methane is not self-replicating. The prevailing hypothesis is that the first replicator was most similar to a strand of modern RNA, to which ambient molecules would affix themselves and then detach when they had formed the complete strand. There’s a strong environmental component which I’m neglecting here. In order to self-replicate, the first replicator needed to be in an environment which was rich in assembled constituent molecules, something that is unlikely in itself.</p>
 <p>Quines have been identified as a <a href="http://www.uncommondescent.com/biology/the-quine-dilemma-of-evolution/">basis for models of evolution</a> before. The problem with this approach is that the means of error production in a quine must be explicitly written into the quine itself. In a true evolutionary situation, errors in the quine would be as much products of the environment as they would products of the replicator itself.</p>
 </div>
+</div>
 
-    </div>
-    <div class="col-xs-2">
-        <div class="btn-toolbar">
-    <div class="btn-group">
-    <a href="#" class="btn btn-raised btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></a>
-    <ul class="dropdown-menu" style="min-width: 50px;">
-    <li><a id="rmd-show-all-code" href="#">Show All</a></li>
-    <li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
-    </ul>
-    </div>
-    </div>
-        </div>
-  </div>
-  </div>
-  </div>
-  <div class="row">
-    </div>
-  </div>
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
 
 <script>
 $(document).ready(function () {
-  // add bootstrap table styles to pandoc tables
-  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
-
-    var images = $('.pages img');
-  images.filter(function() {
-      if ($(this).parent().attr("class") == "figure") {
-          return(false)
-      } else {
-          return(true);
-      }
-  }).wrap("<div class='figure'></div>");
-  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
-  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
-  $('.figure').addClass('panel panel-default');
-  
-    $('.pages img')
- 	  .addClass("image-lb");
-  $('.pages').magnificPopup({
-	      type:'image',
-	      closeOnContentClick: false,
-	      delegate: 'img',
-	      gallery: {enabled: false },
-          removalDelay: 500,
-          callbacks: {
-              beforeOpen: function() {
-                // just a hack that adds mfp-anim class to markup
-                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
-              }
-          },
-          mainClass: 'mfp-move-from-top',
-	      image: {
-	        verticalFit: true,
-            titleSrc: 'alt'
-	      }
- 	    });
- 	
-    window.page = window.location.hash;
-    if (window.page != "") {
-      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
-    }
-
-    /* init material bootstrap js */
-    $.material.init();
-});
+ 	  });
 </script>
-
-
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
