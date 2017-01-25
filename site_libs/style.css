@@ -25,3 +25,7 @@ img {
 .pages ul.nav{
   margin: 0;
 }
+
+.figure {
+  margin: 10px auto;
+}
