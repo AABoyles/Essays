@@ -8,14 +8,13 @@ img {
   display: block;
 }
 
-.infobox {
-  float: right;
-  margin-left: 19px;
-  height: auto;
-}
-
-.table-wrapper{
-  overflow-x: hidden;
+@media (min-width: 992px) {
+  .infobox {
+    float: right;
+    width: 40%;
+    display: inline-block;
+    margin-left:15px;
+  }
 }
 
 .plotly {

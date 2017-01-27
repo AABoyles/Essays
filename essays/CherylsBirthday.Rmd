@@ -2,8 +2,6 @@
 title: "Cheryl's Birthday"
 ---
 
-# Cheryl's Birthday
-
 ```{r, results='asis'}
 source("infobox.R")
 meta <- list(
