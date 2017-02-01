@@ -6,18 +6,20 @@ bibliography: Longevity.bib
 # Introduction
 
 ```{r, message=FALSE}
-library("plotly")
-library("magrittr")
-library("intubate")
-library("purrr")
 library("parallel")
+library("magrittr")
+library("readr")
 library("plyr")
+library("dplyr")
+library("tidyr")
+library("purrr")
+library("intubate")
 library("metafor")
 library("BayesianFirstAid")
 library("bayesmeta")
+library("plotly")
 library("knitr")
-library("readr")
-library("tidyr")
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE)
 ```
 
 ```{r, results='asis'}
@@ -33,15 +35,15 @@ infobox(list(
 
 I want to live for a very long time.
 
-There are, broadly speaking, two ways to extend lives. One is public health. This is the kind of thing that goes to actuarial tables and says "Which of these causes of death can be reduced?" And they pick one, like car accidents and figure out how to stop people from dying in car accidents. They invent seatbelts and airbags, and then convince governments to make laws forcing people to use seatbelts and airbags. And then people start dying less from car accidents.
+There are, broadly speaking, two ways to extend lives. One is public health. To extend lives using public health, go to an actuarial table and ask "Which of these causes of death can be mitigated?" Then pick one, like car accidents and figure out how to stop people from dying in car accidents. Invent seatbelts and airbags, and then convince governments to make laws forcing people to use seatbelts and airbags. And then people start dying less from car accidents, and you've extended their lives.
 
-The people doing Public health are really, **really** good at it. Average human lifespans are increasing all over the world, almost entirely due to victories in public health. People are smoking less. Eating better food. Breathing less of fewer toxic things. Drinking cleaner water. Breastfeeding. Hurting each other less.
+The people doing public health are really, **really** good at it. [Average human lifespans are increasing all over the world](https://ourworldindata.org/life-expectancy/#life-expectancy-has-improved-globally), almost entirely due to victories in public health. People are [getting vaccinated](https://data.oecd.org/healthcare/child-vaccination-rates.htm). Eating better food. Breathing less of fewer toxic things. Drinking cleaner water. Breastfeeding. [Hurting each other less](https://en.wikipedia.org/wiki/The_Better_Angels_of_Our_Nature).
 
-Basically, public health is awesome, and we should be handing out WAY more money and medals to people in public health. However, interventions of the type advocated by the public health community generally (so far) can only get people as far as old age. After a point, seatbelts and clean water aren't going to make a huge difference, because you're probably going to die of a natural cause like heart failure or some sort of cancer.
+Basically, public health is awesome, and we should be handing out WAY more money and medals to people doing public health. However, interventions of the type advocated by the public health community generally (so far) can only get people as far as old age @Olshansky1990-vd. After a point, seatbelts and clean water aren't going to make a huge difference, because you're probably going to die of a natural cause like heart failure or some sort of cancer @Werfel2015-zx.
 
-So, the other way to extend lives is to stop people from dying of natural causes. We don't know very well how to make that happen, but we have [a research agenda](https://en.wikipedia.org/wiki/Strategies_for_Engineered_Negligible_Senescence) that (we hope) can figure it out. Moreover, there are a lot of people who got rich, decided they want to live for a really long time too, and set up [well-funded companies](https://www.calicolabs.com/) and [non-profits](http://glennfoundation.org/) to search for other avenues to life extension. In the meanwhile, there are a small number of odd things that we have reasonable evidence extends lifespans.
+So, the other way to extend lives is to stop people from dying of natural causes. We don't know very well how to make that happen, but we have [a research agenda](https://en.wikipedia.org/wiki/Strategies_for_Engineered_Negligible_Senescence) that (we hope) can figure it out @De_Grey2007-ac. Moreover, there are a lot of people who got rich, decided they want to live for a really long time too, and set up [well-funded companies](https://www.calicolabs.com/) and [non-profits](http://glennfoundation.org/) to search for other avenues to life extension. In the meanwhile, there are a small number of odd things that we have reasonable evidence extends lifespans.
 
-After more than a century of concerted effort and tinkering with a bewildering variety of thousands of interventions, it can safely be said that (almost?) all attempted interventions have failed, so the prior odds are strongly against any new one working. Even so, for those of us who want to give ourselves a fighting shot at extreme longevity, even tiny longevity advantages may be worthwhile. That's because we don't know how soon the big breakthrough will come that enables our oldest people to roar through their early 120's. If you're alive when the breathrough does happen, that gives you a non-zero probability of benefitting from it, and living a long time yourself. Alternately, if you die before the big breakthrough, you're almost certainly not going to benefit from it.
+After more than a century of concerted effort and tinkering with a bewildering variety of thousands of interventions, it can safely be said that almost all attempted interventions have failed, so the prior odds are strongly against any new one working. Even so, for those of us who want to give ourselves a fighting shot at extreme longevity, even tiny longevity advantages may be worthwhile. That's because we don't know how soon the big breakthrough will come that enables our oldest people to roar through their early 120's. If you're alive when the breathrough does happen, that gives you a non-zero probability of benefitting from it, and living a long time yourself. Alternately, if you die before the big breakthrough, you're almost certainly not going to benefit from it.
 
 So it's worth exploring whether certain interventions will result in a net improvement in your probability of living long enough to live indefinitely. However, this probability is likely to come at a non-trivial cost. As [Clement Freud once said](https://en.wikiquote.org/wiki/Clement_Freud#Sourced), "If you resolve to give up smoking, drinking and loving, you don't actually live longer; it just seems longer." (see also: ["Which Risks of Dying Are Worth Taking?"](http://www.spencergreenberg.com/2013/10/which-risks-of-dying-are-worth-taking/))
 
@@ -83,9 +85,9 @@ If an intervention passes all these criteria, we can be highly confident that we
 
 Of course, these criteria are stringent: we can, for example, exclude almost everything which might appear in an issue of Life Extension Magazine for being too small, conducted on animals or sick people, not being a randomized experiment, or reporting benefits only on an extremely specific biological endpoint like some cholesterol-related metric you've never heard of. Medical journals don't offer rich pickings either, as they understandably tend to focus on experiments done in sick people rather than healthy people (apparently there's more funding for the former - who knew?). And when a randomized experiment _is_ done in healthy adult humans, the experiment may either be too small or have run for too short a time, since annual mortality rates for many participant groups are 1% or less; for any sort of effect to show up, you want (very expensive, very rare) studies which enroll at least a thousand subjects for a decade or more. It would not be surprising if we must intone the ritual ending to all Cochrane Reviews, "there is insufficient evidence for a recommendation".
 
-Unfortunately, there are precious few interventions which meet these stringent requirements. Accordingly, I'll be looking at 
+Unfortunately, there are precious few interventions which meet these stringent requirements. Accordingly, I'll be looking at many interventions for which there is **some** evidence which does not meet this rigorous set of expectations.
 
-# Interventions
+## Interventions
 
 Evaluated Supplements/Medications:
 
@@ -126,9 +128,9 @@ In the exceedingly unlikely case that I exhaust all of these, there's the...
 
 * [Geroprotectors Database](http://geroprotectors.org/)
 
-# Definitions
+## Definitions
 
-## Value of Life
+### Value of Life
 
 The valuation of one year of life I am using here [is \$50,000](http://en.wikipedia.org/wiki/Value%20of%20life%23Life%20Value%20in%20the%20US "Wikipedia: Value of life#Life Value in the US"), due to its commonness and conservativeness (some valuations are much higher, and so favor the use of interventions with much lower certainty thresholds).
 
@@ -137,7 +139,7 @@ The valuation of one year of life I am using here [is \$50,000](http://en.wikipe
 valueOfDALY <- 50000
 ```
 
-## Population survival curve
+### Population survival curve
 
 To work with life expectancies and changes in it, let's compute a standard [Gompertz curve](http://en.wikipedia.org/wiki/Gompertz%20curve) model of age-related mortality, using a the [US Social Security Administration's 2013 Actuarial Tables](https://www.ssa.gov/oact/STATS/table4c6.html).
 
@@ -156,7 +158,9 @@ From this, we can see that women at every age have higher survival rates than me
 
 ```{r GompertzCurve}
 S <- function(t, RR=1) exp(-(RR*0.000016443)/log(1.1124) * (1.1124^t - 1))
+
 actuarial <- gendered_actuarial %>%
+  select(Age, Gender, SurvivingFraction) %>%
   group_by(Age) %>%
   summarise(American = sum(SurvivingFraction)/200000) %>%
   mutate(Dutch = S(Age))
@@ -167,8 +171,6 @@ plot_ly(actuarial, x = ~Age) %>%
 ```
 
 Here we can see that Dutch people are less likely to die throughout early and middle age, but Americans are less likely to die later in life. This reversal happens sometime around age 67.
-
-It is also useful to draw random samples from a Gompertz-distribution of age-at-deaths, which can be used for generative model-related things like power simulations.
 
 ```{r GompertzSimulation}
 ## the `min` is because past age 104, hazard>1 which is wrong, so need a ceiling
@@ -185,9 +187,9 @@ rgompertz <- function(n, RR=1) {
 
 ### Converting risk reduction to average life expectancy gain
 
-However, interpreting an Risk Ratio (RR) or Odds Ratio (OR) isn't as simple as "probability of death is reduced in each time period by 15%, we have average life expectancies of ~80, therefore, X will make me live an extra 12 years". (The intuition here is that death rates increase so much with time that a one-off reduction in each period doesn't make a huge long-term difference. You can see that any constant intervention moves the curve up a little bit but does not flatten it.)
+A naive interpretation of a risk reduction (RR) is to treat it as though it can "restore" some number of years of life. Consider a someone with a life expectancy of around 80 years. Now let us suppose this person decides to start a life-extending activity with an RR of .85. The gain we might hope to get from this activity is $(1-.85)*80=12 \text{years}$. This is, sadly, strongly optimistically biased.
 
-The Gompertz curve hazard can be multiplied by the RR to give a particular trajectory with that change in risk, and the mean can be obtained by integrating over a lifetime. Doing two such integrations, one with a baseline RR of 1 and one with the new RR, then gives the two different life expectancies, and their difference indicates the net gain/loss:
+The Gompertz hazard curve can be multiplied by the RR to give a particular trajectory with that change in risk, and the mean can be obtained by integrating over a lifetime. Doing two such integrations, one with a baseline RR of 1 and one with the new RR, then gives the two different life expectancies, and their difference indicates the net gain/loss:
 
 ```{r lifeExpectancy}
 lifeExpectancy <- function(RR, age1, age2) {
@@ -199,7 +201,7 @@ lifeExpectancyGain <- function(RR, startingAge=0, endingAge=Inf){
   lifeExpectancy(1, startingAge, endingAge)
 }
 
-rrs <- seq(0.01, 2, by=0.05)
+rrs <- seq(0.01, 2, by=0.01)
 gainsVsRR <- data.frame(RR=rrs, Gain=sapply(rrs, lifeExpectancyGain))
 
 plot_ly(gainsVsRR, x=~RR, y=~Gain, type = 'scatter', mode = 'lines')
@@ -212,25 +214,11 @@ gainlm <- gainsVsRR %>%
 lifeExpectancyGainApproximation <- function(RR) predict(gainlm, data.frame(RR=RR))
 ```
 
+From this, we can see a much more realistic relationship between RR and life years gained. An RR of .85 delivers around ~1.6 years.
 
+There is a fortunate upside to this phenomenon. If we wait to use an intervention until what might seem like 'late' in life, we will not have suffered a large opportunity cost (of ~40%) like one might think, but much less (~1.7%). The gains are minimal early on, and the opportunity cost only begins to really mount starting in one's 50s or 60s, which has the important implication that such interventions will benefit younger people much less (at least when it comes to interventions which offer only a constant reduction in risk and do not affect the acceleration of mortality caused by the aging process itself) and so the risks are more likely to make interventions profitable.
 
-Anyway, with this conversion of risk to years of gained life, we can see how much bang we get:
-
-```{r}
-lifeExpectancyGain(0.90)
-
-lifeExpectancyGain(0.85)
-
-lifeExpectancyGain(0.85) - lifeExpectancyGain(0.85, startingAge=30)
-
-(0.02529745239 /  1.523913984 ) * 100
-
-lifeExpectancyGain(0.85) - lifeExpectancyGain(0.85, startingAge=60)
-```
-
-The back-loading of mortality means that a constant reduction in mortality risk like an RR of 0.85 would not deliver the naive expectation of 12 years but far less: ~1.6 years. On the plus side, this also means that if we wait to use an intervention until what might seem like 'late' in life (like age 30), we have not suffered a large opportunity cost (of ~40%) like one might think, but much less (~1.7%). The gains are minimal early on, and the opportunity cost only begins to really mount starting in one's 50s or 60s, which has the important implication that such interventions will benefit younger people much less (at least when it comes to interventions which offer only a constant reduction in risk and do not affect the acceleration of mortality caused by the aging process itself) and so the risks are more likely to make interventions profitable.
-
-#### Maximum possible profit
+### Maximum possible profit
 
 More generally, it would be interesting to get an idea of what is the most profit possible for any particular reduction in ACM, by granting the most favorable possible assumptions: certainty that the RR is exact, that the intervention is side-effect-less and free both to start and continue, and it can begin at birth if need be. For the plausible range of RRs, 0.5-1.0:
 
@@ -243,10 +231,9 @@ profitByAge <- function(t, RR=0.85, yearValue=valueOfDALY, annualCost, startCost
       annualCost +
       startCost)
 }
-```
 
-```{r startingAt0}
 rrs <- seq(0.5,1,by=0.025)
+
 startAge <- 0
 data.frame(
   RR = rrs,
@@ -271,7 +258,7 @@ data.frame(
 
 Then we have to take into account the uncertainty that caloric restriction works at all in the extremely elderly (a halving is probably optimistic), the high probability its reduction in mortality will be relatively modest and in the 0.90s, the large financial & time costs of safely doing such a stringent diet (easily thousands of dollars in time and higher-quality food ingredients), the need to learn new recipes and count calories, the possible side-effects like increasing [frailty](http://en.wikipedia.org/wiki/Frailty%20syndrome "Wikipedia: Frailty syndrome") & [muscle loss](http://en.wikipedia.org/wiki/Sarcopenia "Wikipedia: Sarcopenia"). Given that the upper bound for plausible effect sizes is merely 1 year/\$50k, it seems inadvisable for such a person to take up a Caloric Restriction Diet.
 
-We could also go the other direction and ask what is the worst RR that justifies a particular dollar cost using `uniroot` to find the zero of `profitsByAge`:
+Using this approach, we can also reverse the question. Given an RR and a set of costs, we can determine what the optimal age to begin a regimen of life-extension activities.
 
 ```{r}
 costToRR <- function (startingAge=30, annualCost, startCost=0, probabilityPenalty=1) {
@@ -280,9 +267,6 @@ costToRR <- function (startingAge=30, annualCost, startCost=0, probabilityPenalt
                 probabilityPenalty=probabilityPenalty)
   }, lower=.Machine$double.eps, upper=1)$root
 }
-
-costToRR(annualCost=1000)
-costToRR(annualCost=10)
 ```
 
 ### Power analysis
@@ -346,11 +330,11 @@ Useful interventions are rare and our analyses should incorporate a skeptical in
 
 # Vitamin D
 
-A review of vitamin D meta-analyses reporting on all-cause mortality yields a meta-analytic result of RR=0.96 with little heterogeneity or signs of bias. Reproducing it as a Bayesian random-effects meta-analysis gives a posterior predictive probability P=84% that RR<1.0. The expected life expectancy gain is 0.33 years or \$16,800, while total cost of vitamin D supplementation is estimated at \$761, for a profit of \$15,300. The probability of being profitable is estimated at P=83%. The optimal beginning age is 24yo.
+A review of vitamin D meta-analyses reporting on all-cause mortality yields a meta-analytic result of $RR\approx0.96$ with little heterogeneity or signs of bias. Reproducing it as a Bayesian random-effects meta-analysis gives an 84% posterior predictive probability that $RR<1.0$. The expected life expectancy gain is 0.33 years or \$16,800, while total cost of vitamin D supplementation is estimated at \$761, for a profit of \$15,300. The probability of being profitable is estimated to be 83%. The optimal age at which to begin supplementation is 24 years old.
 
 ## Background
 
-Vitamin D3 and vitamin D2 have been researched intensively ever since their discovery for possible benefits for a range of problems, starting with rickets and expanding from there to everything under the sun. Interest in vitamin D is sparked by many correlational results showing low levels of vitamin D in modern Western populations (unsurprising, given how little time people spend in the sun compared to historically) and how low levels correlate and predict with all sorts of bad things - particularly all-cause mortality.
+Vitamins D2 and D3 have been researched intensively ever since their discovery for possible benefits for a range of problems, starting with rickets and expanding from there to everything under the sun. Interest in vitamin D is sparked by many correlational results showing low levels of vitamin D in modern Western populations (unsurprising, given how little time people spend in the sun compared to historically) and how low levels correlate and predict with all sorts of bad things - particularly all-cause mortality.
 
 The downside is that the literature is so large and heterogeneous that it's hard to deal with and for many of the uses investigated, there is conflicting evidence. We are fortunate, however: the large research area of bone fractures/[falls](http://en.wikipedia.org/wiki/Falls%20in%20older%20adults "Wikipedia: Falls in older adults")/osteoporosis in the elderly (collectively, leading causes of death & disability) means many (relatively) large RCTs in (relatively) healthy people are available with meaningful death rates reported. For particularly comprehensive reviews, see [Newberry et al 2014](https://www.ncbi.nlm.nih.gov/books/NBK253540/ "Vitamin D and Calcium: A Systematic Review of Health Outcomes (Update)") and [Theodoratou et al 2014](http://www.bmj.com/content/348/bmj.g2035.full "Vitamin D and multiple health outcomes: umbrella review of systematic reviews and meta-analyses of observational studies and randomised trials").
 
@@ -401,13 +385,14 @@ brem
 ```
 
 Converting from log RRs to RR:
+
 ```{r}
 exp(c(-0.080152143106, -0.036152849917, 0.008768546338))
 ```
 
 Posterior predictive distribution of RR values including heterogeneity
 
-```{r}
+```{r rrPP}
 rrPP <- exp(brem$rposterior(1000, predict=TRUE)[,2])
 ```
 
@@ -722,7 +707,7 @@ If we really wanted 80% power for _p_<0.05, how big a sample do we need? In this
 
 The current supplement *du jour* for life-extension enthusiasts is called [Basis](https://www.elysiumhealth.com/basis) by Elysium Health. Its backing is unusually good, but it hasn't been subjected to any clinical testing (intentionally opting to go to market as a supplement in an attempt to side-step FDA regulation, which would take decades of testing and billions of dollars). Based on its list of scientific advisors, it may have sufficient theoretical support to be worth evaluating.
 
-It's composed of Nicotinamide Riboside (250mg/pill) and Pterostilbene (50mg/pill). However, they claim that the [current batch's doses](https://www.elysiumhealth.com/basis) are more like 277mg/pill and 59mg/pill respectively.
+It's composed of Nicotinamide Riboside (250mg/pill) and Pterostilbene (50mg/pill). However, they claim that the [current batch's doses](https://www.elysiumhealth.com/purity-guide) are more like 277mg/pill and 54mg/pill respectively.
 
 It's interesting to me in part because it is comparatively expensive. Elysium Health is selling a subscription model in which Basis may be purchased annually (\$480), semi-annually (\$45), monthly (\$50), or a la carte (\$60). These prices are, [surprisingly](https://smile.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=Nicotinamide+Riboside) [competitive](https://smile.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=Pterostilbene) with other supplement providers offering the same supplements at similar dosages.
 
@@ -761,7 +746,7 @@ Moreover, there may be stronger hypotheses in measuring estrogen, or estrogen/te
 
 Being the kind of person who drinks coffee is really bad for you. But if you are, drinking 4-5 cups is good for you: http://www.nejm.org/doi/full/10.1056/NEJMoa1112010#t=article.
 
-# Link Salad for future Investigation
-
 * [Micromort](http://en.wikipedia.org/wiki/Micromort "Wikipedia: Micromort")
 * [Microlife](https://en.wikipedia.org/wiki/Microlife)
+
+# References
