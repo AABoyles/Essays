@@ -1,0 +1,28 @@
+---
+title: "Consequences"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Prologue
+
+From early in life, we are conditioned to believe that consequences are bad things. What English-speaking child of the developed world hasn't heard a threat like "If you don't clean your room, there will be **consequences**."
+
+This book is, in part, a challenge to this prevailing notion. Consequences are more than bad things that happen because of a decision we make: consequences are just things that happen because of a decision we make.
+
+This is my love letter to consequentialism.
+
+# The Consequences of Action
+
+# The Consequences of Inaction
+
+The Trolley Problem.
+
+## Is the FDA Stringent Enough about Medical Trials?
+
+Actually, the FDA is WAY too stringent about safety testing pharmaceuticals.
+
+# Epilogue
+We think that if we do nothing, nothing will happen. This is not true. Inaction can be vastly more costly than action.

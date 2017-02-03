@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>Paradox</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+
+
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script src="/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">Paradox</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Paradox</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#prologue-what-is-a-paradox">Prologue: What is a Paradox?</a></li>
+      <li><a href="#chapter-1-the-liar-sentence">Chapter 1: The Liar Sentence</a><ul>
+      <li><a href="#godels-incompleteness-theorem">Godel’s Incompleteness Theorem</a></li>
+      </ul></li>
+      <li><a href="#chapter-2-newcombs-paradox">Chapter 2: Newcomb’s Paradox</a><ul>
+      <li><a href="#attempted-resolutions">Attempted resolutions</a></li>
+      <li><a href="#applicability-to-the-real-world">Applicability to the real world</a></li>
+      </ul></li>
+      <li><a href="#chapter-3-braess-paradox">Chapter 3: Braess’ Paradox</a></li>
+      <li><a href="#chapter-4-simpsons-paradox">Chapter 4: Simpson’s Paradox</a></li>
+      <li><a href="#chapter-5-temporal-paradox">Chapter 5: Temporal Paradox</a></li>
+      <li><a href="#chapter-6-quantum-paradox">Chapter 6: Quantum Paradox</a><ul>
+      <li><a href="#schrodingers-cat">Schrödinger’s Cat</a></li>
+      </ul></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="prologue-what-is-a-paradox" class="section level1">
+<h1>Prologue: What is a Paradox?</h1>
+<p>I’m certain you’ve heard this word before. You must have to be sufficiently curious to pick up this book. Merriam-Webster defines “paradox” as:</p>
+<p>something (such as a situation) that is made up of two opposite things and that seems impossible but is actually true or possible someone who does two things that seem to be opposite to each other or who has qualities that are opposite a statement that seems to say two opposite things but that may be true</p>
+<p>Hughes and Brecht offer three laws of Paradoxes: * Self-reference * Contradiction * Vicious circularity, or infinite regress</p>
+</div>
+<div id="chapter-1-the-liar-sentence" class="section level1">
+<h1>Chapter 1: The Liar Sentence</h1>
+<p>“This statement is false.”</p>
+<p>If the statement is true, it must be false. If it is false, then it must be true. But if it is true, it cannot be false. And so on. We have a situation in which the statement is simultaneously true and false.</p>
+<div id="godels-incompleteness-theorem" class="section level2">
+<h2>Godel’s Incompleteness Theorem</h2>
+<p>Kurt Godel started with the Liar sentence and inferred mathematically from it. The proof is strikingly beautiful (as are most proofs to those who take time to appreciate them). Godel basically figured out that there must exist a set of things that are both absolutely true and unprovable. The more formal statement is that</p>
+<p>“In any consistent axiomatizable theory which can encode sequences of numbers (and thus the syntactic notions of”formula“,”sentence“,”proof“) the consistency of the system is not provable in the system.”</p>
+</div>
+</div>
+<div id="chapter-2-newcombs-paradox" class="section level1">
+<h1>Chapter 2: Newcomb’s Paradox</h1>
+<p>Newcomb’s paradox was created by William Newcomb of the University of California’s Lawrence Livermore Laboratory. However, it was first analyzed and was published in a philosophy paper spread to the philosophical community by Robert Nozick in 1969,[1] and appeared in Martin Gardner’s Scientific American column in 1974.[2] Today it is a much debated problem in the philosophical branch of decision theory.</p>
+<p>You are playing a game operated by the Predictor, an entity somehow presented as being exceptionally skilled at predicting people’s actions. The exact nature of the Predictor varies between retellings of the paradox. Some assume that the character always has a reputation for being completely infallible and incapable of error; others assume that the predictor has a very low error rate. The Predictor can be presented as a psychic, as a superintelligent alien, as a deity, as a brain-scanning computer, etc. However, the original discussion by Nozick says only that the Predictor’s predictions are “almost certainly” correct, and also specifies that “what you actually decide to do is not part of the explanation of why he made the prediction he made”. With this original version of the problem, some of the discussion below is inapplicable.</p>
+<p>The player of the game is presented with two boxes, one transparent (labeled A) and the other opaque (labeled B). The player is permitted to take the contents of both boxes, or just the opaque box B. Box A contains a visible $1,000. The contents of box B, however, are determined as follows: At some point before the start of the game, the Predictor makes a prediction as to whether the player of the game will take just box B, or both boxes. If the Predictor predicts that both boxes will be taken, then box B will contain nothing. If the Predictor predicts that only box B will be taken, then box B will contain $1,000,000. If the Predictor predicts that the player will choose randomly, then box B will contain nothing.</p>
+<p>By the time the game begins, and the player is called upon to choose which boxes to take, the prediction has already been made, and the contents of box B have already been determined. That is, box B contains either $0 or $1,000,000 before the game begins, and once the game begins even the Predictor is powerless to change the contents of the boxes. Before the game begins, the player is aware of all the rules of the game, including the two possible contents of box B, the fact that its contents are based on the Predictor’s prediction, and knowledge of the Predictor’s infallibility. The only information withheld from the player is what prediction the Predictor made, and thus what the contents of box B are.</p>
+<p>Predicted choice Actual choice Payout A and B A and B $1,000 A and B B only $0 B only A and B $1,001,000 B only B only $1,000,000</p>
+<p>The problem is called a paradox because two strategies that both sound intuitively logical give conflicting answers to the question of what choice maximizes the player’s payout. The first strategy argues that, regardless of what prediction the Predictor has made, taking both boxes yields more money. That is, if the prediction is for both A and B to be taken, then the player’s decision becomes a matter of choosing between $1,000 (by taking A and B) and $0 (by taking just B), in which case taking both boxes is obviously preferable. But, even if the prediction is for the player to take only B, then taking both boxes yields $1,001,000, and taking only B yields only $1,000,000—taking both boxes is still better, regardless of which prediction has been made.</p>
+<p>The second strategy suggests taking only B. By this strategy, we can ignore the possibilities that return $0 and $1,001,000, as they both require that the Predictor has made an incorrect prediction, and the problem states that the Predictor is almost never wrong. Thus, the choice becomes whether to receive $1,000 (both boxes) or to receive $1,000,000 (only box B)—so taking only box B is better.</p>
+<p>In his 1969 article, Nozick noted that “To almost everyone, it is perfectly clear and obvious what should be done. The difficulty is that these people seem to divide almost evenly on the problem, with large numbers thinking that the opposing half is just being silly.” A solution of the paradox must point out an error in one of the two arguments. Either the intuition is wrong, or there is something wrong with the way proposed for affecting the past.</p>
+<div id="attempted-resolutions" class="section level2">
+<h2>Attempted resolutions</h2>
+<p>Simon Burgess has argued that we need to recognize two stages to the problem. The first stage is that before which the predictor has gained all the information on which the prediction will be based. If, for example, we suppose that the prediction is at least partially based on a brain scan of the player then the first stage will not be over at least until that brain scan has been taken. An important point to appreciate is that while the player is still in that first stage he or she will presumably be able to influence the predictor’s prediction (e.g., by committing to taking only one box). The second stage commences after the completion of the brain scan (and/or after the gathering of any other information on which the prediction is based). As Burgess points out, the first stage is the one in which all of us currently find ourselves. Moreover, there is a clear sense in which the first stage is more significant than the second because it is then that the player can determine whether the $1m is in box B. Once he or she gets to the second stage, the best that can be done is to determine whether to get the $1000 in box A.</p>
+<p>Those persuaded by Burgess’s approach do not say, tout court, either that it is rational to one-box or that it is rational to two-box. Rather, they argue that a player should make his or her decision while in the first stage and that that decision should be to commit to one-boxing. Once in the second stage, the rational decision would be to two-box, although by that stage the player should already have made up his or her mind to one-box. Burgess has repeatedly emphasized that he is not arguing that the player should change his or her mind on getting to the second stage. The safe and rational strategy to adopt is to simply make a commitment to one-boxing while in the first stage and to have no intention of wavering from that commitment, i.e., make an ‘unqualified resolution’. Burgess points out that those who make no such commitment and therefore miss out on the $1m have simply failed to be prepared. In a more recent paper Burgess has explained that, given his analysis, Newcomb’s problem should be seen as being akin to the toxin puzzle.[4] This is because both problems highlight the fact that one can have a reason to intend to do something without having a reason to actually do it.</p>
+<p>With regard to causal structure, Burgess has consistently followed Ellery Eells and others in treating Newcomb’s problem as a common cause problem. Contrary to David Lewis, he argues against the idea that Newcomb’s problem is another version of the prisoner’s dilemma. Burgess’s argument on this point emphasizes the contrasting causal structures of the two problems.</p>
+<p>William Lane Craig has suggested that, in a world with perfect predictors (or time machines, because a time machine could be used as a mechanism for making a prediction), retrocausality can occur.[5] If a person truly knows the future, and that knowledge affects his or her actions, then events in the future will be causing effects in the past. The chooser’s choice will have already caused the predictor’s action. Some have concluded that if time machines or perfect predictors can exist, then there can be no free will and choosers will do whatever they’re fated to do. Taken together, the paradox is a restatement of the old contention that free will and determinism are incompatible, since determinism enables the existence of perfect predictors. Some philosophers argue this paradox is equivalent to the grandfather paradox. Put another way, they claim the paradox presupposes a perfect predictor, implying the “chooser” is not free to choose, yet simultaneously presumes a choice can be debated and decided. This suggests to some that the paradox is an artifact of these contradictory assumptions. However, Nozick’s exposition specifically excludes backward causation (such as time travel) and requires only that the predictions be of high accuracy, not that they are absolutely certain to be correct.</p>
+<p>David Wolpert and Gregory Benford have reformulated the problem as a noncooperative game in which players set the conditional distributions in a Bayes net. It is straightforward to prove that the two strategies for which boxes to choose make mutually inconsistent assumptions for the underlying Bayes net. Depending on which Bayes net one assumes, one can derive either strategy as optimal. In this there is no paradox, only unclear language that hides the fact that one is making two inconsistent assumptions.[6] However, that paper also gives a “time reversed” version of Newcomb’s problem, in which the so-called “prediction” is made after the strategy has been chosen - which the authors claim is equivalent because the probability arguments make no mention of time. In that time reversed version, at least, the assumption according to which one is always completely free to choose a strategy without affecting the predictor’s “prediction” in any way, is incompatible with the original statement of the problem, in which the predictor is very accurate.</p>
+<p>Gary Drescher argues in his book Good and Real that the correct decision is to one-box, by appealing to a situation he argues is analogous - a rational agent in a deterministic universe deciding whether or not to cross a potentially busy street. Eliezer Yudkowsky argues that the correct decision is to one-box, from a conception of rationality as “systematized winning” and a principle he calls “reflective consistency”.[9] Andrew Irvine argues that the problem is structurally isomorphic to Braess’ Paradox, a non-intuitive but ultimately non-paradoxical result concerning equilibrium points in physical systems of various kinds.</p>
+<p>Newcomb’s paradox can also be related to the question of machine consciousness, specifically if a perfect simulation of a person’s brain will generate the consciousness of that person.[11] Suppose we take the predictor to be a machine that arrives at its prediction by simulating the brain of the chooser when confronted with the problem of which box to choose. If that simulation generates the consciousness of the chooser, then the chooser cannot tell whether they are standing in front of the boxes in the real world or in the virtual world generated by the simulation in the past. The “virtual” chooser would thus tell the predictor which choice the “real” chooser is going to make.</p>
+</div>
+<div id="applicability-to-the-real-world" class="section level2">
+<h2>Applicability to the real world</h2>
+<p>In versions of the Newcomb problem that do not include Nozick’s stipulation that a predicted random choice will be “punished” with an empty box, the problem is not realisable in the real world. This is because, according to chaos theory, it is not possible even in principle to always predict a complex entity’s future behavior with high accuracy. The entity (person or computer program) could simply choose to use an inherently unpredictable process, such as a quantum event source, to make a totally random decision. Nozick’s additional stipulation, in a footnote in the original article, attempts to preclude this problem by stipulating that any predicted use of a random choice or random event will be treated as equivalent, by the predictor, to a prediction of choosing both boxes. However, this assumes that inherently unpredictable quantum events (e.g. in people’s brains) would not come into play anyway during the process of thinking about which choice to make,[12] which is an unproven assumption. Indeed, some have speculated that quantum effects in the brain might be essential for a full explanation of consciousness (see Orchestrated objective reduction), or - perhaps even more relevantly for Newcomb’s problem - for an explanation of free will.[13] Extensions to Newcomb’s problem Many thought experiments similar to or based on Newcomb’s problem have been discussed in the literature.[1][9] For example, a quantum-theoretical version of Newcomb’s problem in which box B is entangled with box A has been proposed.[14] The Meta-Newcomb Problem Another related problem is the Meta-Newcomb Problem.[15] The setup of this problem is similar to the original Newcomb problem. However, the twist here is that the Predictor may elect to decide whether to fill box B after the player has made a choice, and the player does not know whether box B has already been filled. Also, there is also another predictor - a Meta-Predictor, who has also predicted correctly every single time in the past, who predicts the following: “Either you will choose both boxes, and the Predictor will make its decision after you, or you will choose only box B, and the Predictor will already have made its decision.” In this situation, a proponent of taking both boxes is faced with a dilemma. If the player takes both boxes, the Predictor will not yet have made its decision, and therefore it will have been more rational for the player to take box B only. But if the player takes box B only, the Predictor will already have made its decision, so the player’s decision cannot cause the Predictor’s decision, so the usual argument for taking both boxes applies.[9]</p>
+</div>
+</div>
+<div id="chapter-3-braess-paradox" class="section level1">
+<h1>Chapter 3: Braess’ Paradox</h1>
+<p>Consider a road network as shown in the adjacent diagram, on which 4000 drivers wish to travel from point Start to End. The travel time in minutes on the Start-A road is the number of travelers (T) divided by 100, and on Start-B is a constant 45 minutes (likewise with the roads across from them). If the dashed road does not exist (so the traffic network has 4 roads in total), the time needed to drive Start-A-End route with A drivers would be . And the time needed to drive the Start-B-End route with B drivers would be . If either route were shorter, it would not be a Nash equilibrium: a rational driver would switch routes from the longer route to the shorter route. As there are 4000 drivers, the fact that can be used to derive the fact that when the system is at equilibrium. Therefore, each route takes minutes.</p>
+<p>Now suppose the dashed line is a road with an extremely short travel time of approximately 0 minutes. In this situation, all drivers will choose the Start-A route rather than the Start-B route, because Start-A will only take minutes at its worst, whereas Start-B is guaranteed to take 45 minutes. Once at point A, every rational driver will elect to take the “free” road to B and from there continue to End, because once again A-End is guaranteed to take 45 minutes while A-B-End will take at most minutes. Each driver’s travel time is minutes, an increase from the 65 minutes required when the fast A-B road did not exist. No driver has an incentive to switch, as the two original routes (Start-A-End and Start-B-End) are both now 85 minutes. If every driver were to agree not to use the A-B path, every driver would benefit by reducing their travel time by 15 minutes. However, because any single driver will always benefit by taking the A-B path, the socially optimal distribution is not stable and so Braess’s paradox occurs.</p>
+<p>Let be the formula for the cost of people driving along edge . If a traffic graph has linear edges (those of the form where and are constants) then an equilibrium will always exist.</p>
+<p>Suppose we have a linear traffic graph with people driving along edge . Let the energy of e, be</p>
+<p>(If let ). Let the total energy of the traffic graph be the sum of the energies of every edge in the graph. Suppose that the distribution for the traffic graph is not an equilibrium. There must be at least one driver who can switch their route and improve total travel time. Suppose their original route is while their new route is . Let be total energy of the traffic graph, and consider what happens when the route is removed. The energy of each edge will be reduced by and so the will be reduced by . Note that this is simply the total travel time needed to take the original route. If we then add the new route, , will be increased by the total travel time needed to take the new route. Because the new route is shorter than the original route, must decrease. If we repeat this process, will continue to decrease. As must remain positive, eventually an equilibrium must occur.</p>
+<p>The above proof outlines a procedure known as Best Response Dynamics, which finds an equilibrium for a linear traffic graph and terminates in a finite number of steps. The algorithm is termed “best response” because at each step of the algorithm, if the graph is not at equilibrium then some driver has a best response to the strategies of all other drivers, and switches to that response.</p>
+<p>At each step, if some particular driver could do better by taking an alternate path (a “best response”), doing so strictly decreases the energy of the graph. If no driver has a best response, the graph is at equilibrium. Since the energy of the graph strictly decreases with each step, the Best Response Dynamics algorithm must eventually halt. How far from optimal is traffic at equilibrium?</p>
+<p>At worst, traffic in equilibrium is twice as bad as socially optimal.</p>
+<p>Proof</p>
+<p>Strategies for car j are possible paths from to Each edge e has a travel function for some Energy on edge e with x drivers:</p>
+<p>Total time spent by all drivers on that edge: ((where there are x terms)) E(e) is less than or equal to T(e) and</p>
+<p>Resulting Inequality</p>
+<p>If Z is a traffic pattern:</p>
+<p>If we start from a socially optimal traffic pattern Z and end in an equilibrium pattern Z’:</p>
+<p>Thus we can see that worst is twice as bad as optimal. How common is Braess’s paradox? In 1983 Steinberg and Zangwill provided, under reasonable assumptions, necessary and sufficient conditions for Braess’s paradox to occur in a general transportation network when a new route is added. (Note that their result applies to the addition of any new route — not just to the case of adding a single link.) As a corollary, they obtain that Braess’s paradox is about as likely to occur as not occur; their result applies to random and planned additions. In Seoul, South Korea, a speeding-up in traffic around the city was seen when a motorway was removed as part of the Cheonggyecheon restoration project.[2] In Stuttgart, Germany after investments into the road network in 1969, the traffic situation did not improve until a section of newly built road was closed for traffic again.[3] In 1990 the closing of 42nd street in New York City reduced the amount of congestion in the area.[4] In 2008 Youn, Gastner and Jeong demonstrated specific routes in Boston, New York City and London where this might actually occur and pointed out roads that could be closed to reduce predicted travel times.[5] In 2012, scientists at the Max Planck Institute for Dynamics and Self-Organization demonstrated through computational modeling the potential for this phenomenon to occur in power transmission networks where power generation is decentralized.[6] In 2012, an international team of researchers from Institut Néel (CNRS, France), INP (France), IEMN (CNRS, France) and UCL (Belgium) published in Physical Review Letters[7] a paper showing that Braess paradox may occur in mesoscopic electron systems. In particular, they showed that adding a path for electrons in a nanoscopic network paradoxically reduced its conductance. This was shown both by theoretical simulations and experiments at low temperature using as scanning gate microscopy. Dynamics analysis of Braess’s paradox In 2013, Dal Forno and Merlone [8] interpret Braess paradox as a dynamical ternary choice problem. The analysis shows how the new path changes the problem. Before the new path is available the dynamics is the same as in binary choices with externalities, but the new path transforms it into a ternary choice problem. The addition of an extra resource enriches the complexity of the dynamics. In fact, in this case, there can even be coexistence of cycles. This way, the implication of the paradox on the dynamics can be seen from both a geometrical and analytical perspective.</p>
+</div>
+<div id="chapter-4-simpsons-paradox" class="section level1">
+<h1>Chapter 4: Simpson’s Paradox</h1>
+<p>“Good for Men, Good for Women, Bad for People.”</p>
+</div>
+<div id="chapter-5-temporal-paradox" class="section level1">
+<h1>Chapter 5: Temporal Paradox</h1>
+</div>
+<div id="chapter-6-quantum-paradox" class="section level1">
+<h1>Chapter 6: Quantum Paradox</h1>
+<div id="schrodingers-cat" class="section level2">
+<h2>Schrödinger’s Cat</h2>
+<blockquote>
+<p>A cat is penned up in a steel chamber, along with the following device (which must be secured against direct interference by the cat): in a Geiger counter, there is a tiny bit of radioactivesubstance, so small, that perhaps in the course of the hour one of the atoms decays, but also, with equal probability, perhaps none; if it happens, the counter tube discharges and through a relay releases a hammer that shatters a small flask of hydrocyanic acid. If one has left this entire system to itself for an hour, one would say that the cat still lives if meanwhile no atom has decayed. The psi-function of the entire system would express this by having in it the living and dead cat (pardon the expression) mixed or smeared out in equal parts. It is typical of these cases that an indeterminacy originally restricted to the atomic domain becomes transformed into macroscopic indeterminacy, which can then be resolved by direct observation. That prevents us from so naively accepting as valid a “blurred model” for representing reality. In itself, it would not embody anything unclear or contradictory. There is a difference between a shaky or out-of-focus photograph and a snapshot of clouds and fog banks. —Erwin Schrödinger, Die gegenwärtige Situation in der Quantenmechanik (The present situation in quantum mechanics), Naturwissenschaften, translated by John D. Trimmer in Proceedings of the American Philosophical Society</p>
+</blockquote>
+<p>Schrödinger intended his thought experiment as a discussion of the EPR article—named after its authors Einstein, Podolsky, and Rosen—in 1935.[1] The EPR article highlighted the strange nature of quantum entanglement, which is a characteristic of a quantum state that is a combination of the states of two systems (for example, two subatomic particles) that once interacted but were then separated, and are not each in a definite state. The Copenhagen interpretation implies that the state of the two systems collapses into a definite state when one of the systems is measured. Schrödinger and Einstein exchanged letters about Einstein’s EPR article, in the course of which Einstein pointed out that the state of an unstable keg of gunpowder will, after a while, contain a superposition of both exploded and unexploded states.</p>
+<p>To further illustrate, Schrödinger describes how one could, in principle, transpose the superposition of an atom to large-scale systems. He proposed a scenario with a cat in a sealed box, wherein the cat’s life or death depended on the state of a subatomic particle. According to Schrödinger, the Copenhagen interpretation implies that the cat remains both alive and dead (to the universe outside the box) until the box is opened. Schrödinger did not wish to promote the idea of dead-and-alive cats as a serious possibility; on the contrary, the paradox is a classic reductio ad absurdum.[2] The thought experiment illustrates quantum mechanics and the mathematics necessary to describe quantum states. Intended as a critique of just the Copenhagen interpretation (the prevailing orthodoxy in 1935), the “Schrödinger’s Cat” thought experiment remains a typical touchstone for limited interpretations of quantum mechanics. Physicists often use the way each interpretation deals with Schrödinger’s cat as a way of illustrating and comparing the particular features, strengths, and weaknesses of each interpretation.</p>
+<p>Schrödinger’s famous thought experiment poses the question, when does a quantum system stop existing as a superposition of states and become one or the other? (More technically, when does the actual quantum state stop being a linear combination of states, each of which resembles different classical states, and instead begin to have a unique classical description?) If the cat survives, it remembers only being alive. But explanations of the EPR experiments that are consistent with standard microscopic quantum mechanics require that macroscopic objects, such as cats and notebooks, do not always have unique classical descriptions. The thought experiment illustrates this apparent paradox. Our intuition says that no observer can be in a mixture of states—yet the cat, it seems from the thought experiment, can be such a mixture. Is the cat required to be an observer, or does its existence in a single well-defined classical state require another external observer? Each alternative seemed absurd to Albert Einstein, who was impressed by the ability of the thought experiment to highlight these issues. In a letter to Schrödinger dated 1950, he wrote:</p>
+<p>You are the only contemporary physicist, besides Laue, who sees that one cannot get around the assumption of reality, if only one is honest. Most of them simply do not see what sort of risky game they are playing with reality—reality as something independent of what is experimentally established. Their interpretation is, however, refuted most elegantly by your system of radioactive atom + amplifier + charge of gunpowder + cat in a box, in which the psi-function of the system contains both the cat alive and blown to bits. Nobody really doubts that the presence or absence of the cat is something independent of the act of observation.[4]</p>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

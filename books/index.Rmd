@@ -1,0 +1,30 @@
+---
+title: "Drafts"
+---
+
+# Disclaimer
+
+If you've stumbled upon this page, well done. This is the books directory. The quality of these varies from a few sentences (or a bare outline) to a couple of near-complete chapters. I am not a competent author of Fiction, although every once in a while I get an idea that I think will make an interesting basis for a story. When that happens, this directory grows. However, unless I develop some strong desire to finish these, I very much doubt much will come of them. Accordingly, I strongly encourage you *not* to read these; if nothing else, you have better things to do.
+
+```{r, message=FALSE}
+library("plyr")
+library("dplyr")
+library("magrittr")
+library("DT")
+library("stringr")
+
+cbind(
+  Name = list.files(".", "*.Rmd"),
+  ldply(list.files(".", "*.Rmd", full.names = TRUE), file.info)
+) %>%
+  filter(! Name %in% c("index.Rmd")) %>%
+  arrange(desc(mtime)) %>%
+  mutate(`Estimated Length (words)` = floor(size/7)) %>%
+  select(Name, `Estimated Length (words)`, `Last Modified`=mtime) %>%
+  mutate(Name = paste0("<a href='", str_sub(Name, 1, -5), ".html'>",
+    Name %>%
+      str_replace_all("([a-z])([A-Z])", "\\1 \\2") %>%
+      str_replace_all("([A-Z]+)([A-Z])", "\\1 \\2") %>%
+      str_sub(1, -5), "</a>")) %>%
+  datatable(escape = FALSE)
+```

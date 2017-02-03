@@ -1,0 +1,21 @@
+name: "Anthony A. Boyles"
+output_dir: .
+lib_dir: site_libs
+include: "*.Rmd"
+bibliography: ../bibliography.bib
+navbar:
+  title: "Anthony A. Boyles"
+  left:
+    - text: "Essays"
+      href: ../index.html
+    - text: "Code"
+      href: ../code.html
+    - text: "About"
+      href: ../about.html
+  right:
+    - text: "Meta"
+      href: ../README.html
+output:
+  rmdformats::readthedown:
+    css: site_libs/style.css
+    code_folding: hide

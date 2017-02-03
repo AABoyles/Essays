@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>How To Predict Things</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+
+
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script src="/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">How To Predict Things</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">How To Predict Things</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#of-foxes-and-hedgehogs">Of Foxes and Hedgehogs</a></li>
+      <li><a href="#keep-score">Keep Score</a><ul>
+      <li><a href="#understand-what-you-want-to-optimize">Understand What You Want To Optimize</a></li>
+      <li><a href="#the-hidden-costs-of-score-keeping">The Hidden Costs of Score-Keeping</a></li>
+      </ul></li>
+      <li><a href="#start-with-the-outside-view">Start with the Outside View</a><ul>
+      <li><a href="#dont-shy-away-from-a-little-math">Don’t Shy Away from a Little Math</a></li>
+      <li><a href="#getting-the-right-reference-class">Getting the Right Reference Class</a></li>
+      </ul></li>
+      <li><a href="#update-gradually-and-often">Update Gradually and Often</a><ul>
+      <li><a href="#check-your-bias">Check Your Bias</a></li>
+      <li><a href="#be-a-savvy-consumer-of-information">Be a Savvy Consumer of Information</a></li>
+      <li><a href="#ideological-turing-test">Ideological Turing Test</a></li>
+      </ul></li>
+      <li><a href="#unusual-things-happen-all-the-time">Unusual Things Happen All the Time</a></li>
+      <li><a href="#follow-trajectories">Follow Trajectories</a></li>
+      <li><a href="#understand-incentives">Understand Incentives</a><ul>
+      <li><a href="#some-elementary-game-theory">Some Elementary Game Theory</a></li>
+      <li><a href="#some-elementary-behavioral-economics">Some Elementary Behavioral Economics</a></li>
+      </ul></li>
+      <li><a href="#defer-to-wiser-sources">Defer to Wiser Sources</a></li>
+      <li><a href="#be-a-fox">Be a Fox</a></li>
+      <li><a href="#references">References</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="of-foxes-and-hedgehogs" class="section level1">
+<h1>Of Foxes and Hedgehogs</h1>
+<p>πόλλ’ οἶδ’ ἀλώπηξ, ἀλλ’ ἐχῖνος ἓν μέγα</p>
+<p>A fox knows many things, but a hedgehog knows one important thing.</p>
+<p>Archilochus</p>
+<p>Thinking, Fast and Slow The Signal and the Noise Expert Political Judgment: How Good Is It? How Can We Know? Superforecasting Rationality: From AI to Zombies The Center for Applied Rationality</p>
+</div>
+<div id="keep-score" class="section level1">
+<h1>Keep Score</h1>
+<p>One of the most important skills for forecasting is simple record-keeping. It’s shockingly easy to expect one thing, observe another thing happen, and then convince yourself that you were right. This is called Hindsight Bias. The solution for it is simple: predict things before they happen, record your prediction(s), and then check those predictions after the fact.</p>
+<div id="understand-what-you-want-to-optimize" class="section level2">
+<h2>Understand What You Want To Optimize</h2>
+<p>Gambling - Maximize money</p>
+<p>Betting is, therefore, a means to demonstrate you believe something with some degree of confidence. Gambling is a social problem because most people are really, really terrible forecasters, and don’t know it.</p>
+<p>Brier Scores - Minimize error</p>
+<p>In forecasting, we don’t typically make monetary bets on the outcomes of events. Rather than maximize monetary winnings, forecasters seek to minimize their error. The metric of choice for this is called a Brier score.</p>
+<p>Basically, what we want is to be “well-calibrated”. This means that for every 10 times you predict something with 90% certainty, that thing happens 9 of those 10 times. And you want that to be true across the board.</p>
+</div>
+<div id="the-hidden-costs-of-score-keeping" class="section level2">
+<h2>The Hidden Costs of Score-Keeping</h2>
+<p>If you want to become good at forecasting, score-keeping is mandatory. However, getting good at forecasting means that you will have to face some unpleasant truths about yourself and the world.</p>
+<p><em>You could be wrong.</em> We don’t tend to feel or worry about this when we aren’t keeping score (hindsight bias protects us from the ego-pounding that reality would give us if we were held accountable for our prognostications). But the predictions we make when we aren’t keeping score are much more extreme than the conservative ones we make when we’re trying to optimize our score. So, score-keeping makes us humble, and humbleness is virtuous.</p>
+<p><em>Your optimization criteria won’t be aligned with your values.</em> This was the most surprising and uncomfortable effect of score-keeping for me. During the campaign, Donald Trump promised to ban immigration by refugees in a number of majority-Muslim nations. Personally, I find this policy to be repulsive. However, I came across credible, strong evidence that President Trump was planning to imminently enact the policy, and I made a 99% certain prediction that he would do so. When he did, I felt three reactions, in this order: First, I was excited that I was right, and was far ahead of the crowd consensus on it (the consensus was 75% when I registered my first prediction, and only 90% by the time it was resolved). Second, I was horrified that such a policy had been enacted. Third, I felt a deep discomfort at having been excited by an event which horrifies me. My optimization criterion (be right about reality) cut strongly in opposition to my values.</p>
+<p>If you are able to exert significant influence on the outcomes you might forecast, you probably shouldn’t forecast those events. This is the same principle that bars athletes from betting on the outcomes of their own games: if they want to guarantee a good return, they could bet against themselves and then throw the game.</p>
+<p>When your incentives are aligned with constructing the most accurate possible model of reality, you can feel happy in response to bad things happening. This is OK! It is perfectly possible to feel simultaneously pleased to have had an accurate model of reality, and saddened that reality is so terrible. You should not guilt yourself for this (though if you feel guilt, that’s OK).</p>
+<p>So, if that doesn’t dissuade you from becoming a good forecaster, how do we build accurate models of reality?</p>
+</div>
+</div>
+<div id="start-with-the-outside-view" class="section level1">
+<h1>Start with the Outside View</h1>
+<p>All models are wrong, but some are useful.</p>
+<p>George E. P. Box</p>
+<p>In 2016, Uber announced it would deploy a fleet of autonomous vehicles to Pittsburg for live testing. In response, the Mack Institute at UPenn’s Wharton School asked the Good Judgement Open:</p>
+<blockquote>
+<p>Will an Uber self-driving car with a member of the public as a passenger be involved in an auto accident while driving autonomously between 14 October 2016 and 1 January 2017?</p>
+</blockquote>
+<p>How often has this thing happened before? How often have things like this happened before?</p>
+<div id="dont-shy-away-from-a-little-math" class="section level2">
+<h2>Don’t Shy Away from a Little Math</h2>
+<p>Here’s how I addressed the Uber self-driving car question: Fermi Estimation.</p>
+<p>Uber would only deploy them if they believed that the cars were approximately as safe as human drivers (so we can estimate using statistics based on human traffic). This is reinforced by the presence of a human driver, prepared to override the system if necessary.</p>
+<p>There are going to be 100 vehicles in Uber’s autonomous fleet by year’s end. We don’t know how many cars Uber has or will successfully deliver, but a better assumption is that they’re on schedule and delivering linearly, indicating that half of the car*miles in the whole fleet assumption actually get driven.</p>
+<p>It seems like Uber drivers in metropolitan areas (like Pittsburgh, home of Uber’s autonomous fleet) travel around 100 miles per 8 hr. shift. That said, I don’t know how long they’re on the road daily–could be as much as 24hr.</p>
+<p>At this point, I should give a shout-out to Dimensional Analysis. You may have heard this term in a high school chemistry or physics class. If you remember it, well learned! If not, let’s just review it really quickly.</p>
+<p>Dimensional analysis really just a that means when you multiply and divide stuff together, treat their units like algebraic variables. So, for example, If I need to know the volume of a fishtank, I can get out my measuring tape and calculate that it’s 1 meter wide, .3 meters tall and .3 meters deep. To get volume from these, we simply multiply them together, like so: <span class="math inline">\(1meter*.3meters*.3meters=.9meters^3\)</span></p>
+<p>Do you see how we got <span class="math inline">\(meters^3\)</span> from meters? Pro tip: just ignore whether or not the unit is pluralized. If all of them were on the road today, and all of them did 24 hour shifts, then there’d be <span class="math inline">\(100 Cars1*300 miles1 car*day*41 car*days1=1,230,000 car*miles\)</span></p>
+<p>My best guess is that the actual number is <span class="math inline">\(50 Cars1*100 miles1 car*day*41 car*days1=205,000 car*miles\)</span> to be driven by year’s end.</p>
+</div>
+<div id="getting-the-right-reference-class" class="section level2">
+<h2>Getting the Right Reference Class</h2>
+<p>On November 24, A fellow forecaster registered a prediction of 1%, with the following reasoning: This is a pure odds play. There are approximately 10 fatalities per 100,000 population per year in the US. Pittsburgh has a population of 300,000. There will be approximately 30 deaths in Pittsburgh from residents. There are probably another 200,000 people commuting to and in Pittsburgh per day for whatever reason. I will predict approximately 50 deaths in Pittsburgh out of 500,000 people. This is a .01% percent chance of death. This question is not even for the full year(Oct to Jan). Additionally, these cars do have a driver and an engineer in the front seat just in case. Additionally, the back seat is far safer than the front seat. The question states that a member of the public (who will be seated in the back) of an Uber vehicle to have a fatality. I say slim odds here. I put the odds at less than 1% even if the technology is horrible. I also predict that the technology continues to improve through 1 Jan 2017. The approach is good, but there’s a critical error here that invalidates the whole thing. Do you see it? Don’t worry if you don’t. The problem is that this forecast is for a</p>
+</div>
+</div>
+<div id="update-gradually-and-often" class="section level1">
+<h1>Update Gradually and Often</h1>
+<p>Bayes Theorem</p>
+<p>Bayes Theorem as a Philosophy</p>
+<div id="check-your-bias" class="section level2">
+<h2>Check Your Bias</h2>
+<p>You have political beliefs. I do too. Everyone does. Accept that you have them, and that’s OK.</p>
+<p>Some of those beliefs are wrong. That’s true for everyone, and that’s OK, too.</p>
+<p>If your predictions present a worldview that agrees with you political biases, be suspicious! Ideally, your political feelings should have no bearing on your forecasts, but our brains are tangled messes that mix things up like that all the time. You should scrutinize</p>
+</div>
+<div id="be-a-savvy-consumer-of-information" class="section level2">
+<h2>Be a Savvy Consumer of Information</h2>
+<p>As Tyler Cowen once said, “Every movement…has a smart version and a stupid version, I try to (almost) always consider the smart version. The stupid version is always wrong for just about anything.”</p>
+<p>When evaluating an information source, make sure it passes at least one of the following tests: * Will it give you a perspective that you aren’t going to get from your other sources of information you already routinely consume? * Will it challenge you to assume the perspective of people with whom you disagree? * Will it ever change your mind?</p>
+<p>I’m guessing the answer is “probably not”. There’s nothing inherently wrong with this, but if a media outlet isn’t adding anything to your information diet, it’s costing you valuable time and intellectual energy. Here are the news outlets that form the baseline of the information I typically consume in a given day: * The New York Times * The Washington Post * BBC News * Al Jazeera English * Propublica * The Atlantic * The New Yorker * The Economist - A neoliberal magazine based out of the UK. * Reason - The most prominent libertarian publication in the US. * The American Conservative * Tablet Magazine * The National Review</p>
+<p>Be very suspicious of any news outlet that tells you how to feel about something. News is stuff that happens, facts about reality.</p>
+<p>And here are some others that are good mental floss: * Snopes - The grandfather of all internet fact-checkers. * Politifact - Home of the famous truth-o-meter. * Factcheck.org</p>
+</div>
+<div id="ideological-turing-test" class="section level2">
+<h2>Ideological Turing Test</h2>
+<p>Diversifying and improving your media sources is a good start, but it probably won’t increase your mental flexibility much. If you want to really delve into the mindset of others, try taking an Ideological Turing Test.</p>
+</div>
+</div>
+<div id="unusual-things-happen-all-the-time" class="section level1">
+<h1>Unusual Things Happen All the Time</h1>
+<p>In 2016, lots of people (myself included) were shocked when Hillary Clinton lost the Presidential Election of Donald Trump. At FiveThirtyEight, Nate Silver and his team predicted that Donald Trump had</p>
+<p>When I first started forecasting with the Good Judgement Open in 2016, one of the questions I forecast was</p>
+<blockquote>
+<p>Before the end of 2016, will a North American country, the EU, or an EU member state impose sanctions on another country in response to a cyber attack or cyber espionage?</p>
+</blockquote>
+<p>When I started to seriously look into it on December 14th, it was clear that it was unlikely to happen. The Threat and Imposition of Sanctions (TIES) dataset lists all instances of sanctions between 1945 and 2005. During those 61 years, it records 1413 cases of sanctions. In 61 years, there are 22,265 days, or nearly 1310 blocks of 17 days. Accordingly, the expected number of sanctions was 1310/1413, or .92. If the question were merely focused on any sanctions for any reason, then 92% would be a fine approximation of a probability. However, the question concerns sanctions against Russia for cyber crime. Rather than drill down into the data, let’s simply reason that there are currently approximately 200 states. The probability that sanctions occur and that Russia is the target of those sanctions is more like .92 * 1/200, or just under half a percent.</p>
+<p>I cast my first prediction on December 14th, with only two and a half weeks left in the prediction window. I gave it 1%. And then, on December 29th, Pres. Obama announced a new round of sanctions against the Russian Federation in retaliation for cyber crimes committed against targets in the United States. I had predicted with 1% certainty an event that had 100% happened. This was a crushing blow to my brier score: 1% on an event that occurred translates to a brier score of 1.96. Yuck.</p>
+<p>Had I predicted a 50% probability, my brier score would have been .5, regardless of whether or not the sanctions were instituted. So, why not just guess .5 all the time?</p>
+<p>The most frustrating part of this story is that I did the right thing. I would do it again, and in similar situations since then, I have.</p>
+<p>The Black Swan</p>
+</div>
+<div id="follow-trajectories" class="section level1">
+<h1>Follow Trajectories</h1>
+<p>In statistics, this is called a “First Order Linear Difference Model.”</p>
+<p>The Drunkard’s Walk</p>
+</div>
+<div id="understand-incentives" class="section level1">
+<h1>Understand Incentives</h1>
+<div id="some-elementary-game-theory" class="section level2">
+<h2>Some Elementary Game Theory</h2>
+<p>The Prisoner’s Dilemma</p>
+<p>The Stag Hunt</p>
+<p>The Tragedy of the Commons</p>
+</div>
+<div id="some-elementary-behavioral-economics" class="section level2">
+<h2>Some Elementary Behavioral Economics</h2>
+<p>Humans are not strictly rational agents. Humans are confused bundles of interlocking decision systems that only kinda-sorta work together.</p>
+<p>The Ultimatum Game</p>
+<p>The Dictator Game</p>
+<p>Prospect Theory</p>
+<p>The Predictioneer’s Game</p>
+</div>
+</div>
+<div id="defer-to-wiser-sources" class="section level1">
+<h1>Defer to Wiser Sources</h1>
+<p>If you can identify someone (or some other source of information) which performs measurably better than you do, you can perform as well as they do simply by copying their answers.</p>
+</div>
+<div id="be-a-fox" class="section level1">
+<h1>Be a Fox</h1>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
