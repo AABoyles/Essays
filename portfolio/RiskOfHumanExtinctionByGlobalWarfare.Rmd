@@ -228,11 +228,11 @@ In general, predicting the size of a population is a fraught modeling exercise. 
 We should treat any conclusions which rely upon precise estimates of the global population as suspect. For present purposes, simply being within about 10% of the "correct" value should suffice. and our confidence in the estimates drops significantly as we look back in time further than around 1950. Never-the-less, many have attempted to construct meaningfully useful estimates, and these tend to be largely in agreement:
 
 ```{r populationData, message=FALSE}
-if(!file.exists("../data/PopEstimates.csv")){
+if(!file.exists("../data-cache/PopEstimates.csv")){
   #TODO: Throw an Error
 }
 
-pop <- read_csv("../data/PopEstimates.csv") %>%
+pop <- read_csv("../data-cache/PopEstimates.csv") %>%
   filter(Year > 1800, Year < 2016)
 
 pop %>%

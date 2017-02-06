@@ -144,7 +144,7 @@ valueOfDALY <- 50000
 To work with life expectancies and changes in it, let's compute a standard [Gompertz curve](http://en.wikipedia.org/wiki/Gompertz%20curve) model of age-related mortality, using a the [US Social Security Administration's 2013 Actuarial Tables](https://www.ssa.gov/oact/STATS/table4c6.html).
 
 ```{r ActuarialTable}
-gendered_actuarial <- read_csv("../data/actuarial.csv") %>%
+gendered_actuarial <- read_csv("../data-cache/actuarial.csv") %>%
   gather("Gender", "SurvivingFraction", `Male Number of lives`, `Female Number of lives`) %>%
   mutate(
     Gender = ifelse(Gender == "Male Number of lives", "Male", "Female"),
