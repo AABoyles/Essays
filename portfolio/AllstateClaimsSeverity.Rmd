@@ -1,0 +1,235 @@
+---
+title: "AllState Claims Severity Kernel"
+---
+
+[Ed. This is a transcribed and edited version of [a kernel I produced](https://www.kaggle.com/aaboyles/allstate-claims-severity/beginner-friendly-simple-linear-regression/notebook) to compete in the [AllStates Claims Severity Challenge](https://www.kaggle.com/c/allstate-claims-severity).]
+
+# Introduction
+
+There are already a bunch of awesome Scripts, but I wanted to step back and work with some more rudimentary models to make sure I was doing the right data preparation.
+
+# Preparation
+
+Let's start by loading our packages and data.
+
+```{python setup, engine.path='python3', eval = FALSE}
+import numpy as np
+import pandas as pd
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
+from scipy.stats import skew, boxcox
+import statsmodels.formula.api as smf
+import xgboost as xgb
+from bayes_opt import BayesianOptimization
+from sklearn.metrics import mean_absolute_error
+
+# Load Training Data
+train = pd.read_csv('../data-cache/Allstate/train.csv', dtype={'id': np.int32})
+
+# Load Test Data
+test = pd.read_csv('../data-cache/Allstate/test.csv', dtype={'id': np.int32})
+```
+
+Nomenclature note: The outcome variable for this competition is 'loss'. (If you read much machine learning literature, you've probably heard the term *loss* as in 'loss function'.) That isn't exactly what we mean in this context. The 'loss' variable in this case literally refers to the amount AllState lost on the settlement. Wherever you see 'loss' in this document, assume I'm talking about the amount AllState lost, and not the output of a loss function.
+
+Now, prediction is easier on an outcome that's normally distributed. Let's check to see if this data is:
+
+```{python, engine.path='python3', eval = FALSE}
+plt.hist(train['loss'], 30, normed=1)
+plt.xlabel('Loss')
+plt.ylabel('Probability')
+plt.title('Distribution of Losses')
+plt.show()
+```
+
+Wow. That isn't normally distributed at all: it's super skewed.
+
+```{python, engine.path='python3', eval = FALSE}
+skew(train['loss'])
+```
+
+Any skew greater than one should probably catch your attention. Luckily, we have a simple counterspell! Let's log-transform the 'loss' variable.
+
+```{python, engine.path='python3', eval = FALSE}
+train['log_loss'] = np.log(train['loss'])
+
+plt.hist(train['log_loss'], 30, normed=1)
+plt.xlabel('Log(Loss)')
+plt.ylabel('Probability')
+plt.title('Distribution of Log(Loss)es')
+plt.show()
+```
+
+Much Better. Now, what about our input variables? Are they similarly skewed?
+
+```{python, engine.path='python3', eval = FALSE}
+features_numeric = test.dtypes[test.dtypes != "object"].index
+features_skewed = train[features_numeric].apply(lambda x: skew(x.dropna()))
+features_skewed
+```
+
+Some of them, yeah. We can fix that by taking their log-transforms as well, but log is sort of a blunt instrument. It's easily reversible, which makes it good for the outcome. But the Box-Cox transform is a better tool for modifying our inputs. Let's apply it to any features with a skew greater than, say, .2
+
+```{python, engine.path='python3', eval = FALSE}
+features_skewed = features_skewed[features_skewed > 0.2]
+for feat in features_skewed.index:
+    train[feat], lam = boxcox(train[feat] + 1)
+    test[feat] = boxcox(test[feat] + 1, lam)
+
+features_skewed = train[features_numeric].apply(lambda x: skew(x.dropna()))
+features_skewed
+```
+
+That eliminated much of the skewness. Before we move on, however, I'd like to call attention to the way we handle lam in the above block. We let boxcox figure out the optimal lam using our training data, and then force it to use that same lam on the test data, even if it isn't necessarily optimal for the test data. The alternative approach is to bind train and test together, perform these transformations on the entire set, and then split them back apart when it comes time to build models. I've opted not to for the benefit of clarity, but possibly at the cost of some small modeling advantage.
+
+Now, we have some categorical features we need to handle. The textbook approach to Linear Regression says you can leave categorical variables in, provided you do something like one-hot encode them and leave out the smallest category. Personally, I prefer to replace the category with the arithmetic mean of its corresponding subset of outcomes.
+
+```{python, engine.path='python3', eval = FALSE}
+features_categorical = [feat for feat in test.columns if 'cat' in feat]
+
+for feat in features_categorical:
+    a = pd.DataFrame(train['log_loss'].groupby([train[feat]]).mean())
+    a[feat] = a.index
+    train[feat] = pd.merge(left=train, right=a, how='left', on=feat)['log_loss_y']
+    test[feat] = pd.merge(left=test, right=a, how='left', on=feat)['log_loss']
+
+features_categorical = test.dtypes[test.dtypes == "object"].index
+```
+
+There's just one more thing to check on. Linear Regression generally doesn't handle missing values very well. Let's see if we have any:
+
+```{python, engine.path='python3', eval = FALSE}
+counts = train.count()
+len(counts[counts < train.shape[0]])
+```
+
+Not in the training dataset. Let's check test now:
+
+```{python, engine.path='python3', eval = FALSE}
+counts = test.count()
+len(counts[counts < test.shape[0]])
+```
+
+Rats. OK, Rather than design a elaborate solution, I'm just going to drop any columns with missing values.
+
+```{python, engine.path='python3', eval = FALSE}
+temp = test.dropna(1)
+counts = temp.count()
+len(counts[counts < temp.shape[0]])
+```
+
+# Linear Model
+
+Cool. Now, we're ready to make a model.
+
+```{python, engine.path='python3', eval = FALSE}
+model = smf.ols('log_loss ~ ' + ' + '.join(temp.columns), data=train).fit()
+model.summary()
+```
+
+There's a lot of useful information here. However, since this is a prediction challenge, I'm not interested in most of it. Instead, I'm interested in how well it can predict new values. To do that...
+
+```{python, engine.path='python3', eval = FALSE}
+yhat = np.exp(model.predict(test))
+```
+
+Note that we call np.exp on our model predictions. Remember how we log-transformed 'loss' up at the beginning of this script? Exponentiating the outcome sort of undoes that, so our predictions will be on the same scale as 'loss' instead of 'log_loss'. Forgetting this step is a really good way to get a terrible score.
+Now that we have some predictions, let's write them out and score them!
+
+```{python, engine.path='python3', eval = FALSE}
+result = pd.DataFrame({'id': test['id'].values, 'loss': yhat})
+result = result.set_index('id')
+result.to_csv('simplelmprediction.csv', index=True, index_label='id')
+```
+
+If you submit that, it should give you a score something like 1245.99. That's a bit worse than the Random Forest Benchmark (which isn't surprising). To improve upon that, we're going to need a more powerful machine learning technique. In Kaggle competitions, that usually means either Deep Learning or XGBoost. Let's try XGBoost.
+
+# XGBoosted Model
+
+One important difference between Linear models and most advanced machine learning techniques is the tuning parameters. Once you get past massaging the data, linear models have no parameters. You never need to estimate the optimal number of rounds, passes, trees, branches, or nodes. However, other techniques will require at least some of these configuration parameters, and will probably behave poorly if the parameters are far-removed from their optimal values (or combinations). XGBoost is such a technique.
+
+In order to fit an XGBoost model, we need to set a *learning_rate* (also sometimes called "eta"), a *gamma*, a *minimum child weight*, a *col sample by tree*, a *subsample*, and a *maximum depth*. Exploring all of these would be hard. Exploring all combinations of these would be impractical. So, instead of trying to exhaust the possibile combinations with a given level of precision (a grid search), let's use an optimizer.
+
+```{python, engine.path='python3', eval = FALSE}
+# Load Training Data
+train_labels = np.array(train['log_loss'])
+train.drop(train.columns[[-1,-2]], 1, inplace = True)
+d_train_full = xgb.DMatrix(train, label=train_labels)
+
+# if you're paranoid about overfitting, increase this.
+n_folds = 10
+
+# if you see metrics dropping precipitously until the end, increase this.
+n_rounds = 100
+
+# Set this to anything you want.
+seed = 10
+
+def xg_eval_mae(yhat, dtrain):
+    y = dtrain.get_label()
+    return 'mae', mean_absolute_error(np.exp(y), np.exp(yhat))
+
+def fitXGBoost(eta = .1, gamma = .5, min_child_weight = 4, colsample_bytree = .3, subsample = 1, max_depth = 6):
+    model = xgb.cv({
+        "silent": True,
+        "learning_rate": eta,
+        "gamma": gamma,
+        "min_child_weight": min_child_weight,
+        "colsample_bytree": colsample_bytree,
+        "subsample": subsample,
+        "max_depth": int(max_depth),
+        "early_stopping_rounds": 20,
+        "seed": seed
+        }, d_train_full, n_rounds, n_folds, feval = xg_eval_mae)
+    return(-model.iloc[-1,0])
+
+bo = BayesianOptimization(fitXGBoost, {
+    'eta': (.01, .5),
+    'gamma': (0, 4),
+    'min_child_weight': (1, 5),
+    'colsample_bytree': (.01, 1),
+    'subsample': (.5, 1),
+    'max_depth': (3, 12)
+})
+
+bo.maximize(init_points = 60, n_iter = 120)
+```
+
+```{python, engine.path='python3', eval = FALSE}
+# Discovered by the hyperoptimize.py script
+params = {
+    "colsample_bytree": .9921,
+    "eta": .0995,
+    "gamma": 3.8581,
+    "max_depth": 11,
+    "min_child_weight": 1.0065,
+    "subsample": 1
+}
+
+def xg_eval_mae(yhat, dtrain):
+    y = dtrain.get_label()
+    return 'mae', mean_absolute_error(np.exp(y), np.exp(yhat))
+
+res = xgb.cv(params, train_d, n_rounds, n_folds, early_stopping_rounds = 15, seed = seed, feval = xg_eval_mae)
+
+n_rounds = res.shape[0] - 1
+
+model = xgb.train(params, train_d, n_rounds)
+
+# Write the Results
+result = pd.DataFrame(np.exp(model.predict(test_d)), columns=['loss'])
+result["id"] = test['id'].values.astype(np.int32)
+result = result.set_index("id")
+result.to_csv('outputs/hyperoptimizedxgb.csv', index=True, index_label='id')
+```
+
+# Bonus: Golfed Solution
+
+Bonus Addendum: Just for fun, here's a [golf](https://en.wikipedia.org/wiki/Code_golf) solution which scores a bit worse than the Linear Model, but generates predictions in the smallest python script I could write.
+
+```{python golfSolution, eval = FALSE}
+import pandas as p
+import statsmodels.formula.api as s
+e=p.read_csv('../input/test.csv').dropna(1)
+p.DataFrame({'id':e['id'].values,'loss':s.ols('loss~'+'+'.join([c for c in e.columns if 'cont' in c]),data=p.read_csv('../input/train.csv')).fit().predict(e)}).to_csv('o.csv',index=False)
+```

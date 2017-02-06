@@ -18,13 +18,13 @@ library("ShRoud")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
 
-Most anthropogenic existential risks lack empirical evidence, and thus are tantamount to difficult to estimate. For example, a technological "singularity" is termed singularity for precisely the same reason that black hole cores are called singularities. Namely, that are conditions under which our models break down, and we are effectively incapable of making good predictions beyond them.
+Most anthropogenic existential risks lack empirical evidence, and thus difficult to predict. (The AI Impacts project)
 
 We have better data on the nature of natural existential risks. (Are near-Earth Objects Power-law distributed? Pandemics? Volcanic Eruptions?)
 
-Warfare sits at the cross-section of these two conditions. It is both fundamentally anthropogenic, and a measurable phenomenon with a (sadly) rich historical record. Accordingly, we have comparatively excellent data on warfare.
+Warfare sits at the cross-section of these two conditions. It is both fundamentally anthropogenic, and a measurable phenomenon with a (sadly) rich historical record.
 
-# Existential Risks
+## Existential Risks
 
 
 # The Probability of War
@@ -48,7 +48,7 @@ Quarrels %>%
   plot_ly(x = ~LogRangeOfMagnitude, y = ~LogNumberOfDeadlyQuarrels, mode="markers")
 ```
 
-(Note that the two points at the upper-left of the graph are estimates of the global murder rate, and the point with the LogRangeOfMagnitude of 3 is, as best I can tell, an estimate Richardson based on a linear inference and not an actual measurement.)
+(Note that the two points at the upper-left of the graph are estimates of the global murder rate, and the point with the LogRangeOfMagnitude of 3 is, as best I can tell, an estimate Richardson based on a linear extrapolation and not an actual measurement.)
 
 The Correlates of War Project tracks conflict from 1800 to 2010.
 
@@ -76,16 +76,16 @@ wars <- interstatewars %>%
 
 fit <- lm(logRank ~ logDeaths, data = wars)
 
-#plot_ly(wars, x = ~logDeaths, y = ~logRank, mode = "markers", color = ~Type,
-#  text = paste0(
-#    ~WarName, " (", ~StartYear, "-", ~EndYear, ")<br />",
-#    ~TotalCombatDeaths, " casualties")) %>%
-#  add_trace(x = ~logDeaths, y = fitted(fit), mode = "lines")
+plot_ly(wars, x = ~logDeaths, y = ~logRank, type = "scatter", mode = "markers", color = ~Type,
+ text = ~paste0(
+   WarName, " (", StartYear, "-", EndYear, ")<br />",
+   TotalCombatDeaths, " casualties")) %>%
+ add_trace(x = ~logDeaths, y = fitted(fit), mode = "lines")
 ```
 
 Thus far, it seems as though only *international* conflict has generated the conditions necessary for industrialized warfare of the scale that could constitute an existential risk (for example, a counterfactual thermonuclear exchange between the US and the Soviet Union). However, we can at least conceive of a set of circumstances in which a non-interstate political conflict initiates existentially risky conditions.
 
-For example, the Soviet Union constructed an autonomous launching system for its nuclear missiles called the "Dead Hand". It is rumored to still be operational. A domestic terrorist could, hypothetically, execute a nuclear attack targeting some element of the Russian Government. This attack would create the conditions required to activate the Dead Hand (if it is still operational), leading to a dangerous thermonuclear assault (even if the other nuclear powers didn't respond in kind).
+For example, the Soviet Union constructed an autonomous launching system for its nuclear missiles called the "Dead Hand". It is rumored to still be operational. A domestic terrorist could, hypothetically, execute a nuclear attack targeting some element of the Russian Government. This attack could create the conditions required to activate the Dead Hand (if it is still operational), leading to a dangerous thermonuclear assault (even if the other nuclear powers didn't respond in kind).
 
 In other words, international conflict was the breeding ground for existentially risky weaponry, but it may be a subset of violent incidents, any one of which may scale upwards to an existential risk to humanity.
 
@@ -150,13 +150,12 @@ wars <- as.data.frame(interstatewars) %>%
   dplyr::arrange(desc(logDeaths)) %>%
   dplyr::mutate(logRank = max0(log10(1:n())))
 
-fitAll   <- wars %>% ntbt_lm(logRank ~ logDeaths)
+fitAll <- wars %>% ntbt_lm(logRank ~ logDeaths)
 
-#plot_ly(wars, x = ~logDeaths, y = ~logRank, mode = "markers", color = Type,
-#  text = paste0(
-#    WarName, " (", StartYear, "-", EndYear, ")<br />",
-#    prettyNum(TotalCombatDeaths, big.mark = ","), " casualties")) %>%
-#  add_trace(data = wars, x = logDeaths, y = fitted(fitAll), mode = "lines")
+plot_ly(wars, x = ~logDeaths, y = ~logRank, type = "scatter", mode = "markers", color = ~Type,
+ text = ~paste0(
+   WarName, " (", StartYear, "-", EndYear, ")<br />",
+   prettyNum(TotalCombatDeaths, big.mark = ","), " casualties"))
 ```
 
 This presents a problem of counting. As Richardson observed, counting deaths by violence becomes increasingly difficult as you scale downwards [-@Richardson1948-de]. This is because of the comparative commonality of violence at small scales. It is tragically impractical to attempt to count all murders. Fortunately, the Correlates of War is not the only project to attempt to catalogue and measure political carnage. In response to this lack of data quality, Peter Brecke has committed heroic efforts to data collection, attempting to push the threshold of quality data on violent incidents down to skirmishes as small as 32 (that is, $10^{1.5}$) fatalities.
@@ -172,8 +171,6 @@ ConflictCatalog <- read_excel("../data-cache/ConflictCatalog18vars.xls")
 To jump upwards towards the margins of measurable violence, [MURDER RATES]
 
 http://www.cgeh.nl/sites/default/files/homicide.xlsx
-
-
 
 Note the equation describing the regression model:
 
@@ -240,7 +237,8 @@ pop <- read_csv("../data/PopEstimates.csv") %>%
 
 pop %>%
   gather(Estimator, Estimate, `United States Census Bureau (2015)`:`Kapitza (1996)`) %>%
-  plot_ly(x=~Year, y=~Estimate, color=~Estimator)
+  plot_ly(x=~Year, y=~Estimate, color=~Estimator) %>%
+  layout(legend = list(x = 0, y = 1))
 ```
 
 One which I find particularly worth highlighting is [Sergey Kapitza's phenomonological model of global population growth](https://web.archive.org/web/20090511041230/http://srs.dl.ac.uk/SPEAKERS/KAPITZA/Uspekhi_96.html), which can be roughly stated as:
@@ -374,11 +372,16 @@ A decline in violence depresses the probability of wars.
 
 This is an extremely fraught and difficult effort. The specific, substantive sources of potentially massive conflict are likely to change on the order of decades, if not years. Even so, 
 
+[Backing into World War III](http://foreignpolicy.com/2017/02/06/backing-into-world-war-iii-russia-china-trump-obama/)
+
 ### NATO-Russia
 
 [How World War III Became Possible](http://www.vox.com/2015/6/29/8845913/russia-war)
+
 [How Likely is war between the United States and Russia in the next 10 years?](https://trip.wm.edu/charts/#/bargraph/3/26)
+
 [How Likely Is (Nuclear) War Between the United States and Russia?](https://dartthrowingchimp.wordpress.com/2015/07/03/how-likely-is-nuclear-war-between-the-united-states-and-russia/)
+
 [How Likely is nuclear war with Russia?](http://www.vox.com/2015/7/6/8900237/russia-war-odds)
 
 ### US-China
@@ -445,7 +448,29 @@ What this should communicate is that the probability of a catastrophic nuclear w
 
 [Vasily Arkhipov]
 
-Our assessments of the probabilities of these events resulting in a thermonuclear war should far exceed those suggested by the statistical model.
+My personal assessment of the probabilities of these events resulting in a thermonuclear war far exceeds those suggested by the statistical models outlined above. How can these contradictory probabilities be reconciled?
+
+The answer is a question of anthropic logic. In his doctoral dissertation, Nick Bostrom defines anthropic reasoning as a misnomer for 
+
+## The Sleeping Beauty Problem
+
+> [Sleeping Beauty](https://en.wikipedia.org/wiki/Sleeping_Beauty "Sleeping Beauty") volunteers to undergo the following experiment and is told all of the following details: On Sunday she will be put to sleep. Once or twice, during the experiment, Beauty will be awakened, interviewed, and put back to sleep with an amnesia-inducing drug that makes her forget that awakening. A [fair coin](https://en.wikipedia.org/wiki/Fair_coin "Fair coin") will be [tossed](https://en.wikipedia.org/wiki/Coin_flipping "Coin flipping") to determine which experimental procedure to undertake: if the coin comes up heads, Beauty will be awakened and interviewed on Monday only. If the coin comes up tails, she will be awakened and interviewed on Monday and Tuesday. In either case, she will be awakened on Wednesday without interview and the experiment ends.
+
+> Any time Sleeping Beauty is awakened and interviewed she will not be able tell which day it is or whether she has been awakened before. During the interview Beauty is asked: "What is your [credence](https://en.wikipedia.org/wiki/Credence_%28statistics%29 "Credence (statistics)") now for the proposition that the coin landed heads?".
+
+Rather than conceiving of a fixed history in which what has happened in the past must have happened, anthropics gives us a tool to assess the associated counterfactual situations. If you’re feeling ambitious, read Nick Bostrom’s Doctoral Dissertation, [Anthropic Bias](http://www.anthropic-principle.com/%3Fq%3Dbook/table_of_contents), for a much more in-depth exploration of the topic.
+
+## The Coma Beauty Problem
+
+Let us suppose that Sleeping Beauty fell into a coma in the mid 1980's. It is now 30 years later, and some neurochemists have discovered a means to awakening her. They administer their new drug, and she wakes.
+
+Hoping to [ease her integration back into the world](https://www.youtube.com/watch?v=plgniAt36YY), the neurochemists adhere to the same testing protocol as the original experimenters and interview her as though she had been put to sleep earlier in the week. However, instead of asking about her credence about a coin flip, they explain that she was in a coma, and ask this, "What is your_[credence](https://en.wikipedia.org/wiki/Credence_%2528statistics%2529 "Credence (statistics)") now for the proposition that the Cold War resulted in a cataclysmic nuclear war?"
+
+We observe that the Cold War between the United States and the Soviet Union did not culminate in a nuclear war. The anthropic logic here is that an observer is vastly more likely to live in a world where catastrophic nuclear war has not occurred, as such a war would vastly reduce the number of observers capable of making the observation. Stated differently, it’s way more likely that an observer observes a universe in which a global thermonuclear war was never fought than that an observer observes a universe in which it has.
+
+Note that this says nothing about the _pre hoc_ probability of that war, other than that it was less than 1\. So, what _does_ this tell us? More or less nothing, I’m afraid. As [Roko Jelavic points out](https://www.facebook.com/rjelavic/posts/10211689902182034?match=cm9rbyBqZWxhdmnEhyxhbnRocm9waWMsamVsYXZpxIcscm9rbw%3D%3D), we shouldn't use our empirical observations about existential risks as a basis for reasoning about them:
+
+> Let's take nukes as an example. Taking into account the number of close calls happening over the years* it's really strange nothing bad ever happened. Taking many-worlds interpretation of quantum mechanics into account, it's possible something did happen, but in some other Everett branch - and in that world, we went extinct. By anthropic principle, it's clear we find ourselves in a branch that did in fact not go extinct. When trying to estimate the existential risk of nukes, some people may take comfort in the fact no disaster happened until now, but if many-worlds is correct, you can't take history into account in that way. This generalizes to xrisk beyond just nukes.
 
 # Conclusion
 

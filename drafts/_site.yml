@@ -6,8 +6,10 @@ bibliography: ../bibliography.bib
 navbar:
   title: "Anthony A. Boyles"
   left:
-    - text: "Essays"
+    - text: "Portfolio"
       href: ../index.html
+    - text: "Essays"
+      href: ../essays/
     - text: "Code"
       href: ../code.html
     - text: "About"
