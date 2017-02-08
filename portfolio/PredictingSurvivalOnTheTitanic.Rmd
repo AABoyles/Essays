@@ -1,0 +1,520 @@
+---
+title: 'Predicting Survival on the Titanic'
+---
+
+# Introduction
+
+Kaggle hosts a long-running, beginner-focused [competition](https://www.kaggle.com/c/titanic) for a dataset of the passengers on the Titanic. From the description:
+
+> The sinking of the RMS Titanic is one of the most infamous shipwrecks in history.  On April 15, 1912, during her maiden voyage, the Titanic sank after colliding with an iceberg, killing 1502 out of 2224 passengers and crew. This sensational tragedy shocked the international community and led to better safety regulations for ships.
+> One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class.
+> In this challenge, we ask you to complete the analysis of what sorts of people were likely to survive. In particular, we ask you to apply the tools of machine learning to predict which passengers survived the tragedy.
+
+Among the [many excellent kernels](https://www.kaggle.com/c/titanic/kernels) that have been written for this competition, this Kernel was heavily informed by Megan Risdal's [excellent introductory Kernel](https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic/code). That said, any errors are my own.
+
+```{r setup, message = FALSE, warning=FALSE}
+set.seed(42)
+
+library('knitr')
+opts_chunk$set(message = FALSE, warning=FALSE)
+
+library('readr')
+train <- read_csv('../data-cache/Titanic/train.csv')
+test  <- read_csv('../data-cache/Titanic/test.csv')
+
+library('dplyr')
+full  <- bind_rows(train, test)
+```
+
+# Exploratory Data Analysis
+
+To begin, the titanic training dataset contains `r nrow(train)` observations of `r ncol(train)` variables. The test dataset contains `r nrow(test)` additional observations of the same vairables, save of course for the outcome variable, "Survived".
+
+We don't know the sampling method by which Kaggle split the training and test sets (i.e. they didn't tell us). There are basically two approaches that make sense: random selection and stratified sampling. Stratified sampling is where you identify some set of variables as important, and then make sure your training and test datasets have balanced numbers across the variables. By 'balanced', I mean that the distributions match. Let's consider, for example, the distribution of ages between `train` and `test`:
+
+```{r TrainTestAgeHistogram}
+library('plotly')
+
+plot_ly(alpha = 0.6, showlegend = FALSE) %>%
+  add_histogram(x = train$Age) %>%
+  add_histogram(x = test$Age) %>%
+  layout(barmode = "overlay")
+```
+
+If we thought Kaggle only stratified the data on the age variable, we should be very suspicious about that 60-65 bar where the test data has more observations than the training data. However, if they did, it's likely that Kaggle stratified on a number of variables, including Age, Sex, Parch, Pclass, SibSp, Fare, and Embarked. Oh, and Survived. It's kind of important to have some balance in your outcome. Unfortunately, I don't know of a good way to throw 8 variables into a single (useful) graph, so let's just leave it at that. (We'll use random selection to Cross-validate our models later on, so I won't talk about it how to do it here.)
+
+From the above Histogram, we can see that the largest demographic was young adults, with fewer children and older passengers.
+
+Now, there are other interesting variables (Sex, Pclass, etc.), but I'm going to jump to the outcome now. How was survival distributed?
+
+```{r SurvivorshipBars}
+train %>%
+  group_by(Survived) %>%
+  summarise(Number = n()) %>%
+  plot_ly(x = ~Survived, y= ~Number, type="bar")
+```
+
+So approximately twice as many died as survived. Now, we can cheat a little bit! From the description, we know that 1502 out of 2224 passengers and crew died. The full dataset (train and test) contains `r nrow(full)` passengers. However, Wikipedia [gives us this nifty table](https://en.wikipedia.org/wiki/RMS_Titanic#Survivors_and_victims):
+
+<table>
+<thead><tr><th>Age/<wbr>gender</th><th>Class/<wbr>crew</th><th>Number aboard</th><th>Number saved</th><th>Number lost</th><th>Percentage saved</th><th>Percentage lost</th></tr></thead>
+<tbody>
+<tr><th rowspan="3">Children</th>
+<th>First Class</th><td>6</td><td>5</td><td>1</td><td>83%</td><td>17%</td></tr>
+<tr><th>Second Class</th><td>24</td><td>24</td><td>0</td><td>100%</td><td>0%</td></tr>
+<tr><th>Third Class</th><td>79</td><td>27</td><td>52</td><td>34%</td><td>66%</td></tr>
+<tr><th rowspan="4">Women</th>
+<th>First Class</th><td>144</td><td>140</td><td>4</td><td>97%</td><td>3%</td></tr>
+<tr><th>Second Class</th><td>93</td><td>80</td><td>13</td><td>86%</td><td>14%</td></tr>
+<tr><th>Third Class</th><td>165</td><td>76</td><td>89</td><td>46%</td><td>54%</td></tr>
+<tr><th>Crew</th><td>23</td><td>20</td><td>3</td><td>87%</td><td>13%</td></tr>
+<tr><th rowspan="4">Men</th>
+<th>First Class</th><td>175</td><td>57</td><td>118</td><td>33%</td><td>67%</td></tr>
+<tr><th>Second Class</th><td>168</td><td>14</td><td>154</td><td>8%</td><td>92%</td></tr>
+<tr><th>Third Class</th><td>462</td><td>75</td><td>387</td><td>16%</td><td>84%</td></tr>
+<tr><th>Crew</th><td>885</td><td>192</td><td>693</td><td>22%</td><td>78%</td></tr>
+<tr><th colspan="2">Total</th><td>2224</td><td>710</td><td>1514</td><td>32%</td><td>68%</td></tr>
+</tbody>
+</table>
+
+From this, we can infer that there were 908 crew aboard. 2224 - 908 = 1316, so Kaggle has given us effectively every passenger. We know that `r sum(train$Survived)` from the training dataset survived, so we should predict approximately `r nrow(full) - sum(train$Survived)` from the test set survived. This may be a useful sanity check.
+
+A funny thing about EDA is that you can do it forever. However, EDA forever never leads to a useful model, so let's plunge into modeling.
+
+# First Pass Modeling
+
+I personally like to model in several stages: first, model with exactly the data you're given. Next, model with the data you can infer (i.e. Feature Engineering). Then, model with better models. That way you can tell at each step if your labor is adding value to your effort.
+
+## Scoring
+
+Kaggle scores us on the train and test set they provide, but we want to get a good guess about how well a model is performing *before* we submit it to Kaggle. So, to do that, I'm going to split the training data again, and then use the training holdover to score each model's performance.
+
+```{r CrossValidation}
+subtraining <- train %>%
+  sample_frac(0.7)
+
+subtest <- train %>%
+  setdiff(subtraining)
+```
+
+Since we'll be looking at several different modeling approaches, we'll need an objective scoring metric. The Kaggle metric is the percentage of passengers we predict correctly, a value which we wish to maximise. For simplicity's sake, I'm going to use a slightly different formulation of the same metric, called the **Mean Absolute Error**. It's basically what it sounds like: for every value we predict, subtract it from the truth (the difference of which is called the "error"), take the absolute value of the error, and then take the mean of all the absolute values. This gives us a number we want to minimize.
+
+```{r MAE}
+MAE <- function(a,b=subtest$Survived,na.rm=TRUE){mean(abs(a-b), na.rm = na.rm)}
+```
+
+So, for example, if we pick 1000 random values between 0 and 1, round them, and then do it again and check the Mean Absolute Error, it should be pretty close to .5.
+
+```{r demoMAE}
+demo <- MAE(round(runif(1000)), round(runif(1000)))
+demo
+```
+
+To get from this to the proportion we predicted successfully, we need only subtract from 1.
+
+```{r invertDemo}
+1-demo
+```
+
+## Logistic Regression
+
+```{r glm}
+library(intubate)
+
+formula <- Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked
+
+predictions <- data.frame(row.names = row.names(subtest))
+
+subtraining %>%
+  ntbt_glm(formula, family = "binomial") %>%
+  predict(subtest[!names(subtest) %in% "Survived"], type = "response") %>%
+  round() ->
+  predictions$logit
+```
+
+Now, before we score this, I should note that any row which contained an `NA` will have produced `NA` as a prediction. There are many ways to handle this problem. We could ignore them in our scoring:
+
+```{r scorelogit}
+MAE(predictions$logit, na.rm=TRUE)
+```
+
+Alternately, we could fill them in with a prior survival estimate. The baseline survival rate was close to a third, meaning that we're better off guessing a random person died than that they survived:
+
+```{r scorelogit2}
+predictions$logit2 <- predictions$logit
+predictions$logit2[is.na(predictions$logit2)] <- 0
+
+MAE(predictions$logit2)
+```
+
+The better approach, however, is to try to fill in the blanks.
+
+# Imputation
+
+Some models don't handle missing values very well. The Titanic dataset has some missing values. So, let's try to take care of them. The values in this dataset aren't missing entries uniformly:
+
+```{r missingnesstable1}
+full %>% is.na() %>% colSums() %>% tbl_df %>% rename(Missing = value) %>% kable
+```
+
+The 418 missing the `Survived` variable are the 418 members of the test set. The 263 missing `Age` are important and interesting, so let's be sure to address them. I doubt `Cabin` will be all that interesting, mostly because it seems to lack enough data for us to extract any credible signal from it. To start, let's focus on `Embarked` and `Fare`.
+
+## Embarkment
+
+When you're only missing a couple, it's usually enough to make a good, informed estimate about what those values should have been. It's unlikely to matter for the results of a model (since its a small number and you should basically always guess something close to the mean or trend, rather than an outlier). `Embarked` is such a variable. Of all the passengers, we don't know the embarkment location for these two:
+
+```{r missingembarkmentTable}
+full %>%
+  filter(is.na(Embarked)) %>%
+  kable()
+```
+
+Titanic collected passengers from three different ports: Southampton, Cherbourg, and Queenstown (imaginatively coded "S", "C", and "Q", respectively).
+
+!["Titanic's Route"](https://upload.wikimedia.org/wikipedia/commons/5/51/Titanic_voyage_map.png)
+
+Of particular note, we can see that both our passengers of mysterious origin were First Class passengers who paid \$80 for their tickets. So from where did First class passengers embark?
+
+```{r ClassEmbarkmentCrosstab}
+table(full$Pclass, full$Embarked)
+```
+
+So there were very few embarkments by first and second class passengers in Queenstown, meaning it's highly unlikely the missing two were from there. Now, from where did First class passengers *paying \$80 per ticket* embark?
+
+```{r FirstclassBoxplots}
+full %>%
+  filter(!is.na(Embarked), Pclass == 1) %>%
+  plot_ly(x=~Embarked, y=~Fare) %>%
+  add_boxplot() %>%
+  layout(boxmode = "group")
+```
+
+See where \$80 falls on the boxplots above? It could be any of them. However, the median fare for a first-class passenger departing from Charbourg is quite close to the \$80 paid by our embarkment-deficient passengers. Either way, this is unlikely to make a huge difference to any of the models, so let's take a leap and replace the NA values with 'C'.
+
+```{r fillEmbarkment}
+full$Embarked[is.na(full$Embarked)] <- 'C'
+```
+
+### Fare Price
+
+```{r FarePriceMissingTable}
+full %>%
+  filter(is.na(Fare)) %>%
+  kable()
+```
+
+This is a third class passenger who departed from Southampton ('S'). Let's visualize Fares among all others sharing their class and embarkment (n = `r nrow(full[full$Pclass == '3' & full$Embarked == 'S', ]) - 1`).
+
+```{r FareHistogram}
+full %>%
+  filter(Pclass == 3, Embarked == 'S', !is.na(Fare)) %>%
+  plot_ly(x = ~Fare, type="histogram")
+```
+
+From this visualization, we can see that a preponderance of fares (third-class passengers from Southampton) paid around \$10. (The median is actually \$`r median(full[full$Pclass == '3' & full$Embarked == 'S', ]$Fare, na.rm = TRUE)`) so it seems a reasonable to simply replace the NA Fare value with that median.
+
+```{r populateFare}
+full$Fare[is.na(full$Fare)] <- median(full[full$Pclass == '3' & full$Embarked == 'S', ]$Fare, na.rm = TRUE)
+```
+
+## Age
+
+Finally, as we noted earlier, there are many missing `Age` values in our data. In order to solve this problem we could provide a treatment similar to the one above, though it would take a long time and produce unreliable data. Instead, we can outsource the hard legwork to a machine learning algorithm. Why? Because we must. When a variable is missing its values in only one or two rows, making intelligent guesses about those values is reasonable. However, when many are missing (and missing in a way that isn't rigidly consistent with some other variables in the dataset), then statistical imputation is the better choice. Remember, we're missing `r sum(is.na(full$Age))` ages.
+
+```{r MICE, message=FALSE, results='hide'}
+library('mice')
+
+factor_vars <- c('PassengerId', 'Sex', 'Embarked')
+full[factor_vars] <- lapply(full[factor_vars], as.factor)
+
+useless <- c('PassengerId', 'Name', 'Ticket', 'Cabin', 'Family', 'Surname', 'Survived')
+useful  <- names(full)[!names(full) %in% useless]
+
+full %>%
+  select_(.dots=useful) %>%
+  mice(method='rf') ->
+  mice_mod
+
+mice_output <- mice::complete(mice_mod)
+```
+
+If this were a serious effort, I'd cross-validate MICE to make sure it's doing a good job, but I'm more than willing to settle for a 'good-enough' approach here. The good-enough approach is to check to make sure that MICE didn't do anything stupid like stick all missing ages with the mean age, which we'd be able to see in a histogram.
+
+```{r MICEOutputHistogram}
+plot_ly(alpha = 0.6, showlegend = FALSE) %>%
+  add_histogram(x = ~mice_output$Age) %>%
+  add_histogram(x = ~full$Age) %>%
+  layout(barmode = "overlay")
+```
+
+Not bad! Looks like MICE didn't change the distribution too radically, so that's probably good. Again, I'd need to cross-validate to check. However, since this is probably good, I'm going to run with it.
+
+```{r replaceAgesWithMICE}
+# Replace Age variable from the mice model.
+full$Age <- mice_output$Age
+```
+
+TODO: Stop feeling bad about it and actually cross-validate MICE.
+
+Before we move on again, let's do a quick sanity check that there's no missing data:
+
+```{r missingDataSanityCheck1}
+full %>% is.na() %>% colSums() %>% tbl_df %>% rename(Missing = value) %>% kable
+```
+
+# Second Pass Modeling
+
+Now that we've finished imputing values for all variables that we care about, let's check to see if we've improved at all:
+
+```{r logit2}
+#We've got to refresh subtraining and subtest to contain the values we've filled in.
+subtraining <- full[full$PassengerId %in% subtraining$PassengerId,]
+subtest     <- full[full$PassengerId %in% subtest$PassengerId,]
+
+subtraining %>%
+  ntbt_glm(formula, family = "binomial") %>%
+  predict(subtest[!names(subtest) %in% "Survived"], type = "response") %>%
+  round() ->
+  predictions$logit3
+
+MAE(predictions$logit3)
+```
+
+We're doing a tiny bit worse, but that's OK! Improving the model was an indirect goal. What we accomplished was improving our data quality, which makes more models available to us. Now, let's go for something that *should* make a difference in model quality: feature engineering.
+
+# Feature Engineering
+
+## Names
+
+The names in this dataset are an interesting beast. They contain formal titles, as well as firstnames and surnames. Because it's a clean dataset, getting the titles is easy: just parse the first word after a comma in the Name field:
+
+```{r}
+full$Title <- gsub('(.*, )|(\\..*)', '', full$Name)
+```
+
+So, what kinds of titles do we have?
+
+```{r SexTitleCrosstab}
+# Show title counts by sex
+table(full$Sex, full$Title)
+```
+
+Interesting. Lots of Mr, Mrs, Miss, and Master, plus a bunch unusual titles (mostly nobility and military officers).
+
+```{r TitleTransform}
+# Titles with very low cell counts to be combined to "rare" level
+rare_title <- c('Dona', 'Lady', 'the Countess','Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer')
+
+# Also reassign mlle, ms, and mme accordingly
+full$Title[full$Title == 'Mlle']        <- 'Miss' 
+full$Title[full$Title == 'Ms']          <- 'Miss'
+full$Title[full$Title == 'Mme']         <- 'Mrs' 
+full$Title[full$Title %in% rare_title]  <- 'Rare Title'
+
+# Show title counts by sex again
+table(full$Sex, full$Title)
+
+# Finally, grab surname from passenger name
+full$Surname <- sapply(full$Name, function(x) strsplit(x, split = '[,.]')[[1]][1])
+```
+
+## Families
+
+```{r}
+# Create a family size variable including the passenger themselves
+full$Fsize <- full$SibSp + full$Parch + 1
+
+# Create a family variable 
+full$Family <- paste(full$Surname, full$Fsize, sep='_')
+```
+
+What does our family size variable look like? To help us understand how it may relate to survival, let's plot it among the training data.
+
+```{r, message=FALSE, warning=FALSE}
+# I can't figure out how to do this one in bare-metal plotly, so I'll just use ggplot2 and wrap it.
+library('ggplot2')
+ggplotly(
+  ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +
+  geom_bar(position = "fill", aes(alpha = .1)) +
+  scale_x_continuous(breaks=c(1:11)) +
+  labs(x = 'Family Size', y = 'Proportion Surviving')
+)
+```
+
+From this we can see that married couples and small families had higher survival rates than individuals and large families. This insight may or may not be useful, depending upon the modeling approach we use. This type of discretizing partitioning is useful for regression because it encodes more information than the regression can extract from the relationship. With the integer values, all a regression will determine is that as family size increases, survival probability decreases.
+
+By contrast, Random Forests are good at detecting partitions of this sort in continuous data, provided that the forest is large enough. So a discretized version of this variable should provide less signal to a well-tuned random forest. Never-the-less, since I'm ultimately going to use both, I'll discretize for the benefit of the regression.
+
+```{r, warning=FALSE}
+# Discretize family size
+full$FsizeD[full$Fsize == 1] <- 'singleton'
+full$FsizeD[full$Fsize < 5 & full$Fsize > 1] <- 'small'
+full$FsizeD[full$Fsize > 4] <- 'xlarge'
+
+ggplotly(ggplot(full[1:891,], aes(FsizeD)) +
+  geom_bar(aes(fill = factor(Survived))) +
+  labs(x = 'Family Size', y = 'Number Surviving'))
+```
+
+(Note that the Y axis indicates the number of individuals belonging to families of the type of family size, rather than the number of families.)
+
+Since we know (or have a good guess about) everyone's age, we can create a couple of new age-dependent variables: **Child** and **Mother**. A child will simply be someone under 18 years of age; a mother will be a passenger who is female, older than 18, with more than 0 children, and without the title 'Miss'. We require the last constraint because the existing dataset gives you a wierd variable: whether or not you had a child *or parent* aboard. If you were over 18 with more than one child, that could have indicated that you were actually an adult traveling with a parent.
+
+```{r Child}
+# Create the column child, and indicate whether child or adult
+full$Child[full$Age < 18] <- 'Child'
+full$Child[full$Age >= 18] <- 'Adult'
+
+# Show counts
+table(full$Child, full$Survived)
+```
+
+Adults die in 480/756 cases, or with probability `r 480/756`. Children fare a tiny bit better, dying with probability `r 69/135`. We will finish off our feature engineering by creating the **Mother** variable. Maybe we can hope that mothers are more likely to have survived on the Titanic.
+
+```{r Mother}
+full$Mother <- 0
+full$Mother[full$Sex == 'female' & full$Parch > 0 & full$Age > 18 & full$Title != 'Miss'] <- 1
+
+table(full$Mother, full$Survived)
+```
+
+Now that we're done with feature engineering, let's do a quick sanity check that there's no missing data:
+
+```{r missingDataSanityCheck}
+full %>% is.na() %>% colSums() %>% tbl_df %>% rename(Missing = value) %>% kable
+```
+
+Perfect. Now to update the model!
+
+# Third Pass Modeling (For real, this time)
+
+Remember how our first model was scoring `r MAE(predictions$logit3)`? How about a Logistic model based on all of our shiny new variables?
+
+```{r logit4}
+subtraining <- full[full$PassengerId %in% subtraining$PassengerId,]
+subtest     <- full[full$PassengerId %in% subtest$PassengerId,]
+
+formula <- Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + Title + Fsize + FsizeD + Child + Mother
+
+subtraining %>%
+  ntbt_glm(formula, family = "binomial") %>%
+  predict(subtest[!names(subtest) %in% "Survived"], type = "response") %>%
+  round() ->
+  predictions$logit4
+
+MAE(predictions$logit4)
+```
+
+Our score improves a bit! Now, maybe we can do even better with a stronger machine learning approach.
+
+## Decision Tree
+
+[This section was informed by Arda Yildirim's [script to build and visualize a Decision Tree](https://www.kaggle.com/yildirimarda/titanic/decision-tree-visualization-submission/code) for the Titanic Challenge.]
+
+A decision tree looks something like this:
+
+```{r dtViz}
+library('rpart')
+library('rpart.plot')
+library('magrittr')
+
+formula %>%
+  rpart(data = subtraining, method = "class", control = rpart.control(cp=0.0001)) %T>%
+  prp(type = 4, extra = 100) %>%
+  predict(subtest[!names(subtest) %in% "Survived"]) ->
+  decision_tree
+```
+
+If we actually use this decision tree to generate predictions, it scores...
+
+```{r dtPrediction}
+decision_tree[,2] %>%
+  round() ->
+  predictions$dt
+
+MAE(predictions$dt)
+```
+
+...Slightly better than the logistic regression. What if we grow a lot of them?
+
+## Random Forest
+
+We then build our model using `ranger` on the training set.
+
+```{r randomForest}
+library('ranger')
+
+subtraining %>%
+  select(-Cabin) %>%
+  ranger(formula, data = .) %>%
+  predict(subtest[!names(subtest) %in% "Survived"]) ->
+  temp
+
+temp$predictions %>%
+  round() ->
+  predictions$rf
+
+MAE(predictions$rf)
+```
+
+Slightly better than the single decision tree. From here we could tune it until we find some optimal parameters, but I'll take it as-is.
+
+## Ensemble
+
+Since we've gathered predictions from a bunch of different models, what happens if we throw them all together?
+
+```{r ensemble}
+predictions %<>%
+  mutate(ensemble = round((logit4 + dt + rf)/3))
+
+MAE(predictions$ensemble)
+```
+
+Our best yet! This is often the case--models have weaknesses that other models make up for. But those other models have weaknesses, too. By using even a simple combination scheme, we can get better predictions. Speaking of which...
+
+## Prediction
+
+Let's make one! To do so, we'll need to refresh the training and test data, retrain models on the full datasets, and assemble them in the ensemble again.
+
+```{r finalPrediction}
+train <- full[1:891,]
+test  <- full[892:1309,]
+
+predictions <- data.frame(row.names = row.names(test))
+
+train %>%
+  ntbt_glm(formula, family = "binomial") %>%
+  predict(test, type = "response") %>%
+  round() %>%
+  as.integer() ->
+  predictions$logit
+
+formula %>%
+  rpart(data = train, method = "class", control = rpart.control(cp=0.0001)) %>%
+  predict(test[!names(test) %in% "Survived"]) ->
+  decision_tree
+decision_tree[,2] %>%
+  round() ->
+  predictions$dt
+
+train %>%
+  select(-Cabin) %>%
+  ranger(formula, data = .) %>%
+  predict(test[!names(test) %in% "Survived"]) ->
+  temp
+temp$predictions %>%
+  round() ->
+  predictions$rf
+
+predictions %<>%
+  mutate(ensemble = as.integer(round((logit + dt + rf)/3)))
+
+solution <- data.frame(
+  PassengerID = test$PassengerId,
+  Survived = predictions$ensemble
+)
+
+write_csv(solution, 'titanic_ensemble.csv')
+```
+
+At present, there are nearly 6000 entries. This puts us in the top half, with an accuracy of 0.77990.

@@ -1,5 +1,9 @@
 ---
 title: "Estimating the Risk of Human Extinction by Catastrophic Global Warfare"
+output:
+  rmdformats::readthedown:
+    css: site_libs/style.css
+    code_folding: hide
 ---
 
 # Introduction

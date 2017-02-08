@@ -20,4 +20,4 @@ navbar:
 output:
   rmdformats::readthedown:
     css: site_libs/style.css
-    code_folding: hide
+    code_folding: show
