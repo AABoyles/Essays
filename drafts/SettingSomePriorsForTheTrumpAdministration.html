@@ -83,7 +83,10 @@ code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Inf
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Essays</a>
+  <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../essays/">Essays</a>
 </li>
 <li>
   <a href="../code.html">Code</a>
@@ -182,7 +185,7 @@ $(document).ready(function () {
 <td>
 <b>Last Revision</b>
 </td>
-<td>2017-01-24 16:56:18</td>
+<td>2017-02-06 16:24:53</td>
 </tr>
 </tbody>
 <tfoot></tfoot>
@@ -286,10 +289,10 @@ $(document).ready(function () {
 <h2>The Federal Budget, Defecit, and Debt</h2>
 <p><strong>Federal revenue will be higher in 2020 than in 2016.</strong></p>
 <p>I started this section by prognosticating that federal revenues would decline, but the data totally changed my mind. Federal Revenues basically don’t decline:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if(!<span class="kw">file.exists</span>(<span class="st">&quot;../data/FedBudget.xls&quot;</span>)){
-  <span class="kw">download.file</span>(<span class="st">&quot;https://www.whitehouse.gov/sites/default/files/omb/budget/fy2017/assets/hist01z1.xls&quot;</span>, <span class="st">&quot;../data/FedBudget.xls&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if(!<span class="kw">file.exists</span>(<span class="st">&quot;../data-cache/FedBudget.xls&quot;</span>)){
+  <span class="kw">download.file</span>(<span class="st">&quot;https://www.whitehouse.gov/sites/default/files/omb/budget/fy2017/assets/hist01z1.xls&quot;</span>, <span class="st">&quot;../data-cache/FedBudget.xls&quot;</span>)
 }
-budget &lt;-<span class="st"> </span><span class="kw">stfu</span>(<span class="kw">read_excel</span>(<span class="st">&quot;../data/FedBudget.xls&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>))
+budget &lt;-<span class="st"> </span><span class="kw">stfu</span>(<span class="kw">read_excel</span>(<span class="st">&quot;../data-cache/FedBudget.xls&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>))
 <span class="kw">names</span>(budget)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Year&quot;</span>
 budget &lt;-<span class="st"> </span>budget[<span class="dv">3</span>:<span class="dv">118</span>,<span class="dv">1</span>:<span class="dv">3</span>] %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw">as.numeric</span>(Year))
