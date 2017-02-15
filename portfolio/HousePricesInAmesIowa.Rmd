@@ -1,0 +1,504 @@
+---
+title: "House Prices in Ames, Iowa"
+---
+
+A common project in early statistics courses is to model house sales, based on a famous dataset from Boston. As an antidote to the commonness of this project, in 2011 Dean De Cock published a [rich dataset of house sales from Ames, Iowa](https://ww2.amstat.org/publications/jse/v19n3/decock.pdf). In late 2016, Kaggle picked up this dataset, launching the [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques) competition.
+
+```{r setup}
+library('knitr')
+knitr::opts_chunk$set(message=FALSE, warning=FALSE)
+```
+
+# Data Plumbing
+
+```{r readData, message=FALSE}
+#This is a defensive package load. Caret (which we use in the modeling) requires is sometimes, and we don't want to risk loading it after dplyr (which is loaded by tidyverse), so we'll just intentionally load it here.
+library('plyr')
+library("tidyverse")
+
+training <- read_csv("../data-cache/HousePrices/train.csv")
+test <- read_csv("../data-cache/HousePrices/test.csv")
+full <- bind_rows(training, test)
+```
+
+Before we delve into feature engineering, there are a lot of little nuisances in this dataset. Let's take care of those up here so they don't become a huge issue down there.
+
+## Bad Names
+
+Some of these columns have names that start with numerals. That makes R ...itchy. Let's just fix that right quick:
+
+```{r renameVars}
+library("magrittr")
+
+full %<>%
+  dplyr::rename(
+    FirstFlrSF  = `1stFlrSF`,
+    SecondFlrSF = `2ndFlrSF`,
+    ThreeSsnPorch = `3SsnPorch`
+  )
+```
+
+Note that this won't affect the models in any meaningful way.
+
+## Missing Values
+
+```{r findMissing}
+full %>%
+  is.na() %>%
+  colSums() %>%
+  tbl_df %>%
+  mutate(Variable = rownames(.)) ->
+  temp
+temp$Missing <- temp$value
+temp %>%
+  filter(Missing > 0) %>%
+  dplyr::select(Variable, Missing) %>%
+  arrange(desc(Missing)) %>%
+  kable
+```
+
+There are a ton of them. They make the models fail. Let's do something about it.
+
+The first step is to excise variables which can't possibly contain enough information to inform the model in any way. There isn't a hard and fast threshold for this (it should vary widely, depending on the eccentricities of the specific dataset and models). In this case, I'm thinking that I'll cut out everything with more missing values than `LotFrontage` has.
+
+```{r}
+full %<>%
+  select(-c(PoolQC, MiscFeature, Alley, Fence, FireplaceQu))
+```
+
+Next, let's do a simple mean substitution to fill in the values.
+
+```{r}
+# This is my own personal concoction of stuff that makes writing R less miserable
+# To replicate, install it like so:
+# devtools::install_github('aaboyles/ShRoud')
+library('ShRoud')
+
+full %<>%
+  fixNAs()
+```
+
+## Outcome Transformation
+
+If we take a look at the distribution of our outcome metric...
+
+```{r}
+library('plotly')
+
+training %>%
+  plot_ly(x = ~SalePrice, type = "histogram")
+```
+
+You'll note that these values vary over at least two orders of magnitude (as [Alexandru Papieu pointed out](https://www.kaggle.com/apapiu/house-prices-advanced-regression-techniques/regularized-linear-models)), so it may make more sense to predict the log-transformation of the data.
+
+```{r}
+training %>%
+  mutate(SalePrice = log1p(SalePrice)) %>%
+  plot_ly(x = ~SalePrice, type = "histogram")
+```
+
+Right, that's better.
+
+```{r}
+full %<>% mutate(SalePrice = log1p(SalePrice))
+training <- full[1:1460,]
+test <- full[1461:nrow(full),]
+```
+
+## Near-Zero Variance
+
+The biggest problem I encountered in early modeling efforts was factors with values that occur infrequently in the data. Basically, what happens is we partition the data for cross-validation and there's a factor with one (or a few) especially rare value. All instances of that rare value land in the test data, so we have no way to assign a coefficient to it, and the model fails.
+
+The simplest way to handle this is to drop any categorical variable with a value that is rarer than some tolerance threshold for model failure (basically, how patient you are). A better way to solve this problem is to translate ordinal variables onto a continuous scale. A computer can't figure out how far "good" is from "poor," but it can definitely figure out the difference between 4 and 1. That works adequately for ordinal variables, but its throwing away some discernable signal, and it works less well for nominal variables. For example, there is no inherent ordinality in countertop materials, but the market values granite more highly than formica. This is particularly instructive: instead of assuming that an ordinal variable follows its order, let's actually take the mean price for each category and see whether it follows the implied ordering.
+
+So, let's take a category we'd otherwise throw away, and figure out how to numberify it.
+
+```{r}
+training$ExterCond %>%
+  table() %>%
+  tbl_df()
+```
+
+Perfect. With a 70-30 training-test partitioning, the probability that Po ("Poor") has no representatives in the training data is .3, which is totally unworkable. The generalized formula for that metric, by the way, is $$P(F) = (1-D_t)^{min(n)}$$ 
+
+Where $F$ is the outcome in which the model fails because of rare values, $D_t$ is the proportion of the data used for training, and $n$ is taken from a table like the one above. To fix it, let's look at the mean house price for each member of the class:
+
+```{r}
+training %>%
+  dplyr::group_by(ExterCond) %>%
+  dplyr::summarise(AveragePrice = mean(SalePrice)) %>%
+  arrange(AveragePrice)
+```
+
+Here we can see that houses in Typical/Average shape on their exteriors actually fetch a slightly higher price, on average, than houses rated as being in "Good" shape. Interesting! So, for every categorical variable that has a sufficiently high probability of causing a modeling failure, let's replace the categories with their average SalePrice.
+
+```{r}
+failureThreshold <- 1e-6
+
+training <- full[1:1460,]
+test <- full[1461:nrow(full),]
+for(column in colnames(training)){
+  if(is.character(training[[column]])){
+    # This is not a sane way to do this, but I don't know any better way.
+    temp <- dplyr::group_by_(full, column) %>%
+      dplyr::summarise(AveragePrice = mean(SalePrice))
+    replacements <- as.list(temp$AveragePrice)
+    names(replacements) <- temp[[column]]
+    training %<>% mutate_(column = as.numeric(replacements[.[[column]]]))
+    test     %<>% mutate_(column = as.numeric(replacements[.[[column]]]))
+  }
+}
+
+full <- bind_rows(training, test)
+```
+
+OK, that's fun, but did it help us?
+
+```{r}
+training %>%
+  ntbt_lm(formula) %>%
+  summary() %>%
+  pander()
+```
+
+Sadly, not, though it doesn't seem to hurt us much. More importantly, it resolves some modelling problems down the road, so Let's keep it anyway.
+
+# Feature Engineering
+
+## Year Built, Remodeled, Sold and Age
+
+```{r YearBuilt}
+training %>%
+  ggplot(aes(YearBuilt, SalePrice)) +
+  geom_point()
+```
+
+It looks like just knowing the Year in which the house was built will give us a solid model:
+
+```{r}
+library('intubate')
+library('pander')
+training %>%
+  ntbt_lm(SalePrice ~ YearBuilt) %>%
+  summary() %>%
+  pander()
+```
+
+But that graph looks curvilinear to me. Maybe there's a quadratic relationship as well:
+
+```{r}
+training %>%
+  mutate(YearBuilt2 = YearBuilt^2) %>%
+  ntbt_lm(SalePrice ~ YearBuilt2 + YearBuilt) %>%
+  summary() %>%
+  pander()
+```
+
+Cool. Can we go higher-order?
+
+```{r}
+training %>%
+  mutate(
+    YearBuilt2 = YearBuilt^2,
+    YearBuilt3 = YearBuilt^3
+  ) %>%
+  ntbt_lm(SalePrice ~ YearBuilt3 + YearBuilt2 + YearBuilt) %>%
+  summary() %>%
+  pander()
+```
+
+Not really. Ok, so let's make sure at least $YearBuilt^2$ is in the model.
+
+```{r}
+full %<>% mutate(YearBuilt2 = YearBuilt^2)
+training <- full[1:1460,]
+test <- full[1461:nrow(full),]
+```
+
+How about Remodels?
+
+```{r}
+training %>%
+  plot_ly(x = ~YearRemodAdd, y = ~SalePrice)
+```
+
+Looks pretty striaghtforwardly linear.
+
+```{r}
+training %>%
+  ntbt_lm(SalePrice ~ YearRemodAdd) %>%
+  summary() %>%
+  pander()
+```
+
+Cool, so one more for the pile. 
+
+```{r}
+full %<>% mutate(YearRemodAdd2 = YearRemodAdd^2)
+training <- full[1:1460,]
+test <- full[1461:nrow(full),]
+```
+
+How about the year it was sold?
+
+```{r}
+training %>%
+  plot_ly(x = ~YrSold, y = ~SalePrice, type = "box")
+```
+
+Oh, this is fun: the data span the 2008 Housing Crash. Based on these box plots, it looks like the crash didn't drive a huge decline in prices for mid-level houses, but may have cut the long tail of more expensive sales. So, based on this, I wouldn't guess a model could do a ton with the sale year. Let's see:
+
+```{r}
+training %>%
+  ntbt_lm(SalePrice ~ YrSold) %>%
+  summary() %>%
+  pander()
+```
+
+Yup. From a predictive perspective, this is actually desirable. If there were reliable, strong currents of change in the pricing structure of houses year-over-year, those would add uncertainty to the model, tying it to other unknowns (like the health of the economy). Because this isn't (strongly) the case, we're better off not worrying about it.
+
+Another piece of information which may benefit us is the time of year. If you ever check on selling a property on Zillow, it will likely serve you a graph that looks something like this:
+
+![http://anthony.boyles.cc/imgs/zillow.png]()
+
+We also know the month in which the houses were sold. If Zillow's estimate is accurate, we may be able to discern some signal from the month of sale:
+
+```{r}
+training %>%
+  plot_ly(x = ~MoSold, y = ~SalePrice, type = "box")
+```
+
+Eh, still no. But there may still be a way we can mine some useful information from this data. There's one funny little thing we don't know, but we can infer: the age of a house.
+
+```{r}
+training %>%
+  mutate(Age = YrSold - YearBuilt) %>%
+  plot_ly(x = ~Age, y = ~SalePrice)
+```
+
+```{r}
+training %>%
+  mutate(
+    Age = YrSold - YearBuilt
+  ) %>%
+  ntbt_lm(SalePrice ~ Age) %>%
+  summary() %>%
+  pander()
+```
+
+It seems there's slightly less signal in the absolute year in which the house was built than there is in the actual age of the house. This may be a byproduct of the fact that the sales data comes from a comparatively narrow time window of about four years.
+
+```{r}
+training %>%
+  mutate(
+    Age = YrSold - YearBuilt,
+    AgeRemod = YrSold - YearRemodAdd
+  ) %>%
+  ntbt_lm(SalePrice ~ YearBuilt + YearBuilt2 + YearRemodAdd + Age + AgeRemod) %>%
+  summary() %>%
+  pander()
+```
+
+OK, so age doesn't really matter at all when in the same model as the absolute Year Built. This surprises me, as I'd expect Age to be robust across many years, while YearBuilt should degrade as houses get older. In other words, let's suppose we update this data in 20 years, giving us decades of data rather than years. A house built in 1999 is always going to have been built in 1999, but in 2009 it will be 10 years old and in 2029 it will be 30 years old. As anyone who thinks about houses for two seconds will conclude, a newer house will likely require less maintenance than an older house, and thus be more desirable, and thus more expensive. However, this phenomenon is not bourne out in this data, and so we must ignore the theory (no matter how appealing) and adapt the model accordingly.
+
+## Size
+
+It matters, people.
+
+```{r}
+training %>%
+  plot_ly(x = ~GrLivArea, y = ~SalePrice)
+```
+
+Linear out of the box! Niiiiice.
+
+```{r}
+training %>%
+  mutate(
+    logGrLivArea = log(GrLivArea),
+    sqrtGrLivArea = sqrt(GrLivArea),
+    GrLivArea2 = GrLivArea^2
+  ) %>%
+  ntbt_lm(SalePrice ~ logGrLivArea + sqrtGrLivArea + GrLivArea + GrLivArea2) %>%
+  summary() %>%
+  pander()
+```
+
+Now, I tortured this until it started giving me any less than three stars, so there's a *lot* to be said for square footage. Into the model it goes!
+
+```{r}
+full %<>%
+  mutate(
+    logGrLivArea = log(GrLivArea),
+    sqrtGrLivArea = sqrt(GrLivArea),
+    GrLivArea2 = GrLivArea^2
+  )
+training <- full[1:1460,]
+test <- full[1461:nrow(full),]
+```
+
+## Lot Features
+
+```{r engineerFeatures}
+full %<>%
+  mutate(
+    Baths = FullBath + HalfBath,
+    BsmtBaths = BsmtFullBath + BsmtHalfBath,
+    OverallQualSquare = OverallQual*OverallQual,
+    OverallQualCube = OverallQual*OverallQual*OverallQual,
+    OverallQualExp = expm1(OverallQual),
+    TotalBsmtSFGrLivArea = TotalBsmtSF/GrLivArea,
+    OverallCondSqrt = sqrt(OverallCond),
+    OverallCondSquare = OverallCond*OverallCond,
+    LotAreaSqrt = sqrt(LotArea),
+    FirstFlrSFSqrt = sqrt(FirstFlrSF),
+    TotRmsAbvGrdSqrt = sqrt(TotRmsAbvGrd)
+  )
+training <- full[1:1460,]
+test <- full[1461:nrow(full),]
+```
+
+Note: I'll start cross-validating once I'm building models for prediction. These are just to give us a feel for whether or not a particular treatment (in this case, log-transformation) helps us.
+
+```{r}
+# Run this:
+# "formula <- SalePrice ~ " %+% (names(full) %>% sort() %>% paste(collapse = " + "))
+# ...to generate this:
+formula <- SalePrice ~ Baths + BedroomAbvGr + BldgType + BsmtBaths + BsmtCond + BsmtExposure + BsmtFinSF1 + BsmtFinSF2 + BsmtFinType1 + BsmtFinType2 + BsmtFullBath + BsmtHalfBath + BsmtQual + BsmtUnfSF + CentralAir + Condition1 + Condition2 + Electrical + EnclosedPorch + ExterCond + Exterior1st + Exterior2nd + ExterQual + Fireplaces + FirstFlrSF + FirstFlrSFSqrt + Foundation + FullBath + Functional + GarageArea + GarageCars + GarageCond + GarageFinish + GarageQual + GarageType + GarageYrBlt + GrLivArea + GrLivArea2 + GrLivArea3 + HalfBath + Heating + HeatingQC + HouseStyle + Id + KitchenAbvGr + KitchenQual + LandContour + LandSlope + logGrLivArea + LotArea + LotAreaSqrt + LotConfig + LotFrontage + LotShape + LowQualFinSF + MasVnrArea + MasVnrType + MiscVal + MoSold + MSSubClass + MSZoning + Neighborhood + OpenPorchSF + OverallCond + OverallCondSqrt + OverallCondSquare + OverallQual + OverallQualCube + OverallQualExp + OverallQualSquare + PavedDrive + PoolArea + RoofMatl + RoofStyle + SaleCondition + SaleType + ScreenPorch + SecondFlrSF + sqrtGrLivArea + Street + ThreeSsnPorch + TotalBsmtSF + TotalBsmtSFGrLivArea + TotRmsAbvGrd + TotRmsAbvGrdSqrt + Utilities + WoodDeckSF + YearBuilt + YearRemodAdd + YrSold
+
+training <- full[1:1460,]
+test <- full[1461:nrow(full),]
+
+training %>%
+  ntbt_lm(formula) %>%
+  summary() %>%
+  pander()
+```
+And, we're done! On to...
+
+# Model the Data!
+
+Now, to make a preliminary preparation, let's partition the data into training and test sets so we can do some of our own scoring without having to submit new entries to Kaggle all the time.
+
+```{r dataPrep}
+temp <- training %>% mutate(train = runif(nrow(training)) < .7)
+subtrain <- temp %>% filter( train) %>% dplyr::select(-train)
+subtest  <- temp %>% filter(!train) %>% dplyr::select(-train)
+```
+
+Also, I'm going to use Caret to fit the hyperparameters on models where that's useful, so I'm going to need a training controller for cross-validation.
+
+```{r CVController}
+library('caret')
+library('parallel')
+library('doMC')
+fitControl <- trainControl(method = "repeatedcv", number = 5, repeats = 5)
+registerDoMC(cores = detectCores() - 1)
+```
+
+## Linear Model
+
+```{r lm1}
+modelLM <- subtrain %>%
+  ntbt_train(formula, method = "lm", trControl = fitControl)
+
+modelLM %>%
+  summary()
+```
+
+Not bad for a first stab, but how well does it actually score?
+
+```{r scorelm1, warning=FALSE}
+modelLM %>%
+  predict(subtest) %>%
+  rmse(subtest$SalePrice)
+```
+
+OK, so that's our first quality benchmark.
+
+## ElasticNet
+
+I thought about doing Ridge Regression or LASSO, but why do either when you can do both at once?
+
+```{r ElasticNet}
+subtrain %>%
+  ntbt_train(formula, method = "glmnet", trControl = fitControl) %>%
+  predict(subtest) %>%
+  rmse(subtest$SalePrice)
+```
+
+## Cubist
+
+This one will burn through a few cycles, caveat emptor.
+
+```{r Cubist, eval=FALSE}
+subtrain %>%
+  ntbt_train(formula, method = "cubist", trControl = fitControl) %>%
+  predict(subtest) %>%
+  rmse(subtest$SalePrice)
+```
+
+## Random Forest
+
+```{r RandomForest}
+subtrain %>%
+  factorize() %>%
+  ntbt_train(formula, method = "ranger", trControl = fitControl) %>%
+  predict(subtest) %>%
+  rmse(subtest$SalePrice)
+```
+
+## Gradient Boosting
+
+```{r GradientBoosting}
+subtrain %>%
+  ntbt_train(formula, method = "gbm", trControl = fitControl, verbose = FALSE) %>%
+  predict(subtest) %>%
+  rmse(subtest$SalePrice)
+```
+
+## Make Some Predictions!
+
+Let's rerun it on the entire Kaggle training set, predict on the test set, write and submit it.
+
+```{r writeOut, eval=FALSE}
+training <- full[1:1460,]
+test <- full[1461:nrow(full),]
+
+LM  <- predict(train(formula, data = training, method = "lm",     trControl = fitControl), test)
+EN  <- predict(train(formula, data = training, method = "glmnet", trControl = fitControl), test)
+C   <- predict(train(formula, data = training, method = "cubist", trControl = fitControl), test)
+RF  <- predict(train(formula, data = training, method = "ranger", trControl = fitControl), test)
+GBM <- predict(train(formula, data = training, method = "gbm",    trControl = fitControl), test)
+
+test %>%
+  cbind(LM, EN, C, RF, GBM) %>%
+  mutate(SalePrice = expm1((LM + EN + C + RF + GBM) / 5)) %>%
+  dplyr::select(Id, SalePrice) %>%
+  write_csv("predictionMean.csv")
+```
+
+# One more thing...
+
+> This is how you win ML competitions: you take other peoples’ work and ensemble them together.
+-[Vitaly Kuznetsov](http://cims.nyu.edu/~vitaly/), NIPS2014
+
+I collected the outputs of the four top-scoring public kernels. Let's see how they fare together.
+
+```{r}
+a <- read_csv('../data-cache/HousePrices/others/lasso.csv')
+b <- read_csv('../data-cache/HousePrices/others/v6.csv')
+c <- read_csv('../data-cache/HousePrices/others/v7.csv')
+d <- read_csv('../data-cache/HousePrices/others/xgb.csv')
+data.frame(
+  Id = a$Id,
+  SalePrice = (a$SalePrice + b$SalePrice + c$SalePrice + d$SalePrice)/4
+) %>%
+  write_csv('notmyensemble.csv')
+```
+
+Kaggle gave them up around .117, which is great, but not competitive.
+
+# References
+
+While I haven't actually used any code from it, I owe a debt of gratitude to Stephanie Kirmer for [this Kernel](https://www.kaggle.com/skirmer/house-prices-advanced-regression-techniques/fun-with-real-estate-data), which was useful in guiding me through my own early data management and modeling.
