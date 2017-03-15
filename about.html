@@ -17,12 +17,12 @@
 <link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
 <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
 <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
 <script src="site_libs/readthedown-0.1/readthedown.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -107,7 +107,6 @@ code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Inf
 <div id="content" data-toggle="wy-nav-shift">
 
 <!-- tabsets -->
-<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -115,7 +114,6 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
@@ -159,8 +157,13 @@ $(document).ready(function () {
 <div id="main">
 <div id="who-are-you" class="section level1">
 <h1>Who are you?</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
-meta &lt;-<span class="st"> </span><span class="kw">list</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;htmltools&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:pander&#39;:
+## 
+##     p</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meta &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Complete&quot;</span>,
   <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;about.Rmd&quot;</span>)$mtime
 )
