@@ -189,7 +189,7 @@ full <- bind_rows(training, test)
 
 ...Or I could trust the good labor put in by [Stephanie Kirmer in this awesome Kernel](https://www.kaggle.com/skirmer/house-prices-advanced-regression-techniques/fun-with-real-estate-data/code).
 
-```{r formatting_contour, echo=FALSE}
+```{r formatting_contour, collapse=TRUE}
 full$flat[full$LandContour == "Lvl"] <- 1
 full$flat[full$LandContour != "Lvl"] <- 0
 
@@ -709,7 +709,7 @@ test %>%
 
 I collected the outputs of the four top-scoring public kernels. Let's see how they fare together.
 
-```{r}
+```{r, eval=FALSE}
 a <- read_csv('../data-cache/HousePrices/others/lasso.csv')
 b <- read_csv('../data-cache/HousePrices/others/v6.csv')
 c <- read_csv('../data-cache/HousePrices/others/v7.csv')

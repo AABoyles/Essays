@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>Tracking President Trump’s Approval Rating</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<script src="site_libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+<link href="site_libs/plotlyjs-1.16.3/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotlyjs-1.16.3/plotly-latest.min.js"></script>
+<script src="site_libs/plotly-binding-4.5.6/plotly.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { font-weight: bold; } /* Keyword */
+code > span.dt { color: #800000; } /* DataType */
+code > span.dv { color: #0000ff; } /* DecVal */
+code > span.bn { color: #0000ff; } /* BaseN */
+code > span.fl { color: #800080; } /* Float */
+code > span.ch { color: #ff00ff; } /* Char */
+code > span.st { color: #dd0000; } /* String */
+code > span.co { color: #808080; font-style: italic; } /* Comment */
+code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
+code > span.fu { color: #000080; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #ff00ff; } /* SpecialChar */
+code > span.vs { color: #dd0000; } /* VerbatimString */
+code > span.ss { color: #dd0000; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #808080; font-style: italic; } /* Documentation */
+code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../essays/">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">Tracking President Trump’s Approval Rating</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Tracking President Trump’s Approval Rating</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#setting-a-prior">Setting a Prior</a></li>
+      <li><a href="#getthing-the-data">Getthing the Data</a></li>
+      <li><a href="#real-forecasting">Real Forecasting</a><ul>
+      <li><a href="#scoring-the-prophet">Scoring the Prophet</a></li>
+      </ul></li>
+      <li><a href="#crunching-out-an-estimate">Crunching out an Estimate</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;knitr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;lubridate&#39;</span>)
+knitr::opts_chunk$<span class="kw">set</span>(<span class="dt">message =</span> F, <span class="dt">warning =</span> F, <span class="dt">error =</span> F)
+<span class="kw">source</span>(<span class="st">&#39;../infobox.R&#39;</span>)
+<span class="kw">infobox</span>(<span class="kw">list</span>(
+  <span class="st">`</span><span class="dt">First Published</span><span class="st">`</span> =<span class="st"> </span><span class="kw">today</span>(),
+  <span class="st">`</span><span class="dt">Last Updated</span><span class="st">`</span> =<span class="st"> </span><span class="kw">today</span>()
+))</code></pre></div>
+<div class="infobox">
+<table class="infoboxtable">
+<tbody>
+<tr>
+<td>
+<b>First Published</b>
+</td>
+<td>2017-03-16</td>
+</tr>
+<tr>
+<td>
+<b>Last Updated</b>
+</td>
+<td>2017-03-16</td>
+</tr>
+</tbody>
+<tfoot></tfoot>
+</table>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>As part of its <a href="https://www.gjopen.com/challenges/13-the-first-100-days">First 100 Days Challenge</a>, the <a href="https://www.washingtonpost.com/news/monkey-cage/">Monkey Cage blog</a> asked the <a href="https://www.gjopen.com/">Good Judgement Open</a>, What will President Trump’s approval rating be on April 28, 2017?</p>
+<p>From the <a href="https://www.gjopen.com/questions/384-what-will-gallup-report-president-trump-s-net-approval-rating-to-be-on-28-april-2017">question information</a>:</p>
+<blockquote>
+<p>President-elect Trump’s net approval rating has improved since his election in November (<a href="http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx">Gallup</a>). This question will be resolved by subtracting President Trump’s disapproval rating from his approval rating using the “Gallup Daily” Trump job approval rating. Gallup is tracking President Trump’s job approval ratings here: (<a href="http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx">Gallup</a>).</p>
+</blockquote>
+</div>
+<div id="setting-a-prior" class="section level1">
+<h1>Setting a Prior</h1>
+<p>For an uninformed prior, up to 100% of the population can approve of the President, and likewise 100% can disapprove. This means that valid net approval ratings span from -100 (everyone disapproves) to 100 (everyone approves). The span of -15 to 15 covers 30 of those 200 points, so if we assume that net approval ratings are pulled from a uniform distribution, we should expect to fall in that range with a frequency of around <span class="math inline">\(30/200=.15\)</span>.</p>
+<p>However, this is a crappy estimate for a lot of reasons. For one, in general, about half the country is going to disapprove of the President and about half the country will approve of the President. So the distribution of net approvals should have central tendency metrics (mean, mode) fairly close to 0. So, let’s instead envision a bell curve with a mean of 0.</p>
+<p>For another significant refinement to this conception of the distribution of approval ratings, day-to-day ratings seem to be correlated. For example, here’s Barack Obama’s approval ratings over his two terms:</p>
+<div class="figure">
+<embed src="%22/imgs/Screenshot_2017-03-16-13-35-53.png%22" />
+
+</div>
+<p>(Note that these are <em>approval</em> ratings, not <em>net approval</em> ratings. Gallup only launched the daily net approval rating for the Trump administration. However, since the net approval is the difference between Approval and a metric that is necessarily inversely proportional to it, looking at raw Approval ratings is still pretty instructive.)</p>
+<p>As we can see, there are long term curves in the approval rating, but lots of day-to-day noise. For an even more dramatic perspective on this phenomenon, check out George W. Bush’s approval ratings over his two terms:</p>
+<div class="figure">
+<embed src="%22/imgs/Screenshot_2017-03-16-13-36-24.png%22" />
+
+</div>
+<p>Here we can see President Bush enjoying a modest honeymoon period, followed by a huge jump on 9-11. From there, his approval began to degrade again until March 1, 2003, when he launched the US invasion of Iraq, causing another small spike in popularity. Everything else was a long, slow roll down the hill. We can point out these phenomenal changes because they were unusual. From day-to-day, the changes in approval don’t swing widely across the range of possible approval estimates. If you want to predict the President’s approval rating tomorrow, a decent strategy is to just guess what it is today.</p>
+<p>So, what is President Trump’s approval rating today?</p>
+</div>
+<div id="getthing-the-data" class="section level1">
+<h1>Getthing the Data</h1>
+<p>Let’s parse the data directly from the Gallup Visualization’s data feed:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;tidyverse&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;xml2&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;lubridate&#39;</span>)
+
+viz &lt;-<span class="st"> </span><span class="kw">read_xml</span>(<span class="st">&#39;http://www.gallup.com/viz/v1/xml/6b9df319-97d6-4664-80e1-ea7fe4672aca/POLLFLEXCHARTVIZ/TRUMPJOBAPPR201617.aspx&#39;</span>) %&gt;%
+<span class="st">  </span><span class="kw">xml_child</span>(<span class="dv">3</span>) %&gt;%
+<span class="st">  </span><span class="kw">xml_child</span>() %&gt;%
+<span class="st">  </span><span class="kw">xml_child</span>(<span class="dv">3</span>) %&gt;%
+<span class="st">  </span><span class="kw">xml_children</span>() %&gt;%
+<span class="st">  </span><span class="kw">as_list</span>()
+
+disapproval &lt;-<span class="st"> </span>viz %&gt;%
+<span class="st">  </span><span class="kw">lapply</span>(function(el){el$p}) %&gt;%
+<span class="st">  </span><span class="kw">flatten</span>() %&gt;%
+<span class="st">  </span><span class="kw">as.double</span>()
+
+approval &lt;-<span class="st"> </span>viz %&gt;%
+<span class="st">  </span><span class="kw">lapply</span>(function(el){el[<span class="dv">2</span>]$p}) %&gt;%
+<span class="st">  </span><span class="kw">flatten</span>() %&gt;%
+<span class="st">  </span><span class="kw">as.double</span>()
+
+n &lt;-<span class="st"> </span><span class="kw">length</span>(disapproval)
+
+date &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;17/01/21&quot;</span>) +<span class="st"> </span><span class="dv">1</span>:n
+
+ratings &lt;-<span class="st"> </span><span class="kw">tibble</span>(date, approval, disapproval) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">net_approval =</span> approval -<span class="st"> </span>disapproval)
+
+ratings %&gt;%<span class="st"> </span><span class="kw">tail</span>() %&gt;%<span class="st"> </span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">approval</th>
+<th align="right">disapproval</th>
+<th align="right">net_approval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2017-03-10</td>
+<td align="right">44</td>
+<td align="right">49</td>
+<td align="right">-5</td>
+</tr>
+<tr class="even">
+<td align="left">2017-03-11</td>
+<td align="right">45</td>
+<td align="right">49</td>
+<td align="right">-4</td>
+</tr>
+<tr class="odd">
+<td align="left">2017-03-12</td>
+<td align="right">42</td>
+<td align="right">51</td>
+<td align="right">-9</td>
+</tr>
+<tr class="even">
+<td align="left">2017-03-13</td>
+<td align="right">39</td>
+<td align="right">55</td>
+<td align="right">-16</td>
+</tr>
+<tr class="odd">
+<td align="left">2017-03-14</td>
+<td align="right">40</td>
+<td align="right">54</td>
+<td align="right">-14</td>
+</tr>
+<tr class="even">
+<td align="left">2017-03-15</td>
+<td align="right">42</td>
+<td align="right">53</td>
+<td align="right">-11</td>
+</tr>
+</tbody>
+</table>
+<p>Not great. If we guess that the President’s approval rating will be what it is today, it’s definitely inside the -15:15 band, but it’s pretty close. How’s he been doing?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;plotly&#39;</span>)
+<span class="kw">plot_ly</span>(ratings, <span class="dt">x =</span> ~date, <span class="dt">y =</span> ~net_approval, <span class="dt">name =</span> <span class="st">&quot;Net Approval&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>)</code></pre></div>
+<div id="htmlwidget-0f8be0d92c2a86e86541" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0f8be0d92c2a86e86541">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"date"},"yaxis":{"domain":[0,1],"title":"net_approval"}},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15"],"y":[0,-1,1,1,-3,-8,-9,-7,-8,-9,-9,-9,-6,-11,-10,-12,-9,-9,-10,-12,-15,-14,-14,-13,-14,-18,-15,-14,-11,-12,-10,-9,-9,-12,-13,-12,-12,-9,-8,-8,-8,-7,-6,-8,-11,-12,-10,-5,-4,-9,-16,-14,-11],"name":"Net Approval","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<p>Not good at all. It seems President Trump has skipped the honeymoon and dived straight into the mid-40’s doldrums which plague Presidents late in their terms.</p>
+<p>To take a simple frequentist approach, let’s just count the number of times his approval rating has fallen in each band.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ratings %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">band =</span> <span class="kw">if_else</span>(net_approval &gt;=<span class="st"> </span>-<span class="dv">15</span>, <span class="st">&quot;middle&quot;</span>, <span class="st">&quot;lower&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-date, -approval, -disapproval, -net_approval) %&gt;%
+<span class="st">  </span><span class="kw">table</span>()</code></pre></div>
+<pre><code>## .
+##  lower middle 
+##      2     51</code></pre>
+<p>OK, since we only drop into the lower band twice, let’s say that lower-band probability is something like 0.04 and the middle-band probability is 0.96, and the high-band probability is very small.</p>
+<p>I strongly dislike <a href="http://lesswrong.com/lw/mp/0_and_1_are_not_probabilities/">probability estimates of 0 and 1</a>, so instead of saying the high-band probability is zero, I’m going to invoke the <a href="https://en.wikipedia.org/wiki/Rule_of_three_(statistics)">rule of three</a>. The probability that the net approval is more than +15 must be less than 0.06. This is curious, as it implies the low-band and high-band probabilities are similar, despite the fact we’ve observed low-band outcomes and have not observed high-band outcomes. So, in the interest of preserving my tiny bias away from certainty, I’ll call the high-band probability 1% and deduct it from the middle-band.</p>
+<p>At this point, this is probably a pretty forecast for GJO. But can we do better?</p>
+</div>
+<div id="real-forecasting" class="section level1">
+<h1>Real Forecasting</h1>
+<p>The “forecast we computed above is a simple estimating of a probability distribution over outcomes for a single point. In Data Science Parlance, however,”forecasting&quot; refers to something related but more general. Forecasting typically means to infer trends based solely on cyclicalities in the data. Data we care about tends to vary regularly across times of day, day of week, month of year, etc. If there’s a long-term trend in these data, we may be able to catch wind of it by pitting our net approval data against an off-the-shelf forecasting tool. There’s a whole class of interesting statistical tools to do this (<a href="https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average">ARIMA</a> is prehaps the most common). Since it’s shiny and new, let’s try out Facebook’s whiz-bang new time-series tool, <a href="https://facebookincubator.github.io/prophet/">Prophet</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;prophet&quot;</span>)
+
+temp &lt;-<span class="st"> </span>ratings %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-approval, -disapproval) %&gt;%
+<span class="st">  </span><span class="kw">rename</span>(
+    <span class="dt">ds =</span> date,
+    <span class="dt">y =</span> net_approval
+  )
+
+m &lt;-<span class="st"> </span><span class="kw">prophet</span>(temp, <span class="dt">mcmc.samples =</span> <span class="dv">1000</span>)</code></pre></div>
+<pre><code>## 
+## SAMPLING FOR MODEL &#39;prophet_linear_growth&#39; NOW (CHAIN 1).
+## 
+## Chain 1, Iteration:   1 / 1000 [  0%]  (Warmup)
+## Chain 1, Iteration: 100 / 1000 [ 10%]  (Warmup)
+## Chain 1, Iteration: 200 / 1000 [ 20%]  (Warmup)
+## Chain 1, Iteration: 300 / 1000 [ 30%]  (Warmup)
+## Chain 1, Iteration: 400 / 1000 [ 40%]  (Warmup)
+## Chain 1, Iteration: 500 / 1000 [ 50%]  (Warmup)
+## Chain 1, Iteration: 501 / 1000 [ 50%]  (Sampling)
+## Chain 1, Iteration: 600 / 1000 [ 60%]  (Sampling)
+## Chain 1, Iteration: 700 / 1000 [ 70%]  (Sampling)
+## Chain 1, Iteration: 800 / 1000 [ 80%]  (Sampling)
+## Chain 1, Iteration: 900 / 1000 [ 90%]  (Sampling)
+## Chain 1, Iteration: 1000 / 1000 [100%]  (Sampling)
+##  Elapsed Time: 4.35588 seconds (Warm-up)
+##                2.77308 seconds (Sampling)
+##                7.12896 seconds (Total)
+## 
+## 
+## SAMPLING FOR MODEL &#39;prophet_linear_growth&#39; NOW (CHAIN 2).
+## 
+## Chain 2, Iteration:   1 / 1000 [  0%]  (Warmup)
+## Chain 2, Iteration: 100 / 1000 [ 10%]  (Warmup)
+## Chain 2, Iteration: 200 / 1000 [ 20%]  (Warmup)
+## Chain 2, Iteration: 300 / 1000 [ 30%]  (Warmup)
+## Chain 2, Iteration: 400 / 1000 [ 40%]  (Warmup)
+## Chain 2, Iteration: 500 / 1000 [ 50%]  (Warmup)
+## Chain 2, Iteration: 501 / 1000 [ 50%]  (Sampling)
+## Chain 2, Iteration: 600 / 1000 [ 60%]  (Sampling)
+## Chain 2, Iteration: 700 / 1000 [ 70%]  (Sampling)
+## Chain 2, Iteration: 800 / 1000 [ 80%]  (Sampling)
+## Chain 2, Iteration: 900 / 1000 [ 90%]  (Sampling)
+## Chain 2, Iteration: 1000 / 1000 [100%]  (Sampling)
+##  Elapsed Time: 4.20413 seconds (Warm-up)
+##                2.47885 seconds (Sampling)
+##                6.68297 seconds (Total)
+## 
+## 
+## SAMPLING FOR MODEL &#39;prophet_linear_growth&#39; NOW (CHAIN 3).
+## 
+## Chain 3, Iteration:   1 / 1000 [  0%]  (Warmup)
+## Chain 3, Iteration: 100 / 1000 [ 10%]  (Warmup)
+## Chain 3, Iteration: 200 / 1000 [ 20%]  (Warmup)
+## Chain 3, Iteration: 300 / 1000 [ 30%]  (Warmup)
+## Chain 3, Iteration: 400 / 1000 [ 40%]  (Warmup)
+## Chain 3, Iteration: 500 / 1000 [ 50%]  (Warmup)
+## Chain 3, Iteration: 501 / 1000 [ 50%]  (Sampling)
+## Chain 3, Iteration: 600 / 1000 [ 60%]  (Sampling)
+## Chain 3, Iteration: 700 / 1000 [ 70%]  (Sampling)
+## Chain 3, Iteration: 800 / 1000 [ 80%]  (Sampling)
+## Chain 3, Iteration: 900 / 1000 [ 90%]  (Sampling)
+## Chain 3, Iteration: 1000 / 1000 [100%]  (Sampling)
+##  Elapsed Time: 4.46429 seconds (Warm-up)
+##                2.53308 seconds (Sampling)
+##                6.99737 seconds (Total)
+## 
+## 
+## SAMPLING FOR MODEL &#39;prophet_linear_growth&#39; NOW (CHAIN 4).
+## 
+## Chain 4, Iteration:   1 / 1000 [  0%]  (Warmup)
+## Chain 4, Iteration: 100 / 1000 [ 10%]  (Warmup)
+## Chain 4, Iteration: 200 / 1000 [ 20%]  (Warmup)
+## Chain 4, Iteration: 300 / 1000 [ 30%]  (Warmup)
+## Chain 4, Iteration: 400 / 1000 [ 40%]  (Warmup)
+## Chain 4, Iteration: 500 / 1000 [ 50%]  (Warmup)
+## Chain 4, Iteration: 501 / 1000 [ 50%]  (Sampling)
+## Chain 4, Iteration: 600 / 1000 [ 60%]  (Sampling)
+## Chain 4, Iteration: 700 / 1000 [ 70%]  (Sampling)
+## Chain 4, Iteration: 800 / 1000 [ 80%]  (Sampling)
+## Chain 4, Iteration: 900 / 1000 [ 90%]  (Sampling)
+## Chain 4, Iteration: 1000 / 1000 [100%]  (Sampling)
+##  Elapsed Time: 4.45289 seconds (Warm-up)
+##                2.66308 seconds (Sampling)
+##                7.11597 seconds (Total)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">future &lt;-<span class="st"> </span><span class="kw">make_future_dataframe</span>(m, <span class="dt">periods =</span> <span class="dv">43</span>)
+
+forecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)
+
+<span class="kw">plot_ly</span>(forecast, <span class="dt">x =</span> ~ds, <span class="dt">y =</span> ~yhat_upper, <span class="dt">name =</span> <span class="st">&quot;Upper bound&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) %&gt;%
+<span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">y =</span> ~yhat, <span class="dt">name =</span> <span class="st">&quot;Estimate&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">y =</span> ~yhat_lower, <span class="dt">name =</span> <span class="st">&quot;Lower Bound&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">data =</span> temp, <span class="dt">y =</span> ~y, <span class="dt">name =</span> <span class="st">&quot;Actual&quot;</span>)</code></pre></div>
+<div id="htmlwidget-db6e502340dbe0dff60b" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-db6e502340dbe0dff60b">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"ds"},"yaxis":{"domain":[0,1],"title":"yhat_upper"}},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27"],"y":[4.44819219325085,1.52557287715503,1.57777486653979,1.06246299994883,-0.823481542523863,-1.37921713497263,-3.22918253846774,-3.36771279073199,-5.52472176967738,-4.74933336270918,-4.75057491596269,-6.24634856694094,-6.3795521696977,-7.60375993528866,-7.3450291724384,-9.25565053177608,-8.26218877108651,-7.89032821957961,-9.06153411128015,-9.13262227787273,-10.0758557753476,-10.0447979483412,-11.5201481404743,-10.1846512520733,-9.53739432120905,-10.5230626656446,-10.0101622513367,-10.7054429694479,-10.0340957061452,-11.1982219688805,-9.40139772068287,-8.41300291645922,-8.73347755514498,-8.04991708076348,-8.26884628524713,-7.27949668471602,-8.29354963049554,-6.1892856662494,-5.01885791052941,-5.52446886150142,-4.84099567366379,-5.38768001952579,-4.63951463540564,-6.12423846834205,-4.64929370039406,-4.11097696971437,-5.52863924699619,-5.54100069232713,-7.04056783398043,-7.12965393950139,-9.41304218835229,-8.71791629481438,-8.93764260229388,-10.2986411073149,-10.6623810086082,-12.0286636564888,-11.644982011195,-12.9820309911687,-11.5671654377326,-10.2778329668767,-10.5382243252305,-8.80138436790947,-8.19801459859437,-5.88707624971712,-5.5876367919374,-2.11005353466161,1.16614626341618,2.84738961981913,6.36791674217226,9.69385711116383,12.6501822663529,14.6031822461966,19.5201539778963,23.7050216649315,27.0839536266987,30.1332312027459,32.5023158949949,35.5664555076915,37.1678623217986,41.1148705866634,45.1541818445377,45.2593630835196,47.3673819723872,46.7473941920921,48.9782987045256,47.9438748994405,50.593985896858,50.3789789437495,49.4959792256585,49.7622759582544,47.5864034190835,47.4158460447786,45.1191715796967,44.3256679994712,43.1737168598651,40.6686860907308],"name":"Upper bound","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y"},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27"],"y":[1.24887404158757,-1.50674353974292,-1.31663207096892,-1.78975798358842,-3.80844435168668,-4.42781779107797,-6.11580158785811,-6.32288868342854,-8.437644487483,-7.6401388644406,-7.54921897556728,-9.0540123728877,-9.21320132710296,-10.4953325120714,-10.3486153623783,-12.15688355587,-11.0932336680167,-10.7679614143757,-12.0603747765374,-12.0188643916417,-13.1014576224358,-12.7464066695047,-14.32861208418,-13.0136168744883,-12.4060913685638,-13.3819311188497,-12.988498996792,-13.6854704273876,-12.915312600066,-14.059560595151,-12.2928659415211,-11.2310551115342,-11.7627649938601,-10.9493908970589,-11.2652901809539,-10.1678090077781,-11.0529025551596,-9.10860692474886,-7.96248326641184,-8.51287405139254,-7.82815804989103,-8.38664048179991,-7.64620924651974,-8.99982437790933,-7.62880162012633,-7.15027140082453,-8.44858036818444,-8.57485105869523,-9.98717790915843,-10.1208177209872,-12.3441880090666,-11.8128700740533,-12.1177650130443,-14.1172539394964,-14.837534570808,-16.7135889575174,-17.1601167275728,-19.5282239730389,-18.9600424631556,-19.0374070863225,-20.6144249660509,-20.7180936457035,-21.7894119035483,-21.2543102976143,-22.4801885042507,-20.630235430781,-19.3116656802163,-19.4077157566966,-17.9775713782025,-17.4966870958651,-15.4268461481008,-15.1717710592715,-11.9304863683108,-9.34459370855913,-8.32932974374916,-5.97260513027403,-4.77451141246972,-2.21666763151176,-1.71723844467489,1.51615677963009,3.83946934994793,4.34130050669143,5.94383079866319,6.16311183643334,7.53935260271007,6.68137720795482,8.4130478211963,9.12549559622874,7.94530003532878,7.8344372246002,6.34953582380127,6.07110132259337,3.6469146874424,3.93742844147474,3.36703155004025,1.09135053039844],"name":"Estimate","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(255,127,14,1)","color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y"},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27"],"y":[-2.03132038180764,-4.54870612402032,-4.35699883982712,-4.81872424046662,-6.67230453843642,-7.35933394450513,-9.15057120472828,-9.23410096740832,-11.326641121618,-10.6623096274066,-10.556386399355,-12.0141883159611,-12.1371281849059,-13.571027783509,-13.2553292310404,-14.9641094304393,-14.1499833078876,-13.660769109151,-14.9624248805111,-14.99413233589,-16.0007191641319,-15.5523354490778,-17.1390309135176,-16.0513530533799,-15.3924234719085,-16.4008677277298,-16.00351695297,-16.5634849874646,-15.8512772002274,-16.8879701569703,-15.1874077745936,-13.9491828926031,-14.737034268099,-13.8752070873928,-14.2296287119527,-13.0640990281358,-13.9613304473934,-12.0246338702477,-10.974037987649,-11.4255106043538,-10.768438042243,-11.382080957836,-10.4782741019887,-11.873065921876,-10.500772322095,-10.0619178544566,-11.502608277184,-11.4340320067709,-12.867738666849,-13.0290476384242,-15.2493000277293,-14.9065794031207,-15.3149155954432,-17.683358052024,-18.9960998739147,-21.4858794058664,-22.8031227292982,-26.0783269736732,-26.4252404636207,-27.6967886648766,-30.8034467525976,-32.3757130965358,-35.3139203535106,-36.5029911020251,-39.64094050663,-39.3645538321539,-40.0325678539585,-41.767050207721,-42.5582221126884,-43.4586818258584,-43.5078747580384,-45.5278133594697,-42.9608242267725,-41.6495219714129,-42.2694838027885,-40.4015941821537,-41.4647593910181,-38.9526393597475,-39.8780102301827,-37.5626914751144,-35.4751299765234,-36.0070521443697,-34.7261671334214,-34.4830973749918,-33.8465890786234,-34.250500714415,-32.4431085699593,-31.4626814621588,-32.4054127497542,-32.2597436998162,-33.0472859979417,-33.7298020721741,-36.5708974719418,-36.5799186549933,-37.3503798875105,-39.5224411231618],"name":"Lower Bound","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(44,160,44,1)","color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y"},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15"],"y":[0,-1,1,1,-3,-8,-9,-7,-8,-9,-9,-9,-6,-11,-10,-12,-9,-9,-10,-12,-15,-14,-14,-13,-14,-18,-15,-14,-11,-12,-10,-9,-9,-12,-13,-12,-12,-9,-8,-8,-8,-7,-6,-8,-11,-12,-10,-5,-4,-9,-16,-14,-11],"name":"Actual","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(214,39,40,1)","color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<p>Yikes! Prophet strongly believes that President Trump is at the top of a downward trend, but one that will dramatically reverse itself sometime in late March. Given the limited amount of data available, it’s actually encouraging to see the (80%) confidence intervals flare outwards like that. Even so, it’s suspicious that Prophet thinks the President may even get a little positive net approval (something that happened only in the first days of the administration).</p>
+<div id="scoring-the-prophet" class="section level2">
+<h2>Scoring the Prophet</h2>
+<p>In the Good Judgement Open, one doesn’t really get credit for the binary accuracy of their forecasts. Rather, one is rewarded for minimizing error. So, let’s measure Prophet’s error:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MAE &lt;-<span class="st"> </span>(temp$y -<span class="st"> </span>forecast[<span class="dv">1</span>:n,]$yhat) %&gt;%
+<span class="st">  </span><span class="kw">abs</span>() %&gt;%
+<span class="st">  </span><span class="kw">mean</span>()</code></pre></div>
+<p>So, on average, the Prophet estimate has been off by about 1.69 points. It’s interesting to note that this is well within Gallup’s own margin of error, so refining these predictions for higher precision doesn’t make a lot of sense.</p>
+</div>
+</div>
+<div id="crunching-out-an-estimate" class="section level1">
+<h1>Crunching out an Estimate</h1>
+<p>Let’s start again with the base frequency-derived estimates: High ~1%, Middle 95%, Low ~4%. How should I update based on Prophet’s estimate? Well, in all honesty, I don’t know exactly. I don’t know the distribution the Prophet assigns to its outcomes (I’m guessing it’s normal). But I don’t believe Prophet has much to find with the amount of data available yet. I could assume the distribution is normal and update my estimates using Bayes’ formula, but the conclusion would be that the low and high-band probabilities are about equal, and tiny compared to the middle band. That’s basically <a href="http://www.gjopen.com/comments/comments/432692">what I believed at the start of this competition</a>.</p>
+<p>As more data comes in, I may update this assessment. I will certainly continue updating my forecast on GJO as we get closer.</p>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

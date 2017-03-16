@@ -157,13 +157,8 @@ $(document).ready(function () {
 <div id="main">
 <div id="who-are-you" class="section level1">
 <h1>Who are you?</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;htmltools&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:pander&#39;:
-## 
-##     p</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meta &lt;-<span class="st"> </span><span class="kw">list</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+meta &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Complete&quot;</span>,
   <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;about.Rmd&quot;</span>)$mtime
 )

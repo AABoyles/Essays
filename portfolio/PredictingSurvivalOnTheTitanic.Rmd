@@ -476,7 +476,7 @@ Our best yet! This is often the case--models have weaknesses that other models m
 
 Let's make one! To do so, we'll need to refresh the training and test data, retrain models on the full datasets, and assemble them in the ensemble again.
 
-```{r finalPrediction}
+```{r finalPrediction, eval=FALSE}
 train <- full[1:891,]
 test  <- full[892:1309,]
 
