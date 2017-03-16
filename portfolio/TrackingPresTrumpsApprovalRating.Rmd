@@ -29,13 +29,13 @@ However, this is a crappy estimate for a lot of reasons. For one, in general, ab
 
 For another significant refinement to this conception of the distribution of approval ratings, day-to-day ratings seem to be correlated. For example, here's Barack Obama's approval ratings over his two terms:
 
-![]("/imgs/Screenshot_2017-03-16-13-35-53.png")
+![](http://anthony.boyles.cc/imgs/Screenshot_2017-03-16_13-35-53.png)
 
 (Note that these are *approval* ratings, not *net approval* ratings. Gallup only launched the daily net approval rating for the Trump administration. However, since the net approval is the difference between Approval and a metric that is necessarily inversely proportional to it, looking at raw Approval ratings is still pretty instructive.)
 
 As we can see, there are long term curves in the approval rating, but lots of day-to-day noise. For an even more dramatic perspective on this phenomenon, check out George W. Bush's approval ratings over his two terms:
 
-![]("/imgs/Screenshot_2017-03-16-13-36-24.png")
+![](http://anthony.boyles.cc/imgs/Screenshot_2017-03-16_13-36-24.png)
 
 Here we can see President Bush enjoying a modest honeymoon period, followed by a huge jump on 9-11. From there, his approval began to degrade again until March 1, 2003, when he launched the US invasion of Iraq, causing another small spike in popularity. Everything else was a long, slow roll down the hill. We can point out these phenomenal changes because they were unusual. From day-to-day, the changes in approval don't swing widely across the range of possible approval estimates. If you want to predict the President's approval rating tomorrow, a decent strategy is to just guess what it is today.
 
