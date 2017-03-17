@@ -50,6 +50,7 @@ library('tidyverse')
 library('xml2')
 library('lubridate')
 
+# Please excuse this XML hacking.
 viz <- read_xml('http://www.gallup.com/viz/v1/xml/6b9df319-97d6-4664-80e1-ea7fe4672aca/POLLFLEXCHARTVIZ/TRUMPJOBAPPR201617.aspx') %>%
   xml_child(3) %>%
   xml_child() %>%
@@ -99,11 +100,11 @@ OK, since we only drop into the lower band twice, let's say that lower-band prob
 
 I strongly dislike [probability estimates of 0 and 1](http://lesswrong.com/lw/mp/0_and_1_are_not_probabilities/), so instead of saying the high-band probability is zero, I'm going to invoke the [rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(statistics)). The probability that the net approval is more than +15 must be less than `r round(3/n, 2)`. This is curious, as it implies the low-band and high-band probabilities are similar, despite the fact we've observed low-band outcomes and have not observed high-band outcomes. So, in the interest of preserving my tiny bias away from certainty, I'll call the high-band probability 1% and deduct it from the middle-band.
 
-At this point, this is probably a pretty forecast for GJO. But can we do better?
+At this point, this is probably a pretty good basis for a GJO forecast. But can we do better?
 
 # Real Forecasting
 
-The "forecast we computed above is a simple estimating of a probability distribution over outcomes for a single point. In Data Science Parlance, however, "forecasting" refers to something related but more general. Forecasting typically means to infer trends based solely on cyclicalities in the data. Data we care about tends to vary regularly across times of day, day of week, month of year, etc. If there's a long-term trend in these data, we may be able to catch wind of it by pitting our net approval data against an off-the-shelf forecasting tool. There's a whole class of interesting statistical tools to do this ([ARIMA](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average) is prehaps the most common). Since it's shiny and new, let's try out Facebook's whiz-bang new time-series tool, [Prophet](https://facebookincubator.github.io/prophet/).
+The "forecast" we computed above is a simple estimating of a probability distribution over outcomes for a single point. In Data Science Parlance, however, "forecasting" refers to something related but more general. Forecasting typically means to infer trends based solely on cyclicalities in the data. Data we care about tends to vary regularly across times of day, day of week, month of year, etc. If there's a long-term trend in these data, we may be able to catch wind of it by pitting our net approval data against an off-the-shelf forecasting tool. There's a whole class of interesting statistical tools to do this ([ARIMA](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average) is prehaps the most recognizable). Since it's shiny and new, let's try out Facebook's whiz-bang new time-series tool, [Prophet](https://facebookincubator.github.io/prophet/).
 
 ```{r}
 library("prophet")
@@ -115,9 +116,9 @@ temp <- ratings %>%
     y = net_approval
   )
 
-m <- prophet(temp, mcmc.samples = 1000)
+m <- prophet(temp, mcmc.samples = 100)
 
-future <- make_future_dataframe(m, periods = 43)
+future <- make_future_dataframe(m, periods = 100-n)
 
 forecast <- predict(m, future)
 
@@ -139,10 +140,48 @@ MAE <- (temp$y - forecast[1:n,]$yhat) %>%
   mean()
 ```
 
-So, on average, the Prophet estimate has been off by about `r round(MAE, 2)` points. It's interesting to note that this is well within Gallup's own margin of error, so refining these predictions for higher precision doesn't make a lot of sense.
+So, on average, the Prophet estimate has been off by about `r round(MAE, 2)` points. It's interesting to note that this is well within Gallup's own 3-point margin of error, so refining these predictions for higher precision doesn't make a lot of sense.
 
 # Crunching out an Estimate
 
 Let's start again with the base frequency-derived estimates: High ~1%, Middle 95%, Low ~4%. How should I update based on Prophet's estimate? Well, in all honesty, I don't know exactly. I don't know the distribution the Prophet assigns to its outcomes (I'm guessing it's normal). But I don't believe Prophet has much to find with the amount of data available yet. I could assume the distribution is normal and update my estimates using Bayes' formula, but the conclusion would be that the low and high-band probabilities are about equal, and tiny compared to the middle band. That's basically [what I believed at the start of this competition](http://www.gjopen.com/comments/comments/432692).
 
-As more data comes in, I may update this assessment. I will certainly continue updating my forecast on GJO as we get closer.
+# Forecasting non-derived Signals
+
+This is a slightly weird forecasting problem, as we're trying to forecast the outcome of a metric which is itself derived from two highly-correlated signals:
+
+```{r}
+library('pander')
+
+model <- lm(approval ~ disapproval)
+
+plot_ly(ratings, x = ~disapproval, y = ~approval, type = "scatter", name = "Observations") %>%
+  add_trace(x = ~disapproval, y = ~fitted(model), mode = "lines", name = "LM")
+
+model %>%
+  summary() %>%
+  pander()
+```
+
+So, perhaps we can do better by forecasting *each*, and then deriving the net approval from the forecast. There are good reasons not to do this! Think of a model as an engine. You feed it gasoline (empirical data) and it does work (good predictions), but with an undesirable side effect--it also emits toxic gas (error). By adding a second engine, we may produce twice as many predictions (which *doesn't actually help us*), but we'll also have two error generators (which actually hurts us).
+
+That said, the two streams aren't perfectly correlated, and this is instructive. One may be acting in a way that is systematically (as opposed to randomly) distinct. Imagine two mobs of people. On the left, people who disapprove of the President. On the right, people who approve of him. Some people will move between the two mobs in response to things that happen. Some people will not. There's also an amorphous blob of people in the middle who don't know how they feel, or just don't feel strongly about the President. Here's a map of the political blogosphere that somewhat resembles what I'm envisioning:
+
+![](http://adequatebird.com/wp-content/uploads/2010/05/Figure-1-Community-structure-of-political-blogs-expanded-set.jpg)
+
+If people move between these camps independently, then maybe forecasting them separately makes sense. Let's just try it and see.
+
+```{r}
+dApproval <- data.frame(ds = date, y = approval)
+
+m <- prophet(dApproval, mcmc.samples = 10000)
+
+future <- make_future_dataframe(m, periods = 100-n)
+
+forecast <- predict(m, future)
+
+plot_ly(forecast, x = ~ds, y = ~yhat_upper, name = "Upper bound", type = 'scatter', mode = 'lines') %>%
+  add_lines(y = ~yhat, name = "Estimate") %>%
+  add_lines(y = ~yhat_lower, name = "Lower Bound") %>%
+  add_lines(data = dApproval, y = ~y, name = "Actual")
+```
