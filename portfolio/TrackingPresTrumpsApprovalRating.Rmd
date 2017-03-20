@@ -8,7 +8,7 @@ library('lubridate')
 knitr::opts_chunk$set(message = F, warning = F, error = F)
 source('../infobox.R')
 infobox(list(
-  `First Published` = today(),
+  `First Published` = "2017-03-16",
   `Last Updated` = today()
 ))
 ```
@@ -78,14 +78,14 @@ ratings <- tibble(date, approval, disapproval) %>%
 ratings %>% tail() %>% kable()
 ```
 
-Not great. If we guess that the President's approval rating will be what it is today, it's definitely inside the -15:15 band, but it's pretty close. How's he been doing?
+Not great. If we guess that the President's approval rating will be what it is today, it's definitely below the -15:15 band. How's he been doing?
 
 ```{r}
 library('plotly')
 plot_ly(ratings, x = ~date, y = ~net_approval, name = "Net Approval", type = 'scatter', mode = 'lines')
 ```
 
-Not good at all. It seems President Trump has skipped the honeymoon and dived straight into the mid-40's doldrums which plague Presidents late in their terms.
+Not good at all. It seems President Trump has skipped the honeymoon and dived straight into the -10's doldrums which plague Presidents late in their terms.
 
 To take a simple frequentist approach, let's just count the number of times his approval rating has fallen in each band.
 
@@ -96,7 +96,7 @@ ratings %>%
   table()
 ```
 
-OK, since we only drop into the lower band twice, let's say that lower-band probability is something like `r round(2/n, 2)` and the middle-band probability is `r round(51/n, 2)`, and the high-band probability is very small.
+OK, since we only drop into the lower band thrice, let's say that lower-band probability is something like `r round(3/n, 2)` and the middle-band probability is `r round(53/n, 2)`, and the high-band probability is very small.
 
 I strongly dislike [probability estimates of 0 and 1](http://lesswrong.com/lw/mp/0_and_1_are_not_probabilities/), so instead of saying the high-band probability is zero, I'm going to invoke the [rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(statistics)). The probability that the net approval is more than +15 must be less than `r round(3/n, 2)`. This is curious, as it implies the low-band and high-band probabilities are similar, despite the fact we've observed low-band outcomes and have not observed high-band outcomes. So, in the interest of preserving my tiny bias away from certainty, I'll call the high-band probability 1% and deduct it from the middle-band.
 
@@ -116,7 +116,7 @@ temp <- ratings %>%
     y = net_approval
   )
 
-m <- prophet(temp, mcmc.samples = 100)
+m <- prophet(temp, yearly.seasonality = F, mcmc.samples = 1000)
 
 future <- make_future_dataframe(m, periods = 100-n)
 
@@ -128,7 +128,13 @@ plot_ly(forecast, x = ~ds, y = ~yhat_upper, name = "Upper bound", type = 'scatte
   add_lines(data = temp, y = ~y, name = "Actual")
 ```
 
-Yikes! Prophet strongly believes that President Trump is at the top of a downward trend, but one that will dramatically reverse itself sometime in late March. Given the limited amount of data available, it's actually encouraging to see the (80%) confidence intervals flare outwards like that. Even so, it's suspicious that Prophet thinks the President may even get a little positive net approval (something that happened only in the first days of the administration).
+So, Prophet believes that President Trump's approval is degrading basically linearly. More specifically...
+
+```{r}
+prophet_plot_components(m, forecast)
+```
+
+...From these component plots we can see than there's a recurring weekly pattern (it seems Sundays and Wednesdays are the best for the President), superimposed over a linear decrease. If you cut the plotly graph above into week-long chunks, you'll see that they all follow this day-of-week trajectory.
 
 ## Scoring the Prophet
 
@@ -138,11 +144,13 @@ In the Good Judgement Open, one doesn't really get credit for the binary accurac
 MAE <- (temp$y - forecast[1:n,]$yhat) %>%
   abs() %>%
   mean()
+
+MAE
 ```
 
-So, on average, the Prophet estimate has been off by about `r round(MAE, 2)` points. It's interesting to note that this is well within Gallup's own 3-point margin of error, so refining these predictions for higher precision doesn't make a lot of sense.
+So, on average, the Prophet estimate has been off by about `r round(MAE, 2)` points. It's interesting to note that this is within Gallup's own 3-point margin of error, so refining these predictions for higher precision doesn't make a lot of sense.
 
-# Crunching out an Estimate
+## Crunching out an Estimate
 
 Let's start again with the base frequency-derived estimates: High ~1%, Middle 95%, Low ~4%. How should I update based on Prophet's estimate? Well, in all honesty, I don't know exactly. I don't know the distribution the Prophet assigns to its outcomes (I'm guessing it's normal). But I don't believe Prophet has much to find with the amount of data available yet. I could assume the distribution is normal and update my estimates using Bayes' formula, but the conclusion would be that the low and high-band probabilities are about equal, and tiny compared to the middle band. That's basically [what I believed at the start of this competition](http://www.gjopen.com/comments/comments/432692).
 
@@ -169,19 +177,68 @@ That said, the two streams aren't perfectly correlated, and this is instructive.
 
 ![](http://adequatebird.com/wp-content/uploads/2010/05/Figure-1-Community-structure-of-political-blogs-expanded-set.jpg)
 
-If people move between these camps independently, then maybe forecasting them separately makes sense. Let's just try it and see.
+If people can move between these camps independently (i.e. the decision to move from "approve" to "don't know" is distinct from the decision to move from "don't know" to "disapprove"), then maybe forecasting them separately makes sense. Let's just try it and see.
 
 ```{r}
 dApproval <- data.frame(ds = date, y = approval)
 
-m <- prophet(dApproval, mcmc.samples = 10000)
+m <- prophet(dApproval, yearly.seasonality = F)
 
-future <- make_future_dataframe(m, periods = 100-n)
+approvalforecast <- predict(m, future)
 
-forecast <- predict(m, future)
-
-plot_ly(forecast, x = ~ds, y = ~yhat_upper, name = "Upper bound", type = 'scatter', mode = 'lines') %>%
-  add_lines(y = ~yhat, name = "Estimate") %>%
-  add_lines(y = ~yhat_lower, name = "Lower Bound") %>%
+plot_ly(approvalforecast, x = ~ds, y = ~yhat, name = "Estimate", type = 'scatter', mode = 'lines') %>%
   add_lines(data = dApproval, y = ~y, name = "Actual")
 ```
+
+Here is Prophet's estimate of the Approval rating. It's trending downward.
+
+```{r}
+dDisapproval <- data.frame(ds = date, y = disapproval)
+
+m <- prophet(dDisapproval, yearly.seasonality = F)
+
+disapprovalforecast <- predict(m, future)
+
+plot_ly(disapprovalforecast, x = ~ds, y = ~yhat, name = "Estimate", type = 'scatter', mode = 'lines') %>%
+  add_lines(data = dDisapproval, y = ~y, name = "Actual")
+```
+
+And here is Prophet's estimate of the Disapproval rating. It's trending upward. So, now if we combine the two...
+
+```{r}
+temp <- approvalforecast %>%
+  mutate(approval = yhat) %>%
+  cbind(disapproval = disapprovalforecast$yhat) %>%
+  mutate(net = approval - disapproval)
+
+plot_ly(temp, x = ~ds, y = ~net, name = "Estimate", type = 'scatter', mode = 'lines') %>%
+  add_lines(data = ratings, x = ~date, y = ~net_approval, name = "Actual")
+```
+
+We have another estimate. But is it an improvement?
+
+## Scoring the Prophet, Round 2
+
+```{r}
+MAE <- (ratings$net_approval - temp[1:n,]$net) %>%
+  abs() %>%
+  mean()
+
+MAE
+```
+
+At this point, it looks like modeling approval and disapproval separately actually is the correct way to go, increasing the fit of the model. Ordinarily, I'd test this with some cross-validation procedure(s), but we're still working with so little data that cross-validation is difficult.
+
+Extrapolating from these trends, we have a prediction that by the end of the GJO's question lifecycle, the net Approval rating will be around -20. This, coincidentally, is what we should predict from our very most blunt approach of predicting what today's value is for every point in the future. Accordingly, we should place a lot of confidence in the lower-band probability, some in the middle band, and almost none in the upper band.
+
+I should be able to derive more precise estimates (i.e. real numbers) from this model, but I don't know enough about the distribution Prophet outputs, so I don't know how to properly combine the given margins to estimate the distribution of the estimate for the date in question. Just glancing at the margins suggests that Prophet estimates that the middle band covers the upper 20% of outcomes, so there's an 80% likelihood that the net approval will be in the lower band. Accordingly, my current estimate for the GJO is Low: 80, Mid: 19, Hi: 1.
+
+This is a bold claim, relative to the [GJO consensus](https://www.gjopen.com/questions/384-what-will-gallup-report-president-trump-s-net-approval-rating-to-be-on-28-april-2017/stats):
+
+![](http://anthony.boyles.cc/imgs/Screenshot_2017-03-16_10-49-06.png)
+
+Here we can see that my estimate and the consensus are approximately opposites between the low and middle bands, while agreeing that the probability of the high band is vanishingly small. I'd normally be much more conservative with my estimate, but...
+
+# The Inside View
+
+...[isn't good for the President](http://www.vox.com/world/2017/3/20/14982018/comey-fbi-investigation-russia-trump-campaign).
