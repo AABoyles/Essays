@@ -35,6 +35,12 @@ We Dunno. But as Stuart Armstrong (I think) once said, "Cryonics is an experimen
 
 Critics tend to light into the science behind it without having a good grasp of the mechanics themselves, and so rely on overly-simplistic and generally-flawed arguments like "ice crystalization ruptures cell walls."
 
+There are some actually-good critical articles out there:
+
+* [The Faulty Logic of Cryo-freezing Dead People](https://deathbycosmos.com/blog/logic-of-human-cryo)
+
+(I may attempt to refute some of these at some point. Watch this space for links in case I ever do.)
+
 # How does it work?
 
 * *Wait but Why* - [Why Cryonics Makes Sense](http://waitbutwhy.com/2016/03/cryonics.html).
@@ -66,6 +72,7 @@ Luckily, there's an alternative way to pay for it.
 There aren't a lot of people writing or talking about cryonics. If something I have read doesn’t contribute to the conversation (but seems popular enough not to ignore), it goes here.
 
 * [Frozen to Life: A Personal Mortality Experiment](https://www.amazon.com/Frozen-Life-Personal-Mortality-Experiment-ebook/dp/B01371OE6O/) by D.J. MacLennan - This is a long and rambling personal narrative which has little to do with Cryonics itself and much to do with the life progression which led one person to sign up for cryonics. It's often interesting, and MacLennan has a very good grasp of the philosophy and science behind cryonics (despite being an expert in neither). However, the circumstances that would lead one to pick up this book are not so different from the circumstances that lead one to sign up for cryonics in the first place. It's a long, hard read without a huge benefit. Accordingly, I wouldn't recommend it.
+* [Cryonics: Reaching For Tomorrow](https://www.amazon.com/gp/product/1880209004) - This is a very odd little book presented in a blend of the styles of an academic journal and a popular magazine. I believe it was written in the 90's, and it hasn't aged well. Although the state of the science of preservation hasn't advanced much (the science of recovery is faring better), the cultural mores don't fit well into the current discussion of Cryonics. It's also pretty hard to find. If you stumble upon it, it's worth a perusal, but I wouldn't go out of my way to obtain a copy.
 
 # References I haven't gotten to yet
 
@@ -73,10 +80,11 @@ There aren't a lot of people writing or talking about cryonics. If something I h
 * Nanomedicine Volume I: Basic Capabilities by Robert A. Freitas
 * Nanomedicine Volume IIA: Biocompatibility by Robert A. Freitas
 * The Prospect of Immortality by Robert Ettinger
-* The Scientific Conquest of Death - Essays on Infinite Lifespans, edited by the Immortality Institute.
+* The Scientific Conquest of Death - Essays on Infinite Lifespans, edited by the Immortality Institute
 * Forever for All by R. Michael Perry
 * We Froze the First Man!
 * Freezing People Ain't Easy
+* Preserving Minds, Saving Lives, edited by Alcor
 
 ## Bonus: Fiction
 
