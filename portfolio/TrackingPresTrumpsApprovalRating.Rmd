@@ -13,8 +13,6 @@ infobox(list(
 ))
 ```
 
-# Introduction
-
 As part of its [First 100 Days Challenge](https://www.gjopen.com/challenges/13-the-first-100-days), the [Monkey Cage blog](https://www.washingtonpost.com/news/monkey-cage/) asked the [Good Judgement Open](https://www.gjopen.com/), "What will President Trump's approval rating be on April 28, 2017?" From the [question information](https://www.gjopen.com/questions/384-what-will-gallup-report-president-trump-s-net-approval-rating-to-be-on-28-april-2017):
 
 > President-elect Trump's net approval rating has improved since his election in November ([Gallup](http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx)). This question will be resolved by subtracting President Trump's disapproval rating from his approval rating using the "Gallup Daily" Trump job approval rating. Gallup is tracking President Trump's job approval ratings here: ([Gallup](http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx)).
@@ -46,7 +44,6 @@ Let's parse the data directly from the Gallup Visualization's data feed:
 ```{r}
 library('tidyverse')
 library('xml2')
-library('lubridate')
 
 # Please excuse this XML hacking.
 viz <- read_xml('http://www.gallup.com/viz/v1/xml/6b9df319-97d6-4664-80e1-ea7fe4672aca/POLLFLEXCHARTVIZ/TRUMPJOBAPPR201617.aspx') %>%
@@ -164,13 +161,16 @@ This is a slightly weird forecasting problem, as we're trying to forecast the ou
 ```{r}
 model <- lm(approval ~ disapproval)
 
-plot_ly(ratings, x = ~disapproval, y = ~approval, type = "scatter", name = "Observations") %>%
+ratings %>%
+  plot_ly(x = ~disapproval+runif(n,-.3,.3), y = ~approval+runif(n,-.3,.3), type = "scatter", name = "Observations") %>%
   add_trace(x = ~disapproval, y = ~fitted(model), mode = "lines", name = "LM")
 
 model %>%
   summary() %>%
   pander()
 ```
+
+[Note that these points are jittered because scatterplots of integers tend to overplot.]
 
 So, perhaps we can do better by forecasting *each*, and then deriving the net approval from the forecast. There are good reasons not to do this! Think of a model as an engine. You feed it gasoline (empirical data) and it does work (good predictions), but with an undesirable side effect--it also emits toxic gas (error). By adding a second engine, we may produce twice as many predictions (which *doesn't actually help us*), but we'll also have two error generators (which *actually hurts us*).
 
@@ -231,7 +231,7 @@ tibble(MAE = MAE) %>%
   pander()
 ```
 
-At this point, it looks like modeling approval and disapproval separately actually is the correct way to go, increasing the fit of the model. Ordinarily, I'd test this with some cross-validation procedure(s), but we're still working with so little data that cross-validation is difficult.
+So, a full point lower than the single-model approach. At this point, it looks like modeling approval and disapproval separately is probably the better way to go, increasing the fit of the model. Ordinarily, I'd test this with some cross-validation procedure(s), but we're still working with so little data that cross-validation is difficult.
 
 Extrapolating from these trends, we have a prediction that by the end of the GJO's question lifecycle, the net Approval rating will be around -20. This, coincidentally, is what we should predict from our very most blunt approach of predicting what today's value is for every point in the future. Accordingly, we should place a lot of confidence in the lower-band probability, some in the middle band, and almost none in the upper band.
 
