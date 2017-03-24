@@ -31,9 +31,13 @@ Because living is awesome, of course!
 
 # Will it Work?
 
-Probably. However, whether any specific cryonically-preserved individual will be recovered is far less certain.
+We Dunno. But as Stuart Armstrong (I think) once said, "Cryonics is an experiment. So far, the control group is doing very poorly."
+
+Critics tend to light into the science behind it without having a good grasp of the mechanics themselves, and so rely on overly-simplistic and generally-flawed arguments like "ice crystalization ruptures cell walls."
 
 # How does it work?
+
+* *Wait but Why* - [Why Cryonics Makes Sense](http://waitbutwhy.com/2016/03/cryonics.html).
 
 # How do I sign up?
 
@@ -45,14 +49,23 @@ As far as I can tell, there are three agencies world-wide doing cryopreservation
 
 ## Paying for it
 
+Cryonics is pretty expensive right now. That's due to an unfortunate confluence of social circumstances: it's often considered weird, and so isn't very popular. That means the demand can only support a few providers. That means that there are only a few locations where it can be done. That means providers must be prepared to jump through absurd legal hoops and transport your body rapidly following your clinical declaration of death. Not to mention the process itself is complicated, and time- and resource- intensive.
+
+Luckily, there's an alternative way to pay for it.
+
 * Life Insurance. Contact [Rudi Hoffman](http://www.rudihoffman.com/).
 * Cash. If you're pretty wealthy.
 
 ## Making Arrangements to Assure Your Cryopreservation
 
+* [Cryonics Institute Standby Manual](http://www.cryonics.org/images/uploads/misc/Cryonics_Institute_Standby_Manual.pdf)
+* [Cryonics UK Standby, Cool-Down, and Perfusion Procedures](http://cryonics-uk.org/download/Call-OutManual-2014%281%29-Apr.pdf)
+
 # References I Would Skip
 
 There aren't a lot of people writing or talking about cryonics. If something I have read doesn’t contribute to the conversation (but seems popular enough not to ignore), it goes here.
+
+* [Frozen to Life: A Personal Mortality Experiment](https://www.amazon.com/Frozen-Life-Personal-Mortality-Experiment-ebook/dp/B01371OE6O/) by D.J. MacLennan - This is a long and rambling personal narrative which has little to do with Cryonics itself and much to do with the life progression which led one person to sign up for cryonics. It's often interesting, and MacLennan has a very good grasp of the philosophy and science behind cryonics (despite being an expert in neither). However, the circumstances that would lead one to pick up this book are not so different from the circumstances that lead one to sign up for cryonics in the first place. It's a long, hard read without a huge benefit. Accordingly, I wouldn't recommend it.
 
 # References I haven't gotten to yet
 
