@@ -17,12 +17,12 @@
 <link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
 <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
 <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
 <script src="site_libs/readthedown-0.1/readthedown.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <script src="site_libs/htmlwidgets-0.8/htmlwidgets.js"></script>
 <script src="site_libs/datatables-binding-0.2/datatables.js"></script>
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -112,7 +112,6 @@ code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Inf
 <div id="content" data-toggle="wy-nav-shift">
 
 <!-- tabsets -->
-<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -120,7 +119,6 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
@@ -166,15 +164,15 @@ $(document).ready(function () {
 <span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mtime)) %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span> =<span class="st"> </span><span class="kw">floor</span>(size/<span class="dv">7</span>)) %&gt;%
 <span class="st">  </span><span class="kw">select</span>(Name, <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span>=mtime) %&gt;%
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Name =</span> <span class="kw">paste0</span>(<span class="st">&quot;&lt;a href=&#39;essays/&quot;</span>, <span class="kw">str_sub</span>(Name, <span class="dv">1</span>, -<span class="dv">5</span>), <span class="st">&quot;.html&#39;&gt;&quot;</span>,
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Name =</span> <span class="kw">paste0</span>(<span class="st">&quot;&lt;a href=&#39;&quot;</span>, <span class="kw">str_sub</span>(Name, <span class="dv">1</span>, -<span class="dv">5</span>), <span class="st">&quot;.html&#39;&gt;&quot;</span>,
     Name %&gt;%
 <span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z])([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) %&gt;%
 <span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([A-Z]+)([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) %&gt;%
 <span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z]+)([0-9]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) %&gt;%
 <span class="st">      </span><span class="kw">str_sub</span>(<span class="dv">1</span>, -<span class="dv">5</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>)) %&gt;%
 <span class="st">  </span><span class="kw">datatable</span>(<span class="dt">escape =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div id="htmlwidget-785278790005fc8e32d9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-785278790005fc8e32d9">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10"],["<a href='essays/SomeThoughtsOn911.html'>Some Thoughts On 911\u003c/a>","<a href='essays/ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data\u003c/a>","<a href='essays/MonteHallGREGuessing.html'>Monte Hall GRE Guessing\u003c/a>","<a href='essays/MereHeroes.html'>Mere Heroes\u003c/a>","<a href='essays/CherylsBirthday.html'>Cheryls Birthday\u003c/a>","<a href='essays/GoodPolicies.html'>Good Policies\u003c/a>","<a href='essays/TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem\u003c/a>","<a href='essays/SuperintelligenceBibliography.html'>Superintelligence Bibliography\u003c/a>","<a href='essays/DesigningTheActuallySmartHouse.html'>Designing The Actually Smart House\u003c/a>","<a href='essays/CryonicsBibliography.html'>Cryonics Bibliography\u003c/a>"],[388,722,640,720,881,1519,1644,1617,3266,385],["2017-01-27T19:01:22Z","2017-01-27T19:01:13Z","2017-01-27T19:00:57Z","2017-01-27T19:00:35Z","2017-01-27T19:00:12Z","2017-01-24T21:52:14Z","2016-12-14T18:45:17Z","2016-12-09T21:35:38Z","2016-12-09T21:29:39Z","2016-12-09T21:28:06Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Name\u003c/th>\n      <th>Estimated Length (words)\u003c/th>\n      <th>Last Modified\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8f3429d5dc0974ebca8b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8f3429d5dc0974ebca8b">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10"],["<a href='SomeThoughtsOn911.html'>Some Thoughts On 911\u003c/a>","<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data\u003c/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing\u003c/a>","<a href='MereHeroes.html'>Mere Heroes\u003c/a>","<a href='CherylsBirthday.html'>Cheryls Birthday\u003c/a>","<a href='GoodPolicies.html'>Good Policies\u003c/a>","<a href='TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem\u003c/a>","<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography\u003c/a>","<a href='DesigningTheActuallySmartHouse.html'>Designing The Actually Smart House\u003c/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography\u003c/a>"],[388,722,640,720,881,1519,1644,1617,3266,385],["2017-01-27T19:01:22Z","2017-01-27T19:01:13Z","2017-01-27T19:00:57Z","2017-01-27T19:00:35Z","2017-01-27T19:00:12Z","2017-01-24T21:52:14Z","2016-12-14T18:45:17Z","2016-12-09T21:35:38Z","2016-12-09T21:29:39Z","2016-12-09T21:28:06Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Name\u003c/th>\n      <th>Estimated Length (words)\u003c/th>\n      <th>Last Modified\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
 </div>
 
 
