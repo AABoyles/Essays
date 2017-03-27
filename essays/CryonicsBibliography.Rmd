@@ -18,14 +18,13 @@ This follows my self-education in Cryonics, specifically as I would have ordered
 
 ## If you only read one thing...
 
-* Read the Wait but Why post, [Why Cryonics Makes Sense](http://waitbutwhy.com/2016/03/cryonics.html).
+Read the Wait but Why post, [Why Cryonics Makes Sense](http://waitbutwhy.com/2016/03/cryonics.html).
 
 # Why Should We Consider Cryonics?
 
 Because living is awesome, of course!
 
 * [The Open Letter on Cryonics](http://www.evidencebasedcryonics.org/scientists-open-letter-on-cryonics/) - There are a bunch of really smart people who openly affirm that Cryonics is a viable avenue to life extension.
-
 * Robin Hanson - [We Agree: Get Froze!](http://www.overcomingbias.com/2008/12/we-agree-get-froze.html)
 * Eliezer Yudkowsky - [You Only Live Twice](http://lesswrong.com/lw/wq/you_only_live_twice/)
 
@@ -33,10 +32,11 @@ Because living is awesome, of course!
 
 Ted Williams is the most famous Cryonics case, but there's been a lot of long-form journalism on cryonics cases in the last few years.
 
-* [What it took to get Ted William's Head Off His Body](http://deadspin.com/what-it-took-to-get-ted-williamss-head-off-his-body-1475054922)
-* [What Really Happened to Ted Williams](http://www.si.com/vault/2003/08/18/348299/what-really-happened-to-ted-williams-a-year-after-the-jarring-news-that-the-splendid-splinter-was-being-frozen-in-a-cryonics-lab-new-details-including-a-decapitation-suggest-that-one-of-americas-greatest-heroes-may-never-rest-in)
+* [Bitcoin's Earliest Adopter Is Cryonically Freezing His Body to See the Future](https://www.wired.com/2014/08/hal-finney/)
 * [The Girl Who Would Live Forever](https://motherboard.vice.com/en_us/article/the-girl-who-would-live-forever)
 * [A Dying Young Woman's Hope in Cryonics and a Future](https://mobile.nytimes.com/2015/09/13/us/cancer-immortality-cryogenics.html)
+* [What it took to get Ted William's Head Off His Body](http://deadspin.com/what-it-took-to-get-ted-williamss-head-off-his-body-1475054922)
+* [What Really Happened to Ted Williams](http://www.si.com/vault/2003/08/18/348299/what-really-happened-to-ted-williams-a-year-after-the-jarring-news-that-the-splendid-splinter-was-being-frozen-in-a-cryonics-lab-new-details-including-a-decapitation-suggest-that-one-of-americas-greatest-heroes-may-never-rest-in)
 
 If you're interested in more stories about people, the Cryonics providers themselves have some interesting content:
 
@@ -45,14 +45,18 @@ If you're interested in more stories about people, the Cryonics providers themse
 * [Oregon Cryonics Case Reports](http://www.oregoncryo.com/caseReports.html)
 * [KrioRus' Patients](http://kriorus.ru/en/our-patients)
 
+There may also be some coverage of living cryonicists.
+
+* [Until Cryonics Do Us Part](http://www.nytimes.com/2010/07/11/magazine/11cryonics-t.html) - This is an excellent piece on Robin Hanson's cryonics plans and it effects on his marriage.
+
 # How Does it Work?
 
 * *Wait but Why* - [Why Cryonics Makes Sense](http://waitbutwhy.com/2016/03/cryonics.html).
 
 If you're interested in technical details of the procedure(s):
 
-* [Cryonics UK Standby, Cool-Down, and Perfusion Procedures](http://cryonics-uk.org/download/Call-OutManual-2014%281%29-Apr.pdf)
-* [The Oregon Cryonics Manual](http://www.oregoncryo.com/manual/manual.html)
+* Cryonics UK, [Standby, Cool-Down, and Perfusion Procedures](http://cryonics-uk.org/download/Call-OutManual-2014%281%29-Apr.pdf)
+* Oregon Cryonics' [Manual](http://www.oregoncryo.com/manual/manual.html)
 
 # Will it Work?
 
@@ -63,14 +67,17 @@ We don't know, and anyone who says it will is vastly overconfident. But as Dr. R
 Critics tend to light into the science behind it without having a good grasp of the mechanics themselves, and so rely on overly-simplistic and generally-flawed arguments like "ice crystalization ruptures cell walls." However, there are some actually-good critical articles out there:
 
 * [The Faulty Logic of Cryo-freezing Dead People](https://deathbycosmos.com/blog/logic-of-human-cryo)
+* D. John Boyle, [Cryonic Life Extension: Scientific Possibility or Stupid Pipe Dream?](http://www.dl.begellhouse.com/journals/6ed509641f7324e6,51a3bb12507ccd33,3ce242a36c9493d1.html)
 
 Perhaps the best criticism of cryonics is that it may not be the *likeliest* avenue to longevity. Critics of this stripe tend to gravitate toward an alternative procedure, known as...
 
 ## Plastination
 
-* Gwern Branwen, [Plastination](https://www.gwern.net/plastination)
+Plastination, regardless of whether it will work or is more likely to work than cryonics, is not currently commercially practiced on humans anywhere ([Bodies](https://en.wikipedia.org/wiki/Bodies:_The_Exhibition) exhibits notwithstanding). That reduces its probability of success effectively to zero (in the near future). This does not, however, indicate that 
 
-Plastination, regardless of whether it will work or is more likely to work than cryonics, is not currently commercially practiced on humans anywhere ([Bodies](https://en.wikipedia.org/wiki/Bodies:_The_Exhibition) exhibits notwithstanding). That reduces its probability of success effectively to zero (in the near future).
+* Gwern Branwen, [Plastination](https://www.gwern.net/plastination)
+* Robin Hanson, [Plastination is Near](http://www.overcomingbias.com/2012/06/plastination-is-near.html)
+* Robin Hanson, [A Bet I'd Have Lost](http://www.overcomingbias.com/2016/02/a-bet-id-have-lost.html)
 
 # How do I sign up?
 
@@ -104,22 +111,39 @@ There aren't a lot of people writing or talking about cryonics. If something I h
 * [Frozen to Life: A Personal Mortality Experiment](https://www.amazon.com/Frozen-Life-Personal-Mortality-Experiment-ebook/dp/B01371OE6O/) by D.J. MacLennan - This is a long and rambling personal narrative which has little to do with Cryonics itself and much to do with the life progression which led one person to sign up for cryonics. It's often interesting, and MacLennan has a very good grasp of the philosophy and science behind cryonics (despite being an expert in neither). However, the circumstances that would lead one to pick up this book are not so different from the circumstances that lead one to sign up for cryonics in the first place. It's a long, hard read without a huge benefit. Accordingly, I wouldn't recommend it.
 * [Cryonics: Reaching For Tomorrow](https://www.amazon.com/gp/product/1880209004) - This is a very odd little book presented in a blend of the styles of an academic journal and a popular magazine. I believe it was written in the 90's, and it hasn't aged well. Although the state of the science of preservation hasn't advanced much (the science of recovery is faring better), the cultural mores don't fit well into the current discussion of Cryonics. It's also pretty hard to find. If you stumble upon it, it's worth a perusal, but I wouldn't go out of my way to obtain a copy.
 
-In addition to the long-form journalism I mentioned about specific cryonics cases, there have been several very superficial, yet long, articles about Cryonics. I don't think there's anything here that isn't done better by other references I've listed (especially [Wait, but Why](http://waitbutwhy.com/2016/03/cryonics.html)), but they exist, so there's that.
+## Other Overviews
 
-* [This Buzfeed Article](https://www.buzzfeed.com/joshdean/are-we-warming-up-to-cryonics)
+* Wikipedia, [Cryonics](https://en.wikipedia.org/wiki/Cryonics)
+* Wikipedia, [Cryopreservation](https://en.wikipedia.org/wiki/Cryopreservation)
+* Wikipedia, [Neuropreservation](https://en.wikipedia.org/wiki/Neuropreservation)
+
+There have been several very superficial, yet long, articles about Cryonics. I don't think there's anything here that isn't done better by other references I've listed (especially [Wait, but Why](http://waitbutwhy.com/2016/03/cryonics.html)), but they exist, so there's that.
+
+* [Are We Warming Up to Cryonics?](https://www.buzzfeed.com/joshdean/are-we-warming-up-to-cryonics)
 * [What a Time to Be Alive - Forever](http://www.thefader.com/2016/06/23/living-forever-cryonics)
+* [Inside the weird world of cryonics](https://www.ft.com/content/d634e198-a435-11e5-873f-68411a84f346) - The best coverage of KrioRus I've seen, but not much else of interest
 
 # References I haven't gotten to yet
+
+## Technical References
 
 * Engines of Creation by K. Eric Drexler
 * Nanomedicine Volume I: Basic Capabilities by Robert A. Freitas
 * Nanomedicine Volume IIA: Biocompatibility by Robert A. Freitas
+
+## Philosophical Perspectives
+
 * The Prospect of Immortality by Robert Ettinger
 * The Scientific Conquest of Death - Essays on Infinite Lifespans, edited by the Immortality Institute
 * Forever for All by R. Michael Perry
+* Preserving Minds, Saving Lives, edited by Alcor
+
+## Memoirs
+
 * We Froze the First Man!
 * Freezing People Ain't Easy
-* Preserving Minds, Saving Lives, edited by Alcor
+* [Frozen](https://www.amazon.com/Frozen-Journey-World-Cryonics-Deception/dp/1593155603/) by Larry Johnson
+* [Mothermelters](https://www.amazon.com/Mothermelters-Inside-Story-Cryonics-Homicide/dp/141079198X) - Apparently the poorly written rantings of a cop who was somehow involved in the Dora Kent case
 
 ## Bonus: Fiction
 
