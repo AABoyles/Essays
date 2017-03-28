@@ -87,14 +87,15 @@ To take a simple frequentist approach, let's just count the number of times his 
 ```{r}
 library('pander')
 
-ratings %>%
+temp <- ratings %>%
   mutate(band = if_else(net_approval >= -15, "middle", "lower")) %>%
-  select(-date, -approval, -disapproval, -net_approval) %>%
-  table() %>%
-  pander()
+  group_by(band) %>%
+  summarise(number = n())
+
+pander(temp)
 ```
 
-OK, since we only drop into the lower band thrice, let's say that lower-band probability is something like `r round(3/n, 2)` and the middle-band probability is `r round(53/n, 2)`, and the high-band probability is very small.
+OK, so let's say that lower-band probability is something like `r round(temp[1,2]/n, 2)` and the middle-band probability is `r round(temp[2,2]/n, 2)`, and the high-band probability is very small.
 
 I strongly dislike [probability estimates of 0 and 1](http://lesswrong.com/lw/mp/0_and_1_are_not_probabilities/), so instead of saying the high-band probability is zero, I'm going to invoke the [rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(statistics)). The probability that the net approval is more than +15 is probably less than `r round(3/n, 2)`. This is curious, as it implies the low-band and high-band probabilities are similar, despite the fact we've observed low-band outcomes and have not observed high-band outcomes. So, in the interest of preserving my tiny bias away from certainty, I'll call the high-band probability 1% and deduct it from the middle-band.
 
@@ -245,4 +246,4 @@ Here we can see that my estimate and the consensus are approximately opposites b
 
 # The Inside View
 
-...[isn't good for the President](http://www.vox.com/world/2017/3/20/14982018/comey-fbi-investigation-russia-trump-campaign).
+...[isn't good for the President](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=Bad+News+for+Trump&safe=off&tbm=nws&tbs=qdr:w&*).
