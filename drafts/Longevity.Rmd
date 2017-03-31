@@ -39,9 +39,9 @@ There are, broadly speaking, two ways to extend lives. One is public health. To 
 
 The people doing public health are really, **really** good at it. [Average human lifespans are increasing all over the world](https://ourworldindata.org/life-expectancy/#life-expectancy-has-improved-globally), almost entirely due to victories in public health. People are [getting vaccinated](https://data.oecd.org/healthcare/child-vaccination-rates.htm). Eating better food. Breathing less of fewer toxic things. Drinking cleaner water. Breastfeeding. [Hurting each other less](https://en.wikipedia.org/wiki/The_Better_Angels_of_Our_Nature).
 
-Basically, public health is awesome, and we should be handing out WAY more money and medals to people doing public health. However, interventions of the type advocated by the public health community generally (so far) can only get people as far as old age @Olshansky1990-vd. After a point, seatbelts and clean water aren't going to make a huge difference, because you're probably going to die of a natural cause like heart failure or some sort of cancer @Werfel2015-zx.
+Basically, public health is awesome, and we should be handing out WAY more money and medals to people doing public health. However, interventions of the type advocated by the public health community generally (so far) can only get people as far as old age [@Olshansky1990-vd]. After a point, seatbelts and clean water aren't going to make a huge difference, because you're probably going to die of a natural cause like heart failure or some sort of cancer [@Werfel2015-zx].
 
-So, the other way to extend lives is to stop people from dying of natural causes. We don't know very well how to make that happen, but we have [a research agenda](https://en.wikipedia.org/wiki/Strategies_for_Engineered_Negligible_Senescence) that (we hope) can figure it out @De_Grey2007-ac. Moreover, there are a lot of people who got rich, decided they want to live for a really long time too, and set up [well-funded companies](https://www.calicolabs.com/) and [non-profits](http://glennfoundation.org/) to search for other avenues to life extension. In the meanwhile, there are a small number of odd things that we have reasonable evidence extends lifespans.
+So, the other way to extend lives is to stop people from dying of natural causes. We don't know very well how to make that happen, but we have [a research agenda](https://en.wikipedia.org/wiki/Strategies_for_Engineered_Negligible_Senescence) that (we hope) can figure it out [@De_Grey2007-ac]. Moreover, there are a lot of people who got rich, decided they want to live for a really long time too, and set up [well-funded companies](https://www.calicolabs.com/) and [non-profits](http://glennfoundation.org/) to search for other avenues to life extension. In the meanwhile, there are a small number of odd things that we have reasonable evidence extends lifespans.
 
 After more than a century of concerted effort and tinkering with a bewildering variety of thousands of interventions, it can safely be said that almost all attempted interventions have failed, so the prior odds are strongly against any new one working. Even so, for those of us who want to give ourselves a fighting shot at extreme longevity, even tiny longevity advantages may be worthwhile. That's because we don't know how soon the big breakthrough will come that enables our oldest people to roar through their early 120's. If you're alive when the breathrough does happen, that gives you a non-zero probability of benefitting from it, and living a long time yourself. Alternately, if you die before the big breakthrough, you're almost certainly not going to benefit from it.
 
@@ -49,7 +49,7 @@ So it's worth exploring whether certain interventions will result in a net impro
 
 What I want to figure out is how to reduce all-cause mortality (ACM) as estimated in randomized trials on healthy adult human populations for which there are enough trials to do a random-effects/multilevel model, so I can estimate a posterior predictive interval of the benefit of an intervention, letting me compare mortality reduction with intervention cost, from which I can compute an expected value. Whew, that's a head-full. Let's break out those constraints individually:
 
-*1. reduce "all-cause mortality",*
+**1. reduce "all-cause mortality",**
 
 ACM is the end-point of choice for life-extension because it is both closest to what we care about (additional life) and it is the hardest of all end-points - it is difficult to cheat, miscount, or not notice, and by being simple, consistent, and unambiguous, avoids many failure modes such as subgroup hacking or dropping outliers or tweaking covariates (either a larger fraction of the controls are dead or not). It can also typically be extracted from most studies, even if they otherwise fail to report much of the data.
 
@@ -59,27 +59,27 @@ From a life-extension perspective, it is irrelevant if an intervention reduces s
 
 In short, an intervention either reduces all-cause mortality or it doesn't.
 
-*2. as estimated in randomized trials,*
+**2. as estimated in randomized trials,**
 
 [Correlation is not causation]() and correlates rarely turn out to be causal. With aging, the situation is especially severe since aging is the exponential increase in mortality with time as all bodily systems gradually begin to fail; one cannot simply take a correlation of some chemical with aging or mortality and expect an intervention on it to have more than a minute chance of making a difference, since most (if not nearly every) chemical or substance or biomarker will change with age.
 
 The best way to insulate our conclusions from selection effects is to perform large, controlled experiments, rather than to rely upon natural data.
 
-*3. on healthy adult human populations*
+**3. on healthy adult human populations**
 
 Studies of interventions in the sick are unhelpful, as any observable benefits from such an intervention hopefully come from the particular disorder being treated. One special challenge for this criteria is studies done in elderly populations. Because death rates amongst the elderly are so high, they offer higher power to detect reductions in mortality. However, that death rate is high because of the aging process itself, and so subjects will tend to have many chronic conditions and diseases as well. These confound otherwise useful results, and thus must be treated with some caution.
 
 Animal studies are also unhelpful as [results tend to be unreliable across species](). One particularly noteworthy source of unreliability is that some species age in entirely different ways than humans. Perhaps it is better to say that humans naturally live unusually long lives for animals, and thus age in very different ways than other organisms.
 
-*4. for which there are enough trials to do a random-effects/multilevel model, so we can extract a posterior predictive interval of the benefit,*
+**4. for which there are enough trials to do a random-effects/multilevel model, so we can extract a posterior predictive interval of the benefit,**
 
 It's important to include heterogeneity from population to population as part of the uncertainty. One of the subtleties often missed in dealing with modeling is that a 95% CI around a parameter is not a CI around the outcome or result.
 
-*5. letting us compare mortality reduction against intervention cost,*
+**5. letting us compare mortality reduction against intervention cost,**
 
 For making decisions, the costs of the intervention must be taken into account. A taxing exercise regimen may be proven to increase longevity, but is that of any value of the regimen takes away much more of your life than it gives back? It may be that no matter whether our certainty is 99% or 99.99% that it works, we would never choose to embark on that regimen. On the other hand, for a cheap enough intervention, we may be willing to accept substantially lower probability: baby aspirin, for example, costs \$7 & <10 seconds each morning / <60 minutes a year and we might be willing to use it if our final probability of any benefit is a mere 50%.
 
-*6. then yielding an expected value of the intervention (and if <\$0, perhaps further analysis about whether it has a reasonable chance of ever becoming profitable and what the Value of Information might be of further trials)*
+**6. then yielding an expected value of the intervention (and if <\$0, perhaps further analysis about whether it has a reasonable chance of ever becoming profitable and what the Value of Information might be of further trials)**
 
 If an intervention passes all these criteria, we can be highly confident that we will gain life, rather than lose it.
 
@@ -127,6 +127,7 @@ Possible Lifestyle Modifications:
 In the exceedingly unlikely case that I exhaust all of these, there's the...
 
 * [Geroprotectors Database](http://geroprotectors.org/)
+* [DrugAge](http://genomics.senescence.info/drugs/browse.php?search=)
 
 ## Definitions
 
@@ -154,7 +155,9 @@ gendered_actuarial <- read_csv("../data-cache/actuarial.csv") %>%
 plot_ly(gendered_actuarial, x = ~Age, y = ~SurvivingFraction/100000, type = 'scatter', mode = 'lines', color = ~Gender)
 ```
 
-From this, we can see that women at every age have higher survival rates than men of the same age. However, rather than stratify everythin on gender, I'm just going to combine the two surviving groups. It's a blunt approach, but it's hardly the worst available option. Let's compare this to an estimate of survival fractions of Dutch adults @Cramer2013-xo.
+For an excellent introduction to the Gompertz curve, see [this blog post](https://gravityandlevity.wordpress.com/2009/07/08/your-body-wasnt-built-to-last-a-lesson-from-human-mortality-rates/).
+
+From this, we can see that women at every age have higher survival rates than men of the same age. However, rather than stratify everythin on gender, I'm just going to combine the two surviving groups. It's a blunt approach, but it's hardly the worst available option. Let's compare this to an estimate of survival fractions of Dutch adults [@Cramer2013-xo].
 
 ```{r GompertzCurve}
 S <- function(t, RR=1) exp(-(RR*0.000016443)/log(1.1124) * (1.1124^t - 1))
@@ -562,7 +565,6 @@ The direct monetary cost of metformin is so minimal that it's almost certainly o
 > *   Metabolic:
 >     *   Common (1% to 10%): Hypoglycemia
 >     *   Very rare (less than 0.01%): Lactic acidosis
-
 > *   Gastrointestinal:
 >     *   Very common (10% or more): Diarrhea (53.2%), nausea/vomiting (25.5%), flatulence (12.1%)
 >     *   Common (1% to 10%): Indigestion, abdominal discomfort, abnormal stools, dyspepsia, loss of appetite
@@ -570,21 +572,14 @@ The direct monetary cost of metformin is so minimal that it's almost certainly o
 > *   Other: Common (1% to 10%): Asthenia, chills, flu syndrome, accidental injury
 > *   Hepatic: Very rare (less than 0.01%): Liver function test abnormalities, hepatitis
 > *   Cardiovascular: Common (1% to 10%): Chest discomfort, flushing, palpitation
-
 > *   Dermatologic
 >     *   Common (1% to 10%): Rash, nail disorder, increased sweating
 >     *   Very rare (less than 0.01%): Erythema, pruritus, urticaria
-
 > *   Endocrine: Frequency not reported: Reduction in thyrotropin (TSH) levels
-
 > *   Immunologic: Very common (10% or more): Infection (20.5%)
-
 > *   Musculoskeletal: Common (1% to 10%): Myalgia
-
 > *   Nervous system: Common (1% to 10%): Lightheadedness, taste disturbances
-
 > *   Psychiatric: Common (1% to 10%): Headache
-
 > *   Respiratory: Common (1% to 10%): Rhinitis
 
 Most of these seem to be relatively minor or temporary, and the GI problems can be reduced by splitting up doses & taking with food; if they persist, a prophylactic user could simply discontinue metformin. (The [FDA prescribing information](http://www.fda.gov/ohrms/dockets/dailys/02/May02/053102/800471e6.pdf "Metformin Hydrochloride Tablets") notes in one trial, 6% of the metformin subjects had to stop because the diarrhea was so bad. Net attrition/dropout rates in metformin studies vary so much that they're not helpful and not all of it will have to do with metformin reducing the daily quality of life through side-effects, but overall they look like 10-40% would be a reasonable guess.) Discontinuation would be too bad since then one doesn't gain the benefits, but one won't have lost too much besides perhaps a few weeks of severe diarrhea and a month or two of wasted metformin pills, so it's not _too_ bad. You might think we would have to incorporate a penalty of 10-40% to the expected value - if there's a 10-40% chance the metformin is useless, shouldn't we multiply the mortality benefit by 0.1-0.4? - but that's only if we have no way of knowing the metformin is useless and we are considering the scenario in which we take it for the rest of our life even while it's useless. In this case, because we know quickly if we can handle metformin or not, we only need to consider the upfront cost of the month of diarrhea. (So more formally: the expected value is lower, but the Value of Information is higher because once one starts metformin and the GI problems either turn out to not be so bad or to go away, the expected value then increases substantially now that one knows one can take metformin without problem.)
@@ -748,11 +743,12 @@ Being the kind of person who drinks coffee is really bad for you. But if you are
 
 # Links for Future Investigation
 
-**Other Evidence Roundups**
+## Other Evidence Roundups
 
 * [Sarah Constantin's *Life Extension Possibilities*](https://srconstantin.wordpress.com/2017/01/24/life-extension-possibilities/)
+* [Which Risks of Dying are Worth Taking?](http://www.spencergreenberg.com/2013/10/which-risks-of-dying-are-worth-taking/#.WN64JlwrLCI)
 
-**Methodological**
+## Methodological Topics
 
 * [Micromort](http://en.wikipedia.org/wiki/Micromort "Wikipedia: Micromort")
 * [Microlife](https://en.wikipedia.org/wiki/Microlife)
