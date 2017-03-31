@@ -86,11 +86,13 @@ To take a simple frequentist approach, let's just count the number of times his 
 
 ```{r}
 library('pander')
+library('tidyr')
 
 temp <- ratings %>%
   mutate(band = if_else(net_approval >= -15, "middle", "lower")) %>%
   group_by(band) %>%
-  summarise(number = n())
+  summarise(number = n()) %>%
+  spread(band, number)
 
 pander(temp)
 ```
