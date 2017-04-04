@@ -1,5 +1,9 @@
 ---
 title: "Tracking President Trump's Approval Rating"
+output:
+  rmdformats::readthedown:
+    css: site_libs/style.css
+    code_folding: hide
 ---
 
 ```{r, message = F, warning = F, error = F}
@@ -63,11 +67,11 @@ approval <- viz %>%
   flatten() %>%
   as.double()
 
-n <- length(disapproval)
+n <- 58
 
 date <- ymd("17/01/21") + 1:n
 
-ratings <- tibble(date, approval, disapproval) %>%
+ratings <- tibble(date, approval = approval[1:n], disapproval = disapproval[1:n]) %>%
   mutate(net_approval = approval - disapproval)
 
 ratings %>% tail(1) %>% kable()
@@ -151,7 +155,7 @@ tibble(MAE = MAE) %>%
   pander()
 ```
 
-So, on average, the Prophet estimate has been off by about `r round(MAE, 2)` points. It's interesting to note that this is within Gallup's own 3-point margin of error, so refining these predictions for higher accuracy doesn't make a lot of sense.
+So, on average, the Prophet estimate has been off by about `r round(MAE, 2)` points. It's interesting to note that this is really close to Gallup's own 3-point margin of error, so refining these predictions for higher accuracy doesn't make a lot of sense.
 
 ## Crunching out an Estimate
 
@@ -162,7 +166,7 @@ Let's start again with the base frequency-derived estimates: High ~1%, Middle 93
 This is a slightly weird forecasting problem, as we're trying to forecast the outcome of a metric which is derived from two distinct-but-highly-correlated metrics: *approval*, and *disapproval*.
 
 ```{r}
-model <- lm(approval ~ disapproval)
+model <- lm(approval ~ disapproval, data = ratings)
 
 ratings %>%
   plot_ly(x = ~disapproval+runif(n,-.3,.3), y = ~approval+runif(n,-.3,.3), type = "scatter", name = "Observations") %>%
@@ -184,7 +188,7 @@ That said, the two streams aren't perfectly correlated, and this is instructive.
 If people can move between these camps independently (i.e. the decision to move from "approve" to "don't know" is distinct from the decision to move from "don't know" to "disapprove"), then maybe forecasting them separately makes sense. Let's just try it and see.
 
 ```{r}
-dApproval <- data.frame(ds = date, y = approval)
+dApproval <- data.frame(ds = date, y = ratings$approval)
 
 m <- prophet(dApproval, yearly.seasonality = F)
 
@@ -197,7 +201,7 @@ plot_ly(approvalforecast, x = ~ds, y = ~yhat, name = "Estimate", type = 'scatter
 Here is Prophet's estimate of the Approval rating. It's trending downward.
 
 ```{r}
-dDisapproval <- data.frame(ds = date, y = disapproval)
+dDisapproval <- data.frame(ds = date, y = ratings$disapproval)
 
 m <- prophet(dDisapproval, yearly.seasonality = F)
 
@@ -234,7 +238,7 @@ tibble(MAE = MAE) %>%
   pander()
 ```
 
-So, a full point lower than the single-model approach. At this point, it looks like modeling approval and disapproval separately is probably the better way to go, increasing the fit of the model. Ordinarily, I'd test this with some cross-validation procedure(s), but we're still working with so little data that cross-validation is difficult.
+So, approximately a point lower than the single-model approach. At this point, it looks like modeling approval and disapproval separately is probably the better way to go, increasing the fit of the model. Ordinarily, I'd test this with some cross-validation procedure(s), but we're still working with so little data that cross-validation is difficult.
 
 Extrapolating from these trends, we have a prediction that by the end of the GJO's question lifecycle, the net Approval rating will be around -20. This, coincidentally, is what we should predict from our very most blunt approach of predicting what today's value is for every point in the future. Accordingly, we should place a lot of confidence in the lower-band probability, some in the middle band, and almost none in the upper band.
 
@@ -249,3 +253,56 @@ Here we can see that my estimate and the consensus are approximately opposites b
 # The Inside View
 
 ...[isn't good for the President](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=Bad+News+for+Trump&safe=off&tbm=nws&tbs=qdr:w&*).
+
+# UPDATE: Validation
+
+Now that this analysis is pushing three weeks old, we've collected enough data that I feel good about doing a bit of new-data validation. To start, let's compare the simple, one-forecast model with reality:
+
+```{r}
+n <- length(approval)
+
+updatedRatings <- tibble(date = ymd("17/01/21") + 1:n, approval, disapproval) %>%
+  mutate(net_approval = approval - disapproval)
+
+plot_ly(forecast, x = ~ds, y = ~yhat, name = "Estimate", type = 'scatter', mode = 'lines') %>%
+  add_lines(data = updatedRatings, x = ~date, y = ~net_approval, name = "Actual")
+```
+
+Prophet definitely sniffed out a general trend, but it doesn't look awesome. To see how it did a little more objectively, let's fall back on the Mean Absolute Error, which was...
+
+```{r}
+MAE <- (updatedRatings$net_approval - forecast[1:n,]$yhat) %>%
+  abs() %>%
+  mean()
+
+tibble(MAE = MAE) %>%
+  pander()
+```
+
+Actually not terrible. It's natural for model metrics to degrade as the model outputs are compared to new data. One mark of a really good model is that the validation metrics converge on the training metrics. But this requires patience, careful handling, lots of data, and a really talented modeler (not to mention a cooperative reality to generate the validation data).
+
+This is nice and interesting, but I based my GJO forecasts on the two-signal model. Thus, the real question is how it has performed. Let's see:
+
+```{r}
+plot_ly(temp, x = ~ds, y = ~net, name = "Estimate", type = 'scatter', mode = 'lines') %>%
+  add_lines(data = updatedRatings, x = ~date, y = ~net_approval, name = "Actual")
+```
+
+Here we can see slightly better (if positively biased) performance. But is it actually better?
+
+```{r}
+MAE <- (updatedRatings$net_approval - temp[1:n,]$net) %>%
+  abs() %>%
+  mean()
+
+tibble(MAE = MAE) %>%
+  pander()
+```
+
+Here we see the two-signal model has degraded a bit more, though it continues to outperform the one-signal model. What this means is that I was right to trust the two-signal model more than the one-signal, but the difference between them wasn't all that important in retrospect. Based on current trends, it looks like my daring prediction (80% certainty the net approval will fall below -15) was actually *underestimating* the low-band probability.
+
+This highly confident low-band prediction *feels* wrong to me, which I take to be an important signal. GJO consensus remains that the middle band is likeliest, though the recent run of low-band days has driven the two to begin collapsing toward one another:
+
+![](http://anthony.boyles.cc/imgs/Screenshot_2017-04-04_13-44-43.png)
+
+Based on these two conflicting (at the margin) patterns, I'm going to update in roughly equal measure and ultimately stand by my prior estimate of Low: 80%, Mid: 19%, High: 1%.
