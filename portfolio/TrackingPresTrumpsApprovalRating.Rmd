@@ -25,13 +25,11 @@ As part of its [First 100 Days Challenge](https://www.gjopen.com/challenges/13-t
 
 For an uninformed prior, up to 100% of the population can approve of the President, and likewise 100% can disapprove. This means that valid net approval ratings span from -100 (everyone disapproves) to 100 (everyone approves). The span of -15 to 15 covers 30 of those 200 points, so if we assume that net approval ratings are pulled from a uniform distribution, we should expect to fall in that range with a frequency of around $30/200=.15$.
 
-However, this is a poor estimate for a lot of reasons. For one, in general, about half the country is going to disapprove of the President and about half the country will approve of the President. So the distribution of net approvals should have central tendency metrics (mean, mode) fairly close to 0. So, a better prior would come from a normal distribution with a mean of zero.
-
-For another significant refinement to this conception of the distribution of approval ratings, day-to-day ratings seem to be correlated. For example, here are [Barack Obama's approval ratings](http://www.gallup.com/interactives/185273/presidential-job-approval-center.aspx) over his two terms:
+However, this is a poor estimate for a lot of reasons. For one, in general, about half the country is going to disapprove of the President and about half the country will approve of the President. So the distribution of net approvals should have central tendency metrics (mean, mode) fairly close to 0. So, a better prior would come from a normal distribution with a mean of zero. Unfortunately, I don't see a reasonable strategy to estimating the standard deviation (which we need to fit to a normal distribution properly), because we really don't have much historical data about net approval ratings. I could take a guess, but I have a better idea. Let's take a look at some historical approval ratings. For example, here are [Barack Obama's approval ratings](http://www.gallup.com/interactives/185273/presidential-job-approval-center.aspx) over his two terms:
 
 ![](http://anthony.boyles.cc/imgs/Screenshot_2017-03-16_13-35-53.png)
 
-(Note that these are *approval* ratings, not *net approval* ratings. Gallup only launched the daily net approval rating for the Trump administration. However, since the net approval is the difference between Approval and a metric that is necessarily inversely proportional to it, looking at raw Approval ratings is still pretty instructive.)
+(Again, note that these are *approval* ratings, not *net approval* ratings. Gallup only launched the daily net approval rating for the Trump administration. However, since the net approval is the difference between Approval and a metric that is necessarily inversely proportional to it, looking at raw Approval ratings is still pretty instructive.)
 
 As we can see, there are long term curves in the approval rating, but lots of day-to-day noise. For an even more dramatic perspective on this phenomenon, check out [George W. Bush's approval ratings](http://www.gallup.com/interactives/185273/presidential-job-approval-center.aspx) over his two terms:
 
@@ -41,15 +39,15 @@ Here we can see President Bush enjoying a modest honeymoon period, followed by a
 
 So, what is President Trump's approval rating today?
 
-# Getthing the Data
-
-Let's parse the data directly from the Gallup Visualization's data feed:
+# Exploratory Data Analysis
 
 ```{r}
 library('tidyverse')
 library('xml2')
 
+# Let's parse the data directly from the Gallup Visualization's data feed:
 # Please excuse this XML hacking.
+
 viz <- read_xml('http://www.gallup.com/viz/v1/xml/6b9df319-97d6-4664-80e1-ea7fe4672aca/POLLFLEXCHARTVIZ/TRUMPJOBAPPR201617.aspx') %>%
   xml_child(3) %>%
   xml_child() %>%
@@ -101,9 +99,9 @@ temp <- ratings %>%
 pander(temp)
 ```
 
-OK, so let's say that lower-band probability is something like `r round(temp[1,2]/n, 2)` and the middle-band probability is `r round(temp[2,2]/n, 2)`, and the high-band probability is very small.
+OK, so let's say that lower-band probability is something like `r round(temp$lower[1]/n, 2)` and the middle-band probability is `r round(temp$middle[1]/n, 2)`, and the high-band probability is very small.
 
-I strongly dislike [probability estimates of 0 and 1](http://lesswrong.com/lw/mp/0_and_1_are_not_probabilities/), so instead of saying the high-band probability is zero, I'm going to invoke the [rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(statistics)). The probability that the net approval is more than +15 is probably less than `r round(3/n, 2)`. This is curious, as it implies the low-band and high-band probabilities are similar, despite the fact we've observed low-band outcomes and have not observed high-band outcomes. So, in the interest of preserving my tiny bias away from certainty, I'll call the high-band probability 1% and deduct it from the middle-band.
+I strongly dislike [probability estimates of 0 and 1](http://lesswrong.com/lw/mp/0_and_1_are_not_probabilities/), so instead of saying the high-band probability is zero, I'm going to invoke the [rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(statistics)). The probability that the net approval is more than +15 is probably less than `r round(3/n, 2)`. This is curious, as it implies the low-band and high-band probabilities are similar, despite the fact we've observed low-band outcomes and have not observed high-band outcomes. So, in the interest of preserving my tiny bias against absolute certainty, I'll call the high-band probability 1% and deduct it from the middle-band.
 
 At this point, this is probably a pretty good basis for a GJO forecast. But can we do better?
 
@@ -301,8 +299,37 @@ tibble(MAE = MAE) %>%
 
 Here we see the two-signal model has degraded a bit more, though it continues to outperform the one-signal model. What this means is that I was right to trust the two-signal model more than the one-signal, but the difference between them wasn't all that important in retrospect. Based on current trends, it looks like my daring prediction (80% certainty the net approval will fall below -15) was actually *underestimating* the low-band probability.
 
-This highly confident low-band prediction *feels* wrong to me, which I take to be an important signal. GJO consensus remains that the middle band is likeliest, though the recent run of low-band days has driven the two to begin collapsing toward one another:
+## Updating the Model
+
+Since I keep concluding that the two-signal model is slightly superior, I'm just going to update that one. Since we have new data to fit, let's see if Prophet's extrapolations maintain their general trajectory.
+
+```{r}
+n <- length(approval)
+date <- ymd("17/01/21") + 1:n
+ratings <- tibble(date, approval, disapproval) %>%
+  mutate(net_approval = approval - disapproval)
+
+dApproval <- data.frame(ds = date, y = ratings$approval)
+m <- prophet(dApproval, yearly.seasonality = F)
+approvalforecast <- predict(m, future)
+
+dDisapproval <- data.frame(ds = date, y = ratings$disapproval)
+m <- prophet(dDisapproval, yearly.seasonality = F)
+disapprovalforecast <- predict(m, future)
+
+temp <- approvalforecast %>%
+  mutate(approval = yhat) %>%
+  cbind(disapproval = disapprovalforecast$yhat) %>%
+  mutate(net = approval - disapproval)
+
+plot_ly(temp, x = ~ds, y = ~net, name = "Estimate", type = 'scatter', mode = 'lines') %>%
+  add_lines(data = ratings, x = ~date, y = ~net_approval, name = "Actual")
+```
+
+Yup! In spite of the new data, Prophet isn't changing its projection much. It's more negative than the original, implying a higher confidence for the low-band prediction. However, this highly confident low-band prediction *feels* wrong to me, which I take to be an important signal. If you don't share this feeling of wrongness, here's my intuition: Prophet is basically predicting a linear degradation of about 2.5 points per week. Predicting out to the end of the month may be fine, but extrapolated further gives us the conclusion that the net approval should bottom out at -100 before the end of the year. Beyond that, Prophet predicts impossible values *below* -100. Accordingly, we should treat this trend with caution.
+
+That said, GJO consensus remains that the middle band is likeliest, though the recent run of low-band days has driven the two to begin collapsing toward one another:
 
 ![](http://anthony.boyles.cc/imgs/Screenshot_2017-04-04_13-44-43.png)
 
-Based on these two conflicting (at the margin) patterns, I'm going to update in roughly equal measure and ultimately stand by my prior estimate of Low: 80%, Mid: 19%, High: 1%.
+Based on these two conflicting patterns, I'm going to update weakly in roughly equal measure and ultimately stand by my prior estimate of Low: 80%, Mid: 19%, High: 1%.
