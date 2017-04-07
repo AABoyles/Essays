@@ -30,7 +30,7 @@ Because living is awesome, of course!
 
 # Who Does This?
 
-Ted Williams is the most famous Cryonics case, but there's been a lot of long-form journalism on cryonics cases in the last few years.
+[Ted Williams](https://en.wikipedia.org/wiki/Ted_Williams#Cryonics) is the most famous Cryonics case, but there's been a lot of long-form journalism on cryonics cases in the last few years.
 
 * [Bitcoin's Earliest Adopter Is Cryonically Freezing His Body to See the Future](https://www.wired.com/2014/08/hal-finney/)
 * [The Girl Who Would Live Forever](https://motherboard.vice.com/en_us/article/the-girl-who-would-live-forever)
@@ -62,6 +62,11 @@ If you're interested in technical details of the procedure(s):
 
 We don't know, and anyone who says it will is vastly overconfident. But as Dr. Ralph Merkle once observed, "Cryonics is an experiment. So far the control group isn't doing very well."
 
+## Possibly not!
+
+* [Freezer failure ends couple's hopes of life after death](https://www.theguardian.com/science/2006/mar/17/france.internationalnews)
+* Alcor, [Suspension Failures](http://www.alcor.org/Library/html/suspensionfailures.html)
+
 ## Good Criticism
 
 Critics tend to light into the science behind it without having a good grasp of the mechanics themselves, and so rely on overly-simplistic and generally-flawed arguments like "ice crystalization ruptures cell walls." However, there are some actually-good critical articles out there:
@@ -69,11 +74,9 @@ Critics tend to light into the science behind it without having a good grasp of 
 * [The Faulty Logic of Cryo-freezing Dead People](https://deathbycosmos.com/blog/logic-of-human-cryo)
 * D. John Boyle, [Cryonic Life Extension: Scientific Possibility or Stupid Pipe Dream?](http://www.dl.begellhouse.com/journals/6ed509641f7324e6,51a3bb12507ccd33,3ce242a36c9493d1.html)
 
-Perhaps the best criticism of cryonics is that it may not be the *likeliest* avenue to longevity. Critics of this stripe tend to gravitate toward an alternative procedure, known as...
-
 ## Plastination
 
-Plastination, regardless of whether it will work or is more likely to work than cryonics, is not currently commercially practiced on humans anywhere ([Bodies](https://en.wikipedia.org/wiki/Bodies:_The_Exhibition) exhibits notwithstanding). That reduces its probability of success effectively to zero (in the near future). This does not, however, indicate that 
+Perhaps the best criticism of cryonics is that it may not be the *likeliest* avenue to longevity. Critics of this stripe tend to gravitate toward an alternative procedure, known as Plastination. However, regardless of whether it will work or is more likely to work than cryonics, plastination is not currently commercially practiced on humans anywhere ([Bodies](https://en.wikipedia.org/wiki/Bodies:_The_Exhibition) exhibits notwithstanding). That reduces its probability of success effectively to zero (in the near future). This does not, however, indicate that it could not work, or is more or less likely than cryonics to work in and of itself.
 
 * Gwern Branwen, [Plastination](https://www.gwern.net/plastination)
 * Robin Hanson, [Plastination is Near](http://www.overcomingbias.com/2012/06/plastination-is-near.html)
@@ -86,6 +89,7 @@ As far as I can tell, there are only a few organizations world-wide doing cryopr
 * [Cryonics Institute](http://cryonics.org/become.html)
 * [Alcor Life Extension Institution](http://www.alcor.org/BecomeMember/index.html)
 * [Oregon Cryonics](http://www.oregoncryo.com)
+* [American Cryonics Society](http://americancryonics.org/)
 * [KrioRus](http://www.kriorus.ru/en)
 
 And at some point in the near future...
