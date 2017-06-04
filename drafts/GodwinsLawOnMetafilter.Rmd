@@ -1,0 +1,20 @@
+---
+title: "Godwin's Law on MetaFilter"
+---
+
+If you're not really into this whole internet thing, Godwin's law states:
+
+> As an online discussion grows longer, the probability of a comparison involving Nazis or Hitler approaches one.
+
+It was originally stated in the early 90's by Mike Godwin, as a counter-meme to the all-too-common meme of comparing people with whom one disagrees to Hitler or the Nazis. Godwin felt the behavior trivialized the horrors inflicted upon the victims of the Nazis, and devised (and publicized) his eponymous law as a means of combatting this.
+
+MetaFilter is an online discussion forum. It also publishes a [huge amount of metadata](http://stuff.metafilter.com/infodump/)
+
+[Hitler on Metafilter](https://www.google.com/search?q=Metafilter&oq=Metafilter&aqs=chrome..69i57j35i39l2j69i60j0l2.1792j0j7&sourceid=chrome&ie=UTF-8#q=Hitler+site:metafilter.com) - 6030 Results
+
+[Nazis on Metafilter](https://www.google.com/search?q=Metafilter&oq=Metafilter&aqs=chrome..69i57j35i39l2j69i60j0l2.1792j0j7&sourceid=chrome&ie=UTF-8#safe=off&q=Nazis+site:metafilter.com) - 5990 Results
+
+```{r getData}
+download.file('http://mefi.us/infodump/infodump-all.zip', '../data-cache/infodump-all.zip')
+unzip('../data-cache/infodump-all.zip', exdir = '../data-cache/metafilter')
+```
