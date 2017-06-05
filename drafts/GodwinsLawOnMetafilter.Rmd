@@ -15,6 +15,8 @@ MetaFilter is an online discussion forum. It also publishes a [huge amount of me
 [Nazis on Metafilter](https://www.google.com/search?q=Metafilter&oq=Metafilter&aqs=chrome..69i57j35i39l2j69i60j0l2.1792j0j7&sourceid=chrome&ie=UTF-8#safe=off&q=Nazis+site:metafilter.com) - 5990 Results
 
 ```{r getData}
-download.file('http://mefi.us/infodump/infodump-all.zip', '../data-cache/infodump-all.zip')
-unzip('../data-cache/infodump-all.zip', exdir = '../data-cache/metafilter')
+if(!file.exists('../data-cache/infodump-all.zip')){
+  download.file('http://mefi.us/infodump/infodump-all.zip', '../data-cache/infodump-all.zip')
+  unzip('../data-cache/infodump-all.zip', exdir = '../data-cache/metafilter')  
+}
 ```

@@ -6,7 +6,7 @@ bibliography: Borders.bib
 # Introduction
 
 ```{r setup, include=FALSE}
-library("CBPData")
+#library("CBPData")
 library("dplyr")
 library("ggplot2")
 knitr::opts_chunk$set(echo = TRUE)
@@ -97,37 +97,37 @@ US Customs and Border Protection
 Growing Budget:
 
 ```{r CBPBudget1}
-nationFYear %>%
-  filter(!is.na(Budget)) %>%
-  ggplot(aes(x=FiscalYear, y=Budget)) +
-  geom_line()
+#nationFYear %>%
+#  filter(!is.na(Budget)) %>%
+#  ggplot(aes(x=FiscalYear, y=Budget)) +
+#  geom_line()
 ```
 
 At the same time, the number of apprehensions has been declining:
 
 ```{r Apprehensions}
-nationFYear %>%
-  filter(!is.na(Budget)) %>%
-  ggplot(aes(x = FiscalYear, y = Apprehensions)) +
-  geom_line()
+#nationFYear %>%
+#  filter(!is.na(Budget)) %>%
+#  ggplot(aes(x = FiscalYear, y = Apprehensions)) +
+#  geom_line()
 ```
 
 The combination of these factors is an agency whose effectiveness is inversely proportional to its budget.
 
 ```{r CBPBudget}
-ggplot(nationFYear, aes(x = Budget, y = Apprehensions)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
+#ggplot(nationFYear, aes(x = Budget, y = Apprehensions)) +
+#  geom_point() +
+#  geom_smooth(method = "lm", se = FALSE)
 ```
 
 And this degree of inefficiency is growing over time.
 
 ```{r}
-nationFYear %>%
-  mutate(CostPerApprehension = Budget/Apprehensions) %>%
-  filter(!is.na(CostPerApprehension)) %>%
-  ggplot(aes(x=FiscalYear, y=CostPerApprehension)) +
-  geom_line()
+#nationFYear %>%
+#  mutate(CostPerApprehension = Budget/Apprehensions) %>%
+#  filter(!is.na(CostPerApprehension)) %>%
+#  ggplot(aes(x=FiscalYear, y=CostPerApprehension)) +
+#  geom_line()
 ```
 
 # References

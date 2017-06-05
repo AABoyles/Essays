@@ -17,12 +17,12 @@
 <link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
 <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
 <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
 <script src="site_libs/readthedown-0.1/readthedown.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -107,7 +107,6 @@ code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Inf
 <div id="content" data-toggle="wy-nav-shift">
 
 <!-- tabsets -->
-<script src="/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -115,7 +114,6 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script src="/codefolding.js"></script>
 <script>
 $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
@@ -243,31 +241,25 @@ $(document).ready(function () {
 <h1>Who Enforces the Border?</h1>
 <p>US Customs and Border Protection</p>
 <p>Growing Budget:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nationFYear %&gt;%
-<span class="st">  </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(Budget)) %&gt;%
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>FiscalYear, <span class="dt">y=</span>Budget)) +
-<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Borders_files/figure-html/CBPBudget1-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#nationFYear %&gt;%</span>
+<span class="co">#  filter(!is.na(Budget)) %&gt;%</span>
+<span class="co">#  ggplot(aes(x=FiscalYear, y=Budget)) +</span>
+<span class="co">#  geom_line()</span></code></pre></div>
 <p>At the same time, the number of apprehensions has been declining:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nationFYear %&gt;%
-<span class="st">  </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(Budget)) %&gt;%
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> FiscalYear, <span class="dt">y =</span> Apprehensions)) +
-<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Borders_files/figure-html/Apprehensions-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#nationFYear %&gt;%</span>
+<span class="co">#  filter(!is.na(Budget)) %&gt;%</span>
+<span class="co">#  ggplot(aes(x = FiscalYear, y = Apprehensions)) +</span>
+<span class="co">#  geom_line()</span></code></pre></div>
 <p>The combination of these factors is an agency whose effectiveness is inversely proportional to its budget.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(nationFYear, <span class="kw">aes</span>(<span class="dt">x =</span> Budget, <span class="dt">y =</span> Apprehensions)) +
-<span class="st">  </span><span class="kw">geom_point</span>() +
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<pre><code>## Warning: Removed 171 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 171 rows containing missing values (geom_point).</code></pre>
-<p><img src="Borders_files/figure-html/CBPBudget-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#ggplot(nationFYear, aes(x = Budget, y = Apprehensions)) +</span>
+<span class="co">#  geom_point() +</span>
+<span class="co">#  geom_smooth(method = &quot;lm&quot;, se = FALSE)</span></code></pre></div>
 <p>And this degree of inefficiency is growing over time.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nationFYear %&gt;%
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CostPerApprehension =</span> Budget/Apprehensions) %&gt;%
-<span class="st">  </span><span class="kw">filter</span>(!<span class="kw">is.na</span>(CostPerApprehension)) %&gt;%
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>FiscalYear, <span class="dt">y=</span>CostPerApprehension)) +
-<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Borders_files/figure-html/unnamed-chunk-1-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#nationFYear %&gt;%</span>
+<span class="co">#  mutate(CostPerApprehension = Budget/Apprehensions) %&gt;%</span>
+<span class="co">#  filter(!is.na(CostPerApprehension)) %&gt;%</span>
+<span class="co">#  ggplot(aes(x=FiscalYear, y=CostPerApprehension)) +</span>
+<span class="co">#  geom_line()</span></code></pre></div>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>
@@ -292,7 +284,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
