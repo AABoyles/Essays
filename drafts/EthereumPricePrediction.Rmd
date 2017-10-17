@@ -1,0 +1,109 @@
+---
+title: "Ethereum Price Prediction"
+---
+
+```{r, results='asis'}
+source("infobox.R")
+infobox(list(
+  "Status" = "Incomplete",
+  "Last Revision" = file.info("EthereumPricePrediction.Rmd")$mtime,
+  "Epistemic Status" = "Highly Speculative",
+  "Content Warning" = "This is not investment advice. I have no idea what I'm doing."
+))
+```
+
+Cryptocurrencies have been doing rather well recently.
+
+```{r}
+library('tidyverse')
+library('anytime')
+prices <- read_delim('https://etherscan.io/chart/etherprice?output=csv', ';', col_names = c('ds', 'y')) %>%
+  mutate(ds = anydate(ds))
+
+ggplot(prices, aes(x = ds, y = y)) + geom_line()
+```
+
+Nice Exponential growth recently! Let's log-scale that:
+
+```{r}
+ggplot(prices, aes(x = ds, y = y)) + geom_line() + scale_y_log10()
+```
+
+
+
+Cool! Now, let's consult Facebook's [Prophet](https://facebookincubator.github.io/prophet/) to see if it predicts a long-term trend.
+
+```{r}
+library('prophet')
+m <- prophet(prices)
+future <- make_future_dataframe(m, periods = 365)
+forecast <- predict(m, future)
+plot(m, forecast)
+```
+
+Short answer, "yes." However, it's pretty obviously a lousy forecast. Prophet probably doesn't pick up exponential trends. We might've been able to guess this based on the fact that [the R tutorial](https://facebookincubator.github.io/prophet/docs/quick_start.html#r-api) uses an exponential trend and log-transforms it before modeling. Let's do the same!
+
+```{r}
+prices <- prices %>%
+  mutate(y = log10(y+1))
+
+m <- prophet(prices)
+future <- make_future_dataframe(m, periods = 365)
+forecast <- predict(m, future)
+plot(m, forecast)
+```
+
+Wow, that's much better! Based on this, the obvious long term strategy is to buy and hold (remember, that y-axis is the log base 10, so  4 really means $10,000). But is there any reason to believe we could do better?
+
+## Short-Term Strategy: If up, Buy, else Sell
+
+This strategy should sound like it's a stark contrast to the conventional wisdom of "Buy low, sell High." However, it's slightly more nuanced than that. The general assumption is that down days will tend to follow down days, and likewise with up days. First, is this actually true?
+
+```{r}
+prices %>%
+  cbind(
+    lag1 = lag(.$y),
+    lag2 = lag(.$y, 2)
+  ) %>%
+  filter(!is.na(lag2)) %>%
+  mutate(buy = ifelse(lag1 > lag2, 1, -1)) %>%
+  
+```
+
+## Short-Term Strategy: Trust the Prophet
+
+Let's fit the model daily, take Prophet's advice, and see where we end up.
+
+For a simple strategy to start, let's just buy and sell in increments of $10.
+
+```{r fitAllTheModels, message=FALSE, warning=FALSE, error=FALSE}
+# (Note: If you're replicating this anaylsis, this runs rather slowly since it has to fit ~320 Prophet models.)
+
+predictions <- data.frame(ds=c(), y=c())
+for(day in seq(as.Date("2016-07-29"), as.Date("2017-06-14"), "days")){
+  m <- prices %>% filter(ds < day) %>% prophet()
+  future <- make_future_dataframe(m, periods = 1)
+  forecast <- predict(m, future)
+  predictions <- rbind(predictions, data.frame(ds=anydate(day), y=tail(forecast$yhat, 1)))
+}
+
+```
+
+OK, so when should one buy and when should one sell?
+
+```{r}
+orders <- predictions %>%
+  mutate(prediction = 10^y-1) %>%
+  select(-y) %>%
+  left_join(prices) %>%
+  mutate(price = 10^y-1) %>%
+  cbind(laggedPrice = lag(.$price)) %>%
+  mutate(buy = ifelse(prediction > laggedPrice, 1, -1)) %>%
+  cbind(ether = 10*cumsum(.$buy))
+```
+
+We shouldn't feel too bad about this. After all, Prophet was only [invented in February 2017](https://github.com/facebookincubator/prophet/commit/e51b42b3360d39b9cfe6247799905404aeed6735), so we couldn't have written a trading bot with it back in July 2016.
+
+## Sizing our Wagers
+
+In general, the optimal wager size is given by the [Kelly Criterion](https://en.wikipedia.org/wiki/Kelly_criterion), which can be roughly stated as the ratio of your expected net winnings to the actual winnings if the bet resolves in your favor.

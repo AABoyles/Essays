@@ -1,0 +1,67 @@
+---
+title: "The Scientific Method (For Aspiring Self-Hackers)"
+---
+
+Almost all self-help advice I've ever seen gives you some tidbit about how to make your life better, some examples about how some other people did this one thing and went on to be or feel awesome, and in conclusion, do this this and you can be or feel awesome too. And the thing is really easy! Just tweak the way you use GMail, or add a thing to your calendar, or write something on your hand, or write some stuff down, use this other new thing, or whatever.
+
+The problem with this is that it's too easy to try the new thing, and too hard to tell whether or not it's worth it. This approach encourages vapid "experimentation". By contrast, I think self-help should follow the cycle of actual experimentation. In short, I think self-help should be based on science.
+
+I don't think I've ever seen a self-help approach which is based on science. And I don't mean science as in "searched google scholar for some convenient articles which kind of support whatever I'm saying". I don't even mean science as in ["did good research and looked for and acknowledged disconfirming evidence"](https://80000hours.org/career-guide/). I mean science as in "encouraged you (yes, you!) to actually try this thing *as an experiment*, with a clear hypothesis and set of reasonably objective metrics, and collect data according to those metrics for awhile, and only then conclude that your hypothesis was close to or distant from reality."
+
+If you want to know if something actually helps you, you've got to test it yourself. Humans are really different from one another, and what works for the advisor may not work for you. So, how do you do science?
+
+## Substantive Knowledge
+
+You've already got some, and you're collecting more all the time. Sometimes you bump into a piece of information which you think may make your life better somehow. It could be some new app or webservice, or something Lifehacker suggested, or some nootropic to add to you stack, or... you get the picture. The set of all the substantive knowledge you have at your disposal (e.g. "This is a reliable source", "This is similar to what I've seen other reliable sources say", "This is in line with my model of reality"), along with the new piece of information itself suggests that changing your life in some way may improve it.
+
+...But maybe it shouldn't. There are [literally billions](https://www.census.gov/popclock/world) of advice mills out there, and [their suggestions may be as likely to be counter-productive as they are to be productive](http://slatestarcodex.com/2014/03/24/should-you-reverse-any-advice-you-hear/) ([see also](https://ask.metafilter.com/23966/Opposing-aphorisms)).
+
+However, if your beliefs are sufficiently strong that this advice *could* work (based on all that substantive knowledge), you should give it a try. But don't install that app/set that alert/start that medication/try meditation just yet. There's something else you need to do first.
+
+## Metrics
+
+*How* is this thing supposed to make your life better? How could you tell if it was? How could you tell if it wasn't?
+
+This is one singular way in which the cult of weight-loss is far superior to the rest of the larger, extended self-help world. They have an objective metric. You can't fool the scale. You can fail other ways: skipping weigh-ins, failing to adhere to regimens, tuning your scale to let you feel like you met that goal you were just the tiniest bit away from, etc. But at the end of the day/month/diet/experiment, you can't lie to the scale. The scale doesn't care about whether you made your goal, or are really close, or gave up weeks ago. It just reports how much you weigh.
+
+Devising metrics is generally harder than this (which is why everyone besides weigth-lossers is so bad at it). Let's suppose you want to try a new nootropic. Ask youself: how do I predict this will make my life better? Will it [improve my productivity?](https://darktka.github.io/#focus) [Mood?](https://darktka.github.io/#mood) [Anxiety?](https://darktka.github.io/#anxiety)
+
+Whatever it is, find a way to record how it's affecting you. For example, I tend not to remember dreams. When I take melatonin, however, I can recall them vividly for several minutes after waking. If I were to keep a [dream journal](https://en.wikipedia.org/wiki/Dream_diary), the average night would be an empty entry, but nights for which I took melatonin would not be.
+
+Note how this is a simple example of self-reporting an effect.
+
+Where there are (slightly) more objective data sources, they tend to be more useful as secondary sources of evidence. For example, I wear a [Fitbit Charge 2](https://www.fitbit.com/shop/charge2), which monitors my heart rate. When I'm anxious, my heart rate increases. So, I might use that heart rate data in conjunction with self-reported feelings of anxiety as evidence about whether a new nootropic reduced my anxiety.
+
+### Blinding
+
+When evaluating a study, one thing to check for is the blinding strategy. In general, test subjects *want* to be a part of a successful study. They want to do a good job and report to the researchers that their thing worked. Accordingly, they *shouldn't be trusted*. That's why there's a control group that take a placebo. The subjects should not aware of which group (test or control) they are in. This is called single-blinding.
+
+If subjects want to be part of a successful study, researchers *really want* to run a study that shows something interesting and useful. They accordingly, it's super important that the researchers be unaware, if possible, which subjects are members of which group. This is called double-blinding.
+
+As a side-note, I would love to own a device which randomly dispensed doses of a drug or a placebo, and recorded which was dispensed when, without revealing it to the user. That way, a biohacker could easily perform (double) blinded tests on his- or her- self. In conjunction with some other metric, it would then be straightforward to assess whether the drug caused the desired effects.
+
+Granted, this would only work for chemicals with short half-lives in the body, rather than those that users must accumulate slowly in the body to have the desired effect (like many psychiatric drugs). Even so, for drugs for which this was true, this would be a tremendous boon to research.
+
+I should note that there are much simpler and still reasonably effective way of [blinding yourself](https://www.gwern.net/Nootropics#blinding-yourself).
+
+### Non-observable Effects
+
+Sometimes you can't tell directly whether or not something improves your life. Consider the case of Life Insurance. Let us suppose you were considering taking out a life insurance policy, but wanted to know whether it would actually pay your survivors. To test whether it was or not, you could open one, die, and observe whether the company made good on its promise.
+
+Clearly this doesn't work. It isn't a useful source of evidence either way. What effects can we observe to inform the decision? Well, we can look at whether or not life insurance companies reliably honor policies, even though the policy is, in a sense, a contract with a ghost. The answer is that they typically do (and in fact, do so reliably enough that whether or not the survivors will be able to collect isn't a strong consideration in the decision to open a policy.) That observation in itself may be sufficient to justify decision.
+
+## Records
+
+In addition to devising metrics, you must also be able to record them. A record is of very little use if it is not reliable, and [our memories are not reliable](https://www.theguardian.com/science/head-quarters/2016/aug/08/is-your-memory-as-accurate-as-you-think-it-is). I personally use (and recommend!) [Indexical Journaling](/2017/09/Indexical-Journaling.html).
+
+You may also want to keep a short narrative of noteworthy aspects of the time surrounding the metric. Did you sleep especially well or poorly? Eat something unusual, or an unusual quantity? Are you running another experiment simultaneously?
+
+The hard-core scientists reading this might be getting uncomfortable here. By asking about the set of things that could make your life notably better or worse on a day-to-day basis, I'm expanding the number of variables which matter to the experiment. This is very dangerous, as it could rapidly exhaust the degrees of freedom available to the experiment. To them I say: chill.
+
+## Results
+
+After you've been doing your new thing for awhile, and dutifully recording your  metrics, we get to the fun question: did [your new thing] help you?
+
+## Substantive Knowledge
+
+And so, in the end, we end up back where we started: you have a body of substantive knowledge. It will, however, be slightly larger than it was when you started. Importantly, it may be slightly larger with the knowledge of a new thing that makes your life better in some way (Wahoo! Winning!) More likely, it will be slightly larger with the knowledge that a new thing doesn't help your life in some

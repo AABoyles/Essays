@@ -1,0 +1,40 @@
+---
+title: "HIV Patterns in Europe"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library('tidyverse')
+```
+
+```{r}
+EuropeHIV <- read_tsv('../data-cache/EuropeHIV.txt') %>%
+  
+```
+
+## Maps
+
+```{r}
+library('spdplyr')
+library('maps')
+library('rworldmap')
+library('rworldxtra')
+
+data('countriesLow')
+data('countriesHigh')
+
+europe <- countriesLow %>%
+  mutate(Country = toupper(NAME)) %>%
+  subset(Country %in% unique(EuropeHIV$Country)) %>%
+  inner_join(EuropeHIV)
+
+map <- ggplot(europe, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = 'green'))
+
+# Orthographic projection with default orientation (looking down at North pole)
+worldmap + coord_map('gnomonic')
+
+# Looking up up at South Pole
+worldmap + coord_map("ortho", orientation = c(54.9, 25.316667, 10))
+```
+

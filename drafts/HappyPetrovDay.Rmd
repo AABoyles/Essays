@@ -1,0 +1,11 @@
+---
+title: Happy Petrov Day
+---
+
+On September 26, 1983, the Soviet Union's incoming missile early warning system reported a US missile launch.
+
+The officer on duty was a young Lieutenant Colonel, Stanislav Petrov. Petrov suspected a computer error.
+
+Investigators later determined that sunlight on high-altitude clouds had aligned with the satellite view on a US missile base, triggering the alert.
+
+Lieutenant Colonel [Stanislav Petrov](https://en.wikipedia.org/wiki/Stanislav_Petrov) [died last May](https://www.nytimes.com/2017/09/18/world/europe/stanislav-petrov-nuclear-war-dead.html). At the time, [almost no one](https://www.facebook.com/groups/ExistentialRisk/permalink/1464293210302182/) noticed.
