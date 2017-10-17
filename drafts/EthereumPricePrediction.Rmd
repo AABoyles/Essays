@@ -17,8 +17,12 @@ Cryptocurrencies have been doing rather well recently.
 ```{r}
 library('tidyverse')
 library('anytime')
-prices <- read_delim('https://etherscan.io/chart/etherprice?output=csv', ';', col_names = c('ds', 'y')) %>%
-  mutate(ds = anydate(ds))
+download.file('https://etherscan.io/chart/etherprice?output=csv', '../data-cache/ethereum.csv')
+prices <- read_csv('../data-cache/ethereum.csv') %>%
+  transmute(
+    ds = anydate(`UnixTimeStamp`),
+    y = Value
+  )
 
 ggplot(prices, aes(x = ds, y = y)) + geom_line()
 ```
@@ -28,8 +32,6 @@ Nice Exponential growth recently! Let's log-scale that:
 ```{r}
 ggplot(prices, aes(x = ds, y = y)) + geom_line() + scale_y_log10()
 ```
-
-
 
 Cool! Now, let's consult Facebook's [Prophet](https://facebookincubator.github.io/prophet/) to see if it predicts a long-term trend.
 
@@ -62,12 +64,10 @@ This strategy should sound like it's a stark contrast to the conventional wisdom
 ```{r}
 prices %>%
   cbind(
-    lag1 = lag(.$y),
-    lag2 = lag(.$y, 2)
+    yesterdaysPrice = dplyr::lag(y),
   ) %>%
-  filter(!is.na(lag2)) %>%
-  mutate(buy = ifelse(lag1 > lag2, 1, -1)) %>%
-  
+  filter(!is.na(yesterdaysPrice)) %>%
+  mutate(buy = ifelse(lag1 > lag2, 1, -1))
 ```
 
 ## Short-Term Strategy: Trust the Prophet
@@ -76,7 +76,7 @@ Let's fit the model daily, take Prophet's advice, and see where we end up.
 
 For a simple strategy to start, let's just buy and sell in increments of $10.
 
-```{r fitAllTheModels, message=FALSE, warning=FALSE, error=FALSE}
+```{r fitAllTheModels, message=FALSE, warning=FALSE, error=FALSE, eval=FALSE}
 # (Note: If you're replicating this anaylsis, this runs rather slowly since it has to fit ~320 Prophet models.)
 
 predictions <- data.frame(ds=c(), y=c())
@@ -91,15 +91,22 @@ for(day in seq(as.Date("2016-07-29"), as.Date("2017-06-14"), "days")){
 
 OK, so when should one buy and when should one sell?
 
-```{r}
+```{r, eval=FALSE}
 orders <- predictions %>%
   mutate(prediction = 10^y-1) %>%
   select(-y) %>%
   left_join(prices) %>%
   mutate(price = 10^y-1) %>%
   cbind(laggedPrice = lag(.$price)) %>%
-  mutate(buy = ifelse(prediction > laggedPrice, 1, -1)) %>%
-  cbind(ether = 10*cumsum(.$buy))
+  filter(!is.na(laggedPrice)) %>%
+  mutate(
+    buy = ifelse(prediction > laggedPrice, 1, 0),
+    etherBoughtToday = 10/price * buy,
+    etherBalance = cumsum(etherBoughtToday),
+    cost = 10*cumsum(buy),
+    etherValue = etherBalance*price,
+    net = etherValue - cost
+  )
 ```
 
 We shouldn't feel too bad about this. After all, Prophet was only [invented in February 2017](https://github.com/facebookincubator/prophet/commit/e51b42b3360d39b9cfe6247799905404aeed6735), so we couldn't have written a trading bot with it back in July 2016.
