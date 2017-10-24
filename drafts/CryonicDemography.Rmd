@@ -1,0 +1,157 @@
+---
+title: "Cryonic Demography"
+---
+
+```{r setup, include=FALSE}
+library('tidyverse')
+library('plotly')
+```
+
+## Assemble the data!
+
+Cryonics doesn't have an especially long history or many patients, making it tractable to collect data on nearly all of them. Moreover, cryonicists tend to be inclined towards more and better documentation--after all, who knows what data will be important at revival time? Might as well store as much as possible. Also being of a generally transparent disposition (in the interest of de-mystifying the process for people who might be interested if the process and organization is laid bare before them), they tend to publish case information online:
+
+* [Alcor](http://alcor.org/cases.html)
+* [Cryonics Institute](http://www.cryonics.org/case-reports/)
+* [KrioRus](http://kriorus.ru/en/cryopreserved%20people)
+* [Oregon Cryonics](http://www.oregoncryo.com/caseReports.html)
+
+That said, assembling this data isn't a trivial task. Many cryonicists (or their survivors) prefer not to have their information shared publicly. Accordingly, the existing cryonics organizations' public records are spotty. The existing organizations are also not the only one to have ever existed, nor are they the first. Finding records from defunct organizations imposes a deep degree of detection, inference, and guess work (not to mention [earlier work](http://www.alcor.org/cryonics/cryonics9207.txt) and luck). This was, by far, the most time-consuming piece of this project, as data generation often is.
+
+```{r, message=FALSE, warning=FALSE}
+# Load from Google Sheets
+cryonauts <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vS7nOdzuAUs5bSoHkZw1gJTWJT-MVbMicXK8iIUIkZwFqUVh2zmC8Cl_QTz1j0kriMW3ycobYDDWFuG/pub?output=csv') %>%
+  mutate(
+    Deanimation = as.Date(Deanimation),
+    Age = as.numeric(Age),
+    BirthYear = as.numeric(BirthYear)
+  )
+```
+
+## Age and Gender
+
+```{r, warning=FALSE}
+cryonauts %>%
+  group_by(Gender) %>%
+  summarise(Count=n()) %>%
+  plot_ly(x=~Gender, y=~Count, type="bar")
+```
+
+Thus far, it seems men outnumber women 3:2.
+
+```{r, warning=FALSE}
+plot_ly(cryonauts, x=~Age, type="histogram")
+```
+
+Unsurprisingly, the people who are cryopreserved are largely older.
+
+Does this match the curve of ages-at-death in the larger population?
+
+```{r, warning=FALSE}
+women <- cryonauts %>% filter(Gender=="Female")
+men   <- cryonauts %>% filter(Gender=="Male")
+plot_ly(alpha = 0.6) %>%
+  add_histogram(x = women$Age, name="Women") %>%
+  add_histogram(x = men$Age, name="Men") %>%
+  layout(barmode = "overlay")
+```
+
+The relationship between gender and age is essentially flat, implying (though not demonstrating) that there aren't any generational divides across gender lines.
+
+## Procedural Preferences
+
+```{r, warning=FALSE}
+cryonauts %>%
+  group_by(Type) %>%
+  summarise(Number = n()) %>%
+  plot_ly(x=~Type, y=~Number, type="bar")
+```
+
+Neuropreservations have overtaken whole body preservations.
+
+## Cryonauts through time
+
+Number of Cryonauts over time
+
+```{r, warning=FALSE}
+cryonauts %>%
+  filter(!is.na(Deanimation)) %>%
+  mutate(cumulation = 1:nrow(.)) %>%
+  plot_ly(x=~Deanimation, y=~cumulation, type = 'scatter', mode = 'lines')
+```
+
+```{r, warning=FALSE}
+neuros <- cryonauts %>%
+  filter(!is.na(Deanimation), Type=="Neuro") %>%
+  mutate(cumulation = 1:n())
+
+wholebody <- cryonauts %>%
+  filter(!is.na(Deanimation), Type=="Whole Body") %>%
+  mutate(cumulation = 1:n())
+
+brainonly <- cryonauts %>%
+  filter(!is.na(Deanimation), Type=="Brain Only") %>%
+  mutate(cumulation = 1:n())
+
+other <- cryonauts %>%
+  filter(!is.na(Deanimation), !Type %in% c("Neuro", "Whole Body", "Brain Only", NA)) %>%
+  mutate(cumulation = 1:n())
+
+plot_ly(type = 'scatter', mode = 'lines') %>%
+  add_lines(x=neuros$Deanimation, y=neuros$cumulation, name="Neuros") %>%
+  add_lines(x=wholebody$Deanimation, y=wholebody$cumulation, name="Whole Body") %>%
+  add_lines(x=brainonly$Deanimation, y=brainonly$cumulation, name="Brain Only") %>%
+  add_lines(x=other$Deanimation, y=other$cumulation, name="Other")
+```
+
+Cryonaut Age Distribution over time
+
+```{r, warning=FALSE}
+cryonauts %>%
+  filter(!is.na(Deanimation), !is.na(Age)) %>%
+  mutate(
+    MaxAge = cummax(Age),
+    MeanAge = cummean(Age),
+    MinAge = cummin(Age)
+  ) %>%
+  plot_ly(x=~Deanimation, y=~MaxAge, name="Oldest Patient Age", type = 'scatter', mode = 'lines', line = list(shape = "hv")) %>%
+  add_lines(y=~MeanAge, name="Average Patient Age") %>%
+  add_lines(y=~MinAge, name="Youngest Patient Age")
+```
+
+The minimum age drops precipitously. Intuitively, this is about what we should expect: we can't cryopreserve people who aren't born yet, so the minimum age is going to hit zero at some point in the future, and never decrease again.
+
+The maximum age climbs, which is also to be expected. As more people die and enter cryostorage, some of them should, just by random draws from the Gompertz distribution, be older than the rest of the population. This should behave roughly like the curve of the record for the oldest person, gradually pushing up towards 120 or so (barring any breakthroughs in the longevity-enhancing efforts).
+
+The mean population is the most interesting. We expect that it should roughly trace the global life expectancy. However, because life expectancies are measured by year of birth per country, mapping from age at death (the data we have) to life expectancy (the data we need) is prohibitively difficult--we don't generally know the patients' birth country for one.
+
+We can however, spot-check the mean age at death. The mean age of death has held steadily around 65 since the 2000's. These people would have been born around 1950. According to [Our World In Data](https://ourworldindata.org/life-expectancy/), the world-wide life expectancy in 1950 was 48, and the industrialized world (US, Europe, USSR, and Oceania) was closer to 60. So Cryonicists are probably living at least a little longer than their generational cohort, on average. This may be a function of wealth, among other things: access to cryonics is expensive, and far from a priority budget item for most humans.
+
+Number of Cryonauts over Global Population
+
+Are cryopreservations keeping pace with the global population?
+
+## Cryofailure
+
+The thing that scares the hell out of living cryonicists.
+
+## Future Work
+
+Cause of death is known for many cases, even if I haven't recorded it. This may be a useful or interesting field for further investigation, especially as patients begin to be revived. Conditional on revivals happening, details on their ischemia periods and other post-mortem metrics may also be interesting.
+
+I haven't made any attempt to geocode the location data, but perhaps some maps would be interesting.
+
+## Sources
+
+* http://www.alcor.org/cryonics/cryonics9207.txt
+* https://www.thisamericanlife.org/radio-archives/episode/354/mistakes-were-made/
+* http://www.alcor.org/Library/html/suspensionfailures.html
+* http://alcor.org/cases.html
+* http://www.cryonics.org/case-reports/
+* http://kriorus.ru/en/cryopreserved%20people
+* http://www.oregoncryo.com/caseReports.html
+* https://hpluspedia.org/wiki/Cryonics_patients
+* http://www.cryonet.org/cgi-bin/dsp.cgi?msg=3247
+* https://www.benbest.com/cryonics/history.html
+* http://www.cryonics.org/ci-landing/patient-details/
+* https://en.wikipedia.org/wiki/Category:Cryonically_preserved_people
