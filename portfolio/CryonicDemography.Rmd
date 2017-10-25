@@ -33,7 +33,7 @@ To whet our appetite, let's look at the growth of cryonics.
 
 ```{r growthOverTime, message=FALSE, warning=FALSE}
 cryonauts %>%
-  filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(Deanimation)) %>%
   mutate(cumulation = 1:nrow(.)) %>%
   plot_ly(x=~Deanimation, y=~cumulation, type = 'scatter', mode = 'lines')
 ```
@@ -48,7 +48,7 @@ Month <- rep(1:12, length(Year)/12)
 yms <- data.frame(Year, Month)
 
 monthly <- cryonauts %>%
-  filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(Deanimation)) %>%
   mutate(
     Year = year(Deanimation),
     Month = month(Deanimation)
@@ -57,7 +57,7 @@ monthly <- cryonauts %>%
   dplyr::summarise(number = n()) %>%
   ungroup() %>%
   right_join(yms) %>%
-  filter(!(Year >= year(now()) & Month >= month(now()))) %>%
+  dplyr::filter(!(Year >= year(now()) & Month >= month(now()))) %>%
   mutate(
     number = ifelse(is.na(number), 0, number),
     cumulation = cumsum(number),
@@ -122,14 +122,25 @@ So what about the cryonics patients themselves? What trends can we identify abou
 The simplest demographic features are age (at time of deanimation) and gender. To start with, let's look at gender. My preliminary suspicion is that men will vastly outnumber women. After all, it's been reported that [85% of cryonics signups are men](http://www.ozy.com/rising-stars/fighting-for-gender-equality-in-the-afterlife/73801).
 
 ```{r GenderOverTime, warning=FALSE}
-cryonauts %>%
-  filter(!is.na(Deanimation), !is.na(Gender)) %>%
-  group_by(Gender) %>%
+women <- cryonauts %>% filter(Gender=="Female")
+men   <- cryonauts %>% filter(Gender=="Male")
+
+w <- women %>%
+  dplyr::filter(!is.na(Deanimation)) %>%
   mutate(
     c = 1,
     cumulation = cumsum(c)
-  ) %>%
-  plot_ly(x=~Deanimation, y=~cumulation, type='scatter', mode='lines', color=~Gender) %>%
+  )
+
+m <- men %>%
+  dplyr::filter(!is.na(Deanimation)) %>%
+  mutate(
+    c = 1,
+    cumulation = cumsum(c)
+  )
+  
+plot_ly(m, x=~Deanimation, y=~cumulation, type='scatter', mode='lines', name="Men") %>%
+  add_lines(data = w, x=~Deanimation, y=~cumulation, name="Women") %>%
   layout(
     xaxis = list(title = "Date"),
     yaxis = list(title = "Number of Cryonauts"),
@@ -142,9 +153,6 @@ Thus far, it seems men outnumber women roughly 3:2. However, the distribution wa
 What about the distribution of age? This should be a left-skewed distribution (older people are more likely to die than younger people). Moreover, We can weakly predict that women will enjoy a slightly more left-skewed curve, outliving men in the cryonics community just as they tend to in the larger community.
 
 ```{r AgeDistributionByGender, warning=FALSE}
-women <- cryonauts %>% filter(Gender=="Female")
-men   <- cryonauts %>% filter(Gender=="Male")
-
 plot_ly(alpha = 0.6) %>%
   add_histogram(x = women$Age, name="Women") %>%
   add_histogram(x = men$Age, name="Men") %>%
@@ -161,7 +169,7 @@ Does this match the curve of ages-at-death in the larger population? This is a s
 
 ```{r AgeTrends, warning=FALSE}
 cryonauts %>%
-  filter(!is.na(Deanimation), !is.na(Age)) %>%
+  dplyr::filter(!is.na(Deanimation), !is.na(Age)) %>%
   mutate(
     MaxAge = cummax(Age),
     MeanAge = cummean(Age),
@@ -190,9 +198,9 @@ Not all cryonic procedures are exactly the same, and no cryonics provider offers
 
 ```{r ProcedureDistributionOverTime, warning=FALSE}
 cryonauts %>%
-  filter(!is.na(Deanimation), !is.na(Type)) %>%
+  dplyr::filter(!is.na(Deanimation), !is.na(Type)) %>%
   group_by(Type) %>%
-  mutate(
+  dplyr::mutate(
     c = 1,
     cumulation = cumsum(c)
   ) %>%
@@ -211,7 +219,7 @@ Perhaps the most important and interesting inferences we can make regard the lik
 
 ```{r preservationFailures, warning=FALSE}
 cryonauts %>%
-  filter(!is.na(Deanimation), Status != "Preserved") %>%
+  dplyr::filter(!is.na(Deanimation), Status != "Preserved") %>%
   mutate(
     c = 1,
     cumulation = cumsum(c)
@@ -229,7 +237,7 @@ Relative to the number of successful cases, these failures are looking less and 
 
 ```{r SuccessesAndFailures}
 cryonauts %>%
-  filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(Deanimation)) %>%
   mutate(
     failure = ifelse(Status=="Preserved", 0, 1),
     success = ifelse(Status=="Preserved", 1, 0),
@@ -249,7 +257,7 @@ So, what actually is that proportion?
 
 ```{r preservationProportion}
 cryonauts %>%
-  filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(Deanimation)) %>%
   mutate(
     c = 1,
     failure = ifelse(Status=="Preserved", 0, 1),
