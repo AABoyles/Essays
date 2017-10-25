@@ -30,37 +30,41 @@
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { font-weight: bold; } /* Keyword */
-code > span.dt { color: #800000; } /* DataType */
-code > span.dv { color: #0000ff; } /* DecVal */
-code > span.bn { color: #0000ff; } /* BaseN */
-code > span.fl { color: #800080; } /* Float */
-code > span.ch { color: #ff00ff; } /* Char */
-code > span.st { color: #dd0000; } /* String */
-code > span.co { color: #808080; font-style: italic; } /* Comment */
-code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
-code > span.fu { color: #000080; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #ff00ff; } /* SpecialChar */
-code > span.vs { color: #dd0000; } /* VerbatimString */
-code > span.ss { color: #dd0000; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { font-weight: bold; } /* Preprocessor */
-code > span.at { } /* Attribute */
-code > span.do { color: #808080; font-style: italic; } /* Documentation */
-code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
@@ -197,7 +201,7 @@ features_skewed <span class="op">=</span> train[features_numeric].<span class="b
 features_skewed</code></pre></div>
 <p>Some of them, yeah. We can fix that by taking their log-transforms as well, but log is sort of a blunt instrument. It’s easily reversible, which makes it good for the outcome. But the Box-Cox transform is a better tool for modifying our inputs. Let’s apply it to any features with a skew greater than, say, .2</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">features_skewed <span class="op">=</span> features_skewed[features_skewed <span class="op">&gt;</span> <span class="fl">0.2</span>]
-<span class="cf">for</span> feat <span class="op">in</span> features_skewed.index:
+<span class="cf">for</span> feat <span class="kw">in</span> features_skewed.index:
     train[feat], lam <span class="op">=</span> boxcox(train[feat] <span class="op">+</span> <span class="dv">1</span>)
     test[feat] <span class="op">=</span> boxcox(test[feat] <span class="op">+</span> <span class="dv">1</span>, lam)
 
@@ -205,9 +209,9 @@ features_skewed <span class="op">=</span> train[features_numeric].<span class="b
 features_skewed</code></pre></div>
 <p>That eliminated much of the skewness. Before we move on, however, I’d like to call attention to the way we handle lam in the above block. We let boxcox figure out the optimal lam using our training data, and then force it to use that same lam on the test data, even if it isn’t necessarily optimal for the test data. The alternative approach is to bind train and test together, perform these transformations on the entire set, and then split them back apart when it comes time to build models. I’ve opted not to for the benefit of clarity, but possibly at the cost of some small modeling advantage.</p>
 <p>Now, we have some categorical features we need to handle. The textbook approach to Linear Regression says you can leave categorical variables in, provided you do something like one-hot encode them and leave out the smallest category. Personally, I prefer to replace the category with the arithmetic mean of its corresponding subset of outcomes.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">features_categorical <span class="op">=</span> [feat <span class="cf">for</span> feat <span class="op">in</span> test.columns <span class="cf">if</span> <span class="st">&#39;cat&#39;</span> <span class="op">in</span> feat]
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">features_categorical <span class="op">=</span> [feat <span class="cf">for</span> feat <span class="kw">in</span> test.columns <span class="cf">if</span> <span class="st">&#39;cat&#39;</span> <span class="kw">in</span> feat]
 
-<span class="cf">for</span> feat <span class="op">in</span> features_categorical:
+<span class="cf">for</span> feat <span class="kw">in</span> features_categorical:
     a <span class="op">=</span> pd.DataFrame(train[<span class="st">&#39;log_loss&#39;</span>].groupby([train[feat]]).mean())
     a[feat] <span class="op">=</span> a.index
     train[feat] <span class="op">=</span> pd.merge(left<span class="op">=</span>train, right<span class="op">=</span>a, how<span class="op">=</span><span class="st">&#39;left&#39;</span>, on<span class="op">=</span>feat)[<span class="st">&#39;log_loss_y&#39;</span>]
@@ -264,34 +268,34 @@ seed <span class="op">=</span> <span class="dv">10</span>
     model <span class="op">=</span> xgb.cv({
         <span class="st">&quot;silent&quot;</span>: <span class="va">True</span>,
         <span class="st">&quot;learning_rate&quot;</span>: eta,
-        <span class="co">&quot;gamma&quot;</span>: gamma,
-        <span class="co">&quot;min_child_weight&quot;</span>: min_child_weight,
-        <span class="co">&quot;colsample_bytree&quot;</span>: colsample_bytree,
-        <span class="co">&quot;subsample&quot;</span>: subsample,
-        <span class="co">&quot;max_depth&quot;</span>: <span class="bu">int</span>(max_depth),
-        <span class="co">&quot;early_stopping_rounds&quot;</span>: <span class="dv">20</span>,
-        <span class="co">&quot;seed&quot;</span>: seed
+        <span class="st">&quot;gamma&quot;</span>: gamma,
+        <span class="st">&quot;min_child_weight&quot;</span>: min_child_weight,
+        <span class="st">&quot;colsample_bytree&quot;</span>: colsample_bytree,
+        <span class="st">&quot;subsample&quot;</span>: subsample,
+        <span class="st">&quot;max_depth&quot;</span>: <span class="bu">int</span>(max_depth),
+        <span class="st">&quot;early_stopping_rounds&quot;</span>: <span class="dv">20</span>,
+        <span class="st">&quot;seed&quot;</span>: seed
         }, d_train_full, n_rounds, n_folds, feval <span class="op">=</span> xg_eval_mae)
     <span class="cf">return</span>(<span class="op">-</span>model.iloc[<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>])
 
 bo <span class="op">=</span> BayesianOptimization(fitXGBoost, {
     <span class="st">&#39;eta&#39;</span>: (.<span class="dv">01</span>, .<span class="dv">5</span>),
     <span class="st">&#39;gamma&#39;</span>: (<span class="dv">0</span>, <span class="dv">4</span>),
-    <span class="co">&#39;min_child_weight&#39;</span>: (<span class="dv">1</span>, <span class="dv">5</span>),
-    <span class="co">&#39;colsample_bytree&#39;</span>: (.<span class="dv">01</span>, <span class="dv">1</span>),
-    <span class="co">&#39;subsample&#39;</span>: (.<span class="dv">5</span>, <span class="dv">1</span>),
-    <span class="co">&#39;max_depth&#39;</span>: (<span class="dv">3</span>, <span class="dv">12</span>)
+    <span class="st">&#39;min_child_weight&#39;</span>: (<span class="dv">1</span>, <span class="dv">5</span>),
+    <span class="st">&#39;colsample_bytree&#39;</span>: (.<span class="dv">01</span>, <span class="dv">1</span>),
+    <span class="st">&#39;subsample&#39;</span>: (.<span class="dv">5</span>, <span class="dv">1</span>),
+    <span class="st">&#39;max_depth&#39;</span>: (<span class="dv">3</span>, <span class="dv">12</span>)
 })
 
 bo.maximize(init_points <span class="op">=</span> <span class="dv">60</span>, n_iter <span class="op">=</span> <span class="dv">120</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Discovered by the hyperoptimize.py script</span>
 params <span class="op">=</span> {
     <span class="st">&quot;colsample_bytree&quot;</span>: .<span class="dv">9921</span>,
-    <span class="co">&quot;eta&quot;</span>: .<span class="dv">0995</span>,
-    <span class="co">&quot;gamma&quot;</span>: <span class="fl">3.8581</span>,
-    <span class="co">&quot;max_depth&quot;</span>: <span class="dv">11</span>,
-    <span class="co">&quot;min_child_weight&quot;</span>: <span class="fl">1.0065</span>,
-    <span class="co">&quot;subsample&quot;</span>: <span class="dv">1</span>
+    <span class="st">&quot;eta&quot;</span>: .<span class="dv">0995</span>,
+    <span class="st">&quot;gamma&quot;</span>: <span class="fl">3.8581</span>,
+    <span class="st">&quot;max_depth&quot;</span>: <span class="dv">11</span>,
+    <span class="st">&quot;min_child_weight&quot;</span>: <span class="fl">1.0065</span>,
+    <span class="st">&quot;subsample&quot;</span>: <span class="dv">1</span>
 }
 
 <span class="kw">def</span> xg_eval_mae(yhat, dtrain):
@@ -316,7 +320,7 @@ result.to_csv(<span class="st">&#39;outputs/hyperoptimizedxgb.csv&#39;</span>, i
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> pandas <span class="im">as</span> p
 <span class="im">import</span> statsmodels.formula.api <span class="im">as</span> s
 e<span class="op">=</span>p.read_csv(<span class="st">&#39;../input/test.csv&#39;</span>).dropna(<span class="dv">1</span>)
-p.DataFrame({<span class="st">&#39;id&#39;</span>:e[<span class="st">&#39;id&#39;</span>].values,<span class="st">&#39;loss&#39;</span>:s.ols(<span class="st">&#39;loss~&#39;</span><span class="op">+</span><span class="st">&#39;+&#39;</span>.join([c <span class="cf">for</span> c <span class="op">in</span> e.columns <span class="cf">if</span> <span class="st">&#39;cont&#39;</span> <span class="op">in</span> c]),data<span class="op">=</span>p.read_csv(<span class="st">&#39;../input/train.csv&#39;</span>)).fit().predict(e)}).to_csv(<span class="st">&#39;o.csv&#39;</span>,index<span class="op">=</span><span class="va">False</span>)</code></pre></div>
+p.DataFrame({<span class="st">&#39;id&#39;</span>:e[<span class="st">&#39;id&#39;</span>].values,<span class="st">&#39;loss&#39;</span>:s.ols(<span class="st">&#39;loss~&#39;</span><span class="op">+</span><span class="st">&#39;+&#39;</span>.join([c <span class="cf">for</span> c <span class="kw">in</span> e.columns <span class="cf">if</span> <span class="st">&#39;cont&#39;</span> <span class="kw">in</span> c]),data<span class="op">=</span>p.read_csv(<span class="st">&#39;../input/train.csv&#39;</span>)).fit().predict(e)}).to_csv(<span class="st">&#39;o.csv&#39;</span>,index<span class="op">=</span><span class="va">False</span>)</code></pre></div>
 </div>
 </div>
 
@@ -338,7 +342,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

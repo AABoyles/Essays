@@ -23,7 +23,7 @@
 <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
 <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
 <script src="site_libs/readthedown-0.1/readthedown.js"></script>
-<script src="site_libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-0.9/htmlwidgets.js"></script>
 <script src="site_libs/datatables-binding-0.2/datatables.js"></script>
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
@@ -35,37 +35,41 @@
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { font-weight: bold; } /* Keyword */
-code > span.dt { color: #800000; } /* DataType */
-code > span.dv { color: #0000ff; } /* DecVal */
-code > span.bn { color: #0000ff; } /* BaseN */
-code > span.fl { color: #800080; } /* Float */
-code > span.ch { color: #ff00ff; } /* Char */
-code > span.st { color: #dd0000; } /* String */
-code > span.co { color: #808080; font-style: italic; } /* Comment */
-code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
-code > span.fu { color: #000080; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #ff00ff; } /* SpecialChar */
-code > span.vs { color: #dd0000; } /* VerbatimString */
-code > span.ss { color: #dd0000; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { font-weight: bold; } /* Preprocessor */
-code > span.at { } /* Attribute */
-code > span.do { color: #808080; font-style: italic; } /* Documentation */
-code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
@@ -159,20 +163,20 @@ $(document).ready(function () {
 <span class="kw">cbind</span>(
   <span class="dt">Name =</span> <span class="kw">list.files</span>(<span class="st">&quot;portfolio/&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>),
   <span class="kw">ldply</span>(<span class="kw">list.files</span>(<span class="st">&quot;portfolio/&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>), file.info)
-) %&gt;%
-<span class="st">  </span><span class="kw">filter</span>(!<span class="st"> </span>Name %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index.Rmd&quot;</span>)) %&gt;%
-<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mtime)) %&gt;%
-<span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span> =<span class="st"> </span><span class="kw">floor</span>(size/<span class="dv">7</span>)) %&gt;%
-<span class="st">  </span><span class="kw">select</span>(Name, <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span>=mtime) %&gt;%
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Name =</span> <span class="kw">paste0</span>(<span class="st">&quot;&lt;a href=&#39;portfolio/&quot;</span>, <span class="kw">str_sub</span>(Name, <span class="dv">1</span>, -<span class="dv">5</span>), <span class="st">&quot;.html&#39;&gt;&quot;</span>,
-    Name %&gt;%
-<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z])([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) %&gt;%
-<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([A-Z]+)([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) %&gt;%
-<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z]+)([0-9]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) %&gt;%
-<span class="st">      </span><span class="kw">str_sub</span>(<span class="dv">1</span>, -<span class="dv">5</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>)) %&gt;%
+) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span>Name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index.Rmd&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mtime)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span> =<span class="st"> </span><span class="kw">floor</span>(size<span class="op">/</span><span class="dv">7</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(Name, <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span>=mtime) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Name =</span> <span class="kw">paste0</span>(<span class="st">&quot;&lt;a href=&#39;portfolio/&quot;</span>, <span class="kw">str_sub</span>(Name, <span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>), <span class="st">&quot;.html&#39;&gt;&quot;</span>,
+    Name <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z])([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([A-Z]+)([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z]+)([0-9]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">str_sub</span>(<span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">datatable</span>(<span class="dt">escape =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div id="htmlwidget-dea2e023b524d43355a0" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dea2e023b524d43355a0">{"x":{"filter":"none","data":[["1","2","3","4","5"],["<a href='portfolio/TrackingPresTrumpsApprovalRating.html'>Tracking Pres Trumps Approval Rating<\/a>","<a href='portfolio/AllstateClaimsSeverity.html'>Allstate Claims Severity<\/a>","<a href='portfolio/HousePricesInAmesIowa.html'>House Prices In Ames Iowa<\/a>","<a href='portfolio/HowToPriceAHouse.html'>How To Price A House<\/a>","<a href='portfolio/PredictingSurvivalOnTheTitanic.html'>Predicting Survival On The Titanic<\/a>"],[2891,1504,4000,562,3380],["2017-04-10T20:46:09Z","2017-04-10T20:24:57Z","2017-04-10T20:24:57Z","2017-04-10T20:24:57Z","2017-04-10T20:24:57Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-eed2babf112d09e941ea" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eed2babf112d09e941ea">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],["<a href='portfolio/HousePricesInAmesIowa.html'>House Prices In Ames Iowa<\/a>","<a href='portfolio/CryonicDemography.html'>Cryonic Demography<\/a>","<a href='portfolio/HowToPriceAHouse.html'>How To Price A House<\/a>","<a href='portfolio/PredictingSurvivalOnTheTitanic.html'>Predicting Survival On The Titanic<\/a>","<a href='portfolio/TrackingPresTrumpsApprovalRating.html'>Tracking Pres Trumps Approval Rating<\/a>","<a href='portfolio/AllstateClaimsSeverity.html'>Allstate Claims Severity<\/a>"],[4366,2382,562,3380,2891,1504],["2017-10-25T20:25:21Z","2017-10-25T19:58:47Z","2017-06-09T17:20:19Z","2017-06-09T17:20:19Z","2017-06-09T17:20:19Z","2017-06-09T17:20:19Z"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
 </div>
 
 

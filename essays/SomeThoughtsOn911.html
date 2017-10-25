@@ -30,37 +30,41 @@
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { font-weight: bold; } /* Keyword */
-code > span.dt { color: #800000; } /* DataType */
-code > span.dv { color: #0000ff; } /* DecVal */
-code > span.bn { color: #0000ff; } /* BaseN */
-code > span.fl { color: #800080; } /* Float */
-code > span.ch { color: #ff00ff; } /* Char */
-code > span.st { color: #dd0000; } /* String */
-code > span.co { color: #808080; font-style: italic; } /* Comment */
-code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
-code > span.fu { color: #000080; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #ff00ff; } /* SpecialChar */
-code > span.vs { color: #dd0000; } /* VerbatimString */
-code > span.ss { color: #dd0000; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { font-weight: bold; } /* Preprocessor */
-code > span.at { } /* Attribute */
-code > span.do { color: #808080; font-style: italic; } /* Documentation */
-code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
@@ -152,13 +156,13 @@ medianAge &lt;-<span class="st"> </span><span class="fl">36.8</span>   <span cla
 <span class="co"># Note: This is the life expectancy for people in the United States who were in year (2001 - medianAge) = 1964</span>
 lifeExpectancy &lt;-<span class="st"> </span><span class="fl">70.17</span> <span class="co">#https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&amp;met_y=sp_dyn_le00_in&amp;idim=country:USA:GBR:IND&amp;hl=en&amp;dl=en</span>
 
-lifeYearsLost &lt;-<span class="st"> </span><span class="kw">signif</span>((lifeExpectancy -<span class="st"> </span>medianAge) *<span class="st"> </span>casualties, <span class="dv">2</span>)</code></pre></div>
+lifeYearsLost &lt;-<span class="st"> </span><span class="kw">signif</span>((lifeExpectancy <span class="op">-</span><span class="st"> </span>medianAge) <span class="op">*</span><span class="st"> </span>casualties, <span class="dv">2</span>)</code></pre></div>
 <p>On this day in 2001, 2977 people were <a href="https://en.wikipedia.org/wiki/September_11_attacks">killed by terrorists</a>. Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. 2977 lives were needlessly cut short. Collectively, those people might have lived another 99,000 years.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dailyGrossMortality &lt;-<span class="st"> </span><span class="fl">1.6e5</span></code></pre></div>
 <p>Now take a deep breath. The following day, roughly 160,000 more people died. That’s more than 53 times the number of people killed by terrorists on 9-11. Try to make yourself feel the size of THAT number. That’s vastly more people than you will ever meet in your lifetime. It’s more than triple the size of my hometown. Imagine three small towns not too far from where you are right now, wiped off the map.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daysSince &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">Sys.Date</span>()-<span class="kw">as.Date</span>(<span class="st">&quot;2001-09-11&quot;</span>))
-dead &lt;-<span class="st"> </span><span class="kw">signif</span>(daysSince *<span class="st"> </span>dailyGrossMortality, <span class="dv">2</span>)</code></pre></div>
-<p>Every day since 9-11-2001, <a href="https://en.wikipedia.org/wiki/Mortality_rate">approximately 160,000 people have died</a>. There have been 5745 days since then, meaning 920,000,000 people have died. That’s more than the <a href="https://www.google.com/search?q=Population+of+Europe">entire population of Europe</a>, snuffed out. Try (and fail) to wrap your head around that number. It’s just too overwhelming. Our brains don’t (and can’t) work that way.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daysSince &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">Sys.Date</span>()<span class="op">-</span><span class="kw">as.Date</span>(<span class="st">&quot;2001-09-11&quot;</span>))
+dead &lt;-<span class="st"> </span><span class="kw">signif</span>(daysSince <span class="op">*</span><span class="st"> </span>dailyGrossMortality, <span class="dv">2</span>)</code></pre></div>
+<p>Every day since 9-11-2001, <a href="https://en.wikipedia.org/wiki/Mortality_rate">approximately 160,000 people have died</a>. There have been 5888 days since then, meaning 940,000,000 people have died. That’s more than the <a href="https://www.google.com/search?q=Population+of+Europe">entire population of Europe</a>, snuffed out. Try (and fail) to wrap your head around that number. It’s just too overwhelming. Our brains don’t (and can’t) work that way.</p>
 <p>Instead, just think for a moment how different the world might be if we were able to prioritize our spending on things that stopped people from dying (like evidence-based public health campaigns and medical research), instead of things that make easy re-election campaigns (like defense spending). Think about all the people who could have been alive right now. It’s much bigger than the people who were killed on 9-11 itself. So, sure, <a href="https://www.facebook.com/hashtag/neverforget">#NeverForget</a>, but don’t forget the rest of humanity in the process.</p>
 </div>
 
