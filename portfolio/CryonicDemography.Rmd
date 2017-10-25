@@ -42,7 +42,7 @@ This graph shows the number of people cryopreserved. As a sanity check, [Futuris
 
 Let's model it! I'm going to use a couple of models: linear (for posterity), quadratic (since it's the most intuitive curve that might fit this well), exponential (because this actually looks exponential to me), and a linear model of the predictions of the others (basically to estimate the optimal weight of the other models).
 
-```{r}
+```{r growthModels, message=FALSE, warning=FALSE}
 Year <- rep(min(year(cryonauts$Deanimation), na.rm = TRUE):max(year(cryonauts$Deanimation), na.rm = TRUE), each=12)
 Month <- rep(1:12, length(Year)/12)
 yms <- data.frame(Year, Month)
@@ -54,7 +54,7 @@ monthly <- cryonauts %>%
     Month = month(Deanimation)
   ) %>%
   group_by(Year, Month) %>%
-  summarise(number = n()) %>%
+  dplyr::summarise(number = n()) %>%
   ungroup() %>%
   right_join(yms) %>%
   filter(!(Year >= year(now()) & Month >= month(now()))) %>%
@@ -89,7 +89,7 @@ monthly %>%
 
 OK, we have an ensemble model that does quite well based solely on growth rates. What does it say about the future of Cryonics?
 
-```{r}
+```{r cryonicsGrowthPrediction}
 Year <- rep(1:20+max(year(cryonauts$Deanimation), na.rm = TRUE), each=12)
 Month <- rep(1:12, length(Year)/12)
 Fyms <- data.frame(Year, Month) %>%
@@ -121,7 +121,7 @@ So what about the cryonics patients themselves? What trends can we identify abou
 
 The simplest demographic features are age (at time of deanimation) and gender. To start with, let's look at gender. My preliminary suspicion is that men will vastly outnumber women. After all, it's been reported that [85% of cryonics signups are men](http://www.ozy.com/rising-stars/fighting-for-gender-equality-in-the-afterlife/73801).
 
-```{r, warning=FALSE}
+```{r GenderOverTime, warning=FALSE}
 cryonauts %>%
   filter(!is.na(Deanimation), !is.na(Gender)) %>%
   group_by(Gender) %>%
@@ -141,7 +141,7 @@ Thus far, it seems men outnumber women roughly 3:2. However, the distribution wa
 
 What about the distribution of age? This should be a left-skewed distribution (older people are more likely to die than younger people). Moreover, We can weakly predict that women will enjoy a slightly more left-skewed curve, outliving men in the cryonics community just as they tend to in the larger community.
 
-```{r, warning=FALSE}
+```{r AgeDistributionByGender, warning=FALSE}
 women <- cryonauts %>% filter(Gender=="Female")
 men   <- cryonauts %>% filter(Gender=="Male")
 
@@ -159,7 +159,7 @@ Unsurprisingly, the people who are cryopreserved are largely older. And it does 
 
 Does this match the curve of ages-at-death in the larger population? This is a surprisingly difficult question to answer! To start, let's look at the mean age-at-deanimation of cryonics patients (along with the min and max ages, just for fun).
 
-```{r, warning=FALSE}
+```{r AgeTrends, warning=FALSE}
 cryonauts %>%
   filter(!is.na(Deanimation), !is.na(Age)) %>%
   mutate(
@@ -188,7 +188,7 @@ We can however, spot-check the mean age at death. The mean age of death has held
 
 Not all cryonic procedures are exactly the same, and no cryonics provider offers all options. In general, there are two different types: whole body, which is basically exactly what you think, and neuropreservation, which is cryopreservation of only the head. More recently, Oregon Cryonics has begun performing brain-only preservations. and finally, there are separate whole body and neuro preservations.
 
-```{r, warning=FALSE}
+```{r ProcedureDistributionOverTime, warning=FALSE}
 cryonauts %>%
   filter(!is.na(Deanimation), !is.na(Type)) %>%
   group_by(Type) %>%
