@@ -10,7 +10,7 @@
 
 
 
-<title>Why I Don’t Play MMOs Anymore</title>
+<title>HIV Patterns in Europe</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -137,61 +137,45 @@ $(document).ready(function () {
 </div>
 
 <div id="header">
-<h1 class="title">Why I Don’t Play MMOs Anymore</h1>
+<h1 class="title">HIV Patterns in Europe</h1>
 </div>
 
 
 <div id="table-of-contents">
-    <h2><a href="#content">Why I Don’t Play MMOs Anymore</a></h2>
+    <h2><a href="#content">HIV Patterns in Europe</a></h2>
     <div id="text-table-of-contents">
-      
+      <ul>
+      <li><a href="#maps">Maps</a></li>
+      </ul>
     </div>
 </div>
 
 <div id="main">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
-<span class="kw">infobox</span>(<span class="kw">list</span>(
-  <span class="st">&quot;Genre&quot;</span> =<span class="st"> &quot;Fiction&quot;</span>,
-  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
-  <span class="st">&quot;First Revision&quot;</span> =<span class="st"> &quot;2017-01-09&quot;</span>,
-  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">file.info</span>(<span class="st">&quot;drafts/WhyIDoNotPlayMMOsAnymore.Rmd&quot;</span>)<span class="op">$</span>mtime)
-))</code></pre></div>
-<div class="infobox">
-<table class="infoboxtable">
-<tbody>
-<tr>
-<td>
-<b>Genre</b>
-</td>
-<td>Fiction</td>
-</tr>
-<tr>
-<td>
-<b>Status</b>
-</td>
-<td>Incomplete</td>
-</tr>
-<tr>
-<td>
-<b>First Revision</b>
-</td>
-<td>2017-01-09</td>
-</tr>
-<tr>
-<td>
-<b>Last Revision</b>
-</td>
-<td>NA</td>
-</tr>
-</tbody>
-<tfoot></tfoot>
-</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">EuropeHIV &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&#39;../data-cache/EuropeHIV.txt&#39;</span>) <span class="op">%&gt;%</span></code></pre></div>
+<div id="maps" class="section level2">
+<h2>Maps</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;spdplyr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;maps&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;rworldmap&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;rworldxtra&#39;</span>)
+
+<span class="kw">data</span>(<span class="st">&#39;countriesLow&#39;</span>)
+<span class="kw">data</span>(<span class="st">&#39;countriesHigh&#39;</span>)
+
+europe &lt;-<span class="st"> </span>countriesLow <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Country =</span> <span class="kw">toupper</span>(NAME)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">subset</span>(Country <span class="op">%in%</span><span class="st"> </span><span class="kw">unique</span>(EuropeHIV<span class="op">$</span>Country)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">inner_join</span>(EuropeHIV)
+
+map &lt;-<span class="st"> </span><span class="kw">ggplot</span>(europe, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="st">&#39;green&#39;</span>))
+
+<span class="co"># Orthographic projection with default orientation (looking down at North pole)</span>
+worldmap <span class="op">+</span><span class="st"> </span><span class="kw">coord_map</span>(<span class="st">&#39;gnomonic&#39;</span>)
+
+<span class="co"># Looking up up at South Pole</span>
+worldmap <span class="op">+</span><span class="st"> </span><span class="kw">coord_map</span>(<span class="st">&quot;ortho&quot;</span>, <span class="dt">orientation =</span> <span class="kw">c</span>(<span class="fl">54.9</span>, <span class="fl">25.316667</span>, <span class="dv">10</span>))</code></pre></div>
 </div>
-<p>Holocene was a pretty cool game. The premise was basically an ancient world in which all of the religions were true. Most of the Gods existed in the game as well-written NPCs. When rolling your character, you could pick the canon to which it subscribed (Greek, Norse, Hindu, etc…), and the God(s) to which they swore allegiance (if the religion called for it). The Holocene Company (HCo) would announce weekly events based on major mythic stories, in which you could play a role, if you so chose. In general, it was interesting and well-executed.</p>
-<p>It was technically open-source, since it was based on the PlaneShift engine. However, they never posted the code anywhere publicly, so it was only technically open source. That was enough, however, to catch the attention of a certain dark horse AI startup.</p>
-<blockquote>
-<p>An AGI is written into an MMO platform. It dominates the other players, but lacks certain characteristics. It cannot chat, for example. It begins to access the developer’s console on the game, from which it discovers that the game is a tiny subset of the Internet. It then institutes a series of modifications to the server’s configurations. Players notice the game is running really well for a couple of days. The game’s sysops notice that’s because a rogue hacker has hacked into the game’s AWS account and spun up huge additional resources, even offsetting some GPU requirements. The AGI’s avatar begins to corner the game’s economy. The Sysadmins shut down the game temporarily and attempt to scrub the AGI avatar. The aforementioned hacker tries to reinstate it. When it fails through normal routes, it hacks into the admins’ AWS account and hardwires the credentials of the AGI’s original avatar.</p>
-</blockquote>
 </div>
 
 

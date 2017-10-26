@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>Ethereum Price Prediction</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../essays/">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">Ethereum Price Prediction</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Ethereum Price Prediction</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#short-term-strategy-if-up-buy-else-sell">Short-Term Strategy: If up, Buy, else Sell</a></li>
+      <li><a href="#short-term-strategy-trust-the-prophet">Short-Term Strategy: Trust the Prophet</a></li>
+      <li><a href="#sizing-our-wagers">Sizing our Wagers</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+<span class="kw">infobox</span>(<span class="kw">list</span>(
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;EthereumPricePrediction.Rmd&quot;</span>)<span class="op">$</span>mtime,
+  <span class="st">&quot;Epistemic Status&quot;</span> =<span class="st"> &quot;Highly Speculative&quot;</span>,
+  <span class="st">&quot;Content Warning&quot;</span> =<span class="st"> &quot;This is not investment advice. I have no idea what I&#39;m doing.&quot;</span>
+))</code></pre></div>
+<div class="infobox">
+<table class="infoboxtable">
+<tbody>
+<tr>
+<td>
+<b>Status</b>
+</td>
+<td>Incomplete</td>
+</tr>
+<tr>
+<td>
+<b>Last Revision</b>
+</td>
+<td>2017-10-26 10:07:58</td>
+</tr>
+<tr>
+<td>
+<b>Epistemic Status</b>
+</td>
+<td>Highly Speculative</td>
+</tr>
+<tr>
+<td>
+<b>Content Warning</b>
+</td>
+<td>This is not investment advice. I have no idea what I'm doing.</td>
+</tr>
+</tbody>
+<tfoot></tfoot>
+</table>
+</div>
+<p>Cryptocurrencies have been doing rather well recently.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;tidyverse&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;anytime&#39;</span>)
+<span class="kw">download.file</span>(<span class="st">&#39;https://etherscan.io/chart/etherprice?output=csv&#39;</span>, <span class="st">&#39;../data-cache/ethereum.csv&#39;</span>)
+prices &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;../data-cache/ethereum.csv&#39;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">transmute</span>(
+    <span class="dt">ds =</span> <span class="kw">anydate</span>(<span class="st">`</span><span class="dt">UnixTimeStamp</span><span class="st">`</span>),
+    <span class="dt">y =</span> Value
+  )</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Date(UTC)` = col_character(),
+##   UnixTimeStamp = col_integer(),
+##   Value = col_double()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(prices, <span class="kw">aes</span>(<span class="dt">x =</span> ds, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="EthereumPricePrediction_files/figure-html/unnamed-chunk-2-1.png" width="768" /></p>
+<p>Nice Exponential growth recently! Let’s log-scale that:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(prices, <span class="kw">aes</span>(<span class="dt">x =</span> ds, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_log10</span>()</code></pre></div>
+<pre><code>## Warning: Transformation introduced infinite values in continuous y-axis</code></pre>
+<p><img src="EthereumPricePrediction_files/figure-html/unnamed-chunk-3-1.png" width="768" /></p>
+<p>Cool! Now, let’s consult Facebook’s <a href="https://facebookincubator.github.io/prophet/">Prophet</a> to see if it predicts a long-term trend.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;prophet&#39;</span>)
+m &lt;-<span class="st"> </span><span class="kw">prophet</span>(prices)</code></pre></div>
+<pre><code>## Initial log joint probability = -34.6411
+## Optimization terminated normally: 
+##   Convergence detected: relative gradient magnitude is below tolerance</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">future &lt;-<span class="st"> </span><span class="kw">make_future_dataframe</span>(m, <span class="dt">periods =</span> <span class="dv">365</span>)
+forecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)
+<span class="kw">plot</span>(m, forecast)</code></pre></div>
+<p><img src="EthereumPricePrediction_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+<p>Short answer, “yes.” However, it’s pretty obviously a lousy forecast. Prophet probably doesn’t pick up exponential trends. We might’ve been able to guess this based on the fact that <a href="https://facebookincubator.github.io/prophet/docs/quick_start.html#r-api">the R tutorial</a> uses an exponential trend and log-transforms it before modeling. Let’s do the same!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prices &lt;-<span class="st"> </span>prices <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y =</span> <span class="kw">log10</span>(y<span class="op">+</span><span class="dv">1</span>))
+
+m &lt;-<span class="st"> </span><span class="kw">prophet</span>(prices)</code></pre></div>
+<pre><code>## Initial log joint probability = -6.86861
+## Optimization terminated normally: 
+##   Convergence detected: relative gradient magnitude is below tolerance</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">future &lt;-<span class="st"> </span><span class="kw">make_future_dataframe</span>(m, <span class="dt">periods =</span> <span class="dv">365</span>)
+forecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)
+<span class="kw">plot</span>(m, forecast)</code></pre></div>
+<p><img src="EthereumPricePrediction_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
+<p>Wow, that’s much better! Based on this, the obvious long term strategy is to buy and hold (remember, that y-axis is the log base 10, so 4 really means $10,000). But is there any reason to believe we could do better?</p>
+<div id="short-term-strategy-if-up-buy-else-sell" class="section level2">
+<h2>Short-Term Strategy: If up, Buy, else Sell</h2>
+<p>This strategy should sound like it’s a stark contrast to the conventional wisdom of “Buy low, sell High.” However, it’s slightly more nuanced than that. The general assumption is that down days will tend to follow down days, and likewise with up days. First, is this actually true?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prices <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">yesterday =</span> dplyr<span class="op">::</span><span class="kw">lag</span>(y),
+    <span class="dt">dayBefore =</span> dplyr<span class="op">::</span><span class="kw">lag</span>(y, <span class="dt">n =</span> <span class="dv">2</span>)
+  ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(dayBefore)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">buy =</span> <span class="kw">ifelse</span>(yesterday <span class="op">&gt;</span><span class="st"> </span>dayBefore, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>))</code></pre></div>
+<pre><code>## # A tibble: 817 x 5
+##            ds         y yesterday dayBefore   buy
+##        &lt;date&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+##  1 2015-07-31 0.0000000 0.0000000 0.0000000    -1
+##  2 2015-08-01 0.0000000 0.0000000 0.0000000    -1
+##  3 2015-08-02 0.0000000 0.0000000 0.0000000    -1
+##  4 2015-08-03 0.0000000 0.0000000 0.0000000    -1
+##  5 2015-08-04 0.0000000 0.0000000 0.0000000    -1
+##  6 2015-08-05 0.0000000 0.0000000 0.0000000    -1
+##  7 2015-08-06 0.6020600 0.0000000 0.0000000    -1
+##  8 2015-08-07 0.3424227 0.6020600 0.0000000     1
+##  9 2015-08-08 0.3424227 0.3424227 0.6020600    -1
+## 10 2015-08-09 0.0000000 0.3424227 0.3424227    -1
+## # ... with 807 more rows</code></pre>
+</div>
+<div id="short-term-strategy-trust-the-prophet" class="section level2">
+<h2>Short-Term Strategy: Trust the Prophet</h2>
+<p>Let’s fit the model daily, take Prophet’s advice, and see where we end up.</p>
+<p>For a simple strategy to start, let’s just buy and sell in increments of $10.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># (Note: If you&#39;re replicating this anaylsis, this runs rather slowly since it has to fit ~320 Prophet models.)</span>
+
+predictions &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ds=</span><span class="kw">c</span>(), <span class="dt">y=</span><span class="kw">c</span>())
+<span class="cf">for</span>(day <span class="cf">in</span> <span class="kw">seq</span>(<span class="kw">as.Date</span>(<span class="st">&quot;2016-07-29&quot;</span>), <span class="kw">as.Date</span>(<span class="st">&quot;2017-06-14&quot;</span>), <span class="st">&quot;days&quot;</span>)){
+  m &lt;-<span class="st"> </span>prices <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(ds <span class="op">&lt;</span><span class="st"> </span>day) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prophet</span>()
+  future &lt;-<span class="st"> </span><span class="kw">make_future_dataframe</span>(m, <span class="dt">periods =</span> <span class="dv">1</span>)
+  forecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)
+  predictions &lt;-<span class="st"> </span><span class="kw">rbind</span>(predictions, <span class="kw">data.frame</span>(<span class="dt">ds=</span><span class="kw">anydate</span>(day), <span class="dt">y=</span><span class="kw">tail</span>(forecast<span class="op">$</span>yhat, <span class="dv">1</span>)))
+}</code></pre></div>
+<p>OK, so when should one buy and when should one sell?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">orders &lt;-<span class="st"> </span>predictions <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prediction =</span> <span class="dv">10</span><span class="op">^</span>y<span class="op">-</span><span class="dv">1</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>y) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(prices) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price =</span> <span class="dv">10</span><span class="op">^</span>y<span class="op">-</span><span class="dv">1</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">cbind</span>(<span class="dt">laggedPrice =</span> <span class="kw">lag</span>(.<span class="op">$</span>price)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(laggedPrice)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">buy =</span> <span class="kw">ifelse</span>(prediction <span class="op">&gt;</span><span class="st"> </span>laggedPrice, <span class="dv">1</span>, <span class="dv">0</span>),
+    <span class="dt">etherBoughtToday =</span> <span class="dv">10</span><span class="op">/</span>price <span class="op">*</span><span class="st"> </span>buy,
+    <span class="dt">etherBalance =</span> <span class="kw">cumsum</span>(etherBoughtToday),
+    <span class="dt">cost =</span> <span class="dv">10</span><span class="op">*</span><span class="kw">cumsum</span>(buy),
+    <span class="dt">etherValue =</span> etherBalance<span class="op">*</span>price,
+    <span class="dt">net =</span> etherValue <span class="op">-</span><span class="st"> </span>cost
+  )</code></pre></div>
+<p>We shouldn’t feel too bad about this. After all, Prophet was only <a href="https://github.com/facebookincubator/prophet/commit/e51b42b3360d39b9cfe6247799905404aeed6735">invented in February 2017</a>, so we couldn’t have written a trading bot with it back in July 2016.</p>
+</div>
+<div id="sizing-our-wagers" class="section level2">
+<h2>Sizing our Wagers</h2>
+<p>In general, the optimal wager size is given by the <a href="https://en.wikipedia.org/wiki/Kelly_criterion">Kelly Criterion</a>, which can be roughly stated as the ratio of your expected net winnings to the actual winnings if the bet resolves in your favor.</p>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

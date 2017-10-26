@@ -149,7 +149,7 @@ I started this section by prognosticating that federal revenues would decline, b
 
 ```{r, warning=FALSE, message=FALSE}
 if(!file.exists("../data-cache/FedBudget.xls")){
-  download.file("https://www.whitehouse.gov/sites/default/files/omb/budget/fy2017/assets/hist01z1.xls", "../data-cache/FedBudget.xls")
+  download.file("https://obamawhitehouse.archives.gov/sites/default/files/omb/budget/fy2017/assets/hist01z1.xls", "../data-cache/FedBudget.xls")
 }
 budget <- stfu(read_excel("../data-cache/FedBudget.xls", skip = 3))
 names(budget)[1] <- "Year"

@@ -63,11 +63,12 @@ This strategy should sound like it's a stark contrast to the conventional wisdom
 
 ```{r}
 prices %>%
-  cbind(
-    yesterdaysPrice = dplyr::lag(y),
+  mutate(
+    yesterday = dplyr::lag(y),
+    dayBefore = dplyr::lag(y, n = 2)
   ) %>%
-  filter(!is.na(yesterdaysPrice)) %>%
-  mutate(buy = ifelse(lag1 > lag2, 1, -1))
+  filter(!is.na(dayBefore)) %>%
+  mutate(buy = ifelse(yesterday > dayBefore, 1, -1))
 ```
 
 ## Short-Term Strategy: Trust the Prophet

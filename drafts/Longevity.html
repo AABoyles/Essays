@@ -23,10 +23,13 @@
 <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
 <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
 <script src="site_libs/readthedown-0.1/readthedown.js"></script>
-<script src="site_libs/htmlwidgets-0.8/htmlwidgets.js"></script>
-<link href="site_libs/plotlyjs-1.16.3/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="site_libs/plotlyjs-1.16.3/plotly-latest.min.js"></script>
-<script src="site_libs/plotly-binding-4.5.6/plotly.js"></script>
+<script src="site_libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.7.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -34,37 +37,41 @@
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { font-weight: bold; } /* Keyword */
-code > span.dt { color: #800000; } /* DataType */
-code > span.dv { color: #0000ff; } /* DecVal */
-code > span.bn { color: #0000ff; } /* BaseN */
-code > span.fl { color: #800080; } /* Float */
-code > span.ch { color: #ff00ff; } /* Char */
-code > span.st { color: #dd0000; } /* String */
-code > span.co { color: #808080; font-style: italic; } /* Comment */
-code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
-code > span.fu { color: #000080; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #ff00ff; } /* SpecialChar */
-code > span.vs { color: #dd0000; } /* VerbatimString */
-code > span.ss { color: #dd0000; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { font-weight: bold; } /* Preprocessor */
-code > span.at { } /* Attribute */
-code > span.do { color: #808080; font-style: italic; } /* Documentation */
-code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
@@ -197,14 +204,15 @@ $(document).ready(function () {
 <span class="kw">library</span>(<span class="st">&quot;bayesmeta&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;plotly&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;knitr&quot;</span>)
-knitr::opts_chunk$<span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<span class="kw">library</span>(<span class="st">&quot;htmltab&quot;</span>)
+knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
 <span class="kw">infobox</span>(<span class="kw">list</span>(
   <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
   <span class="st">&quot;Epistemic Status&quot;</span> =<span class="st"> &quot;Speculative&quot;</span>,
-  <span class="st">&quot;Fork of&quot;</span> =<span class="st"> </span>tags$<span class="kw">a</span>(<span class="dt">href=</span><span class="st">&#39;http://www.gwern.net/Longevity&#39;</span>, <span class="st">&quot;Gwern&#39;s Longevity&quot;</span>),
+  <span class="st">&quot;Fork of&quot;</span> =<span class="st"> </span>tags<span class="op">$</span><span class="kw">a</span>(<span class="dt">href=</span><span class="st">&#39;http://www.gwern.net/Longevity&#39;</span>, <span class="st">&quot;Gwern&#39;s Longevity&quot;</span>),
   <span class="st">&quot;First Revision&quot;</span> =<span class="st"> &quot;2016-10-14&quot;</span>,
-  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">file.info</span>(<span class="st">&quot;drafts/Longevity.Rmd&quot;</span>)$mtime)
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">file.info</span>(<span class="st">&quot;drafts/Longevity.Rmd&quot;</span>)<span class="op">$</span>mtime)
 ))</code></pre></div>
 <div class="infobox">
 <table class="infoboxtable">
@@ -326,80 +334,89 @@ valueOfDALY &lt;-<span class="st"> </span><span class="dv">50000</span></code></
 <div id="population-survival-curve" class="section level3">
 <h3>Population survival curve</h3>
 <p>To work with life expectancies and changes in it, let’s compute a standard <a href="http://en.wikipedia.org/wiki/Gompertz%20curve">Gompertz curve</a> model of age-related mortality, using a the <a href="https://www.ssa.gov/oact/STATS/table4c6.html">US Social Security Administration’s 2013 Actuarial Tables</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gendered_actuarial &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;../data-cache/actuarial.csv&quot;</span>) %&gt;%
-<span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;Gender&quot;</span>, <span class="st">&quot;SurvivingFraction&quot;</span>, <span class="st">`</span><span class="dt">Male Number of lives</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Female Number of lives</span><span class="st">`</span>) %&gt;%
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&#39;../data-cache/actuarial.csv&#39;</span>)){
+  temp &lt;-<span class="st"> </span><span class="kw">htmltab</span>(<span class="st">&#39;https://www.ssa.gov/oact/STATS/table4c6.html&#39;</span>, <span class="dt">which=</span><span class="dv">2</span>, <span class="dt">headerSep =</span> <span class="st">&#39; &#39;</span>)
+  <span class="kw">names</span>(temp) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Age&#39;</span>, <span class="st">&#39;MaleDeathProbability&#39;</span>, <span class="st">&#39;MaleNumberOfLives&#39;</span>, <span class="st">&#39;MaleLifeExpectancy&#39;</span>, <span class="st">&#39;FemaleDeathProbability&#39;</span>, <span class="st">&#39;FemaleNumberOfLives&#39;</span>, <span class="st">&#39;FemaleLifeExpectancy&#39;</span>)
+  temp <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="kw">row_number</span>() <span class="op">&lt;</span><span class="st"> </span><span class="dv">121</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">write_csv</span>(<span class="st">&#39;../data-cache/actuarial.csv&#39;</span>)
+}
+
+gendered_actuarial &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;../data-cache/actuarial.csv&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="st">&quot;Age&quot;</span>, <span class="st">&quot;MaleNumberOfLives&quot;</span>, <span class="st">&quot;FemaleNumberOfLives&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(<span class="st">&quot;Gender&quot;</span>, <span class="st">&quot;SurvivingFraction&quot;</span>, <span class="st">&#39;MaleNumberOfLives&#39;</span>, <span class="st">&#39;FemaleNumberOfLives&#39;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(
-    <span class="dt">Gender =</span> <span class="kw">ifelse</span>(Gender ==<span class="st"> &quot;Male Number of lives&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>),
+    <span class="dt">Gender =</span> <span class="kw">ifelse</span>(Gender <span class="op">==</span><span class="st"> &quot;MaleNumberOfLives&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>),
     <span class="dt">SurvivingFraction =</span> SurvivingFraction
   )
 
-<span class="kw">plot_ly</span>(gendered_actuarial, <span class="dt">x =</span> ~Age, <span class="dt">y =</span> ~SurvivingFraction/<span class="dv">100000</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>, <span class="dt">color =</span> ~Gender)</code></pre></div>
-<div id="htmlwidget-4050269afa727c8b863d" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4050269afa727c8b863d">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Age"},"yaxis":{"domain":[0,1],"title":"SurvivingFraction/1e+05"}},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"y":[1,0.99462,0.99425,0.99403,0.99387,0.99373,0.99361,0.99351,0.99341,0.99331,0.99322,0.99312,0.99303,0.99291,0.99278,0.99262,0.99243,0.9922,0.99194,0.99165,0.99132,0.99095,0.99054,0.9901,0.98963,0.98915,0.98864,0.98811,0.98755,0.98697,0.98635,0.98569,0.985,0.98426,0.98348,0.98265,0.98176,0.98081,0.97979,0.9787,0.97753,0.97627,0.97491,0.97343,0.97182,0.97004,0.9681,0.96597,0.96364,0.96109,0.95829,0.95524,0.95193,0.94834,0.94449,0.94038,0.93598,0.93126,0.92623,0.9209,0.91526,0.90927,0.90287,0.896,0.88858,0.88054,0.87177,0.86223,0.85187,0.84069,0.82864,0.81561,0.80147,0.78616,0.76961,0.75177,0.73244,0.71148,0.68888,0.66467,0.6388,0.61114,0.58159,0.55016,0.51694,0.48205,0.44565,0.40796,0.36933,0.33017,0.29104,0.25257,0.21542,0.18027,0.14775,0.11839,0.09267,0.07083,0.05285,0.03852,0.02745,0.01909,0.01292,0.0085,0.00541,0.00333,0.00197,0.00112,0.00061,0.00031,0.00015,7e-05,3e-05,1e-05,0,0,0,0,0,0],"mode":"lines","type":"scatter","name":"Female","line":{"fillcolor":"rgba(102,194,165,0.5)","color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y"},{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"y":[1,0.99348,0.99302,0.99273,0.99252,0.99235,0.99219,0.99205,0.99192,0.9918,0.9917,0.99161,0.99151,0.99138,0.99119,0.99091,0.99052,0.99003,0.98943,0.9887,0.98785,0.98685,0.98572,0.98449,0.98321,0.98191,0.9806,0.97928,0.97795,0.97659,0.97519,0.97376,0.9723,0.9708,0.96927,0.96772,0.96612,0.96448,0.96277,0.96097,0.95908,0.95708,0.95493,0.95262,0.95012,0.94739,0.94441,0.94115,0.93759,0.93368,0.9294,0.92472,0.91961,0.91406,0.90804,0.90153,0.8945,0.88693,0.87883,0.87022,0.86112,0.85147,0.84125,0.83042,0.81899,0.80691,0.79412,0.78054,0.76613,0.75084,0.73461,0.71732,0.69889,0.6793,0.65853,0.63657,0.61329,0.58859,0.56249,0.53504,0.50629,0.47621,0.44484,0.41233,0.3789,0.34482,0.3104,0.27598,0.24201,0.20896,0.17735,0.14768,0.12043,0.09599,0.07463,0.05647,0.04157,0.02977,0.02075,0.0141,0.00935,0.00605,0.0038,0.00232,0.00137,0.00078,0.00043,0.00023,0.00011,5e-05,2e-05,1e-05,0,0,0,0,0,0,0,0],"mode":"lines","type":"scatter","name":"Male","line":{"fillcolor":"rgba(141,160,203,0.5)","color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<span class="kw">plot_ly</span>(gendered_actuarial, <span class="dt">x =</span> <span class="op">~</span>Age, <span class="dt">y =</span> <span class="op">~</span>SurvivingFraction<span class="op">/</span><span class="dv">100000</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>, <span class="dt">color =</span> <span class="op">~</span>Gender)</code></pre></div>
+<div id="39061fcf501a" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="39061fcf501a">{"x":{"visdat":{"39061119cafe":["function () ","plotlyVisDat"]},"cur_data":"39061119cafe","attrs":{"39061119cafe":{"x":{},"y":{},"mode":"lines","color":{},"alpha":1,"sizes":[10,100],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Age"},"yaxis":{"domain":[0,1],"title":"SurvivingFraction/1e+05"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"y":[1,0.99469,0.99434,0.99412,0.99396,0.99383,0.99372,0.99361,0.99351,0.99342,0.99334,0.99325,0.99317,0.99307,0.99294,0.99279,0.9926,0.99237,0.9921,0.9918,0.99146,0.99109,0.99069,0.99025,0.98978,0.98929,0.98877,0.98822,0.98765,0.98705,0.98641,0.98575,0.98505,0.98431,0.98351,0.98266,0.98175,0.98076,0.9797,0.97856,0.97735,0.97604,0.97463,0.97311,0.97146,0.96966,0.96771,0.96559,0.96327,0.96072,0.95794,0.95488,0.95155,0.94794,0.94405,0.93987,0.93539,0.93057,0.92542,0.91997,0.9142,0.90809,0.90157,0.89461,0.88715,0.87914,0.87049,0.86114,0.85102,0.84006,0.82818,0.81525,0.80117,0.78591,0.76947,0.75182,0.7328,0.71225,0.69008,0.66621,0.64059,0.61304,0.5835,0.55213,0.51913,0.48467,0.44889,0.41191,0.37394,0.33531,0.2965,0.25811,0.22083,0.18536,0.1524,0.1225,0.0962,0.07378,0.05525,0.04043,0.02893,0.02021,0.01375,0.00909,0.00583,0.00361,0.00215,0.00123,0.00067,0.00035,0.00017,8e-05,3e-05,1e-05,0,0,0,0,0,0],"mode":"lines","type":"scatter","name":"Female","line":{"fillcolor":"rgba(102,194,165,0.5)","color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"y":[1,0.99368,0.99328,0.993,0.99279,0.99261,0.99245,0.99231,0.99218,0.99206,0.99197,0.99187,0.99177,0.99164,0.99144,0.99114,0.99074,0.99024,0.98963,0.98889,0.98802,0.98701,0.98588,0.98464,0.98335,0.98204,0.98072,0.97937,0.97801,0.97662,0.9752,0.97373,0.97224,0.97071,0.96914,0.96753,0.96587,0.96415,0.96236,0.9605,0.95856,0.95653,0.95437,0.95207,0.94958,0.94688,0.94394,0.94073,0.93721,0.93336,0.92913,0.92449,0.91943,0.91392,0.90792,0.90142,0.89439,0.88681,0.87867,0.87001,0.86081,0.85104,0.84065,0.82967,0.81812,0.806,0.79324,0.77977,0.7655,0.75036,0.73427,0.7171,0.69878,0.6793,0.65866,0.63686,0.61377,0.5893,0.56344,0.53625,0.50776,0.47795,0.44685,0.41461,0.38148,0.34771,0.31358,0.27943,0.24565,0.2127,0.18107,0.15128,0.12381,0.09906,0.07733,0.05878,0.04348,0.0313,0.02194,0.015,0.01001,0.00652,0.00413,0.00254,0.00151,0.00087,0.00048,0.00026,0.00013,6e-05,3e-05,1e-05,1e-05,0,0,0,0,0,0,0],"mode":"lines","type":"scatter","name":"Male","line":{"fillcolor":"rgba(141,160,203,0.5)","color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>For an excellent introduction to the Gompertz curve, see <a href="https://gravityandlevity.wordpress.com/2009/07/08/your-body-wasnt-built-to-last-a-lesson-from-human-mortality-rates/">this blog post</a>.</p>
 <p>From this, we can see that women at every age have higher survival rates than men of the same age. However, rather than stratify everythin on gender, I’m just going to combine the two surviving groups. It’s a blunt approach, but it’s hardly the worst available option. Let’s compare this to an estimate of survival fractions of Dutch adults <span class="citation">(Cramer, Kaas, and Others 2013)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S &lt;-<span class="st"> </span>function(t, <span class="dt">RR=</span><span class="dv">1</span>) <span class="kw">exp</span>(-(RR*<span class="fl">0.000016443</span>)/<span class="kw">log</span>(<span class="fl">1.1124</span>) *<span class="st"> </span>(<span class="fl">1.1124</span>^t -<span class="st"> </span><span class="dv">1</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S &lt;-<span class="st"> </span><span class="cf">function</span>(t, <span class="dt">RR=</span><span class="dv">1</span>) <span class="kw">exp</span>(<span class="op">-</span>(RR<span class="op">*</span><span class="fl">0.000016443</span>)<span class="op">/</span><span class="kw">log</span>(<span class="fl">1.1124</span>) <span class="op">*</span><span class="st"> </span>(<span class="fl">1.1124</span><span class="op">^</span>t <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))
 
-actuarial &lt;-<span class="st"> </span>gendered_actuarial %&gt;%
-<span class="st">  </span><span class="kw">select</span>(Age, Gender, SurvivingFraction) %&gt;%
-<span class="st">  </span><span class="kw">group_by</span>(Age) %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">American =</span> <span class="kw">sum</span>(SurvivingFraction)/<span class="dv">200000</span>) %&gt;%
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Dutch =</span> <span class="kw">S</span>(Age))
+actuarial &lt;-<span class="st"> </span>gendered_actuarial <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(Age) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">American =</span> <span class="kw">sum</span>(SurvivingFraction)<span class="op">/</span><span class="dv">200000</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">Dutch =</span> <span class="kw">S</span>(Age))
 
-<span class="kw">plot_ly</span>(actuarial, <span class="dt">x =</span> ~Age) %&gt;%
-<span class="st">  </span><span class="kw">add_trace</span>(<span class="dt">y =</span> ~Dutch, <span class="dt">name =</span> <span class="st">&quot;Dutch&quot;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) %&gt;%
-<span class="st">  </span><span class="kw">add_trace</span>(<span class="dt">y =</span> ~American, <span class="dt">name =</span> <span class="st">&quot;American&quot;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>)</code></pre></div>
-<div id="htmlwidget-5ccbf78a2d5e782d1d57" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5ccbf78a2d5e782d1d57">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Age"},"yaxis":{"domain":[0,1],"title":"Dutch"}},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"y":[1,0.999982649456592,0.999963349065803,0.999941879748758,0.999917997822054,0.999891432236937,0.999861881509294,0.999829010305964,0.999792445649071,0.999751772695844,0.999706530046726,0.999656204529374,0.999600225400402,0.999537957900386,0.999468696090616,0.999391654892328,0.999305961240577,0.999210644255481,0.99910462432314,0.998986700967116,0.998855539378742,0.998709655460758,0.998547399223624,0.998366936357351,0.998166227783649,0.997943006973596,0.997694754794761,0.997418671628722,0.997111646475226,0.996770222732712,0.996390560316777,0.995968393748312,0.995498985811871,0.994977076352397,0.994396825745359,0.993751752542085,0.993034664759423,0.992237584251978,0.991351663577318,0.99036709474167,0.989273009197947,0.988057368462571,0.986706844726121,0.985206690860135,0.983540599274293,0.981690549161966,0.979636641796638,0.977356923718066,0.974827197888239,0.972020823219487,0.96890850329934,0.965458065681651,0.961634233807674,0.957398394494848,0.952708365020348,0.947518165170474,0.941777801269222,0.93543307118643,0.928425401705333,0.92069173244717,0.912164463846234,0.90277149046921,0.892436345282015,0.881078485254692,0.868613753876237,0.854955061566995,0.840013330362534,0.823698754195671,0.805922430037138,0.786598417256605,0.765646281744887,0.74299417618695,0.718582496640356,0.692368136162341,0.664329326271633,0.634471014035377,0.602830664202878,0.569484300351515,0.53455250605462,0.498205998456872,0.460670267609827,0.42222865552504,0.383223145308123,0.344052066160831,0.305163924713113,0.267046682516469,0.23021204973511,0.195174784890209,0.162427589417975,0.132412938987491,0.105494026685537,0.0819277724318186,0.0618433878069841,0.045230053443406,0.031936665658425,0.0216852375658263,0.0140974805246012,0.00873167319864039,0.00512470999149581,0.00283288266509258,0.00146504695709618,0.000703535024526321,0.00031110937832968,0.000125518864130516,4.57294898862422e-05,1.48728737718992e-05,4.26348306827367e-06,1.0620440785696e-06,2.26294202755708e-07,4.05257616938165e-08,5.98181030143671e-09,7.12100169808569e-10,6.67358463288582e-11,4.79302404973836e-12,2.56036919161488e-13,9.83984526151071e-15,2.62175807928244e-16,4.64766577822239e-18,5.23630042879872e-20,3.56316046236455e-22],"name":"Dutch","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y"},{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"y":[1,0.99405,0.993635,0.99338,0.993195,0.99304,0.9929,0.99278,0.992665,0.992555,0.99246,0.992365,0.99227,0.992145,0.991985,0.991765,0.991475,0.991115,0.990685,0.990175,0.989585,0.9889,0.98813,0.987295,0.98642,0.98553,0.98462,0.983695,0.98275,0.98178,0.98077,0.979725,0.97865,0.97753,0.976375,0.975185,0.97394,0.972645,0.97128,0.969835,0.968305,0.966675,0.96492,0.963025,0.96097,0.958715,0.956255,0.95356,0.950615,0.947385,0.943845,0.93998,0.93577,0.9312,0.926265,0.920955,0.91524,0.909095,0.90253,0.89556,0.88819,0.88037,0.87206,0.86321,0.853785,0.843725,0.832945,0.821385,0.809,0.795765,0.781625,0.766465,0.75018,0.73273,0.71407,0.69417,0.672865,0.650035,0.625685,0.599855,0.572545,0.543675,0.513215,0.481245,0.44792,0.413435,0.378025,0.34197,0.30567,0.269565,0.234195,0.200125,0.167925,0.13813,0.11119,0.08743,0.06712,0.0503,0.0368,0.02631,0.0184,0.01257,0.00836,0.00541,0.00339,0.002055,0.0012,0.000675,0.00036,0.00018,8.5e-05,4e-05,1.5e-05,5e-06,0,0,0,0,0,0],"name":"American","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(255,127,14,1)","color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<span class="kw">plot_ly</span>(actuarial, <span class="dt">x =</span> <span class="op">~</span>Age) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_trace</span>(<span class="dt">y =</span> <span class="op">~</span>Dutch, <span class="dt">name =</span> <span class="st">&quot;Dutch&quot;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_trace</span>(<span class="dt">y =</span> <span class="op">~</span>American, <span class="dt">name =</span> <span class="st">&quot;American&quot;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis=</span><span class="kw">list</span>(<span class="dt">title=</span><span class="st">&#39;Surviving Proportion&#39;</span>))</code></pre></div>
+<div id="390622529159" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="390622529159">{"x":{"visdat":{"390641486f95":["function () ","plotlyVisDat"]},"cur_data":"390641486f95","attrs":{"390641486f95":{"x":{},"alpha":1,"sizes":[10,100],"y":{},"name":"Dutch","mode":"lines"},"390641486f95.1":{"x":{},"alpha":1,"sizes":[10,100],"y":{},"name":"American","mode":"lines"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"title":"Surviving Proportion"},"xaxis":{"domain":[0,1],"title":"Age"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"y":[1,0.999982649456592,0.999963349065803,0.999941879748758,0.999917997822054,0.999891432236937,0.999861881509294,0.999829010305964,0.999792445649071,0.999751772695844,0.999706530046726,0.999656204529374,0.999600225400402,0.999537957900386,0.999468696090616,0.999391654892328,0.999305961240577,0.999210644255481,0.99910462432314,0.998986700967116,0.998855539378742,0.998709655460758,0.998547399223624,0.998366936357351,0.998166227783649,0.997943006973596,0.997694754794761,0.997418671628722,0.997111646475226,0.996770222732712,0.996390560316777,0.995968393748312,0.995498985811871,0.994977076352397,0.994396825745359,0.993751752542085,0.993034664759423,0.992237584251978,0.991351663577318,0.99036709474167,0.989273009197947,0.988057368462571,0.986706844726121,0.985206690860135,0.983540599274293,0.981690549161966,0.979636641796638,0.977356923718066,0.974827197888239,0.972020823219487,0.96890850329934,0.965458065681651,0.961634233807674,0.957398394494848,0.952708365020348,0.947518165170474,0.941777801269222,0.93543307118643,0.928425401705333,0.92069173244717,0.912164463846234,0.90277149046921,0.892436345282015,0.881078485254692,0.868613753876237,0.854955061566995,0.840013330362534,0.823698754195671,0.805922430037138,0.786598417256605,0.765646281744887,0.74299417618695,0.718582496640356,0.692368136162341,0.664329326271633,0.634471014035377,0.602830664202878,0.569484300351515,0.53455250605462,0.498205998456872,0.460670267609827,0.42222865552504,0.383223145308123,0.344052066160831,0.305163924713113,0.267046682516469,0.23021204973511,0.195174784890209,0.162427589417975,0.132412938987491,0.105494026685537,0.0819277724318186,0.0618433878069841,0.045230053443406,0.031936665658425,0.0216852375658263,0.0140974805246012,0.00873167319864039,0.00512470999149581,0.00283288266509258,0.00146504695709618,0.000703535024526321,0.00031110937832968,0.000125518864130516,4.57294898862422e-05,1.48728737718992e-05,4.26348306827367e-06,1.0620440785696e-06,2.26294202755708e-07,4.05257616938165e-08,5.98181030143671e-09,7.12100169808569e-10,6.67358463288582e-11,4.79302404973836e-12,2.56036919161488e-13,9.83984526151071e-15,2.62175807928244e-16,4.64766577822239e-18,5.23630042879872e-20,3.56316046236455e-22],"name":"Dutch","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"y":[1,0.994185,0.99381,0.99356,0.993375,0.99322,0.993085,0.99296,0.992845,0.99274,0.992655,0.99256,0.99247,0.992355,0.99219,0.991965,0.99167,0.991305,0.990865,0.990345,0.98974,0.98905,0.988285,0.987445,0.986565,0.985665,0.984745,0.983795,0.98283,0.981835,0.980805,0.97974,0.978645,0.97751,0.976325,0.975095,0.97381,0.972455,0.97103,0.96953,0.967955,0.966285,0.9645,0.96259,0.96052,0.95827,0.955825,0.95316,0.95024,0.94704,0.943535,0.939685,0.93549,0.93093,0.925985,0.920645,0.91489,0.90869,0.902045,0.89499,0.887505,0.879565,0.87111,0.86214,0.852635,0.84257,0.831865,0.820455,0.80826,0.79521,0.781225,0.766175,0.749975,0.732605,0.714065,0.69434,0.673285,0.650775,0.62676,0.60123,0.574175,0.545495,0.515175,0.48337,0.450305,0.41619,0.381235,0.34567,0.309795,0.274005,0.238785,0.204695,0.17232,0.14221,0.114865,0.09064,0.06984,0.05254,0.038595,0.027715,0.01947,0.013365,0.00894,0.005815,0.00367,0.00224,0.001315,0.000745,0.0004,0.000205,0.0001,4.5e-05,2e-05,5e-06,0,0,0,0,0,0],"name":"American","mode":"lines","type":"scatter","line":{"fillcolor":"rgba(255,127,14,1)","color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>Here we can see that Dutch people are less likely to die throughout early and middle age, but Americans are less likely to die later in life. This reversal happens sometime around age 67.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## the `min` is because past age 104, hazard&gt;1 which is wrong, so need a ceiling
-H &lt;-<span class="st"> </span>function(t, RR) <span class="kw">min</span>(<span class="dv">1</span>, (RR*<span class="fl">0.000016443</span>)*<span class="fl">1.1124</span>^t)
+H &lt;-<span class="st"> </span><span class="cf">function</span>(t, RR) <span class="kw">min</span>(<span class="dv">1</span>, (RR<span class="op">*</span><span class="fl">0.000016443</span>)<span class="op">*</span><span class="fl">1.1124</span><span class="op">^</span>t)
 
 ## for each possible age, randomly sample a life event according to that age&#39;s hazard;
 ## then the subject dies at the age at which their first FALSE is found.
 ## So `TRUE,TRUE,TRUE,FALSE,TRUE,FALSE` ~&gt; died 4yo.
-rgompertz &lt;-<span class="st"> </span>function(n, <span class="dt">RR=</span><span class="dv">1</span>) {
-  ageHazards &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">0</span>:<span class="dv">120</span>, function(t) <span class="kw">H</span>(t, RR))
-  <span class="kw">replicate</span>(n, <span class="kw">Position</span>(<span class="st">`</span><span class="dt">!</span><span class="st">`</span>, <span class="kw">sapply</span>(ageHazards, function(h) <span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>), <span class="dv">1</span>, <span class="dt">prob=</span><span class="kw">c</span>(<span class="dv">1</span>-h, h)))))
+rgompertz &lt;-<span class="st"> </span><span class="cf">function</span>(n, <span class="dt">RR=</span><span class="dv">1</span>) {
+  ageHazards &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">120</span>, <span class="cf">function</span>(t) <span class="kw">H</span>(t, RR))
+  <span class="kw">replicate</span>(n, <span class="kw">Position</span>(<span class="st">`</span><span class="dt">!</span><span class="st">`</span>, <span class="kw">sapply</span>(ageHazards, <span class="cf">function</span>(h) <span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>), <span class="dv">1</span>, <span class="dt">prob=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">-</span>h, h)))))
 }</code></pre></div>
 </div>
 <div id="converting-risk-reduction-to-average-life-expectancy-gain" class="section level3">
 <h3>Converting risk reduction to average life expectancy gain</h3>
 <p>A naive interpretation of a risk reduction (RR) is to treat it as though it can “restore” some number of years of life. Consider a someone with a life expectancy of around 80 years. Now let us suppose this person decides to start a life-extending activity with an RR of .85. The gain we might hope to get from this activity is <span class="math inline">\((1-.85)*80=12 \text{years}\)</span>. This is, sadly, strongly optimistically biased.</p>
 <p>The Gompertz hazard curve can be multiplied by the RR to give a particular trajectory with that change in risk, and the mean can be obtained by integrating over a lifetime. Doing two such integrations, one with a baseline RR of 1 and one with the new RR, then gives the two different life expectancies, and their difference indicates the net gain/loss:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lifeExpectancy &lt;-<span class="st"> </span>function(RR, age1, age2) {
-  <span class="kw">integrate</span>(function(t) <span class="kw">S</span>(t, RR) /<span class="st"> </span><span class="kw">S</span>(age1, RR), age1, age2)$value
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lifeExpectancy &lt;-<span class="st"> </span><span class="cf">function</span>(RR, age1, age2) {
+  <span class="kw">integrate</span>(<span class="cf">function</span>(t) <span class="kw">S</span>(t, RR) <span class="op">/</span><span class="st"> </span><span class="kw">S</span>(age1, RR), age1, age2)<span class="op">$</span>value
 }
 
-lifeExpectancyGain &lt;-<span class="st"> </span>function(RR, <span class="dt">startingAge=</span><span class="dv">0</span>, <span class="dt">endingAge=</span><span class="ot">Inf</span>){
-  <span class="kw">lifeExpectancy</span>(RR, startingAge, endingAge) -
+lifeExpectancyGain &lt;-<span class="st"> </span><span class="cf">function</span>(RR, <span class="dt">startingAge=</span><span class="dv">0</span>, <span class="dt">endingAge=</span><span class="ot">Inf</span>){
+  <span class="kw">lifeExpectancy</span>(RR, startingAge, endingAge) <span class="op">-</span>
 <span class="st">  </span><span class="kw">lifeExpectancy</span>(<span class="dv">1</span>, startingAge, endingAge)
 }
 
 rrs &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.01</span>, <span class="dv">2</span>, <span class="dt">by=</span><span class="fl">0.01</span>)
 gainsVsRR &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">RR=</span>rrs, <span class="dt">Gain=</span><span class="kw">sapply</span>(rrs, lifeExpectancyGain))
 
-<span class="kw">plot_ly</span>(gainsVsRR, <span class="dt">x=</span>~RR, <span class="dt">y=</span>~Gain, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>)</code></pre></div>
-<div id="htmlwidget-2fdca713fe7c5b15d623" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2fdca713fe7c5b15d623">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"RR"},"yaxis":{"domain":[0,1],"title":"Gain"}},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35,0.36,0.37,0.38,0.39,0.4,0.41,0.42,0.43,0.44,0.45,0.46,0.47,0.48,0.49,0.5,0.51,0.52,0.53,0.54,0.55,0.56,0.57,0.58,0.59,0.6,0.61,0.62,0.63,0.64,0.65,0.66,0.67,0.68,0.69,0.7,0.71,0.72,0.73,0.74,0.75,0.76,0.77,0.78,0.79,0.8,0.81,0.82,0.83,0.84,0.85,0.86,0.87,0.88,0.89,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.98,0.99,1,1.01,1.02,1.03,1.04,1.05,1.06,1.07,1.08,1.09,1.1,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.2,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.3,1.31,1.32,1.33,1.34,1.35,1.36,1.37,1.38,1.39,1.4,1.41,1.42,1.43,1.44,1.45,1.46,1.47,1.48,1.49,1.5,1.51,1.52,1.53,1.54,1.55,1.56,1.57,1.58,1.59,1.6,1.61,1.62,1.63,1.64,1.65,1.66,1.67,1.68,1.69,1.7,1.71,1.72,1.73,1.74,1.75,1.76,1.77,1.78,1.79,1.8,1.81,1.82,1.83,1.84,1.85,1.86,1.87,1.88,1.89,1.9,1.91,1.92,1.93,1.94,1.95,1.96,1.97,1.98,1.99,2],"y":[43.2198474542282,36.7128155533973,32.9065130553952,30.205943589093,28.1112543894229,26.3997887601828,24.9527971415367,23.6993718459061,22.5937882113979,21.6048246292256,20.7102114450815,19.8935055545009,19.1422197901975,18.4466477543611,17.7990948525248,17.1933580793069,16.6243637824289,16.087909123604,15.5804735347747,15.0990786219112,14.6411821239579,14.2045969305004,13.7874276832634,13.3880211455694,13.0049266444768,12.6368642686341,12.2826990762678,11.9414199960634,11.6121224321615,11.2939938193238,10.9863015475012,10.6883828041937,10.3996359803325,10.1195133594874,9.84751486709371,9.58318270044872,9.32609670352177,9.07587029331096,8.83214708553793,8.59459774218848,8.36291739688821,8.13682303004805,7.9160517787455,7.70035886109184,7.48951600040137,7.2833099738709,7.08154131735411,6.88402316650765,6.69058021743399,6.50104779233297,6.31527099768216,6.13310396416416,5.9544091589956,5.77905676253663,5.60692410210241,5.4378951367915,5.27185998791236,5.10871451024893,4.94835989997586,4.79070233552706,4.63565264814902,4.48312601924206,4.33304170191772,4.18532276448366,4.03989585381602,3.89669101491737,3.75564131967786,3.61668295814398,3.47975486346245,3.34479860497117,3.21175823860523,3.08058016776677,2.95121301379251,2.8236075748911,2.6977164037156,2.5734941518139,2.45089718291607,2.32988355002603,2.21041290933717,2.09244643956255,1.97594676627592,1.86087789089497,1.74720512396874,1.63489502246047,1.52391533074137,1.41423492503576,1.30582376107731,1.19865282475692,1.09269408555882,0.987920452598246,0.88430573308824,0.781824593076038,0.680452520302097,0.580165789045182,0.480941426827968,0.382757182865504,0.285591498148975,0.189423477063357,0.0942328604461551,0,-0.0932941660218631,-0.185668135931962,-0.277139866597565,-0.367726794367044,-0.457445854995314,-0.546313502624344,-0.634345727873153,-0.721558075085767,-0.80796565878471,-0.893583107818287,-0.978424869324485,-1.06250478599014,-1.14583640309631,-1.22843290787701,-1.31030714202852,-1.3914716136775,-1.47193850883492,-1.551719702363,-1.63082676847883,-1.70927099081898,-1.78706337208602,-1.86421464329814,-1.94073527266127,-2.01663547408174,-2.09192521533721,-2.16661422592186,-2.24071200458157,-2.31422782655336,-2.3871707505234,-2.459549625316,-2.53137309632648,-2.60264961170937,-2.67338742833302,-2.74359461751119,-2.81327907052159,-2.88244850392059,-2.95111042481886,-3.01927229379355,-3.08694129508564,-3.15412449573763,-3.22082881188639,-3.28706101302923,-3.35282772614023,-3.41813543964324,-3.48299050724715,-3.54739915164981,-3.61136746811501,-3.67490142792856,-3.73800688173792,-3.80068956278002,-3.86295509000195,-3.92480897107868,-3.98625660533173,-4.0473032865528,-4.10795420573611,-4.16821445372271,-4.2280890237605,-4.28758281398277,-4.34670062980877,-4.4054471862688,-4.4638271102571,-4.52184494271472,-4.5795051407455,-4.63681207966712,-4.69377005499996,-4.75038328439577,-4.80665590950838,-4.86259199780882,-4.91819554434626,-4.97347047345717,-5.02842063496045,-5.08304982600595,-5.13736176479888,-5.19136010894243,-5.24504845315437,-5.29843033070026,-5.3515092147864,-5.40428851991318,-5.4567716031908,-5.50896176561814,-5.56086225332632,-5.61247625878804,-5.66380692199357,-5.71485733159501,-5.76563052601924,-5.81612949455112,-5.86635717838743,-5.91631647166288,-5.96601022244883,-6.01544123372562,-6.06461226432945,-6.11352602987448,-6.16218520365103,-6.21059241750058,-6.2587502626681,-6.30666129063287,-6.35437931402929,-6.40180320426663,-6.4489384064743,-6.49588691301304],"mode":"lines","type":"scatter","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<span class="kw">plot_ly</span>(gainsVsRR, <span class="dt">x=</span><span class="op">~</span>RR, <span class="dt">y=</span><span class="op">~</span>Gain, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>)</code></pre></div>
+<div id="3906113bba54" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="3906113bba54">{"x":{"visdat":{"3906372c270":["function () ","plotlyVisDat"]},"cur_data":"3906372c270","attrs":{"3906372c270":{"x":{},"y":{},"mode":"lines","alpha":1,"sizes":[10,100],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"RR"},"yaxis":{"domain":[0,1],"title":"Gain"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35,0.36,0.37,0.38,0.39,0.4,0.41,0.42,0.43,0.44,0.45,0.46,0.47,0.48,0.49,0.5,0.51,0.52,0.53,0.54,0.55,0.56,0.57,0.58,0.59,0.6,0.61,0.62,0.63,0.64,0.65,0.66,0.67,0.68,0.69,0.7,0.71,0.72,0.73,0.74,0.75,0.76,0.77,0.78,0.79,0.8,0.81,0.82,0.83,0.84,0.85,0.86,0.87,0.88,0.89,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.98,0.99,1,1.01,1.02,1.03,1.04,1.05,1.06,1.07,1.08,1.09,1.1,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,1.2,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.28,1.29,1.3,1.31,1.32,1.33,1.34,1.35,1.36,1.37,1.38,1.39,1.4,1.41,1.42,1.43,1.44,1.45,1.46,1.47,1.48,1.49,1.5,1.51,1.52,1.53,1.54,1.55,1.56,1.57,1.58,1.59,1.6,1.61,1.62,1.63,1.64,1.65,1.66,1.67,1.68,1.69,1.7,1.71,1.72,1.73,1.74,1.75,1.76,1.77,1.78,1.79,1.8,1.81,1.82,1.83,1.84,1.85,1.86,1.87,1.88,1.89,1.9,1.91,1.92,1.93,1.94,1.95,1.96,1.97,1.98,1.99,2],"y":[43.2198474542282,36.7128155533973,32.9065130553952,30.205943589093,28.1112543894229,26.3997887601828,24.9527971415367,23.6993718459061,22.5937882113979,21.6048246292256,20.7102114450815,19.8935055545009,19.1422197901975,18.4466477543611,17.7990948525248,17.1933580793069,16.6243637824289,16.087909123604,15.5804735347747,15.0990786219112,14.6411821239579,14.2045969305004,13.7874276832634,13.3880211455694,13.0049266444768,12.6368642686341,12.2826990762678,11.9414199960634,11.6121224321615,11.2939938193238,10.9863015475012,10.6883828041937,10.3996359803325,10.1195133594874,9.84751486709371,9.58318270044872,9.32609670352177,9.07587029331096,8.83214708553793,8.59459774218848,8.36291739688821,8.13682303004805,7.9160517787455,7.70035886109184,7.48951600040137,7.2833099738709,7.08154131735411,6.88402316650765,6.69058021743399,6.50104779233297,6.31527099768216,6.13310396416416,5.9544091589956,5.77905676253663,5.60692410210241,5.4378951367915,5.27185998791236,5.10871451024893,4.94835989997586,4.79070233552706,4.63565264814902,4.48312601924206,4.33304170191772,4.18532276448366,4.03989585381602,3.89669101491737,3.75564131967786,3.61668295814398,3.47975486346245,3.34479860497117,3.21175823860523,3.08058016776677,2.95121301379251,2.8236075748911,2.6977164037156,2.5734941518139,2.45089718291607,2.32988355002603,2.21041290933717,2.09244643956255,1.97594676627592,1.86087789089497,1.74720512396874,1.63489502246047,1.52391533074137,1.41423492503576,1.30582376107731,1.19865282475692,1.09269408555882,0.987920452598246,0.88430573308824,0.781824593076038,0.680452520302097,0.580165789045182,0.480941426827968,0.382757182865504,0.285591498148975,0.189423477063357,0.0942328604461551,0,-0.0932941660218631,-0.185668135931962,-0.277139866597565,-0.367726794367044,-0.457445854995314,-0.546313502624344,-0.634345727873153,-0.721558075085767,-0.80796565878471,-0.893583107818287,-0.978424869324485,-1.06250478599014,-1.14583640309631,-1.22843290787701,-1.31030714202852,-1.3914716136775,-1.47193850883492,-1.551719702363,-1.63082676847883,-1.70927099081898,-1.78706337208602,-1.86421464329814,-1.94073527266127,-2.01663547408174,-2.09192521533721,-2.16661422592186,-2.24071200458157,-2.31422782655336,-2.3871707505234,-2.459549625316,-2.53137309632648,-2.60264961170937,-2.67338742833302,-2.74359461751119,-2.81327907052159,-2.88244850392059,-2.95111042481886,-3.01927229379355,-3.08694129508564,-3.15412449573763,-3.22082881188639,-3.28706101302923,-3.35282772614023,-3.41813543964324,-3.48299050724715,-3.54739915164981,-3.61136746811501,-3.67490142792856,-3.73800688173792,-3.80068956278002,-3.86295509000195,-3.92480897107868,-3.98625660533173,-4.0473032865528,-4.10795420573611,-4.16821445372271,-4.2280890237605,-4.28758281398277,-4.34670062980877,-4.4054471862688,-4.4638271102571,-4.52184494271472,-4.5795051407455,-4.63681207966712,-4.69377005499996,-4.75038328439577,-4.80665590950838,-4.86259199780882,-4.91819554434626,-4.97347047345717,-5.02842063496045,-5.08304982600595,-5.13736176479888,-5.19136010894243,-5.24504845315437,-5.29843033070026,-5.3515092147864,-5.40428851991318,-5.4567716031908,-5.50896176561814,-5.56086225332632,-5.61247625878804,-5.66380692199357,-5.71485733159501,-5.76563052601924,-5.81612949455112,-5.86635717838743,-5.91631647166288,-5.96601022244883,-6.01544123372562,-6.06461226432945,-6.11352602987448,-6.16218520365103,-6.21059241750058,-6.2587502626681,-6.30666129063287,-6.35437931402929,-6.40180320426663,-6.4489384064743,-6.49588691301304],"mode":"lines","type":"scatter","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Side note: it looks like a logarithmic curve. If we needed better computational performance, we could exploit this property to replace the integrals with cheaper arithmetic operations:</span>
 
-gainlm &lt;-<span class="st"> </span>gainsVsRR %&gt;%
-<span class="st">  </span><span class="kw">ntbt_lm</span>(Gain ~<span class="st"> </span><span class="kw">log</span>(RR))
+gainlm &lt;-<span class="st"> </span>gainsVsRR <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ntbt_lm</span>(Gain <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(RR))
 
-lifeExpectancyGainApproximation &lt;-<span class="st"> </span>function(RR) <span class="kw">predict</span>(gainlm, <span class="kw">data.frame</span>(<span class="dt">RR=</span>RR))</code></pre></div>
+lifeExpectancyGainApproximation &lt;-<span class="st"> </span><span class="cf">function</span>(RR) <span class="kw">predict</span>(gainlm, <span class="kw">data.frame</span>(<span class="dt">RR=</span>RR))</code></pre></div>
 <p>From this, we can see a much more realistic relationship between RR and life years gained. An RR of .85 delivers around ~1.6 years.</p>
 <p>There is a fortunate upside to this phenomenon. If we wait to use an intervention until what might seem like ‘late’ in life, we will not have suffered a large opportunity cost (of ~40%) like one might think, but much less (~1.7%). The gains are minimal early on, and the opportunity cost only begins to really mount starting in one’s 50s or 60s, which has the important implication that such interventions will benefit younger people much less (at least when it comes to interventions which offer only a constant reduction in risk and do not affect the acceleration of mortality caused by the aging process itself) and so the risks are more likely to make interventions profitable.</p>
 </div>
 <div id="maximum-possible-profit" class="section level3">
 <h3>Maximum possible profit</h3>
 <p>More generally, it would be interesting to get an idea of what is the most profit possible for any particular reduction in ACM, by granting the most favorable possible assumptions: certainty that the RR is exact, that the intervention is side-effect-less and free both to start and continue, and it can begin at birth if need be. For the plausible range of RRs, 0.5-1.0:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">profitByAge &lt;-<span class="st"> </span>function(t, <span class="dt">RR=</span><span class="fl">0.85</span>, <span class="dt">yearValue=</span>valueOfDALY, annualCost, startCost, <span class="dt">probabilityPenalty=</span>(<span class="dv">1</span>/<span class="dv">3</span>)) {
-  (<span class="kw">lifeExpectancyGain</span>(RR, <span class="dt">startingAge=</span>t) *
-<span class="st">      </span>yearValue *
-<span class="st">      </span>probabilityPenalty) -
-<span class="st">  </span>(<span class="kw">lifeExpectancy</span>(RR,t,<span class="ot">Inf</span>) *
-<span class="st">      </span>annualCost +
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">profitByAge &lt;-<span class="st"> </span><span class="cf">function</span>(t, <span class="dt">RR=</span><span class="fl">0.85</span>, <span class="dt">yearValue=</span>valueOfDALY, annualCost, startCost, <span class="dt">probabilityPenalty=</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)) {
+  (<span class="kw">lifeExpectancyGain</span>(RR, <span class="dt">startingAge=</span>t) <span class="op">*</span>
+<span class="st">      </span>yearValue <span class="op">*</span>
+<span class="st">      </span>probabilityPenalty) <span class="op">-</span>
+<span class="st">  </span>(<span class="kw">lifeExpectancy</span>(RR,t,<span class="ot">Inf</span>) <span class="op">*</span>
+<span class="st">      </span>annualCost <span class="op">+</span>
 <span class="st">      </span>startCost)
 }
 
@@ -408,9 +425,9 @@ rrs &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0
 startAge &lt;-<span class="st"> </span><span class="dv">0</span>
 <span class="kw">data.frame</span>(
   <span class="dt">RR =</span> rrs,
-  <span class="dt">Years         =</span> <span class="kw">sapply</span>(rrs, function(r) <span class="kw">lifeExpectancyGain</span>(r, startAge)),
-  <span class="dt">MaximumProfit =</span> <span class="kw">sapply</span>(rrs, function(r) <span class="kw">profitByAge</span>(startAge, <span class="dt">RR=</span>r, <span class="dt">annualCost=</span><span class="dv">0</span>, <span class="dt">startCost=</span><span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>))
-) %&gt;%
+  <span class="dt">Years         =</span> <span class="kw">sapply</span>(rrs, <span class="cf">function</span>(r) <span class="kw">lifeExpectancyGain</span>(r, startAge)),
+  <span class="dt">MaximumProfit =</span> <span class="kw">sapply</span>(rrs, <span class="cf">function</span>(r) <span class="kw">profitByAge</span>(startAge, <span class="dt">RR=</span>r, <span class="dt">annualCost=</span><span class="dv">0</span>, <span class="dt">startCost=</span><span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>))
+) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
@@ -533,9 +550,9 @@ startAge &lt;-<span class="st"> </span><span class="dv">0</span>
 startAge &lt;-<span class="st"> </span><span class="dv">90</span>
 <span class="kw">data.frame</span>(
   <span class="dt">RR =</span> rrs,
-  <span class="dt">Years         =</span> <span class="kw">sapply</span>(rrs, function(r) <span class="kw">lifeExpectancyGain</span>(r, startAge)),
-  <span class="dt">MaximumProfit =</span> <span class="kw">sapply</span>(rrs, function(r) <span class="kw">profitByAge</span>(startAge, <span class="dt">RR=</span>r, <span class="dt">annualCost=</span><span class="dv">0</span>, <span class="dt">startCost=</span><span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>))
-) %&gt;%
+  <span class="dt">Years         =</span> <span class="kw">sapply</span>(rrs, <span class="cf">function</span>(r) <span class="kw">lifeExpectancyGain</span>(r, startAge)),
+  <span class="dt">MaximumProfit =</span> <span class="kw">sapply</span>(rrs, <span class="cf">function</span>(r) <span class="kw">profitByAge</span>(startAge, <span class="dt">RR=</span>r, <span class="dt">annualCost=</span><span class="dv">0</span>, <span class="dt">startCost=</span><span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>))
+) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
@@ -575,56 +592,56 @@ startAge &lt;-<span class="st"> </span><span class="dv">90</span>
 </table>
 <p>Then we have to take into account the uncertainty that caloric restriction works at all in the extremely elderly (a halving is probably optimistic), the high probability its reduction in mortality will be relatively modest and in the 0.90s, the large financial &amp; time costs of safely doing such a stringent diet (easily thousands of dollars in time and higher-quality food ingredients), the need to learn new recipes and count calories, the possible side-effects like increasing <a href="http://en.wikipedia.org/wiki/Frailty%20syndrome" title="Wikipedia: Frailty syndrome">frailty</a> &amp; <a href="http://en.wikipedia.org/wiki/Sarcopenia" title="Wikipedia: Sarcopenia">muscle loss</a>. Given that the upper bound for plausible effect sizes is merely 1 year/$50k, it seems inadvisable for such a person to take up a Caloric Restriction Diet.</p>
 <p>Using this approach, we can also reverse the question. Given an RR and a set of costs, we can determine what the optimal age to begin a regimen of life-extension activities.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">costToRR &lt;-<span class="st"> </span>function (<span class="dt">startingAge=</span><span class="dv">30</span>, annualCost, <span class="dt">startCost=</span><span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>) {
-  <span class="kw">uniroot</span>(<span class="dt">f=</span>function(r) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">costToRR &lt;-<span class="st"> </span><span class="cf">function</span> (<span class="dt">startingAge=</span><span class="dv">30</span>, annualCost, <span class="dt">startCost=</span><span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>) {
+  <span class="kw">uniroot</span>(<span class="dt">f=</span><span class="cf">function</span>(r) {
     <span class="kw">profitByAge</span>(startingAge, <span class="dt">RR=</span>r, <span class="dt">annualCost=</span>annualCost, <span class="dt">startCost=</span>startCost,
                 <span class="dt">probabilityPenalty=</span>probabilityPenalty)
-  }, <span class="dt">lower=</span>.Machine$double.eps, <span class="dt">upper=</span><span class="dv">1</span>)$root
+  }, <span class="dt">lower=</span>.Machine<span class="op">$</span>double.eps, <span class="dt">upper=</span><span class="dv">1</span>)<span class="op">$</span>root
 }</code></pre></div>
 </div>
 <div id="power-analysis" class="section level3">
 <h3>Power analysis</h3>
 <p>How many subjects does it take to detect a specified RR? This is useful for planning clinical trials but also in interpreting them. We can do simulation power analyses by using <code>rgompertz</code> to generate a number of subjects’ death dates for different RRs (eg 0.85 vs 1.0), counting how many deaths in each group fall within a specified followup period of years, and running some sort of analysis based on that data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gompertzSimulation &lt;-<span class="st"> </span>function(RR, n1, n2, startingAge, followupYears) {
-  experimental       &lt;-<span class="st"> </span><span class="kw">Filter</span>(function(deathDate){deathDate&gt;=startingAge}, <span class="kw">rgompertz</span>(n1, RR))
-  experimentalDeaths &lt;-<span class="st"> </span><span class="kw">Filter</span>(function(deathDate){deathDate&lt;=(startingAge+followupYears)}, experimental)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gompertzSimulation &lt;-<span class="st"> </span><span class="cf">function</span>(RR, n1, n2, startingAge, followupYears) {
+  experimental       &lt;-<span class="st"> </span><span class="kw">Filter</span>(<span class="cf">function</span>(deathDate){deathDate<span class="op">&gt;=</span>startingAge}, <span class="kw">rgompertz</span>(n1, RR))
+  experimentalDeaths &lt;-<span class="st"> </span><span class="kw">Filter</span>(<span class="cf">function</span>(deathDate){deathDate<span class="op">&lt;=</span>(startingAge<span class="op">+</span>followupYears)}, experimental)
 
-  control            &lt;-<span class="st"> </span><span class="kw">Filter</span>(function(deathDate){deathDate&gt;=startingAge}, <span class="kw">rgompertz</span>(n2, <span class="dv">1</span>))
-  controlDeaths      &lt;-<span class="st"> </span><span class="kw">Filter</span>(function(deathDate){deathDate&lt;=(startingAge+followupYears)}, control)
+  control            &lt;-<span class="st"> </span><span class="kw">Filter</span>(<span class="cf">function</span>(deathDate){deathDate<span class="op">&gt;=</span>startingAge}, <span class="kw">rgompertz</span>(n2, <span class="dv">1</span>))
+  controlDeaths      &lt;-<span class="st"> </span><span class="kw">Filter</span>(<span class="cf">function</span>(deathDate){deathDate<span class="op">&lt;=</span>(startingAge<span class="op">+</span>followupYears)}, control)
 
   df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">RR=</span>RR, <span class="dt">Start=</span>startingAge, <span class="dt">Followup=</span>followupYears,
                    <span class="dt">N1=</span><span class="kw">length</span>(experimental), <span class="dt">N2=</span><span class="kw">length</span>(control),
                    <span class="dt">N1.deaths=</span><span class="kw">length</span>(experimentalDeaths), <span class="dt">N2.deaths=</span><span class="kw">length</span>(controlDeaths))
-  <span class="kw">return</span>(<span class="kw">cbind</span>(df, <span class="kw">data.frame</span>(<span class="dt">RR.observed=</span>(df$N1.deaths/df$N1) /(df$N2.deaths/df$N2))))
+  <span class="kw">return</span>(<span class="kw">cbind</span>(df, <span class="kw">data.frame</span>(<span class="dt">RR.observed=</span>(df<span class="op">$</span>N1.deaths<span class="op">/</span>df<span class="op">$</span>N1) <span class="op">/</span>(df<span class="op">$</span>N2.deaths<span class="op">/</span>df<span class="op">$</span>N2))))
 }
 
-gompertzPower &lt;-<span class="st"> </span>function(RR, n1, n2, startingAge, followupYears, <span class="dt">iters=</span><span class="dv">100</span>) {
-  <span class="dv">1</span>:iters %&gt;%
-<span class="st">    </span><span class="kw">mclapply</span>(function(i) <span class="kw">gompertzSimulation</span>(RR, n1, n2, startingAge, followupYears)) %&gt;%
+gompertzPower &lt;-<span class="st"> </span><span class="cf">function</span>(RR, n1, n2, startingAge, followupYears, <span class="dt">iters=</span><span class="dv">100</span>) {
+  <span class="dv">1</span><span class="op">:</span>iters <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mclapply</span>(<span class="cf">function</span>(i) <span class="kw">gompertzSimulation</span>(RR, n1, n2, startingAge, followupYears)) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">ldply</span>()
 }</code></pre></div>
 <p>Given a function to estimate power for a particular set of trial characteristics, we can also search for the sample size which would make a trial (or fixed-effect meta-analysis) of particular RR effects well-powered as a heuristic for what sort of sample sizes we should expect (remembering that being well-powered is neither necessary nor optimal for decision-making):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#This is turned off because it takes a really long time to run.</span>
-gompertzPowerSearch &lt;-<span class="st"> </span>function(RR, <span class="dt">startingAge=</span><span class="dv">50</span>, <span class="dt">followupYears=</span><span class="dv">10</span>, <span class="dt">targetPower=</span><span class="fl">0.8</span>, <span class="dt">startingN=</span><span class="dv">4000</span>, <span class="dt">iters=</span><span class="dv">100</span>, <span class="dt">increment=</span><span class="dv">200</span>){
+gompertzPowerSearch &lt;-<span class="st"> </span><span class="cf">function</span>(RR, <span class="dt">startingAge=</span><span class="dv">50</span>, <span class="dt">followupYears=</span><span class="dv">10</span>, <span class="dt">targetPower=</span><span class="fl">0.8</span>, <span class="dt">startingN=</span><span class="dv">4000</span>, <span class="dt">iters=</span><span class="dv">100</span>, <span class="dt">increment=</span><span class="dv">200</span>){
   n &lt;-<span class="st"> </span>startingN
   nPower &lt;-<span class="st"> </span><span class="dv">0</span>
-  while (nPower &lt;<span class="st"> </span>targetPower){
-    n &lt;-<span class="st"> </span>n+increment
+  <span class="cf">while</span> (nPower <span class="op">&lt;</span><span class="st"> </span>targetPower){
+    n &lt;-<span class="st"> </span>n<span class="op">+</span>increment
     sims &lt;-<span class="st"> </span><span class="kw">gompertzPower</span>(RR, n, n, startingAge, followupYears, iters)
-    pvalues &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">nrow</span>(sims), function(i) {
+    pvalues &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(sims), <span class="cf">function</span>(i) {
       <span class="kw">prop.test</span>(
-        <span class="kw">c</span>(sims[i,]$N1.deaths, sims[i,]$N2.deaths),
-        <span class="kw">c</span>(sims[i,]$N1, sims[i,]$N2),
-      <span class="dt">alternative=</span><span class="st">&quot;less&quot;</span>)$p.value
+        <span class="kw">c</span>(sims[i,]<span class="op">$</span>N1.deaths, sims[i,]<span class="op">$</span>N2.deaths),
+        <span class="kw">c</span>(sims[i,]<span class="op">$</span>N1, sims[i,]<span class="op">$</span>N2),
+      <span class="dt">alternative=</span><span class="st">&quot;less&quot;</span>)<span class="op">$</span>p.value
     })
-    nPower &lt;-<span class="st"> </span><span class="kw">sum</span>(pvalues&lt;=<span class="fl">0.05</span>) /<span class="st"> </span><span class="kw">length</span>(pvalues)
+    nPower &lt;-<span class="st"> </span><span class="kw">sum</span>(pvalues<span class="op">&lt;=</span><span class="fl">0.05</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(pvalues)
   }
   <span class="kw">return</span>(n)
 }
 
 startingN &lt;-<span class="st"> </span><span class="dv">4500</span>
 
-for (RR in <span class="kw">seq</span>(<span class="fl">0.80</span>, <span class="fl">0.95</span>, <span class="dt">by=</span><span class="fl">0.01</span>)) {
+<span class="cf">for</span> (RR <span class="cf">in</span> <span class="kw">seq</span>(<span class="fl">0.80</span>, <span class="fl">0.95</span>, <span class="dt">by=</span><span class="fl">0.01</span>)) {
   n &lt;-<span class="st"> </span><span class="kw">gompertzPowerSearch</span>(RR, <span class="dt">startingN =</span> startingN)
   startingN &lt;-<span class="st"> </span>n
   <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;RR &quot;</span>, RR, <span class="st">&quot;; necessary sample: &quot;</span>, n))
@@ -661,7 +678,7 @@ for (RR in <span class="kw">seq</span>(<span class="fl">0.80</span>, <span class
   <span class="st">&quot;Calcium&quot;</span>=<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)
 )
 
-<span class="kw">rma</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n-E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n-C.deaths), <span class="dt">data=</span>vitaminD, <span class="dt">method=</span><span class="st">&quot;REML&quot;</span>)</code></pre></div>
+<span class="kw">rma</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n<span class="op">-</span>E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n<span class="op">-</span>C.deaths), <span class="dt">data=</span>vitaminD, <span class="dt">method=</span><span class="st">&quot;REML&quot;</span>)</code></pre></div>
 <pre><code>## 
 ## Random-Effects Model (k = 42; tau^2 estimator: REML)
 ## 
@@ -675,13 +692,13 @@ for (RR in <span class="kw">seq</span>(<span class="fl">0.80</span>, <span class
 ## 
 ## Model Results:
 ## 
-## estimate       se     zval     pval    ci.lb    ci.ub          
-##  -0.0354   0.0186  -1.8990   0.0576  -0.0719   0.0011        . 
+## estimate      se     zval    pval    ci.lb   ci.ub   
+##  -0.0354  0.0186  -1.8990  0.0576  -0.0719  0.0011  .
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Since I^2=0, this is equivalent to a fixed-effect meta-analysis:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rma</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n-E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n-C.deaths), <span class="dt">data=</span>vitaminD, <span class="dt">method=</span><span class="st">&quot;FE&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rma</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n<span class="op">-</span>E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n<span class="op">-</span>C.deaths), <span class="dt">data=</span>vitaminD, <span class="dt">method=</span><span class="st">&quot;FE&quot;</span>)</code></pre></div>
 <pre><code>## 
 ## Fixed-Effects Model (k = 42)
 ## 
@@ -690,14 +707,14 @@ for (RR in <span class="kw">seq</span>(<span class="fl">0.80</span>, <span class
 ## 
 ## Model Results:
 ## 
-## estimate       se     zval     pval    ci.lb    ci.ub          
-##  -0.0354   0.0186  -1.8990   0.0576  -0.0719   0.0011        . 
+## estimate      se     zval    pval    ci.lb   ci.ub   
+##  -0.0354  0.0186  -1.8990  0.0576  -0.0719  0.0011  .
 ## 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>(Oddly, the per-study mortality rates in the Bolland forest plot/table don’t add up to the claimed totals, but are short by a few dozen each; since the RR calculated by <code>metafor</code> works out to be about the same, I assume it has something to do with how Bolland decided to handle including multiple subgroups from studies and is not important.)</p>
 <p>Turning from frequentist to Bayesian methods, we could take the fixed-effect at face-value and use a Bayesian proportion test, for example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bayes.prop.test</span>(<span class="kw">c</span>(<span class="kw">sum</span>(vitaminD$E.deaths), <span class="kw">sum</span>(vitaminD$C.deaths)), <span class="kw">c</span>(<span class="kw">sum</span>(vitaminD$E.n), <span class="kw">sum</span>(vitaminD$C.n)))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bayes.prop.test</span>(<span class="kw">c</span>(<span class="kw">sum</span>(vitaminD<span class="op">$</span>E.deaths), <span class="kw">sum</span>(vitaminD<span class="op">$</span>C.deaths)), <span class="kw">c</span>(<span class="kw">sum</span>(vitaminD<span class="op">$</span>E.n), <span class="kw">sum</span>(vitaminD<span class="op">$</span>C.n)))</code></pre></div>
 <pre><code>## 
 ##  Bayesian First Aid proportion test
 ## 
@@ -710,10 +727,10 @@ for (RR in <span class="kw">seq</span>(<span class="fl">0.80</span>, <span class
 ## Estimated group difference (Group 1 - Group 2):
 ##   0 [-0.0057, 0.0023]
 ## The relative frequency of success is larger for Group 1 by a probability
-## of 0.202 and larger for Group 2 by a probability of 0.798 .</code></pre>
+## of 0.206 and larger for Group 2 by a probability of 0.794 .</code></pre>
 <p>Using BFA has the downside that an I^2=0 doesn’t guarantee that there is no heterogeneity (it’d be surprising if there wasn’t) and gives an overly narrow predictive distribution, and BFA doesn’t easily include our informative priors. We can switch to <a href="https://cran.r-project.org/web/packages/bayesmeta/index.html">bayesmeta</a> which is easier to use than JAGS since it’s built on metafor:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brem &lt;-<span class="st"> </span><span class="kw">escalc</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n-E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n-C.deaths), <span class="dt">data=</span>vitaminD) %&gt;%
-<span class="st">          </span><span class="kw">bayesmeta</span>(<span class="dt">mu.prior.mean=</span><span class="dv">0</span>, <span class="dt">mu.prior.sd=</span><span class="fl">0.35</span>^<span class="dv">2</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brem &lt;-<span class="st"> </span><span class="kw">escalc</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n<span class="op">-</span>E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n<span class="op">-</span>C.deaths), <span class="dt">data=</span>vitaminD) <span class="op">%&gt;%</span>
+<span class="st">          </span><span class="kw">bayesmeta</span>(<span class="dt">mu.prior.mean=</span><span class="dv">0</span>, <span class="dt">mu.prior.sd=</span><span class="fl">0.35</span><span class="op">^</span><span class="dv">2</span>)
 brem</code></pre></div>
 <pre><code>##  &#39;bayesmeta&#39; object.
 ## 
@@ -727,28 +744,30 @@ brem</code></pre></div>
 ## normal(mean=0, sd=0.1225)
 ## 
 ## ML and MAP estimates:
-##                       tau          mu
-## ML joint     2.726892e-06 -0.03540806
-## ML marginal  0.000000e+00          NA
-## MAP joint    4.760369e-06 -0.03459980
-## MAP marginal 0.000000e+00 -0.03590424
+##                     tau          mu
+## ML joint     0.0000e+00 -0.03540162
+## ML marginal  0.0000e+00 -0.03698009
+## MAP joint    2.5032e-06 -0.03459976
+## MAP marginal 0.0000e+00 -0.03590425
 ## 
 ## marginal posterior summary:
-##                  tau          mu
-## mode      0.00000000 -0.03590424
-## median    0.02518403 -0.03607130
-## mean      0.03104984 -0.03615522
-## sd        0.02543032  0.02251774
-## 95% lower 0.00000000 -0.08014212
-## 95% upper 0.08001657  0.00874825</code></pre>
+##                  tau           mu
+## mode      0.00000000 -0.035904247
+## median    0.02518174 -0.036071256
+## mean      0.03104984 -0.036155194
+## sd        0.02543032  0.022517675
+## 95% lower 0.00000000 -0.080764905
+## 95% upper 0.07999854  0.008121997
+## 
+## (quoted intervals are shortest credibility intervals.)</code></pre>
 <p>Converting from log RRs to RR:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="kw">c</span>(-<span class="fl">0.080152143106</span>, -<span class="fl">0.036152849917</span>, <span class="fl">0.008768546338</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">0.080152143106</span>, <span class="op">-</span><span class="fl">0.036152849917</span>, <span class="fl">0.008768546338</span>))</code></pre></div>
 <pre><code>## [1] 0.9229759 0.9644929 1.0088071</code></pre>
 <p>Posterior predictive distribution of RR values including heterogeneity</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rrPP &lt;-<span class="st"> </span><span class="kw">exp</span>(brem$<span class="kw">rposterior</span>(<span class="dv">1000</span>, <span class="dt">predict=</span><span class="ot">TRUE</span>)[,<span class="dv">2</span>])</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rrPP &lt;-<span class="st"> </span><span class="kw">exp</span>(brem<span class="op">$</span><span class="kw">rposterior</span>(<span class="dv">1000</span>, <span class="dt">predict=</span><span class="ot">TRUE</span>)[,<span class="dv">2</span>])</code></pre></div>
 <p>Probability that vitamin D will reduce all-cause mortality in unobserved populations:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(rrPP&lt;<span class="dv">1</span>) /<span class="st"> </span><span class="kw">length</span>(rrPP)</code></pre></div>
-<pre><code>## [1] 0.846</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(rrPP<span class="op">&lt;</span><span class="dv">1</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(rrPP)</code></pre></div>
+<pre><code>## [1] 0.851</code></pre>
 </div>
 </div>
 <div id="benefit" class="section level2">
@@ -756,8 +775,8 @@ brem</code></pre></div>
 <p>Expected life expectancy increase:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">RR &lt;-<span class="st"> </span><span class="kw">mean</span>(rrPP)
 years &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">sapply</span>(rrPP, lifeExpectancyGain))
-years *<span class="st"> </span>valueOfDALY</code></pre></div>
-<pre><code>## [1] 16618.32</code></pre>
+years <span class="op">*</span><span class="st"> </span>valueOfDALY</code></pre></div>
+<pre><code>## [1] 16960.29</code></pre>
 <p>Hence, vitamin D supplementation could be worth &lt;=$16.8k.</p>
 </div>
 <div id="cost" class="section level2">
@@ -765,12 +784,12 @@ years *<span class="st"> </span>valueOfDALY</code></pre></div>
 <div id="financial" class="section level3">
 <h3>Financial</h3>
 <p>The meta-analyses do not have anything remotely near a consensus about dosage (nor do the correlational studies, despite much ink spilled), so it probably does not matter much. I have in the past purchased 360x5000IU vitamin D3 pills for <a href="http://amazon.com/gp/product/B0050MYHBQ/?tag=gwernnet-20" title="Doctor&#39;s Best Vitamin D3 5000iu Soft-gels, 360">$10.99</a>, for an annual cost of $11.14. Taking a single pill takes perhaps a sixth of a minute, which again we value at $8/hr. So if we began taking at age 30:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">moneyCost &lt;-<span class="st"> </span>(<span class="fl">10.99</span> /<span class="st"> </span><span class="dv">360</span>) *<span class="st"> </span><span class="dv">365</span>
-timeCost &lt;-<span class="st"> </span>((<span class="dv">1</span>/<span class="dv">10</span>)/<span class="dv">60</span>) *<span class="st"> </span><span class="fl">365.25</span> *<span class="st"> </span><span class="dv">8</span>
-vitaminDAnnualCost &lt;-<span class="st"> </span>moneyCost +<span class="st"> </span>timeCost
-vitaminDTotalCost &lt;-<span class="st"> </span>vitaminDAnnualCost *<span class="st"> </span><span class="kw">lifeExpectancy</span>(RR, <span class="dv">30</span>, <span class="ot">Inf</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">moneyCost &lt;-<span class="st"> </span>(<span class="fl">10.99</span> <span class="op">/</span><span class="st"> </span><span class="dv">360</span>) <span class="op">*</span><span class="st"> </span><span class="dv">365</span>
+timeCost &lt;-<span class="st"> </span>((<span class="dv">1</span><span class="op">/</span><span class="dv">10</span>)<span class="op">/</span><span class="dv">60</span>) <span class="op">*</span><span class="st"> </span><span class="fl">365.25</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span>
+vitaminDAnnualCost &lt;-<span class="st"> </span>moneyCost <span class="op">+</span><span class="st"> </span>timeCost
+vitaminDTotalCost &lt;-<span class="st"> </span>vitaminDAnnualCost <span class="op">*</span><span class="st"> </span><span class="kw">lifeExpectancy</span>(RR, <span class="dv">30</span>, <span class="ot">Inf</span>)
 vitaminDTotalCost</code></pre></div>
-<pre><code>## [1] 760.623</code></pre>
+<pre><code>## [1] 760.7271</code></pre>
 <div id="dosage" class="section level4">
 <h4>Dosage</h4>
 <p>To go into some more detail about the dosing issue, ne of the more recent meta-analyses to discuss dose in connection with all-cause mortality, <a href="http://www.gwern.net/docs/vitamind/2014-autier.pdf">Autier 2014</a>, says</p>
@@ -795,13 +814,13 @@ vitaminDTotalCost</code></pre></div>
 <div id="cost-benefit" class="section level2">
 <h2>Cost-benefit</h2>
 <p>Bringing it all together for a 30yo considering vitamin D:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">benefit &lt;-<span class="st"> </span><span class="kw">lifeExpectancyGain</span>(RR, <span class="dt">startingAge=</span><span class="dv">30</span>) *<span class="st"> </span>valueOfDALY
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">benefit &lt;-<span class="st"> </span><span class="kw">lifeExpectancyGain</span>(RR, <span class="dt">startingAge=</span><span class="dv">30</span>) <span class="op">*</span><span class="st"> </span>valueOfDALY
 cost &lt;-<span class="st"> </span>vitaminDTotalCost
-benefit -<span class="st"> </span>cost</code></pre></div>
-<pre><code>## [1] 15098.75</code></pre>
+benefit <span class="op">-</span><span class="st"> </span>cost</code></pre></div>
+<pre><code>## [1] 15423.47</code></pre>
 <div id="optimal-age" class="section level3">
 <h3>Optimal age</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ages &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="dv">120</span>, function(startingAge) <span class="kw">profitByAge</span>(startingAge, RR, <span class="dt">annualCost =</span> vitaminDAnnualCost, <span class="dt">startCost =</span> <span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ages &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">120</span>, <span class="cf">function</span>(startingAge) <span class="kw">profitByAge</span>(startingAge, RR, <span class="dt">annualCost =</span> vitaminDAnnualCost, <span class="dt">startCost =</span> <span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>))
 optimalAge &lt;-<span class="st"> </span><span class="kw">which.max</span>(ages)</code></pre></div>
 <p>So the optimal age turns out to be around 24.</p>
 </div>
@@ -809,8 +828,8 @@ optimalAge &lt;-<span class="st"> </span><span class="kw">which.max</span>(ages)
 <h3>Sensitivity</h3>
 <p>What RR would wipe out the gains from vitamin D, and how likely is an RR that pessimistic?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zeroRR &lt;-<span class="st"> </span><span class="kw">costToRR</span>(<span class="dt">startingAge=</span>optimalAge, <span class="dt">annualCost=</span>vitaminDAnnualCost)
-<span class="kw">sum</span>(rrPP&lt;zeroRR) /<span class="st"> </span><span class="kw">length</span>(rrPP)</code></pre></div>
-<pre><code>## [1] 0.837</code></pre>
+<span class="kw">sum</span>(rrPP<span class="op">&lt;</span>zeroRR) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(rrPP)</code></pre></div>
+<pre><code>## [1] 0.838</code></pre>
 <p>The window of unprofitability is so narrow that it doesn’t much change the probability.</p>
 </div>
 </div>
@@ -853,9 +872,9 @@ optimalAge &lt;-<span class="st"> </span><span class="kw">which.max</span>(ages)
 </blockquote>
 <p>So I think if we wanted to convert to something else, STR has already done the denominator for us and we just divide to get the raw RR of 0.93, which is not as good as the quoted STR of 0.85 (0.81-0.90), indicating that the covariates do differ a bit systematically? Looking at table 1, the metformin group seems to have been previously treated for many more disorders, explaining why the models think metformin is so good (because the metformin users <em>should</em> be dying off faster yet have a similar death rate as the healthy controls) Table 2 gives overall figures for all-cause mortality: <em>n</em>=78241, 2663 deaths in metformin; <em>n</em>=78241, 2669 deaths in their controls. Pooling in the sulphonylurea controls as well: <em>n</em>=748 deaths plus the 2669 other controls, total controls <em>n</em>=90463, total deaths 3417 (3417&lt;=0.9010788188). So that verifies the RR of 0.93 since the difference between 0.90 and 0.93 is probably due to the differences in total followup years.</p>
 <p>An RR of 0.85/0.90 gets us around a year, which converting to dollars:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lifeExpectancyGain</span>(<span class="fl">0.90</span>) *<span class="st"> </span>valueOfDALY</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lifeExpectancyGain</span>(<span class="fl">0.90</span>) <span class="op">*</span><span class="st"> </span>valueOfDALY</code></pre></div>
 <pre><code>## [1] 49396.02</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lifeExpectancyGain</span>(<span class="fl">0.85</span>) *<span class="st"> </span>valueOfDALY</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lifeExpectancyGain</span>(<span class="fl">0.85</span>) <span class="op">*</span><span class="st"> </span>valueOfDALY</code></pre></div>
 <pre><code>## [1] 76195.77</code></pre>
 <p>Or $50k-$76k.</p>
 <p>“Plans call for the trial to enrol 3,000 people aged 70-80 years at roughly 15 centres around the United States. The trial will take 5-7 years and cost US$50 million, Barzilai estimates, although it does not yet have funding.” There is also the Metformin in Longevity Study/MILES, but the <a href="https://clinicaltrials.gov/ct2/show/NCT02432287">pre-registration</a> indicates it will be aimed at gene expression changes and too short-term for mortality differences.</p>
@@ -867,12 +886,12 @@ optimalAge &lt;-<span class="st"> </span><span class="kw">which.max</span>(ages)
 <p>Metformin is said to be very cheap. How cheap is cheap?</p>
 <p>Bannister et al 2014 doesn’t give dosages or look for a dose-response curve but since it’s drawing on clinical records, the diabetics must be using conventional dosages. <a href="http://www.drugs.com/dosage/metformin.html">Drugs.com</a> gives a maintenance dose of 2000mg/daily; the <a href="http://www.mayoclinic.org/drugs-supplements/metformin-oral-route/proper-use/drg-20067074">Mayo Clinic</a> says not usually more than 2000-2500mg/daily; the anti-aging quacks tend to suggest ~1000mg/daily for non-diabetics; the MILES protocol calls for 1700mg/daily. I’ll use 2000mg/daily here, which is 4x500mg doses.</p>
 <p><a href="http://www.goodrx.com/metformin">GoodRx</a> says that a number of large American chains, including Walmart &amp; Target &amp; Sam’s Club, will sell 60x500mg for $4. It’s unclear if this includes sales tax, so I will tack on an additional 5% for that. This is 15 days’ worth at 2000mg/daily, so a month’s supply is $8.4, and an annual supply is $102. For the time/effort of regular consumption, I’ll estimate it at half a minute a day and $8/hr. (Metformin has <a href="http://www.medicines.org.uk/emc/medicine/23244/SPC">a shelf-life of 5 years</a> so at least in theory one could buy large batches and then the shopping time is trivial.) If we start at age 30, then without any discounting, we can expect to pay for metformin for a number of years (increased, of course, by our metformin usage):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">unitDoses &lt;-<span class="st"> </span>(<span class="dv">60</span>*<span class="dv">500</span>) /<span class="st"> </span><span class="dv">2000</span>
-unitCost &lt;-<span class="st"> </span><span class="dv">4</span> *<span class="st"> </span><span class="fl">1.05</span>
-annualPurchases &lt;-<span class="st"> </span><span class="fl">365.25</span> /<span class="st"> </span>unitDoses
-moneyCost &lt;-<span class="st"> </span>unitCost *<span class="st"> </span>annualPurchases
-timeCost &lt;-<span class="st"> </span>(<span class="fl">0.5</span>/<span class="dv">60</span>) *<span class="st"> </span><span class="dv">8</span> *<span class="st"> </span><span class="fl">365.25</span>
-metforminAnnualCost &lt;-<span class="st"> </span>moneyCost +<span class="st"> </span>timeCost
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">unitDoses &lt;-<span class="st"> </span>(<span class="dv">60</span><span class="op">*</span><span class="dv">500</span>) <span class="op">/</span><span class="st"> </span><span class="dv">2000</span>
+unitCost &lt;-<span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.05</span>
+annualPurchases &lt;-<span class="st"> </span><span class="fl">365.25</span> <span class="op">/</span><span class="st"> </span>unitDoses
+moneyCost &lt;-<span class="st"> </span>unitCost <span class="op">*</span><span class="st"> </span>annualPurchases
+timeCost &lt;-<span class="st"> </span>(<span class="fl">0.5</span><span class="op">/</span><span class="dv">60</span>) <span class="op">*</span><span class="st"> </span><span class="dv">8</span> <span class="op">*</span><span class="st"> </span><span class="fl">365.25</span>
+metforminAnnualCost &lt;-<span class="st"> </span>moneyCost <span class="op">+</span><span class="st"> </span>timeCost
 metforminAnnualCost</code></pre></div>
 <pre><code>## [1] 126.62</code></pre>
 </div>
@@ -913,7 +932,7 @@ metforminAnnualCost</code></pre></div>
 <p>The main side-effect mentioned as potentially fatal is <a href="http://en.wikipedia.org/wiki/lactic%20acidosis" title="Wikipedia: lactic acidosis">lactic acidosis</a> - for example, of the <a href="http://www.medsafe.govt.nz/profs/PUarticles/5.htm" title="Metformin and Fatal Lactic Acidosis">12 New Zealand cases 1977-1998, 8 were fatal</a> &amp; the FDA prescribing information estimates 50%, which does not sound fun. On the other hand, lactic acidosis seems to be an acute disorder whose primary effect would be killing you, so it should already be taken care of by working with a reduction in all-cause mortality (that is, even if you are more likely to die by lactic acidosis, the metformin must be sparing you even more gruesome deaths and on average it’s still helpful). And the lactic acidosis rates (2-9 per 100,000 person-years, so at 50 years of usage as prophylactic, a risk of 0.003) may simply reflect the pre-existing morbidity of diabetics and not caused by metformin, and so not a concern at all.</p>
 <p>So for side-effects, I think we can sum it up as a month or two of diarrhea, which is unpleasant but not that big a deal. I wouldn’t pay more than $50/day or so to get rid of some diarrhea, which over two months is $3000, but that’s somewhat unlikely.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metforminStartCost &lt;-<span class="st"> </span><span class="dv">3000</span>
-metforminTotalCost &lt;-<span class="st"> </span>metforminStartCost +<span class="st"> </span>metforminAnnualCost *<span class="st"> </span><span class="kw">lifeExpectancy</span>(<span class="fl">0.85</span>, <span class="dv">30</span>, <span class="ot">Inf</span>)
+metforminTotalCost &lt;-<span class="st"> </span>metforminStartCost <span class="op">+</span><span class="st"> </span>metforminAnnualCost <span class="op">*</span><span class="st"> </span><span class="kw">lifeExpectancy</span>(<span class="fl">0.85</span>, <span class="dv">30</span>, <span class="ot">Inf</span>)
 metforminTotalCost</code></pre></div>
 <pre><code>## [1] 9164.222</code></pre>
 <p>&lt;$9.2k is a little under an order of magnitude smaller than the more conservative RR estimate, giving a gain of $69k for RR=0.85.</p>
@@ -922,32 +941,32 @@ metforminTotalCost</code></pre></div>
 <div id="cost-benefit-1" class="section level2">
 <h2>Cost-benefit</h2>
 <p>Bringing it all together for a 30yo considering metformin:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">benefit &lt;-<span class="st"> </span><span class="kw">lifeExpectancyGain</span>(<span class="fl">0.85</span>, <span class="dt">startingAge=</span><span class="dv">30</span>) *<span class="st"> </span>valueOfDALY *<span class="st"> </span>(<span class="dv">1</span>/<span class="dv">3</span>)
-benefit -<span class="st"> </span>metforminTotalCost</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">benefit &lt;-<span class="st"> </span><span class="kw">lifeExpectancyGain</span>(<span class="fl">0.85</span>, <span class="dt">startingAge=</span><span class="dv">30</span>) <span class="op">*</span><span class="st"> </span>valueOfDALY <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)
+benefit <span class="op">-</span><span class="st"> </span>metforminTotalCost</code></pre></div>
 <pre><code>## [1] 15812.74</code></pre>
 <p>So metformin use is probably profitable for our 30yo.</p>
 <div id="optimal-age-1" class="section level3">
 <h3>Optimal age</h3>
 <p>What about other ages? In fact, is there an optimal age at which to start, or should we be feeding little kids metformin too? Rewriting to generalize it, we can compute the profit for if we started at all ages:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metforminPayoffs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">ages =</span> <span class="dv">1</span>:<span class="dv">120</span>,
-  <span class="dt">payoffs =</span> <span class="kw">sapply</span>(<span class="dv">1</span>:<span class="dv">120</span>, function(startingAge){
+  <span class="dt">ages =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">120</span>,
+  <span class="dt">payoffs =</span> <span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">120</span>, <span class="cf">function</span>(startingAge){
     <span class="kw">profitByAge</span>(<span class="dt">t=</span>startingAge, <span class="dt">RR=</span><span class="fl">0.85</span>,
       <span class="dt">yearValue=</span>valueOfDALY,
       <span class="dt">annualCost=</span>metforminAnnualCost,
       <span class="dt">startCost=</span>metforminStartCost,
-      <span class="dt">probabilityPenalty=</span>(<span class="dv">1</span>/<span class="dv">3</span>))
+      <span class="dt">probabilityPenalty=</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))
     })
 )
-<span class="kw">plot_ly</span>(metforminPayoffs, <span class="dt">x=</span>~ages, <span class="dt">y=</span>~payoffs, <span class="dt">type=</span><span class="st">&quot;scatter&quot;</span>, <span class="dt">mode=</span><span class="st">&quot;lines&quot;</span>)</code></pre></div>
-<div id="htmlwidget-e5b92693cf8f94afed3a" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e5b92693cf8f94afed3a">{"x":{"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"ages"},"yaxis":{"domain":[0,1],"title":"payoffs"}},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"modeBarButtonsToRemove":["sendDataToCloud"]},"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120],"y":[12581.3667818406,12704.6024716404,12827.5133145758,12950.0673438161,13072.2349739535,13193.9782237474,13315.259553024,13436.0355316177,13556.2597290187,13675.88249331,13794.8495919349,13913.1017478637,14030.574654542,14147.1987729678,14262.5684349069,14377.5931360764,14491.1934328757,14603.6041708708,14714.7221384661,14824.4977956695,14932.6251622992,15039.1603390149,15143.9017963724,15246.6992949798,15347.3913248511,15445.8084042209,15541.7525643296,15635.0363232079,15725.4423221472,15812.742462057,15896.6927401594,15977.0362205959,16053.4918210962,16125.7696999458,16193.5570440597,16256.5354880159,16314.322356848,16366.58143711,16412.9189728564,16452.9259909707,16486.1729564891,16512.2162349544,16530.5923283011,16540.8186155355,16542.3957583336,16534.8073937389,16517.5244111786,16490.0043769477,16451.6947782134,16402.0360876896,16340.4641839436,16266.4138575251,16179.3241482811,16078.641730132,15963.8265999016,15834.3574700004,15689.7379272861,15529.5033425799,15353.2277226793,15160.5310651815,14951.0872507896,14724.6321875903,14480.9719544723,14219.9909426827,13941.6599741525,13646.0441743661,13333.3103450544,13003.733736683,12657.7039314811,12295.7285088654,11918.4401962377,11526.5945354426,11121.0725473993,10702.8792522077,10273.1400610583,9833.09512729373,9384.09165549325,8927.57401956867,8465.07171100166,7998.18524841582,7528.57023588786,7057.91974618526,6587.94582834379,6120.35841825577,5656.84891652236,5199.06318619379,4748.58831275376,4306.93008014016,3875.49621237996,3455.58095504999,3048.34081949059,2654.8355703358,2275.91635711866,1912.32384345869,1564.63525304262,1233.27268148632,918.509217964932,620.473294139441,339.157247671286,74.426965826005,-173.966244414984,-406.373411182333,-623.233643549089,-825.062511015169,-1012.43660003929,-1185.98112738304,-1346.35743240049,-1494.25164330719,-1630.36275346213,-1755.39535283748,-1870.0491981009,-1975.01316138697,-2070.95896127777,-2158.53660863389,-2238.3703230188,-2311.05585076222,-2377.15851698367,-2437.21167794367,-2491.71755097193,-2541.14436643974],"mode":"lines","type":"scatter","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y"}],"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+<span class="kw">plot_ly</span>(metforminPayoffs, <span class="dt">x=</span><span class="op">~</span>ages, <span class="dt">y=</span><span class="op">~</span>payoffs, <span class="dt">type=</span><span class="st">&quot;scatter&quot;</span>, <span class="dt">mode=</span><span class="st">&quot;lines&quot;</span>)</code></pre></div>
+<div id="39068be35f1" style="width:768px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="39068be35f1">{"x":{"visdat":{"39061841c7cd":["function () ","plotlyVisDat"]},"cur_data":"39061841c7cd","attrs":{"39061841c7cd":{"x":{},"y":{},"mode":"lines","alpha":1,"sizes":[10,100],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"ages"},"yaxis":{"domain":[0,1],"title":"payoffs"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120],"y":[12581.3667818406,12704.6024716404,12827.5133145758,12950.0673438161,13072.2349739535,13193.9782237474,13315.259553024,13436.0355316177,13556.2597290187,13675.88249331,13794.8495919349,13913.1017478637,14030.574654542,14147.1987729678,14262.5684349069,14377.5931360764,14491.1934328757,14603.6041708708,14714.7221384661,14824.4977956695,14932.6251622992,15039.1603390149,15143.9017963724,15246.6992949798,15347.3913248511,15445.8084042209,15541.7525643296,15635.0363232079,15725.4423221472,15812.742462057,15896.6927401594,15977.0362205959,16053.4918210962,16125.7696999458,16193.5570440597,16256.5354880159,16314.322356848,16366.58143711,16412.9189728564,16452.9259909707,16486.1729564891,16512.2162349544,16530.5923283011,16540.8186155355,16542.3957583336,16534.8073937389,16517.5244111786,16490.0043769477,16451.6947782134,16402.0360876896,16340.4641839436,16266.4138575251,16179.3241482811,16078.641730132,15963.8265999016,15834.3574700004,15689.7379272861,15529.5033425799,15353.2277226793,15160.5310651815,14951.0872507896,14724.6321875903,14480.9719544723,14219.9909426827,13941.6599741525,13646.0441743661,13333.3103450544,13003.733736683,12657.7039314811,12295.7285088654,11918.4401962377,11526.5945354426,11121.0725473993,10702.8792522077,10273.1400610583,9833.09512729373,9384.09165549325,8927.57401956867,8465.07171100166,7998.18524841582,7528.57023588786,7057.91974618526,6587.94582834379,6120.35841825577,5656.84891652236,5199.06318619379,4748.58831275376,4306.93008014016,3875.49621237996,3455.58095504999,3048.34081949059,2654.8355703358,2275.91635711866,1912.32384345869,1564.63525304262,1233.27268148632,918.509217964932,620.473294139441,339.157247671286,74.426965826005,-173.966244414984,-406.373411182333,-623.233643549089,-825.062511015169,-1012.43660003929,-1185.98112738304,-1346.35743240049,-1494.25164330719,-1630.36275346213,-1755.39535283748,-1870.0491981009,-1975.01316138697,-2070.95896127777,-2158.53660863389,-2238.3703230188,-2311.05585076222,-2377.15851698367,-2437.21167794367,-2491.71755097193,-2541.14436643974],"mode":"lines","type":"scatter","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>Apparently there <em>is</em> an optimal age - and it’s not 30yo but 45yo (metformin is profitable enough that starting too early, rather than never, is still a good idea). So quite aside from waiting for better information like the MILES results, our hypothetical 30yo still should wait a long time before starting to use metformin. Also unsurprising is that ~90yo, mortality rates become so high that the metformin reduction yields such a small absolute gain of time that it can no longer offset the fixed absolute cost of metformin.</p>
 <p>While $18k may not sound like that much on an individual level, it’s substantial (&lt;$1.42t over all people currently 55+) on a societal scale:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## multiply maximal benefit by the total number of
 ## Americans &gt;=55yo according to http://www.indexmundi.com/united_states/age_structure.html :
-<span class="kw">max</span>(ages) *<span class="st"> </span>(<span class="dv">19309019</span> +<span class="st"> </span><span class="dv">20720284</span> +<span class="st"> </span><span class="dv">20304644</span> +<span class="st"> </span><span class="dv">25874360</span>)</code></pre></div>
-<pre><code>## [1] 1.304055e+12</code></pre>
+<span class="kw">max</span>(ages) <span class="op">*</span><span class="st"> </span>(<span class="dv">19309019</span> <span class="op">+</span><span class="st"> </span><span class="dv">20720284</span> <span class="op">+</span><span class="st"> </span><span class="dv">20304644</span> <span class="op">+</span><span class="st"> </span><span class="dv">25874360</span>)</code></pre></div>
+<pre><code>## [1] 1.332262e+12</code></pre>
 <p>The estimate is so small because we use a small estimate of the value of 1 QALY; <a href="http://www.med.mcgill.ca/epidemiology/courses/EPIB654/Summer2010/QALY/The_Economic_Value_of_Health.pdf" title="The Value of Health and Longevity">Murphy &amp; Topel 2005</a>, using a much more sophisticated calculation and more realistic QALY estimates, note that “A 10 percent reduction in all-cause mortality [RR=0.90] would have a present discounted social value of $18.5 trillion.”</p>
 </div>
 </div>
@@ -958,7 +977,7 @@ benefit -<span class="st"> </span>metforminTotalCost</code></pre></div>
   <span class="dt">startingAge=</span>optimalAge,
   <span class="dt">annualCost=</span>metforminAnnualCost,
   <span class="dt">startCost=</span>metforminStartCost,
-  <span class="dt">probabilityPenalty=</span>(<span class="dv">1</span>/<span class="dv">3</span>)
+  <span class="dt">probabilityPenalty=</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)
 )</code></pre></div>
 <pre><code>## [1] 0.9386521</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># [1] 0.9520242072</span></code></pre></div>
@@ -967,28 +986,28 @@ benefit -<span class="st"> </span>metforminTotalCost</code></pre></div>
 <div id="tame-power-analysis" class="section level2">
 <h2>TAME power analysis</h2>
 <p>Using the previously defined <code>gompertzPower</code> function, we can ask a question like: assuming a clinical trial is investigating a claimed RR of 0.85, plans to enrol 3000 people aged 70yo, so presumably 1500 in each arm, and will followup for 5 years (a trial which bears a certain resemblance to plans for TAME); how often would the observed RR&lt;1.0?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df0<span class="fl">.85</span> &lt;-<span class="st"> </span><span class="kw">gompertzPower</span>(<span class="fl">0.85</span>, <span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">100</span>)
-<span class="kw">table</span>(df0<span class="fl">.85</span>$RR.observed&lt;<span class="fl">1.0</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df0.<span class="dv">85</span> &lt;-<span class="st"> </span><span class="kw">gompertzPower</span>(<span class="fl">0.85</span>, <span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">100</span>)
+<span class="kw">table</span>(df0.<span class="dv">85</span><span class="op">$</span>RR.observed<span class="op">&lt;</span><span class="fl">1.0</span>)</code></pre></div>
 <p>Let’s consider something more plausible like the baby aspirin or some metformin estimates, an RR of 0.94:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df0<span class="fl">.94</span> &lt;-<span class="st"> </span><span class="kw">gompertzPower</span>(<span class="fl">0.94</span>, <span class="dv">1500</span>, <span class="dv">1500</span>, <span class="dv">70</span>, <span class="dv">5</span>, <span class="dv">1000</span>)
-<span class="kw">table</span>(df0<span class="fl">.94</span>$RR.observed&lt;<span class="fl">1.0</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df0.<span class="dv">94</span> &lt;-<span class="st"> </span><span class="kw">gompertzPower</span>(<span class="fl">0.94</span>, <span class="dv">1500</span>, <span class="dv">1500</span>, <span class="dv">70</span>, <span class="dv">5</span>, <span class="dv">1000</span>)
+<span class="kw">table</span>(df0.<span class="dv">94</span><span class="op">$</span>RR.observed<span class="op">&lt;</span><span class="fl">1.0</span>)
     <span class="co"># FALSE  TRUE</span>
     <span class="co">#  236   764</span></code></pre></div>
 <p>76% power is likewise still acceptable. But just because a clinical trials <em>plans</em> to enrol <em>n</em>=3000 doesn’t mean they will succeed, as there is always attrition, and attrition can be severe depending on how unpleasant the side-effects are; for metformin, for example, the attrition could easily be 30%:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df0.94attrit &lt;-<span class="st"> </span><span class="kw">gompertzPower</span>(<span class="fl">0.94</span>, <span class="dv">1500</span>*<span class="fl">0.70</span>, <span class="dv">1500</span>*<span class="fl">0.70</span>, <span class="dv">70</span>, <span class="dv">5</span>, <span class="dv">1000</span>)
-<span class="kw">table</span>(df0.94attrit$RR.observed&lt;<span class="fl">1.0</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df0.94attrit &lt;-<span class="st"> </span><span class="kw">gompertzPower</span>(<span class="fl">0.94</span>, <span class="dv">1500</span><span class="op">*</span><span class="fl">0.70</span>, <span class="dv">1500</span><span class="op">*</span><span class="fl">0.70</span>, <span class="dv">70</span>, <span class="dv">5</span>, <span class="dv">1000</span>)
+<span class="kw">table</span>(df0.94attrit<span class="op">$</span>RR.observed<span class="op">&lt;</span><span class="fl">1.0</span>)
     <span class="co"># FALSE  TRUE</span>
     <span class="co">#   254   746</span></code></pre></div>
 <p>Knocking us back to 74%. So under more realistic assumptions about attrition and effect sizes, there’s a good chance that there would not be a correct signed result. Finally, we could consider the probability that we would get both a RR in the desired direction and the difference would be large enough to be statistically-significant at <em>p</em>&lt;0.05 when treated as a two-proportion problem:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span>df0.94attrit
-pvalues &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">nrow</span>(df), function(i) {
+pvalues &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df), <span class="cf">function</span>(i) {
   <span class="kw">prop.test</span>(
-    <span class="kw">c</span>(df[i,]$N1.deaths, df[i,]$N2.deaths),
-    <span class="kw">c</span>(df[i,]$N1, df[i,]$N2),
-    <span class="dt">alternative=</span><span class="st">&quot;less&quot;</span>)$p.value 
+    <span class="kw">c</span>(df[i,]<span class="op">$</span>N1.deaths, df[i,]<span class="op">$</span>N2.deaths),
+    <span class="kw">c</span>(df[i,]<span class="op">$</span>N1, df[i,]<span class="op">$</span>N2),
+    <span class="dt">alternative=</span><span class="st">&quot;less&quot;</span>)<span class="op">$</span>p.value 
 })
 
-<span class="kw">table</span>(pvalues&lt;=<span class="fl">0.05</span>)</code></pre></div>
+<span class="kw">table</span>(pvalues<span class="op">&lt;=</span><span class="fl">0.05</span>)</code></pre></div>
 <p>So it is highly unlikely (~10%) we could expect the realistic trial to deliver a statistically-significant reduction in mortality. (This lack of power for statistical-significance on ACM may be why the TAME investigators talk primarily about looking for reductions in cancer/heart attacks/strokes: as more common events than death, reductions will show up more clearly there, as they do in past metformin trials.) We don’t necessarily care about statistical-significance, since this is a decision-analysis approach: our question is whether the gained data shifts the posterior probability enough to change the optimal decision. But it’s good to have an idea of power in that sense to make it easier to interpret the research article &amp; media reports (eg the trial might be a ‘failure’ from the point of view of statistical-significance, even as it increases the profitability of using metformin).</p>
 <p>If we really wanted 80% power for <em>p</em>&lt;0.05, how big a sample do we need? In this case, it turns out to be ~7500 per arm (after any attrition) or ~15k total.</p>
 </div>
@@ -1035,6 +1054,9 @@ pvalues &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class
 </div>
 <div id="links-for-future-investigation" class="section level1">
 <h1>Links for Future Investigation</h1>
+<ul>
+<li><a href="http://slatestarcodex.com/2014/01/25/beware-mass-produced-medical-recommendations/">Scott Alexander Thinks Vitamin D3 Supplementation is Bad</a></li>
+</ul>
 <div id="other-evidence-roundups" class="section level2">
 <h2>Other Evidence Roundups</h2>
 <ul>
@@ -1087,7 +1109,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

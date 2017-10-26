@@ -168,8 +168,9 @@ This presents a problem of counting. As Richardson observed, counting deaths by 
 # This probably won't work. Just open data-cache/ConflictCatalog18vars.xls in Excel and hit "save", and then try it.
 if(!file.exists("../data-cache/ConflictCatalog18vars.xls")){
   download.file("http://www.cgeh.nl/sites/default/files/Conflict%20Catalog%2018%20vars.xls", destfile = "../data-cache/ConflictCatalog18vars.xls")
+  stop('Needed file not found. Please open ../data-cache/ConflictCatalog18vars.xls and save it as a CSV')
 }
-ConflictCatalog <- read_excel("../data-cache/ConflictCatalog18vars.xls")
+ConflictCatalog <- read_csv("../data-cache/ConflictCatalog18vars.csv")
 ```
 
 To jump upwards towards the margins of measurable violence, [MURDER RATES]
@@ -231,9 +232,10 @@ In general, predicting the size of a population is a fraught modeling exercise. 
 
 We should treat any conclusions which rely upon precise estimates of the global population as suspect. For present purposes, simply being within about 10% of the "correct" value should suffice. and our confidence in the estimates drops significantly as we look back in time further than around 1950. Never-the-less, many have attempted to construct meaningfully useful estimates, and these tend to be largely in agreement:
 
-```{r populationData, message=FALSE}
+```{r populationData, message=FALSE, eval=FALSE}
 if(!file.exists("../data-cache/PopEstimates.csv")){
   #TODO: Throw an Error
+  stop('Need Population Estimates Data.')
 }
 
 pop <- read_csv("../data-cache/PopEstimates.csv") %>%

@@ -38,7 +38,7 @@ Zillow estimates that the ratio of sale prices to listing prices in our area is 
 
 Redfin publishes [historical aggregate data](https://www.redfin.com/blog/data-center) about real estate in a wide variety of different geographic areas. I've downloaded the [Redfin data](http://anthony.boyles.cc/data-cache/redfin.csv) for our town (Annandale, VA).
 
-```{r}
+```{r, eval=FALSE}
 library('readr')
 library('magrittr')
 library('dplyr')
@@ -56,9 +56,9 @@ plot_ly(redfin, x = ~PeriodEnd, y = ~ListPrice, type = "scatter", mode = "lines"
   add_trace(y = ~MedianSalePrice, name = "Median Sale Price")
 ```
 
-```{r}
+```{r, eval=FALSE}
 library('stringi')
-houses <- read_csv("data-cache/redfin2.csv") %>%
+houses <- read_csv("../data-cache/redfin2.csv") %>%
   mutate(
     Sold = ifelse(`SALE TYPE` == "")
   ) %>%
@@ -66,3 +66,4 @@ houses <- read_csv("data-cache/redfin2.csv") %>%
 
 plot_ly(redfin, x = ~PeriodEnd, y = ~ListPrice, type = "scatter", mode = "lines", name = "(Approx) Median List Price") %>%
   add_trace(y = ~MedianSalePrice, name = "Median Sale Price")
+```

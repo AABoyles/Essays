@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>How to Price a House</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../essays/">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">How to Price a House</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">How to Price a House</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#deciding-a-listing-price">Deciding a Listing Price</a><ul>
+      <li><a href="#search-optimization">Search Optimization</a></li>
+      <li><a href="#competitive-optimization">Competitive Optimization</a></li>
+      </ul></li>
+      <li><a href="#predicting-a-sale-price">Predicting a Sale Price</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<p>For the <a href="http://anthony.boyles.cc/portfolio/HousePricesInAmesIowa.html">House Prices in Ames, Iowa</a> competition, we looked at a ton of data on a ton of houses.</p>
+<p>However, reality is much messier. This is a common complaint about Kaggle, and using Kaggle as a signal of experience doing data science. Kaggle provides its competitors with effectively perfect data, and then incentivizes really deep stacks of models to eek out tiny improvements in the competition’s scoring metric.</p>
+<p>So, when it came time to sell my own house, I might’ve liked to use all that nifty research I did for the Ames competition, but I couldn’t because I don’t have the same data from the town where my house is.</p>
+<div id="deciding-a-listing-price" class="section level1">
+<h1>Deciding a Listing Price</h1>
+<div id="search-optimization" class="section level2">
+<h2>Search Optimization</h2>
+<p>As potential buyers, we’ve mostly relied on Zillow and Redfin for information about houses we might want to purchase. These sites both have very nice query builders for filtering down possible houses.</p>
+<p>However, there is one granular tool on top of a more continuous metric. Namely, they both have sliders to specify a desired price range, and the sliders move in increments of $10,000. Moreover, as buyers, we’re thinking in even more granular terms, rounding our intentions to buy to the nearest $50,000. A good strategy, therefore, is to set a price that maximizes within that $50,000 range. Unfortunately, that would recommend listing our house at something like $449,900, which is less than we value the house, or $499,000, which is more than we could possibly hope to get for it without extensive renovations.</p>
+</div>
+<div id="competitive-optimization" class="section level2">
+<h2>Competitive Optimization</h2>
+<p>At the time of listing, there weren’t many houses similar to ours on the market yet. That meant we had some latitude to sell for a higher price relative to other houses like ours, because we aren’t competing for buyers’ attention.</p>
+<p>These approaches kind-of work, but they really don’t answer a fundamental question: what is the house worth? Rather, how much should we expect someone to pay for it?</p>
+</div>
+</div>
+<div id="predicting-a-sale-price" class="section level1">
+<h1>Predicting a Sale Price</h1>
+<p>All other things being equal (hah), selling a house is a trade-off between the amount of money you wish to gain from the sale and the amount of time you’re willing to leave it on the market. If you’re able to wait for someone willing to pay the price you want, the house can stay on the market for a long time. We are relatively flexible–we aren’t trying to get rid of it quickly, but we’d like to minimize the time it’s on the market and maximize the amount it sells for.</p>
+<p>Zillow estimates that the ratio of sale prices to listing prices in our area is roughly .98. Stated differently, on average, a house near our house will sell for 98% of its list price.</p>
+<p>Redfin publishes <a href="https://www.redfin.com/blog/data-center">historical aggregate data</a> about real estate in a wide variety of different geographic areas. I’ve downloaded the <a href="http://anthony.boyles.cc/data-cache/redfin.csv">Redfin data</a> for our town (Annandale, VA).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;readr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;magrittr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;dplyr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;lubridate&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;plotly&#39;</span>)
+
+redfin &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;../data-cache/redfin.csv&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">PeriodEnd =</span> <span class="kw">mdy</span>(PeriodEnd),
+    <span class="dt">ListPrice =</span> MedianSalePrice<span class="op">/</span>AvgSaleToList
+  ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(PeriodEnd)
+
+<span class="kw">plot_ly</span>(redfin, <span class="dt">x =</span> <span class="op">~</span>PeriodEnd, <span class="dt">y =</span> <span class="op">~</span>ListPrice, <span class="dt">type =</span> <span class="st">&quot;scatter&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;lines&quot;</span>, <span class="dt">name =</span> <span class="st">&quot;(Approx) Median List Price&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_trace</span>(<span class="dt">y =</span> <span class="op">~</span>MedianSalePrice, <span class="dt">name =</span> <span class="st">&quot;Median Sale Price&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;stringi&#39;</span>)
+houses &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;../data-cache/redfin2.csv&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">Sold =</span> <span class="kw">ifelse</span>(<span class="st">`</span><span class="dt">SALE TYPE</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;&quot;</span>)
+  ) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(PeriodEnd)
+
+<span class="kw">plot_ly</span>(redfin, <span class="dt">x =</span> <span class="op">~</span>PeriodEnd, <span class="dt">y =</span> <span class="op">~</span>ListPrice, <span class="dt">type =</span> <span class="st">&quot;scatter&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;lines&quot;</span>, <span class="dt">name =</span> <span class="st">&quot;(Approx) Median List Price&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_trace</span>(<span class="dt">y =</span> <span class="op">~</span>MedianSalePrice, <span class="dt">name =</span> <span class="st">&quot;Median Sale Price&quot;</span>)</code></pre></div>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

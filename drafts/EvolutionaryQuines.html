@@ -30,37 +30,41 @@
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #dddddd; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { font-weight: bold; } /* Keyword */
-code > span.dt { color: #800000; } /* DataType */
-code > span.dv { color: #0000ff; } /* DecVal */
-code > span.bn { color: #0000ff; } /* BaseN */
-code > span.fl { color: #800080; } /* Float */
-code > span.ch { color: #ff00ff; } /* Char */
-code > span.st { color: #dd0000; } /* String */
-code > span.co { color: #808080; font-style: italic; } /* Comment */
-code > span.al { color: #00ff00; font-weight: bold; } /* Alert */
-code > span.fu { color: #000080; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #ff0000; font-weight: bold; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #ff00ff; } /* SpecialChar */
-code > span.vs { color: #dd0000; } /* VerbatimString */
-code > span.ss { color: #dd0000; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { } /* Variable */
-code > span.cf { } /* ControlFlow */
-code > span.op { } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { font-weight: bold; } /* Preprocessor */
-code > span.at { } /* Attribute */
-code > span.do { color: #808080; font-style: italic; } /* Documentation */
-code > span.an { color: #808080; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #808080; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #808080; font-weight: bold; font-style: italic; } /* Information */
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
@@ -152,7 +156,7 @@ $(document).ready(function () {
 <p>The emergence of self-replicating molecules–a non-living precursor to life–is the most likely candidate for the Great Filter. To illustrate the logic behind this conclusion, let’s translate the problem into a analog upon which we perform experiments and direct analysis. In computer science, a <a href="http://www.nyx.net/~gthompso/quine.htm"><em>quine</em></a> is a program which “self-replicates” in a certain sense. That is, it emits exactly its own source code. Consider the following quine (the shortest I could find), written in Python:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">_<span class="op">=</span><span class="st">&#39;_=</span><span class="sc">%r</span><span class="st">;print _</span><span class="sc">%%</span><span class="st">_&#39;</span><span class="op">;</span><span class="bu">print</span> _<span class="op">%</span>_</code></pre></div>
 <pre><code>## _=&#39;_=%r;print _%%_&#39;;print _%_</code></pre>
-<p>That’s 29 Characters, each of which is necessary and irreplaceable to make the quine work. 11 of those characters are unique. Therefore, we could compress this program by encoding it into a characterset which used only <span class="math inline">\(\log_211\approx4\)</span> bits per character. This step is fairly generous: for contrast, the standard characterset for strings is ASCII, which contains 256 unique characters, requiring 8 bits per character. Now, in our maximally dense characterset, the quine is an ordered sequence of <span class="math inline">\(\frac{4bits}{1char}*\frac{29char}{1quine}=116bits/quine\)</span>. Now, suppose we flipped a coin 116 times. (Coin-Flipping is a <a href="http://www.stat.columbia.edu/~gelman/research/published/diceRev2.pdf">surprisingly excellent</a> source for randomly-selected bits.) If we map heads to 1 and tails to 0, the probability that we generate our quine is exactly <span class="math inline">\(\frac{1}{2^{116}}\)</span> (or if it helps you visualize it in base 10, approximately <span class="math inline">\(10^{-34}\)</span>. If we don’t compress our alphabet to the minimum integral bit density, that probability drops to <span class="math inline">\(\frac{1}{2^{232}}\)</span>, or about <span class="math inline">\(10^{-69}\)</span>. To illustrate how unlikely this is, Scott Alexander <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">recently used a clever device</a> which I am now shamelessly going to steal. Imagine a researcher in a laboratory. Now imagine…</p>
+<p>That’s 29 Characters, each of which is necessary and irreplaceable to make the quine work. 11 of those characters are unique. Therefore, we could compress this program by encoding it into a characterset which used only <span class="math inline">\(\log_211\approx4\)</span> bits per character. This step is fairly generous: for contrast, the standard characterset for strings is ASCII, which contains 256 unique characters, requiring 8 bits per character. Now, in our maximally dense characterset, the quine is an ordered sequence of <span class="math inline">\(\frac{4bits}{1char}*\frac{29char}{1quine}=116bits/quine\)</span>. Now, suppose we flipped a coin 116 times. (Coin-Flipping is a <a href="http://www.stat.columbia.edu/~gelman/research/published/diceRev2.pdf">surprisingly excellent</a> source for unbiased randomly-selected bits.) If we map heads to 1 and tails to 0, the probability that we generate our quine is exactly <span class="math inline">\(\frac{1}{2^{116}}\)</span> (or if it helps you visualize it in base 10, approximately <span class="math inline">\(10^{-34}\)</span>. If we don’t compress our alphabet to the minimum integral bit density, that probability drops to <span class="math inline">\(\frac{1}{2^{232}}\)</span>, or about <span class="math inline">\(10^{-69}\)</span>. To illustrate how unlikely this is, Scott Alexander <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">recently used a clever device</a> which I am now shamelessly going to steal. Imagine a researcher in a laboratory. Now imagine…</p>
 <blockquote>
 <p>[…] a tornado roars into the laboratory. The researcher is sucked high into the air. There he is struck by a meteorite hurtling through the upper atmosphere, which knocks him onto the rooftop of a nearby building. […] His corpse is flung into the street nearby. As the rubble settles, his face is covered by a stray sheet of newspaper; the headline reads 2016 PRESIDENTIAL ELECTION ENDS WITH TRUMP AND SANDERS IN PERFECT TIE. Well, the per-second probability of getting sucked into the air by a <a href="https://what-if.xkcd.com/19/">tornado</a> is 10^-12; that of being struck by a <a href="https://what-if.xkcd.com/19/">meteorite</a> 10^-16. The chance of the next election being <a href="http://www.predictwise.com/politics/2016demnomination">Sanders vs. Trump</a> is 10^-4, and the chance of an election ending in <a href="http://fivethirtyeight.com/features/new-polls-raise-chance-of-electoral-college-tie/">an electoral tie</a> about 10^-2.</p>
 </blockquote>
