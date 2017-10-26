@@ -1,0 +1,26 @@
+---
+title: "Metabolyze"
+---
+
+An app to analyze metabolism of drugs.
+
+Collect data on:
+
+* [Infusion Rate](https://en.wikipedia.org/wiki/Rate_of_infusion)
+* [Mean Residence Time](https://en.wikipedia.org/wiki/Mean_residence_time)
+* [Onset of Action](https://en.wikipedia.org/wiki/Onset_of_action)
+* [ED50](https://en.wikipedia.org/wiki/Effective_dose_(pharmacology))
+* [ED95]
+* [LD50](https://en.wikipedia.org/wiki/Median_lethal_dose)
+
+## Links with useful information about specific drugs:
+
+* [Caffeine](https://en.wikipedia.org/wiki/Caffeine#Pharmacokinetics)
+* [Ethanol](https://en.wikipedia.org/wiki/Alcohol_(drug)#Pharmacokinetics)
+
+## Links with useful information about metabolic rates:
+
+* https://en.wikipedia.org/wiki/Pharmacokinetics
+* https://en.wikipedia.org/wiki/Biological_half-life
+* https://en.wikipedia.org/wiki/Bioavailability
+* https://en.wikipedia.org/wiki/ADME
