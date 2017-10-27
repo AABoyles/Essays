@@ -2,25 +2,105 @@
 title: "Metabolyze"
 ---
 
-An app to analyze metabolism of drugs.
+Metabolyze is an idea for an app to analyze metabolism rates of drugs. You input the time and dosage of your favored chemical, and it plots the curve of the drug's degradation in your bloodstream.
 
-Collect data on:
+# Inputs
 
-* [Infusion Rate](https://en.wikipedia.org/wiki/Rate_of_infusion)
-* [Mean Residence Time](https://en.wikipedia.org/wiki/Mean_residence_time)
-* [Onset of Action](https://en.wikipedia.org/wiki/Onset_of_action)
+1. Drug, Dosage and Time
+2. Anthropometrics: Height and Weight
+3. Demographics: Age and Gender
+
+I doubt that I'll be able to control for demographic characteristics in any meaningful fashion. Thus far, the pharmacokinetics literature I've seen is much to spotty. Many studies of small groups of college-aged men, which is OK for college-aged men, but less informative for the rest of us. Even so, there are some important, known relationships I may want to build against eventually. Speaking of building...
+
+# Development
+
+1. Proof-of-concept. That's basically [this document](#Proof-of-Concept).
+2. Webapp version. I'm going to skip [Shiny](https://shiny.rstudio.com/) and go straight to Javascript. However, as this is a learning exercise on multiple fronts, I'll be using a [popular but](https://reactjs.org/) [unfamiliar (to me)](https://material-ui-next.com/getting-started/installation/) stack.
+3. Mobile App. Part of the appeal of the aforementioned unfamiliar stack is the [native mobile environment](https://facebook.github.io/react-native/). This should (hopefully) be little more than a mobile-oriented refactoring.
+
+# Proof-of-Concept
+
+I drink coffee twice daily: once as soon as I arrive at the office in the morning, and once as soon as I return to it after lunch. I want to view the curve of caffeine I'm metabolizing at any given time. While it appears that there are [literally thousands of caffeine calculators](https://www.google.com/search?q=Caffeine+Calculator), what I'm looking for is both more specific (it shows the volume, mass, or concentration over time, [like so](https://play.google.com/store/apps/details?id=com.cafapppro)) and more general (it also does alcohol and other pharmacological substances for which these curves are relatively well-studied).
+
+But to start with, let's just implement caffeine under ideal circumstances. Assume I drink the entire cup in a single, hot gulp at 9am and 1pm. Let's also just assume [the bioavailability of caffeine in coffee is 100%](https://www.ncbi.nlm.nih.gov/pubmed/6832208).
+
+```{r, message=FALSE}
+library('tidyverse')
+library('plotly')
+
+times <- data.frame(
+  day = rep(0:6, each=96),
+  hour = rep(0:23, each=4, times=7),
+  minute = rep(15*0:3, 24),
+  volume = 0
+) %>%
+  mutate(
+    time = day + hour/24 + minute/1440
+  )
+```
+
+Now, let's implement a function to compute the residual quantity given a simple exponential decay model.
+
+```{r}
+# Quantity: Amount; 100mg by default
+# Absorption: time during which initial amount is absorbed, bioavailability increases linearly; 1hr by default
+# halflife: amount of time required to reduce bioavailability by half. 6hr by default
+# returns a vector of length
+decay <- function(quantity = 100, halflife = 24, length = 96) quantity*2^(-(0:(length-1))/halflife)
+```
+
+Perfect. Now, what's the curve of my two cups of joe?
+
+```{r}
+caffeinedecay <- decay(125, length=200)
+firstCup <- c(rep(0, 36), caffeinedecay, rep(0, nrow(times)-length(caffeinedecay)-36))
+secondCup <- c(rep(0, 52), caffeinedecay, rep(0, nrow(times)-length(caffeinedecay)-52))
+times <- times %>%
+  mutate(volume = firstCup + secondCup)
+
+plot_ly(times, x=~time, y=~volume, type="scatter", mode="lines", line = list(shape = "spline"))
+```
+
+Cool. Now, what if I do that daily, instead of just on Monday?
+
+```{r}
+times <- times %>% mutate(volume = 0)
+
+for(i in 0:4*96){
+  firstCup <- c(rep(0, i+36), caffeinedecay, rep(0, nrow(times)-length(caffeinedecay)-i-36))
+  secondCup <- c(rep(0, i+52), caffeinedecay, rep(0, nrow(times)-length(caffeinedecay)-i-52))
+  
+  times <- times %>%
+    mutate(volume = volume + firstCup + secondCup)
+}
+
+plot_ly(times, x=~time, y=~volume, type="scatter", mode="lines", line = list(shape = "spline"))
+```
+
+Excellent! On Monday I run a little low, but I hit (and maintain) an effectively stable equilibrium by Tuesday. This is partly due to cheating on my part (note that the decay length is only 200, rather than the full remaining length of the week).
+
+I could continue building out features here ([uptake delay](https://en.wikipedia.org/wiki/Onset_of_action) is an obvious next step), but it would be frustration without a purpose. R and Javascript are radically different languages, and where I can see easy solutions in Javascript, I see only headaches in R. Granted, I started in R to document this process, and iron out the epistemic tangles that would become javascript headaches. To which I can say "mischeif managed." On to [development](#development) stage 2!
+
+# Todos:
+
+Collect data on substances'
+
+* [Onset of Actions](https://en.wikipedia.org/wiki/Onset_of_action)
+* [Mean Residence Times](https://en.wikipedia.org/wiki/Mean_residence_time)
 * [ED50](https://en.wikipedia.org/wiki/Effective_dose_(pharmacology))
 * [ED95]
 * [LD50](https://en.wikipedia.org/wiki/Median_lethal_dose)
 
-## Links with useful information about specific drugs:
+## Links with useful information about specific drugs
 
 * [Caffeine](https://en.wikipedia.org/wiki/Caffeine#Pharmacokinetics)
 * [Ethanol](https://en.wikipedia.org/wiki/Alcohol_(drug)#Pharmacokinetics)
+* [Sketchy site with ballparks on marajuana](https://www.erowid.org/plants/cannabis/cannabis_effects.shtml)
 
-## Links with useful information about metabolic rates:
+## Links with useful information about metabolic rates
 
 * https://en.wikipedia.org/wiki/Pharmacokinetics
 * https://en.wikipedia.org/wiki/Biological_half-life
 * https://en.wikipedia.org/wiki/Bioavailability
 * https://en.wikipedia.org/wiki/ADME
+* [DrugBank](https://www.drugbank.ca/drugs/DB00201#pharmacology) - has a bunch of possibly useful information
