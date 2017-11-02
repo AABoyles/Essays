@@ -157,20 +157,6 @@ $(document).ready(function () {
       <li><a href="#definitions">Definitions</a></li>
       <li><a href="#prior-on-rrs">Prior on RRs</a></li>
       </ul></li>
-      <li><a href="#vitamin-d">Vitamin D</a><ul>
-      <li><a href="#background">Background</a></li>
-      <li><a href="#causality">Causality</a></li>
-      <li><a href="#benefit">Benefit</a></li>
-      <li><a href="#cost">Cost</a></li>
-      <li><a href="#cost-benefit">Cost-benefit</a></li>
-      </ul></li>
-      <li><a href="#metformin">Metformin</a><ul>
-      <li><a href="#benefit-1">Benefit</a></li>
-      <li><a href="#cost-1">Cost</a></li>
-      <li><a href="#cost-benefit-1">Cost-benefit</a></li>
-      <li><a href="#sensitivity-1">Sensitivity</a></li>
-      <li><a href="#tame-power-analysis">TAME power analysis</a></li>
-      </ul></li>
       <li><a href="#nicotinamide-riboside">Nicotinamide Riboside</a></li>
       <li><a href="#pterostilbene">Pterostilbene</a></li>
       <li><a href="#rapamycin">Rapamycin</a></li>
@@ -178,8 +164,7 @@ $(document).ready(function () {
       <li><a href="#alcohol">Alcohol</a></li>
       <li><a href="#caloric-restriction">Caloric Restriction</a></li>
       <li><a href="#castration">Castration</a></li>
-      <li><a href="#coffee">Coffee</a></li>
-      <li><a href="#links-for-future-investigation">Links for Future Investigation</a><ul>
+      <li><a href="#coffee">Coffee</a><ul>
       <li><a href="#other-evidence-roundups">Other Evidence Roundups</a></li>
       <li><a href="#methodological-topics">Methodological Topics</a></li>
       </ul></li>
@@ -191,18 +176,12 @@ $(document).ready(function () {
 <div id="main">
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;parallel&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;htmltab&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;readr&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;plyr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;purrr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;intubate&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;metafor&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;BayesianFirstAid&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;bayesmeta&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;plotly&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;intubate&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;knitr&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;htmltab&quot;</span>)
 knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)</code></pre></div>
@@ -314,8 +293,8 @@ knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="k
 <ul>
 <li><a href="">Aerobic Exercise</a></li>
 <li><a href="">Resistance Exercise</a></li>
+<li><a href="">Accident Risk Reduction</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Castration%23Medical%20consequences">Castration</a></li>
-<li><a href="">General Risk Reduction</a></li>
 </ul>
 <p>In the exceedingly unlikely case that I exhaust all of these, there’s the…</p>
 <ul>
@@ -420,7 +399,7 @@ lifeExpectancyGainApproximation &lt;-<span class="st"> </span><span class="cf">f
 <span class="st">      </span>startCost)
 }
 
-rrs &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.5</span>,<span class="dv">1</span>,<span class="dt">by=</span><span class="fl">0.025</span>)
+rrs &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dt">by=</span><span class="fl">0.025</span>)
 
 startAge &lt;-<span class="st"> </span><span class="dv">0</span>
 <span class="kw">data.frame</span>(
@@ -546,7 +525,7 @@ startAge &lt;-<span class="st"> </span><span class="dv">0</span>
 </tbody>
 </table>
 <p>This provides upper bounds, and can help gauge plausibility of interventions for various variables - for example, if we were a 90-yo man considering embarking on caloric restriction, we might note that the upper bounds look like:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rrs &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.8</span>,<span class="dv">1</span>,<span class="dt">by=</span><span class="fl">0.05</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rrs &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.8</span>, <span class="dv">1</span>, <span class="dt">by=</span><span class="fl">0.05</span>)
 startAge &lt;-<span class="st"> </span><span class="dv">90</span>
 <span class="kw">data.frame</span>(
   <span class="dt">RR =</span> rrs,
@@ -650,7 +629,7 @@ startingN &lt;-<span class="st"> </span><span class="dv">4500</span>
 </div>
 <div id="prior-on-rrs" class="section level2">
 <h2>Prior on RRs</h2>
-<p>Useful interventions are rare and our analyses should incorporate a skeptical informative prior reflecting our knowledge that it is highly unlikely that any particular intervention will genuinely increase life expectancy; in particular, RRs &lt;0.5 (or &gt;2.0) are rare. Since there are no previous compilations of randomized effects for interventions on all-cause mortality in healthy people to use for priors, I fall back on general-purpose but still informative skeptical priors found to work well across many problems by <a href="http://projecteuclid.org/download/pdfview_1/euclid.aoas/1231424214" title="A weakly informative default prior distribution for logistic and other regression models">Gelman et al 2008</a> &amp; <a href="./doc/statistics/2015-pedroza.pdf" title="Performance of informative priors skeptical of large treatment effects in clinical trials: A simulation study">Pedroza et al 2015</a>: the Cauchy(0, 2.5^2) and Normal(0, 0.35^2) priors.</p>
+<p>Useful interventions are rare and our analyses should incorporate a skeptical informative prior reflecting our knowledge that it is highly unlikely that any particular intervention will genuinely increase life expectancy; in particular, RRs &lt;0.5 (or &gt;2.0) are rare. Since there are no previous compilations of randomized effects for interventions on all-cause mortality in healthy people to use for priors, I fall back on general-purpose but still informative skeptical priors found to work well across many problems by <a href="http://projecteuclid.org/download/pdfview_1/euclid.aoas/1231424214" title="A weakly informative default prior distribution for logistic and other regression models">Gelman et al 2008</a> &amp; <a href="http://gwern.net/doc/statistics/2015-pedroza.pdf" title="Performance of informative priors skeptical of large treatment effects in clinical trials: A simulation study">Pedroza et al 2015</a>: the Cauchy(0, 2.5^2) and Normal(0, 0.35^2) priors.</p>
 </div>
 </div>
 <div id="vitamin-d" class="section level1">
