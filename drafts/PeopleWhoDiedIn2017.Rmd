@@ -33,3 +33,7 @@ Iranian Mathematician [Maryam Mirzakhani](https://en.wikipedia.org/wiki/Maryam_M
 ## Anne Dufourmantelle
 
 French philosopher [Anne Dufourmantelle](https://en.wikipedia.org/wiki/Anne_Dufourmantelle) died on July 21, 2017. I must confess that I'd never heard of her before her untimely end, but [she drowned](http://www.bbc.com/news/world-europe-40703606) attempting to save two children who were being carried out to sea. The implications of this should be [obvious to modern utilitarians](https://www.utilitarian.net/singer/by/199704--.htm).
+
+## Vladimir Voevodsky
+
+Russian Professor of Mathematics [Vladimir Voevodsky](https://en.wikipedia.org/wiki/Vladimir_Voevodsky) died on September 30, 2017. He was awarded the 2002 Fields Medal for developing a homotopy theory for algebraic varieties and formulating motivic cohomology.
