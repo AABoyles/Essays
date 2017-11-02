@@ -215,7 +215,7 @@ prices &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span clas
 <p>Cool! Now, let’s consult Facebook’s <a href="https://facebookincubator.github.io/prophet/">Prophet</a> to see if it predicts a long-term trend.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;prophet&#39;</span>)
 m &lt;-<span class="st"> </span><span class="kw">prophet</span>(prices)</code></pre></div>
-<pre><code>## Initial log joint probability = -34.6411
+<pre><code>## Initial log joint probability = -32.5703
 ## Optimization terminated normally: 
 ##   Convergence detected: relative gradient magnitude is below tolerance</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">future &lt;-<span class="st"> </span><span class="kw">make_future_dataframe</span>(m, <span class="dt">periods =</span> <span class="dv">365</span>)
@@ -227,7 +227,7 @@ forecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y =</span> <span class="kw">log10</span>(y<span class="op">+</span><span class="dv">1</span>))
 
 m &lt;-<span class="st"> </span><span class="kw">prophet</span>(prices)</code></pre></div>
-<pre><code>## Initial log joint probability = -6.86861
+<pre><code>## Initial log joint probability = -6.79279
 ## Optimization terminated normally: 
 ##   Convergence detected: relative gradient magnitude is below tolerance</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">future &lt;-<span class="st"> </span><span class="kw">make_future_dataframe</span>(m, <span class="dt">periods =</span> <span class="dv">365</span>)
@@ -245,7 +245,7 @@ forecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future
   ) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(dayBefore)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">buy =</span> <span class="kw">ifelse</span>(yesterday <span class="op">&gt;</span><span class="st"> </span>dayBefore, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>))</code></pre></div>
-<pre><code>## # A tibble: 817 x 5
+<pre><code>## # A tibble: 824 x 5
 ##            ds         y yesterday dayBefore   buy
 ##        &lt;date&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
 ##  1 2015-07-31 0.0000000 0.0000000 0.0000000    -1
@@ -258,7 +258,7 @@ forecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future
 ##  8 2015-08-07 0.3424227 0.6020600 0.0000000     1
 ##  9 2015-08-08 0.3424227 0.3424227 0.6020600    -1
 ## 10 2015-08-09 0.0000000 0.3424227 0.3424227    -1
-## # ... with 807 more rows</code></pre>
+## # ... with 814 more rows</code></pre>
 </div>
 <div id="short-term-strategy-trust-the-prophet" class="section level2">
 <h2>Short-Term Strategy: Trust the Prophet</h2>

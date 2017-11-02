@@ -73,6 +73,7 @@ So I think if we wanted to convert to something else, STR has already done the d
 An RR of 0.85/0.90 gets us around a year, which converting to dollars:
 
 ```{r}
+load(file = "../data-cache/Longevity.RData")
 lifeExpectancyGain(0.90) * valueOfDALY
 
 lifeExpectancyGain(0.85) * valueOfDALY
@@ -178,7 +179,7 @@ While \$18k may not sound like that much on an individual level, it's substantia
 ```{r}
 ## multiply maximal benefit by the total number of
 ## Americans >=55yo according to http://www.indexmundi.com/united_states/age_structure.html :
-max(ages) * (19309019 + 20720284 + 20304644 + 25874360)
+max(metforminPayoffs$ages) * (19309019 + 20720284 + 20304644 + 25874360)
 ```
 
 The estimate is so small because we use a small estimate of the value of 1 QALY; [Murphy & Topel 2005](http://www.med.mcgill.ca/epidemiology/courses/EPIB654/Summer2010/QALY/The_Economic_Value_of_Health.pdf "The Value of Health and Longevity"), using a much more sophisticated calculation and more realistic QALY estimates, note that "A 10 percent reduction in all-cause mortality [RR=0.90] would have a present discounted social value of \$18.5 trillion."
@@ -188,16 +189,16 @@ The estimate is so small because we use a small estimate of the value of 1 QALY;
 We can also use the formula to ask how small (close to 1) the RR must be before, given the specified purchase & side-effect costs, there is no longer any age at which metformin is profitable:
 
 ```{r}
+optimalAge <- 45
 costToRR(
   startingAge=optimalAge,
   annualCost=metforminAnnualCost,
   startCost=metforminStartCost,
   probabilityPenalty=(1/3)
 )
-# [1] 0.9520242072
 ```
 
-So if one doesn't believe the true causal ACM RR is <=0.95, then metformin use may not be advisable.
+So if one doesn't believe the true causal ACM RR is <=0.992, then metformin use may not be advisable.
 
 ## TAME power analysis
 

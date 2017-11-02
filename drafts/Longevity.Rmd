@@ -169,7 +169,7 @@ S <- function(t, RR=1) exp(-(RR*0.000016443)/log(1.1124) * (1.1124^t - 1))
 
 actuarial <- gendered_actuarial %>%
   dplyr::group_by(Age) %>%
-  dplyr::summarise(American = sum(SurvivingFraction)/200000) %>%
+  dplyr::summarise(American = (extantMen + extantWomen)/200000) %>%
   dplyr::mutate(Dutch = S(Age))
 
 plot_ly(actuarial, x = ~Age) %>%
