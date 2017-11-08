@@ -6,21 +6,23 @@ title: About
 
 ```{r, results='asis'}
 source("infobox.R")
-meta <- list(
+infobox(list(
   "Status" = "Complete",
-  "Last Revision" = file.info("about.Rmd")$mtime
-)
-infobox(meta)
+  "Last Revision" = tags$a(
+    href="https://github.com/AABoyles/Essays/commits/gh-pages/about.Rmd",
+    substr(file.info("about.Rmd")$mtime, 0, 10)
+  )
+))
 ```
 
-Hi, I’m Tony Boyles. I make a living by doing Data Science.
+(To the tune of a [UsesThis interview](https://usesthis.com/), but with a shot of some posts like [this one](https://www.lesserwrong.com/posts/Jnyb6rikHzxBxz9yM/update-to-the-list-of-apps-that-are-useful-to-me))
 
-# What's your background?
+# Who are you and what do you do?
+
+Hi, I’m Tony Boyles. I do Data Science.
+
 I graduated from Emory Univeristy in Atlanta with a double Major in Computer Science and International Studies in 2010. While there, I recieved training in Statistics, System Dynamic Modeling, and Game Theory. Afterwards, I went straight on to do a Master’s of Science in International Affairs at Georgia Tech’s Sam Nunn School of International Affairs, which gave me more opportunities to pursue studies in Statistics, System Dynamic Modeling, Agent-Based Modeling, Path Gaming, GIS, and Neural Networks.
 
-While a graduate student, I worked for Georgia Tech Research Institute in Atlanta, GA. After graduating in late 2011, I moved to Boston and started working for Milcord llc. From there I married my college sweetheart and moved to Washington D.C.
-
-# What have you done?
 As a Graduate Student at Georgia Tech, I worked for the Georgia Tech Research Institute’s Office of Policy Analysis and Research. OPAR’s mission was to collect data and perform analysis on legislation regarding Science, Technology, and Innovation emerging from the US State Legislatures. There I built a Drupal-based platform for trained coders to enter data, validate inter-coder reliability, and publish the data, both as raw tables and visualizations.
 
 After graduating, I worked for Milcord llc, serving a contract for the Marine Corps. He assisted in many development development tasks for the MARCIMS platform. The most prominent of these development tasks was the construction of a powerful semantic-querying platform, designed to permit non-technical end users to represent complex queries with many dependencies as simple interactions with a map and table. Additionally, I built the geospatial infrastructure on top of a PostGIS database to allow arbitrary geospatial constraints to be specified on the map.
@@ -29,33 +31,108 @@ In addition to this, he also supported a contract with Office of Naval Research,
 
 During a brief tenure with Concept Solutions, I worked with the Federal Aviation Administration to build a Next-Gen information awareness tool called NISIS. I designed the server-side API and contributed a significant portion of the client code for absorbing and displaying data from dozens of sources, including weather, flight schedules, 3-dimensional air space maps, and data entered directly from the application itself.
 
-I work for a small defense contractor called System of Systems Analytics, Inc., better known as “SoSACorp”. We work with complex social models of conflict and its effects on the economy and civilian population. My job title is “Computational Social Scientist”. I work on both sides of the social science team: I help develop models based on empirical evidence from the literature, and then build tools to visualize the results. Specifically, I deploy large-scale simulation experiments and engineer techniques for visualizing the outputs.
+After that, I went to work for a small defense contractor called System of Systems Analytics, Inc., better known as “SoSACorp”. SoSACorp works with complex social models of conflict and its effects on the economy and civilian population. My job title was "Computational Social Scientist”. I worked on both sides of the social science team: I helped develop models based on empirical evidence from the literature, and then built tools to visualize the results.
 
-# What’s your stack?
-In general, I’m not hung up on any of the technologies I regularly use. I believe in using the correct tool for the job.
+Next up was Novetta. This was my first experience with a "big" company. I worked on a Machine Learning application for US Customs and Border Protection.
 
-* R for Statistics: ggplot2 for Static data visualizations, dplyr and tidyr for data wrangling.
-* Python for Scripting: There are a bunch of odd jobs I find myself solving in Python. Like text analysis (NLTK is easy, and spaCy is boss).
-* Javascript for Web: D3 for any Data Visualization, OpenLayers or Leaflet for Mapping, jQuery and Underscore because Javascript is excruciating without them.
-* PostGreSQL for Databases: I like the modularity and portability of database files (a la SQLite), but after that, SQL is SQL. However, PostGres brings PostGIS, which is just brilliant.
-* LaTeX for Typesetting: Beamer for Presentations, BibLaTeX (with biber) for Citation Management. I can’t see ever replacing it; after all, Donald Knuth built it to last.
-
-In the past I’ve also used Clojure, Java, C++, and C (plus a few others I’m too embarrassed to mention).
+Now I work at CDC.
 
 # What Hardware do you use?
-I spend most of my screen-time bouncing back-and-forth between an over-powered Dell laptop and a desktop that I really can’t say too much about.
 
-My phone is a Republic Wireless Moto X (First Gen), which is starting to age beyond its usefulness. I also carry a Kindle Paperwhite almost everywhere I go. It’s loaded with a huge library, one I predict will take me a few decades to get through. Sadly, I doubt the device itself will last that long. One wonders why Amazon loaded it with so much storage capacity and no ability to handle larger files (like the audiobooks I listened to on my Gen 2 Kindle).
+I spend most of my screen-time bouncing back-and-forth between an over-powered HP Workstation and a generic ASUS laptop. They both run web browsers just fine.
+
+I have an adequate Moto G4 Play with Special Offers by Amazon. The advertising, which intellectually grating, is largely unobtrusive. It is on the Repbulic Wireless network, which is the MNVO that pioneered WiFi-first connections. It's also [super cheap](https://republicwireless.com/cell-phone-plans/). If I were signing up for a cell plan today with no other loyalties, it'd be a toss-up between Republic and Google's [Project Fi](https://fi.google.com/about/), which is the same idea, but by Google.
+
+Almost everywhere I go, I also carry a [Kindle Paperwhite](https://www.amazon.com/dp/B00OQVZDJM/ref=sd_allcat_k_ods_eink_mt), stocked with enough books to keep me reading for a few years. Its excellent battery life and lack of need for an internet connection make it a great companion for carrying-around. This stands in contrast to the overwhelming majority of tablets, which don't have the kind of battery longevity I want in a device I keep on my person, and become exactly as useful as square sheets of wood without internet access. However...
+
+In addition to my Kindle, I have an adequate Fire HD 7 (2016) tablet which I use to read books that wouldn't render (or wouldn't render *well*) on the Kindle, as well as articles that are more trouble than they're worth to transfer to the Kindle.
 
 # And What Software?
-On my work machine, I’m running Ubuntu 16.04, which is adequate. Most of my time is spent in RStudio. I write non-R code in Atom, use vim for incidental editing, and every once in awhile get into a particular mood and use Jupyter. If I just want to bang something out, I'll probably write it in Python 3 on REPL.it.
 
-My personal machine is running Windows 10, because I mostly use it for gaming. I keep all of my personal files in Google Drive, except for code which is in repos on github. I try to keep as little as possible on my local machines so I don’t have to worry about backups, crashes and whatnot.
+In general, I’m not hung up on any of the technologies I regularly use. I believe in using the correct tool for the job.
 
-# And Your Dream Setup?
+## Desktop
+
+I mean desktop in the sense of "computer I tend to use at a desk" rather than "computer I use in some other form-factor". In this way, I include "laptop" in this category. I typically dual-boot machines, though the vagaries of why any particular machine is configured the way that it is are too involved to be relevant to anyone else, so I won't discuss them here. Instead, I'll just mention which software I use in which environment.
+
+### Windows
+
+* [Google Backup and Sync](https://www.google.com/drive/download/) - I don't have a ton of archives of stuff that I keep around without ever intending to sort it out. I don't need decades of old hard drive to feel like I "haven't lost anything". Instead, I store everything I need on [Google Drive](https://www.google.com/drive/). I don't pay for [a plan](https://www.google.com/drive/pricing/), I just use the 15 gigs Google gave me, plus 2GB for each of the 2015 and 2016 Security checkups. I've presently filled 17 of the 19 gigabytes. Note that this does not include photos, of which I have roughly 70GB, all freely stored in [Google Photos](https://www.google.com/photos/about/).
+* [Steam](https://steampowered.com/) - Nothing to explain here: If you know what it is, you know why I use it; If you don't know what it is, you won't care.
+
+### Linux
+
+* [Ubuntu 17.10](https://www.ubuntu.com/desktop/1710) - Ubuntu, having finally come to its senses, has dropped the Unity Desktop Environment in favor of the vastly superior Gnome desktop. Prior to 17.10, I had taken to using [Ubuntu Gnome](https://ubuntugnome.org/), so you know where my bias lies.
+* [Atom](https://atom.io) - In which I write a bunch of Javascript for [scripting](https://github.com/AABoyles/LessWrong-Portable) and [ui dev](https://github.com/CDCgov/MicrobeTRACE). [D3](https://d3js.org/) for any Data Visualization.
+* [RStudio](https://rstudio.com) - [R](https://www.r-project.org/) for Statistics, [plotly](https://plot.ly/r/) for dynamic data visualizations, [dplyr and tidyr](https://www.tidyverse.org/) for data wrangling.
+
+In the past I’ve also used Java, Clojure, Python, C++, and C (plus a few others I’m [too embarrassed to mention](https://en.wikipedia.org/wiki/QBasic)).
+
+* [Gnome Extensions](https://extensions.gnome.org/) - Gnome has an awesome Extensions system, but it doesn't seem to be too popular. Perhaps that will change now that Ubuntu is back in the Gnome fold.
+* [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/) - A Simple, lightweight clipboard manager.
+
+### Web
+
+* [Google Chrome](https://www.google.com/chrome/) - Sometimes I feel bad about it and toy with the idea of switching to Firefox, but the conveniences of Google's deep integrations are really, really hard to transition away from.
+
+Before I get into other stuff, let me enthusiastically encourage you to install and use
+
+* [LastPass](https://www.lastpass.com/) - An excellent password manager. HIGHLY recommended.
+
+More than any particular tool, I would recommend finding tools that enable easy information archival. This is to reduce the cognitive load of remembering the things you wish to [know about/own] before you have the [time/money] to [learn/purchase] them. Some that I use for this purpose:
+
+* [Pocket](https://getpocket.com/) - Save essays in a customizable and highly readable user interface. Syncs with the mobile App (see [Tablet](#Tablet). Along with the [Save-To-Pocket Bookmarklet](https://help.getpocket.com/article/1050-installing-the-pocket-bookmarklet-in-internet-explorer) (Works on non-IE browsers. Why install an extension when a bookmarklet will do the job?)
+* [Paperpile](https://paperpile.com/) - I used to maintain an extensive library on Zotero, but it didn't support centralized management of the library. I side-stepped this problem by placing the Zotero library in Google Drive, but that still didn't provide web access to the interface. Paperpile solved this problem by creating a webapp-first approach, and a chrome extension for identifying academic materials and offering to save them to its archive. Super useful.
+* [Amazon Wishlists](https://www.amazon.com/gp/registry/wishlist-homepage.html) - Along with the [Amazon Add-to-Wishlist Bookmarklet](http://marklets.com/Amazon%20Wish%20List.aspx), keep track of stuff you want to buy, just not right now.
+* [feedly](http://feedly.com) - RSS is dead, and Google Reader killed it. Except it isn't, and it didn't. Subscribe to good blogs. It's a better source of self-curated, high-quality content than [any](https://facebook.com) [social](https://twitter.com) [channels](https://reddit.com).
+* [Trello](https://trello.com/) - [Kanban board](https://en.wikipedia.org/wiki/Kanban), but for anything. Sort of like a to-do list, but with status tracking. I use it for tracking all kinds of stuff.
+
+* [last.fm](https://www.last.fm/home) - Passively track the music you listen to.
+* [Soma.fm](http://somafm.com/) - Internet Radio. Many good stations.
+
+## Mobile
+
+The main function of my phone, besides obvious communication channels, is to provide mobile access to audio content. Accordingly, the apps I most strongly endorse are audio-oriented:
+
+* [Overdrive](https://play.google.com/store/apps/details?id=com.litlcodestudios.calibre_go) - The overwhelming majority of things I "read" is actually composed of audiobooks I borrow from public libraries. This app is the digital access interface of choice for every public library of which I've been a cardholder.
+* [Voice Audiobook Player](https://play.google.com/store/apps/details?id=de.ph1b.audiobook) - This is the app I use to manage the small number of audiobooks I collect from non-library, non-Audible sources.
+* [Player.fm](https://play.google.com/store/apps/details?id=fm.player) - This is a plucky-little podcast app. After the tragic discontinuation of [Google Listen](), Player.fm was the best option to fill the gap, with viable [web](https://player.fm/) and [mobile](https://play.google.com/store/apps/details?id=fm.player) interfaces, and the all-critical offline listening on mobile. Better options may have emerged in the intervening five years, but path dependence, etc, etc.
+
+Other, non-audio apps I use to good effect:
+
+* [LastPass](https://play.google.com/store/apps/details?id=com.lastpass.lpandroid) - As in the browser, so too on Mobile. Also, since they've added remote token syncing, [Lastpass Authenticator](https://play.google.com/store/apps/details?id=com.lastpass.authenticator), which I'm slowly using to replace [Authy](https://play.google.com/store/apps/details?id=com.authy.authy) as my 2FA of choice. (Authy is still a better app, but I trust LastPass more.)
+* [ClipStack](https://play.google.com/store/apps/details?id=com.catchingnow.tinyclipboardmanager) - An unobtrusive Andriod clipboard manager. Ever copy something important, copy another thing, and then realize that you lost the important thing? Clipboard managers prevent that by keeping a backlog of stuff you copy.
+* [Google Maps](https://www.google.com/maps/) - Doesn't everyone have and use Google Maps? Well, yes, but there are a few advanced features that haven't seen wide buy-in. These include the [timeline](https://www.google.com/maps/timeline) which is the best life-logging app presently available, and [location sharing](https://myaccount.google.com/locationsharing), which I've been using to reveal my location and track those of my family. If you can get over your existential dread of being tracked (or like me, were never afflicted by such a thing), these are exceedingly useful and interesting.
+
+Were I going to purchase a phone for myself, I'd get a [Google Pixel 2](https://store.google.com/product/pixel_2) for the latest Android and the AMOLED screen. If the price tag was a little too steep, I'd go for a [Samsung Galaxy J3](https://www.amazon.com/Samsung-J320A-Unlocked-Smartphone-Warranty/dp/B01FS0ACEA/ref=sr_1_4?s=electronics&ie=UTF8&qid=1510081722&sr=1-4&keywords=Samsung+Galaxy+J3&dpID=41PGfziHkqL&preST=_SY445_QL70_&dpSrc=srch), which brings the AMOLED screen. Additionally, I'd like to get a [cheap Bluetooth headset](https://www.amazon.com/dp/B01NAJGGA2/_encoding=UTF8?coliid=IYSHCCJVI5MEV&colid=3SCCRII5R6OCR) to replace the wired headphones I've been tethered to forever.
+
+## Tablet
+
+(If you have an Amazon Fire Tablet like I do, I strongly recommend [installing the Google Play Store](https://lifehacker.com/how-to-get-google-play-on-a-kindle-fire-and-install-any-1790706649). It doesn't require rooting, or any other especially elaborate technical black magic!)
+
+Again, I try to use the tablet minimally if at all. It provides a better reading experience than my phone, though an inferior one to my Kindle. Accordingly, I stick to a handful of apps that provide access to content that could be odious to get onto the Kindle. The apps I use to do this are:
+
+* [Pocket](https://play.google.com/store/apps/details?id=com.ideashower.readitlater.pro) - I don't read many long-form essays, especially on my computer. However, I often find such essays and want to read them, just not at the moment I find them. When this happens, I save them on Pocket. Pocket syncs with the app on my tablet, and I can read those essays at my leisure without fear of losing track of them.
+* [Calibre-Go](https://play.google.com/store/apps/details?id=com.litlcodestudios.calibre_go) - I keep an extensive library of ebooks, only about half of which are Kindle books. The others, I track using a Calibre library, which I have stored in my Google Drive. Calibre-Go reads that library file and provides an interface for downloading books you want to have on your mobile device.
+* [PDF Viewer and Book Reader](https://play.google.com/store/apps/details?id=the.pdfviewer3) - Many of my ebooks don't provide a machine-parsable format, instead coming as images in a PDF. this is suboptimal, as it prevents device- and user-specific typesetting, which is one of the primary advantages of reading ebooks to begin with. This app offsets that a little bit by providing a color inversion option, which can at least transform a black-on-white PDF (as most are) to a white-on-black display (which is my preferred color scheme).
+
+If I were going to purchase a tablet, I'd get the [Samsung Galaxy Tab S3](https://www.amazon.com/dp/B01MRDL916/?tag=thewire06-20&linkCode=xm2&ascsubtag=AgEAAAAAAAAAAPJX) for its size and AMOLED screen, which I find breathtakingly beautiful.
+
+## House
+
+At home, I have a small fleet of Alexa-powered devices. They're wonderful, and I'm very excited about the [newest generation](). While I generally find I prefer [Google]() to Amazon devices, Amazon was years ahead of Google on home voice control, and that's created a path dependency I don't feel a strong need to escape from.
+
+I use a SmartThings Hub to control a small number of Z-wave and Zigbee devices. Being able to instruct Alexa to control these is the best feature of our smarthome so far. Highly recommended.
+
+I also use a Google WiFi Router, which has been an excellent investment. Despite the fact that I'm generally a power user, I don't find the router's limited set of configuration options to be a significant impedance.
+
+Since the latest hurricane season, I also sprang for a powerful UPS to keep the internet connection up even if the power goes out. Fortunately, I haven't had the opportunity to try it yet, but the UPS reports that it should be able to sustain the modem and router for roughly 7.5 hours without power.
+
+# What would be your dream setup?
+
 A credit card I don’t have to pay, linked to AWS and Google Cloud so I can spin up the servers for whatever projects I come up with, and leave them running full-time.
 
-I do like gadgets: I’d love to have an HTC Vive and Makerbot Replicator to play with. Oh, a Tesla Model S100D with Autopilot.
+I do like gadgets: I’d love to have an HTC Vive and Makerbot Replicator to play with. Oh, a Tesla Model S100D with Enhanced Autopilot.
 
 # Can I see some of your work?
 
@@ -63,8 +140,4 @@ I do like gadgets: I’d love to have an HTC Vive and Makerbot Replicator to pla
 
 # How can we get in touch?
 
-Email: Anthony@Boyles.cc
-
-Call: (617) 935-5515 (m)
-
-Or Via Social Media. If you can find a user named “aaboyles” on any given website, that’s almost certainly me.
+[Email me](mailto:Anthony@Boyles.cc), [Call me](callto:6179355515), or find me on Social Media. If you can find a user named "aaboyles" on any given website, that’s very likely to be me. One noteworthy exception is Google Plus which wouldn't allow the aaboyles username. Accordingly, I can be found by [my gmail address](mailto:aaboyles@gmail.com) or [the username "TonyBoylesMSIA"](https://plus.google.com/u/0/+TonyBoylesMSIA).
