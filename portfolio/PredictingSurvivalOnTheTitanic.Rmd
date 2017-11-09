@@ -18,6 +18,16 @@ set.seed(42)
 library('knitr')
 opts_chunk$set(message = FALSE, warning=FALSE)
 
+if(!file.exists('../data-cache/Titanic/train.csv')){
+  stop(
+    paste0(
+      'Please go to https://www.kaggle.com/c/titanic/data and place the datasets in ',
+      normalizePath('..'),
+      '/../data-cache/Titanic/'
+    )
+  )
+}
+
 library('readr')
 train <- read_csv('../data-cache/Titanic/train.csv')
 test  <- read_csv('../data-cache/Titanic/test.csv')

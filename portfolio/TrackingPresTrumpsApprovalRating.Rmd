@@ -48,7 +48,7 @@ library('xml2')
 # Let's parse the data directly from the Gallup Visualization's data feed:
 # Please excuse this XML hacking.
 
-viz <- read_xml('http://www.gallup.com/viz/v1/xml/6b9df319-97d6-4664-80e1-ea7fe4672aca/POLLFLEXCHARTVIZ/TRUMPJOBAPPR201617.aspx') %>%
+viz <- read_xml('http://news.gallup.com/viz/v1/xml/ad26ce43-218c-4a42-82de-ce878fa6d119/POLLFLEXCHARTVIZ/TRUMPJOBAPPR201617.aspx?') %>%
   xml_child(3) %>%
   xml_child() %>%
   xml_child(3) %>%

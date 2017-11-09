@@ -659,7 +659,7 @@ Not bad for a first stab, so that's our baseline quality benchmark.
 
 I thought about doing Ridge Regression or LASSO, but why do either when you can do both at once?
 
-```{r ElasticNet}
+```{r ElasticNet, eval=FALSE}
 subtrain %>%
   ntbt_train(formula, method = "glmnet", trControl = fitControl) %>%
   predict(subtest) %>%
@@ -704,14 +704,14 @@ training <- full[1:1460,]
 test <- full[1461:nrow(full),]
 
 LM  <- predict(train(formula, data = training, method = "lm",     trControl = fitControl), test)
-EN  <- predict(train(formula, data = training, method = "glmnet", trControl = fitControl), test)
+#EN  <- predict(train(formula, data = training, method = "glmnet", trControl = fitControl), test)
 C   <- predict(train(formula, data = training, method = "cubist", trControl = fitControl), test)
 RF  <- predict(train(formula, data = training, method = "ranger", trControl = fitControl), test)
 GBM <- predict(train(formula, data = training, method = "gbm",    trControl = fitControl), test)
 
 test %>%
-  cbind(LM, EN, C, RF, GBM) %>%
-  mutate(SalePrice = expm1((LM + EN + C + RF + GBM) / 5)) %>%
+  cbind(LM, C, RF, GBM) %>%
+  mutate(SalePrice = expm1((LM + C + RF + GBM) / 4)) %>%
   dplyr::select(Id, SalePrice) %>%
   write_csv("predictionMean.csv")
 ```
