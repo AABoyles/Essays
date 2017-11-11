@@ -18,7 +18,7 @@ cbind(
   mutate(`Estimated Length (words)` = floor(size/7)) %>%
   transmute(
     `Last Modified` = paste0("<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/", Name, "'>", substr(mtime, 0, 10), "</a>"),
-    Name = paste0("<a href='essays/", str_sub(Name, 1, -5), ".html'>",
+    Name = paste0("<a href='", str_sub(Name, 1, -5), ".html'>",
     Name %>%
       str_replace_all("([a-z])([A-Z])", "\\1 \\2") %>%
       str_replace_all("([A-Z]+)([A-Z])", "\\1 \\2") %>%
