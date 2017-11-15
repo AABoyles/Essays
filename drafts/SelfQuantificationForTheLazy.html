@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>Self-Quantification (for the Lazy)</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../essays/">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+</ul>
+</div>
+
+<div id="header">
+<h1 class="title">Self-Quantification (for the Lazy)</h1>
+</div>
+
+
+<div id="table-of-contents">
+    <h2><a href="#content">Self-Quantification (for the Lazy)</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#a-note-on-privacy">A Note on Privacy</a></li>
+      <li><a href="#ifttt-google-sheets">IFTTT + Google Sheets</a></li>
+      <li><a href="#smartphone">Smartphone</a><ul>
+      <li><a href="#geolocation">Geolocation</a></li>
+      <li><a href="#wifi-connections">WiFi Connections</a></li>
+      <li><a href="#phone-usage">Phone Usage</a></li>
+      </ul></li>
+      <li><a href="#fitbit">Fitbit</a><ul>
+      <li><a href="#wrist-based-anthrometrics">Wrist-based Anthrometrics</a></li>
+      <li><a href="#weight">Weight</a></li>
+      </ul></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo =</span> <span class="ot">TRUE</span>)
+<span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+<span class="kw">infobox</span>(<span class="kw">list</span>(
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
+  <span class="st">&quot;Epistemic Status&quot;</span> =<span class="st"> &quot;Certain practical advice informed by an uncertain belief&quot;</span>,
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span>tags<span class="op">$</span><span class="kw">a</span>(
+    <span class="dt">href=</span><span class="st">&quot;https://github.com/AABoyles/Essays/commits/gh-pages/drafts/SelfQuantificationForTheLazy.Rmd&quot;</span>,
+    <span class="kw">substr</span>(<span class="kw">file.info</span>(<span class="st">&quot;SelfQuantificationForTheLazy.Rmd&quot;</span>)<span class="op">$</span>mtime, <span class="dv">0</span>, <span class="dv">10</span>)
+)))</code></pre></div>
+<div class="infobox">
+<table class="infoboxtable">
+<tbody>
+<tr>
+<td>
+<b>Status</b>
+</td>
+<td>Incomplete</td>
+</tr>
+<tr>
+<td>
+<b>Epistemic Status</b>
+</td>
+<td>Certain practical advice informed by an uncertain belief</td>
+</tr>
+<tr>
+<td>
+<b>Last Revision</b>
+</td>
+<td>
+<a href="https://github.com/AABoyles/Essays/commits/gh-pages/drafts/SelfQuantificationForTheLazy.Rmd">2017-11-15</a>
+</td>
+</tr>
+</tbody>
+<tfoot></tfoot>
+</table>
+</div>
+<p>One of my less popular beliefs is that an agent whom you would identify as yourself is computable with a comparatively small set of training data, once any identifiably human agent is computable. What this means is that in order to recover “you”, future people would only require a tiny amount of information more than they’d need to recover the first human. So our digital wake is probably a very powerful source of information for people trying to digitally “resurrect” us. There’s a lot to be said about this, but this is not an essay about the information theory of human agency. Rather, this is a practical essay on the ways I collect information on myself to aid this process, should I be lucky enough for it to occur.</p>
+<div id="a-note-on-privacy" class="section level1">
+<h1>A Note on Privacy</h1>
+<p>I’m not going to discuss the privacy ramifications of these services and systems. If you’re deeply concerned about maintaining your delusions of privacy from large tech firms, all I can do is wish you good luck. It may be possible to accomplish this kind of autonomous data collection without handing the data directly to any large tech firms, but it certainly isn’t easy. It seems privacy-consciousness probably isn’t for the lazy.</p>
+</div>
+<div id="ifttt-google-sheets" class="section level1">
+<h1>IFTTT + Google Sheets</h1>
+<p>The Secret backbone to most lazy self-quantification projects is <a href="https://ifttt.com/discover">IFTTT</a>. If you aren’t familiar with it, IFTTT (short for ‘if this then that’, pronounced ‘ift’) is a trigger service. You connect web services you use, and it gets a set of triggers and actions from those services. So, for example, I have connected both my Facebook and Twitter accounts. I then made a recipe on IFTTT to detect when I post something on Facebook, and post it on Twitter as well. This is a simple example, but there are tons of insanely cool things you can set up using IFTTT, and the interface is extremely simple and easy to use. It requires no coding experience whatsoever.</p>
+<p>If we want to self-quantify, that means we need a healthy ecosystem of self-recording mechanisms. To accomplish this, we need a place to record this data. This is where <a href="https://docs.google.com/spreadsheets/u/0/">Google Sheets</a> comes in. Sheets is an online spreadsheet program, much like Microsoft Excel. Unlike Excel, it’s free to anyone with a Gmail account. Furthermore, IFTTT posesses robust access to Sheets, making it an ideal destination</p>
+</div>
+<div id="smartphone" class="section level1">
+<h1>Smartphone</h1>
+<p>There are a bunch of data streams our smartphones collect that can provide a really rich perspective on our lives. The trick is collecting that data in a useful way. That’s where IFTTT and Google Sheets come in. So, let’s look at some of those data streams.</p>
+<div id="geolocation" class="section level2">
+<h2>Geolocation</h2>
+<p>Perhaps the most useful stream of data you can get is your location. If it coincides with work, you know what you’re doing at that time: working. If it shows you’re at a restaurant, you’re probably getting a bite to eat. If your at home overnight, you’re probably sleeping most of that time. There are tons more things we can record about each of these activities (When did you go to bed? What did you eat at the restaurant?), but no other single data stream gives you such a rich basis for inference about your activites.</p>
+<p>Recording this is pretty easy, too. Just use <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps">Google Maps</a>. Seriously! Google Maps now includes an amazing feature called <a href="https://www.google.com/maps/timeline?pb">“Timeline”</a>, which literally just records your location and timestamp. It isn’t perfect, but it’s really, really good.</p>
+<p>In the good ol’ days of 2015, there was an amazing app called <a href="https://play.google.com/store/apps/details?id=com.aro.saga">Saga</a> that did this for you. It recorded less granular location stamps, but it compiled your locations and times into an editable narrative of your life.</p>
+</div>
+<div id="wifi-connections" class="section level2">
+<h2>WiFi Connections</h2>
+<p>A further strong indicator of one’s location and activities is WiFi connections. I often drive past a house some of my friend live in, but I’m not usually going to visit them. One certain signal that I am is if my phone connects to their WiFi, or the duration for which it does.</p>
+</div>
+<div id="phone-usage" class="section level2">
+<h2>Phone Usage</h2>
+<p>To whom are you speaking? This may be interesting to know. It’s also rendered trivially easy by IFTTT.</p>
+</div>
+</div>
+<div id="fitbit" class="section level1">
+<h1>Fitbit</h1>
+<div id="wrist-based-anthrometrics" class="section level2">
+<h2>Wrist-based Anthrometrics</h2>
+<p>At the low end, the Fitbit Zip gives you pedometry and sleep tracking.</p>
+<p>At the high end, the Fitbit Ionic gives you [all kinds of fancy crap]. What it doesn’t give you is any data streams you can’t get from a much cheaper model paired with a smartphone.</p>
+<p>Personally, I use a Fitbit Charge 2 to track my steps, heart rate, sleep cycles, and calorie expenditure.</p>
+</div>
+<div id="weight" class="section level2">
+<h2>Weight</h2>
+<p>Perhaps the closest typical people come to self-quantification is stepping on a bathroom scale. However, they fail immediately after that by failing to record that data point. Luckily, there’s a simple way to mitigate this failure: get a smart scale.</p>
+<p>I filed this under Fitbit because the Aria is the best smart scale IMO. It syncs with WiFi rather than bluetooth, and one of my principles for home automation is “don’t make me use my phone.” The WiFi connection side-steps the phone and sends the data straight to the internet through your router.</p>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+</div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109466857-1');
+</script>
+
+<script>
+$(document).ready(function () {
+ 	  });
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+---
+title: "Self-Quantification (for the Lazy)"
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+source("infobox.R")
+infobox(list(
+  "Status" = "Incomplete",
+  "Epistemic Status" = "Certain practical advice informed by an uncertain belief",
+  "Last Revision" = tags$a(
+    href="https://github.com/AABoyles/Essays/commits/gh-pages/drafts/SelfQuantificationForTheLazy.Rmd",
+    substr(file.info("SelfQuantificationForTheLazy.Rmd")$mtime, 0, 10)
+)))
+```
+
+One of my less popular beliefs is that an agent whom you would identify as yourself is computable with a comparatively small set of training data, once any identifiably human agent is computable. What this means is that in order to recover "you", future people would only require a tiny amount of information more than they'd need to recover the first human. So our digital wake is probably a very powerful source of information for people trying to digitally "resurrect" us. There's a lot to be said about this, but this is not an essay about the information theory of human agency. Rather, this is a practical essay on the ways I collect information on myself to aid this process, should I be lucky enough for it to occur.
+
+# A Note on Privacy
+
+I'm not going to discuss the privacy ramifications of these services and systems. If you're deeply concerned about maintaining your delusions of privacy from large tech firms, all I can do is wish you good luck. It may be possible to accomplish this kind of autonomous data collection without handing the data directly to any large tech firms, but it certainly isn't easy. It seems privacy-consciousness probably isn't for the lazy.
+
+# IFTTT + Google Sheets
+
+The Secret backbone to most lazy self-quantification projects is [IFTTT](https://ifttt.com/discover). If you aren't familiar with it, IFTTT (short for 'if this then that', pronounced 'ift') is a trigger service. You connect web services you use, and it gets a set of triggers and actions from those services. So, for example, I have connected both my Facebook and Twitter accounts. I then made a recipe on IFTTT to detect when I post something on Facebook, and post it on Twitter as well. This is a simple example, but there are tons of insanely cool things you can set up using IFTTT, and the interface is extremely simple and easy to use. It requires no coding experience whatsoever.
+
+If we want to self-quantify, that means we need a healthy ecosystem of self-recording mechanisms. To accomplish this, we need a place to record this data. This is where [Google Sheets](https://docs.google.com/spreadsheets/u/0/) comes in. Sheets is an online spreadsheet program, much like Microsoft Excel. Unlike Excel, it's free to anyone with a Gmail account. Furthermore, IFTTT posesses robust access to Sheets, making it an ideal destination 
+
+# Smartphone
+
+There are a bunch of data streams our smartphones collect that can provide a really rich perspective on our lives. The trick is collecting that data in a useful way. That's where IFTTT and Google Sheets come in. So, let's look at some of those data streams.
+
+## Geolocation
+
+Perhaps the most useful stream of data you can get is your location. If it coincides with work, you know what you're doing at that time: working. If it shows you're at a restaurant, you're probably getting a bite to eat. If your at home overnight, you're probably sleeping most of that time. There are tons more things we can record about each of these activities (When did you go to bed? What did you eat at the restaurant?), but no other single data stream gives you such a rich basis for inference about your activites.
+
+Recording this is pretty easy, too. Just use [Google Maps](https://play.google.com/store/apps/details?id=com.google.android.apps.maps). Seriously! Google Maps now includes an amazing feature called ["Timeline"](https://www.google.com/maps/timeline?pb), which literally just records your location and timestamp. It isn't perfect, but it's really, really good.
+
+In the good ol' days of 2015, there was an amazing app called [Saga](https://play.google.com/store/apps/details?id=com.aro.saga) that did this for you. It recorded less granular location stamps, but it compiled your locations and times into an editable narrative of your life.
+
+## WiFi Connections
+
+A further strong indicator of one's location and activities is WiFi connections. I often drive past a house some of my friend live in, but I'm not usually going to visit them. One certain signal that I am is if my phone connects to their WiFi, or the duration for which it does.
+
+## Phone Usage
+
+To whom are you speaking? This may be interesting to know. It's also rendered trivially easy by IFTTT.
+
+# Fitbit
+
+## Wrist-based Anthrometrics
+
+At the low end, the Fitbit Zip gives you pedometry and sleep tracking.
+
+At the high end, the Fitbit Ionic gives you [all kinds of fancy crap]. What it doesn't give you is any data streams you can't get from a much cheaper model paired with a smartphone.
+
+Personally, I use a Fitbit Charge 2 to track my steps, heart rate, sleep cycles, and calorie expenditure.
+
+## Weight
+
+Perhaps the closest typical people come to self-quantification is stepping on a bathroom scale. However, they fail immediately after that by failing to record that data point. Luckily, there's a simple way to mitigate this failure: get a smart scale.
+
+I filed this under Fitbit because the Aria is the best smart scale IMO. It syncs with WiFi rather than bluetooth, and one of my principles for home automation is "don't make me use my phone." The WiFi connection side-steps the phone and sends the data straight to the internet through your router.
+
