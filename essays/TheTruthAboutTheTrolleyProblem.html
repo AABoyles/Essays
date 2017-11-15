@@ -25,6 +25,47 @@
 <script src="site_libs/readthedown-0.1/readthedown.js"></script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
@@ -107,12 +148,47 @@ $(document).ready(function () {
       <li><a href="#introduction">Introduction</a></li>
       <li><a href="#thought-experiments-are-terrible.">Thought Experiments are Terrible.</a></li>
       <li><a href="#no-really.-terrible.">No, really. Terrible.</a></li>
-      <li><a href="#and-im-a-hypocrite.">And I’m a Hypocrite.</a></li>
+      <li><a href="#im-a-hypocrite.">I’m a Hypocrite.</a></li>
       </ul>
     </div>
 </div>
 
 <div id="main">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+<span class="kw">infobox</span>(<span class="kw">list</span>(
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Complete&quot;</span>,
+  <span class="st">&quot;Epistemic Status&quot;</span> =<span class="st"> &quot;On thin ice over water much too deep for me&quot;</span>,
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span>tags<span class="op">$</span><span class="kw">a</span>(
+    <span class="dt">href=</span><span class="st">&quot;https://github.com/AABoyles/Essays/commits/gh-pages/essays/TheTruthAboutTheTrolleyProblem.Rmd&quot;</span>,
+    <span class="kw">substr</span>(<span class="kw">file.info</span>(<span class="st">&quot;TheTruthAboutTheTrolleyProblem.Rmd&quot;</span>)<span class="op">$</span>mtime, <span class="dv">0</span>, <span class="dv">10</span>)
+)))</code></pre></div>
+<div class="infobox">
+<table class="infoboxtable">
+<tbody>
+<tr>
+<td>
+<b>Status</b>
+</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>
+<b>Epistemic Status</b>
+</td>
+<td>On thin ice over water much too deep for me</td>
+</tr>
+<tr>
+<td>
+<b>Last Revision</b>
+</td>
+<td>
+<a href="https://github.com/AABoyles/Essays/commits/gh-pages/essays/TheTruthAboutTheTrolleyProblem.Rmd">2017-11-15</a>
+</td>
+</tr>
+</tbody>
+<tfoot></tfoot>
+</table>
+</div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>I think it’s time we faced a hard truth about the <a href="https://en.wikipedia.org/wiki/Trolley_problem">Trolley Problem</a>. Consider:</p>
@@ -129,10 +205,10 @@ $(document).ready(function () {
 </div>
 <div id="thought-experiments-are-terrible." class="section level1">
 <h1>Thought Experiments are Terrible.</h1>
-<p>There aren’t many people who rebel against the classic formulation of the Trolley problem. But people seem to hate the fat man variant, and fight against the circumstances of the problem as soon as you point out the moral inconsistency to which it leads. The problem with the fat man variant is that it strains credulity. If a trolley were actually barreling towards five unsuspecting, utterly clueless people, impeding said trolley by dropping a fat man in front of it isn’t going to save our quintet of hopelessly inattentive fools. Sadly, I think, most of the thought experiments in moral philosophy exhibit this issue.</p>
-<p>While I don’t have time to discuss every thought experiment in the field, there are a lot of examples. Just to pick on another one, let’s look at a variant of the <a href="http://www.utilitarian.net/singer/by/199704--.htm">drowning child problem</a>. Say, for example, that I wish to maximize human life-years. I’m wearing a $10,000 suit which I mean to sell, and use the money to <a href="https://www.againstmalaria.com/">buy long-lasting insecticide nets</a>, saving <a href="http://www.givewell.org/international/top-charities/amf%23Costperlifesaved">approximately three lives</a> from malaria. However, en route to the place in which I mean to sell the suit, I pass a stream in which I see a small child drowning. I could save the child, but I know that if I get the suit wet, it will get muddy and shrink and lose almost all of its value. Because the child will live at most one life, whereas the people I save from malaria will live three, the utilitarian course of action is to avoid the stream, sell the suit, and donate the money.</p>
+<p>There aren’t many people who rebel against the classic formulation of the Trolley problem. But people seem to hate the fat man variant, and fight against the circumstances of the problem as soon as you point out the moral inconsistency to which it leads. The problem with the fat man variant is that it strains credulity. If a trolley were actually barreling towards five unsuspecting, utterly clueless people, impeding said trolley by dropping a fat man in front of it isn’t going to save our quintet of hopelessly inattentive fools. Sadly, I think, most of the thought experiments in moral philosophy exhibit this quality.</p>
+<p>Just to pick on another one, let’s look at a variant of the <a href="http://www.utilitarian.net/singer/by/199704--.htm">drowning child problem</a>. Say, for example, that I wish to maximize human life-years. I’m wearing a $10,000 suit which I mean to sell, and use the money to <a href="https://www.againstmalaria.com/">buy long-lasting insecticide nets</a>, saving <a href="http://www.givewell.org/international/top-charities/amf%23Costperlifesaved">approximately three lives</a> from malaria. However, en route to the place in which I mean to sell the suit, I pass a stream in which I see a small child drowning. I could save the child, but I know that if I get the suit wet, it will get muddy and shrink and lose almost all of its value. Because the child will live at most one life, whereas the people I save from malaria will live three, the utilitarian course of action is to avoid the stream, sell the suit, and donate the money.</p>
 <p>But this runs strongly against our moral intuitions, and so we can rationalize our way to saving the drowning child. Nobody routinely wears $10,000 suits, so the situation is unrealistic. The resale value of the suit would be a fraction of that, so you’d save fewer than three lives (very pessimistically, less than one life, which justifies saving the drowning child). Water damage to a suit, even a very fine suit, is likely to be largely reversible. Etc.</p>
-<p>What’s actually going on in your head is <em>not</em> these rationalizations. It sounds more like this: “Oh no, there’s a child in front of me, <em>drowning!</em> I had better save her!” When the utilitarian onlooker points out that more lives could be saved if you do not save the child, your brain rejects that reasoning on the basis that not saving drowning children is <a href="https://en.wikipedia.org/wiki/Disgust%23Morality">disgusting</a>. All the other logic follows, but it’s the drowning child’s <em>availability</em> (related: <a href="https://en.wikipedia.org/wiki/Availability_heuristic">availability heuristic</a>) coupled with that sense of disgust that actually makes the decision for you.</p>
+<p>If you were actually in this thought experiment, your thought process would <em>not</em> involve these rationalizations. It would sound more like this: “Oh no, there’s a child in front of me, <em>drowning!</em> I had better do something!” When the utilitarian onlooker points out that more lives could be saved if you do not save the child, your brain rejects that reasoning on the basis that not saving drowning children is <a href="https://en.wikipedia.org/wiki/Disgust%23Morality">disgusting</a>. All the other logic follows, but it’s the drowning child’s <em>availability</em> (related: <a href="https://en.wikipedia.org/wiki/Availability_heuristic">availability heuristic</a>) coupled with that sense of disgust that actually makes the decision for you.</p>
 <p>The error in the decision process is that we decide and then justify, rather than weigh the options and then decide. This leaves us vulnerable to moral <a href="https://en.wikipedia.org/wiki/Money_pump">dutch book scams</a>. I don’t know that I’ve heard this particular issue discussed in literature, but if I were inventing the term, I’d call it something like “presence bias”. You see, the drowning child is <em>present</em>. Her life or death is a decision <em>you</em> must consciously and immediately make, and then live with the consequences. The people who die of malaria because of your decision to save the drowning child aren’t present, even though their lives and deaths are just as real and just as morally significant.</p>
 </div>
 <div id="no-really.-terrible." class="section level1">
@@ -146,14 +222,14 @@ $(document).ready(function () {
 <p>[Ed. Note: There’s an important bug in this formulation of the experiment. If the five patients are all matches for the young man, <em>the five patients are all matches for each other</em>. The correct escape hatch is to dissect one of the patients for her organs, saving four people and leaving the healthy young fellow alone. For the purposes of this discussion, let’s assume the story has been modified in some way to prohibit this possibility.]</p>
 <p>The “gut” answer is that it would <em>not</em> be moral to harvest the young man’s organs. In the real world, organs do need to be precise (and thereby relatively rare) matches for their new hosts. And even then, they will often be rejected. In the real world, the young man can live one quality life, or the patients can live five much less long, much more miserable lives. In the real world, harvesting a healthy, living person’s organs is illegal, and thereby comes with morally-significant consequences (like a reduced ability to practice medicine, imprisonment, or death).</p>
 <p>We could do some math to figure out which scenario resulted in more life-years lived, but the point remains: In our sanitized, inconvenient world where surgery is a perfected practice, organs are never rejected, and life-years need not be quality adjusted, it is morally correct to harvest this man’s organs. In fact, it isn’t just correct; it’s obligatory.</p>
-<p>These thought experiments are terrible because they’re designed to push you into a decision that have a clear, morally-optimal outcome if you accept the circumstances of the situation, but the circumstances run against the grain of our intuitions about these types of situations. They’ve been <a href="http://www.faculty.virginia.edu/haidtlab/articles/manuscripts/haidt.bjorklund.working-paper.when%2520intuition%2520finds%2520no%2520reason.pub603.doc">carefully crafted to subvert protestations</a> based on exogenous information. Their terrible-ness is a feature, not a bug. If it weren’t, people would always select the morally-optimal course of action and all the moral philosophers would be out of jobs.</p>
+<p>These thought experiments are terrible because they’re designed to push you into a decision that have a clear, morally-optimal outcome if you accept the circumstances of the situation, but the circumstances run against the grain of our intuitions about these types of situations. They’ve been <a href="http://www.faculty.virginia.edu/haidtlab/articles/manuscripts/haidt.bjorklund.working-paper.when%2520intuition%2520finds%2520no%2520reason.pub603.doc">carefully crafted to subvert protestations</a> based on exogenous information. Their terrible-ness is a <a href="http://slatestarcodex.com/2015/03/26/high-energy-ethics/">feature, not a bug</a>. If it weren’t, people would always select the morally-optimal course of action and all the moral philosophers would be out of jobs.</p>
 <p>So, if our thought experiments are terrible, why don’t we try to come up with some more real-world examples? OK, here’s one: You can donate money to <a href="http://www.givewell.org/charities/top-charities">the charity that is most efficient at saving people’s lives</a>, or you can do <a href="https://www.amazon.com/">literally anything else with your money</a>.</p>
 </div>
-<div id="and-im-a-hypocrite." class="section level1">
-<h1>And I’m a Hypocrite.</h1>
+<div id="im-a-hypocrite." class="section level1">
+<h1>I’m a Hypocrite.</h1>
 <p>Many philosophers have pointed out that utilitarianism is <a href="https://en.wikipedia.org/wiki/Utilitarianism%23Too_demanding">philosophically demanding</a>. Unlike <a href="http://plato.stanford.edu/entries/ethics-deontological/">deontological moral codes</a>, which <a href="http://plato.stanford.edu/entries/ethics-deontological/%23AdvDeoThe">allow freedom within the bounds of their rules</a>, utilitarianism demands that people optimize something based on some set of values to the exclusion of other values against which moral calculations are not made.</p>
 <p>I attended <a href="https://www.youtube.com/watch%3Fv%3DqsAOlPLlw1M">a lecture by Peter Singer</a> in which he fielded a question to the effect of, “You periodically fly between the US and Australia to visit your grandchildren. Why not donate the money you spend on flights to effective causes?” Singer first justified his routine flight schedule with a mention of his lecture circuit, which does indeed have a rather high expected value for effective charities. However, he also voluntarily conceded that his Australia trips didn’t necessarily serve this purpose, but that he loves his grandkids and enjoys spending time with them. The patriarch of <a href="https://smile.amazon.com/Writings-Ethical-Life-Peter-Singer/dp/0060007443/ref%3Dsr_1_1%3Fie%3DUTF8%26qid%3D1471881176%26sr%3D8-1%26keywords%3DWritings%2Bon%2Ban%2BEthical%2BLife">practiced, ethical living</a> to the extreme still exhibits the same moral foibles as all the rest of us.</p>
-<p>Which brings us back to me. I live a lavish lifestyle. It isn’t spectacularly lavish by current Western standards: I live in a comfortable 3 bedroom, 1.5 bathroom single family home near Washington D.C., on which I pay a mortgage which is approximately equal to the price of renting a similar home in the same area. But there are cheaper housing options. I could rent a one-bedroom or studio comparatively close by for half as much as I pay in mortgage payments. By donating that money, I could <em>save multiple lives</em>. Every year.</p>
+<p>Which brings us back to me. I live a lavish lifestyle. It isn’t spectacularly lavish by current Western standards: I live in a comfortable single family house near a major metropolitan area, on which I pay a mortgage which is approximately equal to the price of renting a similar house in the same vicinity. But there are cheaper housing options. I could rent a one-bedroom or studio comparatively close by for half as much as I pay in mortgage payments. By donating that money, I could <em>save multiple lives</em>. Every year.</p>
 <p>I have no answer to this. If we think of this as a sort of Trolley Problem (And it’s a particularly bad fit as moral conundrums go, but just work with me), I say I’ll pull the lever, but then I don’t. And I feel <em>horrible</em> about it. Seriously.</p>
 <p>But even if I didn’t have an intrinsic moral sense that this sort of behavior was wrong, I’d worry about adopting this type of decision process. I’m acutely aware that someday, I’ll be the person on the tracks, instead of the person controlling the lever.</p>
 <div class="figure">
