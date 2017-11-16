@@ -1,0 +1,78 @@
+---
+title: "The Futurist Canon"
+---
+
+```{r setup}
+
+```
+
+There's a lot of proto-sacred writing in the rationalist/transhumanist/futurist community. Some of this is simply inevitable: the mysteries of the origins of the Universe and the humanity born from it are a critical component to religious beliefs, just as the scientific explanations thereof are critical to dissolving those beliefs in favor of better models of reality. The appeal of immortality isn't diminished by religions' claim to be the sole avenue thereto. The romance that generations of human civilization has attached to the stars doesn't disappear the momen we begin thinking about **using** them for interesting things. In short, a lot of the topics of futurists' practical interests are also the muses of religions.
+
+Even so, I've not seen much in the way of a artistically-focused compilation of such works. By artistically-focused, I mean something that stitches together a scientifically-accurate historical narrative of the Universe told for aesthetic appeal, somewhat like the Judeo-Christian Bible.
+
+# There will never "The Bible, but for Futurists"
+
+In 2011, A.C. Grayling published [The Good Book: A Humanist Bible](https://en.wikipedia.org/wiki/The_Good_Book_(book)). For what it is, it's wonderful. Unflinchingly ambitious and wide-ranging in its cultural influences, The Good Book assembles thousands of pages of poetry and prose from across thousands of years.
+
+Futurist thought must remain flexible and forward-looking as humanity conquers its enemies. That means that it cannot be tied to the dogmas that will bleed into any attempt at a work like a Bible.
+
+So why even bother trying?
+
+# Spiritual, but without "Spirituality"
+
+I do not understand what people mean when they identify as "Spiritual, but not religious".
+
+This sense of the divine we get from our rituals is wonderful, desirable and difficult to replace. Moreover, futurists (by virtue of being generally atheist)
+
+# Other Collections of Relevant Materials
+
+[2012 Solstice Book of Rituals](http://secularsolstice.com/wp-content/uploads/2017/08/Solstice_2012_Hymnal.pdf)
+
+[2013 Solstice Book of Rituals](http://secularsolstice.com/wp-content/uploads/2017/08/Solstice_2013_hymnal_facingPages.pdf)
+
+I, myself, have [indulged in a bit](http://anthony.boyles.cc/essays/GetToItAHomily.html) of this style of writing.
+
+# The Futurist Canon, as chosen by me
+
+Were I to take on the burden of futurism's [Marcion of Sinope](https://en.wikipedia.org/wiki/Development_of_the_New_Testament_canon#Marcion_of_Sinope), here is what I would produce:
+
+## Histories
+
+*Origin of the Universe*
+
+*Origin of Life*
+
+*Origin of Humanity*
+
+*Events*
+
+One thing we'll tend to overlook is the story of any individual, or even an individual society. When your moral circle includes all people, the details of anyones story are vastly less important. However, some stories are critical to the story of humanity itself. Some of these events
+
+* The Holocaust - To give us a model of pure evil
+* The Nuking of Japan - To tell of the awesome destructive power at our fingertips.
+* The Destruction of Smallpox - To show that we can defeat our enemies.
+* Vasily Arkhipov and the Cuban Missile Crisis - To show that our existence is owed to good luck.
+* Stanislav Petrov - To model the payoff of skepticism, and the costs of blind faith.
+
+## Fables
+
+1. [The Fable of the Dragon-Tyrant](https://nickbostrom.com/fable/dragon.html)
+2. [The Unfinished Parable of the Sparrows](https://blog.oup.com/2014/08/unfinished-fable-sparrows-superintelligence/)
+3. [That Alien Message](http://lesswrong.com/lw/qk/that_alien_message/)
+
+## Hymns
+
+There are [many, many eligible options](https://docs.google.com/spreadsheets/d/1ETa5RXtDJAQsk6RYhaITfMj1ktOZLP2AKwmcFE8iTVY/edit#gid=0). Some of my favorites are:
+
+1. [Brighter than Today](https://www.youtube.com/watch?v=VDCN6I1n6o4)
+
+## Sermons
+
+1. [A Torch in the Darkness](http://mindingourway.com/a-torch-in-darkness/)
+2. [Get to it](http://anthony.boyles.cc/essays/GetToItAHomily.html)
+3. [Meditations on Moloch](http://slatestarcodex.com/2014/07/30/meditations-on-moloch/)
+4. [On Caring](http://mindingourway.com/on-caring/)
+
+## Others
+
+1. [Storm](https://www.youtube.com/watch?v=HhGuXCuDb1U)
