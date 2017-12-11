@@ -2,13 +2,11 @@
 title: "People Who Died in 2017"
 ---
 
----
-title: People Who Died in 2017
----
+It felt like [a lot of celebrities died in 2016](http://people.com/celebrity/stars-we-lost-in-2016/) ([see also](https://www.youtube.com/watch?v=PQ6WPo-oW5Q)). But the people who make it onto these sorts of lists tend to be, well, popular. It seems to me that the public completely misses the deaths of people whom they should actually aspire to emulate, rather than celebrities who do things which amuse them. Accordingly, I've collected a short list of people who died in 2017 who did valuable things that most people will never hear about.
 
-It felt like [a lot of celebrities died in 2016](http://people.com/celebrity/stars-we-lost-in-2016/) ([see also](https://www.youtube.com/watch?v=PQ6WPo-oW5Q)). But the people who make it onto these sorts of lists tend to be, well, popular. It seems to me that the public completely misses the deaths of people whom they should actually aspire to emulate, rather than artists who do things which amuse them. Accordingly, I've collected a short list of people who died in 2017 who did valuable things that most people will never hear about.
+As all such lists, this is entirely subjective. [Many noteworthy people die](https://en.wikipedia.org/wiki/Category:2017_deaths) in [any given year](https://en.wikipedia.org/wiki/Category:Deaths_by_year). These are simply people who affected *my* life in some way, and whom I wish more people mourned. Please do no misconstrue a persons' inclusion on this list as an endorsement of any of their specific opinions or behaviors. I put them on the list for the reason that give *in the list*, nothing more and nothing less. I'm not going to write extensive biographies or obituaries, just enough context to convey my reasoning for including them on this list. Accordingly, I won't tell you about the manner of their death unless it's salient to my inclusion of them. If you wish to know more, just follow the links.
 
-As all such lists, this is entirely subjective. [Many noteworthy people die](https://en.wikipedia.org/wiki/Category:2017_deaths) in [any given year](https://en.wikipedia.org/wiki/Category:Deaths_by_year). These are simply people who affected *my* life in some way, and whom I wish more people mourned. I'm not going to write extensive biographies or obituaries, just enough context to convey my reasoning for including them on this list. Accordingly, I won't tell you about the manner of their death unless it's salient to my inclusion of them. If you wish to know more, just follow the links.
+One additional note: I've attempted to be diverse in my selections, but in this I've mostly failed. Women are slightly underrepresented. Non-white people are severely underrepresented. Non-academics are severely underrepresented. For the former two, I can only admit my embarrassment at my failure, and resolve to be more inclusive in the future. At the latter, I must defend the choice: more people can and should pursue the horizons of human knowledge.
 
 ## Derek Parfit
 
@@ -24,9 +22,9 @@ American Economist [Kenneth Arrow](https://en.wikipedia.org/wiki/Kenneth_Arrow) 
 
 ## Stanislav Petrov
 
-Soviet Lieutenant Colonel [Stanislav Petrov](https://en.wikipedia.org/wiki/Stanislav_Petrov) died on May 19, 2017. He [literally saved the world](/2017/09/Happy-Petrov-Day.html).
+Soviet Lieutenant Colonel [Stanislav Petrov](https://en.wikipedia.org/wiki/Stanislav_Petrov) died on May 19, 2017. He [literally saved the world](http://anthony.boyles.cc/drafts/Happy-Petrov-Day.html).
 
-## Miriam Mirzakhani
+## Maryam Mirzakhani
 
 Iranian Mathematician [Maryam Mirzakhani](https://en.wikipedia.org/wiki/Maryam_Mirzakhani) died on July 14, 2017. She was awarded the 2014 Fields Medal for "her outstanding contributions to the dynamics and geometry of Riemann surfaces and their moduli spaces".
 
@@ -37,3 +35,15 @@ French philosopher [Anne Dufourmantelle](https://en.wikipedia.org/wiki/Anne_Dufo
 ## Vladimir Voevodsky
 
 Russian Professor of Mathematics [Vladimir Voevodsky](https://en.wikipedia.org/wiki/Vladimir_Voevodsky) died on September 30, 2017. He was awarded the 2002 Fields Medal for developing a homotopy theory for algebraic varieties and formulating motivic cohomology.
+
+## Vera Shlakman
+
+American Economist [Vera Shlakman](https://en.wikipedia.org/wiki/Vera_Shlakman) died on November 5, 2017. She authored an groundbreaking and influential book on female factory workers in 1935. In 1952, She was fired from her position at Queens College following her [invocation of the 5th ammendment](https://www.nytimes.com/2017/11/27/obituaries/vera-shlakman-professor-fired-during-red-scare-dies-at-108.html) in a McCarthyist Senate Internal Subcommittee meeting.
+
+## Jack Doroshow
+
+American Drag Queen Jack Doroshow (a.k.a. [Flawless Sabrina](https://en.wikipedia.org/wiki/Flawless_Sabrina)) died on November 18, 2017. He began [organizing Drag Shows in the late 1950's](https://www.nytimes.com/2017/11/30/obituaries/jack-doroshow-drag-pageant-impresario-dies-at-78.html), long before American society-at-large was actively hostile to anything which eschewed hetero-normativity.
+
+## Jerry A. Fodor
+
+American Professor of Philosophy [Jerry A. Fodor](https://en.wikipedia.org/wiki/Jerry_Fodor) died on November 29, 2017. His multidisciplinary work [seeded a variety of fields](https://www.nytimes.com/2017/11/30/obituaries/jerry-a-fodor-dead-philosopher-of-the-mind.html) dealing with intelligence, notably including artificial intelligence and cognitive science.
