@@ -21,25 +21,54 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -234,10 +263,10 @@ $(document).ready(function () {
 <p>MetaFilter is an online discussion forum. It also publishes a <a href="http://stuff.metafilter.com/infodump/">huge amount of metadata</a></p>
 <p><a href="https://www.google.com/search?q=Metafilter&amp;oq=Metafilter&amp;aqs=chrome..69i57j35i39l2j69i60j0l2.1792j0j7&amp;sourceid=chrome&amp;ie=UTF-8#q=Hitler+site:metafilter.com">Hitler on Metafilter</a> - 6030 Results</p>
 <p><a href="https://www.google.com/search?q=Metafilter&amp;oq=Metafilter&amp;aqs=chrome..69i57j35i39l2j69i60j0l2.1792j0j7&amp;sourceid=chrome&amp;ie=UTF-8#safe=off&amp;q=Nazis+site:metafilter.com">Nazis on Metafilter</a> - 5990 Results</p>
-<pre class="r"><code>if(!file.exists(&#39;../data-cache/infodump-all.zip&#39;)){
-  download.file(&#39;http://mefi.us/infodump/infodump-all.zip&#39;, &#39;../data-cache/infodump-all.zip&#39;)
-  unzip(&#39;../data-cache/infodump-all.zip&#39;, exdir = &#39;../data-cache/metafilter&#39;)  
-}</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&#39;../data-cache/infodump-all.zip&#39;</span>)){
+  <span class="kw">download.file</span>(<span class="st">&#39;http://mefi.us/infodump/infodump-all.zip&#39;</span>, <span class="st">&#39;../data-cache/infodump-all.zip&#39;</span>)
+  <span class="kw">unzip</span>(<span class="st">&#39;../data-cache/infodump-all.zip&#39;</span>, <span class="dt">exdir =</span> <span class="st">&#39;../data-cache/metafilter&#39;</span>)  
+}</code></pre></div>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>

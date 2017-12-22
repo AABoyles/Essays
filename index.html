@@ -21,30 +21,59 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/htmlwidgets-0.9/htmlwidgets.js"></script>
 <script src="site_libs/datatables-binding-0.2/datatables.js"></script>
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
+
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -231,33 +260,33 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>source(&quot;infobox.R&quot;)
-load_package(&quot;plyr&quot;)
-load_package(&quot;dplyr&quot;)
-load_package(&quot;magrittr&quot;)
-load_package(&quot;DT&quot;)
-load_package(&quot;stringr&quot;)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;plyr&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;dplyr&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;magrittr&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;DT&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;stringr&quot;</span>)
 
-cbind(
-  Name = list.files(&quot;portfolio/&quot;, &quot;*.Rmd&quot;),
-  ldply(list.files(&quot;portfolio/&quot;, &quot;*.Rmd&quot;, full.names = TRUE), file.info)
-) %&gt;%
-  dplyr::filter(! Name %in% c(&quot;index.Rmd&quot;)) %&gt;%
-  dplyr::arrange(desc(mtime)) %&gt;%
-  dplyr::transmute(
-    `Last Modified` = paste0(&quot;&lt;a href=&#39;http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/&quot;, Name, &quot;&#39;&gt;&quot;, substr(mtime, 0, 10), &quot;&lt;/a&gt;&quot;),
-    Name = paste0(&quot;&lt;a href=&#39;portfolio/&quot;, str_sub(Name, 1, -5), &quot;.html&#39;&gt;&quot;,
-    Name %&gt;%
-      str_replace_all(&quot;([a-z])([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_replace_all(&quot;([A-Z]+)([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_replace_all(&quot;([a-z]+)([0-9]+)&quot;, &quot;\\1 \\2&quot;) %&gt;%
-      str_sub(1, -5), &quot;&lt;/a&gt;&quot;),
-    `Estimated Length (words)` = floor(size/7)
-    ) %&gt;%
-  dplyr::select(Name, `Estimated Length (words)`, `Last Modified`) %&gt;%
-  datatable(escape = FALSE)</code></pre>
-<div id="htmlwidget-0153a1a2548d3fe2e785" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0153a1a2548d3fe2e785">{"x":{"filter":"none","data":[["1","2","3","4","5"],["<a href='portfolio/TrackingPresTrumpsApprovalRating.html'>Tracking Pres Trumps Approval Rating<\/a>","<a href='portfolio/AllstateClaimsSeverity.html'>Allstate Claims Severity<\/a>","<a href='portfolio/CryonicDemography.html'>Cryonic Demography<\/a>","<a href='portfolio/HousePricesInAmesIowa.html'>House Prices In Ames Iowa<\/a>","<a href='portfolio/PredictingSurvivalOnTheTitanic.html'>Predicting Survival On The Titanic<\/a>"],[2891,1504,2411,4366,3413],["<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/TrackingPresTrumpsApprovalRating.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/AllstateClaimsSeverity.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/CryonicDemography.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/HousePricesInAmesIowa.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/PredictingSurvivalOnTheTitanic.Rmd'>2017-12-15<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<span class="kw">cbind</span>(
+  <span class="dt">Name =</span> <span class="kw">list.files</span>(<span class="st">&quot;portfolio/&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>),
+  <span class="kw">ldply</span>(<span class="kw">list.files</span>(<span class="st">&quot;portfolio/&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>), file.info)
+) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span>Name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index.Rmd&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">arrange</span>(<span class="kw">desc</span>(mtime)) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">transmute</span>(
+    <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span> =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;&lt;a href=&#39;http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/&quot;</span>, Name, <span class="st">&quot;&#39;&gt;&quot;</span>, <span class="kw">substr</span>(mtime, <span class="dv">0</span>, <span class="dv">10</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>),
+    <span class="dt">Name =</span> <span class="kw">paste0</span>(<span class="st">&quot;&lt;a href=&#39;portfolio/&quot;</span>, <span class="kw">str_sub</span>(Name, <span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>), <span class="st">&quot;.html&#39;&gt;&quot;</span>,
+    Name <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z])([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([A-Z]+)([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z]+)([0-9]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">      </span><span class="kw">str_sub</span>(<span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>),
+    <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span> =<span class="st"> </span><span class="kw">floor</span>(size<span class="op">/</span><span class="dv">7</span>)
+    ) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Name, <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">datatable</span>(<span class="dt">escape =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div id="htmlwidget-deb09810caa09c4c0759" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-deb09810caa09c4c0759">{"x":{"filter":"none","data":[["1","2","3","4","5"],["<a href='portfolio/PredictingSurvivalOnTheTitanic.html'>Predicting Survival On The Titanic<\/a>","<a href='portfolio/HousePricesInAmesIowa.html'>House Prices In Ames Iowa<\/a>","<a href='portfolio/CryonicDemography.html'>Cryonic Demography<\/a>","<a href='portfolio/TrackingPresTrumpsApprovalRating.html'>Tracking Pres Trumps Approval Rating<\/a>","<a href='portfolio/AllstateClaimsSeverity.html'>Allstate Claims Severity<\/a>"],[3424,4378,2438,2891,1504],["<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/PredictingSurvivalOnTheTitanic.Rmd'>2017-12-22<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/HousePricesInAmesIowa.Rmd'>2017-12-22<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/CryonicDemography.Rmd'>2017-12-22<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/TrackingPresTrumpsApprovalRating.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/AllstateClaimsSeverity.Rmd'>2017-12-15<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>

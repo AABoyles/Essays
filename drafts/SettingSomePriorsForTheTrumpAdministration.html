@@ -21,25 +21,54 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -228,17 +257,17 @@ $(document).ready(function () {
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<pre class="r"><code>library(dplyr)
-library(ShRoud)
-library(readr)
-library(readxl)
-library(ggplot2)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ShRoud)
+<span class="kw">library</span>(readr)
+<span class="kw">library</span>(readxl)
+<span class="kw">library</span>(ggplot2)
 
-source(&quot;infobox.R&quot;)
-infobox(list(
-  &quot;Status&quot; = &quot;Incomplete&quot;,
-  &quot;Last Revision&quot; = file.info(&quot;SettingSomePriorsForTheTrumpAdministration.Rmd&quot;)$mtime
-))</code></pre>
+<span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+<span class="kw">infobox</span>(<span class="kw">list</span>(
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;SettingSomePriorsForTheTrumpAdministration.Rmd&quot;</span>)<span class="op">$</span>mtime
+))</code></pre></div>
 <div class="infobox">
 <table class="infoboxtable table table-striped">
 <tbody>
@@ -356,19 +385,19 @@ infobox(list(
 <h2>The Federal Budget, Defecit, and Debt</h2>
 <p><strong>Federal revenue will be higher in 2020 than in 2016.</strong></p>
 <p>I started this section by prognosticating that federal revenues would decline, but the data totally changed my mind. Federal Revenues basically don’t decline:</p>
-<pre class="r"><code>if(!file.exists(&quot;../data-cache/FedBudget.xls&quot;)){
-  download.file(&quot;https://obamawhitehouse.archives.gov/sites/default/files/omb/budget/fy2017/assets/hist01z1.xls&quot;, &quot;../data-cache/FedBudget.xls&quot;)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;../data-cache/FedBudget.xls&quot;</span>)){
+  <span class="kw">download.file</span>(<span class="st">&quot;https://obamawhitehouse.archives.gov/sites/default/files/omb/budget/fy2017/assets/hist01z1.xls&quot;</span>, <span class="st">&quot;../data-cache/FedBudget.xls&quot;</span>)
 }
-budget &lt;- stfu(read_excel(&quot;../data-cache/FedBudget.xls&quot;, skip = 3))
-names(budget)[1] &lt;- &quot;Year&quot;
-budget &lt;- budget[3:118,1:3] %&gt;%
-  mutate(Year = as.numeric(Year))
-ggplot(budget, aes(Year, Receipts, group = 1)) + geom_line() + theme(axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
+budget &lt;-<span class="st"> </span><span class="kw">stfu</span>(<span class="kw">read_excel</span>(<span class="st">&quot;../data-cache/FedBudget.xls&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>))
+<span class="kw">names</span>(budget)[<span class="dv">1</span>] &lt;-<span class="st"> &quot;Year&quot;</span>
+budget &lt;-<span class="st"> </span>budget[<span class="dv">3</span><span class="op">:</span><span class="dv">118</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Year =</span> <span class="kw">as.numeric</span>(Year))
+<span class="kw">ggplot</span>(budget, <span class="kw">aes</span>(Year, Receipts, <span class="dt">group =</span> <span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
 <p><img src="SettingSomePriorsForTheTrumpAdministration_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>OK, so they do sometimes, but the two really good examples of declines in this graph are both during a single President’s tenure, and revenue was still higher at the end of his terms than it was at the beginning. Despite the general enthusiasm amongst Republicans for reducing the size of government during the Obama years, I suspect we’ll see the end of the Trump years with a larger, more expensive government.</p>
 <p><strong>The defecit will be larger in 2020 than in 2016.</strong></p>
 <p>Now that they have near-free-reign over the Federal Government, the Republicans are nearly silent about their concern for the nation’s long-term solvency. Rather, they will enact federal spending, resulting in less revenue and more debt.</p>
-<pre class="r"><code>ggplot(budget, aes(Year, Outlays-Receipts, group = 1)) + geom_line() + theme(axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(budget, <span class="kw">aes</span>(Year, Outlays<span class="op">-</span>Receipts, <span class="dt">group =</span> <span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</code></pre></div>
 <p><img src="SettingSomePriorsForTheTrumpAdministration_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>This, in turn, causes:</p>
 <p><strong>The national debt will be larger in 2020 than in 2016.</strong></p>

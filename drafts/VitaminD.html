@@ -21,25 +21,54 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -226,26 +255,26 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>library(&quot;htmltab&quot;)
-library(&quot;magrittr&quot;)
-library(&quot;plyr&quot;)
-library(&quot;tidyverse&quot;)
-library(&quot;plotly&quot;)
-library(&quot;intubate&quot;)
-library(&quot;knitr&quot;)
-library(&quot;metafor&quot;)
-library(&quot;BayesianFirstAid&quot;)
-library(&quot;bayesmeta&quot;)
-knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE)
-load(&#39;../data-cache/Longevity.RData&#39;)</code></pre>
-<pre class="r"><code>source(&quot;infobox.R&quot;)
-infobox(list(
-  &quot;Status&quot; = &quot;Incomplete&quot;,
-  &quot;Epistemic Status&quot; = &quot;Speculative&quot;,
-  &quot;Fork of&quot; = tags$a(href=&#39;http://www.gwern.net/Longevity&#39;, &quot;Gwern&#39;s Longevity&quot;),
-  &quot;First Revision&quot; = &quot;2016-10-14&quot;,
-  &quot;Last Revision&quot; = as.Date(file.info(&quot;drafts/Longevity.Rmd&quot;)$mtime)
-))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;htmltab&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;plyr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;plotly&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;intubate&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;knitr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;metafor&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;BayesianFirstAid&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;bayesmeta&quot;</span>)
+knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)
+<span class="kw">load</span>(<span class="st">&#39;../data-cache/Longevity.RData&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+<span class="kw">infobox</span>(<span class="kw">list</span>(
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
+  <span class="st">&quot;Epistemic Status&quot;</span> =<span class="st"> &quot;Speculative&quot;</span>,
+  <span class="st">&quot;Fork of&quot;</span> =<span class="st"> </span>tags<span class="op">$</span><span class="kw">a</span>(<span class="dt">href=</span><span class="st">&#39;http://www.gwern.net/Longevity&#39;</span>, <span class="st">&quot;Gwern&#39;s Longevity&quot;</span>),
+  <span class="st">&quot;First Revision&quot;</span> =<span class="st"> &quot;2016-10-14&quot;</span>,
+  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">file.info</span>(<span class="st">&quot;drafts/Longevity.Rmd&quot;</span>)<span class="op">$</span>mtime)
+))</code></pre></div>
 <div class="infobox">
 <table class="infoboxtable table table-striped">
 <tbody>
@@ -298,17 +327,17 @@ infobox(list(
 <h3>Meta Analyses</h3>
 <p>The overall thrust of the meta-analyses is that there is consistent and substantial evidence that regular vitamin D3 supplementation reduces all-cause mortality somewhere in the RR=0.90-1 range, that vitamin D2 may be worse but calcium seems irrelevant, and this effect seems to be general: the observable between-study heterogeneity is very small despite large differences in subject populations by gender, age, and dosage, and subgroup analyses do not find the effect confined to particular demographics or that a reduction in a particular disease is driving the ACM reduction (which while potentially due to lack of power, would be consistent with the generality of benefits in both the correlational and Mendelian randomization studies).</p>
 <p>The most comprehensive meta-analysis by my count is Bolland et al 2014, which pools <em>k</em>=41 to get an estimate of RR 0.96 (0.93-1.00; <em>p</em>=0.04) based on an experimental death rate of 3824/40379=0.0947 vs control death rate of 3950/40794=0.0968. The meta-analysis itself can be reproduced given Bolland’s forest plot &amp; table, Figure 5.</p>
-<pre class="r"><code>vitaminD &lt;- data.frame(
-  &quot;Study&quot;= c(&quot;Inkovaara&quot;, &quot;Corless&quot;, &quot;Ooms&quot;, &quot;Lips A&quot;, &quot;Komulainen&quot;, &quot;Meyer&quot;, &quot;Bischoff&quot;, &quot;Cooper&quot;, &quot;Latham&quot;, &quot;Trivedi&quot;, &quot;Avenell&quot;, &quot;Harwood&quot;, &quot;Aloia&quot;, &quot;Flicker&quot;, &quot;Grant&quot;, &quot;Broe&quot;, &quot;Burleigh&quot;, &quot;Lappe&quot;, &quot;Lyons&quot;, &quot;Smith&quot;, &quot;Björkman&quot;, &quot;Chel&quot;, &quot;Prince&quot;, &quot;Zhu&quot;, &quot;Lips B&quot;, &quot;Sanders&quot;, &quot;Glendenning&quot;, &quot;Inkovaara&quot;, &quot;Chapuy A&quot;, &quot;Dawson-Hughes&quot;, &quot;Baeksgaard&quot;, &quot;Krieg&quot;, &quot;Chapuy B&quot;, &quot;Harwood&quot;, &quot;Meier&quot;, &quot;Brazier&quot;, &quot;Grant&quot;, &quot;Porthouse&quot;, &quot;WHI trials&quot;, &quot;Bolton-Smith&quot;, &quot;Zhu&quot;, &quot;Salovaara&quot;),
- &quot;Year&quot;=c(1983, 1985, 1995, 1996, 1998, 2002, 2003, 2003, 2003, 2003, 2004, 2004, 2005, 2005, 2005, 2007, 2007, 2007, 2007, 2007, 2008, 2008, 2008, 2008, 2010, 2010, 2012, 1983, 1992, 1997, 1998, 1999, 2002, 2004, 2004, 2005, 2005, 2005, 2006, 2007, 2008, 2010),
-  &quot;E.deaths&quot;=c(41, 8, 11, 223, 2, 169, 1, 0, 11, 224, 4, 24, 1, 76, 438, 5, 16, 4, 947, 355, 27, 25, 0, 0, 1, 40, 2, 2, 258, 2, 0, 21, 70, 17, 0, 3, 221, 57, 744, 0, 0, 15),
-  &quot;E.n&quot;=c(181, 41, 177, 1291, 232, 569, 62, 93, 121, 1345, 70, 113, 104, 313, 2649, 99, 101, 446, 1725, 4727, 150, 166, 151, 39, 114, 1131, 353, 353, 1634, 187, 80, 124, 389, 75, 30, 95, 1306, 1321, 18176, 62, 39, 1718),
-  &quot;C.deaths&quot;=c(26, 8, 21, 251, 2, 163, 4, 1, 3, 247, 3, 5, 2, 85, 460, 2, 13, 18, 953, 354, 9, 33, 1, 2, 0, 47, 0, 0, 274, 2, 1, 26, 43, 5, 1, 1, 217, 68, 807, 1, 2, 13),
-  &quot;C.n&quot;=c(146, 41, 171, 1287, 232, 575, 60, 94, 122, 1341, 64, 37, 104, 312, 2643, 25, 104, 734, 1715, 4713, 68, 172, 151, 81, 112, 1125, 333, 333, 1636, 202, 80, 124, 194, 37, 25, 97, 1332, 1993, 18106, 61, 41, 1714),
-  &quot;Calcium&quot;=c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vitaminD &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="st">&quot;Study&quot;</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Inkovaara&quot;</span>, <span class="st">&quot;Corless&quot;</span>, <span class="st">&quot;Ooms&quot;</span>, <span class="st">&quot;Lips A&quot;</span>, <span class="st">&quot;Komulainen&quot;</span>, <span class="st">&quot;Meyer&quot;</span>, <span class="st">&quot;Bischoff&quot;</span>, <span class="st">&quot;Cooper&quot;</span>, <span class="st">&quot;Latham&quot;</span>, <span class="st">&quot;Trivedi&quot;</span>, <span class="st">&quot;Avenell&quot;</span>, <span class="st">&quot;Harwood&quot;</span>, <span class="st">&quot;Aloia&quot;</span>, <span class="st">&quot;Flicker&quot;</span>, <span class="st">&quot;Grant&quot;</span>, <span class="st">&quot;Broe&quot;</span>, <span class="st">&quot;Burleigh&quot;</span>, <span class="st">&quot;Lappe&quot;</span>, <span class="st">&quot;Lyons&quot;</span>, <span class="st">&quot;Smith&quot;</span>, <span class="st">&quot;Björkman&quot;</span>, <span class="st">&quot;Chel&quot;</span>, <span class="st">&quot;Prince&quot;</span>, <span class="st">&quot;Zhu&quot;</span>, <span class="st">&quot;Lips B&quot;</span>, <span class="st">&quot;Sanders&quot;</span>, <span class="st">&quot;Glendenning&quot;</span>, <span class="st">&quot;Inkovaara&quot;</span>, <span class="st">&quot;Chapuy A&quot;</span>, <span class="st">&quot;Dawson-Hughes&quot;</span>, <span class="st">&quot;Baeksgaard&quot;</span>, <span class="st">&quot;Krieg&quot;</span>, <span class="st">&quot;Chapuy B&quot;</span>, <span class="st">&quot;Harwood&quot;</span>, <span class="st">&quot;Meier&quot;</span>, <span class="st">&quot;Brazier&quot;</span>, <span class="st">&quot;Grant&quot;</span>, <span class="st">&quot;Porthouse&quot;</span>, <span class="st">&quot;WHI trials&quot;</span>, <span class="st">&quot;Bolton-Smith&quot;</span>, <span class="st">&quot;Zhu&quot;</span>, <span class="st">&quot;Salovaara&quot;</span>),
+ <span class="st">&quot;Year&quot;</span>=<span class="kw">c</span>(<span class="dv">1983</span>, <span class="dv">1985</span>, <span class="dv">1995</span>, <span class="dv">1996</span>, <span class="dv">1998</span>, <span class="dv">2002</span>, <span class="dv">2003</span>, <span class="dv">2003</span>, <span class="dv">2003</span>, <span class="dv">2003</span>, <span class="dv">2004</span>, <span class="dv">2004</span>, <span class="dv">2005</span>, <span class="dv">2005</span>, <span class="dv">2005</span>, <span class="dv">2007</span>, <span class="dv">2007</span>, <span class="dv">2007</span>, <span class="dv">2007</span>, <span class="dv">2007</span>, <span class="dv">2008</span>, <span class="dv">2008</span>, <span class="dv">2008</span>, <span class="dv">2008</span>, <span class="dv">2010</span>, <span class="dv">2010</span>, <span class="dv">2012</span>, <span class="dv">1983</span>, <span class="dv">1992</span>, <span class="dv">1997</span>, <span class="dv">1998</span>, <span class="dv">1999</span>, <span class="dv">2002</span>, <span class="dv">2004</span>, <span class="dv">2004</span>, <span class="dv">2005</span>, <span class="dv">2005</span>, <span class="dv">2005</span>, <span class="dv">2006</span>, <span class="dv">2007</span>, <span class="dv">2008</span>, <span class="dv">2010</span>),
+  <span class="st">&quot;E.deaths&quot;</span>=<span class="kw">c</span>(<span class="dv">41</span>, <span class="dv">8</span>, <span class="dv">11</span>, <span class="dv">223</span>, <span class="dv">2</span>, <span class="dv">169</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">224</span>, <span class="dv">4</span>, <span class="dv">24</span>, <span class="dv">1</span>, <span class="dv">76</span>, <span class="dv">438</span>, <span class="dv">5</span>, <span class="dv">16</span>, <span class="dv">4</span>, <span class="dv">947</span>, <span class="dv">355</span>, <span class="dv">27</span>, <span class="dv">25</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">40</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">258</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">21</span>, <span class="dv">70</span>, <span class="dv">17</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">221</span>, <span class="dv">57</span>, <span class="dv">744</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">15</span>),
+  <span class="st">&quot;E.n&quot;</span>=<span class="kw">c</span>(<span class="dv">181</span>, <span class="dv">41</span>, <span class="dv">177</span>, <span class="dv">1291</span>, <span class="dv">232</span>, <span class="dv">569</span>, <span class="dv">62</span>, <span class="dv">93</span>, <span class="dv">121</span>, <span class="dv">1345</span>, <span class="dv">70</span>, <span class="dv">113</span>, <span class="dv">104</span>, <span class="dv">313</span>, <span class="dv">2649</span>, <span class="dv">99</span>, <span class="dv">101</span>, <span class="dv">446</span>, <span class="dv">1725</span>, <span class="dv">4727</span>, <span class="dv">150</span>, <span class="dv">166</span>, <span class="dv">151</span>, <span class="dv">39</span>, <span class="dv">114</span>, <span class="dv">1131</span>, <span class="dv">353</span>, <span class="dv">353</span>, <span class="dv">1634</span>, <span class="dv">187</span>, <span class="dv">80</span>, <span class="dv">124</span>, <span class="dv">389</span>, <span class="dv">75</span>, <span class="dv">30</span>, <span class="dv">95</span>, <span class="dv">1306</span>, <span class="dv">1321</span>, <span class="dv">18176</span>, <span class="dv">62</span>, <span class="dv">39</span>, <span class="dv">1718</span>),
+  <span class="st">&quot;C.deaths&quot;</span>=<span class="kw">c</span>(<span class="dv">26</span>, <span class="dv">8</span>, <span class="dv">21</span>, <span class="dv">251</span>, <span class="dv">2</span>, <span class="dv">163</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">247</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">85</span>, <span class="dv">460</span>, <span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">953</span>, <span class="dv">354</span>, <span class="dv">9</span>, <span class="dv">33</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">47</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">274</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">26</span>, <span class="dv">43</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">217</span>, <span class="dv">68</span>, <span class="dv">807</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">13</span>),
+  <span class="st">&quot;C.n&quot;</span>=<span class="kw">c</span>(<span class="dv">146</span>, <span class="dv">41</span>, <span class="dv">171</span>, <span class="dv">1287</span>, <span class="dv">232</span>, <span class="dv">575</span>, <span class="dv">60</span>, <span class="dv">94</span>, <span class="dv">122</span>, <span class="dv">1341</span>, <span class="dv">64</span>, <span class="dv">37</span>, <span class="dv">104</span>, <span class="dv">312</span>, <span class="dv">2643</span>, <span class="dv">25</span>, <span class="dv">104</span>, <span class="dv">734</span>, <span class="dv">1715</span>, <span class="dv">4713</span>, <span class="dv">68</span>, <span class="dv">172</span>, <span class="dv">151</span>, <span class="dv">81</span>, <span class="dv">112</span>, <span class="dv">1125</span>, <span class="dv">333</span>, <span class="dv">333</span>, <span class="dv">1636</span>, <span class="dv">202</span>, <span class="dv">80</span>, <span class="dv">124</span>, <span class="dv">194</span>, <span class="dv">37</span>, <span class="dv">25</span>, <span class="dv">97</span>, <span class="dv">1332</span>, <span class="dv">1993</span>, <span class="dv">18106</span>, <span class="dv">61</span>, <span class="dv">41</span>, <span class="dv">1714</span>),
+  <span class="st">&quot;Calcium&quot;</span>=<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)
 )
 
-rma(measure=&quot;RR&quot;, ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths), data=vitaminD, method=&quot;REML&quot;)</code></pre>
+<span class="kw">rma</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n<span class="op">-</span>E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n<span class="op">-</span>C.deaths), <span class="dt">data=</span>vitaminD, <span class="dt">method=</span><span class="st">&quot;REML&quot;</span>)</code></pre></div>
 <pre><code>## 
 ## Random-Effects Model (k = 42; tau^2 estimator: REML)
 ## 
@@ -328,7 +357,7 @@ rma(measure=&quot;RR&quot;, ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Since I^2=0, this is equivalent to a fixed-effect meta-analysis:</p>
-<pre class="r"><code>rma(measure=&quot;RR&quot;, ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths), data=vitaminD, method=&quot;FE&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rma</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n<span class="op">-</span>E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n<span class="op">-</span>C.deaths), <span class="dt">data=</span>vitaminD, <span class="dt">method=</span><span class="st">&quot;FE&quot;</span>)</code></pre></div>
 <pre><code>## 
 ## Fixed-Effects Model (k = 42)
 ## 
@@ -344,7 +373,7 @@ rma(measure=&quot;RR&quot;, ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>(Oddly, the per-study mortality rates in the Bolland forest plot/table don’t add up to the claimed totals, but are short by a few dozen each; since the RR calculated by <code>metafor</code> works out to be about the same, I assume it has something to do with how Bolland decided to handle including multiple subgroups from studies and is not important.)</p>
 <p>Turning from frequentist to Bayesian methods, we could take the fixed-effect at face-value and use a Bayesian proportion test, for example:</p>
-<pre class="r"><code>bayes.prop.test(c(sum(vitaminD$E.deaths), sum(vitaminD$C.deaths)), c(sum(vitaminD$E.n), sum(vitaminD$C.n)))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bayes.prop.test</span>(<span class="kw">c</span>(<span class="kw">sum</span>(vitaminD<span class="op">$</span>E.deaths), <span class="kw">sum</span>(vitaminD<span class="op">$</span>C.deaths)), <span class="kw">c</span>(<span class="kw">sum</span>(vitaminD<span class="op">$</span>E.n), <span class="kw">sum</span>(vitaminD<span class="op">$</span>C.n)))</code></pre></div>
 <pre><code>## 
 ##  Bayesian First Aid proportion test
 ## 
@@ -355,13 +384,13 @@ rma(measure=&quot;RR&quot;, ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n
 ##   Group 1: 0.096 [0.094, 0.099]
 ##   Group 2: 0.098 [0.095, 0.10]
 ## Estimated group difference (Group 1 - Group 2):
-##   0 [-0.0058, 0.0022]
+##   0 [-0.0056, 0.0023]
 ## The relative frequency of success is larger for Group 1 by a probability
-## of 0.207 and larger for Group 2 by a probability of 0.793 .</code></pre>
+## of 0.204 and larger for Group 2 by a probability of 0.796 .</code></pre>
 <p>Using BFA has the downside that an I^2=0 doesn’t guarantee that there is no heterogeneity (it’d be surprising if there wasn’t) and gives an overly narrow predictive distribution, and BFA doesn’t easily include our informative priors. We can switch to <a href="https://cran.r-project.org/web/packages/bayesmeta/index.html">bayesmeta</a> which is easier to use than JAGS since it’s built on metafor:</p>
-<pre class="r"><code>brem &lt;- escalc(measure=&quot;RR&quot;, ai=E.deaths, bi=(E.n-E.deaths), ci=C.deaths, di=(C.n-C.deaths), data=vitaminD) %&gt;%
-          bayesmeta(mu.prior.mean=0, mu.prior.sd=0.35^2)
-brem</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brem &lt;-<span class="st"> </span><span class="kw">escalc</span>(<span class="dt">measure=</span><span class="st">&quot;RR&quot;</span>, <span class="dt">ai=</span>E.deaths, <span class="dt">bi=</span>(E.n<span class="op">-</span>E.deaths), <span class="dt">ci=</span>C.deaths, <span class="dt">di=</span>(C.n<span class="op">-</span>C.deaths), <span class="dt">data=</span>vitaminD) <span class="op">%&gt;%</span>
+<span class="st">          </span><span class="kw">bayesmeta</span>(<span class="dt">mu.prior.mean=</span><span class="dv">0</span>, <span class="dt">mu.prior.sd=</span><span class="fl">0.35</span><span class="op">^</span><span class="dv">2</span>)
+brem</code></pre></div>
 <pre><code>##  &#39;bayesmeta&#39; object.
 ## 
 ## 42 estimates:
@@ -391,22 +420,22 @@ brem</code></pre>
 ## 
 ## (quoted intervals are shortest credible intervals.)</code></pre>
 <p>Converting from log RRs to RR:</p>
-<pre class="r"><code>exp(c(-0.080152143106, -0.036152849917, 0.008768546338))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">0.080152143106</span>, <span class="op">-</span><span class="fl">0.036152849917</span>, <span class="fl">0.008768546338</span>))</code></pre></div>
 <pre><code>## [1] 0.9229759 0.9644929 1.0088071</code></pre>
 <p>Posterior predictive distribution of RR values including heterogeneity</p>
-<pre class="r"><code>rrPP &lt;- exp(brem$rposterior(1000, predict=TRUE)[,2])</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rrPP &lt;-<span class="st"> </span><span class="kw">exp</span>(brem<span class="op">$</span><span class="kw">rposterior</span>(<span class="dv">1000</span>, <span class="dt">predict=</span><span class="ot">TRUE</span>)[,<span class="dv">2</span>])</code></pre></div>
 <p>Probability that vitamin D will reduce all-cause mortality in unobserved populations:</p>
-<pre class="r"><code>sum(rrPP&lt;1) / length(rrPP)</code></pre>
-<pre><code>## [1] 0.852</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(rrPP<span class="op">&lt;</span><span class="dv">1</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(rrPP)</code></pre></div>
+<pre><code>## [1] 0.865</code></pre>
 </div>
 </div>
 <div id="benefit" class="section level2">
 <h2>Benefit</h2>
 <p>Expected life expectancy increase:</p>
-<pre class="r"><code>RR &lt;- mean(rrPP)
-years &lt;- mean(sapply(rrPP, lifeExpectancyGain))
-years * valueOfDALY</code></pre>
-<pre><code>## [1] 15739.78</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">RR &lt;-<span class="st"> </span><span class="kw">mean</span>(rrPP)
+years &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">sapply</span>(rrPP, lifeExpectancyGain))
+years <span class="op">*</span><span class="st"> </span>valueOfDALY</code></pre></div>
+<pre><code>## [1] 17068.99</code></pre>
 <p>Hence, vitamin D supplementation could be worth &lt;=$16.8k.</p>
 </div>
 <div id="cost" class="section level2">
@@ -414,12 +443,12 @@ years * valueOfDALY</code></pre>
 <div id="financial" class="section level3">
 <h3>Financial</h3>
 <p>The meta-analyses do not have anything remotely near a consensus about dosage (nor do the correlational studies, despite much ink spilled), so it probably does not matter much. I have in the past purchased 360x5000IU vitamin D3 pills for <a href="http://amazon.com/gp/product/B0050MYHBQ/?tag=gwernnet-20" title="Doctor&#39;s Best Vitamin D3 5000iu Soft-gels, 360">$10.99</a>, for an annual cost of $11.14. Taking a single pill takes perhaps a sixth of a minute, which again we value at $8/hr. So if we began taking at age 30:</p>
-<pre class="r"><code>moneyCost &lt;- (10.99 / 360) * 365
-timeCost &lt;- ((1/10)/60) * 365.25 * 8
-vitaminDAnnualCost &lt;- moneyCost + timeCost
-vitaminDTotalCost &lt;- vitaminDAnnualCost * lifeExpectancy(RR, 30, Inf)
-vitaminDTotalCost</code></pre>
-<pre><code>## [1] 760.3527</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">moneyCost &lt;-<span class="st"> </span>(<span class="fl">10.99</span> <span class="op">/</span><span class="st"> </span><span class="dv">360</span>) <span class="op">*</span><span class="st"> </span><span class="dv">365</span>
+timeCost &lt;-<span class="st"> </span>((<span class="dv">1</span><span class="op">/</span><span class="dv">10</span>)<span class="op">/</span><span class="dv">60</span>) <span class="op">*</span><span class="st"> </span><span class="fl">365.25</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span>
+vitaminDAnnualCost &lt;-<span class="st"> </span>moneyCost <span class="op">+</span><span class="st"> </span>timeCost
+vitaminDTotalCost &lt;-<span class="st"> </span>vitaminDAnnualCost <span class="op">*</span><span class="st"> </span><span class="kw">lifeExpectancy</span>(RR, <span class="dv">30</span>, <span class="ot">Inf</span>)
+vitaminDTotalCost</code></pre></div>
+<pre><code>## [1] 760.7739</code></pre>
 <div id="dosage" class="section level4">
 <h4>Dosage</h4>
 <p>To go into some more detail about the dosing issue, ne of the more recent meta-analyses to discuss dose in connection with all-cause mortality, <a href="http://www.gwern.net/docs/vitamind/2014-autier.pdf">Autier 2014</a>, says</p>
@@ -444,22 +473,22 @@ vitaminDTotalCost</code></pre>
 <div id="cost-benefit" class="section level2">
 <h2>Cost-benefit</h2>
 <p>Bringing it all together for a 30yo considering vitamin D:</p>
-<pre class="r"><code>benefit &lt;- lifeExpectancyGain(RR, startingAge=30) * valueOfDALY
-cost &lt;- vitaminDTotalCost
-benefit - cost</code></pre>
-<pre><code>## [1] 14255</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">benefit &lt;-<span class="st"> </span><span class="kw">lifeExpectancyGain</span>(RR, <span class="dt">startingAge=</span><span class="dv">30</span>) <span class="op">*</span><span class="st"> </span>valueOfDALY
+cost &lt;-<span class="st"> </span>vitaminDTotalCost
+benefit <span class="op">-</span><span class="st"> </span>cost</code></pre></div>
+<pre><code>## [1] 15569.66</code></pre>
 <div id="optimal-age" class="section level3">
 <h3>Optimal age</h3>
-<pre class="r"><code>ages &lt;- sapply(1:120, function(startingAge) profitByAge(startingAge, RR, annualCost = vitaminDAnnualCost, startCost = 0, probabilityPenalty=1))
-optimalAge &lt;- which.max(ages)</code></pre>
-<p>So the optimal age turns out to be around 25.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ages &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">120</span>, <span class="cf">function</span>(startingAge) <span class="kw">profitByAge</span>(startingAge, RR, <span class="dt">annualCost =</span> vitaminDAnnualCost, <span class="dt">startCost =</span> <span class="dv">0</span>, <span class="dt">probabilityPenalty=</span><span class="dv">1</span>))
+optimalAge &lt;-<span class="st"> </span><span class="kw">which.max</span>(ages)</code></pre></div>
+<p>So the optimal age turns out to be around 24.</p>
 </div>
 <div id="sensitivity" class="section level3">
 <h3>Sensitivity</h3>
 <p>What RR would wipe out the gains from vitamin D, and how likely is an RR that pessimistic?</p>
-<pre class="r"><code>zeroRR &lt;- costToRR(startingAge=optimalAge, annualCost=vitaminDAnnualCost)
-sum(rrPP&lt;zeroRR) / length(rrPP)</code></pre>
-<pre><code>## [1] 0.844</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zeroRR &lt;-<span class="st"> </span><span class="kw">costToRR</span>(<span class="dt">startingAge=</span>optimalAge, <span class="dt">annualCost=</span>vitaminDAnnualCost)
+<span class="kw">sum</span>(rrPP<span class="op">&lt;</span>zeroRR) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(rrPP)</code></pre></div>
+<pre><code>## [1] 0.858</code></pre>
 <p>The window of unprofitability is so narrow that it doesn’t much change the probability.</p>
 </div>
 </div>

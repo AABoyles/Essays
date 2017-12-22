@@ -21,25 +21,54 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -228,13 +257,13 @@ $(document).ready(function () {
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<pre class="r"><code>source(&quot;infobox.R&quot;)
-meta &lt;- list(
-  &quot;Status&quot; = &quot;Incomplete&quot;,
-  &quot;Epistemic Status&quot; = &quot;Highly Speculative&quot;
-  #&quot;Last Revision&quot; = file.info(&quot;EstimationOfTheProbabilityOfTheSuccessOfCryonics.Rmd&quot;)$mtime
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
+meta &lt;-<span class="st"> </span><span class="kw">list</span>(
+  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
+  <span class="st">&quot;Epistemic Status&quot;</span> =<span class="st"> &quot;Highly Speculative&quot;</span>
+  <span class="co">#&quot;Last Revision&quot; = file.info(&quot;EstimationOfTheProbabilityOfTheSuccessOfCryonics.Rmd&quot;)$mtime</span>
 )
-infobox(meta)</code></pre>
+<span class="kw">infobox</span>(meta)</code></pre></div>
 <p>Imagine you are living in a small European village in 1347. You’ve heard rumors of a terrible disease ravaging other distant villages. Then one day, another villager falls ill with severe malaise, headache, shaking chills, fever, and painful, swollen bulbs near her joints. The other villagers decry her sinfulness, and avoid her entire family like (ahem) the plague. It doesn’t matter. Others fall victim. The unaffected take to carrying flowers right below their noses to perfume the stench of dying and decaying bodies. Before long, you feel a crushing headache. You can’t motivate yourself out of your bed at sunrise. By nightfall, it’s clear you’re infected. The next morning, it’s clear you’re not long for this world. You die before supper. Luckily, <a href="https://youtu.be/grbSQ6O6kbs">the dead cart was coming around the next day</a>. Now, imagine that instead of coming down with this terrible disease in 1347, you come down with it in 2016. Feeling worse than a run-of-the-mill cold, you make your way to the nearest hospital. They determine that you have a <em>Yersinia Pestis</em> infection, and <a href="https://en.wikipedia.org/wiki/Yersinia_pestis#Treatment">inject you with broad-spectrum antibiotics</a>. Within minutes you feel a little bit better. Within a week (and a few more injections), you’re all better.</p>
 <p>OK, stay with me. What if you got the plague in 1347, but there was a way you could be transported to 2016 for treatment? For those of us in 2016, I think the obvious answer is “Great! Sign me up!” For the poor denizens of 1347, the much likelier answer is “That will never work.” As it happens, we still die of a long list of things from which we don’t yet know how to prevent ourselves from dying. But we’ve developed a pretty good idea about how to transport ourselves arbitrarily far into the future to assure our survival. It’s called cryonics.</p>
 <p>Let’s investigate <em>why</em> it might not work. Cryonics can fail in broadly three ways: First, cryonics may not be able to protect us from information-theoretic death. This is the most obvious failure mode, and the one that people most strongly consider in criticisms of cryonics. However, it is also the <em>least likely</em> failure mode. Our brains contain an arrangement of matter which implements a <em>mind</em>. If we can figure out how to capture the arrangement of matter in sufficient resolution (likely supramolecular), we can reimplement the mind by emulating the physics of that matter in a computer. The only way this can fail over the long run is if mind degradation occurs so quickly upon death that, even factoring in damage, the data is irrecoverable. Research suggests that this is not the case. I personally estimate this probability is around <span class="math inline">\(10^{-2}\)</span>.</p>

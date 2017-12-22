@@ -21,25 +21,54 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -234,164 +263,164 @@ $(document).ready(function () {
 <div id="preparation" class="section level1">
 <h1>Preparation</h1>
 <p>Let’s start by loading our packages and data.</p>
-<pre class="python"><code>import numpy as np
-import pandas as pd
-import matplotlib.mlab as mlab
-import matplotlib.pyplot as plt
-from scipy.stats import skew, boxcox
-import statsmodels.formula.api as smf
-import xgboost as xgb
-from bayes_opt import BayesianOptimization
-from sklearn.metrics import mean_absolute_error
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
+<span class="im">import</span> pandas <span class="im">as</span> pd
+<span class="im">import</span> matplotlib.mlab <span class="im">as</span> mlab
+<span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+<span class="im">from</span> scipy.stats <span class="im">import</span> skew, boxcox
+<span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf
+<span class="im">import</span> xgboost <span class="im">as</span> xgb
+<span class="im">from</span> bayes_opt <span class="im">import</span> BayesianOptimization
+<span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error
 
-# Load Training Data
-train = pd.read_csv(&#39;../data-cache/Allstate/train.csv&#39;, dtype={&#39;id&#39;: np.int32})
+<span class="co"># Load Training Data</span>
+train <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data-cache/Allstate/train.csv&#39;</span>, dtype<span class="op">=</span>{<span class="st">&#39;id&#39;</span>: np.int32})
 
-# Load Test Data
-test = pd.read_csv(&#39;../data-cache/Allstate/test.csv&#39;, dtype={&#39;id&#39;: np.int32})</code></pre>
+<span class="co"># Load Test Data</span>
+test <span class="op">=</span> pd.read_csv(<span class="st">&#39;../data-cache/Allstate/test.csv&#39;</span>, dtype<span class="op">=</span>{<span class="st">&#39;id&#39;</span>: np.int32})</code></pre></div>
 <p>Nomenclature note: The outcome variable for this competition is ‘loss’. (If you read much machine learning literature, you’ve probably heard the term <em>loss</em> as in ‘loss function’.) That isn’t exactly what we mean in this context. The ‘loss’ variable in this case literally refers to the amount AllState lost on the settlement. Wherever you see ‘loss’ in this document, assume I’m talking about the amount AllState lost, and not the output of a loss function.</p>
 <p>Now, prediction is easier on an outcome that’s normally distributed. Let’s check to see if this data is:</p>
-<pre class="python"><code>plt.hist(train[&#39;loss&#39;], 30, normed=1)
-plt.xlabel(&#39;Loss&#39;)
-plt.ylabel(&#39;Probability&#39;)
-plt.title(&#39;Distribution of Losses&#39;)
-plt.show()</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">plt.hist(train[<span class="st">&#39;loss&#39;</span>], <span class="dv">30</span>, normed<span class="op">=</span><span class="dv">1</span>)
+plt.xlabel(<span class="st">&#39;Loss&#39;</span>)
+plt.ylabel(<span class="st">&#39;Probability&#39;</span>)
+plt.title(<span class="st">&#39;Distribution of Losses&#39;</span>)
+plt.show()</code></pre></div>
 <p>Wow. That isn’t normally distributed at all: it’s super skewed.</p>
-<pre class="python"><code>skew(train[&#39;loss&#39;])</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">skew(train[<span class="st">&#39;loss&#39;</span>])</code></pre></div>
 <p>Any skew greater than one should probably catch your attention. Luckily, we have a simple counterspell! Let’s log-transform the ‘loss’ variable.</p>
-<pre class="python"><code>train[&#39;log_loss&#39;] = np.log(train[&#39;loss&#39;])
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">train[<span class="st">&#39;log_loss&#39;</span>] <span class="op">=</span> np.log(train[<span class="st">&#39;loss&#39;</span>])
 
-plt.hist(train[&#39;log_loss&#39;], 30, normed=1)
-plt.xlabel(&#39;Log(Loss)&#39;)
-plt.ylabel(&#39;Probability&#39;)
-plt.title(&#39;Distribution of Log(Loss)es&#39;)
-plt.show()</code></pre>
+plt.hist(train[<span class="st">&#39;log_loss&#39;</span>], <span class="dv">30</span>, normed<span class="op">=</span><span class="dv">1</span>)
+plt.xlabel(<span class="st">&#39;Log(Loss)&#39;</span>)
+plt.ylabel(<span class="st">&#39;Probability&#39;</span>)
+plt.title(<span class="st">&#39;Distribution of Log(Loss)es&#39;</span>)
+plt.show()</code></pre></div>
 <p>Much Better. Now, what about our input variables? Are they similarly skewed?</p>
-<pre class="python"><code>features_numeric = test.dtypes[test.dtypes != &quot;object&quot;].index
-features_skewed = train[features_numeric].apply(lambda x: skew(x.dropna()))
-features_skewed</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">features_numeric <span class="op">=</span> test.dtypes[test.dtypes <span class="op">!=</span> <span class="st">&quot;object&quot;</span>].index
+features_skewed <span class="op">=</span> train[features_numeric].<span class="bu">apply</span>(<span class="kw">lambda</span> x: skew(x.dropna()))
+features_skewed</code></pre></div>
 <p>Some of them, yeah. We can fix that by taking their log-transforms as well, but log is sort of a blunt instrument. It’s easily reversible, which makes it good for the outcome. But the Box-Cox transform is a better tool for modifying our inputs. Let’s apply it to any features with a skew greater than, say, .2</p>
-<pre class="python"><code>features_skewed = features_skewed[features_skewed &gt; 0.2]
-for feat in features_skewed.index:
-    train[feat], lam = boxcox(train[feat] + 1)
-    test[feat] = boxcox(test[feat] + 1, lam)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">features_skewed <span class="op">=</span> features_skewed[features_skewed <span class="op">&gt;</span> <span class="fl">0.2</span>]
+<span class="cf">for</span> feat <span class="kw">in</span> features_skewed.index:
+    train[feat], lam <span class="op">=</span> boxcox(train[feat] <span class="op">+</span> <span class="dv">1</span>)
+    test[feat] <span class="op">=</span> boxcox(test[feat] <span class="op">+</span> <span class="dv">1</span>, lam)
 
-features_skewed = train[features_numeric].apply(lambda x: skew(x.dropna()))
-features_skewed</code></pre>
+features_skewed <span class="op">=</span> train[features_numeric].<span class="bu">apply</span>(<span class="kw">lambda</span> x: skew(x.dropna()))
+features_skewed</code></pre></div>
 <p>That eliminated much of the skewness. Before we move on, however, I’d like to call attention to the way we handle lam in the above block. We let boxcox figure out the optimal lam using our training data, and then force it to use that same lam on the test data, even if it isn’t necessarily optimal for the test data. The alternative approach is to bind train and test together, perform these transformations on the entire set, and then split them back apart when it comes time to build models. I’ve opted not to for the benefit of clarity, but possibly at the cost of some small modeling advantage.</p>
 <p>Now, we have some categorical features we need to handle. The textbook approach to Linear Regression says you can leave categorical variables in, provided you do something like one-hot encode them and leave out the smallest category. Personally, I prefer to replace the category with the arithmetic mean of its corresponding subset of outcomes.</p>
-<pre class="python"><code>features_categorical = [feat for feat in test.columns if &#39;cat&#39; in feat]
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">features_categorical <span class="op">=</span> [feat <span class="cf">for</span> feat <span class="kw">in</span> test.columns <span class="cf">if</span> <span class="st">&#39;cat&#39;</span> <span class="kw">in</span> feat]
 
-for feat in features_categorical:
-    a = pd.DataFrame(train[&#39;log_loss&#39;].groupby([train[feat]]).mean())
-    a[feat] = a.index
-    train[feat] = pd.merge(left=train, right=a, how=&#39;left&#39;, on=feat)[&#39;log_loss_y&#39;]
-    test[feat] = pd.merge(left=test, right=a, how=&#39;left&#39;, on=feat)[&#39;log_loss&#39;]
+<span class="cf">for</span> feat <span class="kw">in</span> features_categorical:
+    a <span class="op">=</span> pd.DataFrame(train[<span class="st">&#39;log_loss&#39;</span>].groupby([train[feat]]).mean())
+    a[feat] <span class="op">=</span> a.index
+    train[feat] <span class="op">=</span> pd.merge(left<span class="op">=</span>train, right<span class="op">=</span>a, how<span class="op">=</span><span class="st">&#39;left&#39;</span>, on<span class="op">=</span>feat)[<span class="st">&#39;log_loss_y&#39;</span>]
+    test[feat] <span class="op">=</span> pd.merge(left<span class="op">=</span>test, right<span class="op">=</span>a, how<span class="op">=</span><span class="st">&#39;left&#39;</span>, on<span class="op">=</span>feat)[<span class="st">&#39;log_loss&#39;</span>]
 
-features_categorical = test.dtypes[test.dtypes == &quot;object&quot;].index</code></pre>
+features_categorical <span class="op">=</span> test.dtypes[test.dtypes <span class="op">==</span> <span class="st">&quot;object&quot;</span>].index</code></pre></div>
 <p>There’s just one more thing to check on. Linear Regression generally doesn’t handle missing values very well. Let’s see if we have any:</p>
-<pre class="python"><code>counts = train.count()
-len(counts[counts &lt; train.shape[0]])</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">counts <span class="op">=</span> train.count()
+<span class="bu">len</span>(counts[counts <span class="op">&lt;</span> train.shape[<span class="dv">0</span>]])</code></pre></div>
 <p>Not in the training dataset. Let’s check test now:</p>
-<pre class="python"><code>counts = test.count()
-len(counts[counts &lt; test.shape[0]])</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">counts <span class="op">=</span> test.count()
+<span class="bu">len</span>(counts[counts <span class="op">&lt;</span> test.shape[<span class="dv">0</span>]])</code></pre></div>
 <p>Rats. OK, Rather than design a elaborate solution, I’m just going to drop any columns with missing values.</p>
-<pre class="python"><code>temp = test.dropna(1)
-counts = temp.count()
-len(counts[counts &lt; temp.shape[0]])</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">temp <span class="op">=</span> test.dropna(<span class="dv">1</span>)
+counts <span class="op">=</span> temp.count()
+<span class="bu">len</span>(counts[counts <span class="op">&lt;</span> temp.shape[<span class="dv">0</span>]])</code></pre></div>
 </div>
 <div id="linear-model" class="section level1">
 <h1>Linear Model</h1>
 <p>Cool. Now, we’re ready to make a model.</p>
-<pre class="python"><code>model = smf.ols(&#39;log_loss ~ &#39; + &#39; + &#39;.join(temp.columns), data=train).fit()
-model.summary()</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">model <span class="op">=</span> smf.ols(<span class="st">&#39;log_loss ~ &#39;</span> <span class="op">+</span> <span class="st">&#39; + &#39;</span>.join(temp.columns), data<span class="op">=</span>train).fit()
+model.summary()</code></pre></div>
 <p>There’s a lot of useful information here. However, since this is a prediction challenge, I’m not interested in most of it. Instead, I’m interested in how well it can predict new values. To do that…</p>
-<pre class="python"><code>yhat = np.exp(model.predict(test))</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">yhat <span class="op">=</span> np.exp(model.predict(test))</code></pre></div>
 <p>Note that we call np.exp on our model predictions. Remember how we log-transformed ‘loss’ up at the beginning of this script? Exponentiating the outcome sort of undoes that, so our predictions will be on the same scale as ‘loss’ instead of ‘log_loss’. Forgetting this step is a really good way to get a terrible score. Now that we have some predictions, let’s write them out and score them!</p>
-<pre class="python"><code>result = pd.DataFrame({&#39;id&#39;: test[&#39;id&#39;].values, &#39;loss&#39;: yhat})
-result = result.set_index(&#39;id&#39;)
-result.to_csv(&#39;simplelmprediction.csv&#39;, index=True, index_label=&#39;id&#39;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">result <span class="op">=</span> pd.DataFrame({<span class="st">&#39;id&#39;</span>: test[<span class="st">&#39;id&#39;</span>].values, <span class="st">&#39;loss&#39;</span>: yhat})
+result <span class="op">=</span> result.set_index(<span class="st">&#39;id&#39;</span>)
+result.to_csv(<span class="st">&#39;simplelmprediction.csv&#39;</span>, index<span class="op">=</span><span class="va">True</span>, index_label<span class="op">=</span><span class="st">&#39;id&#39;</span>)</code></pre></div>
 <p>If you submit that, it should give you a score something like 1245.99. That’s a bit worse than the Random Forest Benchmark (which isn’t surprising). To improve upon that, we’re going to need a more powerful machine learning technique. In Kaggle competitions, that usually means either Deep Learning or XGBoost. Let’s try XGBoost.</p>
 </div>
 <div id="xgboosted-model" class="section level1">
 <h1>XGBoosted Model</h1>
 <p>One important difference between Linear models and most advanced machine learning techniques is the tuning parameters. Once you get past massaging the data, linear models have no parameters. You never need to estimate the optimal number of rounds, passes, trees, branches, or nodes. However, other techniques will require at least some of these configuration parameters, and will probably behave poorly if the parameters are far-removed from their optimal values (or combinations). XGBoost is such a technique.</p>
 <p>In order to fit an XGBoost model, we need to set a <em>learning_rate</em> (also sometimes called “eta”), a <em>gamma</em>, a <em>minimum child weight</em>, a <em>col sample by tree</em>, a <em>subsample</em>, and a <em>maximum depth</em>. Exploring all of these would be hard. Exploring all combinations of these would be impractical. So, instead of trying to exhaust the possibile combinations with a given level of precision (a grid search), let’s use an optimizer.</p>
-<pre class="python"><code># Load Training Data
-train_labels = np.array(train[&#39;log_loss&#39;])
-train.drop(train.columns[[-1,-2]], 1, inplace = True)
-d_train_full = xgb.DMatrix(train, label=train_labels)
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Load Training Data</span>
+train_labels <span class="op">=</span> np.array(train[<span class="st">&#39;log_loss&#39;</span>])
+train.drop(train.columns[[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>]], <span class="dv">1</span>, inplace <span class="op">=</span> <span class="va">True</span>)
+d_train_full <span class="op">=</span> xgb.DMatrix(train, label<span class="op">=</span>train_labels)
 
-# if you&#39;re paranoid about overfitting, increase this.
-n_folds = 10
+<span class="co"># if you&#39;re paranoid about overfitting, increase this.</span>
+n_folds <span class="op">=</span> <span class="dv">10</span>
 
-# if you see metrics dropping precipitously until the end, increase this.
-n_rounds = 100
+<span class="co"># if you see metrics dropping precipitously until the end, increase this.</span>
+n_rounds <span class="op">=</span> <span class="dv">100</span>
 
-# Set this to anything you want.
-seed = 10
+<span class="co"># Set this to anything you want.</span>
+seed <span class="op">=</span> <span class="dv">10</span>
 
-def xg_eval_mae(yhat, dtrain):
-    y = dtrain.get_label()
-    return &#39;mae&#39;, mean_absolute_error(np.exp(y), np.exp(yhat))
+<span class="kw">def</span> xg_eval_mae(yhat, dtrain):
+    y <span class="op">=</span> dtrain.get_label()
+    <span class="cf">return</span> <span class="st">&#39;mae&#39;</span>, mean_absolute_error(np.exp(y), np.exp(yhat))
 
-def fitXGBoost(eta = .1, gamma = .5, min_child_weight = 4, colsample_bytree = .3, subsample = 1, max_depth = 6):
-    model = xgb.cv({
-        &quot;silent&quot;: True,
-        &quot;learning_rate&quot;: eta,
-        &quot;gamma&quot;: gamma,
-        &quot;min_child_weight&quot;: min_child_weight,
-        &quot;colsample_bytree&quot;: colsample_bytree,
-        &quot;subsample&quot;: subsample,
-        &quot;max_depth&quot;: int(max_depth),
-        &quot;early_stopping_rounds&quot;: 20,
-        &quot;seed&quot;: seed
-        }, d_train_full, n_rounds, n_folds, feval = xg_eval_mae)
-    return(-model.iloc[-1,0])
+<span class="kw">def</span> fitXGBoost(eta <span class="op">=</span> .<span class="dv">1</span>, gamma <span class="op">=</span> .<span class="dv">5</span>, min_child_weight <span class="op">=</span> <span class="dv">4</span>, colsample_bytree <span class="op">=</span> .<span class="dv">3</span>, subsample <span class="op">=</span> <span class="dv">1</span>, max_depth <span class="op">=</span> <span class="dv">6</span>):
+    model <span class="op">=</span> xgb.cv({
+        <span class="st">&quot;silent&quot;</span>: <span class="va">True</span>,
+        <span class="st">&quot;learning_rate&quot;</span>: eta,
+        <span class="st">&quot;gamma&quot;</span>: gamma,
+        <span class="st">&quot;min_child_weight&quot;</span>: min_child_weight,
+        <span class="st">&quot;colsample_bytree&quot;</span>: colsample_bytree,
+        <span class="st">&quot;subsample&quot;</span>: subsample,
+        <span class="st">&quot;max_depth&quot;</span>: <span class="bu">int</span>(max_depth),
+        <span class="st">&quot;early_stopping_rounds&quot;</span>: <span class="dv">20</span>,
+        <span class="st">&quot;seed&quot;</span>: seed
+        }, d_train_full, n_rounds, n_folds, feval <span class="op">=</span> xg_eval_mae)
+    <span class="cf">return</span>(<span class="op">-</span>model.iloc[<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>])
 
-bo = BayesianOptimization(fitXGBoost, {
-    &#39;eta&#39;: (.01, .5),
-    &#39;gamma&#39;: (0, 4),
-    &#39;min_child_weight&#39;: (1, 5),
-    &#39;colsample_bytree&#39;: (.01, 1),
-    &#39;subsample&#39;: (.5, 1),
-    &#39;max_depth&#39;: (3, 12)
+bo <span class="op">=</span> BayesianOptimization(fitXGBoost, {
+    <span class="st">&#39;eta&#39;</span>: (.<span class="dv">01</span>, .<span class="dv">5</span>),
+    <span class="st">&#39;gamma&#39;</span>: (<span class="dv">0</span>, <span class="dv">4</span>),
+    <span class="st">&#39;min_child_weight&#39;</span>: (<span class="dv">1</span>, <span class="dv">5</span>),
+    <span class="st">&#39;colsample_bytree&#39;</span>: (.<span class="dv">01</span>, <span class="dv">1</span>),
+    <span class="st">&#39;subsample&#39;</span>: (.<span class="dv">5</span>, <span class="dv">1</span>),
+    <span class="st">&#39;max_depth&#39;</span>: (<span class="dv">3</span>, <span class="dv">12</span>)
 })
 
-bo.maximize(init_points = 60, n_iter = 120)</code></pre>
-<pre class="python"><code># Discovered by the hyperoptimize.py script
-params = {
-    &quot;colsample_bytree&quot;: .9921,
-    &quot;eta&quot;: .0995,
-    &quot;gamma&quot;: 3.8581,
-    &quot;max_depth&quot;: 11,
-    &quot;min_child_weight&quot;: 1.0065,
-    &quot;subsample&quot;: 1
+bo.maximize(init_points <span class="op">=</span> <span class="dv">60</span>, n_iter <span class="op">=</span> <span class="dv">120</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Discovered by the hyperoptimize.py script</span>
+params <span class="op">=</span> {
+    <span class="st">&quot;colsample_bytree&quot;</span>: .<span class="dv">9921</span>,
+    <span class="st">&quot;eta&quot;</span>: .<span class="dv">0995</span>,
+    <span class="st">&quot;gamma&quot;</span>: <span class="fl">3.8581</span>,
+    <span class="st">&quot;max_depth&quot;</span>: <span class="dv">11</span>,
+    <span class="st">&quot;min_child_weight&quot;</span>: <span class="fl">1.0065</span>,
+    <span class="st">&quot;subsample&quot;</span>: <span class="dv">1</span>
 }
 
-def xg_eval_mae(yhat, dtrain):
-    y = dtrain.get_label()
-    return &#39;mae&#39;, mean_absolute_error(np.exp(y), np.exp(yhat))
+<span class="kw">def</span> xg_eval_mae(yhat, dtrain):
+    y <span class="op">=</span> dtrain.get_label()
+    <span class="cf">return</span> <span class="st">&#39;mae&#39;</span>, mean_absolute_error(np.exp(y), np.exp(yhat))
 
-res = xgb.cv(params, train_d, n_rounds, n_folds, early_stopping_rounds = 15, seed = seed, feval = xg_eval_mae)
+res <span class="op">=</span> xgb.cv(params, train_d, n_rounds, n_folds, early_stopping_rounds <span class="op">=</span> <span class="dv">15</span>, seed <span class="op">=</span> seed, feval <span class="op">=</span> xg_eval_mae)
 
-n_rounds = res.shape[0] - 1
+n_rounds <span class="op">=</span> res.shape[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">1</span>
 
-model = xgb.train(params, train_d, n_rounds)
+model <span class="op">=</span> xgb.train(params, train_d, n_rounds)
 
-# Write the Results
-result = pd.DataFrame(np.exp(model.predict(test_d)), columns=[&#39;loss&#39;])
-result[&quot;id&quot;] = test[&#39;id&#39;].values.astype(np.int32)
-result = result.set_index(&quot;id&quot;)
-result.to_csv(&#39;outputs/hyperoptimizedxgb.csv&#39;, index=True, index_label=&#39;id&#39;)</code></pre>
+<span class="co"># Write the Results</span>
+result <span class="op">=</span> pd.DataFrame(np.exp(model.predict(test_d)), columns<span class="op">=</span>[<span class="st">&#39;loss&#39;</span>])
+result[<span class="st">&quot;id&quot;</span>] <span class="op">=</span> test[<span class="st">&#39;id&#39;</span>].values.astype(np.int32)
+result <span class="op">=</span> result.set_index(<span class="st">&quot;id&quot;</span>)
+result.to_csv(<span class="st">&#39;outputs/hyperoptimizedxgb.csv&#39;</span>, index<span class="op">=</span><span class="va">True</span>, index_label<span class="op">=</span><span class="st">&#39;id&#39;</span>)</code></pre></div>
 </div>
 <div id="bonus-golfed-solution" class="section level1">
 <h1>Bonus: Golfed Solution</h1>
 <p>Bonus Addendum: Just for fun, here’s a <a href="https://en.wikipedia.org/wiki/Code_golf">golf</a> solution which scores a bit worse than the Linear Model, but generates predictions in the smallest python script I could write.</p>
-<pre class="python"><code>import pandas as p
-import statsmodels.formula.api as s
-e=p.read_csv(&#39;../input/test.csv&#39;).dropna(1)
-p.DataFrame({&#39;id&#39;:e[&#39;id&#39;].values,&#39;loss&#39;:s.ols(&#39;loss~&#39;+&#39;+&#39;.join([c for c in e.columns if &#39;cont&#39; in c]),data=p.read_csv(&#39;../input/train.csv&#39;)).fit().predict(e)}).to_csv(&#39;o.csv&#39;,index=False)</code></pre>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> pandas <span class="im">as</span> p
+<span class="im">import</span> statsmodels.formula.api <span class="im">as</span> s
+e<span class="op">=</span>p.read_csv(<span class="st">&#39;../input/test.csv&#39;</span>).dropna(<span class="dv">1</span>)
+p.DataFrame({<span class="st">&#39;id&#39;</span>:e[<span class="st">&#39;id&#39;</span>].values,<span class="st">&#39;loss&#39;</span>:s.ols(<span class="st">&#39;loss~&#39;</span><span class="op">+</span><span class="st">&#39;+&#39;</span>.join([c <span class="cf">for</span> c <span class="kw">in</span> e.columns <span class="cf">if</span> <span class="st">&#39;cont&#39;</span> <span class="kw">in</span> c]),data<span class="op">=</span>p.read_csv(<span class="st">&#39;../input/train.csv&#39;</span>)).fit().predict(e)}).to_csv(<span class="st">&#39;o.csv&#39;</span>,index<span class="op">=</span><span class="va">False</span>)</code></pre></div>
 </div>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

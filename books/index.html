@@ -21,30 +21,59 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/htmlwidgets-0.9/htmlwidgets.js"></script>
 <script src="site_libs/datatables-binding-0.2/datatables.js"></script>
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
+
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -231,47 +260,47 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>source(&quot;../infobox.R&quot;)
-load_package(&quot;htmltools&quot;)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;../infobox.R&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;htmltools&quot;</span>)
 
-tags$div(class=&quot;panel panel-danger&quot;,
-  tags$div(class=&quot;panel-heading&quot;, &quot;Disclaimer&quot;),
-  tags$div(class=&quot;panel-body&quot;, &quot;If you&#39;ve stumbled upon this page, well done. This is the books directory. The quality of these varies from a few sentences (or a bare outline) to a couple of near-complete chapters. I am not a competent writer either of fiction or non-fiction. Even so, every once in a while I get an idea that I think will make an interesting basis for a story. When that happens, this directory grows. However, unless I develop some strong desire to finish these, I very much doubt much will come of them. Accordingly, I strongly encourage you *not* to read these; if nothing else, you have better things to do.&quot;)
-)</code></pre>
+tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=</span><span class="st">&quot;panel panel-danger&quot;</span>,
+  tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=</span><span class="st">&quot;panel-heading&quot;</span>, <span class="st">&quot;Disclaimer&quot;</span>),
+  tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=</span><span class="st">&quot;panel-body&quot;</span>, <span class="st">&quot;If you&#39;ve stumbled upon this page, well done. This is the books directory. The quality of these varies from a few sentences (or a bare outline) to a couple of near-complete chapters. I am not a competent writer either of fiction or non-fiction. Even so, every once in a while I get an idea that I think will make an interesting basis for a story. When that happens, this directory grows. However, unless I develop some strong desire to finish these, I very much doubt much will come of them. Accordingly, I strongly encourage you *not* to read these; if nothing else, you have better things to do.&quot;</span>)
+)</code></pre></div>
 <div class="panel panel-danger">
 <div class="panel-heading">Disclaimer</div>
 <div class="panel-body">If you've stumbled upon this page, well done. This is the books directory. The quality of these varies from a few sentences (or a bare outline) to a couple of near-complete chapters. I am not a competent writer either of fiction or non-fiction. Even so, every once in a while I get an idea that I think will make an interesting basis for a story. When that happens, this directory grows. However, unless I develop some strong desire to finish these, I very much doubt much will come of them. Accordingly, I strongly encourage you *not* to read these; if nothing else, you have better things to do.</div>
 </div>
-<pre class="r"><code>source(&quot;../infobox.R&quot;)
-load_package(&quot;plyr&quot;)
-load_package(&quot;dplyr&quot;)
-load_package(&quot;magrittr&quot;)
-load_package(&quot;DT&quot;)
-load_package(&quot;stringr&quot;)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;../infobox.R&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;plyr&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;dplyr&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;magrittr&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;DT&quot;</span>)
+<span class="kw">load_package</span>(<span class="st">&quot;stringr&quot;</span>)
 
-cbind(
-  Name = list.files(&quot;.&quot;, &quot;*.Rmd&quot;),
-  ldply(list.files(&quot;.&quot;, &quot;*.Rmd&quot;, full.names = TRUE), file.info)
-) %&gt;%
-  filter(! Name %in% c(&quot;index.Rmd&quot;)) %&gt;%
-  arrange(desc(mtime)) %&gt;%
-  transmute(
-    `Last Modified` = paste0(
-        &quot;&lt;a href=&#39;https://github.com/aaboyles/Essays/commits/gh-pages/books/&quot;, Name, &quot;&#39;&gt;&quot;,
-        substr(mtime, 0, 10), &quot;&lt;/a&gt;&quot;
+<span class="kw">cbind</span>(
+  <span class="dt">Name =</span> <span class="kw">list.files</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>),
+  <span class="kw">ldply</span>(<span class="kw">list.files</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>), file.info)
+) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span>Name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index.Rmd&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mtime)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">transmute</span>(
+    <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span> =<span class="st"> </span><span class="kw">paste0</span>(
+        <span class="st">&quot;&lt;a href=&#39;https://github.com/aaboyles/Essays/commits/gh-pages/books/&quot;</span>, Name, <span class="st">&quot;&#39;&gt;&quot;</span>,
+        <span class="kw">substr</span>(mtime, <span class="dv">0</span>, <span class="dv">10</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>
       ),
-    Name = paste0(
-      &quot;&lt;a href=&#39;&quot;, str_sub(Name, 1, -5), &quot;.html&#39;&gt;&quot;,
-      Name %&gt;%
-        str_replace_all(&quot;([a-z])([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-        str_replace_all(&quot;([A-Z]+)([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
-        str_sub(1, -5), &quot;&lt;/a&gt;&quot;),
-    `Estimated Length (words)` = floor(size/7)
-    ) %&gt;%
-  dplyr::select(Name, `Estimated Length (words)`, `Last Modified`) %&gt;%
-  datatable(escape = FALSE)</code></pre>
-<div id="htmlwidget-891d01cd71eab110dffa" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-891d01cd71eab110dffa">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["<a href='SingularityWeek.html'>Singularity Week<\/a>","<a href='TheFutureAnOptimisticForecast.html'>The Future An Optimistic Forecast<\/a>","<a href='TwelveModelsOfTimeTravel.html'>Twelve Models Of Time Travel<\/a>","<a href='Consequences.html'>Consequences<\/a>","<a href='HowToPredictThings.html'>How To Predict Things<\/a>","<a href='ModernMoralFables.html'>Modern Moral Fables<\/a>","<a href='OfTwoMinds.html'>Of Two Minds<\/a>","<a href='Paradox.html'>Paradox<\/a>"],[613,928,2393,135,1866,140,1923,3901],["<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/SingularityWeek.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/TheFutureAnOptimisticForecast.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/TwelveModelsOfTimeTravel.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/Consequences.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/HowToPredictThings.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/ModernMoralFables.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/OfTwoMinds.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/Paradox.Rmd'>2017-12-15<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+    <span class="dt">Name =</span> <span class="kw">paste0</span>(
+      <span class="st">&quot;&lt;a href=&#39;&quot;</span>, <span class="kw">str_sub</span>(Name, <span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>), <span class="st">&quot;.html&#39;&gt;&quot;</span>,
+      Name <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z])([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([A-Z]+)([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw">str_sub</span>(<span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>),
+    <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span> =<span class="st"> </span><span class="kw">floor</span>(size<span class="op">/</span><span class="dv">7</span>)
+    ) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Name, <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">datatable</span>(<span class="dt">escape =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div id="htmlwidget-ea08a051c2e7e960fed1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ea08a051c2e7e960fed1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["<a href='SingularityWeek.html'>Singularity Week<\/a>","<a href='TheFutureAnOptimisticForecast.html'>The Future An Optimistic Forecast<\/a>","<a href='TwelveModelsOfTimeTravel.html'>Twelve Models Of Time Travel<\/a>","<a href='Consequences.html'>Consequences<\/a>","<a href='HowToPredictThings.html'>How To Predict Things<\/a>","<a href='ModernMoralFables.html'>Modern Moral Fables<\/a>","<a href='OfTwoMinds.html'>Of Two Minds<\/a>","<a href='Paradox.html'>Paradox<\/a>"],[613,928,2393,135,1866,140,1923,3901],["<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/SingularityWeek.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/TheFutureAnOptimisticForecast.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/TwelveModelsOfTimeTravel.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/Consequences.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/HowToPredictThings.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/ModernMoralFables.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/OfTwoMinds.Rmd'>2017-12-15<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/books/Paradox.Rmd'>2017-12-15<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>

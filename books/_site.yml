@@ -1,6 +1,5 @@
 name: "Anthony A. Boyles"
 output_dir: "."
-lib_dir: "site_libs"
 include: "*.Rmd"
 bibliography: "../bibliography.bib"
 navbar:
@@ -20,7 +19,10 @@ navbar:
 output:
   html_document:
     theme: flatly
+    highlight: pygments
     css: site_libs/style.css
     code_folding: hide
     include:
       after_body: ../post.html
+    lib_dir: site_libs
+    self_contained: no
