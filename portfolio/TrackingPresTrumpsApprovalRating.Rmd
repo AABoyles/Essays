@@ -1,16 +1,15 @@
 ---
 title: "Tracking President Trump's Approval Rating"
-output:
-  rmdformats::readthedown:
-    css: site_libs/style.css
-    code_folding: hide
 ---
 
 ```{r, message = F, warning = F, error = F}
-library('knitr')
-library('lubridate')
-knitr::opts_chunk$set(message = F, warning = F, error = F)
 source('../infobox.R')
+
+load_package('knitr')
+load_package('lubridate')
+
+knitr::opts_chunk$set(message = F, warning = F, error = F)
+
 infobox(list(
   `First Published` = "2017-03-16",
   `Last Updated` = today()
@@ -42,8 +41,8 @@ So, what is President Trump's approval rating today?
 # Exploratory Data Analysis
 
 ```{r}
-library('tidyverse')
-library('xml2')
+load_package('tidyverse')
+load_package('xml2')
 
 # Let's parse the data directly from the Gallup Visualization's data feed:
 # Please excuse this XML hacking.
@@ -78,7 +77,7 @@ ratings %>% tail(1) %>% kable()
 Not great. If we guess that the President's approval rating will be what it is today, it's definitely below the -15:15 band. How's he been doing?
 
 ```{r}
-library('plotly')
+load_package('plotly')
 plot_ly(ratings, x = ~date, y = ~net_approval, name = "Net Approval", type = 'scatter', mode = 'lines')
 ```
 
@@ -87,8 +86,8 @@ Not good at all. It seems President Trump has skipped the honeymoon and dived st
 To take a simple frequentist approach, let's just count the number of times his approval rating has fallen in each band.
 
 ```{r}
-library('pander')
-library('tidyr')
+load_package('pander')
+load_package('tidyr')
 
 temp <- ratings %>%
   mutate(band = if_else(net_approval >= -15, "middle", "lower")) %>%
@@ -110,7 +109,7 @@ At this point, this is probably a pretty good basis for a GJO forecast. But can 
 The "forecast" we computed above is a simple estimating of a probability distribution over outcomes for a single point. In Data Science Parlance, however, "forecasting" refers to something related but more general. Forecasting typically means to infer trends based solely on cyclicalities in the data. Data we care about tends to vary regularly across times of day, day of week, month of year, etc. If there's a long-term trend in these data, we may be able to catch wind of it by pitting our net approval data against an off-the-shelf forecasting tool. There's a whole class of interesting statistical tools to do this ([ARIMA](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average) is prehaps the most recognizable). Since it's shiny and new, let's try out Facebook's whiz-bang new time-series tool, [Prophet](https://facebookincubator.github.io/prophet/).
 
 ```{r, results="hide"}
-library("prophet")
+load_package("prophet")
 
 temp <- ratings %>%
   select(-approval, -disapproval) %>%
