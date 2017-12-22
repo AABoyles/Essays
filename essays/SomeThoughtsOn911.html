@@ -1,78 +1,144 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-
-
-
 <title>Some Thoughts on 9-11</title>
-
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
-<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
-<script src="site_libs/readthedown-0.1/readthedown.js"></script>
-
-
-<style type="text/css">code{white-space: pre;}</style>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+code{
+  white-space: pre;
+}
+pre:not([class]) {
+  background-color: white;
+}
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.code-folding-btn { margin-bottom: 4px; }
 </style>
-
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
-
 </head>
 
 <body>
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
 
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
@@ -87,92 +153,71 @@ code > span. { color: #1f1c1b; } /* Normal */
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Portfolio</a>
-</li>
-<li>
-  <a href="../essays/">Essays</a>
-</li>
-<li>
-  <a href="../code.html">Code</a>
-</li>
-<li>
-  <a href="../about.html">About</a>
-</li>
+          <a href="../index.html">Portfolio</a>
+        </li>
+        <li>
+          <a href="../essays/">Essays</a>
+        </li>
+        <li>
+          <a href="../code.html">Code</a>
+        </li>
+        <li>
+          <a href="../about.html">About</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../README.html">Meta</a>
-</li>
+          <a href="../README.html">Meta</a>
+        </li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="content" data-toggle="wy-nav-shift">
-
-<!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
-
-<nav id="nav-top" role="navigation" aria-label="top navigation">
-    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-</nav>
-
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
-</ul>
-</div>
-
 <div id="header">
 <h1 class="title">Some Thoughts on 9-11</h1>
 </div>
 
-
-<div id="table-of-contents">
-    <h2><a href="#content">Some Thoughts on 9-11</a></h2>
-    <div id="text-table-of-contents">
-      
-    </div>
+<div class="infobox">
+<table class="infoboxtable table table-striped">
+<tbody>
+<tr>
+<td><b>Content Warning</b></td>
+<td>Terrorism, Demography</td>
+</tr>
+<tr>
+<td><b>Epistemic Status</b></td>
+<td>Certain</td>
+</tr>
+<tr>
+<td><b>Status</b></td>
+<td>Complete</td>
+</tr>
+<tr>
+<td><b>Accurate as of</b></td>
+<td id="todaysDate"></td>
+</tr>
+</tbody>
+<tfoot></tfoot>
+</table>
 </div>
 
-<div id="main">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">casualties &lt;-<span class="st"> </span><span class="dv">2977</span>  <span class="co">#https://en.wikipedia.org/wiki/September_11_attacks</span>
+<p>On September 11th, 2001, 2977 people were <a href="https://en.wikipedia.org/wiki/September_11_attacks">murdered by terrorists</a>. Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. 2977 lives were needlessly cut short. Collectively, those people might have lived another 99,000 years.</p>
 
-medianAge &lt;-<span class="st"> </span><span class="fl">36.8</span>   <span class="co">#https://en.wikipedia.org/wiki/Demography_of_the_United_States</span>
-
-<span class="co"># Note: This is the life expectancy for people in the United States who were in year (2001 - medianAge) = 1964</span>
-lifeExpectancy &lt;-<span class="st"> </span><span class="fl">70.17</span> <span class="co">#https://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&amp;met_y=sp_dyn_le00_in&amp;idim=country:USA:GBR:IND&amp;hl=en&amp;dl=en</span>
-
-lifeYearsLost &lt;-<span class="st"> </span><span class="kw">signif</span>((lifeExpectancy <span class="op">-</span><span class="st"> </span>medianAge) <span class="op">*</span><span class="st"> </span>casualties, <span class="dv">2</span>)</code></pre></div>
-<p>On this day in 2001, 2977 people were <a href="https://en.wikipedia.org/wiki/September_11_attacks">killed by terrorists</a>. Stop for a moment, and try to feel the size of that number. You are one person. 2977 people is 2977 times the number of people you are. 2977 lives were needlessly cut short. Collectively, those people might have lived another 99,000 years.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dailyGrossMortality &lt;-<span class="st"> </span><span class="fl">1.6e5</span></code></pre></div>
 <p>Now take a deep breath. The following day, roughly 160,000 more people died. That’s more than 53 times the number of people killed by terrorists on 9-11. Try to make yourself feel the size of THAT number. That’s vastly more people than you will ever meet in your lifetime. It’s more than triple the size of my hometown. Imagine three small towns not too far from where you are right now, wiped off the map.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">daysSince &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">Sys.Date</span>()<span class="op">-</span><span class="kw">as.Date</span>(<span class="st">&quot;2001-09-11&quot;</span>))
-dead &lt;-<span class="st"> </span><span class="kw">signif</span>(daysSince <span class="op">*</span><span class="st"> </span>dailyGrossMortality, <span class="dv">2</span>)</code></pre></div>
-<p>Every day since 9-11-2001, <a href="https://en.wikipedia.org/wiki/Mortality_rate">approximately 160,000 people have died</a>. There have been 5903 days since then, meaning 940,000,000 people have died. That’s more than the <a href="https://www.google.com/search?q=Population+of+Europe">entire population of Europe</a>, snuffed out. Try (and fail) to wrap your head around that number. It’s just too overwhelming. Our brains don’t (and can’t) work that way.</p>
-<p>Instead, just think for a moment how different the world might be if we were able to prioritize our spending on things that stopped people from dying (like evidence-based public health campaigns and medical research), instead of things that make easy re-election campaigns (like defense spending). Think about all the people who could have been alive right now. It’s much bigger than the people who were killed on 9-11 itself. So, sure, <a href="https://www.facebook.com/hashtag/neverforget">#NeverForget</a>, but don’t forget the rest of humanity in the process.</p>
-</div>
 
+<p>Every day since 9-11-2001, <a href="https://en.wikipedia.org/wiki/Mortality_rate">approximately 160,000 people have died</a>. There have been <span id="daysSince"></span> days since then, meaning roughly <span id="deathsSince"></span> people have died. That’s more than the <a href="https://www.google.com/search?q=Population+of+Europe">entire population of Europe</a>, snuffed out. Try (and fail) to wrap your head around that number. It’s just too overwhelming. Our brains don’t (and can’t) work that way.</p>
 
-</div>
+<p>Instead, just think for a moment how different the world might be if we were able to prioritize our spending on things that literally stopped people from dying (like evidence-based public health campaigns and medical research), instead of things that make easy re-election campaigns. Think about all the people who could have been alive right now. It’s much bigger than the people who were killed on 9-11 itself. So, sure, <a href="https://www.facebook.com/hashtag/neverforget">#NeverForget</a>, but don’t forget the rest of humanity in the process.</p>
 
-<div id="postamble" data-toggle="wy-nav-shift" class="status">
-</div>
+<script>
+var today = new Date();
+var daysSince = Math.floor((today.getTime() - 1000180800000)/(1000*60*60*24));
+$('#daysSince').text(daysSince.toLocaleString());
+$('#deathsSince').text((daysSince * 160000).toLocaleString());
+$('#todaysDate').text(today.toISOString().slice(0, 10));
+</script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -181,22 +226,6 @@ dead &lt;-<span class="st"> </span><span class="kw">signif</span>(daysSince <spa
 
   gtag('config', 'UA-109466857-1');
 </script>
-
-<script>
-$(document).ready(function () {
- 	  });
-</script>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+</div>
 </body>
 </html>

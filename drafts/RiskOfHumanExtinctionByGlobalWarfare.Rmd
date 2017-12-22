@@ -1,24 +1,19 @@
 ---
 title: "Estimating the Risk of Human Extinction by Catastrophic Global Warfare"
-output:
-  rmdformats::readthedown:
-    css: site_libs/style.css
-    code_folding: hide
 ---
 
-# Introduction
-
 ```{r setup, message=FALSE}
-library("HistData")
-library("readr")
-library("readxl")
-library("magrittr")
-library("dplyr")
-library("tidyr")
-library("fuzzyjoin")
-library("intubate")
-library("plotly")
-library("ShRoud")
+source("../infobox.R")
+load_package("HistData")
+load_package("readr")
+load_package("readxl")
+load_package("magrittr")
+load_package("dplyr")
+load_package("tidyr")
+load_package("fuzzyjoin")
+load_package("intubate")
+load_package("plotly")
+load_package("ShRoud")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
 
@@ -30,6 +25,21 @@ Warfare sits at the cross-section of these two conditions. It is both fundamenta
 
 ## Existential Risks
 
+[Importance, Tractibility, and Neglectedness](https://concepts.effectivealtruism.org/concepts/importance-neglectedness-tractability/)
+
+### Importance
+
+At any given time, the most important existential risk is that which is going to occur next. For example, suppose an observer 66 million years ago wished to embark upon a project to protect its species from existential risks. Many of the hazards we identify as potential existential risks today would be the same for our 65-million year old observer. For example, the greenhouse effect might threaten the ecosystem upon which the observer relies for survival, and so the observer might conclude that a strategy of greenhouse effect mitigation would be the most effecacious approach to reducing its existential risk. However, soon thereafter the [Chicxulub impactor](https://en.wikipedia.org/wiki/Chicxulub_impactor) struck the earth and destroyed the ecosystem anyway.
+
+The observer probably couldn't have known that the asteroid was a greater threat than global climate change. Because we cannot forecast most risks over the short term with any degree of certainty, we must instead estimate their probabilities densities over time, and at any given time work to mitigate that one which has the highest probability. Accordingly, the primary goal of this work is to estimate the probability of existential risky warfare. As a secondary goal, this should give us useful insights into the second-order effects of wars on society which are likely to affect humanity's ability to mitigate other existential risks.
+
+### Tractibility
+
+If $R_a$ will occur in the next century with probability $0.5$, and $R_b$ will occur over the same time horizon with probability $0.1$, then work on $R_a$ will be roughly five times as important as work on $R_b$. However, if $R_a$ is intractible (for example, an unpredictable destructive solar phenoenon), then work on $R_b$ is infinitely more important than work on $R_a$.
+
+### Neglectedness
+
+If $R_a$ and $R_b$ are both tractible, then the final criterion of consideration should be neglectedness. If $R_a$ is five times as important as $R_b$, does it benefit from five times as much public attention? As a rough heuristic, 
 
 # The Probability of War
 
@@ -43,13 +53,13 @@ Richardson also plotted this against estimates of the global murder rate, propos
 data(Quarrels)
 
 Quarrels %>%
-  group_by(monthsPairs) %>%
-  dplyr::summarise(LogRangeOfMagnitude = round(mean(logDeaths))) %>%
-  group_by(LogRangeOfMagnitude) %>%
-  dplyr::summarise(LogNumberOfDeadlyQuarrels = log10(n())) %>%
-  filter(LogRangeOfMagnitude >= 4) %>%
-  rbind(data.frame(LogRangeOfMagnitude = c(3, 0, 0), LogNumberOfDeadlyQuarrels = c(2.1, 6.9, 7.1))) %>%
-  plot_ly(x = ~LogRangeOfMagnitude, y = ~LogNumberOfDeadlyQuarrels, mode="markers")
+ group_by(monthsPairs) %>%
+ dplyr::summarise(LogRangeOfMagnitude = round(mean(logDeaths))) %>%
+ group_by(LogRangeOfMagnitude) %>%
+ dplyr::summarise(LogNumberOfDeadlyQuarrels = log10(n())) %>%
+ filter(LogRangeOfMagnitude >= 4) %>%
+ rbind(data.frame(LogRangeOfMagnitude = c(3, 0, 0), LogNumberOfDeadlyQuarrels = c(2.1, 6.9, 7.1))) %>%
+ plot_ly(x = ~LogRangeOfMagnitude, y = ~LogNumberOfDeadlyQuarrels, mode="markers")
 ```
 
 (Note that the two points at the upper-left of the graph are estimates of the global murder rate, and the point with the LogRangeOfMagnitude of 3 is, as best I can tell, an estimate Richardson based on a linear extrapolation and not an actual measurement.)
@@ -59,31 +69,31 @@ The Correlates of War Project tracks conflict from 1800 to 2010.
 ```{r InterstateCOW}
 ## Download and Merge COW Datasets
 if(!file.exists("../data-cache/interstate.csv")){
-  read_csv("http://www.correlatesofwar.org/data-sets/COW-war/inter-state-war-data/at_download/file") %>%
-    write_csv("../data-cache/interstate.csv")
+ read_csv("http://www.correlatesofwar.org/data-sets/COW-war/inter-state-war-data/at_download/file") %>%
+  write_csv("../data-cache/interstate.csv")
 }
 interstatewars <- read_csv("../data-cache/interstate.csv") %>%
-  mutate(StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)) %>%
-  group_by(WarName) %>%
-  dplyr::summarise(
-    StartYear = min(c(StartYear1, StartYear2)),
-    EndYear = max(c(EndYear1, EndYear2)),
-    TotalCombatDeaths = sum(BatDeath)
-  ) %>%
-  mutate(Type = "Interstate")
+ mutate(StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)) %>%
+ group_by(WarName) %>%
+ dplyr::summarise(
+  StartYear = min(c(StartYear1, StartYear2)),
+  EndYear = max(c(EndYear1, EndYear2)),
+  TotalCombatDeaths = sum(BatDeath)
+ ) %>%
+ mutate(Type = "Interstate")
 
 wars <- interstatewars %>%
-  dplyr::filter(TotalCombatDeaths > 1000) %>%
-  dplyr::mutate(logDeaths = log10(TotalCombatDeaths)) %>%
-  dplyr::arrange(desc(logDeaths)) %>%
-  dplyr::mutate(logRank = max0(log10(1:n())))
+ dplyr::filter(TotalCombatDeaths > 1000) %>%
+ dplyr::mutate(logDeaths = log10(TotalCombatDeaths)) %>%
+ dplyr::arrange(desc(logDeaths)) %>%
+ dplyr::mutate(logRank = max0(log10(1:n())))
 
 fit <- lm(logRank ~ logDeaths, data = wars)
 
 plot_ly(wars, x = ~logDeaths, y = ~logRank, type = "scatter", mode = "markers", color = ~Type,
  text = ~paste0(
-   WarName, " (", StartYear, "-", EndYear, ")<br />",
-   TotalCombatDeaths, " casualties")) %>%
+  WarName, " (", StartYear, "-", EndYear, ")<br />",
+  TotalCombatDeaths, " casualties")) %>%
  add_trace(x = ~logDeaths, y = fitted(fit), mode = "lines")
 ```
 
@@ -95,71 +105,71 @@ In other words, international conflict was the breeding ground for existentially
 
 ```{r IntrastateCOW}
 if(!file.exists("../data-cache/intrastate.csv")){
-  read_csv("http://www.correlatesofwar.org/data-sets/COW-war/intra-state-war-data-v4-1/at_download/file") %>%
-    write_csv("../data-cache/intrastate.csv")
+ read_csv("http://www.correlatesofwar.org/data-sets/COW-war/intra-state-war-data-v4-1/at_download/file") %>%
+  write_csv("../data-cache/intrastate.csv")
 }
 intrastatewars <- read_csv("../data-cache/intrastate.csv") %>%
-  mutate(
-    BatDeath = SideADeaths + SideBDeaths, 
-    StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)
-  ) %>%
-  group_by(WarName) %>%
-  dplyr::summarise(
-    StartYear = min(c(StartYear1, StartYear2)),
-    EndYear = max(c(EndYear1, EndYear2)),
-    TotalCombatDeaths = sum(BatDeath)
-  ) %>%
-  filter(TotalCombatDeaths > 0) %>%
-  mutate(Type = "Intrastate")
+ mutate(
+  BatDeath = SideADeaths + SideBDeaths, 
+  StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)
+ ) %>%
+ group_by(WarName) %>%
+ dplyr::summarise(
+  StartYear = min(c(StartYear1, StartYear2)),
+  EndYear = max(c(EndYear1, EndYear2)),
+  TotalCombatDeaths = sum(BatDeath)
+ ) %>%
+ filter(TotalCombatDeaths > 0) %>%
+ mutate(Type = "Intrastate")
 ```
 
 ```{r ExtrastateCOW}
 if(!file.exists("../data-cache/extrastate.csv")){
-  read_csv("http://www.correlatesofwar.org/data-sets/COW-war/extra-state-war-data/at_download/file") %>%
-    write_csv("../data-cache/extrastate.csv")
+ read_csv("http://www.correlatesofwar.org/data-sets/COW-war/extra-state-war-data/at_download/file") %>%
+  write_csv("../data-cache/extrastate.csv")
 }
 extrastatewars <- read_csv("../data-cache/extrastate.csv") %>%
-  mutate(
-    BatDeath = BatDeath + NonStateDeaths,
-    StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)
-  ) %>%
-  group_by(WarName) %>%
-  dplyr::summarise(
-    StartYear = min(c(StartYear1, StartYear2)),
-    EndYear = max(c(EndYear1, EndYear2)),
-    TotalCombatDeaths = sum(BatDeath)
-  ) %>%
-  filter(TotalCombatDeaths > 0) %>%
-  mutate(Type = "Extrastate")
+ mutate(
+  BatDeath = BatDeath + NonStateDeaths,
+  StartYear2 = ifelse(StartYear2 < 1800, 3000, StartYear2)
+ ) %>%
+ group_by(WarName) %>%
+ dplyr::summarise(
+  StartYear = min(c(StartYear1, StartYear2)),
+  EndYear = max(c(EndYear1, EndYear2)),
+  TotalCombatDeaths = sum(BatDeath)
+ ) %>%
+ filter(TotalCombatDeaths > 0) %>%
+ mutate(Type = "Extrastate")
 ```
 
 ```{r NonstateCOW}
 if(!file.exists("../data-cache/nonstate.csv")){
-  read_csv("http://www.correlatesofwar.org/data-sets/COW-war/non-state-war-data-1/at_download/file") %>%
-    write_csv("../data-cache/nonstate.csv")
+ read_csv("http://www.correlatesofwar.org/data-sets/COW-war/non-state-war-data-1/at_download/file") %>%
+  write_csv("../data-cache/nonstate.csv")
 }
 nonstatewars <- read_csv("../data-cache/nonstate.csv") %>%
-  select(WarName, StartYear, EndYear, TotalCombatDeaths) %>%
-  filter(TotalCombatDeaths > 0) %>%
-  mutate(Type = "Nonstate")
+ select(WarName, StartYear, EndYear, TotalCombatDeaths) %>%
+ filter(TotalCombatDeaths > 0) %>%
+ mutate(Type = "Nonstate")
 ```
 
 ```{r AllWarsCOW}
 wars <- as.data.frame(interstatewars) %>%
-  rbind(as.data.frame(intrastatewars)) %>%
-  rbind(as.data.frame(extrastatewars)) %>%
-  rbind(as.data.frame(nonstatewars)) %>%
-  dplyr::filter(TotalCombatDeaths > 1000) %>%
-  dplyr::mutate(logDeaths = log10(TotalCombatDeaths)) %>%
-  dplyr::arrange(desc(logDeaths)) %>%
-  dplyr::mutate(logRank = max0(log10(1:n())))
+ rbind(as.data.frame(intrastatewars)) %>%
+ rbind(as.data.frame(extrastatewars)) %>%
+ rbind(as.data.frame(nonstatewars)) %>%
+ dplyr::filter(TotalCombatDeaths > 1000) %>%
+ dplyr::mutate(logDeaths = log10(TotalCombatDeaths)) %>%
+ dplyr::arrange(desc(logDeaths)) %>%
+ dplyr::mutate(logRank = max0(log10(1:n())))
 
 fitAll <- wars %>% ntbt_lm(logRank ~ logDeaths)
 
 plot_ly(wars, x = ~logDeaths, y = ~logRank, type = "scatter", mode = "markers", color = ~Type,
  text = ~paste0(
-   WarName, " (", StartYear, "-", EndYear, ")<br />",
-   prettyNum(TotalCombatDeaths, big.mark = ","), " casualties"))
+  WarName, " (", StartYear, "-", EndYear, ")<br />",
+  prettyNum(TotalCombatDeaths, big.mark = ","), " casualties"))
 ```
 
 This presents a problem of counting. As Richardson observed, counting deaths by violence becomes increasingly difficult as you scale downwards [-@Richardson1948-de]. This is because of the comparative commonality of violence at small scales. It is tragically impractical to attempt to count all murders. Fortunately, the Correlates of War is not the only project to attempt to catalogue and measure political carnage. In response to this lack of data quality, Peter Brecke has committed heroic efforts to data collection, attempting to push the threshold of quality data on violent incidents down to skirmishes as small as 32 (that is, $10^{1.5}$) fatalities.
@@ -167,8 +177,8 @@ This presents a problem of counting. As Richardson observed, counting deaths by 
 ```{r ConflictCatalog}
 # This probably won't work. Just open data-cache/ConflictCatalog18vars.xls in Excel and hit "save", and then try it.
 if(!file.exists("../data-cache/ConflictCatalog18vars.xls")){
-  download.file("http://www.cgeh.nl/sites/default/files/Conflict%20Catalog%2018%20vars.xls", destfile = "../data-cache/ConflictCatalog18vars.xls")
-  stop('Needed file not found. Please open ../data-cache/ConflictCatalog18vars.xls and save it as a CSV')
+ download.file("http://www.cgeh.nl/sites/default/files/Conflict%20Catalog%2018%20vars.xls", destfile = "../data-cache/ConflictCatalog18vars.xls")
+ stop('Needed file not found. Please open ../data-cache/ConflictCatalog18vars.xls and save it as a CSV')
 }
 ConflictCatalog <- read_csv("../data-cache/ConflictCatalog18vars.csv")
 ```
@@ -234,17 +244,17 @@ We should treat any conclusions which rely upon precise estimates of the global 
 
 ```{r populationData, message=FALSE, eval=FALSE}
 if(!file.exists("../data-cache/PopEstimates.csv")){
-  #TODO: Throw an Error
-  stop('Need Population Estimates Data.')
+ #TODO: Throw an Error
+ stop('Need Population Estimates Data.')
 }
 
 pop <- read_csv("../data-cache/PopEstimates.csv") %>%
-  filter(Year > 1800, Year < 2016)
+ filter(Year > 1800, Year < 2016)
 
 pop %>%
-  gather(Estimator, Estimate, `United States Census Bureau (2015)`:`Kapitza (1996)`) %>%
-  plot_ly(x=~Year, y=~Estimate, color=~Estimator) %>%
-  layout(legend = list(x = 0, y = 1))
+ gather(Estimator, Estimate, `United States Census Bureau (2015)`:`Kapitza (1996)`) %>%
+ plot_ly(x=~Year, y=~Estimate, color=~Estimator) %>%
+ layout(legend = list(x = 0, y = 1))
 ```
 
 One which I find particularly worth highlighting is [Sergey Kapitza's phenomonological model of global population growth](https://web.archive.org/web/20090511041230/http://srs.dl.ac.uk/SPEAKERS/KAPITZA/Uspekhi_96.html), which can be roughly stated as:
@@ -255,7 +265,7 @@ where $N$ is the estimate of the Global Population, and $Y$ is the year.
 
 Rather than rely exclusively upon any of these estimates, I've opted to merge and average them.
 
-The global population model is a simple gain-loss model.  Gains are defined by births, and losses by deaths.  It's predicated on the fact that are only these two ways to change the global population (i.e. humanity's total population count is unaffected by migration, [divine ascension](http://en.wikipedia.org/wiki/Entering_heaven_alive), etc...).
+The global population model is a simple gain-loss model. Gains are defined by births, and losses by deaths. It's predicated on the fact that are only these two ways to change the global population (i.e. humanity's total population count is unaffected by migration, [divine ascension](http://en.wikipedia.org/wiki/Entering_heaven_alive), etc...).
 
 $$B_n=P_n(\Delta B_n)$$
 
@@ -269,36 +279,38 @@ Thus,
 
 $$P_{n+1}=P_n(1+\Delta B_n-\Delta D_n)$$
 
-Now, in order to define these numerical values, we must consult some statistics.  For this, there is the [World Development Indicators](http://data.worldbank.org/indicator?display=graph).  I parsed the very same into separate datasets not so long ago, but this time it'll be easier to just use the graphs.  For that, Google has set up a really nifty [Public Data Explorer](http://www.google.com/publicdata/directory).  To start with, let's look at [Birthrate](http://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=l&strail=false&nselm=h&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&rdim=country&ifdim=country&tstart=-291844800000&tend=1285992000000&uniSize=0.035&iconSize=0.5&icfg).  The graph looks pretty nonlinear, the take home point is that it's trending downwards.  As such, we can represent it linearly with the knowledge that this may be something to revisit later on the the model construction.  Over the 49 year period from 1960-2009, the value drops from 4.91 to 2.52.  That's a change of  2.39, or a mean change of .049 annually.  But what does this number actually mean?
+Now, in order to define these numerical values, we must consult some statistics. For this, there is the [World Development Indicators](http://data.worldbank.org/indicator?display=graph). I parsed the very same into separate datasets not so long ago, but this time it'll be easier to just use the graphs. For that, Google has set up a really nifty [Public Data Explorer](http://www.google.com/publicdata/directory). To start with, let's look at [Birthrate](http://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=l&strail=false&nselm=h&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&rdim=country&ifdim=country&tstart=-291844800000&tend=1285992000000&uniSize=0.035&iconSize=0.5&icfg). The graph looks pretty nonlinear, the take home point is that it's trending downwards. As such, we can represent it linearly with the knowledge that this may be something to revisit later on the the model construction. Over the 49 year period from 1960-2009, the value drops from 4.91 to 2.52. That's a change of 2.39, or a mean change of .049 annually. But what does this number actually mean?
 
 > The average number of births per woman.
 
-This creates two new problems.  The first is pretty clear: We will know how many people there are at any given time, but not how many women.  We'll have to include another converter to capture this fact.  The second is much more subtle: this is evaluated over steps of time (in this case, years).  But the rate is measured over a woman's lifespan.  So we also must include a variable which represents the mean female lifespan.  All told, here's our model:
+This creates two new problems. The first is pretty clear: We will know how many people there are at any given time, but not how many women. We'll have to include another converter to capture this fact. The second is much more subtle: this is evaluated over steps of time (in this case, years). But the rate is measured over a woman's lifespan. So we also must include a variable which represents the mean female lifespan. All told, here's our model:
 
 $$L_n=54.6+.345n$$
 
 $$\Delta B_n=\frac{4.91-.049n}{L_n}$$
 
-Where the numerical values are derived from time series regressions on the data for [female life expectancy](http://data.worldbank.org/indicator/SP.DYN.LE00.FE.IN/countries?display=graph) and [fertility rate](http://data.worldbank.org/indicator/SP.DYN.TFRT.IN/countries?display=graph).  As for the [percent of the population which is female](http://data.worldbank.org/indicator/SP.POP.TOTL.FE.ZS/countries/1W?display=graph), it looks to be roughly stagnant around 49.7, so a fixed value should be good enough. Now all that remains is to define the Deathrate and test the model.  Deathrate presents a new problem--a [truly nonlinear relationship](http://data.worldbank.org/indicator/SP.DYN.CDRT.IN/countries/1W?display=graph).  As such, we'll divide it by 1000 to give us a per capita probability of death per year, and fit the prediction curve using exponential regression, giving us this equation:
+Where the numerical values are derived from time series regressions on the data for [female life expectancy](http://data.worldbank.org/indicator/SP.DYN.LE00.FE.IN/countries?display=graph) and [fertility rate](http://data.worldbank.org/indicator/SP.DYN.TFRT.IN/countries?display=graph). As for the [percent of the population which is female](http://data.worldbank.org/indicator/SP.POP.TOTL.FE.ZS/countries/1W?display=graph), it looks to be roughly stagnant around 49.7, so a fixed value should be good enough. Now all that remains is to define the Deathrate and test the model. Deathrate presents a new problem--a [truly nonlinear relationship](http://data.worldbank.org/indicator/SP.DYN.CDRT.IN/countries/1W?display=graph). As such, we'll divide it by 1000 to give us a per capita probability of death per year, and fit the prediction curve using exponential regression, giving us this equation:
 
 $$\Delta D_n=\frac{.018907}{n^{0.21}}$$
 
-With all of our values set and relationships defined, its high time we tested this puppy out!  We'll set the initial population equal to the population in 1960, [approximately 3 billion](http://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=l&strail=false&nselm=h&met_y=sp_pop_totl&scale_y=lin&ind_y=false&rdim=country&ifdim=country&tstart=-291758400000&tend=1286078400000&uniSize=0.035&iconSize=0.5&icfg).  We should see population growth up to today's estimate of 6.775 billion.  Let's check it out, shall we?
+With all of our values set and relationships defined, its high time we tested this puppy out! We'll set the initial population equal to the population in 1960, [approximately 3 billion](http://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=l&strail=false&nselm=h&met_y=sp_pop_totl&scale_y=lin&ind_y=false&rdim=country&ifdim=country&tstart=-291758400000&tend=1286078400000&uniSize=0.035&iconSize=0.5&icfg). We should see population growth up to today's estimate of 6.775 billion. Let's check it out, shall we?
 
-Two dangling observations: First, we started out modeling a phenomena which is strikingly linear.  Second, our prediction is slightly nonlinear.
+Two dangling observations: First, we started out modeling a phenomena which is strikingly linear. Second, our prediction is slightly nonlinear.
 
 1. The life expectancy is latent--it describes the life expectancy of people _born_ in that year, not the life expectancy of people _living_ in that year.
 2. We didn't describe the female percentage of the population with a function, which makes it entirely inflexible.
 3. The pseudo-linear models we use to generate many of the coefficients are imperfect (though admittedly very good in this case).
-4. The data are imperfect: the World Development Indicators are calculated using a completely different methodology, which one hopes would be fairly accurate.  Even so, it would be logistically impossible to count every single person on the planet at a fixed point in time--people are born and die every minute.  The WDIs are correct to the ballpark (as are the models we devise from them), but only so.
+4. The data are imperfect: the World Development Indicators are calculated using a completely different methodology, which one hopes would be fairly accurate. Even so, it would be logistically impossible to count every single person on the planet at a fixed point in time--people are born and die every minute. The WDIs are correct to the ballpark (as are the models we devise from them), but only so.
 
-Even so, I claim we've accomplished something moderately cool.  We've set up a complex equation set which predicts the global population, controlling for life expectancy, fertility, proportion of the population which is female, and per capita deathrate.  Our model could survive an exogenous shock to any of these, while the linear model is left scratching its head.  System Dynamic modeling is cool because it is necessarily representative of the causal linkages between variables, thereby creating much more compelling forecasts.  This model hinges upon the irrefutable causality between births, deaths, and population size.
+Even so, I claim we've accomplished something moderately cool. We've set up a complex equation set which predicts the global population, controlling for life expectancy, fertility, proportion of the population which is female, and per capita deathrate. Our model could survive an exogenous shock to any of these, while the linear model is left scratching its head. System Dynamic modeling is cool because it is necessarily representative of the causal linkages between variables, thereby creating much more compelling forecasts. This model hinges upon the irrefutable causality between births, deaths, and population size.
 
-As a follow-up to  on the measurement of the global population using system-dynamic modeling and regression techniques on data from the World Bank, I decided to point my model in the opposing direction.  I mean we can use exactly the same model to forecast the population into the future. To start, we must find some data to compare against.  The U.N. publishes [a biannual prediction](http://esa.un.org/unpd/wpp/index.htm) of the global population trajectory.  The employ three creatively-named models: "high," "medium," and "low."  High is a worst-case scenario.  It's basically a prediction that [Malthus](http://en.wikipedia.org/wiki/Thomas_Robert_Malthus#An_Essay_on_the_Principle_of_Population) was right, and populations grow exponentially.  Medium is a little sunnier--it's really the world we want to live in.  [The idea](http://www.ted.com/talks/hans_rosling_on_global_population_growth.html) is that around 2050 we round out to about 9 Billion and we stay there, more or less.  High would be inconvenient--lots of starvation, bad sanitation, generally bad conditions with little to do to improve them, but Low is the real downer.  What if something went catastrophically wrong?  War, disease, disaster--take your pick.  Low is the image of the world picking up the pieces. Against these models, I will compare two of my own: the system dynamic model I built, and the linear model that outperformed it.  By the way, that linear model is strikingly simple:
+As a follow-up to on the measurement of the global population using system-dynamic modeling and regression techniques on data from the World Bank, I decided to point my model in the opposing direction. I mean we can use exactly the same model to forecast the population into the future. To start, we must find some data to compare against. The U.N. publishes [a biannual prediction](http://esa.un.org/unpd/wpp/index.htm) of the global population trajectory. The employ three creatively-named models: "high," "medium," and "low." High is a worst-case scenario. It's basically a prediction that [Malthus](http://en.wikipedia.org/wiki/Thomas_Robert_Malthus#An_Essay_on_the_Principle_of_Population) was right, and populations grow exponentially. Medium is a little sunnier--it's really the world we want to live in. [The idea](http://www.ted.com/talks/hans_rosling_on_global_population_growth.html) is that around 2050 we round out to about 9 Billion and we stay there, more or less. High would be inconvenient--lots of starvation, bad sanitation, generally bad conditions with little to do to improve them, but Low is the real downer. What if something went catastrophically wrong? War, disease, disaster--take your pick. Low is the image of the world picking up the pieces. Against these models, I will compare two of my own: the system dynamic model I built, and the linear model that outperformed it. By the way, that linear model is strikingly simple:
 
-$$P_t=76254816t+6895889018$$
+$$P_t=76,254,816t+6,895,889,018$$
 
-In which t is time (i.e. years since 2009) and the intercept is the approximate 2009 population.  So, let's take a look at the next 90 years: Interesting.  We have a uniform, fanning-out effect.  That means we all disagree pretty enthusiastically.  Only the low model begins to fall, while the medium converges on 9 Billion, and the top three forecasts (mine, the linear model, and the UN's high, respectively in increasing order) continue to increase at varying speeds.  OK, what if we look a little farther forward?  Back in 2004 the UN published [a projection to 2300](http://www.un.org/esa/population/publications/longrange2/WorldPop2300final.pdf).  Let's see what the world looks like then: Now this is interesting: Low and medium have both held their positions for a couple of centuries, and it looks like mine is getting to a point of convergence, but linear keeps growing (as linear models are wont to do) and high is skyrocketing.  We must have cured death or something at that point. There are important sources of distinction between my model and the U.N.'s.  The UN possesses an immediate advantage in that its models may start projecting based on data which is empirically accurate for the current year.  Because my model was calibrated on the data from the prior 50 years, I must start with the year 1960 and project to 2010 and beyond.  This means the number I have for this year's population is probably a little inflated, so the model on the whole is relatively high.  The other is that my model continues to project expectations into the realm of unlikelihood--by 2300, my model suggests the mean female lifespan should be over 100, and still rising.  Even so, it may accidentally prove to be the most accurate of them all, if for entirely spurious reasons.  As they say, "All models are wrong." Last night's post brought me a to final question on [the population model](http://nortalktoowise.com/2011/10/measuring-global-population-using-system-dynamics/) [with which I've been tinkering](http://nortalktoowise.com/2011/10/forecasting-the-global-population/).  Will my model converge?  There are two ways to answer this question.  The first is kinda sorta calculus.  To start, we must collapse all those equations from the model into a single function.  We can do this because each equation in the model is contingent only upon other values in the system (none of which are feedback process except the canonical Births and Deaths), time (represented as the variable _n_), or the dependent variable, _P_.  So the final function should show the relationship between time and Global Population. First, the global population is equal to last year's population plus the births minus the deaths.  The quintessential gain-loss model.
+In which t is time (i.e. years since 2009) and the intercept is the approximate 2009 population. So, let's take a look at the next 90 years:
+
+Interesting. We have a uniform, fanning-out effect. That means we all disagree pretty enthusiastically. Only the low model begins to fall, while the medium converges on 9 Billion, and the top three forecasts (mine, the linear model, and the UN's high, respectively in increasing order) continue to increase at varying speeds. OK, what if we look a little farther forward? Back in 2004 the UN published [a projection to 2300](http://www.un.org/esa/population/publications/longrange2/WorldPop2300final.pdf). Let's see what the world looks like then: Now this is interesting: Low and medium have both held their positions for a couple of centuries, and it looks like mine is getting to a point of convergence, but linear keeps growing (as linear models are wont to do) and high is skyrocketing. We must have cured death or something at that point. There are important sources of distinction between my model and the U.N.'s. The UN possesses an immediate advantage in that its models may start projecting based on data which is empirically accurate for the current year. Because my model was calibrated on the data from the prior 50 years, I must start with the year 1960 and project to 2010 and beyond. This means the number I have for this year's population is probably a little inflated, so the model on the whole is relatively high. The other is that my model continues to project expectations into the realm of unlikelihood--by 2300, my model suggests the mean female lifespan should be over 100, and still rising. Even so, it may accidentally prove to be the most accurate of them all, if for entirely spurious reasons. As they say, "All models are wrong." Last night's post brought me a to final question on [the population model](http://nortalktoowise.com/2011/10/measuring-global-population-using-system-dynamics/) [with which I've been tinkering](http://nortalktoowise.com/2011/10/forecasting-the-global-population/). Will my model converge? There are two ways to answer this question. The first is kinda sorta calculus. To start, we must collapse all those equations from the model into a single function. We can do this because each equation in the model is contingent only upon other values in the system (none of which are feedback process except the canonical Births and Deaths), time (represented as the variable _n_), or the dependent variable, _P_. So the final function should show the relationship between time and Global Population. First, the global population is equal to last year's population plus the births minus the deaths. The quintessential gain-loss model.
 
 $$P_n=P_{n-1}(1+B_n-D_n)$$
 
@@ -318,7 +330,7 @@ We can combine these equations, yielding:
 
 $$B_n=\frac{.497(4.91-.049n)}{54.6+.345n}$$
 
-Now, for _death_, if we remove the _P_ variable the way we did for _births_ (since it was pre-factored out in the equation 1), _deaths_ (again, deaths per capita) is simply equal to the _deathrate_.  So,
+Now, for _death_, if we remove the _P_ variable the way we did for _births_ (since it was pre-factored out in the equation 1), _deaths_ (again, deaths per capita) is simply equal to the _deathrate_. So,
 
 $$D_n=.018907n^{-0.21}$$
 
@@ -326,17 +338,17 @@ Thus, if we put this all together:
 
 $$P_n=P_{n-1}*(1+\frac{.497*(4.91-.049n)}{54.6+.345n}-.018907n^{-0.21})$$
 
-Since we can't easily calculate P into infinity this way (without some heavy-duty computation), let's just think about the second half of the expression, and measure what happens as _n_ approaches infinity.  If the output (which is basically a global population multiplier) hits 1, then an equilibrium state exists.  If not, then the global population should continue to fluctuate forever.  Let's see:
+Since we can't easily calculate P into infinity this way (without some heavy-duty computation), let's just think about the second half of the expression, and measure what happens as _n_ approaches infinity. If the output (which is basically a global population multiplier) hits 1, then an equilibrium state exists. If not, then the global population should continue to fluctuate forever. Let's see:
 
 $$f(n)=1+\frac{.497*(4.91-.049n)}{54.6+.345n}-.018907n^{-0.21}$$
 
 $$\lim_{n \to \infty}f(n)=1+0-0$$
 
-Interesting.  Both Births and Deaths converge on 0, so the equilibrium state exists.  How big is it?  How long will it take? Equilibrium is the point at which the global population no longer changes from year to year, or if it does, it begins to do so cyclically.  There aren't any cyclical parameters in the model, and there aren't enough independent variables for cyclicality to emerge organically, so my suspicion is that we should see a single point of convergence.  In other words, the global population will reach some number and stick to it.  Algebraically, we can represent this as:
+Interesting. Both Births and Deaths converge on 0, so the equilibrium state exists. How big is it? How long will it take? Equilibrium is the point at which the global population no longer changes from year to year, or if it does, it begins to do so cyclically. There aren't any cyclical parameters in the model, and there aren't enough independent variables for cyclicality to emerge organically, so my suspicion is that we should see a single point of convergence. In other words, the global population will reach some number and stick to it. Algebraically, we can represent this as:
 
 $$P_{n}=P_{n-1}$$
 
-or, since we're solving for _n*_, the equilibrium condition, we know P at _n_ is equal to the P at _n_-1\.  Thus we can divide both sides of the equation by P and voila!
+or, since we're solving for _n*_, the equilibrium condition, we know P at _n_ is equal to the P at _n_-1\. Thus we can divide both sides of the equation by P and voila!
 
 $$1=1+\frac{.497*(4.91-.049n)}{54.6+.345n}-.018907n^{-0.21}$$
 
@@ -344,7 +356,7 @@ $$0=\frac{.497*(4.91-.049n)}{54.6+.345n}-.018907n^{-0.21}$$
 
 $$.018907n^{-0.21}=\frac{.497*(4.91-.049n)}{54.6+.345n}$$
 
-We have now reached a substantively interesting and intuitively obvious point: equilibrium is the state of the population in which the number of annual births _equals_ the number of deaths.  Moving on:
+We have now reached a substantively interesting and intuitively obvious point: equilibrium is the state of the population in which the number of annual births _equals_ the number of deaths. Moving on:
 
 $$.018907n^{-0.21}(54.6+.345n)=.497*(4.91-.049n)$$
 
@@ -472,12 +484,14 @@ Let us suppose that Sleeping Beauty fell into a coma in the mid 1980's. It is no
 
 Hoping to [ease her integration back into the world](https://www.youtube.com/watch?v=plgniAt36YY), the neurochemists adhere to the same testing protocol as the original experimenters and interview her as though she had been put to sleep earlier in the week. However, instead of asking about her credence about a coin flip, they explain that she was in a coma, and ask this, "What is your_[credence](https://en.wikipedia.org/wiki/Credence_%2528statistics%2529 "Credence (statistics)") now for the proposition that the Cold War resulted in a cataclysmic nuclear war?"
 
-We observe that the Cold War between the United States and the Soviet Union did not culminate in a nuclear war. The anthropic logic here is that an observer is vastly more likely to live in a world where catastrophic nuclear war has not occurred, as such a war would vastly reduce the number of observers capable of making the observation. Stated differently, it’s way more likely that an observer observes a universe in which a global thermonuclear war was never fought than that an observer observes a universe in which it has.
+We observe that the Cold War between the United States and the Soviet Union did not culminate in a nuclear war. The anthropic logic here is that an observer is vastly more likely to live in a world where catastrophic nuclear war has not occurred, as such a war would vastly reduce the number of observers capable of making the observation.
 
-Note that this says nothing about the _pre hoc_ probability of that war, other than that it was less than 1\. So, what _does_ this tell us? More or less nothing, I’m afraid. As [Roko Jelavic points out](https://www.facebook.com/rjelavic/posts/10211689902182034?match=cm9rbyBqZWxhdmnEhyxhbnRocm9waWMsamVsYXZpxIcscm9rbw%3D%3D), we shouldn't use our empirical observations about existential risks as a basis for reasoning about them:
+Note that this says nothing about the prior probability of that war, other than that it was less than 1\. So, what _does_ this tell us? More or less nothing, I’m afraid. As [Roko Jelavic points out](https://www.facebook.com/rjelavic/posts/10211689902182034?match=cm9rbyBqZWxhdmnEhyxhbnRocm9waWMsamVsYXZpxIcscm9rbw%3D%3D), we shouldn't use our empirical observations about existential risks as a basis for reasoning about them:
 
 > Let's take nukes as an example. Taking into account the number of close calls happening over the years* it's really strange nothing bad ever happened. Taking many-worlds interpretation of quantum mechanics into account, it's possible something did happen, but in some other Everett branch - and in that world, we went extinct. By anthropic principle, it's clear we find ourselves in a branch that did in fact not go extinct. When trying to estimate the existential risk of nukes, some people may take comfort in the fact no disaster happened until now, but if many-worlds is correct, you can't take history into account in that way. This generalizes to xrisk beyond just nukes.
 
 # Conclusion
+
+Fixing a probability on existentially risky warfare is difficult. For a variety of reasons, the simple "outside view" breaks down at Wars much too small to be existentially risky. We can confidently say that the probability is considerably higher than the outside view predicts. Finally, anthropic reasoning shows that we should not be surprised that an extinctive war has not ocurred, and this should not comfort us.
 
 # References

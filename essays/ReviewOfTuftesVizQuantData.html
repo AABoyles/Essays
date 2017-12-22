@@ -4,9 +4,10 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+
 
 
 
@@ -14,23 +15,164 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
-<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
-<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
 
 
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
 
 </head>
 
 <body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -67,47 +209,23 @@
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="content" data-toggle="wy-nav-shift">
-
-<!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
-
-<nav id="nav-top" role="navigation" aria-label="top navigation">
-    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-</nav>
+<div class="fluid-row" id="header">
 
 <div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
 </ul>
 </div>
 
-<div id="header">
-<h1 class="title">Review of Tufte’s Visual Display of Quantitative Information</h1>
+
+
+<h1 class="title toc-ignore">Review of Tufte’s Visual Display of Quantitative Information</h1>
+
 </div>
 
 
-<div id="table-of-contents">
-    <h2><a href="#content">Review of Tufte’s Visual Display of Quantitative Information</a></h2>
-    <div id="text-table-of-contents">
-      
-    </div>
-</div>
-
-<div id="main">
 <p>I received a hardback copy of Tufte’s <a href="http://smile.amazon.com/Visual-Display-Quantitative-Information/dp/0961392142/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1451697611&amp;sr=1-1&amp;keywords=the+visual+display+of+quantitative+information">The Visual Display of Quantitative Information</a> from my wife for Christmas, and amidst all the holiday celebrations and family visits, I didn’t get a chance to sit down with it until today. Having finally done so, however, I inadvertently consumed nearly the entire volume in a single sitting. If you haven’t heard of him, <a href="http://www.edwardtufte.com/tufte/index">Ed Tufte</a> is regarded as something of a messiah to Data visualization. I had never actually read any of his written works, though I had knowingly inherited many of his stylistic preferences by proxy of his other disciples. Writ large, I found the book to be largely devoid of surprises: Tufte’s style is more-or-less what one might expect Tufte’s style to be. Data visualization is good for circumstances in which tables are cumbersome, and bad for circumstances in which tables are more succinct. Relational graphics (in which multivariate data is presented) are king, though maps and time-series plots are also critically important. Visually misleading or distracting coloration (e.g. cross-hatching) is bad. <a href="http://smile.amazon.com/How-Lie-Statistics-Darrell-Huff/dp/0393310728/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1451698516&amp;sr=1-1&amp;keywords=how+to+lie+with+statistics">Don’t lie with statistical</a> graphics.</p>
 <p>All of these are good and correct pieces of advice. If any of them isn’t obvious to you, then the book is nothing short of <em>critical</em> reading for you. Given Tufte’s messianic status, I have some trepidation about reviewing Tufte critically. Never-the-less, I found that some of his sensibilities don’t match my own, and the divergence is sometime dramatic. Tufte’s grand vision of clean, information-dense visualizations stands at odds with some (<a href="http://www.perceptualedge.com/articles/visual_business_intelligence/the_chartjunk_debate.pdf">contested</a>) <a href="http://hci.usask.ca/uploads/173-pap0297-bateman.pdf">empirical evidence</a>. Tufte violates his own vendetta against “chart junk” (a now-common term which he coined in this book at its first printing) by proposing slight modifications to example graphics drawn from print sources, which would adorn those graphs with suggestions for intuitions that precisely meet most definitions of chart junk.</p>
 <p>What’s worse, however, is when Tufte moves too far in the opposite direction. Rather than propose we make common plot types (like box-and-whisker, for example), he proposes we can represent the same data using far less “ink” by simply erasing the box and placing a dot at the median. While this is a perfectly adequate solution for the attentive consumer (I would be willing to present graphics like this in a journal article, for example), he goes further to advocate replacing the entire plot with a straight line, having the middle inter-quartile ranges offset by a pixel, and an absent point to represent the median. I find this damn near impossible to read under most circumstances, and shudder to think of asking my consumers to interpret such things.</p>
@@ -116,13 +234,6 @@ $(document).ready(function () {
 <p>Consider this example:</p>
 <p><a href="https://futhermet.wordpress.com/2007/07/25/quantitative-notes-from-tufte/"><img src="http://www.cl.cam.ac.uk/~sjm217/projects/graphics/faithful.png" /></a></p>
 <p>Here we see a number of Tufte’s innovations at work. Note the axes: they are given the same treatment as Tufte recommends for a boxplot. The pixel-offset notwithstanding, I think this is a considerable improvement. It leverages the axes to display information about each variable’s distribution. This is also conveyed by the points replicated outside the range of the irrelevant axis. It seems to me that Tufte was writing predominantly for an audience of statisticians and designers whose graphics would be consumed via some print media. To this perspective, he discusses at length the visualization hygiene of a variety of print media outlets. It seems he failed to predict the massive data-consumption transition from print-based to screen-based, and has subsequently failed to update either his opinions or his written work accordingly. (The book was published in 1983, and the second edition in 2001.) Even so, my thinking on statistical graphic design has changed from reading this book, and I expect that will be reflected in my graphs in the future. So, squabbles aside, it was a wonderful read, and I highly recommend it.</p>
-</div>
-
-
-</div>
-
-<div id="postamble" data-toggle="wy-nav-shift" class="status">
-</div>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
@@ -134,18 +245,29 @@ $(document).ready(function () {
   gtag('config', 'UA-109466857-1');
 </script>
 
-<script>
-$(document).ready(function () {
- 	  });
-</script>
 
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

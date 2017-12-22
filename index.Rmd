@@ -3,11 +3,12 @@ title: "Portfolio"
 ---
 
 ```{r, message=FALSE}
-library("plyr")
-library("dplyr")
-library("magrittr")
-library("DT")
-library("stringr")
+source("infobox.R")
+load_package("plyr")
+load_package("dplyr")
+load_package("magrittr")
+load_package("DT")
+load_package("stringr")
 
 cbind(
   Name = list.files("portfolio/", "*.Rmd"),

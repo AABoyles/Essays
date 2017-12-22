@@ -2,19 +2,22 @@
 title: "Inequality is Instrumental. Poverty is Terminal."
 ---
 
-# Introduction
-
 ```{r setup, message=FALSE}
-library("ShRoud")
-library("magrittr")
-library("dplyr")
-library("intubate")
-library("ineq")
-library("plotly")
+source("../infobox.R")
+
+load_package("ShRoud")
+load_package("magrittr")
+load_package("dplyr")
+load_package("intubate")
+load_package("ineq")
+load_package("plotly")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 
-source("../infobox.R")
-infobox(list("Epistemic Status"="Highly Uncertain", "Epistemic Activity"="Splitting Hairs"))
+infobox(list(
+  "Epistemic Status"="Highly Uncertain",
+  "Epistemic Activity"="Splitting Hairs"),
+  tags$tr(tags$td(tags$span("Produced by a dialog on Facebook"), colspan=2))
+)
 ```
 
 The US Consumer Financial Protection Bureau just won a [$180 million case against Wells Fargo](http://fortune.com/.../12/wells-fargo-cfpb-carrie-tolstedt/). The accusation was that Wells Fargo was engaging in unlawful account-opening practices, doing things like opening multiple accounts for consumers who only authorized the opening of one. This was a direct outgrowth of Wells Fargo's internal policies pressuring employees to meet certain account-opening quotas, or lose their jobs. Wells Fargo claims that it fired over 5300 employees over the last five years for unethically opening these accounts. In the meanwhile, Carrie Tolstedt, the executive who architected the employee incentive policy that led to this misbehavior retired with a \$126 million severance package.
@@ -61,15 +64,15 @@ The only problem is what happens when we get home. The 11 poorest people are sti
 
 > ... What? No one is suggesting just destroying the rich person's wealth. The point is that you take some of that wealth and GIVE IT TO THOSE STARVING PEOPLE.
 
-I *know* no one is proposing burning money.
+No one is proposing to burn money.
 
-<iframe src="https://player.vimeo.com/video/175819562#t=259s" class="center-block" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe class="center-block" width="560" height="315" src="https://www.youtube-nocookie.com/embed/EDAA5o6xMc4?rel=0&amp;start=75" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 Well, *I'm* not, anyway.
 
 Let's go back and focus on inequality-reducing strategy 1 (increase the wealth of poor people). There are a lot of ways we can do that. One is to take money from the wealthy by taxation, punitive fines, and social pressure to effective philanthropy, and give it to the poor. However, there may be other viable strategies by which poverty can be reduced. These may not necessarily have a huge effect on inequality.
 
-For example, let's consider a perfectly unequal society. No one owns anything, except for one person who owns everything.
+For example, let's consider a perfectly unequal society. No one owns anything, except for one person who owns [about $90 Billion](http://www.forbes.com/billionaires/list/) in assets.
 
 ```{r}
 data.frame(
@@ -82,7 +85,7 @@ plot_ly(x=~x, y=~y) %>%
 
 This is a distopian hellscape in which 99 people scratch a living off of rocks, necessarily stealing from the only person with anything to steal. Its Gini Coefficient is `r ineq(c(rep(0, 99), 1))`.
 
-Now, instead of that world, let's say that the bottom 99 people each hold \$25,000 in wealth, and the [top person holds \$75 billion](http://www.forbes.com/billionaires/list/). Like this:
+Now, instead of that world, let's say that the bottom 99 people each hold \$25,000 in wealth, and the wealthy person still owns about $90 billion. Like this:
 
 ```{r}
 data.frame(
@@ -93,7 +96,7 @@ plot_ly(x=~x, y=~y) %>%
   add_bars()
 ```
 
-Let's further imagine that [the poverty line is around \$1.90 per day](https://en.wikipedia.org/wiki/Poverty_threshold). An investment of $25,000 compunded anually at 3%, yields about \$750 per year, or \$2.05 per day, pushing everyone over that threshold. This is also a staggeringly unequal society, with a Gini coefficient of `r formatC(ineq(c(cumsum(rep(25000, 99)), 7.5e10)), digits=2)`. However, the quality of life enjoyed by the bottom 99 is higher than the quality of life enjoyed by the poorest people today. In other words, poverty can **theoretically** be solved more-or-less independently of inequality.
+Let's further imagine that [the poverty line is around \$1.90 per day](https://en.wikipedia.org/wiki/Poverty_threshold). An investment of $25,000 compunded anually at 3%, yields about \$750 per year, or \$2.05 per day, pushing everyone over that threshold. This is also a staggeringly unequal society, with a Gini coefficient of `r formatC(ineq(c(cumsum(rep(25000, 99)), 9e10)), digits=2)`. However, the quality of life enjoyed by the bottom 99 is higher than the quality of life enjoyed by the poorest people today. In other words, poverty can **theoretically** be solved more-or-less independently of inequality.
 
 Back in the real world, there are 7.3 Billion people today (and that number is [all but certain to grow for awhile](https://esa.un.org/unpd/wpp/Publications/Files/Key_Findings_WPP_2015.pdf)). Endowing each one with an investment account of \$25,000 (as in the thought experiment above) will cost around \$182.5 Trillion. For comparison, the current approximate [value of everything](https://publications.credit-suisse.com/tasks/render/file/?fileID=BCDB1364-A105-0560-1332EC9100FF5C83) is $241 Trillion, meaning that more than 75% of the assets in the world would need to be reallocated to accommodate such a scheme. Don't get me wrong--it's a great way to solve poverty. It's just not going to work.
 

@@ -1,5 +1,5 @@
 name: "Anthony A. Boyles"
-output_dir: .
+output_dir: "."
 lib_dir: site_libs
 include: "*.Rmd"
 bibliography: bibliography.bib
@@ -18,7 +18,8 @@ navbar:
     - text: "Meta"
       href: README.html
 output:
-  rmdformats::readthedown:
+  html_document:
+    theme: flatly
     css: site_libs/style.css
     code_folding: hide
     include:

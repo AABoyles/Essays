@@ -4,9 +4,10 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+
 
 
 
@@ -14,62 +15,63 @@
 
 <script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
-<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
-<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/htmlwidgets-0.9/htmlwidgets.js"></script>
 <script src="site_libs/datatables-binding-0.2/datatables.js"></script>
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
-
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
@@ -77,6 +79,105 @@ code > span. { color: #1f1c1b; } /* Normal */
 </head>
 
 <body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -113,80 +214,50 @@ code > span. { color: #1f1c1b; } /* Normal */
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="content" data-toggle="wy-nav-shift">
-
-<!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
-
-<nav id="nav-top" role="navigation" aria-label="top navigation">
-    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-</nav>
+<div class="fluid-row" id="header">
 
 <div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
 </ul>
 </div>
 
-<div id="header">
-<h1 class="title">Portfolio</h1>
-</div>
 
 
-<div id="table-of-contents">
-    <h2><a href="#content">Portfolio</a></h2>
-    <div id="text-table-of-contents">
-      
-    </div>
-</div>
-
-<div id="main">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;plyr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;DT&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;stringr&quot;</span>)
-
-<span class="kw">cbind</span>(
-  <span class="dt">Name =</span> <span class="kw">list.files</span>(<span class="st">&quot;portfolio/&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>),
-  <span class="kw">ldply</span>(<span class="kw">list.files</span>(<span class="st">&quot;portfolio/&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>), file.info)
-) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span>Name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index.Rmd&quot;</span>)) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">arrange</span>(<span class="kw">desc</span>(mtime)) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">transmute</span>(
-    <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span> =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;&lt;a href=&#39;http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/&quot;</span>, Name, <span class="st">&quot;&#39;&gt;&quot;</span>, <span class="kw">substr</span>(mtime, <span class="dv">0</span>, <span class="dv">10</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>),
-    <span class="dt">Name =</span> <span class="kw">paste0</span>(<span class="st">&quot;&lt;a href=&#39;portfolio/&quot;</span>, <span class="kw">str_sub</span>(Name, <span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>), <span class="st">&quot;.html&#39;&gt;&quot;</span>,
-    Name <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z])([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([A-Z]+)([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z]+)([0-9]+)&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw">str_sub</span>(<span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>),
-    <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span> =<span class="st"> </span><span class="kw">floor</span>(size<span class="op">/</span><span class="dv">7</span>)
-    ) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Name, <span class="st">`</span><span class="dt">Estimated Length (words)</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">datatable</span>(<span class="dt">escape =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<div id="htmlwidget-9228f7a5215290ac8fb9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9228f7a5215290ac8fb9">{"x":{"filter":"none","data":[["1","2","3","4","5"],["<a href='portfolio/CryonicDemography.html'>Cryonic Demography<\/a>","<a href='portfolio/HousePricesInAmesIowa.html'>House Prices In Ames Iowa<\/a>","<a href='portfolio/PredictingSurvivalOnTheTitanic.html'>Predicting Survival On The Titanic<\/a>","<a href='portfolio/TrackingPresTrumpsApprovalRating.html'>Tracking Pres Trumps Approval Rating<\/a>","<a href='portfolio/AllstateClaimsSeverity.html'>Allstate Claims Severity<\/a>"],[2411,4366,3380,2891,1504],["<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/CryonicDemography.Rmd'>2017-10-25<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/HousePricesInAmesIowa.Rmd'>2017-10-25<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/PredictingSurvivalOnTheTitanic.Rmd'>2017-06-09<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/TrackingPresTrumpsApprovalRating.Rmd'>2017-06-09<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/AllstateClaimsSeverity.Rmd'>2017-06-09<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
-</div>
-
+<h1 class="title toc-ignore">Portfolio</h1>
 
 </div>
 
-<div id="postamble" data-toggle="wy-nav-shift" class="status">
-</div>
+
+<pre class="r"><code>source(&quot;infobox.R&quot;)
+load_package(&quot;plyr&quot;)
+load_package(&quot;dplyr&quot;)
+load_package(&quot;magrittr&quot;)
+load_package(&quot;DT&quot;)
+load_package(&quot;stringr&quot;)
+
+cbind(
+  Name = list.files(&quot;portfolio/&quot;, &quot;*.Rmd&quot;),
+  ldply(list.files(&quot;portfolio/&quot;, &quot;*.Rmd&quot;, full.names = TRUE), file.info)
+) %&gt;%
+  dplyr::filter(! Name %in% c(&quot;index.Rmd&quot;)) %&gt;%
+  dplyr::arrange(desc(mtime)) %&gt;%
+  dplyr::transmute(
+    `Last Modified` = paste0(&quot;&lt;a href=&#39;http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/&quot;, Name, &quot;&#39;&gt;&quot;, substr(mtime, 0, 10), &quot;&lt;/a&gt;&quot;),
+    Name = paste0(&quot;&lt;a href=&#39;portfolio/&quot;, str_sub(Name, 1, -5), &quot;.html&#39;&gt;&quot;,
+    Name %&gt;%
+      str_replace_all(&quot;([a-z])([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
+      str_replace_all(&quot;([A-Z]+)([A-Z])&quot;, &quot;\\1 \\2&quot;) %&gt;%
+      str_replace_all(&quot;([a-z]+)([0-9]+)&quot;, &quot;\\1 \\2&quot;) %&gt;%
+      str_sub(1, -5), &quot;&lt;/a&gt;&quot;),
+    `Estimated Length (words)` = floor(size/7)
+    ) %&gt;%
+  dplyr::select(Name, `Estimated Length (words)`, `Last Modified`) %&gt;%
+  datatable(escape = FALSE)</code></pre>
+<div id="htmlwidget-0153a1a2548d3fe2e785" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0153a1a2548d3fe2e785">{"x":{"filter":"none","data":[["1","2","3","4","5"],["<a href='portfolio/TrackingPresTrumpsApprovalRating.html'>Tracking Pres Trumps Approval Rating<\/a>","<a href='portfolio/AllstateClaimsSeverity.html'>Allstate Claims Severity<\/a>","<a href='portfolio/CryonicDemography.html'>Cryonic Demography<\/a>","<a href='portfolio/HousePricesInAmesIowa.html'>House Prices In Ames Iowa<\/a>","<a href='portfolio/PredictingSurvivalOnTheTitanic.html'>Predicting Survival On The Titanic<\/a>"],[2891,1504,2411,4366,3413],["<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/TrackingPresTrumpsApprovalRating.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/AllstateClaimsSeverity.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/CryonicDemography.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/HousePricesInAmesIowa.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/portfolio/PredictingSurvivalOnTheTitanic.Rmd'>2017-12-15<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
@@ -198,18 +269,29 @@ $(document).ready(function () {
   gtag('config', 'UA-109466857-1');
 </script>
 
-<script>
-$(document).ready(function () {
- 	  });
-</script>
 
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

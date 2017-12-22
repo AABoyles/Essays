@@ -6,19 +6,18 @@ bibliography: Longevity.bib
 # Introduction
 
 ```{r, message=FALSE}
-library("htmltab")
-library("magrittr")
-library("plyr")
-library("tidyverse")
-library("plotly")
-library("intubate")
-library("knitr")
-library("htmltab")
+source("infobox.R")
+load_package("htmltab")
+load_package("magrittr")
+load_package("plyr")
+load_package("tidyverse")
+load_package("plotly")
+load_package("intubate")
+load_package("knitr")
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE)
 ```
 
 ```{r, results='asis'}
-source("infobox.R")
 infobox(list(
   "Status" = "Incomplete",
   "Epistemic Status" = "Speculative",
@@ -123,6 +122,8 @@ In the exceedingly unlikely case that I exhaust all of these, there's the...
 
 * [Geroprotectors Database](http://geroprotectors.org/)
 * [DrugAge](http://genomics.senescence.info/drugs/browse.php?search=)
+
+And, in case these don't extend the runway enough, there's [cryonics](http://anthony.boyles.cc/drafts/EstimationOfTheProbabilityOfTheSuccessOfCryonics.html).
 
 ## Definitions
 
@@ -370,7 +371,7 @@ The best sort of study might be to do a Mendelian randomization for testosterone
 
 But we could offhandedly reject it as impractical for a number of reasons: too serious a reduction in quality of life ([going well beyond the loss of sex](http://en.wikipedia.org/wiki/Castration%23Medical%20consequences)), social ostracism, probably must be done before puberty for any benefits, may not be legal, not verified in any randomized trials (a concern because not all historical eunuch seem to show life expectancy gains; [Egyptian eunuchs reportedly](http://lesswrong.com/lw/lm4/effects_of_castration_on_the_life_expectancy_of/cogu) had severe losses), and at least one of the proposed mechanisms may have lost efficacy in the modern setting (greater resistance to infectious diseases).
 
-Moreover, there may be stronger hypotheses in measuring estrogen, or estrogen/testosterone ratios, or some other similar metric. Female mice tend to outlive male mice. However, [treating male mice with estrogen leads to substantially longer lifespans](http://onlinelibrary.wiley.com/doi/10.1111/acel.12496/full) (a stronger effect than metformin). Solid research suggests that estrogen treatment in mice promotes stem cell self-renewal, which is a clear mechanism for how estrogen could promote lifespan (and explains its effects on multiple organ systems, including the immune system): http://www.nature.com/nature/journal/v505/n7484/full/nature12932.html
+Moreover, there may be stronger hypotheses in measuring estrogen, or estrogen/testosterone ratios, or some other similar metric. Female mice tend to outlive male mice. However, [treating male mice with estrogen leads to substantially longer lifespans](http://onlineload_package.wiley.com/doi/10.1111/acel.12496/full) (a stronger effect than metformin). Solid research suggests that estrogen treatment in mice promotes stem cell self-renewal, which is a clear mechanism for how estrogen could promote lifespan (and explains its effects on multiple organ systems, including the immune system): http://www.nature.com/nature/journal/v505/n7484/full/nature12932.html
 
 # Coffee
 

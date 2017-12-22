@@ -4,9 +4,10 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+
 
 
 
@@ -14,57 +15,58 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
-<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
-<script src="site_libs/readthedown-0.1/readthedown.js"></script>
-
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
@@ -72,6 +74,105 @@ code > span. { color: #1f1c1b; } /* Normal */
 </head>
 
 <body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -108,53 +209,27 @@ code > span. { color: #1f1c1b; } /* Normal */
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="content" data-toggle="wy-nav-shift">
-
-<!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
-
-<nav id="nav-top" role="navigation" aria-label="top navigation">
-    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-</nav>
+<div class="fluid-row" id="header">
 
 <div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
 </ul>
 </div>
 
-<div id="header">
-<h1 class="title">Evolutionary Quines</h1>
+
+
+<h1 class="title toc-ignore">Evolutionary Quines</h1>
+
 </div>
 
 
-<div id="table-of-contents">
-    <h2><a href="#content">Evolutionary Quines</a></h2>
-    <div id="text-table-of-contents">
-      <ul>
-      <li><a href="#introduction">Introduction</a></li>
-      </ul>
-    </div>
-</div>
-
-<div id="main">
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>The emergence of self-replicating molecules–a non-living precursor to life–is the most likely candidate for the Great Filter. To illustrate the logic behind this conclusion, let’s translate the problem into a analog upon which we perform experiments and direct analysis. In computer science, a <a href="http://www.nyx.net/~gthompso/quine.htm"><em>quine</em></a> is a program which “self-replicates” in a certain sense. That is, it emits exactly its own source code. Consider the following quine (the shortest I could find), written in Python:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">_<span class="op">=</span><span class="st">&#39;_=</span><span class="sc">%r</span><span class="st">;print _</span><span class="sc">%%</span><span class="st">_&#39;</span><span class="op">;</span><span class="bu">print</span> _<span class="op">%</span>_</code></pre></div>
+<pre class="python"><code>_=&#39;_=%r;print _%%_&#39;;print _%_</code></pre>
 <pre><code>## _=&#39;_=%r;print _%%_&#39;;print _%_</code></pre>
 <p>That’s 29 Characters, each of which is necessary and irreplaceable to make the quine work. 11 of those characters are unique. Therefore, we could compress this program by encoding it into a characterset which used only <span class="math inline">\(\log_211\approx4\)</span> bits per character. This step is fairly generous: for contrast, the standard characterset for strings is ASCII, which contains 256 unique characters, requiring 8 bits per character. Now, in our maximally dense characterset, the quine is an ordered sequence of <span class="math inline">\(\frac{4bits}{1char}*\frac{29char}{1quine}=116bits/quine\)</span>. Now, suppose we flipped a coin 116 times. (Coin-Flipping is a <a href="http://www.stat.columbia.edu/~gelman/research/published/diceRev2.pdf">surprisingly excellent</a> source for unbiased randomly-selected bits.) If we map heads to 1 and tails to 0, the probability that we generate our quine is exactly <span class="math inline">\(\frac{1}{2^{116}}\)</span> (or if it helps you visualize it in base 10, approximately <span class="math inline">\(10^{-34}\)</span>. If we don’t compress our alphabet to the minimum integral bit density, that probability drops to <span class="math inline">\(\frac{1}{2^{232}}\)</span>, or about <span class="math inline">\(10^{-69}\)</span>. To illustrate how unlikely this is, Scott Alexander <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">recently used a clever device</a> which I am now shamelessly going to steal. Imagine a researcher in a laboratory. Now imagine…</p>
 <blockquote>
@@ -163,27 +238,40 @@ $(document).ready(function () {
 <p>Multiply all these probabilities together, and you get <span class="math inline">\(10^{-34}\)</span>, the <em>same probability</em> as randomly assembling a quine <em>under the most convenient circumstances possible</em>. (Incidentally, <a href="http://slatestarcodex.com/2015/08/12/stop-adding-zeroes/">Alexander’s original example</a> mapped out a probability of 10^67, much closer to the more natural and less convenient scenario of using the full ASCII charset). In general, the number of planets in the universe is <a href="http://www.atlasoftheuniverse.com/universe.html">estimated</a> to be around <span class="math inline">\(10^{22}\)</span>. So the probability of ANY planet in this universe constructing a quine by flipping coins is something like <span class="math inline">\(10^{-12}\)</span>. I hope the last sentence sounds strange to you. Planets don’t flip coins. Flipping coins can’t, by itself, generate an executable computer program. More intrinsically, there are some important sources of non-randomness in actual evolution. The distribution of Carbon, Hydrogen and Oxygen in a planet’s environment, for one. Lots of things are wrong with the model, but the method it uses and probabilities it exposes are illustrative and useful. The most important piece of the analogy, however, is the qualitative <em>algorithm</em>. Likewise, thermodynamics is a reasonable source for random atomic activity, which was the only driving force for the creation of anything in entire the Universe. However, in the moment that first, fragile replicator was created, the most interesting thing in the history of the universe occurred. Suddenly, there was a <em>new algorithm</em> for building molecules. And all molecules which descended from that first replicator were generated using this new algorithm. Thus, subsequent evolutionary adaptations may have required discrete changes to the molecular structure with higher information complexity, but generated those changes using a FAR SUPERIOR search algorithm than the random algorithm which generated the replicator. To return to our quine, let’s be generous and say that the next candidate for the Great Filter requires just one bit more than was required to build the quine, so 116 bits of information. The algorithmic complexity to construct the quine randomly was <span class="math inline">\(O(2^n)\)</span>, where n was the number of requisite bits. The algorithmic complexity to <em>adapt</em> the quine is much smaller. In all of these calculations, we have an important piece of missing information; a variable where we need a constant. That piece of information is the complexity of the simplest self-replicating molecule. If it were arbitrarily small (say, a <a href="https://en.wikipedia.org/wiki/Methane">methane</a> molecule) I would have to pare back my probability estimates considerably. But we know that methane is not self-replicating. The prevailing hypothesis is that the first replicator was most similar to a strand of modern RNA, to which ambient molecules would affix themselves and then detach when they had formed the complete strand. There’s a strong environmental component which I’m neglecting here. In order to self-replicate, the first replicator needed to be in an environment which was rich in assembled constituent molecules, something that is unlikely in itself.</p>
 <p>Quines have been identified as a <a href="http://www.uncommondescent.com/biology/the-quine-dilemma-of-evolution/">basis for models of evolution</a> before. The problem with this approach is that the means of error production in a quine must be explicitly written into the quine itself. In a true evolutionary situation, errors in the quine would be as much products of the environment as they would products of the replicator itself.</p>
 </div>
-</div>
 
-
-</div>
-
-<div id="postamble" data-toggle="wy-nav-shift" class="status">
-</div>
-
-
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
 <script>
-$(document).ready(function () {
- 	  });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109466857-1');
 </script>
 
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

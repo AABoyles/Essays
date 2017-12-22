@@ -1,6 +1,17 @@
-library("htmltools")
+load_package <- function(package, repos = "https://cloud.r-project.org/"){
+  if(! package %in% .packages(all = TRUE)){
+    install.packages(package, repos = repos)
+  }
+  library(package, character.only = TRUE)
+}
+
+load_packages <- function(packages){
+  map(packages, load_package)
+}
+
 infobox <- function(meta, ...){
-  foo <- tags$table(class="infoboxtable", tags$tbody(), tags$tfoot(...))
+  load_package("htmltools")
+  foo <- tags$table(class="infoboxtable table table-striped", tags$tbody(), tags$tfoot(...))
   for(i in 1:length(meta)){
     foo$children[[1]]$children[[i]] <- tags$tr(
       tags$td(tags$b(names(meta)[[i]])), tags$td(meta[[i]])
@@ -9,7 +20,7 @@ infobox <- function(meta, ...){
   tags$div(class="infobox", foo)
 }
 
-getFile <- function(path, url){
+get_file <- function(path, url){
   if(!dir.exists("data-cache")){
     dir.create("data-cache")
   }
@@ -20,12 +31,12 @@ getFile <- function(path, url){
 }
 
 # Borrowed from the Functional Package, which had misnamed it "Curry"
-PartialApp <- function(FUN,...) {
+partial_apply <- function(FUN,...) {
   .orig = list(...);
   function(...) do.call(FUN,c(.orig,list(...)))
 }
 
-getExtension <- function(filename){
+get_extension <- function(filename){
   if(!is.character(filename)){
     filename <- toString(filename)
   }
@@ -34,38 +45,78 @@ getExtension <- function(filename){
   return(tolower(parsed[num]))
 }
 
-readFile <- function(path){
-  errorframe <- data.frame(error="I don't understand this Dataset", extension=extension, path=path)
-  # This insane this is designed to reduce the number of dependencies while maintaining a workflow that "just works"
-  # The tradeoff is that it may behave differently on systems with different sets of packages.
-  # TODO: think through how to do this properly, if possible.
-  if(! "readr" %in% installed.packages()){
-    read_csv <- PartialApp(read.csv, stringsAsFactors = FALSE)
-    read_tsv <- PartialApp(read.table, stringsAsFactors = FALSE, sep = "\t")
-    read_table <- PartialApp(read.table, stringsAsFactors = FALSE)
+# This insane thing is designed to reduce the number of dependencies while maintaining a workflow 
+# that "just works". The tradeoff is that it may behave differently on systems with different sets
+# of packages.
+# TODO: think through how to do this properly, if possible.
+read_file <- function(path, ...){
+  fail <- function(){ stop("This R session doesn't have a parser for this filetype.") }
+  extension <- get_extension(path)
+  if(extension == "arff"){ return(foreign::read.arff(path, ...)) }
+  if(extension == "csv"){
+    if("readr" %in% .packages(all = TRUE)){
+      load_package("readr")
+    } else {
+      read_csv <- partial_apply(read.csv, stringsAsFactors = FALSE)
+    }
+    return(read_csv(path, ...))
   }
-  if(! "haven" %in% installed.packages()){
-    read_dta <- foreign::read.dta
-    read_spss <- foreign::read.spss
-    read_sas <- function(...){errorframe}
+  if(extension %in% c("dat", "fwf", "txt")){
+    if("readr" %in% .packages(all = TRUE)){
+      load_package("readr")
+    } else {
+      read_table <- partial_apply(read.table, stringsAsFactors = FALSE)
+    }
+    return(read_table(path, ...))
   }
-  if(! "readxl" %in% installed.packages()){
-    read_excel <- function(...){errorframe}
+  if(extension == "dbf"){ return(foreign::read.dbf(path, ...)) }
+  if(extension == "dta"){
+    if("haven" %in% .packages(all = TRUE)){
+      load_package("haven")
+    } else {
+      read_dta <- foreign::read.dta
+    }
+    read_dta(path, ...)
   }
-  switch(getExtension(path),
-    arff     = return(foreign::read.arff(path)),
-    csv      = return(read_csv(path)),
-    dat      = return(read_table(path)),
-    dbf      = return(foreign::read.dbf(path)),
-    dta      = return(read_dta(path)),
-    fwf      = return(read_table(path)),
-    sasb7dat = return(read_sas(path)),
-    sav      = return(read_sav(path)),
-    spss     = return(read_spss(path)),
-    tsv      = return(read_tsv(path)),
-    txt      = return(read_table(path)),
-    xls      = return(read_excel(path)),
-    xlsx     = return(read_excel(path)),
-    return(errorframe)
-  )
+  if(extension == "sasb7dat"){
+    load_package("haven")
+    return(read_sas(path, ...))
+  }
+  if(extension == "por"){
+    if("haven" %in% .packages(all = TRUE)){
+      load_package("haven")
+    } else {
+      read_por <- foreign::read.spss
+    }
+    return(read_por(path, ...))
+  }
+  if(extension == "sav"){
+    if("haven" %in% .packages(all = TRUE)){
+      load_package("haven")
+    } else {
+      read_sav <- foreign::read.spss
+    }
+    return(read_sav(path, ...))
+  }
+  if(extension == "spss"){
+    if("haven" %in% .packages(all = TRUE)){
+      load_package("haven")
+    } else {
+      read_spss <- foreign::read.spss
+    }
+    return(read_spss(path, ...))
+  }
+  if(extension == "tsv"){
+    if("readr" %in% .packages(all = TRUE)){
+      load_package("readr")
+    } else {
+      read_tsv <- partial_apply(read.table, stringsAsFactors = FALSE, sep = "\t")
+    }
+    return(read_tsv(path, ...))
+  }
+  if(extension %in% c("xls", "xlsx")){
+    load_package("readxl")
+    return(read_excel(path, ...))
+  }
+  fail()
 }
