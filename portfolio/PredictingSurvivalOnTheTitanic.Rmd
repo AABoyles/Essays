@@ -15,7 +15,9 @@ Among the [many excellent kernels](https://www.kaggle.com/c/titanic/kernels) tha
 ```{r setup, message = FALSE, warning=FALSE}
 set.seed(42)
 
-library('knitr')
+source("../infobox.R")
+
+load_package('knitr')
 opts_chunk$set(message = FALSE, warning=FALSE)
 
 if(!file.exists('../data-cache/Titanic/train.csv')){
@@ -28,11 +30,11 @@ if(!file.exists('../data-cache/Titanic/train.csv')){
   )
 }
 
-library('readr')
+load_package('readr')
 train <- read_csv('../data-cache/Titanic/train.csv')
 test  <- read_csv('../data-cache/Titanic/test.csv')
 
-library('dplyr')
+load_package('dplyr')
 full  <- bind_rows(train, test)
 ```
 
@@ -43,7 +45,7 @@ To begin, the titanic training dataset contains `r nrow(train)` observations of 
 We don't know the sampling method by which Kaggle split the training and test sets (i.e. they didn't tell us). There are basically two approaches that make sense: random selection and stratified sampling. Stratified sampling is where you identify some set of variables as important, and then make sure your training and test datasets have balanced numbers across the variables. By 'balanced', I mean that the distributions match. Let's consider, for example, the distribution of ages between `train` and `test`:
 
 ```{r TrainTestAgeHistogram}
-library('plotly')
+load_package('plotly')
 
 plot_ly(alpha = 0.6, showlegend = FALSE) %>%
   add_histogram(x = train$Age) %>%
@@ -129,7 +131,7 @@ To get from this to the proportion we predicted successfully, we need only subtr
 ## Logistic Regression
 
 ```{r glm}
-library(intubate)
+load_package("intubate")
 
 formula <- Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked
 
@@ -232,7 +234,7 @@ full$Fare[is.na(full$Fare)] <- median(full[full$Pclass == '3' & full$Embarked ==
 Finally, as we noted earlier, there are many missing `Age` values in our data. In order to solve this problem we could provide a treatment similar to the one above, though it would take a long time and produce unreliable data. Instead, we can outsource the hard legwork to a machine learning algorithm. Why? Because we must. When a variable is missing its values in only one or two rows, making intelligent guesses about those values is reasonable. However, when many are missing (and missing in a way that isn't rigidly consistent with some other variables in the dataset), then statistical imputation is the better choice. Remember, we're missing `r sum(is.na(full$Age))` ages.
 
 ```{r MICE, message=FALSE, results='hide'}
-library('mice')
+load_package('mice')
 
 factor_vars <- c('PassengerId', 'Sex', 'Embarked')
 full[factor_vars] <- lapply(full[factor_vars], as.factor)
@@ -342,7 +344,7 @@ What does our family size variable look like? To help us understand how it may r
 
 ```{r, message=FALSE, warning=FALSE}
 # I can't figure out how to do this one in bare-metal plotly, so I'll just use ggplot2 and wrap it.
-library('ggplot2')
+load_package('ggplot2')
 ggplotly(
   ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +
   geom_bar(position = "fill", aes(alpha = .1)) +
@@ -424,9 +426,9 @@ Our score improves a bit! Now, maybe we can do even better with a stronger machi
 A decision tree looks something like this:
 
 ```{r dtViz}
-library('rpart')
-library('rpart.plot')
-library('magrittr')
+load_package('rpart')
+load_package('rpart.plot')
+load_package('magrittr')
 
 formula %>%
   rpart(data = subtraining, method = "class", control = rpart.control(cp=0.0001)) %T>%
@@ -452,7 +454,7 @@ MAE(predictions$dt)
 We then build our model using `ranger` on the training set.
 
 ```{r randomForest}
-library('ranger')
+load_package('ranger')
 
 subtraining %>%
   select(-Cabin) %>%

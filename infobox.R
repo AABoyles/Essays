@@ -1,4 +1,5 @@
 load_package <- function(package, repos = "https://cloud.r-project.org/"){
+  tryCatch(typeof(package), error = function(e){ package = deparse(substitute(package)) })
   if(! package %in% .packages(all = TRUE)){
     install.packages(package, repos = repos)
   }

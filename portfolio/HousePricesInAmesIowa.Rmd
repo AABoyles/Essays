@@ -7,7 +7,8 @@ A common project in early statistics courses is to model house sales, based on [
 So, let's see how well we can predict the sale prices.
 
 ```{r setup, include=FALSE}
-library('knitr')
+source("../infobox.R")
+load_package('knitr')
 opts_chunk$set(message=FALSE, warning=FALSE)
 ```
 
@@ -17,8 +18,8 @@ opts_chunk$set(message=FALSE, warning=FALSE)
 # Plyr is a defensive package load. Caret (which we use in the modeling)
 # requires it sometimes, and we don't want to risk loading it after dplyr
 # (which is loaded by tidyverse), so we'll just intentionally load it here.
-library('plyr')
-library('tidyverse')
+load_package('plyr')
+load_package('tidyverse')
 
 set.seed(42)
 
@@ -48,7 +49,7 @@ Before we delve into feature engineering, there are a lot of little nuisances in
 Some of these columns have names that start with numerals. That makes R ...itchy. Let's just fix that right quick:
 
 ```{r renameVars}
-library("magrittr")
+load_package("magrittr")
 
 full %<>%
   dplyr::rename(
@@ -94,7 +95,7 @@ Typically, an `NA` in a dataset indicates that the data wasn't recorded for some
 # This is my own personal concoction of stuff that makes writing R less miserable
 # To replicate, install it like so:
 # devtools::install_github('aaboyles/ShRoud')
-library('ShRoud')
+load_package('ShRoud')
 
 full %>%
   is.na() %>%
@@ -114,7 +115,7 @@ for (i in VarsWithNAs$Variable){
 That takes care of the categorical missing data. However, we must also address missing numeric data as well. There are a ton of strategies we could take, from excluding training rows with missing values (probably a bad idea) to simple mean-substitution (a surprisingly effective, albeit unnuanced approach), all the way to statistical imputation. Let's do it that way:
 
 ```{r}
-library('mice')
+load_package('mice')
 
 full %<>%
   select(-SalePrice) %>%
@@ -130,7 +131,7 @@ Now, if we check for missing values, there aren't any (save for the obvious, mis
 If we take a look at the distribution of our outcome metric...
 
 ```{r}
-library('plotly')
+load_package('plotly')
 
 training %>%
   plot_ly(x = ~SalePrice, type = "histogram")
@@ -449,8 +450,8 @@ full %>%
 OK, so that thing I said about older houses being smaller isn't actually true. Good to know. But what we actually need to figure out it whether or not the Age of the house contributes any signal that we don't get from other variables (especially the Year in which the house was built).
 
 ```{r}
-library('intubate')
-library('pander')
+load_package('intubate')
+load_package('pander')
 
 training %>%
   mutate(Age = YrSold - YearBuilt) %>%
@@ -638,9 +639,9 @@ subtest  <- temp %>% filter(!train) %>% dplyr::select(-train)
 Also, I'm going to use Caret to fit the hyperparameters on models where that's useful, so I'm going to need a training controller for cross-validation.
 
 ```{r CVController}
-library('caret')
-library('parallel')
-library('doMC')
+load_package('caret')
+load_package('parallel')
+load_package('doMC')
 fitControl <- trainControl(method = "repeatedcv", number = 5, repeats = 5)
 registerDoMC(cores = detectCores() - 1)
 ```

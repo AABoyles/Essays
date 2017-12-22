@@ -3,9 +3,10 @@ title: "Cryonic Demography"
 ---
 
 ```{r setup, include=FALSE}
-library('tidyverse')
-library('plotly')
-library('lubridate')
+source("../infobox.R")
+load_package('tidyverse')
+load_package('plotly')
+load_package('lubridate')
 ```
 
 Cryonics doesn't have an especially long history or many patients, making it tractable to collect data on nearly all of them. Moreover, cryonicists tend to be inclined towards more and better documentation--after all, who knows what data will be important at revival time? Might as well store as much as possible. Also being of a generally transparent disposition (in the interest of de-mystifying the process for people who might be interested if the process and organization is laid bare before them), they tend to publish case information online:
@@ -21,7 +22,7 @@ That said, assembling this data isn't a trivial task. Many cryonicists (or their
 # Load from Google Sheets
 cryonauts <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vS7nOdzuAUs5bSoHkZw1gJTWJT-MVbMicXK8iIUIkZwFqUVh2zmC8Cl_QTz1j0kriMW3ycobYDDWFuG/pub?output=csv') %>%
   mutate(
-    Deanimation = as.Date(Deanimation),
+    Deanimation = as.Date(DeanimationDate),
     Age = as.numeric(Age),
     BirthYear = as.numeric(BirthYear)
   )
@@ -113,7 +114,7 @@ plot_ly(Fyms, x=~date, y=FLinP, name="Linearly Predicted number of cases", type 
   add_lines(y=FAvgP, name="Ensemble Predicted number of cases")
 ```
 
-It appears that Cryonics is unlikely to experience explosive growth in the next 20 years. Obviously, this discounts any substantive events, like a successful demonstration of a complete revival of a cryopreserved large animal ([rabbit](http://www.brainpreservation.org/asc_rabbit_fulleval/) or dog seem the likeliest cases).
+It appears that Cryonics is unlikely to experience explosive growth in the next 20 years. Obviously, this discounts any substantive events, like a successful demonstration of a complete revival of a cryopreserved large animal ([rabbit](http://www.brainpreservation.org/asc_rabbit_fulleval/) or [dog](http://www.alcor.org/Library/html/tbwcanine.html) ([see also](https://www.ncbi.nlm.nih.gov/pubmed/1188189?dopt=Abstract)) seem the likeliest cases).
 
 So what about the cryonics patients themselves? What trends can we identify about them?
 
@@ -198,13 +199,13 @@ Not all cryonic procedures are exactly the same, and no cryonics provider offers
 
 ```{r ProcedureDistributionOverTime, warning=FALSE}
 cryonauts %>%
-  dplyr::filter(!is.na(Deanimation), !is.na(Type)) %>%
-  group_by(Type) %>%
+  dplyr::filter(!is.na(Deanimation), !is.na(OriginalType)) %>%
+  group_by(OriginalType) %>%
   dplyr::mutate(
     c = 1,
     cumulation = cumsum(c)
   ) %>%
-  plot_ly(x=~Deanimation, y=~cumulation, type='scatter', mode='lines', color=~Type) %>%
+  plot_ly(x=~Deanimation, y=~cumulation, type='scatter', mode='lines', color=~OriginalType) %>%
   layout(
     xaxis = list(title = "Date"),
     yaxis = list(title = "Number of Cryonauts")

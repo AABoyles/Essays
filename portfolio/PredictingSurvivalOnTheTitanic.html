@@ -4,9 +4,10 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+
 
 
 
@@ -14,15 +15,14 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
-<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
-<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
-<script src="site_libs/readthedown-0.1/readthedown.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/htmlwidgets-0.9/htmlwidgets.js"></script>
 <script src="site_libs/plotly-binding-4.7.1/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
@@ -31,47 +31,49 @@
 <link href="site_libs/plotlyjs-1.29.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="site_libs/plotlyjs-1.29.2/plotly-latest.min.js"></script>
 
-
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
 </style>
 
 <link rel="stylesheet" href="site_libs/style.css" type="text/css" />
@@ -79,6 +81,105 @@ code > span. { color: #1f1c1b; } /* Normal */
 </head>
 
 <body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -115,69 +216,23 @@ code > span. { color: #1f1c1b; } /* Normal */
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="content" data-toggle="wy-nav-shift">
-
-<!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("show" === "show");
-});
-</script>
-
-<nav id="nav-top" role="navigation" aria-label="top navigation">
-    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-</nav>
+<div class="fluid-row" id="header">
 
 <div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted">Code</span> <span class="text-muted caret"></span></button>
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All</a></li>
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
 </ul>
 </div>
 
-<div id="header">
-<h1 class="title">Predicting Survival on the Titanic</h1>
+
+
+<h1 class="title toc-ignore">Predicting Survival on the Titanic</h1>
+
 </div>
 
 
-<div id="table-of-contents">
-    <h2><a href="#content">Predicting Survival on the Titanic</a></h2>
-    <div id="text-table-of-contents">
-      <ul>
-      <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
-      <li><a href="#first-pass-modeling">First Pass Modeling</a><ul>
-      <li><a href="#scoring">Scoring</a></li>
-      <li><a href="#logistic-regression">Logistic Regression</a></li>
-      </ul></li>
-      <li><a href="#imputation">Imputation</a><ul>
-      <li><a href="#embarkment">Embarkment</a></li>
-      <li><a href="#age">Age</a></li>
-      </ul></li>
-      <li><a href="#second-pass-modeling">Second Pass Modeling</a></li>
-      <li><a href="#feature-engineering">Feature Engineering</a><ul>
-      <li><a href="#names">Names</a></li>
-      <li><a href="#families">Families</a></li>
-      </ul></li>
-      <li><a href="#third-pass-modeling-for-real-this-time">Third Pass Modeling (For real, this time)</a><ul>
-      <li><a href="#decision-tree">Decision Tree</a></li>
-      <li><a href="#random-forest">Random Forest</a></li>
-      <li><a href="#ensemble">Ensemble</a></li>
-      <li><a href="#prediction">Prediction</a></li>
-      </ul></li>
-      </ul>
-    </div>
-</div>
-
-<div id="main">
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Kaggle hosts a long-running, beginner-focused <a href="https://www.kaggle.com/c/titanic">competition</a> for a dataset of the passengers on the Titanic. From the description:</p>
@@ -185,49 +240,51 @@ $(document).ready(function () {
 <p>The sinking of the RMS Titanic is one of the most infamous shipwrecks in history. On April 15, 1912, during her maiden voyage, the Titanic sank after colliding with an iceberg, killing 1502 out of 2224 passengers and crew. This sensational tragedy shocked the international community and led to better safety regulations for ships. One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class. In this challenge, we ask you to complete the analysis of what sorts of people were likely to survive. In particular, we ask you to apply the tools of machine learning to predict which passengers survived the tragedy.</p>
 </blockquote>
 <p>Among the <a href="https://www.kaggle.com/c/titanic/kernels">many excellent kernels</a> that have been written for this competition, this Kernel was heavily informed by Megan Risdal’s <a href="https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic/code">excellent introductory Kernel</a>. That said, any errors are my own.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
+<pre class="r"><code>set.seed(42)
 
-<span class="kw">library</span>(<span class="st">&#39;knitr&#39;</span>)
-opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>)
+source(&quot;../infobox.R&quot;)
 
-<span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&#39;../data-cache/Titanic/train.csv&#39;</span>)){
-  <span class="kw">stop</span>(
-    <span class="kw">paste0</span>(
-      <span class="st">&#39;Please go to https://www.kaggle.com/c/titanic/data and place the datasets in &#39;</span>,
-      <span class="kw">normalizePath</span>(<span class="st">&#39;..&#39;</span>),
-      <span class="st">&#39;/../data-cache/Titanic/&#39;</span>
+load_package(&#39;knitr&#39;)
+opts_chunk$set(message = FALSE, warning=FALSE)
+
+if(!file.exists(&#39;../data-cache/Titanic/train.csv&#39;)){
+  stop(
+    paste0(
+      &#39;Please go to https://www.kaggle.com/c/titanic/data and place the datasets in &#39;,
+      normalizePath(&#39;..&#39;),
+      &#39;/../data-cache/Titanic/&#39;
     )
   )
 }
 
-<span class="kw">library</span>(<span class="st">&#39;readr&#39;</span>)
-train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;../data-cache/Titanic/train.csv&#39;</span>)
-test  &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;../data-cache/Titanic/test.csv&#39;</span>)
+load_package(&#39;readr&#39;)
+train &lt;- read_csv(&#39;../data-cache/Titanic/train.csv&#39;)
+test  &lt;- read_csv(&#39;../data-cache/Titanic/test.csv&#39;)
 
-<span class="kw">library</span>(<span class="st">&#39;dplyr&#39;</span>)
-full  &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(train, test)</code></pre></div>
+load_package(&#39;dplyr&#39;)
+full  &lt;- bind_rows(train, test)</code></pre>
 </div>
 <div id="exploratory-data-analysis" class="section level1">
 <h1>Exploratory Data Analysis</h1>
 <p>To begin, the titanic training dataset contains 891 observations of 12 variables. The test dataset contains 418 additional observations of the same vairables, save of course for the outcome variable, “Survived”.</p>
 <p>We don’t know the sampling method by which Kaggle split the training and test sets (i.e. they didn’t tell us). There are basically two approaches that make sense: random selection and stratified sampling. Stratified sampling is where you identify some set of variables as important, and then make sure your training and test datasets have balanced numbers across the variables. By ‘balanced’, I mean that the distributions match. Let’s consider, for example, the distribution of ages between <code>train</code> and <code>test</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;plotly&#39;</span>)
+<pre class="r"><code>load_package(&#39;plotly&#39;)
 
-<span class="kw">plot_ly</span>(<span class="dt">alpha =</span> <span class="fl">0.6</span>, <span class="dt">showlegend =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">add_histogram</span>(<span class="dt">x =</span> train<span class="op">$</span>Age) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">add_histogram</span>(<span class="dt">x =</span> test<span class="op">$</span>Age) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">layout</span>(<span class="dt">barmode =</span> <span class="st">&quot;overlay&quot;</span>)</code></pre></div>
-<div id="779ceb09197" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="779ceb09197">{"x":{"visdat":{"779c7391db11":["function () ","plotlyVisDat"]},"cur_data":"779c7391db11","attrs":{"779c7391db11":{"showlegend":false,"alpha":0.6,"sizes":[10,100],"x":[22,38,26,35,35,null,54,2,27,14,4,58,20,39,14,55,2,null,31,null,35,34,15,28,8,38,null,19,null,null,40,null,null,66,28,42,null,21,18,14,40,27,null,3,19,null,null,null,null,18,7,21,49,29,65,null,21,28.5,5,11,22,38,45,4,null,null,29,19,17,26,32,16,21,26,32,25,null,null,0.83,30,22,29,null,28,17,33,16,null,23,24,29,20,46,26,59,null,71,23,34,34,28,null,21,33,37,28,21,null,38,null,47,14.5,22,20,17,21,70.5,29,24,2,21,null,32.5,32.5,54,12,null,24,null,45,33,20,47,29,25,23,19,37,16,24,null,22,24,19,18,19,27,9,36.5,42,51,22,55.5,40.5,null,51,16,30,null,null,44,40,26,17,1,9,null,45,null,28,61,4,1,21,56,18,null,50,30,36,null,null,9,1,4,null,null,45,40,36,32,19,19,3,44,58,null,42,null,24,28,null,34,45.5,18,2,32,26,16,40,24,35,22,30,null,31,27,42,32,30,16,27,51,null,38,22,19,20.5,18,null,35,29,59,5,24,null,44,8,19,33,null,null,29,22,30,44,25,24,37,54,null,29,62,30,41,29,null,30,35,50,null,3,52,40,null,36,16,25,58,35,null,25,41,37,null,63,45,null,7,35,65,28,16,19,null,33,30,22,42,22,26,19,36,24,24,null,23.5,2,null,50,null,null,19,null,null,0.92,null,17,30,30,24,18,26,28,43,26,24,54,31,40,22,27,30,22,null,36,61,36,31,16,null,45.5,38,16,null,null,29,41,45,45,2,24,28,25,36,24,40,null,3,42,23,null,15,25,null,28,22,38,null,null,40,29,45,35,null,30,60,null,null,24,25,18,19,22,3,null,22,27,20,19,42,1,32,35,null,18,1,36,null,17,36,21,28,23,24,22,31,46,23,28,39,26,21,28,20,34,51,3,21,null,null,null,33,null,44,null,34,18,30,10,null,21,29,28,18,null,28,19,null,32,28,null,42,17,50,14,21,24,64,31,45,20,25,28,null,4,13,34,5,52,36,null,30,49,null,29,65,null,50,null,48,34,47,48,null,38,null,56,null,0.75,null,38,33,23,22,null,34,29,22,2,9,null,50,63,25,null,35,58,30,9,null,21,55,71,21,null,54,null,25,24,17,21,null,37,16,18,33,null,28,26,29,null,36,54,24,47,34,null,36,32,30,22,null,44,null,40.5,50,null,39,23,2,null,17,null,30,7,45,30,null,22,36,9,11,32,50,64,19,null,33,8,17,27,null,22,22,62,48,null,39,36,null,40,28,null,null,24,19,29,null,32,62,53,36,null,16,19,34,39,null,32,25,39,54,36,null,18,47,60,22,null,35,52,47,null,37,36,null,49,null,49,24,null,null,44,35,36,30,27,22,40,39,null,null,null,35,24,34,26,4,26,27,42,20,21,21,61,57,21,26,null,80,51,32,null,9,28,32,31,41,null,20,24,2,null,0.75,48,19,56,null,23,null,18,21,null,18,24,null,32,23,58,50,40,47,36,20,32,25,null,43,null,40,31,70,31,null,18,24.5,18,43,36,null,27,20,14,60,25,14,19,18,15,31,4,null,25,60,52,44,null,49,42,18,35,18,25,26,39,45,42,22,null,24,null,48,29,52,19,38,27,null,33,6,17,34,50,27,20,30,null,25,25,29,11,null,23,23,28.5,48,35,null,null,null,36,21,24,31,70,16,30,19,31,4,6,33,23,48,0.67,28,18,34,33,null,41,20,36,16,51,null,30.5,null,32,24,48,57,null,54,18,null,5,null,43,13,17,29,null,25,25,18,8,1,46,null,16,null,null,25,39,49,31,30,30,34,31,11,0.42,27,31,39,18,39,33,26,39,35,6,30.5,null,23,31,43,10,52,27,38,27,2,null,null,1,null,62,15,0.83,null,23,18,39,21,null,32,null,20,16,30,34.5,17,42,null,35,28,null,4,74,9,16,44,18,45,51,24,null,41,21,48,null,24,42,27,31,null,4,26,47,33,47,28,15,20,19,null,56,25,33,22,28,25,39,27,19,null,26,32],"type":"histogram"},"779c7391db11.1":{"showlegend":false,"alpha":0.6,"sizes":[10,100],"x":[34.5,47,62,27,22,14,30,26,18,21,null,46,23,63,47,24,35,21,27,45,55,9,null,21,48,50,22,22.5,41,null,50,24,33,null,30,18.5,null,21,25,null,39,null,41,30,45,25,45,null,60,36,24,27,20,28,null,10,35,25,null,36,17,32,18,22,13,null,18,47,31,60,24,21,29,28.5,35,32.5,null,55,30,24,6,67,49,null,null,null,27,18,null,2,22,null,27,null,25,25,76,29,20,33,43,27,null,26,16,28,21,null,null,18.5,41,null,36,18.5,63,18,null,1,36,29,12,null,35,28,null,17,22,null,42,24,32,53,null,null,43,24,26.5,26,23,40,10,33,61,28,42,31,null,22,null,30,23,null,60.5,36,13,24,29,23,42,26,null,7,26,null,41,26,48,18,null,22,null,27,23,null,40,15,20,54,36,64,30,37,18,null,27,40,21,17,null,40,34,null,11.5,61,8,33,6,18,23,null,null,0.33,47,8,25,null,35,24,33,25,32,null,17,60,38,42,null,57,50,null,30,21,22,21,53,null,23,null,40.5,36,14,21,21,null,39,20,64,20,18,48,55,45,45,null,null,41,22,42,29,null,0.92,20,27,24,32.5,null,null,28,19,21,36.5,21,29,1,30,null,null,null,null,17,46,null,26,null,null,20,28,40,30,22,23,0.75,null,9,2,36,null,24,null,null,null,30,null,53,36,26,1,null,30,29,32,null,43,24,null,64,30,0.83,55,45,18,22,null,37,55,17,57,19,27,22,26,25,26,33,39,23,12,46,29,21,48,39,null,19,27,30,32,39,25,null,18,32,null,58,null,16,26,38,24,31,45,25,18,49,0.17,50,59,null,null,30,14.5,24,31,27,25,null,null,22,45,29,21,31,49,44,54,45,22,21,55,5,null,26,null,19,null,24,24,57,21,6,23,51,13,47,29,18,24,48,22,31,30,38,22,17,43,20,23,50,null,3,null,37,28,null,39,38.5,null,null],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"overlay","xaxis":{"domain":[0,1]},"yaxis":{"domain":[0,1]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"showlegend":false,"x":[22,38,26,35,35,54,2,27,14,4,58,20,39,14,55,2,31,35,34,15,28,8,38,19,40,66,28,42,21,18,14,40,27,3,19,18,7,21,49,29,65,21,28.5,5,11,22,38,45,4,29,19,17,26,32,16,21,26,32,25,0.83,30,22,29,28,17,33,16,23,24,29,20,46,26,59,71,23,34,34,28,21,33,37,28,21,38,47,14.5,22,20,17,21,70.5,29,24,2,21,32.5,32.5,54,12,24,45,33,20,47,29,25,23,19,37,16,24,22,24,19,18,19,27,9,36.5,42,51,22,55.5,40.5,51,16,30,44,40,26,17,1,9,45,28,61,4,1,21,56,18,50,30,36,9,1,4,45,40,36,32,19,19,3,44,58,42,24,28,34,45.5,18,2,32,26,16,40,24,35,22,30,31,27,42,32,30,16,27,51,38,22,19,20.5,18,35,29,59,5,24,44,8,19,33,29,22,30,44,25,24,37,54,29,62,30,41,29,30,35,50,3,52,40,36,16,25,58,35,25,41,37,63,45,7,35,65,28,16,19,33,30,22,42,22,26,19,36,24,24,23.5,2,50,19,0.92,17,30,30,24,18,26,28,43,26,24,54,31,40,22,27,30,22,36,61,36,31,16,45.5,38,16,29,41,45,45,2,24,28,25,36,24,40,3,42,23,15,25,28,22,38,40,29,45,35,30,60,24,25,18,19,22,3,22,27,20,19,42,1,32,35,18,1,36,17,36,21,28,23,24,22,31,46,23,28,39,26,21,28,20,34,51,3,21,33,44,34,18,30,10,21,29,28,18,28,19,32,28,42,17,50,14,21,24,64,31,45,20,25,28,4,13,34,5,52,36,30,49,29,65,50,48,34,47,48,38,56,0.75,38,33,23,22,34,29,22,2,9,50,63,25,35,58,30,9,21,55,71,21,54,25,24,17,21,37,16,18,33,28,26,29,36,54,24,47,34,36,32,30,22,44,40.5,50,39,23,2,17,30,7,45,30,22,36,9,11,32,50,64,19,33,8,17,27,22,22,62,48,39,36,40,28,24,19,29,32,62,53,36,16,19,34,39,32,25,39,54,36,18,47,60,22,35,52,47,37,36,49,49,24,44,35,36,30,27,22,40,39,35,24,34,26,4,26,27,42,20,21,21,61,57,21,26,80,51,32,9,28,32,31,41,20,24,2,0.75,48,19,56,23,18,21,18,24,32,23,58,50,40,47,36,20,32,25,43,40,31,70,31,18,24.5,18,43,36,27,20,14,60,25,14,19,18,15,31,4,25,60,52,44,49,42,18,35,18,25,26,39,45,42,22,24,48,29,52,19,38,27,33,6,17,34,50,27,20,30,25,25,29,11,23,23,28.5,48,35,36,21,24,31,70,16,30,19,31,4,6,33,23,48,0.67,28,18,34,33,41,20,36,16,51,30.5,32,24,48,57,54,18,5,43,13,17,29,25,25,18,8,1,46,16,25,39,49,31,30,30,34,31,11,0.42,27,31,39,18,39,33,26,39,35,6,30.5,23,31,43,10,52,27,38,27,2,1,62,15,0.83,23,18,39,21,32,20,16,30,34.5,17,42,35,28,4,74,9,16,44,18,45,51,24,41,21,48,24,42,27,31,4,26,47,33,47,28,15,20,19,56,25,33,22,28,25,39,27,19,26,32],"type":"histogram","marker":{"fillcolor":"rgba(31,119,180,0.6)","color":"rgba(31,119,180,0.6)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null},{"showlegend":false,"x":[34.5,47,62,27,22,14,30,26,18,21,46,23,63,47,24,35,21,27,45,55,9,21,48,50,22,22.5,41,50,24,33,30,18.5,21,25,39,41,30,45,25,45,60,36,24,27,20,28,10,35,25,36,17,32,18,22,13,18,47,31,60,24,21,29,28.5,35,32.5,55,30,24,6,67,49,27,18,2,22,27,25,25,76,29,20,33,43,27,26,16,28,21,18.5,41,36,18.5,63,18,1,36,29,12,35,28,17,22,42,24,32,53,43,24,26.5,26,23,40,10,33,61,28,42,31,22,30,23,60.5,36,13,24,29,23,42,26,7,26,41,26,48,18,22,27,23,40,15,20,54,36,64,30,37,18,27,40,21,17,40,34,11.5,61,8,33,6,18,23,0.33,47,8,25,35,24,33,25,32,17,60,38,42,57,50,30,21,22,21,53,23,40.5,36,14,21,21,39,20,64,20,18,48,55,45,45,41,22,42,29,0.92,20,27,24,32.5,28,19,21,36.5,21,29,1,30,17,46,26,20,28,40,30,22,23,0.75,9,2,36,24,30,53,36,26,1,30,29,32,43,24,64,30,0.83,55,45,18,22,37,55,17,57,19,27,22,26,25,26,33,39,23,12,46,29,21,48,39,19,27,30,32,39,25,18,32,58,16,26,38,24,31,45,25,18,49,0.17,50,59,30,14.5,24,31,27,25,22,45,29,21,31,49,44,54,45,22,21,55,5,26,19,24,24,57,21,6,23,51,13,47,29,18,24,48,22,31,30,38,22,17,43,20,23,50,3,37,28,39,38.5],"type":"histogram","marker":{"fillcolor":"rgba(255,127,14,0.6)","color":"rgba(255,127,14,0.6)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+plot_ly(alpha = 0.6, showlegend = FALSE) %&gt;%
+  add_histogram(x = train$Age) %&gt;%
+  add_histogram(x = test$Age) %&gt;%
+  layout(barmode = &quot;overlay&quot;)</code></pre>
+<div id="2a822bc18611" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="2a822bc18611">{"x":{"visdat":{"2a823fdfc130":["function () ","plotlyVisDat"]},"cur_data":"2a823fdfc130","attrs":{"2a823fdfc130":{"showlegend":false,"alpha":0.6,"sizes":[10,100],"x":[22,38,26,35,35,null,54,2,27,14,4,58,20,39,14,55,2,null,31,null,35,34,15,28,8,38,null,19,null,null,40,null,null,66,28,42,null,21,18,14,40,27,null,3,19,null,null,null,null,18,7,21,49,29,65,null,21,28.5,5,11,22,38,45,4,null,null,29,19,17,26,32,16,21,26,32,25,null,null,0.83,30,22,29,null,28,17,33,16,null,23,24,29,20,46,26,59,null,71,23,34,34,28,null,21,33,37,28,21,null,38,null,47,14.5,22,20,17,21,70.5,29,24,2,21,null,32.5,32.5,54,12,null,24,null,45,33,20,47,29,25,23,19,37,16,24,null,22,24,19,18,19,27,9,36.5,42,51,22,55.5,40.5,null,51,16,30,null,null,44,40,26,17,1,9,null,45,null,28,61,4,1,21,56,18,null,50,30,36,null,null,9,1,4,null,null,45,40,36,32,19,19,3,44,58,null,42,null,24,28,null,34,45.5,18,2,32,26,16,40,24,35,22,30,null,31,27,42,32,30,16,27,51,null,38,22,19,20.5,18,null,35,29,59,5,24,null,44,8,19,33,null,null,29,22,30,44,25,24,37,54,null,29,62,30,41,29,null,30,35,50,null,3,52,40,null,36,16,25,58,35,null,25,41,37,null,63,45,null,7,35,65,28,16,19,null,33,30,22,42,22,26,19,36,24,24,null,23.5,2,null,50,null,null,19,null,null,0.92,null,17,30,30,24,18,26,28,43,26,24,54,31,40,22,27,30,22,null,36,61,36,31,16,null,45.5,38,16,null,null,29,41,45,45,2,24,28,25,36,24,40,null,3,42,23,null,15,25,null,28,22,38,null,null,40,29,45,35,null,30,60,null,null,24,25,18,19,22,3,null,22,27,20,19,42,1,32,35,null,18,1,36,null,17,36,21,28,23,24,22,31,46,23,28,39,26,21,28,20,34,51,3,21,null,null,null,33,null,44,null,34,18,30,10,null,21,29,28,18,null,28,19,null,32,28,null,42,17,50,14,21,24,64,31,45,20,25,28,null,4,13,34,5,52,36,null,30,49,null,29,65,null,50,null,48,34,47,48,null,38,null,56,null,0.75,null,38,33,23,22,null,34,29,22,2,9,null,50,63,25,null,35,58,30,9,null,21,55,71,21,null,54,null,25,24,17,21,null,37,16,18,33,null,28,26,29,null,36,54,24,47,34,null,36,32,30,22,null,44,null,40.5,50,null,39,23,2,null,17,null,30,7,45,30,null,22,36,9,11,32,50,64,19,null,33,8,17,27,null,22,22,62,48,null,39,36,null,40,28,null,null,24,19,29,null,32,62,53,36,null,16,19,34,39,null,32,25,39,54,36,null,18,47,60,22,null,35,52,47,null,37,36,null,49,null,49,24,null,null,44,35,36,30,27,22,40,39,null,null,null,35,24,34,26,4,26,27,42,20,21,21,61,57,21,26,null,80,51,32,null,9,28,32,31,41,null,20,24,2,null,0.75,48,19,56,null,23,null,18,21,null,18,24,null,32,23,58,50,40,47,36,20,32,25,null,43,null,40,31,70,31,null,18,24.5,18,43,36,null,27,20,14,60,25,14,19,18,15,31,4,null,25,60,52,44,null,49,42,18,35,18,25,26,39,45,42,22,null,24,null,48,29,52,19,38,27,null,33,6,17,34,50,27,20,30,null,25,25,29,11,null,23,23,28.5,48,35,null,null,null,36,21,24,31,70,16,30,19,31,4,6,33,23,48,0.67,28,18,34,33,null,41,20,36,16,51,null,30.5,null,32,24,48,57,null,54,18,null,5,null,43,13,17,29,null,25,25,18,8,1,46,null,16,null,null,25,39,49,31,30,30,34,31,11,0.42,27,31,39,18,39,33,26,39,35,6,30.5,null,23,31,43,10,52,27,38,27,2,null,null,1,null,62,15,0.83,null,23,18,39,21,null,32,null,20,16,30,34.5,17,42,null,35,28,null,4,74,9,16,44,18,45,51,24,null,41,21,48,null,24,42,27,31,null,4,26,47,33,47,28,15,20,19,null,56,25,33,22,28,25,39,27,19,null,26,32],"type":"histogram"},"2a823fdfc130.1":{"showlegend":false,"alpha":0.6,"sizes":[10,100],"x":[34.5,47,62,27,22,14,30,26,18,21,null,46,23,63,47,24,35,21,27,45,55,9,null,21,48,50,22,22.5,41,null,50,24,33,null,30,18.5,null,21,25,null,39,null,41,30,45,25,45,null,60,36,24,27,20,28,null,10,35,25,null,36,17,32,18,22,13,null,18,47,31,60,24,21,29,28.5,35,32.5,null,55,30,24,6,67,49,null,null,null,27,18,null,2,22,null,27,null,25,25,76,29,20,33,43,27,null,26,16,28,21,null,null,18.5,41,null,36,18.5,63,18,null,1,36,29,12,null,35,28,null,17,22,null,42,24,32,53,null,null,43,24,26.5,26,23,40,10,33,61,28,42,31,null,22,null,30,23,null,60.5,36,13,24,29,23,42,26,null,7,26,null,41,26,48,18,null,22,null,27,23,null,40,15,20,54,36,64,30,37,18,null,27,40,21,17,null,40,34,null,11.5,61,8,33,6,18,23,null,null,0.33,47,8,25,null,35,24,33,25,32,null,17,60,38,42,null,57,50,null,30,21,22,21,53,null,23,null,40.5,36,14,21,21,null,39,20,64,20,18,48,55,45,45,null,null,41,22,42,29,null,0.92,20,27,24,32.5,null,null,28,19,21,36.5,21,29,1,30,null,null,null,null,17,46,null,26,null,null,20,28,40,30,22,23,0.75,null,9,2,36,null,24,null,null,null,30,null,53,36,26,1,null,30,29,32,null,43,24,null,64,30,0.83,55,45,18,22,null,37,55,17,57,19,27,22,26,25,26,33,39,23,12,46,29,21,48,39,null,19,27,30,32,39,25,null,18,32,null,58,null,16,26,38,24,31,45,25,18,49,0.17,50,59,null,null,30,14.5,24,31,27,25,null,null,22,45,29,21,31,49,44,54,45,22,21,55,5,null,26,null,19,null,24,24,57,21,6,23,51,13,47,29,18,24,48,22,31,30,38,22,17,43,20,23,50,null,3,null,37,28,null,39,38.5,null,null],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"overlay","xaxis":{"domain":[0,1]},"yaxis":{"domain":[0,1]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"showlegend":false,"x":[22,38,26,35,35,54,2,27,14,4,58,20,39,14,55,2,31,35,34,15,28,8,38,19,40,66,28,42,21,18,14,40,27,3,19,18,7,21,49,29,65,21,28.5,5,11,22,38,45,4,29,19,17,26,32,16,21,26,32,25,0.83,30,22,29,28,17,33,16,23,24,29,20,46,26,59,71,23,34,34,28,21,33,37,28,21,38,47,14.5,22,20,17,21,70.5,29,24,2,21,32.5,32.5,54,12,24,45,33,20,47,29,25,23,19,37,16,24,22,24,19,18,19,27,9,36.5,42,51,22,55.5,40.5,51,16,30,44,40,26,17,1,9,45,28,61,4,1,21,56,18,50,30,36,9,1,4,45,40,36,32,19,19,3,44,58,42,24,28,34,45.5,18,2,32,26,16,40,24,35,22,30,31,27,42,32,30,16,27,51,38,22,19,20.5,18,35,29,59,5,24,44,8,19,33,29,22,30,44,25,24,37,54,29,62,30,41,29,30,35,50,3,52,40,36,16,25,58,35,25,41,37,63,45,7,35,65,28,16,19,33,30,22,42,22,26,19,36,24,24,23.5,2,50,19,0.92,17,30,30,24,18,26,28,43,26,24,54,31,40,22,27,30,22,36,61,36,31,16,45.5,38,16,29,41,45,45,2,24,28,25,36,24,40,3,42,23,15,25,28,22,38,40,29,45,35,30,60,24,25,18,19,22,3,22,27,20,19,42,1,32,35,18,1,36,17,36,21,28,23,24,22,31,46,23,28,39,26,21,28,20,34,51,3,21,33,44,34,18,30,10,21,29,28,18,28,19,32,28,42,17,50,14,21,24,64,31,45,20,25,28,4,13,34,5,52,36,30,49,29,65,50,48,34,47,48,38,56,0.75,38,33,23,22,34,29,22,2,9,50,63,25,35,58,30,9,21,55,71,21,54,25,24,17,21,37,16,18,33,28,26,29,36,54,24,47,34,36,32,30,22,44,40.5,50,39,23,2,17,30,7,45,30,22,36,9,11,32,50,64,19,33,8,17,27,22,22,62,48,39,36,40,28,24,19,29,32,62,53,36,16,19,34,39,32,25,39,54,36,18,47,60,22,35,52,47,37,36,49,49,24,44,35,36,30,27,22,40,39,35,24,34,26,4,26,27,42,20,21,21,61,57,21,26,80,51,32,9,28,32,31,41,20,24,2,0.75,48,19,56,23,18,21,18,24,32,23,58,50,40,47,36,20,32,25,43,40,31,70,31,18,24.5,18,43,36,27,20,14,60,25,14,19,18,15,31,4,25,60,52,44,49,42,18,35,18,25,26,39,45,42,22,24,48,29,52,19,38,27,33,6,17,34,50,27,20,30,25,25,29,11,23,23,28.5,48,35,36,21,24,31,70,16,30,19,31,4,6,33,23,48,0.67,28,18,34,33,41,20,36,16,51,30.5,32,24,48,57,54,18,5,43,13,17,29,25,25,18,8,1,46,16,25,39,49,31,30,30,34,31,11,0.42,27,31,39,18,39,33,26,39,35,6,30.5,23,31,43,10,52,27,38,27,2,1,62,15,0.83,23,18,39,21,32,20,16,30,34.5,17,42,35,28,4,74,9,16,44,18,45,51,24,41,21,48,24,42,27,31,4,26,47,33,47,28,15,20,19,56,25,33,22,28,25,39,27,19,26,32],"type":"histogram","marker":{"fillcolor":"rgba(31,119,180,0.6)","color":"rgba(31,119,180,0.6)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null},{"showlegend":false,"x":[34.5,47,62,27,22,14,30,26,18,21,46,23,63,47,24,35,21,27,45,55,9,21,48,50,22,22.5,41,50,24,33,30,18.5,21,25,39,41,30,45,25,45,60,36,24,27,20,28,10,35,25,36,17,32,18,22,13,18,47,31,60,24,21,29,28.5,35,32.5,55,30,24,6,67,49,27,18,2,22,27,25,25,76,29,20,33,43,27,26,16,28,21,18.5,41,36,18.5,63,18,1,36,29,12,35,28,17,22,42,24,32,53,43,24,26.5,26,23,40,10,33,61,28,42,31,22,30,23,60.5,36,13,24,29,23,42,26,7,26,41,26,48,18,22,27,23,40,15,20,54,36,64,30,37,18,27,40,21,17,40,34,11.5,61,8,33,6,18,23,0.33,47,8,25,35,24,33,25,32,17,60,38,42,57,50,30,21,22,21,53,23,40.5,36,14,21,21,39,20,64,20,18,48,55,45,45,41,22,42,29,0.92,20,27,24,32.5,28,19,21,36.5,21,29,1,30,17,46,26,20,28,40,30,22,23,0.75,9,2,36,24,30,53,36,26,1,30,29,32,43,24,64,30,0.83,55,45,18,22,37,55,17,57,19,27,22,26,25,26,33,39,23,12,46,29,21,48,39,19,27,30,32,39,25,18,32,58,16,26,38,24,31,45,25,18,49,0.17,50,59,30,14.5,24,31,27,25,22,45,29,21,31,49,44,54,45,22,21,55,5,26,19,24,24,57,21,6,23,51,13,47,29,18,24,48,22,31,30,38,22,17,43,20,23,50,3,37,28,39,38.5],"type":"histogram","marker":{"fillcolor":"rgba(255,127,14,0.6)","color":"rgba(255,127,14,0.6)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>If we thought Kaggle only stratified the data on the age variable, we should be very suspicious about that 60-65 bar where the test data has more observations than the training data. However, if they did, it’s likely that Kaggle stratified on a number of variables, including Age, Sex, Parch, Pclass, SibSp, Fare, and Embarked. Oh, and Survived. It’s kind of important to have some balance in your outcome. Unfortunately, I don’t know of a good way to throw 8 variables into a single (useful) graph, so let’s just leave it at that. (We’ll use random selection to Cross-validate our models later on, so I won’t talk about it how to do it here.)</p>
 <p>From the above Histogram, we can see that the largest demographic was young adults, with fewer children and older passengers.</p>
 <p>Now, there are other interesting variables (Sex, Pclass, etc.), but I’m going to jump to the outcome now. How was survival distributed?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">train <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">group_by</span>(Survived) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Number =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">plot_ly</span>(<span class="dt">x =</span> <span class="op">~</span>Survived, <span class="dt">y=</span> <span class="op">~</span>Number, <span class="dt">type=</span><span class="st">&quot;bar&quot;</span>)</code></pre></div>
-<div id="779c638e3322" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="779c638e3322">{"x":{"visdat":{"779c82bc87":["function () ","plotlyVisDat"]},"cur_data":"779c82bc87","attrs":{"779c82bc87":{"x":{},"y":{},"alpha":1,"sizes":[10,100],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Survived"},"yaxis":{"domain":[0,1],"title":"Number"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[0,1],"y":[549,342],"type":"bar","marker":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+<pre class="r"><code>train %&gt;%
+  group_by(Survived) %&gt;%
+  summarise(Number = n()) %&gt;%
+  plot_ly(x = ~Survived, y= ~Number, type=&quot;bar&quot;)</code></pre>
+<div id="2a82145f768b" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="2a82145f768b">{"x":{"visdat":{"2a826ca951fa":["function () ","plotlyVisDat"]},"cur_data":"2a826ca951fa","attrs":{"2a826ca951fa":{"x":{},"y":{},"alpha":1,"sizes":[10,100],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Survived"},"yaxis":{"domain":[0,1],"title":"Number"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[0,1],"y":[549,342],"type":"bar","marker":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>So approximately twice as many died as survived. Now, we can cheat a little bit! From the description, we know that 1502 out of 2224 passengers and crew died. The full dataset (train and test) contains 1309 passengers. However, Wikipedia <a href="https://en.wikipedia.org/wiki/RMS_Titanic#Survivors_and_victims">gives us this nifty table</a>:</p>
 <table>
 <thead>
@@ -516,42 +573,42 @@ Total
 <div id="scoring" class="section level2">
 <h2>Scoring</h2>
 <p>Kaggle scores us on the train and test set they provide, but we want to get a good guess about how well a model is performing <em>before</em> we submit it to Kaggle. So, to do that, I’m going to split the training data again, and then use the training holdover to score each model’s performance.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subtraining &lt;-<span class="st"> </span>train <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">sample_frac</span>(<span class="fl">0.7</span>)
+<pre class="r"><code>subtraining &lt;- train %&gt;%
+  sample_frac(0.7)
 
-subtest &lt;-<span class="st"> </span>train <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">setdiff</span>(subtraining)</code></pre></div>
+subtest &lt;- train %&gt;%
+  setdiff(subtraining)</code></pre>
 <p>Since we’ll be looking at several different modeling approaches, we’ll need an objective scoring metric. The Kaggle metric is the percentage of passengers we predict correctly, a value which we wish to maximise. For simplicity’s sake, I’m going to use a slightly different formulation of the same metric, called the <strong>Mean Absolute Error</strong>. It’s basically what it sounds like: for every value we predict, subtract it from the truth (the difference of which is called the “error”), take the absolute value of the error, and then take the mean of all the absolute values. This gives us a number we want to minimize.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MAE &lt;-<span class="st"> </span><span class="cf">function</span>(a,<span class="dt">b=</span>subtest<span class="op">$</span>Survived,<span class="dt">na.rm=</span><span class="ot">TRUE</span>){<span class="kw">mean</span>(<span class="kw">abs</span>(a<span class="op">-</span>b), <span class="dt">na.rm =</span> na.rm)}</code></pre></div>
+<pre class="r"><code>MAE &lt;- function(a,b=subtest$Survived,na.rm=TRUE){mean(abs(a-b), na.rm = na.rm)}</code></pre>
 <p>So, for example, if we pick 1000 random values between 0 and 1, round them, and then do it again and check the Mean Absolute Error, it should be pretty close to .5.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">demo &lt;-<span class="st"> </span><span class="kw">MAE</span>(<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1000</span>)), <span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">1000</span>)))
-demo</code></pre></div>
+<pre class="r"><code>demo &lt;- MAE(round(runif(1000)), round(runif(1000)))
+demo</code></pre>
 <pre><code>## [1] 0.514</code></pre>
 <p>To get from this to the proportion we predicted successfully, we need only subtract from 1.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">-</span>demo</code></pre></div>
+<pre class="r"><code>1-demo</code></pre>
 <pre><code>## [1] 0.486</code></pre>
 </div>
 <div id="logistic-regression" class="section level2">
 <h2>Logistic Regression</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(intubate)
+<pre class="r"><code>load_package(&quot;intubate&quot;)
 
-formula &lt;-<span class="st"> </span>Survived <span class="op">~</span><span class="st"> </span>Pclass <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>SibSp <span class="op">+</span><span class="st"> </span>Parch <span class="op">+</span><span class="st"> </span>Fare <span class="op">+</span><span class="st"> </span>Embarked
+formula &lt;- Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked
 
-predictions &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">row.names =</span> <span class="kw">row.names</span>(subtest))
+predictions &lt;- data.frame(row.names = row.names(subtest))
 
-subtraining <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ntbt_glm</span>(formula, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(subtest[<span class="op">!</span><span class="kw">names</span>(subtest) <span class="op">%in%</span><span class="st"> &quot;Survived&quot;</span>], <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">round</span>() -&gt;
-<span class="st">  </span>predictions<span class="op">$</span>logit</code></pre></div>
+subtraining %&gt;%
+  ntbt_glm(formula, family = &quot;binomial&quot;) %&gt;%
+  predict(subtest[!names(subtest) %in% &quot;Survived&quot;], type = &quot;response&quot;) %&gt;%
+  round() -&gt;
+  predictions$logit</code></pre>
 <p>Now, before we score this, I should note that any row which contained an <code>NA</code> will have produced <code>NA</code> as a prediction. There are many ways to handle this problem. We could ignore them in our scoring:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">MAE</span>(predictions<span class="op">$</span>logit, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
+<pre class="r"><code>MAE(predictions$logit, na.rm=TRUE)</code></pre>
 <pre><code>## [1] 0.1994382</code></pre>
 <p>Alternately, we could fill them in with a prior survival estimate. The baseline survival rate was close to a third, meaning that we’re better off guessing a random person died than that they survived:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">predictions<span class="op">$</span>logit2 &lt;-<span class="st"> </span>predictions<span class="op">$</span>logit
-predictions<span class="op">$</span>logit2[<span class="kw">is.na</span>(predictions<span class="op">$</span>logit2)] &lt;-<span class="st"> </span><span class="dv">0</span>
+<pre class="r"><code>predictions$logit2 &lt;- predictions$logit
+predictions$logit2[is.na(predictions$logit2)] &lt;- 0
 
-<span class="kw">MAE</span>(predictions<span class="op">$</span>logit2)</code></pre></div>
+MAE(predictions$logit2)</code></pre>
 <pre><code>## [1] 0.2199776</code></pre>
 <p>The better approach, however, is to try to fill in the blanks.</p>
 </div>
@@ -559,7 +616,7 @@ predictions<span class="op">$</span>logit2[<span class="kw">is.na</span>(predict
 <div id="imputation" class="section level1">
 <h1>Imputation</h1>
 <p>Some models don’t handle missing values very well. The Titanic dataset has some missing values. So, let’s try to take care of them. The values in this dataset aren’t missing entries uniformly:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">is.na</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">colSums</span>() <span class="op">%&gt;%</span><span class="st"> </span>tbl_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Missing =</span> value) <span class="op">%&gt;%</span><span class="st"> </span>kable</code></pre></div>
+<pre class="r"><code>full %&gt;% is.na() %&gt;% colSums() %&gt;% tbl_df %&gt;% rename(Missing = value) %&gt;% kable</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -622,9 +679,9 @@ predictions<span class="op">$</span>logit2[<span class="kw">is.na</span>(predict
 <div id="embarkment" class="section level2">
 <h2>Embarkment</h2>
 <p>When you’re only missing a couple, it’s usually enough to make a good, informed estimate about what those values should have been. It’s unlikely to matter for the results of a model (since its a small number and you should basically always guess something close to the mean or trend, rather than an outlier). <code>Embarked</code> is such a variable. Of all the passengers, we don’t know the embarkment location for these two:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(Embarked)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">kable</span>()</code></pre></div>
+<pre class="r"><code>full %&gt;%
+  filter(is.na(Embarked)) %&gt;%
+  kable()</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -679,27 +736,27 @@ predictions<span class="op">$</span>logit2[<span class="kw">is.na</span>(predict
 <p class="caption">“Titanic’s Route”</p>
 </div>
 <p>Of particular note, we can see that both our passengers of mysterious origin were First Class passengers who paid $80 for their tickets. So from where did First class passengers embark?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(full<span class="op">$</span>Pclass, full<span class="op">$</span>Embarked)</code></pre></div>
+<pre class="r"><code>table(full$Pclass, full$Embarked)</code></pre>
 <pre><code>##    
 ##       C   Q   S
 ##   1 141   3 177
 ##   2  28   7 242
 ##   3 101 113 495</code></pre>
 <p>So there were very few embarkments by first and second class passengers in Queenstown, meaning it’s highly unlikely the missing two were from there. Now, from where did First class passengers <em>paying $80 per ticket</em> embark?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Embarked), Pclass <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">plot_ly</span>(<span class="dt">x=</span><span class="op">~</span>Embarked, <span class="dt">y=</span><span class="op">~</span>Fare) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">add_boxplot</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">layout</span>(<span class="dt">boxmode =</span> <span class="st">&quot;group&quot;</span>)</code></pre></div>
-<div id="779c4f386a48" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="779c4f386a48">{"x":{"visdat":{"779c57f86c2b":["function () ","plotlyVisDat"]},"cur_data":"779c57f86c2b","attrs":{"779c57f86c2b":{"x":{},"y":{},"alpha":1,"sizes":[10,100],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"boxmode":"group","xaxis":{"domain":[0,1],"title":"Embarked","type":"category","categoryorder":"array","categoryarray":["C","Q","S"]},"yaxis":{"domain":[0,1],"title":"Fare"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":["C","S","S","S","S","S","C","C","C","S","C","C","S","S","C","S","S","S","C","C","S","S","C","S","S","S","C","S","C","S","S","S","C","C","S","S","C","C","C","C","C","S","S","Q","S","S","C","S","C","S","S","S","S","S","C","S","S","S","C","C","S","S","C","S","C","C","C","C","C","S","C","C","C","S","S","S","S","C","S","S","S","S","C","C","C","C","C","C","C","S","S","C","Q","S","S","S","S","S","S","S","C","C","S","S","S","S","S","S","C","S","C","S","C","C","S","S","C","S","S","C","S","S","C","S","S","C","C","S","C","S","C","S","C","C","S","S","S","S","C","C","S","C","C","C","S","C","S","S","S","S","S","S","C","S","C","C","C","C","S","S","S","S","C","C","S","S","S","C","C","S","S","S","C","S","S","C","S","S","C","S","S","C","S","S","S","S","S","C","S","S","S","C","C","S","S","S","S","S","S","S","C","C","C","C","S","S","S","S","S","S","S","C","S","C","S","S","S","C","S","C","C","C","S","C","S","S","C","C","S","S","C","C","S","C","S","C","C","C","S","S","S","S","C","S","C","C","S","C","C","C","S","C","S","S","S","C","S","S","C","C","C","C","C","S","C","S","C","C","C","C","S","S","C","C","S","C","C","C","C","C","S","C","S","C","C","S","S","S","S","S","S","S","C","C","S","S","C","C","S","C","C","S","S","C","C","C","S","S","C","S","S","S","S","C","S","C","S","C","C","Q","C"],"y":[71.2833,53.1,51.8625,26.55,35.5,263,27.7208,146.5208,82.1708,52,76.7292,61.9792,35.5,83.475,27.7208,47.1,263,61.175,34.6542,63.3583,77.2875,52,247.5208,77.2875,26.2833,53.1,79.2,66.6,61.3792,55,25.925,33.5,30.6958,28.7125,50,26.55,27.7208,146.5208,31,113.275,76.2917,90,83.475,90,52.5542,26.55,79.2,86.5,512.3292,79.65,0,153.4625,135.6333,31,29.7,77.9583,26,78.85,91.0792,27.7208,151.55,30.5,247.5208,151.55,110.8833,108.9,56.9292,83.1583,262.375,164.8667,134.5,135.6333,57.9792,28.5,153.4625,133.65,66.6,134.5,35.5,263,35,55,75.25,69.3,55.4417,135.6333,82.1708,211.5,227.525,52,120,113.275,90,26.55,55.9,120,263,81.8583,26.55,30.5,27.75,89.1042,26.55,51.8625,26.55,38.5,26.55,52,91.0792,90,29.7,30.5,49.5042,78.2667,151.55,86.5,108.9,26.55,26.2875,59.4,34.0208,93.5,57.9792,221.7792,26.55,106.425,49.5,71,106.425,26,110.8833,26.55,39.6,227.525,79.65,51.4792,26.3875,55.9,110.8833,40.125,79.65,79.2,78.2667,56.9292,42.4,26.55,30.5,153.4625,52.5542,32.3208,77.9583,30,30.5,0,69.3,76.7292,35.5,113.275,133.65,25.5875,52,52,512.3292,76.7292,211.3375,57,26.55,110.8833,227.525,26.2875,26.2875,151.55,49.5042,26.55,52,227.525,53.1,211.3375,512.3292,30,78.85,262.375,71,53.1,86.5,120,77.9583,39.6,211.3375,57,30,79.2,30.6958,25.9292,120,0,53.1,0,93.5,0,83.1583,29.7,31,89.1042,39.4,164.8667,26.55,25.9292,50.4958,52.5542,5,83.1583,30,30,26,82.2667,61.175,59.4,31.6833,61.3792,262.375,61.9792,30.5,57.75,26.55,52.5542,29.7,76.2917,60,263,262.375,262.375,42.4,28.5375,263,27.7208,211.5,211.5,25.7,221.7792,26,52,26,78.85,55.4417,31.6792,221.7792,75.2417,57.75,28.5,151.55,262.375,26.55,51.8625,26.55,83.1583,221.7792,26.55,50.4958,27.7208,55.4417,83.1583,83.1583,53.1,247.5208,26,134.5,227.525,25.7417,27.7208,42.5,164.8667,211.5,27.4458,26.55,71.2833,75.25,106.425,27.7208,134.5,51.8625,136.7792,0,75.2417,136.7792,82.2667,39.6,81.8583,45.5,26.55,151.55,93.5,135.6333,146.5208,26.55,211.3375,79.2,29.7,26,512.3292,63.3583,26,51.4792,55.4417,59.4,134.5,0,81.8583,262.375,50,93.5,39.4,60,79.2,164.8667,59.4,47.1,27.7208,211.5,90,108.9],"type":"box","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+<pre class="r"><code>full %&gt;%
+  filter(!is.na(Embarked), Pclass == 1) %&gt;%
+  plot_ly(x=~Embarked, y=~Fare) %&gt;%
+  add_boxplot() %&gt;%
+  layout(boxmode = &quot;group&quot;)</code></pre>
+<div id="2a824c078380" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="2a824c078380">{"x":{"visdat":{"2a823c987de4":["function () ","plotlyVisDat"]},"cur_data":"2a823c987de4","attrs":{"2a823c987de4":{"x":{},"y":{},"alpha":1,"sizes":[10,100],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"boxmode":"group","xaxis":{"domain":[0,1],"title":"Embarked","type":"category","categoryorder":"array","categoryarray":["C","Q","S"]},"yaxis":{"domain":[0,1],"title":"Fare"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":["C","S","S","S","S","S","C","C","C","S","C","C","S","S","C","S","S","S","C","C","S","S","C","S","S","S","C","S","C","S","S","S","C","C","S","S","C","C","C","C","C","S","S","Q","S","S","C","S","C","S","S","S","S","S","C","S","S","S","C","C","S","S","C","S","C","C","C","C","C","S","C","C","C","S","S","S","S","C","S","S","S","S","C","C","C","C","C","C","C","S","S","C","Q","S","S","S","S","S","S","S","C","C","S","S","S","S","S","S","C","S","C","S","C","C","S","S","C","S","S","C","S","S","C","S","S","C","C","S","C","S","C","S","C","C","S","S","S","S","C","C","S","C","C","C","S","C","S","S","S","S","S","S","C","S","C","C","C","C","S","S","S","S","C","C","S","S","S","C","C","S","S","S","C","S","S","C","S","S","C","S","S","C","S","S","S","S","S","C","S","S","S","C","C","S","S","S","S","S","S","S","C","C","C","C","S","S","S","S","S","S","S","C","S","C","S","S","S","C","S","C","C","C","S","C","S","S","C","C","S","S","C","C","S","C","S","C","C","C","S","S","S","S","C","S","C","C","S","C","C","C","S","C","S","S","S","C","S","S","C","C","C","C","C","S","C","S","C","C","C","C","S","S","C","C","S","C","C","C","C","C","S","C","S","C","C","S","S","S","S","S","S","S","C","C","S","S","C","C","S","C","C","S","S","C","C","C","S","S","C","S","S","S","S","C","S","C","S","C","C","Q","C"],"y":[71.2833,53.1,51.8625,26.55,35.5,263,27.7208,146.5208,82.1708,52,76.7292,61.9792,35.5,83.475,27.7208,47.1,263,61.175,34.6542,63.3583,77.2875,52,247.5208,77.2875,26.2833,53.1,79.2,66.6,61.3792,55,25.925,33.5,30.6958,28.7125,50,26.55,27.7208,146.5208,31,113.275,76.2917,90,83.475,90,52.5542,26.55,79.2,86.5,512.3292,79.65,0,153.4625,135.6333,31,29.7,77.9583,26,78.85,91.0792,27.7208,151.55,30.5,247.5208,151.55,110.8833,108.9,56.9292,83.1583,262.375,164.8667,134.5,135.6333,57.9792,28.5,153.4625,133.65,66.6,134.5,35.5,263,35,55,75.25,69.3,55.4417,135.6333,82.1708,211.5,227.525,52,120,113.275,90,26.55,55.9,120,263,81.8583,26.55,30.5,27.75,89.1042,26.55,51.8625,26.55,38.5,26.55,52,91.0792,90,29.7,30.5,49.5042,78.2667,151.55,86.5,108.9,26.55,26.2875,59.4,34.0208,93.5,57.9792,221.7792,26.55,106.425,49.5,71,106.425,26,110.8833,26.55,39.6,227.525,79.65,51.4792,26.3875,55.9,110.8833,40.125,79.65,79.2,78.2667,56.9292,42.4,26.55,30.5,153.4625,52.5542,32.3208,77.9583,30,30.5,0,69.3,76.7292,35.5,113.275,133.65,25.5875,52,52,512.3292,76.7292,211.3375,57,26.55,110.8833,227.525,26.2875,26.2875,151.55,49.5042,26.55,52,227.525,53.1,211.3375,512.3292,30,78.85,262.375,71,53.1,86.5,120,77.9583,39.6,211.3375,57,30,79.2,30.6958,25.9292,120,0,53.1,0,93.5,0,83.1583,29.7,31,89.1042,39.4,164.8667,26.55,25.9292,50.4958,52.5542,5,83.1583,30,30,26,82.2667,61.175,59.4,31.6833,61.3792,262.375,61.9792,30.5,57.75,26.55,52.5542,29.7,76.2917,60,263,262.375,262.375,42.4,28.5375,263,27.7208,211.5,211.5,25.7,221.7792,26,52,26,78.85,55.4417,31.6792,221.7792,75.2417,57.75,28.5,151.55,262.375,26.55,51.8625,26.55,83.1583,221.7792,26.55,50.4958,27.7208,55.4417,83.1583,83.1583,53.1,247.5208,26,134.5,227.525,25.7417,27.7208,42.5,164.8667,211.5,27.4458,26.55,71.2833,75.25,106.425,27.7208,134.5,51.8625,136.7792,0,75.2417,136.7792,82.2667,39.6,81.8583,45.5,26.55,151.55,93.5,135.6333,146.5208,26.55,211.3375,79.2,29.7,26,512.3292,63.3583,26,51.4792,55.4417,59.4,134.5,0,81.8583,262.375,50,93.5,39.4,60,79.2,164.8667,59.4,47.1,27.7208,211.5,90,108.9],"type":"box","line":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>See where $80 falls on the boxplots above? It could be any of them. However, the median fare for a first-class passenger departing from Charbourg is quite close to the $80 paid by our embarkment-deficient passengers. Either way, this is unlikely to make a huge difference to any of the models, so let’s take a leap and replace the NA values with ‘C’.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full<span class="op">$</span>Embarked[<span class="kw">is.na</span>(full<span class="op">$</span>Embarked)] &lt;-<span class="st"> &#39;C&#39;</span></code></pre></div>
+<pre class="r"><code>full$Embarked[is.na(full$Embarked)] &lt;- &#39;C&#39;</code></pre>
 <div id="fare-price" class="section level3">
 <h3>Fare Price</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(Fare)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">kable</span>()</code></pre></div>
+<pre class="r"><code>full %&gt;%
+  filter(is.na(Fare)) %&gt;%
+  kable()</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -735,45 +792,45 @@ predictions<span class="op">$</span>logit2[<span class="kw">is.na</span>(predict
 </tbody>
 </table>
 <p>This is a third class passenger who departed from Southampton (‘S’). Let’s visualize Fares among all others sharing their class and embarkment (n = 494).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(Pclass <span class="op">==</span><span class="st"> </span><span class="dv">3</span>, Embarked <span class="op">==</span><span class="st"> &#39;S&#39;</span>, <span class="op">!</span><span class="kw">is.na</span>(Fare)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">plot_ly</span>(<span class="dt">x =</span> <span class="op">~</span>Fare, <span class="dt">type=</span><span class="st">&quot;histogram&quot;</span>)</code></pre></div>
-<div id="779c113015ab" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="779c113015ab">{"x":{"visdat":{"779c32ab5854":["function () ","plotlyVisDat"]},"cur_data":"779c32ab5854","attrs":{"779c32ab5854":{"x":{},"alpha":1,"sizes":[10,100],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Fare"},"yaxis":{"domain":[0,1]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[7.25,7.925,8.05,21.075,11.1333,16.7,8.05,31.275,7.8542,18,21.075,31.3875,7.8958,8.05,18,9.475,8.05,17.8,39.6875,7.8,46.9,27.9,8.1583,7.925,8.6625,46.9,56.4958,7.65,7.8958,8.05,12.475,9,9.5,15.85,34.375,8.05,8.05,8.05,7.8542,20.575,7.25,8.05,7.8958,7.8958,8.6542,7.925,7.8958,7.65,7.775,7.8958,8.05,9.825,7.925,31.275,8.05,7.1417,6.975,7.05,14.5,9.2167,7.75,15.85,7.7958,34.375,8.05,14.5,7.3125,8.05,8.6625,69.55,16.1,7.775,8.6625,39.6875,20.525,27.9,56.4958,11.1333,7.925,7.8542,25.4667,0,69.55,31.3875,22.025,7.8958,7.8542,8.4042,9.5,69.55,6.4958,8.05,10.4625,15.85,7.05,7.25,7.925,8.05,8.05,7.8958,9.35,7.25,25.4667,7.775,31.3875,7.55,7.125,7.775,7.25,10.4625,16.1,20.2125,31.3875,39.6875,7.775,0,7.75,20.25,7.8542,9.5,8.05,9.5,7.8958,8.85,7.8958,0,8.05,7.8958,7.8542,7.25,7.8958,69.55,6.2375,20.525,18,7.8958,8.05,16.1,15.9,8.6625,9.225,17.8,9.5,27.9,7.05,7.25,6.4958,8.05,21.075,7.25,7.775,7.925,7.8958,46.9,7.7958,7.925,16.7,7.7958,7.8542,7.925,8.05,9.825,15.85,8.6625,7.75,7.775,25.4667,7.8958,7.925,8.05,24.15,7.875,14.4,20.2125,7.25,8.05,16.1,7.125,34.375,9.5,7.775,8.1125,19.9667,8.05,8.05,8.05,7.05,7.25,8.6625,9.8375,7.0458,7.5208,12.2875,46.9,8.05,9.5875,25.4667,8.05,15.9,19.9667,7.25,8.05,15.1,7.7958,8.6625,9.5875,22.525,56.4958,8.05,7.4958,7.8958,7.8958,7.925,8.6625,14.5,31.275,31.275,20.525,7.775,17.4,7.8958,8.05,8.05,24.15,7.8958,21.075,7.8542,8.05,14.5,7.925,8.05,8.05,7.125,7.25,24.15,0,7.8958,8.05,15.55,7.8958,31.275,7.05,8.05,14.4,16.1,7.8542,16.1,7.8958,7.0542,27.9,7.925,39.6875,16.1,7.8542,27.9,56.4958,7.8958,7.55,7.55,7.8958,8.4333,7.8958,7.4958,7.925,7.775,8.05,7.775,8.05,9.8417,46.9,9.225,46.9,39.6875,10.1708,7.7958,56.4958,8.05,7.65,7.8542,9.4833,7.65,7.775,7.0542,8.6625,7.925,16.1,34.375,7.8958,7.8958,16.1,7.925,20.25,12.475,9.5,7.8958,7.7958,8.05,14.5,7.125,7.775,8.3625,9.5,7.8542,7.75,12.475,23.45,7.05,7.25,7.4958,20.575,69.55,7.8958,8.6833,24.15,6.975,7.775,7.775,7.8875,24.15,31.275,8.05,7.925,6.45,27.9,8.6625,12.475,39.6875,56.4958,7.8542,8.3,8.6625,8.05,56.4958,7.925,8.6625,7.55,69.55,31.275,7.775,9.35,14.1083,69.55,9.5,11.1333,7.8958,9,9.8458,7.8958,7.8958,7.8958,10.5167,7.05,23.45,7,8.6625,12.2875,9.225,24.15,7.8958,7.925,3.1708,14.5,20.575,23.45,8.05,8.6625,9.5,56.4958,7.85,7.925,15.9,7.8958,7.65,16.1,7.8958,7.75,7.8958,7.925,8.05,7.8958,8.05,13.9,7.775,8.05,7.7958,7.925,7.8542,8.05,7.775,22.525,8.7125,16.7,7.25,16.1,7.7958,8.05,8.05,25.4667,7.8958,7.8542,8.05,46.9,46.9,18,8.05,12.1833,31.3875,7.55,7.8542,13.775,7,22.025,34.375,8.9625,7.55,13.9,31.3875,8.05,69.55,14.5,7.8542,7.775,8.1125,14.4,7.8958,22.525,7.05,7.775,8.05,8.05,7.7958,7.7958,15.1,6.4958,7.8542,7.8875,23.45,7.925,9.325,9.5,7.55,8.05,7.775,17.4,7.8542,12.1833,7.8958,7.55,8.05,8.6625,8.6625,13.775,20.2125,7.25,7.25,8.05,9.5,7.8958,7.8542,7.775,8.6625,9.35,14.1083,8.6625,7.575,7.8542,7.775,7.05,7.8958,7.5792,69.55,14.5,7.65,20.575,7.8792,15.55,69.55,8.6625,69.55,39.6875,8.6625,31.3875,14.5,16.1,7.775,21.075,20.25,22.025,7.775,13.775,7.775,8.05,7.25,8.05],"type":"histogram","marker":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+<pre class="r"><code>full %&gt;%
+  filter(Pclass == 3, Embarked == &#39;S&#39;, !is.na(Fare)) %&gt;%
+  plot_ly(x = ~Fare, type=&quot;histogram&quot;)</code></pre>
+<div id="2a826eda5a93" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="2a826eda5a93">{"x":{"visdat":{"2a8231159b20":["function () ","plotlyVisDat"]},"cur_data":"2a8231159b20","attrs":{"2a8231159b20":{"x":{},"alpha":1,"sizes":[10,100],"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"title":"Fare"},"yaxis":{"domain":[0,1]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"x":[7.25,7.925,8.05,21.075,11.1333,16.7,8.05,31.275,7.8542,18,21.075,31.3875,7.8958,8.05,18,9.475,8.05,17.8,39.6875,7.8,46.9,27.9,8.1583,7.925,8.6625,46.9,56.4958,7.65,7.8958,8.05,12.475,9,9.5,15.85,34.375,8.05,8.05,8.05,7.8542,20.575,7.25,8.05,7.8958,7.8958,8.6542,7.925,7.8958,7.65,7.775,7.8958,8.05,9.825,7.925,31.275,8.05,7.1417,6.975,7.05,14.5,9.2167,7.75,15.85,7.7958,34.375,8.05,14.5,7.3125,8.05,8.6625,69.55,16.1,7.775,8.6625,39.6875,20.525,27.9,56.4958,11.1333,7.925,7.8542,25.4667,0,69.55,31.3875,22.025,7.8958,7.8542,8.4042,9.5,69.55,6.4958,8.05,10.4625,15.85,7.05,7.25,7.925,8.05,8.05,7.8958,9.35,7.25,25.4667,7.775,31.3875,7.55,7.125,7.775,7.25,10.4625,16.1,20.2125,31.3875,39.6875,7.775,0,7.75,20.25,7.8542,9.5,8.05,9.5,7.8958,8.85,7.8958,0,8.05,7.8958,7.8542,7.25,7.8958,69.55,6.2375,20.525,18,7.8958,8.05,16.1,15.9,8.6625,9.225,17.8,9.5,27.9,7.05,7.25,6.4958,8.05,21.075,7.25,7.775,7.925,7.8958,46.9,7.7958,7.925,16.7,7.7958,7.8542,7.925,8.05,9.825,15.85,8.6625,7.75,7.775,25.4667,7.8958,7.925,8.05,24.15,7.875,14.4,20.2125,7.25,8.05,16.1,7.125,34.375,9.5,7.775,8.1125,19.9667,8.05,8.05,8.05,7.05,7.25,8.6625,9.8375,7.0458,7.5208,12.2875,46.9,8.05,9.5875,25.4667,8.05,15.9,19.9667,7.25,8.05,15.1,7.7958,8.6625,9.5875,22.525,56.4958,8.05,7.4958,7.8958,7.8958,7.925,8.6625,14.5,31.275,31.275,20.525,7.775,17.4,7.8958,8.05,8.05,24.15,7.8958,21.075,7.8542,8.05,14.5,7.925,8.05,8.05,7.125,7.25,24.15,0,7.8958,8.05,15.55,7.8958,31.275,7.05,8.05,14.4,16.1,7.8542,16.1,7.8958,7.0542,27.9,7.925,39.6875,16.1,7.8542,27.9,56.4958,7.8958,7.55,7.55,7.8958,8.4333,7.8958,7.4958,7.925,7.775,8.05,7.775,8.05,9.8417,46.9,9.225,46.9,39.6875,10.1708,7.7958,56.4958,8.05,7.65,7.8542,9.4833,7.65,7.775,7.0542,8.6625,7.925,16.1,34.375,7.8958,7.8958,16.1,7.925,20.25,12.475,9.5,7.8958,7.7958,8.05,14.5,7.125,7.775,8.3625,9.5,7.8542,7.75,12.475,23.45,7.05,7.25,7.4958,20.575,69.55,7.8958,8.6833,24.15,6.975,7.775,7.775,7.8875,24.15,31.275,8.05,7.925,6.45,27.9,8.6625,12.475,39.6875,56.4958,7.8542,8.3,8.6625,8.05,56.4958,7.925,8.6625,7.55,69.55,31.275,7.775,9.35,14.1083,69.55,9.5,11.1333,7.8958,9,9.8458,7.8958,7.8958,7.8958,10.5167,7.05,23.45,7,8.6625,12.2875,9.225,24.15,7.8958,7.925,3.1708,14.5,20.575,23.45,8.05,8.6625,9.5,56.4958,7.85,7.925,15.9,7.8958,7.65,16.1,7.8958,7.75,7.8958,7.925,8.05,7.8958,8.05,13.9,7.775,8.05,7.7958,7.925,7.8542,8.05,7.775,22.525,8.7125,16.7,7.25,16.1,7.7958,8.05,8.05,25.4667,7.8958,7.8542,8.05,46.9,46.9,18,8.05,12.1833,31.3875,7.55,7.8542,13.775,7,22.025,34.375,8.9625,7.55,13.9,31.3875,8.05,69.55,14.5,7.8542,7.775,8.1125,14.4,7.8958,22.525,7.05,7.775,8.05,8.05,7.7958,7.7958,15.1,6.4958,7.8542,7.8875,23.45,7.925,9.325,9.5,7.55,8.05,7.775,17.4,7.8542,12.1833,7.8958,7.55,8.05,8.6625,8.6625,13.775,20.2125,7.25,7.25,8.05,9.5,7.8958,7.8542,7.775,8.6625,9.35,14.1083,8.6625,7.575,7.8542,7.775,7.05,7.8958,7.5792,69.55,14.5,7.65,20.575,7.8792,15.55,69.55,8.6625,69.55,39.6875,8.6625,31.3875,14.5,16.1,7.775,21.075,20.25,22.025,7.775,13.775,7.775,8.05,7.25,8.05],"type":"histogram","marker":{"fillcolor":"rgba(31,119,180,1)","color":"rgba(31,119,180,1)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>From this visualization, we can see that a preponderance of fares (third-class passengers from Southampton) paid around $10. (The median is actually $8.05) so it seems a reasonable to simply replace the NA Fare value with that median.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full<span class="op">$</span>Fare[<span class="kw">is.na</span>(full<span class="op">$</span>Fare)] &lt;-<span class="st"> </span><span class="kw">median</span>(full[full<span class="op">$</span>Pclass <span class="op">==</span><span class="st"> &#39;3&#39;</span> <span class="op">&amp;</span><span class="st"> </span>full<span class="op">$</span>Embarked <span class="op">==</span><span class="st"> &#39;S&#39;</span>, ]<span class="op">$</span>Fare, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="r"><code>full$Fare[is.na(full$Fare)] &lt;- median(full[full$Pclass == &#39;3&#39; &amp; full$Embarked == &#39;S&#39;, ]$Fare, na.rm = TRUE)</code></pre>
 </div>
 </div>
 <div id="age" class="section level2">
 <h2>Age</h2>
 <p>Finally, as we noted earlier, there are many missing <code>Age</code> values in our data. In order to solve this problem we could provide a treatment similar to the one above, though it would take a long time and produce unreliable data. Instead, we can outsource the hard legwork to a machine learning algorithm. Why? Because we must. When a variable is missing its values in only one or two rows, making intelligent guesses about those values is reasonable. However, when many are missing (and missing in a way that isn’t rigidly consistent with some other variables in the dataset), then statistical imputation is the better choice. Remember, we’re missing 263 ages.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;mice&#39;</span>)
+<pre class="r"><code>load_package(&#39;mice&#39;)
 
-factor_vars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;PassengerId&#39;</span>, <span class="st">&#39;Sex&#39;</span>, <span class="st">&#39;Embarked&#39;</span>)
-full[factor_vars] &lt;-<span class="st"> </span><span class="kw">lapply</span>(full[factor_vars], as.factor)
+factor_vars &lt;- c(&#39;PassengerId&#39;, &#39;Sex&#39;, &#39;Embarked&#39;)
+full[factor_vars] &lt;- lapply(full[factor_vars], as.factor)
 
-useless &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;PassengerId&#39;</span>, <span class="st">&#39;Name&#39;</span>, <span class="st">&#39;Ticket&#39;</span>, <span class="st">&#39;Cabin&#39;</span>, <span class="st">&#39;Family&#39;</span>, <span class="st">&#39;Surname&#39;</span>, <span class="st">&#39;Survived&#39;</span>)
-useful  &lt;-<span class="st"> </span><span class="kw">names</span>(full)[<span class="op">!</span><span class="kw">names</span>(full) <span class="op">%in%</span><span class="st"> </span>useless]
+useless &lt;- c(&#39;PassengerId&#39;, &#39;Name&#39;, &#39;Ticket&#39;, &#39;Cabin&#39;, &#39;Family&#39;, &#39;Surname&#39;, &#39;Survived&#39;)
+useful  &lt;- names(full)[!names(full) %in% useless]
 
-full <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select_</span>(<span class="dt">.dots=</span>useful) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mice</span>(<span class="dt">method=</span><span class="st">&#39;rf&#39;</span>) -&gt;
-<span class="st">  </span>mice_mod
+full %&gt;%
+  select_(.dots=useful) %&gt;%
+  mice(method=&#39;rf&#39;) -&gt;
+  mice_mod
 
-mice_output &lt;-<span class="st"> </span>mice<span class="op">::</span><span class="kw">complete</span>(mice_mod)</code></pre></div>
+mice_output &lt;- mice::complete(mice_mod)</code></pre>
 <p>If this were a serious effort, I’d cross-validate MICE to make sure it’s doing a good job, but I’m more than willing to settle for a ‘good-enough’ approach here. The good-enough approach is to check to make sure that MICE didn’t do anything stupid like stick all missing ages with the mean age, which we’d be able to see in a histogram.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ly</span>(<span class="dt">alpha =</span> <span class="fl">0.6</span>, <span class="dt">showlegend =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">add_histogram</span>(<span class="dt">x =</span> <span class="op">~</span>mice_output<span class="op">$</span>Age) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">add_histogram</span>(<span class="dt">x =</span> <span class="op">~</span>full<span class="op">$</span>Age) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">layout</span>(<span class="dt">barmode =</span> <span class="st">&quot;overlay&quot;</span>)</code></pre></div>
-<div id="779c7669575c" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="779c7669575c">{"x":{"visdat":{"779c7e3792f2":["function () ","plotlyVisDat"]},"cur_data":"779c7e3792f2","attrs":{"779c7e3792f2":{"showlegend":false,"alpha":0.6,"sizes":[10,100],"x":{},"type":"histogram"},"779c7e3792f2.1":{"showlegend":false,"alpha":0.6,"sizes":[10,100],"x":{},"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"overlay","xaxis":{"domain":[0,1],"title":"mice_output$Age"},"yaxis":{"domain":[0,1]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"showlegend":false,"x":[22,38,26,35,35,63,54,2,27,14,4,58,20,39,14,55,2,38.5,31,32,35,34,15,28,8,38,50,19,26,50,40,26,17,66,28,42,4,21,18,14,40,27,20,3,19,70,21,18.5,0.75,18,7,21,49,29,65,4,21,28.5,5,11,22,38,45,4,63,11.5,29,19,17,26,32,16,21,26,32,25,22,74,0.83,30,22,29,16,28,17,33,16,31,23,24,29,20,46,26,59,20,71,23,34,34,28,14,21,33,37,28,21,24,38,14.5,47,14.5,22,20,17,21,70.5,29,24,2,21,19,32.5,32.5,54,12,22,24,36,45,33,20,47,29,25,23,19,37,16,24,29,22,24,19,18,19,27,9,36.5,42,51,22,55.5,40.5,22,51,16,30,20,1,44,40,26,17,1,9,47,45,60,28,61,4,1,21,56,18,9,50,30,36,3,22,9,1,4,45.5,15,45,40,36,32,19,19,3,44,58,62,42,19,24,28,9,34,45.5,18,2,32,26,16,40,24,35,22,30,32,31,27,42,32,30,16,27,51,50,38,22,19,20.5,18,2,35,29,59,5,24,22,44,8,19,33,18,20,29,22,30,44,25,24,37,54,21,29,62,30,41,29,36,30,35,50,34.5,3,52,40,25,36,16,25,58,35,53,25,41,37,33,63,45,27,7,35,65,28,16,19,36,33,30,22,42,22,26,19,36,24,24,32,23.5,2,52,50,22,37,19,18,36,0.92,33,17,30,30,24,18,26,28,43,26,24,54,31,40,22,27,30,22,60,36,61,36,31,16,18,45.5,38,16,63,25,29,41,45,45,2,24,28,25,36,24,40,24,3,42,23,61,15,25,18,28,22,38,24,32,40,29,45,35,12,30,60,21,24,24,25,18,19,22,3,63,22,27,20,19,42,1,32,35,25,18,1,36,29,17,36,21,28,23,24,22,31,46,23,28,39,26,21,28,20,34,51,3,21,9,21,24,33,34,44,25,34,18,30,10,28,21,29,28,18,51,28,19,29,32,28,35,42,17,50,14,21,24,64,31,45,20,25,28,45,4,13,34,5,52,36,18,30,49,30,29,65,65,50,34,48,34,47,48,39,38,20,56,15,0.75,19,38,33,23,22,48,34,29,22,2,9,40,50,63,25,9,35,58,30,9,23,21,55,71,21,24,54,30,25,24,17,21,21,37,16,18,33,38,28,26,29,34,36,54,24,47,34,29,36,32,30,22,23,44,27,40.5,50,23,39,23,2,30,17,26,30,7,45,30,30,22,36,9,11,32,50,64,19,32,33,8,17,27,23.5,22,22,62,48,46,39,36,16,40,28,25,22,24,19,29,23,32,62,53,36,21,16,19,34,39,0.75,32,25,39,54,36,27,18,47,60,22,21,35,52,47,17,37,36,40,49,28,49,24,35,18,44,35,36,30,27,22,40,39,24,18,55.5,35,24,34,26,4,26,27,42,20,21,21,61,57,21,26,26,80,51,32,64,9,28,32,31,41,41,20,24,2,36,0.75,48,19,56,35,23,23,18,21,22,18,24,26,32,23,58,50,40,47,36,20,32,25,18,43,64,40,31,70,31,17,18,24.5,18,43,36,13,27,20,14,60,25,14,19,18,15,31,4,26,25,60,52,44,17,49,42,18,35,18,25,26,39,45,42,22,18.5,24,64,48,29,52,19,38,27,17,33,6,17,34,50,27,20,30,22,25,25,29,11,25,23,23,28.5,48,35,25,28,49,36,21,24,31,70,16,30,19,31,4,6,33,23,48,0.67,28,18,34,33,22,41,20,36,16,51,46,30.5,21,32,24,48,57,44,54,18,28.5,5,20,43,13,17,29,4,25,25,18,8,1,46,29,16,2,21,25,39,49,31,30,30,34,31,11,0.42,27,31,39,18,39,33,26,39,35,6,30.5,19,23,31,43,10,52,27,38,27,2,20.5,24,1,27,62,15,0.83,22,23,18,39,21,19,32,64,20,16,30,34.5,17,42,1,35,28,54,4,74,9,16,44,18,45,51,24,21,41,21,48,9,24,42,27,31,22,4,26,47,33,47,28,15,20,19,18,56,25,33,22,28,25,39,27,19,29,26,32,34.5,47,62,27,22,14,30,26,18,21,37,46,23,63,47,24,35,21,27,45,55,9,24,21,48,50,22,22.5,41,15,50,24,33,31,30,18.5,20,21,25,26,39,50,41,30,45,25,45,21,60,36,24,27,20,28,30,10,35,25,41,36,17,32,18,22,13,27,18,47,31,60,24,21,29,28.5,35,32.5,26,55,30,24,6,67,49,18,23,30,27,18,22,2,22,42,27,51,25,25,76,29,20,33,43,27,23.5,26,16,28,21,25,22,18.5,41,27,36,18.5,63,18,26,1,36,29,12,21,35,28,32,17,22,30,42,24,32,53,18,39,43,24,26.5,26,23,40,10,33,61,28,42,31,25,22,46,30,23,26,60.5,36,13,24,29,23,42,26,32,7,26,28,41,26,48,18,24,22,18,27,23,74,40,15,20,54,36,64,30,37,18,18,27,40,21,17,16,40,34,42,11.5,61,8,33,6,18,23,52,37,0.33,47,8,25,62,35,24,33,25,32,26,17,60,38,42,22,57,50,21,30,21,22,21,53,24,23,45,40.5,36,14,21,21,28,39,20,64,20,18,48,55,45,45,32,0.33,41,22,42,29,27,0.92,20,27,24,32.5,47,23.5,28,19,21,36.5,21,29,1,30,35,40,31,21,17,46,32,26,37,47,20,28,40,30,22,23,0.75,21,9,2,36,23,24,32,18,22,30,43,53,36,26,1,22,30,29,32,25,43,24,38,64,30,0.83,55,45,18,22,31,37,55,17,57,19,27,22,26,25,26,33,39,23,12,46,29,21,48,39,40,19,27,30,32,39,25,18,18,32,36,58,16,16,26,38,24,31,45,25,18,49,0.17,50,59,28,29,30,14.5,24,31,27,25,43,41,22,45,29,21,31,49,44,54,45,22,21,55,5,29,26,27,19,32,24,24,57,21,6,23,51,13,47,29,18,24,48,22,31,30,38,22,17,43,20,23,50,26,3,28,37,28,34,39,38.5,28,13],"type":"histogram","marker":{"fillcolor":"rgba(31,119,180,0.6)","color":"rgba(31,119,180,0.6)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null},{"showlegend":false,"x":[22,38,26,35,35,54,2,27,14,4,58,20,39,14,55,2,31,35,34,15,28,8,38,19,40,66,28,42,21,18,14,40,27,3,19,18,7,21,49,29,65,21,28.5,5,11,22,38,45,4,29,19,17,26,32,16,21,26,32,25,0.83,30,22,29,28,17,33,16,23,24,29,20,46,26,59,71,23,34,34,28,21,33,37,28,21,38,47,14.5,22,20,17,21,70.5,29,24,2,21,32.5,32.5,54,12,24,45,33,20,47,29,25,23,19,37,16,24,22,24,19,18,19,27,9,36.5,42,51,22,55.5,40.5,51,16,30,44,40,26,17,1,9,45,28,61,4,1,21,56,18,50,30,36,9,1,4,45,40,36,32,19,19,3,44,58,42,24,28,34,45.5,18,2,32,26,16,40,24,35,22,30,31,27,42,32,30,16,27,51,38,22,19,20.5,18,35,29,59,5,24,44,8,19,33,29,22,30,44,25,24,37,54,29,62,30,41,29,30,35,50,3,52,40,36,16,25,58,35,25,41,37,63,45,7,35,65,28,16,19,33,30,22,42,22,26,19,36,24,24,23.5,2,50,19,0.92,17,30,30,24,18,26,28,43,26,24,54,31,40,22,27,30,22,36,61,36,31,16,45.5,38,16,29,41,45,45,2,24,28,25,36,24,40,3,42,23,15,25,28,22,38,40,29,45,35,30,60,24,25,18,19,22,3,22,27,20,19,42,1,32,35,18,1,36,17,36,21,28,23,24,22,31,46,23,28,39,26,21,28,20,34,51,3,21,33,44,34,18,30,10,21,29,28,18,28,19,32,28,42,17,50,14,21,24,64,31,45,20,25,28,4,13,34,5,52,36,30,49,29,65,50,48,34,47,48,38,56,0.75,38,33,23,22,34,29,22,2,9,50,63,25,35,58,30,9,21,55,71,21,54,25,24,17,21,37,16,18,33,28,26,29,36,54,24,47,34,36,32,30,22,44,40.5,50,39,23,2,17,30,7,45,30,22,36,9,11,32,50,64,19,33,8,17,27,22,22,62,48,39,36,40,28,24,19,29,32,62,53,36,16,19,34,39,32,25,39,54,36,18,47,60,22,35,52,47,37,36,49,49,24,44,35,36,30,27,22,40,39,35,24,34,26,4,26,27,42,20,21,21,61,57,21,26,80,51,32,9,28,32,31,41,20,24,2,0.75,48,19,56,23,18,21,18,24,32,23,58,50,40,47,36,20,32,25,43,40,31,70,31,18,24.5,18,43,36,27,20,14,60,25,14,19,18,15,31,4,25,60,52,44,49,42,18,35,18,25,26,39,45,42,22,24,48,29,52,19,38,27,33,6,17,34,50,27,20,30,25,25,29,11,23,23,28.5,48,35,36,21,24,31,70,16,30,19,31,4,6,33,23,48,0.67,28,18,34,33,41,20,36,16,51,30.5,32,24,48,57,54,18,5,43,13,17,29,25,25,18,8,1,46,16,25,39,49,31,30,30,34,31,11,0.42,27,31,39,18,39,33,26,39,35,6,30.5,23,31,43,10,52,27,38,27,2,1,62,15,0.83,23,18,39,21,32,20,16,30,34.5,17,42,35,28,4,74,9,16,44,18,45,51,24,41,21,48,24,42,27,31,4,26,47,33,47,28,15,20,19,56,25,33,22,28,25,39,27,19,26,32,34.5,47,62,27,22,14,30,26,18,21,46,23,63,47,24,35,21,27,45,55,9,21,48,50,22,22.5,41,50,24,33,30,18.5,21,25,39,41,30,45,25,45,60,36,24,27,20,28,10,35,25,36,17,32,18,22,13,18,47,31,60,24,21,29,28.5,35,32.5,55,30,24,6,67,49,27,18,2,22,27,25,25,76,29,20,33,43,27,26,16,28,21,18.5,41,36,18.5,63,18,1,36,29,12,35,28,17,22,42,24,32,53,43,24,26.5,26,23,40,10,33,61,28,42,31,22,30,23,60.5,36,13,24,29,23,42,26,7,26,41,26,48,18,22,27,23,40,15,20,54,36,64,30,37,18,27,40,21,17,40,34,11.5,61,8,33,6,18,23,0.33,47,8,25,35,24,33,25,32,17,60,38,42,57,50,30,21,22,21,53,23,40.5,36,14,21,21,39,20,64,20,18,48,55,45,45,41,22,42,29,0.92,20,27,24,32.5,28,19,21,36.5,21,29,1,30,17,46,26,20,28,40,30,22,23,0.75,9,2,36,24,30,53,36,26,1,30,29,32,43,24,64,30,0.83,55,45,18,22,37,55,17,57,19,27,22,26,25,26,33,39,23,12,46,29,21,48,39,19,27,30,32,39,25,18,32,58,16,26,38,24,31,45,25,18,49,0.17,50,59,30,14.5,24,31,27,25,22,45,29,21,31,49,44,54,45,22,21,55,5,26,19,24,24,57,21,6,23,51,13,47,29,18,24,48,22,31,30,38,22,17,43,20,23,50,3,37,28,39,38.5],"type":"histogram","marker":{"fillcolor":"rgba(255,127,14,0.6)","color":"rgba(255,127,14,0.6)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+<pre class="r"><code>plot_ly(alpha = 0.6, showlegend = FALSE) %&gt;%
+  add_histogram(x = ~mice_output$Age) %&gt;%
+  add_histogram(x = ~full$Age) %&gt;%
+  layout(barmode = &quot;overlay&quot;)</code></pre>
+<div id="2a82c57958b" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="2a82c57958b">{"x":{"visdat":{"2a8244a09cba":["function () ","plotlyVisDat"]},"cur_data":"2a8244a09cba","attrs":{"2a8244a09cba":{"showlegend":false,"alpha":0.6,"sizes":[10,100],"x":{},"type":"histogram"},"2a8244a09cba.1":{"showlegend":false,"alpha":0.6,"sizes":[10,100],"x":{},"type":"histogram"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"overlay","xaxis":{"domain":[0,1],"title":"mice_output$Age"},"yaxis":{"domain":[0,1]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"data":[{"showlegend":false,"x":[22,38,26,35,35,63,54,2,27,14,4,58,20,39,14,55,2,38.5,31,32,35,34,15,28,8,38,50,19,26,50,40,26,17,66,28,42,4,21,18,14,40,27,20,3,19,70,21,18.5,0.75,18,7,21,49,29,65,4,21,28.5,5,11,22,38,45,4,63,11.5,29,19,17,26,32,16,21,26,32,25,22,74,0.83,30,22,29,16,28,17,33,16,31,23,24,29,20,46,26,59,20,71,23,34,34,28,14,21,33,37,28,21,24,38,14.5,47,14.5,22,20,17,21,70.5,29,24,2,21,19,32.5,32.5,54,12,22,24,36,45,33,20,47,29,25,23,19,37,16,24,29,22,24,19,18,19,27,9,36.5,42,51,22,55.5,40.5,22,51,16,30,20,1,44,40,26,17,1,9,47,45,60,28,61,4,1,21,56,18,9,50,30,36,3,22,9,1,4,45.5,15,45,40,36,32,19,19,3,44,58,62,42,19,24,28,9,34,45.5,18,2,32,26,16,40,24,35,22,30,32,31,27,42,32,30,16,27,51,50,38,22,19,20.5,18,2,35,29,59,5,24,22,44,8,19,33,18,20,29,22,30,44,25,24,37,54,21,29,62,30,41,29,36,30,35,50,34.5,3,52,40,25,36,16,25,58,35,53,25,41,37,33,63,45,27,7,35,65,28,16,19,36,33,30,22,42,22,26,19,36,24,24,32,23.5,2,52,50,22,37,19,18,36,0.92,33,17,30,30,24,18,26,28,43,26,24,54,31,40,22,27,30,22,60,36,61,36,31,16,18,45.5,38,16,63,25,29,41,45,45,2,24,28,25,36,24,40,24,3,42,23,61,15,25,18,28,22,38,24,32,40,29,45,35,12,30,60,21,24,24,25,18,19,22,3,63,22,27,20,19,42,1,32,35,25,18,1,36,29,17,36,21,28,23,24,22,31,46,23,28,39,26,21,28,20,34,51,3,21,9,21,24,33,34,44,25,34,18,30,10,28,21,29,28,18,51,28,19,29,32,28,35,42,17,50,14,21,24,64,31,45,20,25,28,45,4,13,34,5,52,36,18,30,49,30,29,65,65,50,34,48,34,47,48,39,38,20,56,15,0.75,19,38,33,23,22,48,34,29,22,2,9,40,50,63,25,9,35,58,30,9,23,21,55,71,21,24,54,30,25,24,17,21,21,37,16,18,33,38,28,26,29,34,36,54,24,47,34,29,36,32,30,22,23,44,27,40.5,50,23,39,23,2,30,17,26,30,7,45,30,30,22,36,9,11,32,50,64,19,32,33,8,17,27,23.5,22,22,62,48,46,39,36,16,40,28,25,22,24,19,29,23,32,62,53,36,21,16,19,34,39,0.75,32,25,39,54,36,27,18,47,60,22,21,35,52,47,17,37,36,40,49,28,49,24,35,18,44,35,36,30,27,22,40,39,24,18,55.5,35,24,34,26,4,26,27,42,20,21,21,61,57,21,26,26,80,51,32,64,9,28,32,31,41,41,20,24,2,36,0.75,48,19,56,35,23,23,18,21,22,18,24,26,32,23,58,50,40,47,36,20,32,25,18,43,64,40,31,70,31,17,18,24.5,18,43,36,13,27,20,14,60,25,14,19,18,15,31,4,26,25,60,52,44,17,49,42,18,35,18,25,26,39,45,42,22,18.5,24,64,48,29,52,19,38,27,17,33,6,17,34,50,27,20,30,22,25,25,29,11,25,23,23,28.5,48,35,25,28,49,36,21,24,31,70,16,30,19,31,4,6,33,23,48,0.67,28,18,34,33,22,41,20,36,16,51,46,30.5,21,32,24,48,57,44,54,18,28.5,5,20,43,13,17,29,4,25,25,18,8,1,46,29,16,2,21,25,39,49,31,30,30,34,31,11,0.42,27,31,39,18,39,33,26,39,35,6,30.5,19,23,31,43,10,52,27,38,27,2,20.5,24,1,27,62,15,0.83,22,23,18,39,21,19,32,64,20,16,30,34.5,17,42,1,35,28,54,4,74,9,16,44,18,45,51,24,21,41,21,48,9,24,42,27,31,22,4,26,47,33,47,28,15,20,19,18,56,25,33,22,28,25,39,27,19,29,26,32,34.5,47,62,27,22,14,30,26,18,21,37,46,23,63,47,24,35,21,27,45,55,9,24,21,48,50,22,22.5,41,15,50,24,33,31,30,18.5,20,21,25,26,39,50,41,30,45,25,45,21,60,36,24,27,20,28,30,10,35,25,41,36,17,32,18,22,13,27,18,47,31,60,24,21,29,28.5,35,32.5,26,55,30,24,6,67,49,18,23,30,27,18,22,2,22,42,27,51,25,25,76,29,20,33,43,27,23.5,26,16,28,21,25,22,18.5,41,27,36,18.5,63,18,26,1,36,29,12,21,35,28,32,17,22,30,42,24,32,53,18,39,43,24,26.5,26,23,40,10,33,61,28,42,31,25,22,46,30,23,26,60.5,36,13,24,29,23,42,26,32,7,26,28,41,26,48,18,24,22,18,27,23,74,40,15,20,54,36,64,30,37,18,18,27,40,21,17,16,40,34,42,11.5,61,8,33,6,18,23,52,37,0.33,47,8,25,62,35,24,33,25,32,26,17,60,38,42,22,57,50,21,30,21,22,21,53,24,23,45,40.5,36,14,21,21,28,39,20,64,20,18,48,55,45,45,32,0.33,41,22,42,29,27,0.92,20,27,24,32.5,47,23.5,28,19,21,36.5,21,29,1,30,35,40,31,21,17,46,32,26,37,47,20,28,40,30,22,23,0.75,21,9,2,36,23,24,32,18,22,30,43,53,36,26,1,22,30,29,32,25,43,24,38,64,30,0.83,55,45,18,22,31,37,55,17,57,19,27,22,26,25,26,33,39,23,12,46,29,21,48,39,40,19,27,30,32,39,25,18,18,32,36,58,16,16,26,38,24,31,45,25,18,49,0.17,50,59,28,29,30,14.5,24,31,27,25,43,41,22,45,29,21,31,49,44,54,45,22,21,55,5,29,26,27,19,32,24,24,57,21,6,23,51,13,47,29,18,24,48,22,31,30,38,22,17,43,20,23,50,26,3,28,37,28,34,39,38.5,28,13],"type":"histogram","marker":{"fillcolor":"rgba(31,119,180,0.6)","color":"rgba(31,119,180,0.6)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null},{"showlegend":false,"x":[22,38,26,35,35,54,2,27,14,4,58,20,39,14,55,2,31,35,34,15,28,8,38,19,40,66,28,42,21,18,14,40,27,3,19,18,7,21,49,29,65,21,28.5,5,11,22,38,45,4,29,19,17,26,32,16,21,26,32,25,0.83,30,22,29,28,17,33,16,23,24,29,20,46,26,59,71,23,34,34,28,21,33,37,28,21,38,47,14.5,22,20,17,21,70.5,29,24,2,21,32.5,32.5,54,12,24,45,33,20,47,29,25,23,19,37,16,24,22,24,19,18,19,27,9,36.5,42,51,22,55.5,40.5,51,16,30,44,40,26,17,1,9,45,28,61,4,1,21,56,18,50,30,36,9,1,4,45,40,36,32,19,19,3,44,58,42,24,28,34,45.5,18,2,32,26,16,40,24,35,22,30,31,27,42,32,30,16,27,51,38,22,19,20.5,18,35,29,59,5,24,44,8,19,33,29,22,30,44,25,24,37,54,29,62,30,41,29,30,35,50,3,52,40,36,16,25,58,35,25,41,37,63,45,7,35,65,28,16,19,33,30,22,42,22,26,19,36,24,24,23.5,2,50,19,0.92,17,30,30,24,18,26,28,43,26,24,54,31,40,22,27,30,22,36,61,36,31,16,45.5,38,16,29,41,45,45,2,24,28,25,36,24,40,3,42,23,15,25,28,22,38,40,29,45,35,30,60,24,25,18,19,22,3,22,27,20,19,42,1,32,35,18,1,36,17,36,21,28,23,24,22,31,46,23,28,39,26,21,28,20,34,51,3,21,33,44,34,18,30,10,21,29,28,18,28,19,32,28,42,17,50,14,21,24,64,31,45,20,25,28,4,13,34,5,52,36,30,49,29,65,50,48,34,47,48,38,56,0.75,38,33,23,22,34,29,22,2,9,50,63,25,35,58,30,9,21,55,71,21,54,25,24,17,21,37,16,18,33,28,26,29,36,54,24,47,34,36,32,30,22,44,40.5,50,39,23,2,17,30,7,45,30,22,36,9,11,32,50,64,19,33,8,17,27,22,22,62,48,39,36,40,28,24,19,29,32,62,53,36,16,19,34,39,32,25,39,54,36,18,47,60,22,35,52,47,37,36,49,49,24,44,35,36,30,27,22,40,39,35,24,34,26,4,26,27,42,20,21,21,61,57,21,26,80,51,32,9,28,32,31,41,20,24,2,0.75,48,19,56,23,18,21,18,24,32,23,58,50,40,47,36,20,32,25,43,40,31,70,31,18,24.5,18,43,36,27,20,14,60,25,14,19,18,15,31,4,25,60,52,44,49,42,18,35,18,25,26,39,45,42,22,24,48,29,52,19,38,27,33,6,17,34,50,27,20,30,25,25,29,11,23,23,28.5,48,35,36,21,24,31,70,16,30,19,31,4,6,33,23,48,0.67,28,18,34,33,41,20,36,16,51,30.5,32,24,48,57,54,18,5,43,13,17,29,25,25,18,8,1,46,16,25,39,49,31,30,30,34,31,11,0.42,27,31,39,18,39,33,26,39,35,6,30.5,23,31,43,10,52,27,38,27,2,1,62,15,0.83,23,18,39,21,32,20,16,30,34.5,17,42,35,28,4,74,9,16,44,18,45,51,24,41,21,48,24,42,27,31,4,26,47,33,47,28,15,20,19,56,25,33,22,28,25,39,27,19,26,32,34.5,47,62,27,22,14,30,26,18,21,46,23,63,47,24,35,21,27,45,55,9,21,48,50,22,22.5,41,50,24,33,30,18.5,21,25,39,41,30,45,25,45,60,36,24,27,20,28,10,35,25,36,17,32,18,22,13,18,47,31,60,24,21,29,28.5,35,32.5,55,30,24,6,67,49,27,18,2,22,27,25,25,76,29,20,33,43,27,26,16,28,21,18.5,41,36,18.5,63,18,1,36,29,12,35,28,17,22,42,24,32,53,43,24,26.5,26,23,40,10,33,61,28,42,31,22,30,23,60.5,36,13,24,29,23,42,26,7,26,41,26,48,18,22,27,23,40,15,20,54,36,64,30,37,18,27,40,21,17,40,34,11.5,61,8,33,6,18,23,0.33,47,8,25,35,24,33,25,32,17,60,38,42,57,50,30,21,22,21,53,23,40.5,36,14,21,21,39,20,64,20,18,48,55,45,45,41,22,42,29,0.92,20,27,24,32.5,28,19,21,36.5,21,29,1,30,17,46,26,20,28,40,30,22,23,0.75,9,2,36,24,30,53,36,26,1,30,29,32,43,24,64,30,0.83,55,45,18,22,37,55,17,57,19,27,22,26,25,26,33,39,23,12,46,29,21,48,39,19,27,30,32,39,25,18,32,58,16,26,38,24,31,45,25,18,49,0.17,50,59,30,14.5,24,31,27,25,22,45,29,21,31,49,44,54,45,22,21,55,5,26,19,24,24,57,21,6,23,51,13,47,29,18,24,48,22,31,30,38,22,17,43,20,23,50,3,37,28,39,38.5],"type":"histogram","marker":{"fillcolor":"rgba(255,127,14,0.6)","color":"rgba(255,127,14,0.6)","line":{"color":"transparent"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>Not bad! Looks like MICE didn’t change the distribution too radically, so that’s probably good. Again, I’d need to cross-validate to check. However, since this is probably good, I’m going to run with it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Replace Age variable from the mice model.</span>
-full<span class="op">$</span>Age &lt;-<span class="st"> </span>mice_output<span class="op">$</span>Age</code></pre></div>
+<pre class="r"><code># Replace Age variable from the mice model.
+full$Age &lt;- mice_output$Age</code></pre>
 <p>TODO: Stop feeling bad about it and actually cross-validate MICE.</p>
 <p>Before we move on again, let’s do a quick sanity check that there’s no missing data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">is.na</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">colSums</span>() <span class="op">%&gt;%</span><span class="st"> </span>tbl_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Missing =</span> value) <span class="op">%&gt;%</span><span class="st"> </span>kable</code></pre></div>
+<pre class="r"><code>full %&gt;% is.na() %&gt;% colSums() %&gt;% tbl_df %&gt;% rename(Missing = value) %&gt;% kable</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -837,17 +894,17 @@ full<span class="op">$</span>Age &lt;-<span class="st"> </span>mice_output<span 
 <div id="second-pass-modeling" class="section level1">
 <h1>Second Pass Modeling</h1>
 <p>Now that we’ve finished imputing values for all variables that we care about, let’s check to see if we’ve improved at all:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We&#39;ve got to refresh subtraining and subtest to contain the values we&#39;ve filled in.</span>
-subtraining &lt;-<span class="st"> </span>full[full<span class="op">$</span>PassengerId <span class="op">%in%</span><span class="st"> </span>subtraining<span class="op">$</span>PassengerId,]
-subtest     &lt;-<span class="st"> </span>full[full<span class="op">$</span>PassengerId <span class="op">%in%</span><span class="st"> </span>subtest<span class="op">$</span>PassengerId,]
+<pre class="r"><code>#We&#39;ve got to refresh subtraining and subtest to contain the values we&#39;ve filled in.
+subtraining &lt;- full[full$PassengerId %in% subtraining$PassengerId,]
+subtest     &lt;- full[full$PassengerId %in% subtest$PassengerId,]
 
-subtraining <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ntbt_glm</span>(formula, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(subtest[<span class="op">!</span><span class="kw">names</span>(subtest) <span class="op">%in%</span><span class="st"> &quot;Survived&quot;</span>], <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">round</span>() -&gt;
-<span class="st">  </span>predictions<span class="op">$</span>logit3
+subtraining %&gt;%
+  ntbt_glm(formula, family = &quot;binomial&quot;) %&gt;%
+  predict(subtest[!names(subtest) %in% &quot;Survived&quot;], type = &quot;response&quot;) %&gt;%
+  round() -&gt;
+  predictions$logit3
 
-<span class="kw">MAE</span>(predictions<span class="op">$</span>logit3)</code></pre></div>
+MAE(predictions$logit3)</code></pre>
 <pre><code>## [1] 0.2008979</code></pre>
 <p>We’re doing a tiny bit worse, but that’s OK! Improving the model was an indirect goal. What we accomplished was improving our data quality, which makes more models available to us. Now, let’s go for something that <em>should</em> make a difference in model quality: feature engineering.</p>
 </div>
@@ -856,10 +913,10 @@ subtraining <span class="op">%&gt;%</span>
 <div id="names" class="section level2">
 <h2>Names</h2>
 <p>The names in this dataset are an interesting beast. They contain formal titles, as well as firstnames and surnames. Because it’s a clean dataset, getting the titles is easy: just parse the first word after a comma in the Name field:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full<span class="op">$</span>Title &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&#39;(.*, )|(</span><span class="ch">\\</span><span class="st">..*)&#39;</span>, <span class="st">&#39;&#39;</span>, full<span class="op">$</span>Name)</code></pre></div>
+<pre class="r"><code>full$Title &lt;- gsub(&#39;(.*, )|(\\..*)&#39;, &#39;&#39;, full$Name)</code></pre>
 <p>So, what kinds of titles do we have?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Show title counts by sex</span>
-<span class="kw">table</span>(full<span class="op">$</span>Sex, full<span class="op">$</span>Title)</code></pre></div>
+<pre class="r"><code># Show title counts by sex
+table(full$Sex, full$Title)</code></pre>
 <pre><code>##         
 ##          Capt Col Don Dona  Dr Jonkheer Lady Major Master Miss Mlle Mme
 ##   female    0   0   0    1   1        0    1     0      0  260    2   1
@@ -869,77 +926,77 @@ subtraining <span class="op">%&gt;%</span>
 ##   female   0 197   2   0   0            1
 ##   male   757   0   0   8   1            0</code></pre>
 <p>Interesting. Lots of Mr, Mrs, Miss, and Master, plus a bunch unusual titles (mostly nobility and military officers).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Titles with very low cell counts to be combined to &quot;rare&quot; level</span>
-rare_title &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Dona&#39;</span>, <span class="st">&#39;Lady&#39;</span>, <span class="st">&#39;the Countess&#39;</span>,<span class="st">&#39;Capt&#39;</span>, <span class="st">&#39;Col&#39;</span>, <span class="st">&#39;Don&#39;</span>, <span class="st">&#39;Dr&#39;</span>, <span class="st">&#39;Major&#39;</span>, <span class="st">&#39;Rev&#39;</span>, <span class="st">&#39;Sir&#39;</span>, <span class="st">&#39;Jonkheer&#39;</span>)
+<pre class="r"><code># Titles with very low cell counts to be combined to &quot;rare&quot; level
+rare_title &lt;- c(&#39;Dona&#39;, &#39;Lady&#39;, &#39;the Countess&#39;,&#39;Capt&#39;, &#39;Col&#39;, &#39;Don&#39;, &#39;Dr&#39;, &#39;Major&#39;, &#39;Rev&#39;, &#39;Sir&#39;, &#39;Jonkheer&#39;)
 
-<span class="co"># Also reassign mlle, ms, and mme accordingly</span>
-full<span class="op">$</span>Title[full<span class="op">$</span>Title <span class="op">==</span><span class="st"> &#39;Mlle&#39;</span>]        &lt;-<span class="st"> &#39;Miss&#39;</span> 
-full<span class="op">$</span>Title[full<span class="op">$</span>Title <span class="op">==</span><span class="st"> &#39;Ms&#39;</span>]          &lt;-<span class="st"> &#39;Miss&#39;</span>
-full<span class="op">$</span>Title[full<span class="op">$</span>Title <span class="op">==</span><span class="st"> &#39;Mme&#39;</span>]         &lt;-<span class="st"> &#39;Mrs&#39;</span> 
-full<span class="op">$</span>Title[full<span class="op">$</span>Title <span class="op">%in%</span><span class="st"> </span>rare_title]  &lt;-<span class="st"> &#39;Rare Title&#39;</span>
+# Also reassign mlle, ms, and mme accordingly
+full$Title[full$Title == &#39;Mlle&#39;]        &lt;- &#39;Miss&#39; 
+full$Title[full$Title == &#39;Ms&#39;]          &lt;- &#39;Miss&#39;
+full$Title[full$Title == &#39;Mme&#39;]         &lt;- &#39;Mrs&#39; 
+full$Title[full$Title %in% rare_title]  &lt;- &#39;Rare Title&#39;
 
-<span class="co"># Show title counts by sex again</span>
-<span class="kw">table</span>(full<span class="op">$</span>Sex, full<span class="op">$</span>Title)</code></pre></div>
+# Show title counts by sex again
+table(full$Sex, full$Title)</code></pre>
 <pre><code>##         
 ##          Master Miss  Mr Mrs Rare Title
 ##   female      0  264   0 198          4
 ##   male       61    0 757   0         25</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Finally, grab surname from passenger name</span>
-full<span class="op">$</span>Surname &lt;-<span class="st"> </span><span class="kw">sapply</span>(full<span class="op">$</span>Name, <span class="cf">function</span>(x) <span class="kw">strsplit</span>(x, <span class="dt">split =</span> <span class="st">&#39;[,.]&#39;</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>])</code></pre></div>
+<pre class="r"><code># Finally, grab surname from passenger name
+full$Surname &lt;- sapply(full$Name, function(x) strsplit(x, split = &#39;[,.]&#39;)[[1]][1])</code></pre>
 </div>
 <div id="families" class="section level2">
 <h2>Families</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a family size variable including the passenger themselves</span>
-full<span class="op">$</span>Fsize &lt;-<span class="st"> </span>full<span class="op">$</span>SibSp <span class="op">+</span><span class="st"> </span>full<span class="op">$</span>Parch <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+<pre class="r"><code># Create a family size variable including the passenger themselves
+full$Fsize &lt;- full$SibSp + full$Parch + 1
 
-<span class="co"># Create a family variable </span>
-full<span class="op">$</span>Family &lt;-<span class="st"> </span><span class="kw">paste</span>(full<span class="op">$</span>Surname, full<span class="op">$</span>Fsize, <span class="dt">sep=</span><span class="st">&#39;_&#39;</span>)</code></pre></div>
+# Create a family variable 
+full$Family &lt;- paste(full$Surname, full$Fsize, sep=&#39;_&#39;)</code></pre>
 <p>What does our family size variable look like? To help us understand how it may relate to survival, let’s plot it among the training data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I can&#39;t figure out how to do this one in bare-metal plotly, so I&#39;ll just use ggplot2 and wrap it.</span>
-<span class="kw">library</span>(<span class="st">&#39;ggplot2&#39;</span>)
-<span class="kw">ggplotly</span>(
-  <span class="kw">ggplot</span>(full[<span class="dv">1</span><span class="op">:</span><span class="dv">891</span>,], <span class="kw">aes</span>(<span class="dt">x =</span> Fsize, <span class="dt">fill =</span> <span class="kw">factor</span>(Survived))) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>, <span class="kw">aes</span>(<span class="dt">alpha =</span> .<span class="dv">1</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">11</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;Family Size&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;Proportion Surviving&#39;</span>)
-)</code></pre></div>
-<div id="779ccec2497" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="779ccec2497">{"x":{"data":[{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999],"base":[0.303538175046555,0.552795031055901,0.57843137254902,0.724137931034483,0.2,0.136363636363636,0.333333333333333,0,0],"x":[1,2,3,4,5,6,7,8,11],"y":[0.696461824953445,0.447204968944099,0.42156862745098,0.275862068965517,0.8,0.863636363636364,0.666666666666667,1,1],"text":["0.1: 0.1<br />count: 0.6964618<br />Fsize:  1<br />factor(Survived): 0","0.1: 0.1<br />count: 0.4472050<br />Fsize:  2<br />factor(Survived): 0","0.1: 0.1<br />count: 0.4215686<br />Fsize:  3<br />factor(Survived): 0","0.1: 0.1<br />count: 0.2758621<br />Fsize:  4<br />factor(Survived): 0","0.1: 0.1<br />count: 0.8000000<br />Fsize:  5<br />factor(Survived): 0","0.1: 0.1<br />count: 0.8636364<br />Fsize:  6<br />factor(Survived): 0","0.1: 0.1<br />count: 0.6666667<br />Fsize:  7<br />factor(Survived): 0","0.1: 0.1<br />count: 1.0000000<br />Fsize:  8<br />factor(Survived): 0","0.1: 0.1<br />count: 1.0000000<br />Fsize: 11<br />factor(Survived): 0"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,0.55)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"0","legendgroup":"0","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.9,0.9,0.9],"base":[0,0,0,0,0,0,0],"x":[1,2,3,4,5,6,7],"y":[0.303538175046555,0.552795031055901,0.57843137254902,0.724137931034483,0.2,0.136363636363636,0.333333333333333],"text":["0.1: 0.1<br />count: 0.3035382<br />Fsize:  1<br />factor(Survived): 1","0.1: 0.1<br />count: 0.5527950<br />Fsize:  2<br />factor(Survived): 1","0.1: 0.1<br />count: 0.5784314<br />Fsize:  3<br />factor(Survived): 1","0.1: 0.1<br />count: 0.7241379<br />Fsize:  4<br />factor(Survived): 1","0.1: 0.1<br />count: 0.2000000<br />Fsize:  5<br />factor(Survived): 1","0.1: 0.1<br />count: 0.1363636<br />Fsize:  6<br />factor(Survived): 1","0.1: 0.1<br />count: 0.3333333<br />Fsize:  7<br />factor(Survived): 1"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,191,196,0.55)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.689497716895,"r":7.30593607305936,"b":41.6438356164384,"l":48.9497716894977},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[0.00500000000000012,11.995],"ticktext":["1","2","3","4","5","6","7","8","9","10","11"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Family Size","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-0.05,1.05],"ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Proportion Surviving","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.826771653543307},"annotations":[{"text":"0.1<br>factor(Survived)","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"barmode":"stack","bargap":0,"hovermode":"closest"},"source":"A","attrs":{"779c997bc59":{"alpha":{},"x":{},"fill":{},"type":"ggplotly"}},"cur_data":"779c997bc59","visdat":{"779c997bc59":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+<pre class="r"><code># I can&#39;t figure out how to do this one in bare-metal plotly, so I&#39;ll just use ggplot2 and wrap it.
+load_package(&#39;ggplot2&#39;)
+ggplotly(
+  ggplot(full[1:891,], aes(x = Fsize, fill = factor(Survived))) +
+  geom_bar(position = &quot;fill&quot;, aes(alpha = .1)) +
+  scale_x_continuous(breaks=c(1:11)) +
+  labs(x = &#39;Family Size&#39;, y = &#39;Proportion Surviving&#39;)
+)</code></pre>
+<div id="2a823261b84e" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="2a823261b84e">{"x":{"data":[{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999],"base":[0.303538175046555,0.552795031055901,0.57843137254902,0.724137931034483,0.2,0.136363636363636,0.333333333333333,0,0],"x":[1,2,3,4,5,6,7,8,11],"y":[0.696461824953445,0.447204968944099,0.42156862745098,0.275862068965517,0.8,0.863636363636364,0.666666666666667,1,1],"text":["0.1: 0.1<br />count: 0.6964618<br />Fsize:  1<br />factor(Survived): 0","0.1: 0.1<br />count: 0.4472050<br />Fsize:  2<br />factor(Survived): 0","0.1: 0.1<br />count: 0.4215686<br />Fsize:  3<br />factor(Survived): 0","0.1: 0.1<br />count: 0.2758621<br />Fsize:  4<br />factor(Survived): 0","0.1: 0.1<br />count: 0.8000000<br />Fsize:  5<br />factor(Survived): 0","0.1: 0.1<br />count: 0.8636364<br />Fsize:  6<br />factor(Survived): 0","0.1: 0.1<br />count: 0.6666667<br />Fsize:  7<br />factor(Survived): 0","0.1: 0.1<br />count: 1.0000000<br />Fsize:  8<br />factor(Survived): 0","0.1: 0.1<br />count: 1.0000000<br />Fsize: 11<br />factor(Survived): 0"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,0.55)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"0","legendgroup":"0","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9,0.9,0.9,0.9,0.9],"base":[0,0,0,0,0,0,0],"x":[1,2,3,4,5,6,7],"y":[0.303538175046555,0.552795031055901,0.57843137254902,0.724137931034483,0.2,0.136363636363636,0.333333333333333],"text":["0.1: 0.1<br />count: 0.3035382<br />Fsize:  1<br />factor(Survived): 1","0.1: 0.1<br />count: 0.5527950<br />Fsize:  2<br />factor(Survived): 1","0.1: 0.1<br />count: 0.5784314<br />Fsize:  3<br />factor(Survived): 1","0.1: 0.1<br />count: 0.7241379<br />Fsize:  4<br />factor(Survived): 1","0.1: 0.1<br />count: 0.2000000<br />Fsize:  5<br />factor(Survived): 1","0.1: 0.1<br />count: 0.1363636<br />Fsize:  6<br />factor(Survived): 1","0.1: 0.1<br />count: 0.3333333<br />Fsize:  7<br />factor(Survived): 1"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,191,196,0.55)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":48.9497716894977},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[0.00500000000000012,11.995],"ticktext":["1","2","3","4","5","6","7","8","9","10","11"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Family Size","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-0.05,1.05],"ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Proportion Surviving","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.826771653543307},"annotations":[{"text":"0.1<br>factor(Survived)","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"barmode":"stack","bargap":0,"hovermode":"closest"},"source":"A","attrs":{"2a82d1735eb":{"alpha":{},"x":{},"fill":{},"type":"ggplotly"}},"cur_data":"2a82d1735eb","visdat":{"2a82d1735eb":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>From this we can see that married couples and small families had higher survival rates than individuals and large families. This insight may or may not be useful, depending upon the modeling approach we use. This type of discretizing partitioning is useful for regression because it encodes more information than the regression can extract from the relationship. With the integer values, all a regression will determine is that as family size increases, survival probability decreases.</p>
 <p>By contrast, Random Forests are good at detecting partitions of this sort in continuous data, provided that the forest is large enough. So a discretized version of this variable should provide less signal to a well-tuned random forest. Never-the-less, since I’m ultimately going to use both, I’ll discretize for the benefit of the regression.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Discretize family size</span>
-full<span class="op">$</span>FsizeD[full<span class="op">$</span>Fsize <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> &#39;singleton&#39;</span>
-full<span class="op">$</span>FsizeD[full<span class="op">$</span>Fsize <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">&amp;</span><span class="st"> </span>full<span class="op">$</span>Fsize <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> &#39;small&#39;</span>
-full<span class="op">$</span>FsizeD[full<span class="op">$</span>Fsize <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>] &lt;-<span class="st"> &#39;xlarge&#39;</span>
+<pre class="r"><code># Discretize family size
+full$FsizeD[full$Fsize == 1] &lt;- &#39;singleton&#39;
+full$FsizeD[full$Fsize &lt; 5 &amp; full$Fsize &gt; 1] &lt;- &#39;small&#39;
+full$FsizeD[full$Fsize &gt; 4] &lt;- &#39;xlarge&#39;
 
-<span class="kw">ggplotly</span>(<span class="kw">ggplot</span>(full[<span class="dv">1</span><span class="op">:</span><span class="dv">891</span>,], <span class="kw">aes</span>(FsizeD)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="kw">factor</span>(Survived))) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;Family Size&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;Number Surviving&#39;</span>))</code></pre></div>
-<div id="779c5d9b50c" style="width:768px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="779c5d9b50c">{"x":{"data":[{"orientation":"v","width":[0.9,0.9,0.9],"base":[163,169,10],"x":[1,2,3],"y":[374,123,52],"text":["factor(Survived): 0<br />count: 374<br />FsizeD: singleton","factor(Survived): 0<br />count: 123<br />FsizeD: small","factor(Survived): 0<br />count:  52<br />FsizeD: xlarge"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"0","legendgroup":"0","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9],"base":[0,0,0],"x":[1,2,3],"y":[163,169,10],"text":["factor(Survived): 1<br />count: 163<br />FsizeD: singleton","factor(Survived): 1<br />count: 169<br />FsizeD: small","factor(Survived): 1<br />count:  10<br />FsizeD: xlarge"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.689497716895,"r":7.30593607305936,"b":41.6438356164384,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[0.4,3.6],"ticktext":["singleton","small","xlarge"],"tickvals":[1,2,3],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Family Size","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-26.85,563.85],"ticktext":["0","200","400"],"tickvals":[0,200,400],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Number Surviving","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"factor(Survived)","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"barmode":"stack","hovermode":"closest"},"source":"A","attrs":{"779c187557a8":{"fill":{},"x":{},"type":"ggplotly"}},"cur_data":"779c187557a8","visdat":{"779c187557a8":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+ggplotly(ggplot(full[1:891,], aes(FsizeD)) +
+  geom_bar(aes(fill = factor(Survived))) +
+  labs(x = &#39;Family Size&#39;, y = &#39;Number Surviving&#39;))</code></pre>
+<div id="2a826d46bed1" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="2a826d46bed1">{"x":{"data":[{"orientation":"v","width":[0.9,0.9,0.9],"base":[163,169,10],"x":[1,2,3],"y":[374,123,52],"text":["factor(Survived): 0<br />count: 374<br />FsizeD: singleton","factor(Survived): 0<br />count: 123<br />FsizeD: small","factor(Survived): 0<br />count:  52<br />FsizeD: xlarge"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"0","legendgroup":"0","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.9,0.9,0.9],"base":[0,0,0],"x":[1,2,3],"y":[163,169,10],"text":["factor(Survived): 1<br />count: 163<br />FsizeD: singleton","factor(Survived): 1<br />count: 169<br />FsizeD: small","factor(Survived): 1<br />count:  10<br />FsizeD: xlarge"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[0.4,3.6],"ticktext":["singleton","small","xlarge"],"tickvals":[1,2,3],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Family Size","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-26.85,563.85],"ticktext":["0","200","400"],"tickvals":[0,200,400],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Number Surviving","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"factor(Survived)","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"barmode":"stack","hovermode":"closest"},"source":"A","attrs":{"2a826350e940":{"fill":{},"x":{},"type":"ggplotly"}},"cur_data":"2a826350e940","visdat":{"2a826350e940":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 <p>(Note that the Y axis indicates the number of individuals belonging to families of the type of family size, rather than the number of families.)</p>
 <p>Since we know (or have a good guess about) everyone’s age, we can create a couple of new age-dependent variables: <strong>Child</strong> and <strong>Mother</strong>. A child will simply be someone under 18 years of age; a mother will be a passenger who is female, older than 18, with more than 0 children, and without the title ‘Miss’. We require the last constraint because the existing dataset gives you a wierd variable: whether or not you had a child <em>or parent</em> aboard. If you were over 18 with more than one child, that could have indicated that you were actually an adult traveling with a parent.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create the column child, and indicate whether child or adult</span>
-full<span class="op">$</span>Child[full<span class="op">$</span>Age <span class="op">&lt;</span><span class="st"> </span><span class="dv">18</span>] &lt;-<span class="st"> &#39;Child&#39;</span>
-full<span class="op">$</span>Child[full<span class="op">$</span>Age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>] &lt;-<span class="st"> &#39;Adult&#39;</span>
+<pre class="r"><code># Create the column child, and indicate whether child or adult
+full$Child[full$Age &lt; 18] &lt;- &#39;Child&#39;
+full$Child[full$Age &gt;= 18] &lt;- &#39;Adult&#39;
 
-<span class="co"># Show counts</span>
-<span class="kw">table</span>(full<span class="op">$</span>Child, full<span class="op">$</span>Survived)</code></pre></div>
+# Show counts
+table(full$Child, full$Survived)</code></pre>
 <pre><code>##        
 ##           0   1
 ##   Adult 476 273
 ##   Child  73  69</code></pre>
 <p>Adults die in 480/756 cases, or with probability 0.6349206. Children fare a tiny bit better, dying with probability 0.5111111. We will finish off our feature engineering by creating the <strong>Mother</strong> variable. Maybe we can hope that mothers are more likely to have survived on the Titanic.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full<span class="op">$</span>Mother &lt;-<span class="st"> </span><span class="dv">0</span>
-full<span class="op">$</span>Mother[full<span class="op">$</span>Sex <span class="op">==</span><span class="st"> &#39;female&#39;</span> <span class="op">&amp;</span><span class="st"> </span>full<span class="op">$</span>Parch <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>full<span class="op">$</span>Age <span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span> <span class="op">&amp;</span><span class="st"> </span>full<span class="op">$</span>Title <span class="op">!=</span><span class="st"> &#39;Miss&#39;</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+<pre class="r"><code>full$Mother &lt;- 0
+full$Mother[full$Sex == &#39;female&#39; &amp; full$Parch &gt; 0 &amp; full$Age &gt; 18 &amp; full$Title != &#39;Miss&#39;] &lt;- 1
 
-<span class="kw">table</span>(full<span class="op">$</span>Mother, full<span class="op">$</span>Survived)</code></pre></div>
+table(full$Mother, full$Survived)</code></pre>
 <pre><code>##    
 ##       0   1
 ##   0 533 303
 ##   1  16  39</code></pre>
 <p>Now that we’re done with feature engineering, let’s do a quick sanity check that there’s no missing data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">full <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">is.na</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">colSums</span>() <span class="op">%&gt;%</span><span class="st"> </span>tbl_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Missing =</span> value) <span class="op">%&gt;%</span><span class="st"> </span>kable</code></pre></div>
+<pre class="r"><code>full %&gt;% is.na() %&gt;% colSums() %&gt;% tbl_df %&gt;% rename(Missing = value) %&gt;% kable</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -1032,122 +1089,115 @@ full<span class="op">$</span>Mother[full<span class="op">$</span>Sex <span class
 <div id="third-pass-modeling-for-real-this-time" class="section level1">
 <h1>Third Pass Modeling (For real, this time)</h1>
 <p>Remember how our first model was scoring 0.2008979? How about a Logistic model based on all of our shiny new variables?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subtraining &lt;-<span class="st"> </span>full[full<span class="op">$</span>PassengerId <span class="op">%in%</span><span class="st"> </span>subtraining<span class="op">$</span>PassengerId,]
-subtest     &lt;-<span class="st"> </span>full[full<span class="op">$</span>PassengerId <span class="op">%in%</span><span class="st"> </span>subtest<span class="op">$</span>PassengerId,]
+<pre class="r"><code>subtraining &lt;- full[full$PassengerId %in% subtraining$PassengerId,]
+subtest     &lt;- full[full$PassengerId %in% subtest$PassengerId,]
 
-formula &lt;-<span class="st"> </span>Survived <span class="op">~</span><span class="st"> </span>Pclass <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>SibSp <span class="op">+</span><span class="st"> </span>Parch <span class="op">+</span><span class="st"> </span>Fare <span class="op">+</span><span class="st"> </span>Embarked <span class="op">+</span><span class="st"> </span>Title <span class="op">+</span><span class="st"> </span>Fsize <span class="op">+</span><span class="st"> </span>FsizeD <span class="op">+</span><span class="st"> </span>Child <span class="op">+</span><span class="st"> </span>Mother
+formula &lt;- Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + Title + Fsize + FsizeD + Child + Mother
 
-subtraining <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ntbt_glm</span>(formula, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(subtest[<span class="op">!</span><span class="kw">names</span>(subtest) <span class="op">%in%</span><span class="st"> &quot;Survived&quot;</span>], <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">round</span>() -&gt;
-<span class="st">  </span>predictions<span class="op">$</span>logit4
+subtraining %&gt;%
+  ntbt_glm(formula, family = &quot;binomial&quot;) %&gt;%
+  predict(subtest[!names(subtest) %in% &quot;Survived&quot;], type = &quot;response&quot;) %&gt;%
+  round() -&gt;
+  predictions$logit4
 
-<span class="kw">MAE</span>(predictions<span class="op">$</span>logit4)</code></pre></div>
+MAE(predictions$logit4)</code></pre>
 <pre><code>## [1] 0.1739618</code></pre>
 <p>Our score improves a bit! Now, maybe we can do even better with a stronger machine learning approach.</p>
 <div id="decision-tree" class="section level2">
 <h2>Decision Tree</h2>
 <p>[This section was informed by Arda Yildirim’s <a href="https://www.kaggle.com/yildirimarda/titanic/decision-tree-visualization-submission/code">script to build and visualize a Decision Tree</a> for the Titanic Challenge.]</p>
 <p>A decision tree looks something like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;rpart&#39;</span>)
-<span class="kw">library</span>(<span class="st">&#39;rpart.plot&#39;</span>)
-<span class="kw">library</span>(<span class="st">&#39;magrittr&#39;</span>)
+<pre class="r"><code>load_package(&#39;rpart&#39;)
+load_package(&#39;rpart.plot&#39;)
+load_package(&#39;magrittr&#39;)
 
-formula <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">rpart</span>(<span class="dt">data =</span> subtraining, <span class="dt">method =</span> <span class="st">&quot;class&quot;</span>, <span class="dt">control =</span> <span class="kw">rpart.control</span>(<span class="dt">cp=</span><span class="fl">0.0001</span>)) <span class="op">%T&gt;%</span>
-<span class="st">  </span><span class="kw">prp</span>(<span class="dt">type =</span> <span class="dv">4</span>, <span class="dt">extra =</span> <span class="dv">100</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(subtest[<span class="op">!</span><span class="kw">names</span>(subtest) <span class="op">%in%</span><span class="st"> &quot;Survived&quot;</span>]) -&gt;
-<span class="st">  </span>decision_tree</code></pre></div>
-<p><img src="PredictingSurvivalOnTheTitanic_files/figure-html/dtViz-1.png" width="768" /></p>
+formula %&gt;%
+  rpart(data = subtraining, method = &quot;class&quot;, control = rpart.control(cp=0.0001)) %T&gt;%
+  prp(type = 4, extra = 100) %&gt;%
+  predict(subtest[!names(subtest) %in% &quot;Survived&quot;]) -&gt;
+  decision_tree</code></pre>
+<p><img src="PredictingSurvivalOnTheTitanic_files/figure-html/dtViz-1.png" width="672" /></p>
 <p>If we actually use this decision tree to generate predictions, it scores…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">decision_tree[,<span class="dv">2</span>] <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">round</span>() -&gt;
-<span class="st">  </span>predictions<span class="op">$</span>dt
+<pre class="r"><code>decision_tree[,2] %&gt;%
+  round() -&gt;
+  predictions$dt
 
-<span class="kw">MAE</span>(predictions<span class="op">$</span>dt)</code></pre></div>
+MAE(predictions$dt)</code></pre>
 <pre><code>## [1] 0.1593715</code></pre>
 <p>…Slightly better than the logistic regression. What if we grow a lot of them?</p>
 </div>
 <div id="random-forest" class="section level2">
 <h2>Random Forest</h2>
 <p>We then build our model using <code>ranger</code> on the training set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;ranger&#39;</span>)
+<pre class="r"><code>load_package(&#39;ranger&#39;)
 
-subtraining <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Cabin) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ranger</span>(formula, <span class="dt">data =</span> .) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(subtest[<span class="op">!</span><span class="kw">names</span>(subtest) <span class="op">%in%</span><span class="st"> &quot;Survived&quot;</span>]) -&gt;
-<span class="st">  </span>temp
+subtraining %&gt;%
+  select(-Cabin) %&gt;%
+  ranger(formula, data = .) %&gt;%
+  predict(subtest[!names(subtest) %in% &quot;Survived&quot;]) -&gt;
+  temp
 
-temp<span class="op">$</span>predictions <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">round</span>() -&gt;
-<span class="st">  </span>predictions<span class="op">$</span>rf
+temp$predictions %&gt;%
+  round() -&gt;
+  predictions$rf
 
-<span class="kw">MAE</span>(predictions<span class="op">$</span>rf)</code></pre></div>
+MAE(predictions$rf)</code></pre>
 <pre><code>## [1] 0.1200898</code></pre>
 <p>Slightly better than the single decision tree. From here we could tune it until we find some optimal parameters, but I’ll take it as-is.</p>
 </div>
 <div id="ensemble" class="section level2">
 <h2>Ensemble</h2>
 <p>Since we’ve gathered predictions from a bunch of different models, what happens if we throw them all together?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">predictions <span class="op">%&lt;&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ensemble =</span> <span class="kw">round</span>((logit4 <span class="op">+</span><span class="st"> </span>dt <span class="op">+</span><span class="st"> </span>rf)<span class="op">/</span><span class="dv">3</span>))
+<pre class="r"><code>predictions %&lt;&gt;%
+  mutate(ensemble = round((logit4 + dt + rf)/3))
 
-<span class="kw">MAE</span>(predictions<span class="op">$</span>ensemble)</code></pre></div>
+MAE(predictions$ensemble)</code></pre>
 <pre><code>## [1] 0.1380471</code></pre>
 <p>Our best yet! This is often the case–models have weaknesses that other models make up for. But those other models have weaknesses, too. By using even a simple combination scheme, we can get better predictions. Speaking of which…</p>
 </div>
 <div id="prediction" class="section level2">
 <h2>Prediction</h2>
 <p>Let’s make one! To do so, we’ll need to refresh the training and test data, retrain models on the full datasets, and assemble them in the ensemble again.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">train &lt;-<span class="st"> </span>full[<span class="dv">1</span><span class="op">:</span><span class="dv">891</span>,]
-test  &lt;-<span class="st"> </span>full[<span class="dv">892</span><span class="op">:</span><span class="dv">1309</span>,]
+<pre class="r"><code>train &lt;- full[1:891,]
+test  &lt;- full[892:1309,]
 
-predictions &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">row.names =</span> <span class="kw">row.names</span>(test))
+predictions &lt;- data.frame(row.names = row.names(test))
 
-train <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ntbt_glm</span>(formula, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(test, <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">round</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">as.integer</span>() -&gt;
-<span class="st">  </span>predictions<span class="op">$</span>logit
+train %&gt;%
+  ntbt_glm(formula, family = &quot;binomial&quot;) %&gt;%
+  predict(test, type = &quot;response&quot;) %&gt;%
+  round() %&gt;%
+  as.integer() -&gt;
+  predictions$logit
 
-formula <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">rpart</span>(<span class="dt">data =</span> train, <span class="dt">method =</span> <span class="st">&quot;class&quot;</span>, <span class="dt">control =</span> <span class="kw">rpart.control</span>(<span class="dt">cp=</span><span class="fl">0.0001</span>)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(test[<span class="op">!</span><span class="kw">names</span>(test) <span class="op">%in%</span><span class="st"> &quot;Survived&quot;</span>]) -&gt;
-<span class="st">  </span>decision_tree
-decision_tree[,<span class="dv">2</span>] <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">round</span>() -&gt;
-<span class="st">  </span>predictions<span class="op">$</span>dt
+formula %&gt;%
+  rpart(data = train, method = &quot;class&quot;, control = rpart.control(cp=0.0001)) %&gt;%
+  predict(test[!names(test) %in% &quot;Survived&quot;]) -&gt;
+  decision_tree
+decision_tree[,2] %&gt;%
+  round() -&gt;
+  predictions$dt
 
-train <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Cabin) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ranger</span>(formula, <span class="dt">data =</span> .) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">predict</span>(test[<span class="op">!</span><span class="kw">names</span>(test) <span class="op">%in%</span><span class="st"> &quot;Survived&quot;</span>]) -&gt;
-<span class="st">  </span>temp
-temp<span class="op">$</span>predictions <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">round</span>() -&gt;
-<span class="st">  </span>predictions<span class="op">$</span>rf
+train %&gt;%
+  select(-Cabin) %&gt;%
+  ranger(formula, data = .) %&gt;%
+  predict(test[!names(test) %in% &quot;Survived&quot;]) -&gt;
+  temp
+temp$predictions %&gt;%
+  round() -&gt;
+  predictions$rf
 
-predictions <span class="op">%&lt;&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ensemble =</span> <span class="kw">as.integer</span>(<span class="kw">round</span>((logit <span class="op">+</span><span class="st"> </span>dt <span class="op">+</span><span class="st"> </span>rf)<span class="op">/</span><span class="dv">3</span>)))
+predictions %&lt;&gt;%
+  mutate(ensemble = as.integer(round((logit + dt + rf)/3)))
 
-solution &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">PassengerID =</span> test<span class="op">$</span>PassengerId,
-  <span class="dt">Survived =</span> predictions<span class="op">$</span>ensemble
+solution &lt;- data.frame(
+  PassengerID = test$PassengerId,
+  Survived = predictions$ensemble
 )
 
-<span class="kw">write_csv</span>(solution, <span class="st">&#39;titanic_ensemble.csv&#39;</span>)</code></pre></div>
+write_csv(solution, &#39;titanic_ensemble.csv&#39;)</code></pre>
 <p>At present, there are nearly 6000 entries. This puts us in the top half, with an accuracy of 0.77990.</p>
 </div>
-</div>
-</div>
-
-
-</div>
-
-<div id="postamble" data-toggle="wy-nav-shift" class="status">
 </div>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -1160,18 +1210,29 @@ solution &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   gtag('config', 'UA-109466857-1');
 </script>
 
-<script>
-$(document).ready(function () {
- 	  });
-</script>
 
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
