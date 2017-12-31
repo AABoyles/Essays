@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -106,34 +106,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 60px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 
 .section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 </style>
 
@@ -231,11 +231,12 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>library(&quot;plyr&quot;)
-library(&quot;dplyr&quot;)
-library(&quot;magrittr&quot;)
-library(&quot;DT&quot;)
-library(&quot;stringr&quot;)
+<pre class="r"><code>source(&quot;../infobox.R&quot;)
+load_package(&quot;plyr&quot;)
+load_package(&quot;dplyr&quot;)
+load_package(&quot;magrittr&quot;)
+load_package(&quot;DT&quot;)
+load_package(&quot;stringr&quot;)
 
 cbind(
   Name = list.files(&quot;.&quot;, &quot;*.Rmd&quot;),
@@ -255,8 +256,8 @@ cbind(
     `Estimated Length (words)` = floor(size/7)) %&gt;%
     dplyr::select(Name, `Estimated Length (words)`, `Last Modified`) %&gt;%
   datatable(escape = FALSE)</code></pre>
-<div id="htmlwidget-bb1ad71d536935c8a0b4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bb1ad71d536935c8a0b4">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10"],["<a href='MereHeroes.html'>Mere Heroes<\/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing<\/a>","<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data<\/a>","<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography<\/a>","<a href='TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem<\/a>","<a href='CherylsBirthday.html'>Cheryls Birthday<\/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography<\/a>","<a href='DesigningTheActuallySmartHouse.html'>Designing The Actually Smart House<\/a>","<a href='GetToItAHomily.html'>Get To It A Homily<\/a>","<a href='GoodPolicies.html'>Good Policies<\/a>"],[720,640,722,1617,1694,881,1502,3266,960,1519],["<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/MereHeroes.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/MonteHallGREGuessing.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/ReviewOfTuftesVizQuantData.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/SuperintelligenceBibliography.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/TheTruthAboutTheTrolleyProblem.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/CherylsBirthday.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/CryonicsBibliography.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/DesigningTheActuallySmartHouse.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/GetToItAHomily.Rmd'>2017-12-15<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/GoodPolicies.Rmd'>2017-12-15<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-29227f8f09896b7d8e35" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-29227f8f09896b7d8e35">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["<a href='DesigningTheActuallySmartHouse.html'>Designing The Actually Smart House<\/a>","<a href='GetToItAHomily.html'>Get To It A Homily<\/a>","<a href='GoodPolicies.html'>Good Policies<\/a>","<a href='MereHeroes.html'>Mere Heroes<\/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing<\/a>","<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data<\/a>","<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography<\/a>","<a href='TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem<\/a>","<a href='CherylsBirthday.html'>Cheryls Birthday<\/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography<\/a>","<a href='PeopleWhoDiedIn2017.html'>People Who Died In 2017<\/a>"],[3266,960,1519,720,640,722,1617,1694,881,1502,943],["<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/DesigningTheActuallySmartHouse.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/GetToItAHomily.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/GoodPolicies.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/MereHeroes.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/MonteHallGREGuessing.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/ReviewOfTuftesVizQuantData.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/SuperintelligenceBibliography.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/TheTruthAboutTheTrolleyProblem.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/CherylsBirthday.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/CryonicsBibliography.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/PeopleWhoDiedIn2017.Rmd'>2017-12-31<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>

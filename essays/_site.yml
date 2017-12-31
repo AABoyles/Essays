@@ -1,24 +1,23 @@
-name: "Anthony A. Boyles"
-output_dir: "."
-include: "*.Rmd"
+name: Anthony A. Boyles
+output_dir: '.'
+include: '*.Rmd'
 bibliography: ../bibliography.bib
 navbar:
-  title: "Anthony A. Boyles"
+  title: Anthony A. Boyles
   left:
-    - text: "Portfolio"
-      href: ../index.html
-    - text: "Essays"
-      href: ../essays/
-    - text: "Code"
-      href: ../code.html
-    - text: "About"
-      href: ../about.html
+  - text: Portfolio
+    href: ../index.html
+  - text: Essays
+    href: ../essays/
+  - text: Code
+    href: ../code.html
+  - text: About
+    href: ../about.html
   right:
-    - text: "Meta"
-      href: ../README.html
+  - text: Meta
+    href: ../README.html
 output:
   html_document:
-    theme: flatly
     css: site_libs/style.css
     code_folding: hide
     include:

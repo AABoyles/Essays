@@ -18,7 +18,6 @@ navbar:
     href: ../README.html
 output:
   html_document:
-    theme: flatly
     highlight: pygments
     css: site_libs/style.css
     code_folding: show
