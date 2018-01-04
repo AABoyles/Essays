@@ -11,12 +11,17 @@ img {
 @media (min-width: 992px) {
   .infobox {
     float: right;
-    width: 40%;
+    width: 30%;
     display: inline-block;
-    margin-left:15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
   }
   .infoboxtable {
-    border: 1px solid gray;
+    padding: 15px;
+    margin: 0;
   }
 }
 
