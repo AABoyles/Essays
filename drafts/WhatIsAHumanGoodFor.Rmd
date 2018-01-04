@@ -1,0 +1,37 @@
+---
+title: "What is a Human Good For?"
+---
+
+Imagine a god-like entity.
+
+Many of the metaphors we use to inform discussions about the future economy and automation are based on relationships between humans and other animals.
+
+What did we do with horses once we popularized cars? As a species, we've maintained them mostly as a novelty luxury.
+
+What will we do with pigs and cows once plant-based and lab-grown meats supplant animal-derived meats? Again, the answer is likely to be that we'll keep them as a novelty luxury.
+
+However, this metaphor breaks down for humans. What good is a human to a machine?
+
+The easiest answer is that the human is composed of atoms, and those atoms could be used to build other more useful things (like other machines).
+
+For an aligned AI, however, something (and probably many things) about the human is likely to be intrinsically valuable. It may be the human's physical health. It may be the information which constitutes the human's mind. It may be the human's lack of suffering. It may be the human's senses of comfort, satisfaction, or joy. It may be the human's self-determination. More likely, it will be something which instrumentally improves all of these.
+
+## Human-alignment and Agent-alignment
+
+Let's imagine that we have a very clear picture of artificial superintelligence alignment. As in, we understand the mechanics of alignment in great detail. 
+
+A human-aligned AI is one which optimizes the stuff humans care about for some definition of "human".
+
+An agent-aligned AI is one which optimizes the stuff any agent cares about (for some definition of "agent"). So, for example, an Agent-aligned AI will not harm a squirrel because the squirrel exercises some agency. Instead, the AI will attempt optimize the stuff the squirrel values, in the same way it would for humans. 
+
+## Why should we care about non-humans in designing our AI?
+
+Short answer: Acausal trade (which in this case means something like "the futurist's version of the golden rule").
+
+Long Answer: Suppose we build a human-aligned ASI. It sets to work optimizing the universe for humans, which sucks for most life on Earth. Any organisms are eliminated, except for those which some human values. It treats humans well and the future of the universe looks pretty awesome if you're human. It tackles all the usual cosmic projects: optimizing a bunch of stuff on Earth, moving outward to the Moon, Mars, Venus, a few Jovian and Saturnian moons. Some interstellar exploration and colonization. It subsumes a significant fraction of the galaxy, and then launches some intergalactic missions. Eventually it encounters another intelligent life form.
+
+The other life form doesn't meet its definition of "human", and thus, so far as the ASI is concerned, this alien life isn't the most useful configuration of this matter. It rips them apart, atom for atom, in its quest for dominance of the universe. From the humans' perspective, this is at worst a minor loss: the aliens' biology and ecology might have been an interesting topic of study, but instead we can use their matter to build another few trillion human lives, living another (possibly infinite) number of satisfied-human-life-years. And honestly, it's a little hard to say the ASI was straightforwardly **wrong** to do it. Those aliens probably experienced unimaginable suffering, and now they won't.
+
+However, suppose our ASI later, in another galaxy, encounters another machine intelligence. This machine intelligence is also aligned to the benefit of it's creators, but to the exclusion of any other agents. It makes roughly the same calculus that ours does: the matter constituting this entity is suboptimal for my goals. The two ASI launch into intergalactic warfare. Unfortunately, the alien intelligence happens to be a few billion years older and more advanced. In little more than as much time as it takes for news of the war to travel to the end of the humans' colonized universe, the alien intelligence rips us all atom-from-atom.
+
+Now, let's reset the universe back to the present. If, instead of building a human-aligned AI, we build an agent-aligned AI, how does this story play out differently?
