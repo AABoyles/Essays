@@ -21,11 +21,7 @@ That said, assembling this data isn't a trivial task. Many cryonicists (or their
 ```{r loadData, message=FALSE, warning=FALSE}
 # Load from Google Sheets
 cryonauts <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vS7nOdzuAUs5bSoHkZw1gJTWJT-MVbMicXK8iIUIkZwFqUVh2zmC8Cl_QTz1j0kriMW3ycobYDDWFuG/pub?output=csv') %>%
-  mutate(
-    Deanimation = as.Date(DeanimationDate),
-    Age = as.numeric(Age),
-    BirthYear = as.numeric(BirthYear)
-  )
+  mutate(DorCDate = as.Date(DorCDate))
 ```
 
 ## Cryonauts through time
@@ -34,25 +30,27 @@ To whet our appetite, let's look at the growth of cryonics.
 
 ```{r growthOverTime, message=FALSE, warning=FALSE}
 cryonauts %>%
-  dplyr::filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(DorCDate)) %>%
   mutate(cumulation = 1:nrow(.)) %>%
-  plot_ly(x=~Deanimation, y=~cumulation, type = 'scatter', mode = 'lines')
+  plot_ly(x=~DorCDate, y=~cumulation, type = 'scatter', mode = 'lines')
 ```
 
-This graph shows the number of people cryopreserved. As a sanity check, [Futurism put together an infographic](https://futurism.com/images/cryonics/) including a graph of the growth of cryonics that largely agrees with this (though their version looked only at [Alcor](http://alcor.org/AboutAlcor/membershipstats.html), [Cryonics Institute](http://www.cryonics.org/ci-landing/member-statistics/) and KrioRus Statistics, instead of all recorded cases, leading to lower counts).
+This graph shows the number of people cryopreserved. As a sanity check, [Futurism put together an infographic](https://futurism.com/images/cryonics/) including a graph of the growth of cryonics that largely agrees with this (though their version looked only at [Alcor](http://alcor.org/AboutAlcor/membershipstats.html), [Cryonics Institute](http://www.cryonics.org/ci-landing/member-statistics/) and [KrioRus Statistics](http://kriorus.ru/en/cryopreserved people), instead of all recorded cases, leading to lower counts).
+
+One important note on dates: KrioRus reports "cryopreservation date", rather than the date of deanimation. However, it's a bit difficult to tell what this means, since cryopreservation is a process which takes place over the course of several days. The other organizations all report the date of deanimation (except for TransTime, which reports nothing and whose cases must be inferred from other sources).
 
 Let's model it! I'm going to use a couple of models: linear (for posterity), quadratic (since it's the most intuitive curve that might fit this well), exponential (because this actually looks exponential to me), and a linear model of the predictions of the others (basically to estimate the optimal weight of the other models).
 
 ```{r growthModels, message=FALSE, warning=FALSE}
-Year <- rep(min(year(cryonauts$Deanimation), na.rm = TRUE):max(year(cryonauts$Deanimation), na.rm = TRUE), each=12)
+Year <- rep(min(year(cryonauts$DorCDate), na.rm = TRUE):max(year(cryonauts$DorCDate), na.rm = TRUE), each=12)
 Month <- rep(1:12, length(Year)/12)
 yms <- data.frame(Year, Month)
 
 monthly <- cryonauts %>%
-  dplyr::filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(DorCDate)) %>%
   mutate(
-    Year = year(Deanimation),
-    Month = month(Deanimation)
+    Year = year(DorCDate),
+    Month = month(DorCDate)
   ) %>%
   group_by(Year, Month) %>%
   dplyr::summarise(number = n()) %>%
@@ -91,7 +89,7 @@ monthly %>%
 OK, we have an ensemble model that does quite well based solely on growth rates. What does it say about the future of Cryonics?
 
 ```{r cryonicsGrowthPrediction}
-Year <- rep(1:20+max(year(cryonauts$Deanimation), na.rm = TRUE), each=12)
+Year <- rep(1:20+max(year(cryonauts$DorCDate), na.rm = TRUE), each=12)
 Month <- rep(1:12, length(Year)/12)
 Fyms <- data.frame(Year, Month) %>%
   mutate(
@@ -114,7 +112,7 @@ plot_ly(Fyms, x=~date, y=FLinP, name="Linearly Predicted number of cases", type 
   add_lines(y=FAvgP, name="Ensemble Predicted number of cases")
 ```
 
-It appears that Cryonics is unlikely to experience explosive growth in the next 20 years. Obviously, this discounts any substantive events, like a successful demonstration of a complete revival of a cryopreserved large animal ([rabbit](http://www.brainpreservation.org/asc_rabbit_fulleval/) or [dog](http://www.alcor.org/Library/html/tbwcanine.html) ([see also](https://www.ncbi.nlm.nih.gov/pubmed/1188189?dopt=Abstract)) seem the likeliest cases).
+It appears that Cryonics is unlikely to experience explosive growth in the next 20 years. Obviously, this discounts any substantive events, like a successful demonstration of a complete revival of a cryopreserved large animal ([rabbit](http://www.brainpreservation.org/asc_rabbit_fulleval/) or [dog](http://www.alcor.org/Library/html/tbwcanine.html) ([see also](https://www.ncbi.nlm.nih.gov/pubmed/1188189?dopt=Abstract) or [pig](https://www.technologyreview.com/s/611007/researchers-are-keeping-pig-brains-alive-outside-the-body/)) seem the likeliest cases).
 
 So what about the cryonics patients themselves? What trends can we identify about them?
 
@@ -127,21 +125,21 @@ women <- cryonauts %>% filter(Gender=="Female")
 men   <- cryonauts %>% filter(Gender=="Male")
 
 w <- women %>%
-  dplyr::filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(DorCDate)) %>%
   mutate(
     c = 1,
     cumulation = cumsum(c)
   )
 
 m <- men %>%
-  dplyr::filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(DorCDate)) %>%
   mutate(
     c = 1,
     cumulation = cumsum(c)
   )
   
-plot_ly(m, x=~Deanimation, y=~cumulation, type='scatter', mode='lines', name="Men") %>%
-  add_lines(data = w, x=~Deanimation, y=~cumulation, name="Women") %>%
+plot_ly(m, x=~DorCDate, y=~cumulation, type='scatter', mode='lines', name="Men") %>%
+  add_lines(data = w, x=~DorCDate, y=~cumulation, name="Women") %>%
   layout(
     xaxis = list(title = "Date"),
     yaxis = list(title = "Number of Cryonauts"),
@@ -149,34 +147,28 @@ plot_ly(m, x=~Deanimation, y=~cumulation, type='scatter', mode='lines', name="Me
   )
 ```
 
-Thus far, it seems men outnumber women roughly 3:2. However, the distribution was more-or-less tied until the mid-90's. This is much more egalitarian than I expected. [[Related](https://books.google.com/books?id=WxOJDgAAQBAJ&lpg=PT25&dq=feminism%20and%20cryonics&pg=PT20#v=onepage&q=feminism%20and%20cryonics&f=false)]
+Thus far, it seems men outnumber women roughly 3:2. However, the ratio was roughly 1:1 until the mid-90's. This is much closer to gender parity than I expected. [[Related](https://books.google.com/books?id=WxOJDgAAQBAJ&lpg=PT25&dq=feminism%20and%20cryonics&pg=PT20#v=onepage&q=feminism%20and%20cryonics&f=false)]
 
 What about the distribution of age? This should be a left-skewed distribution (older people are more likely to die than younger people). Moreover, We can weakly predict that women will enjoy a slightly more left-skewed curve, outliving men in the cryonics community just as they tend to in the larger community.
 
 ```{r AgeDistributionByGender, warning=FALSE}
-plot_ly(alpha = 0.6) %>%
-  add_histogram(x = women$Age, name="Women") %>%
-  add_histogram(x = men$Age, name="Men") %>%
-  layout(
-    xaxis = list(title = "Age at Deanimation"),
-    yaxis = list(title = "Number of Cryonauts"),
-    barmode = "overlay"
-  )
+p <- ggplot(cryonauts, aes(Age, fill=Gender)) + geom_density(alpha = 0.5)
+ggplotly(p)
 ```
 
-Unsurprisingly, the people who are cryopreserved are largely older. And it does look as though wome outlive men in the cryonics community.
+Unsurprisingly, the people who are cryopreserved are largely older. And it does look as though women outlive men by around 7 years in the cryonics community.
 
 Does this match the curve of ages-at-death in the larger population? This is a surprisingly difficult question to answer! To start, let's look at the mean age-at-deanimation of cryonics patients (along with the min and max ages, just for fun).
 
 ```{r AgeTrends, warning=FALSE}
 cryonauts %>%
-  dplyr::filter(!is.na(Deanimation), !is.na(Age)) %>%
+  dplyr::filter(!is.na(DorCDate), !is.na(Age)) %>%
   mutate(
     MaxAge = cummax(Age),
     MeanAge = cummean(Age),
     MinAge = cummin(Age)
   ) %>%
-  plot_ly(x=~Deanimation, y=~MaxAge, name="Oldest Patient Age", type = 'scatter', mode = 'lines', line = list(shape = "hv")) %>%
+  plot_ly(x=~DorCDate, y=~MaxAge, name="Oldest Patient Age", type = 'scatter', mode = 'lines', line = list(shape = "hv")) %>%
   add_lines(y=~MeanAge, name="Average Patient Age") %>%
   add_lines(y=~MinAge, name="Youngest Patient Age") %>%
   layout(
@@ -187,7 +179,7 @@ cryonauts %>%
 
 The minimum age drops precipitously. Intuitively, this is about what we should expect: we can't cryopreserve people who aren't born yet, so the minimum age is going to hit zero at some point in the future, and never decrease again.
 
-The maximum age climbs, which is also to be expected. As more people die and enter cryostorage, some of them should, just by random draws from the [Gompertz distribution](https://en.wikipedia.org/wiki/Gompertz_distribution), be older than the rest of the population. This should behave roughly like the curve of the record for the oldest person, gradually pushing up towards 120 or so (barring any breakthroughs in the longevity-enhancing efforts).
+The maximum age climbs, which is also to be expected. As more people die and enter cryostorage, some of them should, just by random draws from the [Gompertz distribution](https://en.wikipedia.org/wiki/Gompertz_distribution), be older than the rest of the population. This should behave roughly like the curve of the record for the oldest person, gradually pushing up towards 120 or so (barring any major breakthroughs in longevity-extension efforts).
 
 The mean population is the most interesting (and relevant to the motivating question). We expect that it should roughly trace the [global life expectancy](https://data.worldbank.org/indicator/SP.DYN.LE00.IN). However, because life expectancies are measured by country by year-of-birth, mapping from age at death (the data we have) to life expectancy (the data we need) is prohibitively difficult--we don't generally know the patients' birth country for one.
 
@@ -199,20 +191,18 @@ Not all cryonic procedures are exactly the same, and no cryonics provider offers
 
 ```{r ProcedureDistributionOverTime, warning=FALSE}
 cryonauts %>%
-  dplyr::filter(!is.na(Deanimation), !is.na(OriginalType)) %>%
+  dplyr::filter(!is.na(DorCDate), !is.na(OriginalType)) %>%
   group_by(OriginalType) %>%
   dplyr::mutate(
     c = 1,
     cumulation = cumsum(c)
   ) %>%
-  plot_ly(x=~Deanimation, y=~cumulation, type='scatter', mode='lines', color=~OriginalType) %>%
+  plot_ly(x=~DorCDate, y=~cumulation, type='scatter', mode='lines', color=~OriginalType) %>%
   layout(
     xaxis = list(title = "Date"),
     yaxis = list(title = "Number of Cryonauts")
   )
 ```
-
-Neuropreservations have overtaken whole body preservations, but this seems to have happened *very* recently, since the end of 2014.
 
 ## Suspension Failure
 
@@ -220,32 +210,32 @@ Perhaps the most important and interesting inferences we can make regard the lik
 
 ```{r preservationFailures, warning=FALSE}
 cryonauts %>%
-  dplyr::filter(!is.na(Deanimation), Status != "Preserved") %>%
+  dplyr::filter(!is.na(DorCDate), Status != "Preserved") %>%
   mutate(
     c = 1,
     cumulation = cumsum(c)
   ) %>%
-  plot_ly(x=~Deanimation, y=~cumulation, type='scatter', mode='lines') %>%
+  plot_ly(x=~DorCDate, y=~cumulation, type='scatter', mode='lines') %>%
   layout(
     xaxis = list(title = "Date"),
     yaxis = list(title = "Number of Suspension Failures")
   )
 ```
 
-Here we see the number of suspension failures over time. Note that I didn't collect data on the date of the failure, so these are plotted against the date of deanimation, which should be good enough. Fortunately, there have been few enough that it almost makes the most sense to discuss them individually, rather than measure any aggregate statistics. Of the 29 known suspension failures, the lion's share belong to the Cryonics Society of California. Led by the bold and hard-working but ill-fated Bob Nelson, CSC stored 10 cryonauts, of whom all but one were lost in the [Chatsworth Disaster](https://hpluspedia.org/wiki/History_of_cryonics#Chatsworth_Scandal), hence the precipitous rise in the 60's. Several others were cases of survivors refusing to make maintenance payments. Sadly, only one cryopreservation attempted before 1974 has been maintained. [Two were killed in the 9-11 World Trade Center attacks](http://alcor.org/problems.html). [Two were private cases that suffered a freezer failure](https://www.theguardian.com/science/2006/mar/17/france.internationalnews). I do not know about many other cases.
+Here we see the number of suspension failures over time. Note that I didn't collect data on the date of the failure, so these are plotted against the date of deanimation, which should be good enough. Fortunately, there have been few enough that it almost makes the most sense to discuss them individually, rather than measure any aggregate statistics. Of the 29 known suspension failures, the lion's share belong to the Cryonics Society of California. Led by the bold and hard-working but ill-fated Bob Nelson, CSC stored 10 cryonauts, of whom all but one were lost in the [Chatsworth Disaster](https://hpluspedia.org/wiki/History_of_cryonics#Chatsworth_Scandal), hence the precipitous rise in the late 60's. Several others were cases of survivors refusing to make maintenance payments. Sadly, only one cryopreservation attempted before 1974 has been maintained. [Two were killed in the 9-11 World Trade Center attacks](http://alcor.org/problems.html). [Two were private cases that suffered a freezer failure](https://www.theguardian.com/science/2006/mar/17/france.internationalnews). I do not know about many other cases.
 
 Relative to the number of successful cases, these failures are looking less and less likely:
 
 ```{r SuccessesAndFailures}
 cryonauts %>%
-  dplyr::filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(DorCDate)) %>%
   mutate(
     failure = ifelse(Status=="Preserved", 0, 1),
     success = ifelse(Status=="Preserved", 1, 0),
     failures = cumsum(failure),
     successes = cumsum(success)
   ) %>%
-  plot_ly(x=~Deanimation, y=~successes, type='scatter', mode='lines', name='Successful Suspensions') %>%
+  plot_ly(x=~DorCDate, y=~successes, type='scatter', mode='lines', name='Successful Suspensions') %>%
   add_lines(y=~failures, name='Failed Suspensions') %>%
   layout(
     xaxis = list(title = "Date"),
@@ -253,26 +243,26 @@ cryonauts %>%
   )
 ```
 
-As time wears on, it's decreasing. This is a very positive developmnetal direction, and so long as there aren't any facilities crises, it looks to continue this way. As a proportion of current cryonics cases, this failure rate may be a reasonable estimate for probabilistic cryonics failures in the future.
-So, what actually is that proportion?
+As time wears on, the proportion of failures is decreasing. This is a very positive developmnetal direction, and so long as there aren't any facilities crises, it looks to continue this way. As a proportion of current cryonics cases, this failure rate may be a reasonable estimate for probabilistic cryonics failures in the future.
+So, what *is* that proportion?
 
 ```{r preservationProportion}
 cryonauts %>%
-  dplyr::filter(!is.na(Deanimation)) %>%
+  dplyr::filter(!is.na(DorCDate)) %>%
   mutate(
     c = 1,
     failure = ifelse(Status=="Preserved", 0, 1),
     failures = cumsum(failure),
     proportion = 1-(failures / cumsum(c))
   ) %>%
-  plot_ly(x=~Deanimation, y=~proportion, type='scatter', mode='lines', name='Probability of Successful Suspensions') %>%
+  plot_ly(x=~DorCDate, y=~proportion, type='scatter', mode='lines', name='Probability of Successful Suspensions') %>%
   layout(
     xaxis = list(title = "Date"),
     yaxis = list(title = "Proportion Preserved")
   )
 ```
 
-95% and rising. This may form a useful piece of evidence for estimating the more general probability of cryonics succeeding. Here are some other attempts at estimating that probability:
+94% and rising. This may form a useful piece of evidence for estimating the more general probability of cryonics succeeding. Here are some other attempts at estimating that probability:
 
 * http://alcor.org/Library/html/WillCryonicsWork.html
 * http://lesswrong.com/lw/7sj/how_likely_is_cryonics_to_work/
@@ -282,6 +272,44 @@ cryonauts %>%
 * https://www.gwern.net/Cryonics
 * https://www.cryonicscalculator.com/
 
+## Organizational History
+
+What about the provider organizations?
+
+```{r originalorganization}
+cryonauts %>%
+  dplyr::filter(!is.na(DorCDate), !is.na(OriginalProvider)) %>%
+  group_by(OriginalProvider) %>%
+  dplyr::mutate(
+    c = 1,
+    cumulation = cumsum(c)
+  ) %>%
+  plot_ly(x=~DorCDate, y=~cumulation, type='scatter', mode='lines', color=~OriginalProvider) %>%
+  layout(
+    xaxis = list(title = "Date"),
+    yaxis = list(title = "Number of Cryonauts")
+  )
+```
+
+Interesting, but only relevant to someone looking for information about the history of cryonics. Most of these organizations are defunct. Let's just look at those that are currently servicing clients:
+
+```{r currentprovider}
+cryonauts %>%
+  dplyr::filter(!is.na(DorCDate), !is.na(CurrentProvider)) %>%
+  group_by(CurrentProvider) %>%
+  dplyr::mutate(
+    c = 1,
+    cumulation = cumsum(c)
+  ) %>%
+  plot_ly(x=~DorCDate, y=~cumulation, type='scatter', mode='lines', color=~CurrentProvider) %>%
+  layout(
+    xaxis = list(title = "Date"),
+    yaxis = list(title = "Number of Cryonauts")
+  )
+```
+
+Much better. I didn't realize that Alcor and CI are basically the same size, and almost always have been. Also, KrioRus is growing at almost exactly the same rate as the large American firms. Oregon Cryonics and YLSF are unlikely to grow as quickly, since they're either accepting memberships on a limited basis (in the former case) or not open to signups in general (in the latter case). That just leaves Trans Time the oddball. I'll be very interested to see if [Southern Cryonics](https://southerncryonics.com/) follows the same pattern as the other large providers, once it opens up.
+
 ## Future Work
 
 There are tons more interesting things that could be done here, but the ones that interest me require additional data collection:
@@ -290,6 +318,7 @@ There are tons more interesting things that could be done here, but the ones tha
 * Conditional on revivals happening, details on their ischemia periods and other post-mortem metrics may also be interesting.
 * I haven't made any attempt to geocode the location data, but perhaps some maps would be interesting.
 * Additional and more detailed information on Suspension Failures would be extremely useful. If we knew when the failure occurred, we could measure estimate the probability failure as a function of the amount of time in storage (which is generally a correct assumption--as things get older, they change).
+* Instead of viewing suspension failures on a case-centric basis, it would be much more informative to build some sort of survival model based on the years of successful storage.
 
 ## Sources
 
