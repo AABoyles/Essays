@@ -23,11 +23,14 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-0.9/htmlwidgets.js"></script>
-<script src="site_libs/datatables-binding-0.2/datatables.js"></script>
-<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.5/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -96,6 +99,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -256,8 +262,8 @@ cbind(
     `Estimated Length (words)` = floor(size/7)) %&gt;%
     dplyr::select(Name, `Estimated Length (words)`, `Last Modified`) %&gt;%
   datatable(escape = FALSE)</code></pre>
-<div id="htmlwidget-29227f8f09896b7d8e35" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-29227f8f09896b7d8e35">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["<a href='DesigningTheActuallySmartHouse.html'>Designing The Actually Smart House<\/a>","<a href='GetToItAHomily.html'>Get To It A Homily<\/a>","<a href='GoodPolicies.html'>Good Policies<\/a>","<a href='MereHeroes.html'>Mere Heroes<\/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing<\/a>","<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data<\/a>","<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography<\/a>","<a href='TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem<\/a>","<a href='CherylsBirthday.html'>Cheryls Birthday<\/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography<\/a>","<a href='PeopleWhoDiedIn2017.html'>People Who Died In 2017<\/a>"],[3266,960,1519,720,640,722,1617,1694,881,1502,943],["<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/DesigningTheActuallySmartHouse.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/GetToItAHomily.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/GoodPolicies.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/MereHeroes.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/MonteHallGREGuessing.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/ReviewOfTuftesVizQuantData.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/SuperintelligenceBibliography.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/TheTruthAboutTheTrolleyProblem.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/CherylsBirthday.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/CryonicsBibliography.Rmd'>2017-12-31<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/PeopleWhoDiedIn2017.Rmd'>2017-12-31<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a24cb693bcb5e3ae0830" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a24cb693bcb5e3ae0830">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11"],["<a href='CherylsBirthday.html'>Cheryls Birthday<\/a>","<a href='CryonicsBibliography.html'>Cryonics Bibliography<\/a>","<a href='DesigningTheActuallySmartHouse.html'>Designing The Actually Smart House<\/a>","<a href='GetToItAHomily.html'>Get To It A Homily<\/a>","<a href='GoodPolicies.html'>Good Policies<\/a>","<a href='MereHeroes.html'>Mere Heroes<\/a>","<a href='MonteHallGREGuessing.html'>Monte Hall GRE Guessing<\/a>","<a href='PeopleWhoDiedIn2017.html'>People Who Died In 2017<\/a>","<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data<\/a>","<a href='SuperintelligenceBibliography.html'>Superintelligence Bibliography<\/a>","<a href='TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem<\/a>"],[881,1502,3963,960,1519,720,640,1162,722,1617,1694],["<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/CherylsBirthday.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/CryonicsBibliography.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/DesigningTheActuallySmartHouse.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/GetToItAHomily.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/GoodPolicies.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/MereHeroes.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/MonteHallGREGuessing.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/PeopleWhoDiedIn2017.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/ReviewOfTuftesVizQuantData.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/SuperintelligenceBibliography.Rmd'>2018-11-19<\/a>","<a href='http://github.com/aaboyles/Essays/commits/gh-pages/essays/TheTruthAboutTheTrolleyProblem.Rmd'>2018-11-19<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Estimated Length (words)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
