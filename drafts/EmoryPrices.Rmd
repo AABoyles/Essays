@@ -1,0 +1,70 @@
+---
+title: "Playing with my Local Healthcare Costs"
+author: "Tony Boyles"
+date: "May 14, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+```
+
+## Getting the Data
+
+```{r load1}
+#prices <- read_tsv('http://www.emoryhealthcare.org/ui/pricing-transparency/emory-hospitals-cdm-listing-pricing-transparency-12-4-2018.txt')
+```
+
+Naturally, it parses the prices as text. Because the hospital really, *really* can't afford to make this easy on us.
+
+I could fix this with some Regexes, or I could just load it in Google Sheets, format the price as a number (sans commas), and load that. I find that my life is better with fewer regex-based solutions in it.
+
+```{r load2}
+url <- 'https://docs.google.com/spreadsheets/d/1c5ZDsxMk4cNRBHfB50wUoULG50McetndqmO-FhQfOfo/export?format=tsv'
+#cleanedprices <- read_tsv(url, col_types = 'cccn')
+```
+
+```{r housecleaning}
+library(dplyr)
+library(magrittr)
+
+hospitals = list(
+  `EMORY HOSPITALS` = 'Emory',
+  `EMORY HOSPITALS (FKA DEKALB MEDICAL)` = 'Dekalb',
+  `EMORY LTAC (FKA DEKALB LONG TERM ACUTE CARE)` = 'LTAC'
+)
+
+cleanedprices %>%
+  select(
+    Hospital = `CDM Hospital Code`,
+    Code = `CDM Code`,
+    Price = `Base Price Amount`
+  ) %>%
+  filter(
+    !is.na(Price),
+    Price < 250000
+  ) %>%
+  mutate(
+    Hospital = hospitals[Hospital]
+  ) ->
+  prices
+```
+
+## Distribution of Prices
+
+```{r priceDistribution}
+library(ggplot2)
+
+ggplot(prices, aes(Price)) +
+  geom_freqpoly(binwidth = 5000) + 
+  scale_y_log10()
+```
+
+```{r stratifiedByHospital}
+library(ggplot2)
+
+ggplot(prices, aes(`Base Price Amount`, fill=`CDM Hospital Code`)) +
+  geom_histogram(binwidth = 500) + 
+  scale_y_log10()
+```
