@@ -4,15 +4,19 @@ title: "AllState Claims Severity Kernel"
 
 [Ed. This is a transcribed and edited version of [a kernel I produced](https://www.kaggle.com/aaboyles/allstate-claims-severity/beginner-friendly-simple-linear-regression/notebook) to compete in the [AllStates Claims Severity Challenge](https://www.kaggle.com/c/allstate-claims-severity).]
 
-# Introduction
+```{r}
+knitr::opts_chunk$set(engine.path = list(python = '/usr/bin/python3'))
+```
+
+## Introduction
 
 There are already a bunch of awesome Scripts, but I wanted to step back and work with some more rudimentary models to make sure I was doing the right data preparation.
 
-# Preparation
+## Preparation
 
 Let's start by loading our packages and data.
 
-```{python setup, engine.path='python3', eval = FALSE}
+```{python setup}
 import numpy as np
 import pandas as pd
 import matplotlib.mlab as mlab
@@ -34,7 +38,7 @@ Nomenclature note: The outcome variable for this competition is 'loss'. (If you 
 
 Now, prediction is easier on an outcome that's normally distributed. Let's check to see if this data is:
 
-```{python, engine.path='python3', eval = FALSE}
+```{python}
 plt.hist(train['loss'], 30, normed=1)
 plt.xlabel('Loss')
 plt.ylabel('Probability')
@@ -44,13 +48,13 @@ plt.show()
 
 Wow. That isn't normally distributed at all: it's super skewed.
 
-```{python, engine.path='python3', eval = FALSE}
+```{python}
 skew(train['loss'])
 ```
 
 Any skew greater than one should probably catch your attention. Luckily, we have a simple counterspell! Let's log-transform the 'loss' variable.
 
-```{python, engine.path='python3', eval = FALSE}
+```{python}
 train['log_loss'] = np.log(train['loss'])
 
 plt.hist(train['log_loss'], 30, normed=1)
@@ -62,7 +66,7 @@ plt.show()
 
 Much Better. Now, what about our input variables? Are they similarly skewed?
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 features_numeric = test.dtypes[test.dtypes != "object"].index
 features_skewed = train[features_numeric].apply(lambda x: skew(x.dropna()))
 features_skewed
@@ -70,7 +74,7 @@ features_skewed
 
 Some of them, yeah. We can fix that by taking their log-transforms as well, but log is sort of a blunt instrument. It's easily reversible, which makes it good for the outcome. But the Box-Cox transform is a better tool for modifying our inputs. Let's apply it to any features with a skew greater than, say, .2
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 features_skewed = features_skewed[features_skewed > 0.2]
 for feat in features_skewed.index:
     train[feat], lam = boxcox(train[feat] + 1)
@@ -84,7 +88,7 @@ That eliminated much of the skewness. Before we move on, however, I'd like to ca
 
 Now, we have some categorical features we need to handle. The textbook approach to Linear Regression says you can leave categorical variables in, provided you do something like one-hot encode them and leave out the smallest category. Personally, I prefer to replace the category with the arithmetic mean of its corresponding subset of outcomes.
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 features_categorical = [feat for feat in test.columns if 'cat' in feat]
 
 for feat in features_categorical:
@@ -98,21 +102,21 @@ features_categorical = test.dtypes[test.dtypes == "object"].index
 
 There's just one more thing to check on. Linear Regression generally doesn't handle missing values very well. Let's see if we have any:
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 counts = train.count()
 len(counts[counts < train.shape[0]])
 ```
 
 Not in the training dataset. Let's check test now:
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 counts = test.count()
 len(counts[counts < test.shape[0]])
 ```
 
 Rats. OK, Rather than design a elaborate solution, I'm just going to drop any columns with missing values.
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 temp = test.dropna(1)
 counts = temp.count()
 len(counts[counts < temp.shape[0]])
@@ -122,21 +126,21 @@ len(counts[counts < temp.shape[0]])
 
 Cool. Now, we're ready to make a model.
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 model = smf.ols('log_loss ~ ' + ' + '.join(temp.columns), data=train).fit()
 model.summary()
 ```
 
 There's a lot of useful information here. However, since this is a prediction challenge, I'm not interested in most of it. Instead, I'm interested in how well it can predict new values. To do that...
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 yhat = np.exp(model.predict(test))
 ```
 
 Note that we call np.exp on our model predictions. Remember how we log-transformed 'loss' up at the beginning of this script? Exponentiating the outcome sort of undoes that, so our predictions will be on the same scale as 'loss' instead of 'log_loss'. Forgetting this step is a really good way to get a terrible score.
 Now that we have some predictions, let's write them out and score them!
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 result = pd.DataFrame({'id': test['id'].values, 'loss': yhat})
 result = result.set_index('id')
 result.to_csv('simplelmprediction.csv', index=True, index_label='id')
@@ -150,7 +154,7 @@ One important difference between Linear models and most advanced machine learnin
 
 In order to fit an XGBoost model, we need to set a *learning_rate* (also sometimes called "eta"), a *gamma*, a *minimum child weight*, a *col sample by tree*, a *subsample*, and a *maximum depth*. Exploring all of these would be hard. Exploring all combinations of these would be impractical. So, instead of trying to exhaust the possibile combinations with a given level of precision (a grid search), let's use an optimizer.
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 # Load Training Data
 train_labels = np.array(train['log_loss'])
 train.drop(train.columns[[-1,-2]], 1, inplace = True)
@@ -195,7 +199,7 @@ bo = BayesianOptimization(fitXGBoost, {
 bo.maximize(init_points = 60, n_iter = 120)
 ```
 
-```{python, engine.path='python3', eval = FALSE}
+```{python, eval = FALSE}
 # Discovered by the hyperoptimize.py script
 params = {
     "colsample_bytree": .9921,
