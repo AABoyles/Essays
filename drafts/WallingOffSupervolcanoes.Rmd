@@ -1,0 +1,37 @@
+---
+title: "Walling Off SuperVolcanoes"
+author: "Tony Boyles"
+date: "2019-08-23"
+output: html_document
+---
+
+```{r}
+knitr::opts_chunk$set(engine.path = list(python = '/usr/bin/python3'))
+```
+
+[A Recent New York Times Opinion Piece](https://www.nytimes.com/2019/08/21/opinion/supervolcano-yellowstone.html)
+
+![](../imgs/Screenshot from 2019-08-23 10-31-42.png)
+
+Good question! How hard would it be?
+
+## Build a Wall!
+
+> It would continue for days, burying Yellowstone in lava within a 40-mile radius.
+
+To start, let's make some strong assumptions:
+  1. the eruption happens (duh)
+  2. the surrounding area is reasonably flat ([definitely not true](https://yellowstone.net/maps/terrain/))
+  2. the volcano emits enough lava to coat a perfect circle of **exactly** 40 miles
+
+## For Comparison: The Great Wall of China
+
+[The Great Wall of China]() seems like a logical infrastructural project to use for comparison, because it's really, really long. Specifically (according to Wikipedia <- Bloomberg <- Xinhua Article I can't access), it's 21,196 km (or, more usefully, 21,000,000 meters) long. I can't find an especially reputable source for the mean height of the wall, but this site claims it's 6-7 meters, so we'll just pretend it's uniformly 6.5 meters.
+
+```{python}
+length = 21000000
+height = 6.5
+area = length*height
+```
+
+Thus, we can see that the area of the wall (that is, the area of the face of the wall)
