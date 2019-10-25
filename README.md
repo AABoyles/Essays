@@ -10,7 +10,8 @@ There are [much more powerful website builders in R](https://bookdown.org/yihui/
 
 If you want to build a website based off of this one, just clone the respository and remove all of the html files, along with all the Rmd files EXCEPT for index.Rmd. Then add your own collection of R Markdown documents (or plain markdown documents). Set the contents of the header menu in `_site.yml`. And then all you need to do is:
 
-```{r, eval=FALSE}
+
+```r
 library("rmarkdown")
 render_site()
 render_site("portfolio")
