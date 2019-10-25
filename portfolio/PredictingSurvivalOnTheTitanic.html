@@ -273,7 +273,7 @@ $(document).ready(function () {
 
 <span class="kw">source</span>(<span class="st">&quot;../infobox.R&quot;</span>)
 
-<span class="kw">load_package</span>(<span class="st">&#39;knitr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;knitr&#39;</span>)
 opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>)
 
 <span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&#39;../data-cache/Titanic/train.csv&#39;</span>)){
@@ -286,18 +286,18 @@ opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">
   )
 }
 
-<span class="kw">load_package</span>(<span class="st">&#39;readr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;readr&#39;</span>)
 train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;../data-cache/Titanic/train.csv&#39;</span>)
 test  &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;../data-cache/Titanic/test.csv&#39;</span>)
 
-<span class="kw">load_package</span>(<span class="st">&#39;dplyr&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;dplyr&#39;</span>)
 full  &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(train, test)</code></pre></div>
 </div>
 <div id="exploratory-data-analysis" class="section level1">
 <h1>Exploratory Data Analysis</h1>
 <p>To begin, the titanic training dataset contains 891 observations of 12 variables. The test dataset contains 418 additional observations of the same vairables, save of course for the outcome variable, “Survived”.</p>
 <p>We don’t know the sampling method by which Kaggle split the training and test sets (i.e. they didn’t tell us). There are basically two approaches that make sense: random selection and stratified sampling. Stratified sampling is where you identify some set of variables as important, and then make sure your training and test datasets have balanced numbers across the variables. By ‘balanced’, I mean that the distributions match. Let’s consider, for example, the distribution of ages between <code>train</code> and <code>test</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_package</span>(<span class="st">&#39;plotly&#39;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;plotly&#39;</span>)
 
 <span class="kw">plot_ly</span>(<span class="dt">alpha =</span> <span class="fl">0.6</span>, <span class="dt">showlegend =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">add_histogram</span>(<span class="dt">x =</span> train<span class="op">$</span>Age) <span class="op">%&gt;%</span>
@@ -619,7 +619,7 @@ demo</code></pre></div>
 </div>
 <div id="logistic-regression" class="section level2">
 <h2>Logistic Regression</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_package</span>(<span class="st">&quot;intubate&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;intubate&quot;</span>)
 
 formula &lt;-<span class="st"> </span>Survived <span class="op">~</span><span class="st"> </span>Pclass <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>SibSp <span class="op">+</span><span class="st"> </span>Parch <span class="op">+</span><span class="st"> </span>Fare <span class="op">+</span><span class="st"> </span>Embarked
 
@@ -833,7 +833,7 @@ predictions<span class="op">$</span>logit2[<span class="kw">is.na</span>(predict
 <div id="age" class="section level2">
 <h2>Age</h2>
 <p>Finally, as we noted earlier, there are many missing <code>Age</code> values in our data. In order to solve this problem we could provide a treatment similar to the one above, though it would take a long time and produce unreliable data. Instead, we can outsource the hard legwork to a machine learning algorithm. Why? Because we must. When a variable is missing its values in only one or two rows, making intelligent guesses about those values is reasonable. However, when many are missing (and missing in a way that isn’t rigidly consistent with some other variables in the dataset), then statistical imputation is the better choice. Remember, we’re missing 263 ages.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_package</span>(<span class="st">&#39;mice&#39;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;mice&#39;</span>)
 
 factor_vars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;PassengerId&#39;</span>, <span class="st">&#39;Sex&#39;</span>, <span class="st">&#39;Embarked&#39;</span>)
 full[factor_vars] &lt;-<span class="st"> </span><span class="kw">lapply</span>(full[factor_vars], as.factor)
@@ -982,7 +982,7 @@ full<span class="op">$</span>Fsize &lt;-<span class="st"> </span>full<span class
 full<span class="op">$</span>Family &lt;-<span class="st"> </span><span class="kw">paste</span>(full<span class="op">$</span>Surname, full<span class="op">$</span>Fsize, <span class="dt">sep=</span><span class="st">&#39;_&#39;</span>)</code></pre></div>
 <p>What does our family size variable look like? To help us understand how it may relate to survival, let’s plot it among the training data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># I can&#39;t figure out how to do this one in bare-metal plotly, so I&#39;ll just use ggplot2 and wrap it.</span>
-<span class="kw">load_package</span>(<span class="st">&#39;ggplot2&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;ggplot2&#39;</span>)
 <span class="kw">ggplotly</span>(
   <span class="kw">ggplot</span>(full[<span class="dv">1</span><span class="op">:</span><span class="dv">891</span>,], <span class="kw">aes</span>(<span class="dt">x =</span> Fsize, <span class="dt">fill =</span> <span class="kw">factor</span>(Survived))) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>, <span class="kw">aes</span>(<span class="dt">alpha =</span> .<span class="dv">1</span>)) <span class="op">+</span>
@@ -1136,9 +1136,9 @@ subtraining <span class="op">%&gt;%</span>
 <h2>Decision Tree</h2>
 <p>[This section was informed by Arda Yildirim’s <a href="https://www.kaggle.com/yildirimarda/titanic/decision-tree-visualization-submission/code">script to build and visualize a Decision Tree</a> for the Titanic Challenge.]</p>
 <p>A decision tree looks something like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_package</span>(<span class="st">&#39;rpart&#39;</span>)
-<span class="kw">load_package</span>(<span class="st">&#39;rpart.plot&#39;</span>)
-<span class="kw">load_package</span>(<span class="st">&#39;magrittr&#39;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;rpart&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;rpart.plot&#39;</span>)
+<span class="kw">library</span>(<span class="st">&#39;magrittr&#39;</span>)
 
 formula <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">rpart</span>(<span class="dt">data =</span> subtraining, <span class="dt">method =</span> <span class="st">&quot;class&quot;</span>, <span class="dt">control =</span> <span class="kw">rpart.control</span>(<span class="dt">cp=</span><span class="fl">0.0001</span>)) <span class="op">%T&gt;%</span>
@@ -1158,7 +1158,7 @@ formula <span class="op">%&gt;%</span>
 <div id="random-forest" class="section level2">
 <h2>Random Forest</h2>
 <p>We then build our model using <code>ranger</code> on the training set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_package</span>(<span class="st">&#39;ranger&#39;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;ranger&#39;</span>)
 
 subtraining <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Cabin) <span class="op">%&gt;%</span>

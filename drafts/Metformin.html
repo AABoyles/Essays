@@ -263,19 +263,19 @@ $(document).ready(function () {
 
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;parallel&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;magrittr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;readr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;plyr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;dplyr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;tidyr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;purrr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;intubate&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;metafor&quot;</span>)
-<span class="co">#load_package(&quot;BayesianFirstAid&quot;)</span>
-<span class="kw">load_package</span>(<span class="st">&quot;bayesmeta&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;plotly&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;knitr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;parallel&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;readr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;plyr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;purrr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;intubate&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;metafor&quot;</span>)
+<span class="co">#library(&quot;BayesianFirstAid&quot;)</span>
+<span class="kw">library</span>(<span class="st">&quot;bayesmeta&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;plotly&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;knitr&quot;</span>)
 knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">infobox</span>(<span class="kw">list</span>(
   <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
@@ -329,7 +329,7 @@ knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="k
 <h3>Causality</h3>
 <p>Metformin has not been much tested in healthy adult populations, although there are a few anecdotes of prophylactic use (eg <a href="http://www.nytimes.com/2016/05/15/magazine/warburg-effect-an-old-idea-revived-starve-cancer-to-death.html" title="&#39;I think there&#39;s no doubt that insulin is pro-cancer&#39;, Watson says, with respect to the link between obesity, diabetes and cancer. &#39;It&#39;s as good a hypothesis as we have now.&#39; Watson takes metformin for cancer prevention; among its many effects, metformin works to lower insulin levels.">James Watson</a>) and a good deal of media attention has been given to a trial planned to launch in 2016: “Targeting Aging with Metformin” (TAME; <a href="http://news.sciencemag.org/biology/2015/09/feature-man-who-wants-beat-back-aging" title="The man who wants to beat back aging: Nir Barzilai hopes to persuade FDA to bless the proposed anti-aging trial, which is unconventional in its goals and design.">profile of proponent Barzilai</a>, <a href="http://healthspancampaign.org/2015/04/28/dr-nir-barzilai-on-the-tame-study/">interview</a>, <a href="http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769" title="Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition"><em>Nature</em> article</a>, <a href="./docs/2016-barzilai.pdf" title="Metformin as a Tool to Target Aging">Barzilai et al 2016</a> advocacy paper). There are some meta-analyses of past clinical trials of diabetic patients, which include estimates for ACM. Interpretation is difficult due to generally small numbers of deaths, differences in what metformin was being compared to, and the generally diseased subjects, but the picture looks mixed:</p>
 <ol style="list-style-type: decimal">
-<li><p>Saenz et al 2005, <a href="http://onlineload_package.wiley.com/doi/10.1002/14651858.CD002966.pub3/epdf/standard">“Metformin monotherapy for type 2 diabetes mellitus”</a>; withdrawn by the Cochrane Collaboration (apparently due to obsolescence)</p></li>
+<li><p>Saenz et al 2005, <a href="http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD002966.pub3/epdf/standard">“Metformin monotherapy for type 2 diabetes mellitus”</a>; withdrawn by the Cochrane Collaboration (apparently due to obsolescence)</p></li>
 <li><p>Selvin et al 2008, <a href="https://archinte.jamanetwork.com/article.aspx?articleid=414585">“Cardiovascular outcomes in trials of oral diabetes medications: a systematic review”</a></p></li>
 </ol>
 <p>Metformin vs anything, RR=0.81.</p>

@@ -3,7 +3,7 @@ title: "The Monte Hall Problem and Optimal Guessing Strategy on the GRE"
 ---
 
 ```{r, results='asis'}
-source("infobox.R")
+source("../helpers/infobox.R")
 meta <- list(
   "Epistemic Status" = "Completely Certain",
   "Status" = "Deprecated",

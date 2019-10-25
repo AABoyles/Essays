@@ -4,7 +4,7 @@ title: "Drafts"
 
 ```{r}
 source("../infobox.R")
-load_package("htmltools")
+library("htmltools")
 
 tags$div(class="panel panel-danger",
   tags$div(class="panel-heading", "Disclaimer"),
@@ -13,11 +13,11 @@ tags$div(class="panel panel-danger",
 ```
 
 ```{r, message=FALSE}
-load_package("plyr")
-load_package("dplyr")
-load_package("magrittr")
-load_package("DT")
-load_package("stringr")
+library("plyr")
+library("dplyr")
+library("magrittr")
+library("DT")
+library("stringr")
 
 cbind(
   Name = list.files(".", "*.Rmd"),

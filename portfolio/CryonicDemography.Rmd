@@ -4,9 +4,9 @@ title: "Cryonic Demography"
 
 ```{r setup, include=FALSE}
 source("../infobox.R")
-load_package('tidyverse')
-load_package('plotly')
-load_package('lubridate')
+library('tidyverse')
+library('plotly')
+library('lubridate')
 ```
 
 Cryonics doesn't have an especially long history or many patients, making it tractable to collect data on nearly all of them. Moreover, cryonicists tend to be inclined towards more and better documentation--after all, who knows what data will be important at revival time? Might as well store as much as possible. Also being of a generally transparent disposition (in the interest of de-mystifying the process for people who might be interested if the process and organization is laid bare before them), they tend to publish case information online:

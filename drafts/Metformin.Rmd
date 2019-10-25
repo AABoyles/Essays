@@ -4,19 +4,19 @@ title: "Metformin"
 
 ```{r, message=FALSE}
 source("infobox.R")
-load_package("parallel")
-load_package("magrittr")
-load_package("readr")
-load_package("plyr")
-load_package("dplyr")
-load_package("tidyr")
-load_package("purrr")
-load_package("intubate")
-load_package("metafor")
-#load_package("BayesianFirstAid")
-load_package("bayesmeta")
-load_package("plotly")
-load_package("knitr")
+library("parallel")
+library("magrittr")
+library("readr")
+library("plyr")
+library("dplyr")
+library("tidyr")
+library("purrr")
+library("intubate")
+library("metafor")
+#library("BayesianFirstAid")
+library("bayesmeta")
+library("plotly")
+library("knitr")
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE)
 ```
 
@@ -39,7 +39,7 @@ Overall, metformin is promising and under my set of assumptions, profitable for 
 
 Metformin has not been much tested in healthy adult populations, although there are a few anecdotes of prophylactic use (eg [James Watson](http://www.nytimes.com/2016/05/15/magazine/warburg-effect-an-old-idea-revived-starve-cancer-to-death.html "'I think there's no doubt that insulin is pro-cancer', Watson says, with respect to the link between obesity, diabetes and cancer. 'It's as good a hypothesis as we have now.' Watson takes metformin for cancer prevention; among its many effects, metformin works to lower insulin levels.")) and a good deal of media attention has been given to a trial planned to launch in 2016: "Targeting Aging with Metformin" (TAME; [profile of proponent Barzilai](http://news.sciencemag.org/biology/2015/09/feature-man-who-wants-beat-back-aging "The man who wants to beat back aging: Nir Barzilai hopes to persuade FDA to bless the proposed anti-aging trial, which is unconventional in its goals and design."), [interview](http://healthspancampaign.org/2015/04/28/dr-nir-barzilai-on-the-tame-study/), [_Nature_ article](http://www.nature.com/news/anti-ageing-pill-pushed-as-bona-fide-drug-1.17769 "Anti-ageing pill pushed as bona fide drug: Regulators asked to consider ageing a treatable condition"), [Barzilai et al 2016](./docs/2016-barzilai.pdf "Metformin as a Tool to Target Aging") advocacy paper). There are some meta-analyses of past clinical trials of diabetic patients, which include estimates for ACM. Interpretation is difficult due to generally small numbers of deaths, differences in what metformin was being compared to, and the generally diseased subjects, but the picture looks mixed:
 
-1.  Saenz et al 2005, ["Metformin monotherapy for type 2 diabetes mellitus"](http://onlineload_package.wiley.com/doi/10.1002/14651858.CD002966.pub3/epdf/standard); withdrawn by the Cochrane Collaboration (apparently due to obsolescence)
+1.  Saenz et al 2005, ["Metformin monotherapy for type 2 diabetes mellitus"](http://onlinelibrary.wiley.com/doi/10.1002/14651858.CD002966.pub3/epdf/standard); withdrawn by the Cochrane Collaboration (apparently due to obsolescence)
 
 2.  Selvin et al 2008, ["Cardiovascular outcomes in trials of oral diabetes medications: a systematic review"](https://archinte.jamanetwork.com/article.aspx?articleid=414585)
 

@@ -1,0 +1,62 @@
+---
+title: "Predictions"
+output:
+  html_document:
+    highlight: pygments
+    css: site_libs/style.css
+    code_folding: show
+    include:
+      after_body: ../post.html
+    lib_dir: site_libs
+    self_contained: no
+---
+
+```{r, message=FALSE}
+library("plyr")
+library("dplyr")
+library("magrittr")
+library("DT")
+library("stringr")
+cbind(
+  Name = list.files("./", "*.Rmd"),
+  ldply(list.files("./", "*.Rmd", full.names = TRUE), file.info)
+) %>%
+  dplyr::filter(! Name %in% c("index.Rmd")) %>%
+  dplyr::arrange(desc(mtime)) %>%
+  dplyr::transmute(
+    `Last Modified` = paste0("<a href='http://github.com/aaboyles/Predictions/commits/gh-pages/", Name, "'>", substr(mtime, 0, 10), "</a>"),
+    Name = paste0("<a href='", str_sub(Name, 1, -5), ".html'>",
+    Name %>%
+      str_replace_all("([a-z0-9])([A-Z])", "\\1 \\2") %>%
+      str_replace_all("([a-z]+)([0-9])", "\\1 \\2") %>%
+      str_sub(1, -5), "</a>"),
+    `Length (Bytes)` = size
+    ) %>%
+  dplyr::select(Name, `Length (Bytes)`, `Last Modified`) %>%
+  datatable(escape = FALSE)
+```
+
+# Links
+
+Yup, a good ol'fashioned links section. Mostly for my convenience while working on predictions.
+
+## Forecasting Tournaments and Prediction Markets
+
+* [Good Judgement Open](https://www.gjopen.com/memberships/4645/scores)
+* [Metaculus](https://www.metaculus.com/accounts/profile/106142/)
+* [Prediction Book](https://predictionbook.com/users/AABoyles)
+* [PredictIt](https://predictit.com/)
+* [PredictWise](https://markets.predictwise.com/markets/)
+
+## Non-crowd forecasts
+
+* [Election Betting Odds](https://electionbettingodds.com/)
+* [Five Thirty Eight](https://projects.fivethirtyeight.com/), especially [Polls](https://projects.fivethirtyeight.com/polls/)
+
+## Tools
+
+* [Guesstimate](https://www.getguesstimate.com/users/60)
+
+## Datasets I Reference Often
+
+* [SSA Actuarial Tables](https://www.ssa.gov/oact/STATS/table4c6.html) - [Clean Version](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7rRJM5TFdRotQZAJnsoDXu7djMHgKZ2esvcvDlvZuLa_qjbBT-d4DbtnzkWC3a7-WvjQkAT5xmbLs/pubhtml?gid=0&single=true)

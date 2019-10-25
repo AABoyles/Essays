@@ -261,7 +261,7 @@ $(document).ready(function () {
 
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;../infobox.R&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;htmltools&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;htmltools&quot;</span>)
 
 tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=</span><span class="st">&quot;panel panel-danger&quot;</span>,
   tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=</span><span class="st">&quot;panel-heading&quot;</span>, <span class="st">&quot;Disclaimer&quot;</span>),
@@ -271,11 +271,11 @@ tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=
 <div class="panel-heading">Disclaimer</div>
 <div class="panel-body">If you've stumbled upon this page, well done. This is the drafts directory. The quality of these varies from a few sentences (or a bare outline) to near-complete essays that I remain unwilling to publish. Note the phrase *unwilling to publish*. It means that I may not actually believe or endorse the content written here. I strongly encourage you *not* to read these; if nothing else, you have better things to do.</div>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_package</span>(<span class="st">&quot;plyr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;dplyr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;magrittr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;DT&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;stringr&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;plyr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;DT&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;stringr&quot;</span>)
 
 <span class="kw">cbind</span>(
   <span class="dt">Name =</span> <span class="kw">list.files</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>),

@@ -3,7 +3,7 @@ title: "The Honest Truth about the Trolley Problem"
 ---
 
 ```{r}
-source("infobox.R")
+source("../helpers/infobox.R")
 infobox(list(
   "Status" = "Complete",
   "Epistemic Status" = "On thin ice over water much too deep for me",

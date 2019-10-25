@@ -5,7 +5,7 @@ title: "Superintelligence Bibliography"
 # Introduction
 
 ```{r, results='asis'}
-source("infobox.R")
+source("../helpers/infobox.R")
 meta <- list(
   "Status" = "Woefully Incomplete",
   "Epistemic Status" = "Relatively Certain",

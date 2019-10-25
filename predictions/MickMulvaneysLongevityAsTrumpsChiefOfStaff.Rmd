@@ -1,0 +1,89 @@
+---
+title: "Will Mick Mulvaney be Replaced as Pres. Trump's Chief of Staff by 2020-01-01?"
+output:
+  html_document:
+    highlight: pygments
+    code_folding: hide
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+This is my analysis for [This Question](https://www.gjopen.com/questions/1100-will-mick-mulvaney-cease-to-be-white-house-chief-of-staff-before-1-january-2020) on [Good Judgement Open](https://www.gjopen.com/).
+
+## Chiefs of Staff
+
+Wikipedia has already assembled [the list of Chiefs of Staff](https://en.wikipedia.org/wiki/White_House_Chief_of_Staff#List_of_White_House_chiefs_of_staff). All we needed to do was compile it into [a slightly cleaner format](https://docs.google.com/spreadsheets/d/e/2PACX-1vRlBabaJaIBmcqvF4QR4uF2megpcCpffX6doQbJaVWq8fMcfmW_iIdqs7iuYvi6LrtJkG5XjXnrybdg/pubhtml?gid=174141588&single=true).
+
+```{r getData}
+library(readr)
+library(dplyr)
+library(DT)
+CoS <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vRlBabaJaIBmcqvF4QR4uF2megpcCpffX6doQbJaVWq8fMcfmW_iIdqs7iuYvi6LrtJkG5XjXnrybdg/pub?gid=174141588&single=true&output=csv')
+CoS %>%
+  select(Name, President, EnteredOffice, LeftOffice, TimeInOffice) %>%
+  arrange(desc(EnteredOffice)) %>%
+  datatable()
+```
+
+## Munging
+
+There are two cases in which the office was vacant: once briefly under Richard Nixon, and for the first 2.5 years of the Carter Administration. It seems like those periods are fundamentally different phenomena than having a Chief of Staff, so we'll just drop them.
+
+```{r}
+filtered <- CoS %>% filter(Name != "(Vacant)")
+```
+
+## Survival
+
+To compute how long a Chief of Staff's tenure will be, let's fit a survival curve!
+
+```{r survival}
+library(survival)
+library(survminer)
+curve <- survfit(Surv(TimeInOffice) ~ 1, data=CoS)
+curve
+```
+
+
+```{r}
+ggsurvplot(curve)
+```
+
+Now, since Mulvaney started on 2019-01-02, he'll need to be in his position 364 days to resolve the question as "No".
+
+```{r continued}
+window <- summary(curve, times=364)
+window
+```
+
+So, the model suggests that he'll have a 364-day survival probability of `r window$surv`, and thus we predict that he'll be gone with probability `r 1-window$surv`
+
+## ...Conditioned on his current longevity
+
+If we condition his survival on the amount of time he's already made it, our estimate should go up. After all, each additional day constitutes additional Bayesian evidence that he will continue to survive.
+
+```{r}
+#remotes::install_github("zabore/condsurv")
+library(condsurv)
+csp <- conditional_surv_est(
+  basekm = curve,
+  t1 = as.integer(difftime(Sys.time(), as.POSIXct('2019-01-02', tz="UTC"), units="days")),
+  t2 = 364
+)$cs_est
+csp
+```
+
+By this perspective, he's `r csp*100`% likely to last through the end of the year, or `r (1-csp)*100`% likely to leave.
+
+## Inside View
+
+**(as of `r Sys.Date()`)**
+
+...suggests we shouldn't be so confident about his longevity:
+
+* 2019-10-22 [Fox News says his job is in jeopardy](https://www.foxnews.com/media/mick-mulvaney-struggles-as-white-house-leaks-say-his-job-is-in-jeopardy)
+* 2019-10-23 [President Trump Denies Rumors about replacement plans](https://www.politico.com/news/2019/10/23/trump-replace-chief-of-staff-mulvaney-055585)
+* 2019-10-24 [Conservatives express support for
+Mulvaney](https://www.politico.com/news/2019/10/24/mick-mulvaney-support-conservatives-056618)

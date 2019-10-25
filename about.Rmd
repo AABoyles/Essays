@@ -5,7 +5,7 @@ title: About
 # Who are you?
 
 ```{r, results='asis'}
-source("infobox.R")
+source("helpers/infobox.R")
 infobox(list(
   "Status" = "Complete",
   "Last Revision" = tags$a(

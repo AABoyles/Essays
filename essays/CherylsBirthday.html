@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -15,31 +16,114 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -69,11 +153,9 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="site_libs/style.css" type="text/css" />
+<link rel="stylesheet" href="site_libs\style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -87,13 +169,18 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -101,34 +188,70 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 64px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
-
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -150,27 +273,76 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 <style type="text/css">
 .code-folding-btn { margin-bottom: 4px; }
 </style>
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -189,6 +361,9 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../predictions/">Predictions</a>
 </li>
 <li>
   <a href="../essays/">Essays</a>
@@ -226,13 +401,13 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>source(&quot;infobox.R&quot;)
-meta &lt;- list(
-  &quot;Genre&quot; = &quot;Fiction&quot;,
-  &quot;Status&quot; = &quot;Complete&quot;,
-  &quot;Last Revision&quot; = file.info(&quot;CherylsBirthday.Rmd&quot;)$mtime
-)
-infobox(meta)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">source</span>(<span class="st">&quot;../helpers/infobox.R&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">meta &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="st">&quot;Genre&quot;</span> =<span class="st"> &quot;Fiction&quot;</span>,</a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Complete&quot;</span>,</a>
+<a class="sourceLine" id="cb1-5" title="5">  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;CherylsBirthday.Rmd&quot;</span>)<span class="op">$</span>mtime</a>
+<a class="sourceLine" id="cb1-6" title="6">)</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">infobox</span>(meta)</a></code></pre></div>
 <div class="infobox">
 <table class="infoboxtable table table-striped">
 <tbody>
@@ -252,7 +427,7 @@ infobox(meta)</code></pre>
 <td>
 <b>Last Revision</b>
 </td>
-<td>2017-12-31 09:30:36</td>
+<td>2019-10-25 16:55:49</td>
 </tr>
 </tbody>
 <tfoot></tfoot>
@@ -284,17 +459,17 @@ infobox(meta)</code></pre>
 <p>Cheryl looked up for just a second, and then replied “You can figure it out too!”</p>
 <p>Daisy, not feeling at all confident, asked “Can I have a hint?”</p>
 <p>Cheryl nodded obligingly, but said nothing. Instead, she took a piece of paper, drew a table on it, and handed it to Daisy. Daisy took a long, considering look and the helpful-but-uninformative data structure.</p>
-<pre class="r"><code>knitr::kable(
-  data.frame(
-    Month = c(&quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;August&quot;),
-    `14th`= c(&quot;-&quot;  , &quot;-&quot;   , &quot;14&quot;  , &quot;14&quot;),
-    `15th`= c(&quot;15&quot; , &quot;-&quot;   , &quot;-&quot;   , &quot;15&quot;),
-    `16th`= c(&quot;16&quot; , &quot;-&quot;   , &quot;16&quot;  , &quot;-&quot; ),
-    `17th`= c(&quot;-&quot;  , &quot;17&quot;  , &quot;-&quot;   , &quot;17&quot;),
-    `18th`= c(&quot;-&quot;  , &quot;18&quot;  , &quot;-&quot;   , &quot;-&quot; ),
-    `19th`= c(&quot;19&quot; , &quot;-&quot;   , &quot;-&quot;   , &quot;-&quot; )
-  )
-)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="dt">Month =</span> <span class="kw">c</span>(<span class="st">&quot;May&quot;</span>, <span class="st">&quot;June&quot;</span>, <span class="st">&quot;July&quot;</span>, <span class="st">&quot;August&quot;</span>),</a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="st">`</span><span class="dt">14th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;-&quot;</span>  , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;14&quot;</span>  , <span class="st">&quot;14&quot;</span>),</a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="st">`</span><span class="dt">15th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;15&quot;</span> , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;15&quot;</span>),</a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="st">`</span><span class="dt">16th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;16&quot;</span> , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;16&quot;</span>  , <span class="st">&quot;-&quot;</span> ),</a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="st">`</span><span class="dt">17th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;-&quot;</span>  , <span class="st">&quot;17&quot;</span>  , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;17&quot;</span>),</a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="st">`</span><span class="dt">18th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;-&quot;</span>  , <span class="st">&quot;18&quot;</span>  , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;-&quot;</span> ),</a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="st">`</span><span class="dt">19th</span><span class="st">`</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;19&quot;</span> , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;-&quot;</span>   , <span class="st">&quot;-&quot;</span> )</a>
+<a class="sourceLine" id="cb2-10" title="10">  )</a>
+<a class="sourceLine" id="cb2-11" title="11">)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -377,6 +552,28 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

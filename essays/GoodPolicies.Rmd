@@ -3,7 +3,7 @@ title: "Good Policies"
 ---
 
 ```{r, results='asis'}
-source("infobox.R")
+source("../helpers/infobox.R")
 meta <- list(
   "Status" = "Perpetually Incomplete",
   "Epistemic Status" = ">50% Certain",

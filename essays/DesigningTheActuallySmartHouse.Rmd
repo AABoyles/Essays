@@ -3,7 +3,7 @@ title: "Designing the Actually Smart House"
 ---
 
 ```{r, results='asis'}
-source("infobox.R")
+source("../helpers/infobox.R")
 infobox(list(
   "Status" = "Update in Progress",
   "Last Revision" = file.info("DesigningTheActuallySmartHouse.Rmd")$mtime

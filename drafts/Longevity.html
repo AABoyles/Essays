@@ -265,13 +265,13 @@ $(document).ready(function () {
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;infobox.R&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;htmltab&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;magrittr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;plyr&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;tidyverse&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;plotly&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;intubate&quot;</span>)
-<span class="kw">load_package</span>(<span class="st">&quot;knitr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;htmltab&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;plyr&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;plotly&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;intubate&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;knitr&quot;</span>)
 knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>, <span class="dt">error =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">infobox</span>(<span class="kw">list</span>(
   <span class="st">&quot;Status&quot;</span> =<span class="st"> &quot;Incomplete&quot;</span>,
@@ -752,7 +752,7 @@ startingN &lt;-<span class="st"> </span><span class="dv">4500</span>
 <p>If you read that heading twice, Yeah, it means exactly what you think it means. Castration is <a href="http://lesswrong.com/lw/lm4/effects_of_castration_on_the_life_expectancy_of/">often reported</a> to increase longevity. However, we can’t be too certain about these reports. For one thing, studies of historical groups of eunuchs are inconsistent (e.g. PMID: 8232579) and often based on small sample sizes (n &lt; 100). Studies of dogs show <a href="http://www.straightdope.com/columns/read/3068/does-castration-longer-life">no large effect of castration</a>.</p>
 <p>The best sort of study might be to do a Mendelian randomization for testosterone levels on a large cohort and see whether a lower genetic load for testosterone affects lifespan (adjusting for other genetic factors). This might be possible to do in the UK Biobank data, as testosterone MR studies have been done before (though I haven’t looked in detail into these studies). <a href="http://www.nature.com/articles/srep21306" class="uri">http://www.nature.com/articles/srep21306</a></p>
 <p>But we could offhandedly reject it as impractical for a number of reasons: too serious a reduction in quality of life (<a href="http://en.wikipedia.org/wiki/Castration%23Medical%20consequences">going well beyond the loss of sex</a>), social ostracism, probably must be done before puberty for any benefits, may not be legal, not verified in any randomized trials (a concern because not all historical eunuch seem to show life expectancy gains; <a href="http://lesswrong.com/lw/lm4/effects_of_castration_on_the_life_expectancy_of/cogu">Egyptian eunuchs reportedly</a> had severe losses), and at least one of the proposed mechanisms may have lost efficacy in the modern setting (greater resistance to infectious diseases).</p>
-<p>Moreover, there may be stronger hypotheses in measuring estrogen, or estrogen/testosterone ratios, or some other similar metric. Female mice tend to outlive male mice. However, <a href="http://onlineload_package.wiley.com/doi/10.1111/acel.12496/full">treating male mice with estrogen leads to substantially longer lifespans</a> (a stronger effect than metformin). Solid research suggests that estrogen treatment in mice promotes stem cell self-renewal, which is a clear mechanism for how estrogen could promote lifespan (and explains its effects on multiple organ systems, including the immune system): <a href="http://www.nature.com/nature/journal/v505/n7484/full/nature12932.html" class="uri">http://www.nature.com/nature/journal/v505/n7484/full/nature12932.html</a></p>
+<p>Moreover, there may be stronger hypotheses in measuring estrogen, or estrogen/testosterone ratios, or some other similar metric. Female mice tend to outlive male mice. However, <a href="http://onlinelibrary.wiley.com/doi/10.1111/acel.12496/full">treating male mice with estrogen leads to substantially longer lifespans</a> (a stronger effect than metformin). Solid research suggests that estrogen treatment in mice promotes stem cell self-renewal, which is a clear mechanism for how estrogen could promote lifespan (and explains its effects on multiple organ systems, including the immune system): <a href="http://www.nature.com/nature/journal/v505/n7484/full/nature12932.html" class="uri">http://www.nature.com/nature/journal/v505/n7484/full/nature12932.html</a></p>
 </div>
 <div id="coffee" class="section level1">
 <h1>Coffee</h1>

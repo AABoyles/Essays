@@ -3,7 +3,7 @@ title: "Cheryl's Birthday"
 ---
 
 ```{r, results='asis'}
-source("infobox.R")
+source("../helpers/infobox.R")
 meta <- list(
   "Genre" = "Fiction",
   "Status" = "Complete",

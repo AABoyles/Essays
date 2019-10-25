@@ -3,12 +3,12 @@ title: "Essays"
 ---
 
 ```{r, message=FALSE}
-source("../infobox.R")
-load_package("plyr")
-load_package("dplyr")
-load_package("magrittr")
-load_package("DT")
-load_package("stringr")
+source("../helpers/infobox.R")
+library("plyr")
+library("dplyr")
+library("magrittr")
+library("DT")
+library("stringr")
 
 cbind(
   Name = list.files(".", "*.Rmd"),

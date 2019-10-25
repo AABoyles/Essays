@@ -5,12 +5,12 @@ title: "Inequality is Instrumental. Poverty is Terminal."
 ```{r setup, message=FALSE}
 source("../infobox.R")
 
-load_package("ShRoud")
-load_package("magrittr")
-load_package("dplyr")
-load_package("intubate")
-load_package("ineq")
-load_package("plotly")
+library("ShRoud")
+library("magrittr")
+library("dplyr")
+library("intubate")
+library("ineq")
+library("plotly")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 
 infobox(list(

@@ -3,7 +3,7 @@ title: "Mere Heroes"
 ---
 
 ```{r, results='asis'}
-source("infobox.R")
+source("../helpers/infobox.R")
 meta <- list(
   "Last Revision" = file.info("MereHeroes.Rmd")$mtime
 )

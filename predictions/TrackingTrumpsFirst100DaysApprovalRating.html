@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Tracking President Trump’s First 100 Days Approval Rating</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs\style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../essays/">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Tracking President Trump’s First 100 Days Approval Rating</h1>
+
+</div>
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(<span class="st">&#39;knitr&#39;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(<span class="st">&#39;lubridate&#39;</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">message =</span> F, <span class="dt">warning =</span> F, <span class="dt">error =</span> F)</a></code></pre></div>
+<p>As part of its <a href="https://www.gjopen.com/challenges/13-the-first-100-days">First 100 Days Challenge</a>, the <a href="https://www.washingtonpost.com/news/monkey-cage/">Monkey Cage blog</a> asked the <a href="https://www.gjopen.com/">Good Judgement Open</a>, “What will President Trump’s approval rating be on April 28, 2017?” From the <a href="https://www.gjopen.com/questions/384-what-will-gallup-report-president-trump-s-net-approval-rating-to-be-on-28-april-2017">question information</a>:</p>
+<blockquote>
+<p>President-elect Trump’s net approval rating has improved since his election in November (<a href="http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx">Gallup</a>). This question will be resolved by subtracting President Trump’s disapproval rating from his approval rating using the “Gallup Daily” Trump job approval rating. Gallup is tracking President Trump’s job approval ratings here: (<a href="http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx">Gallup</a>).</p>
+</blockquote>
+<div id="setting-a-prior" class="section level1">
+<h1>Setting a Prior</h1>
+<p>For an uninformed prior, up to 100% of the population can approve of the President, and likewise 100% can disapprove. This means that valid net approval ratings span from -100 (everyone disapproves) to 100 (everyone approves). The span of -15 to 15 covers 30 of those 200 points, so if we assume that net approval ratings are pulled from a uniform distribution, we should expect to fall in that range with a frequency of around <span class="math inline">\(30/200=.15\)</span>.</p>
+<p>However, this is a poor estimate for a lot of reasons. For one, in general, about half the country is going to disapprove of the President and about half the country will approve of the President. So the distribution of net approvals should have central tendency metrics (mean, mode) fairly close to 0. So, a better prior would come from a normal distribution with a mean of zero. Unfortunately, I don’t see a reasonable strategy to estimating the standard deviation (which we need to fit to a normal distribution properly), because we really don’t have much historical data about net approval ratings. I could take a guess, but I have a better idea. Let’s take a look at some historical approval ratings. For example, here are <a href="http://www.gallup.com/interactives/185273/presidential-job-approval-center.aspx">Barack Obama’s approval ratings</a> over his two terms:</p>
+<p><img src="http://aaboyles.github.io/Essays/imgs/Screenshot_2017-03-16_13-35-53.png" /></p>
+<p>(Again, note that these are <em>approval</em> ratings, not <em>net approval</em> ratings. Gallup only launched the daily net approval rating for the Trump administration. However, since the net approval is the difference between Approval and a metric that is necessarily inversely proportional to it, looking at raw Approval ratings is still pretty instructive.)</p>
+<p>As we can see, there are long term curves in the approval rating, but lots of day-to-day noise. For an even more dramatic perspective on this phenomenon, check out <a href="http://www.gallup.com/interactives/185273/presidential-job-approval-center.aspx">George W. Bush’s approval ratings</a> over his two terms:</p>
+<p><img src="http://aaboyles.github.io/Essays/imgs/Screenshot_2017-03-16_13-36-24.png" /></p>
+<p>Here we can see President Bush enjoying a modest honeymoon period, followed by a huge jump on 9-11. From there, his approval began to degrade again until March 1, 2003, when he launched the US invasion of Iraq, causing another small spike in popularity. Everything else was a long, slow roll down the hill. We can point out these phenomenal changes because they were unusual. From day-to-day, the changes in approval don’t swing widely across the range of possible approval estimates. If you want to predict the President’s approval rating tomorrow, a decent strategy is to just guess what it is today.</p>
+<p>So, what is President Trump’s approval rating today?</p>
+</div>
+<div id="exploratory-data-analysis" class="section level1">
+<h1>Exploratory Data Analysis</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(<span class="st">&#39;tidyverse&#39;</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">library</span>(<span class="st">&#39;xml2&#39;</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co"># Let&#39;s parse the data directly from the Gallup Visualization&#39;s data feed:</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co"># Please excuse this XML hacking.</span></a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7">viz &lt;-<span class="st"> </span><span class="kw">read_xml</span>(<span class="st">&#39;http://news.gallup.com/viz/v1/xml/ad26ce43-218c-4a42-82de-ce878fa6d119/POLLFLEXCHARTVIZ/TRUMPJOBAPPR201617.aspx?&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="st">  </span><span class="kw">xml_child</span>(<span class="dv">3</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="st">  </span><span class="kw">xml_child</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="st">  </span><span class="kw">xml_child</span>(<span class="dv">3</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="st">  </span><span class="kw">xml_children</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="st">  </span><span class="kw">as_list</span>()</a>
+<a class="sourceLine" id="cb2-13" title="13"></a>
+<a class="sourceLine" id="cb2-14" title="14">disapproval &lt;-<span class="st"> </span>viz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="st">  </span><span class="kw">lapply</span>(<span class="cf">function</span>(el){el<span class="op">$</span>p}) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="st">  </span><span class="kw">flatten</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="st">  </span><span class="kw">as.double</span>()</a>
+<a class="sourceLine" id="cb2-18" title="18"></a>
+<a class="sourceLine" id="cb2-19" title="19">approval &lt;-<span class="st"> </span>viz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="st">  </span><span class="kw">lapply</span>(<span class="cf">function</span>(el){el[<span class="dv">2</span>]<span class="op">$</span>p}) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="st">  </span><span class="kw">flatten</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-22" title="22"><span class="st">  </span><span class="kw">as.double</span>()</a>
+<a class="sourceLine" id="cb2-23" title="23"></a>
+<a class="sourceLine" id="cb2-24" title="24">n &lt;-<span class="st"> </span><span class="dv">58</span></a>
+<a class="sourceLine" id="cb2-25" title="25"></a>
+<a class="sourceLine" id="cb2-26" title="26">date &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;17/01/21&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span>n</a>
+<a class="sourceLine" id="cb2-27" title="27"></a>
+<a class="sourceLine" id="cb2-28" title="28">ratings &lt;-<span class="st"> </span><span class="kw">tibble</span>(date, <span class="dt">approval =</span> approval[<span class="dv">1</span><span class="op">:</span>n], <span class="dt">disapproval =</span> disapproval[<span class="dv">1</span><span class="op">:</span>n]) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-29" title="29"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">net_approval =</span> approval <span class="op">-</span><span class="st"> </span>disapproval)</a>
+<a class="sourceLine" id="cb2-30" title="30"></a>
+<a class="sourceLine" id="cb2-31" title="31">ratings <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tail</span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">approval</th>
+<th align="right">disapproval</th>
+<th align="right">net_approval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2017-03-20</td>
+<td align="right">39</td>
+<td align="right">56</td>
+<td align="right">-17</td>
+</tr>
+</tbody>
+</table>
+<p>Not great. If we guess that the President’s approval rating will be what it is today, it’s definitely below the -15:15 band. How’s he been doing?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">library</span>(<span class="st">&#39;plotly&#39;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">plot_ly</span>(ratings, <span class="dt">x =</span> <span class="op">~</span>date, <span class="dt">y =</span> <span class="op">~</span>net_approval, <span class="dt">name =</span> <span class="st">&quot;Net Approval&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>)</a></code></pre></div>
+<div id="htmlwidget-fd8de521032b33d7eb3a" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fd8de521032b33d7eb3a">{"x":{"visdat":{"cc682edf3020":["function () ","plotlyVisDat"]},"cur_data":"cc682edf3020","attrs":{"cc682edf3020":{"x":{},"y":{},"mode":"lines","name":"Net Approval","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"net_approval"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20"],"y":[0,-1,1,1,-3,-8,-9,-7,-8,-9,-9,-9,-6,-11,-10,-12,-9,-9,-10,-12,-15,-14,-14,-13,-14,-18,-15,-14,-11,-12,-10,-9,-9,-12,-13,-12,-12,-9,-8,-8,-8,-7,-6,-8,-11,-12,-10,-5,-4,-9,-16,-14,-11,-13,-15,-21,-16,-17],"mode":"lines","name":"Net Approval","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Not good at all. It seems President Trump has skipped the honeymoon and dived straight into the -10’s doldrums which plague Presidents late in their terms.</p>
+<p>To take a simple frequentist approach, let’s just count the number of times his approval rating has fallen in each band.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">library</span>(<span class="st">&#39;pander&#39;</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">library</span>(<span class="st">&#39;tidyr&#39;</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4">temp &lt;-<span class="st"> </span>ratings <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">band =</span> <span class="kw">if_else</span>(net_approval <span class="op">&gt;=</span><span class="st"> </span><span class="dv">-15</span>, <span class="st">&quot;middle&quot;</span>, <span class="st">&quot;lower&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="st">  </span><span class="kw">group_by</span>(band) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">number =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="st">  </span><span class="kw">spread</span>(band, number)</a>
+<a class="sourceLine" id="cb4-9" title="9"></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="kw">pander</span>(temp)</a></code></pre></div>
+<table style="width:24%;">
+<colgroup>
+<col width="11%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">lower</th>
+<th align="center">middle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">53</td>
+</tr>
+</tbody>
+</table>
+<p>OK, so let’s say that lower-band probability is something like 0.09 and the middle-band probability is 0.91, and the high-band probability is very small.</p>
+<p>I strongly dislike <a href="http://lesswrong.com/lw/mp/0_and_1_are_not_probabilities/">probability estimates of 0 and 1</a>, so instead of saying the high-band probability is zero, I’m going to invoke the <a href="https://en.wikipedia.org/wiki/Rule_of_three_(statistics)">rule of three</a>. The probability that the net approval is more than +15 is probably less than 0.05. This is curious, as it implies the low-band and high-band probabilities are similar, despite the fact we’ve observed low-band outcomes and have not observed high-band outcomes. So, in the interest of preserving my tiny bias against absolute certainty, I’ll call the high-band probability 1% and deduct it from the middle-band.</p>
+<p>At this point, this is probably a pretty good basis for a GJO forecast. But can we do better?</p>
+</div>
+<div id="real-forecasting" class="section level1">
+<h1>Real Forecasting</h1>
+<p>The “forecast” we computed above is a simple estimating of a probability distribution over outcomes for a single point. In Data Science Parlance, however, “forecasting” refers to something related but more general. Forecasting typically means to infer trends based solely on cyclicalities in the data. Data we care about tends to vary regularly across times of day, day of week, month of year, etc. If there’s a long-term trend in these data, we may be able to catch wind of it by pitting our net approval data against an off-the-shelf forecasting tool. There’s a whole class of interesting statistical tools to do this (<a href="https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average">ARIMA</a> is prehaps the most recognizable). Since it’s shiny and new, let’s try out Facebook’s whiz-bang new time-series tool, <a href="https://facebookincubator.github.io/prophet/">Prophet</a>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">library</span>(<span class="st">&quot;prophet&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3">temp &lt;-<span class="st"> </span>ratings <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>approval, <span class="op">-</span>disapproval) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename</span>(</a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="dt">ds =</span> date,</a>
+<a class="sourceLine" id="cb5-7" title="7">    <span class="dt">y =</span> net_approval</a>
+<a class="sourceLine" id="cb5-8" title="8">  )</a>
+<a class="sourceLine" id="cb5-9" title="9"></a>
+<a class="sourceLine" id="cb5-10" title="10">m &lt;-<span class="st"> </span><span class="kw">prophet</span>(temp, <span class="dt">yearly.seasonality =</span> F, <span class="dt">mcmc.samples =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-11" title="11"></a>
+<a class="sourceLine" id="cb5-12" title="12">future &lt;-<span class="st"> </span><span class="kw">make_future_dataframe</span>(m, <span class="dt">periods =</span> <span class="dv">100</span><span class="op">-</span>n)</a>
+<a class="sourceLine" id="cb5-13" title="13"></a>
+<a class="sourceLine" id="cb5-14" title="14">forecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">plot_ly</span>(forecast, <span class="dt">x =</span> <span class="op">~</span>ds, <span class="dt">y =</span> <span class="op">~</span>yhat_upper, <span class="dt">name =</span> <span class="st">&quot;Upper bound&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">y =</span> <span class="op">~</span>yhat, <span class="dt">name =</span> <span class="st">&quot;Estimate&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">y =</span> <span class="op">~</span>yhat_lower, <span class="dt">name =</span> <span class="st">&quot;Lower Bound&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">data =</span> temp, <span class="dt">y =</span> <span class="op">~</span>y, <span class="dt">name =</span> <span class="st">&quot;Actual&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-40e46ae0b2bc168b4449" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-40e46ae0b2bc168b4449">{"x":{"visdat":{"cc6875071e6e":["function () ","plotlyVisDat"],"cc68570371fe":["function () ","data"]},"cur_data":"cc68570371fe","attrs":{"cc6875071e6e":{"x":{},"y":{},"mode":"lines","name":"Upper bound","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"cc6875071e6e.1":{"x":{},"y":{},"mode":"lines","name":"Estimate","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true},"cc6875071e6e.2":{"x":{},"y":{},"mode":"lines","name":"Lower Bound","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true},"cc68570371fe":{"x":{},"y":{},"mode":"lines","name":"Actual","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"ds"},"yaxis":{"domain":[0,1],"automargin":true,"title":"yhat_upper"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[0.610159323545058,-1.51372858370412,0.60357718710053,-0.0169248333764396,-0.885803458267596,-1.00737975391447,-2.95401611492506,-1.22022267649745,-3.69498643209872,-1.7928749721914,-1.45767968448881,-2.5558301212995,-2.85169864505317,-4.57911822473203,-2.68396383905595,-4.43959991582053,-2.8344928314639,-3.15489294984651,-4.00456491400179,-3.84829625576599,-5.88676688520533,-4.02781144786313,-6.12731158127339,-4.25575804902514,-3.96801464454987,-5.24302195572469,-4.9537934351587,-7.01558515559139,-4.9677519727759,-6.61937096450632,-5.13469119623154,-4.84759252387641,-5.88453640090446,-5.88629848604923,-7.43084580818165,-5.73570389372833,-7.22375096425396,-5.5190065240952,-5.05566894503779,-5.91342311180038,-6.26842387700238,-8.28443795417314,-6.1745000375612,-7.66926083852174,-6.41517714405056,-5.50036797345984,-6.82253898801364,-7.03884437818412,-8.78824763597012,-6.28421560907332,-8.57474145275005,-6.50819429888745,-6.32508550594349,-7.55776581203082,-7.59094317973562,-9.00183283056662,-6.66568555755991,-9.12773670408277,-6.73441232968906,-6.35659740794265,-8.00988879475892,-7.66556761980526,-9.43456447124661,-7.8625420359819,-9.31352209809231,-7.99198590817868,-7.49313410121114,-8.01714491512196,-8.22781779979013,-9.93677587211944,-7.4506559460857,-9.69148262979715,-8.11482749869457,-7.65348147386988,-8.69509550630193,-8.67584342369598,-10.3970461414806,-8.04238136277269,-9.87980544922263,-8.56665680829585,-7.45590582721104,-8.86176586082366,-8.72036191815769,-10.4352887862221,-8.34880149868865,-10.2068862419588,-8.01879190426977,-7.48206961086179,-8.50935056711171,-9.00648008293908,-10.7134452171052,-8.30823648642294,-9.84070990998718,-8.1831823094691,-7.26575365553006,-9.30801338145996,-8.81202276569068,-10.5289493083477,-8.51547561684349,-10.3213880412795],"mode":"lines","name":"Upper bound","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[-4.54753399625883,-6.55271610597732,-5.0499296404588,-4.84387868373478,-6.19512577587806,-6.22888151865933,-8.12164465681683,-6.30030705967556,-8.29987623976449,-6.79147684461165,-6.57025971676682,-7.90634063777467,-7.91710686213978,-9.78820239791535,-7.93482084340054,-9.89562652032015,-8.3484636220021,-8.08032989017654,-9.36949420720391,-9.32486520984045,-11.1405655238908,-9.22279886476838,-11.1313814191225,-9.51276639426808,-9.16488397595683,-10.3742996064985,-10.2565467584062,-11.9991232217258,-10.0187156278182,-11.864657247394,-10.1969301227088,-9.82359294718423,-10.9987679999956,-10.8519522205649,-12.5654657525487,-10.5626392679613,-12.3861619968511,-10.7025797899259,-10.3133875321529,-11.487931160639,-11.3461775767461,-13.0666475588795,-11.0778939711745,-12.9154895969536,-11.2482625670161,-10.8754254862342,-12.0658906623629,-11.940058626125,-13.6745559013009,-11.6949524411762,-13.5416981945297,-11.8804753726497,-11.5136424999222,-12.7041076760533,-12.57827563982,-14.3127729149975,-12.3331694548733,-14.1799152082298,-12.5186923863491,-12.1518595136245,-13.3423246897522,-13.2164926535151,-14.9509899286929,-12.9713864685705,-14.8181322219301,-13.1569094000464,-12.7900765273194,-13.9805417034511,-13.8547096672153,-15.5892069423916,-13.6096034822656,-15.4563492356211,-13.7951264137438,-13.4282935410143,-14.61875871715,-14.4929266809144,-16.227423956087,-14.2478204959627,-16.0945662493214,-14.4333434274347,-14.0665105547096,-15.2569757308404,-15.1311436946064,-16.8656409697836,-14.8860375096598,-16.7327832630172,-15.0715604411405,-14.7047275684115,-15.895192744543,-15.7693607083066,-17.5038579834803,-15.5242545233568,-17.3710002767127,-15.7097774548315,-15.3429445821064,-16.5334097582358,-16.4075777220017,-18.1420749971777,-16.1624715370521,-18.0092172904082],"mode":"lines","name":"Estimate","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[-9.91483971852276,-11.8084564320914,-10.3812237739049,-9.92541096832197,-11.395567865962,-11.7110615698072,-13.4703145020039,-11.3131024807828,-13.7137598811067,-11.654498887012,-11.834964306162,-12.7971218150141,-12.8785748691322,-15.0725791891607,-13.2808341487076,-15.0142558340393,-13.2924731208773,-13.088716919869,-14.1097601416971,-14.4096078234942,-16.5408616850451,-14.3061404013072,-16.3580669529455,-14.7642822954972,-14.5076711202342,-15.4687486798604,-15.3518691390967,-17.4814635420063,-14.9329127719443,-17.365359230303,-14.9465585995451,-15.0791232320904,-16.1789703664453,-16.200369357392,-17.6822568414268,-15.878129450797,-17.7537924471306,-16.0285629735437,-15.2590445117598,-16.572565520468,-16.481257567908,-18.2747277869364,-16.2750109510276,-17.7181834837973,-16.3279272307068,-16.0123532551053,-17.128376389137,-16.9313574844304,-19.5178361214147,-16.5380237877059,-18.6942951432887,-16.8544265916973,-16.8924509293414,-17.8920641405633,-17.8419880063331,-19.461133286049,-17.7194835453523,-19.8442838178162,-18.0120698494205,-17.4832898532859,-18.8170620721565,-18.3549280087459,-20.4069650000945,-18.7625106900299,-20.3628746036591,-18.8062143392243,-18.7699118329813,-19.7418711490807,-19.3972463084039,-21.3314594764516,-19.5729600206773,-21.5251040754669,-19.5329573601733,-19.3514697722249,-20.5286493647662,-20.4612986214168,-22.1374779644263,-20.5374169814251,-22.488109433698,-20.2940575542323,-20.4154915636592,-21.4800249358976,-21.3835580630342,-23.2304066885696,-21.4875954339225,-23.2597099448652,-21.7355395521038,-21.635636148527,-22.7967065857402,-22.8216777213661,-24.102214507657,-22.8190717786211,-24.6890275236952,-22.7793030333577,-23.0228468586392,-23.873151704573,-24.0947081241062,-25.931694715427,-24.177140965793,-25.8098725899803],"mode":"lines","name":"Lower Bound","type":"scatter","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"line":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20"],"y":[0,-1,1,1,-3,-8,-9,-7,-8,-9,-9,-9,-6,-11,-10,-12,-9,-9,-10,-12,-15,-14,-14,-13,-14,-18,-15,-14,-11,-12,-10,-9,-9,-12,-13,-12,-12,-9,-8,-8,-8,-7,-6,-8,-11,-12,-10,-5,-4,-9,-16,-14,-11,-13,-15,-21,-16,-17],"mode":"lines","name":"Actual","type":"scatter","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"line":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>So, Prophet believes that President Trump’s approval is degrading basically linearly. More specifically…</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">prophet_plot_components</span>(m, forecast)</a></code></pre></div>
+<p><img src="TrackingTrumpsFirst100DaysApprovalRating_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>…From these component plots we can see than there’s a recurring weekly pattern (it seems Sundays and Wednesdays are the best for the President), superimposed over a linear decrease. If you cut the plotly graph above into week-long chunks, you’ll see that they all follow this day-of-week trajectory.</p>
+<div id="scoring-the-prophet" class="section level2">
+<h2>Scoring the Prophet</h2>
+<p>In the Good Judgement Open, one doesn’t really get credit for the binary accuracy of their forecasts. Rather, one is rewarded for minimizing error. So, let’s measure Prophet’s error. To do this, I’m going to use <a href="https://en.wikipedia.org/wiki/Mean_absolute_error">Mean Absolute Error</a>, which is just the arithmetic mean of the absolute value of the differences between the estimates and the empirical values.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">MAE &lt;-<span class="st"> </span>(temp<span class="op">$</span>y <span class="op">-</span><span class="st"> </span>forecast[<span class="dv">1</span><span class="op">:</span>n,]<span class="op">$</span>yhat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="st">  </span><span class="kw">abs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="st">  </span><span class="kw">mean</span>()</a>
+<a class="sourceLine" id="cb8-4" title="4"></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="kw">tibble</span>(<span class="dt">MAE =</span> MAE) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="st">  </span><span class="kw">pander</span>()</a></code></pre></div>
+<table style="width:11%;">
+<colgroup>
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">2.744</td>
+</tr>
+</tbody>
+</table>
+<p>So, on average, the Prophet estimate has been off by about 2.74 points. It’s interesting to note that this is really close to Gallup’s own 3-point margin of error, so refining these predictions for higher accuracy doesn’t make a lot of sense.</p>
+</div>
+<div id="crunching-out-an-estimate" class="section level2">
+<h2>Crunching out an Estimate</h2>
+<p>Let’s start again with the base frequency-derived estimates: High ~1%, Middle 93%, Low ~5%. How should I update based on Prophet’s estimate? Well, in all honesty, I don’t know exactly. I don’t know the distribution from which Prophet draws its outcomes (I’m guessing it’s normal). But I don’t believe Prophet has much to find with the amount of data available yet. I could assume the distribution is normal and update my estimates using Bayes’ formula, but the conclusion would be that the low- and middle-band probabilities are both large (&gt;10%), and the high band probability is tiny. But maybe there’s a refinement to our approach which could help.</p>
+</div>
+</div>
+<div id="forecasting-non-derived-signals" class="section level1">
+<h1>Forecasting non-derived Signals</h1>
+<p>This is a slightly weird forecasting problem, as we’re trying to forecast the outcome of a metric which is derived from two distinct-but-highly-correlated metrics: <em>approval</em>, and <em>disapproval</em>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">model &lt;-<span class="st"> </span><span class="kw">lm</span>(approval <span class="op">~</span><span class="st"> </span>disapproval, <span class="dt">data =</span> ratings)</a>
+<a class="sourceLine" id="cb9-2" title="2"></a>
+<a class="sourceLine" id="cb9-3" title="3">ratings <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw">plot_ly</span>(<span class="dt">x =</span> <span class="op">~</span>disapproval<span class="op">+</span><span class="kw">runif</span>(n,<span class="op">-</span>.<span class="dv">3</span>,.<span class="dv">3</span>), <span class="dt">y =</span> <span class="op">~</span>approval<span class="op">+</span><span class="kw">runif</span>(n,<span class="op">-</span>.<span class="dv">3</span>,.<span class="dv">3</span>), <span class="dt">type =</span> <span class="st">&quot;scatter&quot;</span>, <span class="dt">name =</span> <span class="st">&quot;Observations&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="st">  </span><span class="kw">add_trace</span>(<span class="dt">x =</span> <span class="op">~</span>disapproval, <span class="dt">y =</span> <span class="op">~</span><span class="kw">fitted</span>(model), <span class="dt">mode =</span> <span class="st">&quot;lines&quot;</span>, <span class="dt">name =</span> <span class="st">&quot;LM&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-33c1d40242a209c3e37d" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-33c1d40242a209c3e37d">{"x":{"visdat":{"cc6822ab3653":["function () ","plotlyVisDat"]},"cur_data":"cc6822ab3653","attrs":{"cc6822ab3653":{"x":{},"y":{},"name":"Observations","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"cc6822ab3653.1":{"x":{},"y":{},"name":"LM","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"disapproval + runif(n, -0.3, 0.3)"},"yaxis":{"domain":[0,1],"automargin":true,"title":"approval + runif(n, -0.3, 0.3)"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[45.1682288382668,46.2413340468891,44.9593305325136,45.2473632793408,48.2771557754371,49.7049464734271,50.8788692520931,49.93183319862,51.1162085606251,52.1554376370274,51.942469632579,51.9809920153581,50.06621715324,52.7362067265436,52.2643426858354,54.2011741229799,52.2476940795314,52.0146231494378,52.0434386170935,52.9972903487738,54.7133299993351,54.2590302096214,54.1695904351305,52.9282354339026,54.2913548081182,56.0347020359244,55.247803181177,54.7396337929647,53.293174535362,53.2306760271546,51.8124540013727,51.8508098536171,52.1135477891658,53.2536791270599,54.0284395860974,54.0572622194421,53.9051678655669,51.7603976272047,51.2656986144371,51.239693336701,50.8251574221533,50.0572085372638,49.8467446963768,50.8408081607893,53.0539797349833,52.9290199483279,51.9355742240325,48.9129831735976,48.8955773910042,51.1868050262332,55.0333373844158,54.0880999986548,53.2084441333078,53.7974148223177,55.224734994676,57.778581896238,54.8802202102263,55.8741732471157],"y":[44.7439954981674,45.0191621541046,46.2364742095117,46.0196649457794,45.2523372748867,42.2426829549484,42.2297266302165,43.1549153884407,42.7981173305772,42.8486619424541,42.9503726242576,43.1471715323627,43.7971105797682,41.7990910279099,41.8980053192005,42.2161791030318,43.0916988414247,43.1629702467937,41.9654155526776,40.8962610571645,39.933612027904,40.2055312656332,40.105568503309,40.2310417946894,40.0577903272584,37.9027768113185,40.2971693131141,40.8933335894719,42.0908243990969,41.1556617555674,41.8318726337515,42.7187560883351,43.0779264741577,40.9018907536287,40.8148114525713,41.7305055661127,41.7509460100438,42.8425021249801,43.1487195396796,42.9551282608882,42.8948813531548,42.9947618916631,44.1855965191033,43.1701222139411,41.7026494159363,41.275113022374,42.0011301813181,44.00077265976,45.2596877336036,42.0615009816829,38.9423173469491,39.7098412809428,42.1636557599064,41.2968398501165,39.7492746920791,37.2491683587898,39.1640893322881,39.2822580196895],"name":"Observations","type":"scatter","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[45,46,45,45,48,50,51,50,51,52,52,52,50,53,52,54,52,52,52,53,55,54,54,53,54,56,55,55,53,53,52,52,52,53,54,54,54,52,51,51,51,50,50,51,53,53,52,49,49,51,55,54,53,54,55,58,55,56],"y":[46.5219837903667,45.883844958636,46.5219837903666,46.5219837903666,44.6075672951749,43.3312896317138,42.6931507999832,43.3312896317138,42.6931507999832,42.0550119682526,42.0550119682526,42.0550119682526,43.3312896317138,41.4168731365221,42.0550119682526,40.7787343047915,42.0550119682526,42.0550119682526,42.0550119682526,41.4168731365221,40.1405954730609,40.7787343047915,40.7787343047915,41.4168731365221,40.7787343047915,39.5024566413304,40.1405954730609,40.1405954730609,41.4168731365221,41.4168731365221,42.0550119682526,42.0550119682526,42.0550119682526,41.4168731365221,40.7787343047915,40.7787343047915,40.7787343047915,42.0550119682526,42.6931507999832,42.6931507999832,42.6931507999832,43.3312896317138,43.3312896317138,42.6931507999832,41.4168731365221,41.4168731365221,42.0550119682526,43.9694284634443,43.9694284634443,42.6931507999832,40.1405954730609,40.7787343047915,41.4168731365221,40.7787343047915,40.1405954730609,38.2261789778692,40.1405954730609,39.5024566413304],"name":"LM","type":"scatter","mode":"lines","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">model <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="st">  </span><span class="kw">summary</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="st">  </span><span class="kw">pander</span>()</a></code></pre></div>
+<table style="width:89%;">
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">75.24</td>
+<td align="center">2.029</td>
+<td align="center">37.08</td>
+<td align="center">4.25e-41</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>disapproval</strong></td>
+<td align="center">-0.6381</td>
+<td align="center">0.03891</td>
+<td align="center">-16.4</td>
+<td align="center">4.814e-23</td>
+</tr>
+</tbody>
+</table>
+<table style="width:88%;">
+<caption>Fitting linear model: approval ~ disapproval</caption>
+<colgroup>
+<col width="20%" />
+<col width="30%" />
+<col width="12%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Observations</th>
+<th align="center">Residual Std. Error</th>
+<th align="center"><span class="math inline">\(R^2\)</span></th>
+<th align="center">Adjusted <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">58</td>
+<td align="center">0.7884</td>
+<td align="center">0.8277</td>
+<td align="center">0.8246</td>
+</tr>
+</tbody>
+</table>
+<p>[Note that these points are jittered because scatterplots of integers tend to overplot.]</p>
+<p>So, perhaps we can do better by forecasting <em>each</em>, and then deriving the net approval from the forecast. There are good reasons not to do this! Think of a model as an engine. You feed it gasoline (empirical data) and it does work (good predictions), but with an undesirable side effect–it also emits toxic gas (error). By adding a second engine, we may produce twice as many predictions (which <em>doesn’t actually help us</em>), but we’ll also have two error generators (which <em>actually hurts us</em>).</p>
+<p>That said, the two streams aren’t perfectly correlated, and this is instructive. One may be acting in a way that is systematically (as opposed to randomly) distinct. Imagine two mobs of people. On the left, people who disapprove of the President. On the right, people who approve of him. Some people will move between the two mobs in response to things that happen. Some people will not. There’s also an amorphous blob of people in the middle who don’t know how they feel, or just don’t feel strongly about the President. Here’s a map of the political blogosphere that somewhat resembles what I’m envisioning:</p>
+<p><img src="http://adequatebird.com/wp-content/uploads/2010/05/Figure-1-Community-structure-of-political-blogs-expanded-set.jpg" /></p>
+<p>If people can move between these camps independently (i.e. the decision to move from “approve” to “don’t know” is distinct from the decision to move from “don’t know” to “disapprove”), then maybe forecasting them separately makes sense. Let’s just try it and see.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">dApproval &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ds =</span> date, <span class="dt">y =</span> ratings<span class="op">$</span>approval)</a>
+<a class="sourceLine" id="cb11-2" title="2"></a>
+<a class="sourceLine" id="cb11-3" title="3">m &lt;-<span class="st"> </span><span class="kw">prophet</span>(dApproval, <span class="dt">yearly.seasonality =</span> F)</a>
+<a class="sourceLine" id="cb11-4" title="4"></a>
+<a class="sourceLine" id="cb11-5" title="5">approvalforecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)</a>
+<a class="sourceLine" id="cb11-6" title="6"></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="kw">plot_ly</span>(approvalforecast, <span class="dt">x =</span> <span class="op">~</span>ds, <span class="dt">y =</span> <span class="op">~</span>yhat, <span class="dt">name =</span> <span class="st">&quot;Estimate&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-8" title="8"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">data =</span> dApproval, <span class="dt">y =</span> <span class="op">~</span>y, <span class="dt">name =</span> <span class="st">&quot;Actual&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-3fb09d9904b344105e0f" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3fb09d9904b344105e0f">{"x":{"visdat":{"cc683fea2900":["function () ","plotlyVisDat"],"cc68726543e9":["function () ","data"]},"cur_data":"cc68726543e9","attrs":{"cc683fea2900":{"x":{},"y":{},"mode":"lines","name":"Estimate","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"cc68726543e9":{"x":{},"y":{},"mode":"lines","name":"Actual","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"ds"},"yaxis":{"domain":[0,1],"automargin":true,"title":"yhat"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[44.822384480719,44.184591294543,44.6470573128412,44.804506213991,44.2119997638949,43.8694532710982,43.2769167337371,43.5816029158336,42.9438097303208,43.4062757492834,43.5637248565272,42.9712186125287,42.6286723269984,42.0361359969348,42.3408225885305,41.7030299393842,42.165496494712,42.3229459640209,41.730440082087,41.3880917205216,40.7957533144222,41.1010485036642,40.4638643237162,40.9275468859395,41.3632862516722,41.0490702661621,40.9849431318134,40.6708259529307,41.2539314934861,40.8945576648501,41.6354430398072,42.0713112982951,41.7572242062208,41.6930970719696,41.3789798931841,41.9620854341927,41.6027116060116,42.3435833358147,42.7794379491516,42.4651411383536,42.400804285062,42.0863919040368,42.6686306210948,42.3083899689611,42.7235946672589,42.8337822490904,42.1938357722765,41.8038492529665,41.1638726891223,41.421118844736,40.7358856311595,41.1509116220558,41.2609204964861,40.6209740196719,40.2309875003605,39.5910109365159,39.8482570921294,39.1630238785523,39.5780498694482,39.6880587438782,39.0481122670647,38.6581257477546,38.0181491839097,38.2753953395227,37.5901621259448,38.0051881168418,38.1151969912721,37.4752505144574,37.0852639951472,36.4452874313027,36.7025335869167,36.0173003733398,36.4323263642354,36.5423352386661,35.9023887618502,35.5124022425402,34.8724256786965,35.1296718343101,34.4444386207323,34.8594646116306,34.9694734860599,34.3295270092456,33.9395404899348,33.2995639260901,33.5568100817034,32.8715768681259,33.2866028590214,33.3966117334522,32.7566652566381,32.3666787373274,31.7267021734836,31.983948329097,31.2987151155198,31.7137411064166,31.8237499808462,31.1838035040323,30.7938169847214,30.1538404208769,30.4110865764908,29.7258533629136],"mode":"lines","name":"Estimate","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20"],"y":[45,45,46,46,45,42,42,43,43,43,43,43,44,42,42,42,43,43,42,41,40,40,40,40,40,38,40,41,42,41,42,43,43,41,41,42,42,43,43,43,43,43,44,43,42,41,42,44,45,42,39,40,42,41,40,37,39,39],"mode":"lines","name":"Actual","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Here is Prophet’s estimate of the Approval rating. It’s trending downward.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">dDisapproval &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ds =</span> date, <span class="dt">y =</span> ratings<span class="op">$</span>disapproval)</a>
+<a class="sourceLine" id="cb12-2" title="2"></a>
+<a class="sourceLine" id="cb12-3" title="3">m &lt;-<span class="st"> </span><span class="kw">prophet</span>(dDisapproval, <span class="dt">yearly.seasonality =</span> F)</a>
+<a class="sourceLine" id="cb12-4" title="4"></a>
+<a class="sourceLine" id="cb12-5" title="5">disapprovalforecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)</a>
+<a class="sourceLine" id="cb12-6" title="6"></a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="kw">plot_ly</span>(disapprovalforecast, <span class="dt">x =</span> <span class="op">~</span>ds, <span class="dt">y =</span> <span class="op">~</span>yhat, <span class="dt">name =</span> <span class="st">&quot;Estimate&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-8" title="8"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">data =</span> dDisapproval, <span class="dt">y =</span> <span class="op">~</span>y, <span class="dt">name =</span> <span class="st">&quot;Actual&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-ef80c783a99a9da4334a" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ef80c783a99a9da4334a">{"x":{"visdat":{"cc685243286f":["function () ","plotlyVisDat"],"cc68614565ce":["function () ","data"]},"cur_data":"cc68614565ce","attrs":{"cc685243286f":{"x":{},"y":{},"mode":"lines","name":"Estimate","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"cc68614565ce":{"x":{},"y":{},"mode":"lines","name":"Actual","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"ds"},"yaxis":{"domain":[0,1],"automargin":true,"title":"yhat"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[45.880813021115,47.3183450934981,46.9246208457658,47.1668488538555,48.1588958443316,48.4011335041274,49.8931635188264,49.400334655518,50.8376980580321,50.4438051404282,50.4730567724268,51.2521273868036,51.2811745811024,52.5600467496633,51.8533929582038,53.0765341103423,52.4684189423651,52.3855020952655,53.052404230544,52.9694331746973,54.1362870931145,53.3180044012509,54.4300500284841,53.7107823738908,53.3265792723549,53.6921951531971,53.3073403363579,54.1723104937812,53.0521355503426,53.8622889260043,52.8411635727554,52.4559904742803,52.8206363594808,52.4354729105009,53.3001344357848,52.1799370797695,52.9900680428508,51.9689426881649,51.5837695882483,51.9484154716155,51.5632520225879,52.4283642900138,51.3091614484743,52.1202869260355,51.467000251817,51.4496658323698,52.1830256817005,52.1665761986434,53.3999516898494,52.6484683030476,53.8273132353428,53.1749018475244,53.1584427144755,53.8918025638079,53.8753530807529,55.1087285719599,54.3572451851583,55.5360901174551,54.8836787296363,54.867219596589,55.6005794459193,55.5841299628625,56.8175054540698,56.0660220672691,57.2448669995676,56.5924556117471,56.5759964786984,57.3093563280308,57.2929068449748,58.526282336181,57.7747989493785,58.9536438816748,58.3012324938579,58.2847733608078,59.0181332101423,59.0016837270864,60.2350592182909,59.4835758314892,60.6624207637873,60.0100093759652,59.9935502429176,60.7269100922496,60.7104606091944,61.9438361004014,61.1923527135999,62.3711976458972,61.7187862580806,61.7023271250307,62.4356869743634,62.4192374913067,63.6526129825119,62.9011295957104,64.079974528007,63.4275631401879,63.4111040071402,64.1444638564716,64.1280143734163,65.3613898646225,64.6099064778201,65.7887514101167],"mode":"lines","name":"Estimate","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20"],"y":[45,46,45,45,48,50,51,50,51,52,52,52,50,53,52,54,52,52,52,53,55,54,54,53,54,56,55,55,53,53,52,52,52,53,54,54,54,52,51,51,51,50,50,51,53,53,52,49,49,51,55,54,53,54,55,58,55,56],"mode":"lines","name":"Actual","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>And here is Prophet’s estimate of the Disapproval rating. It’s trending upward. So, now if we combine the two…</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">temp &lt;-<span class="st"> </span>approvalforecast <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">approval =</span> yhat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="st">  </span><span class="kw">cbind</span>(<span class="dt">disapproval =</span> disapprovalforecast<span class="op">$</span>yhat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">net =</span> approval <span class="op">-</span><span class="st"> </span>disapproval)</a>
+<a class="sourceLine" id="cb13-5" title="5"></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="kw">plot_ly</span>(temp, <span class="dt">x =</span> <span class="op">~</span>ds, <span class="dt">y =</span> <span class="op">~</span>net, <span class="dt">name =</span> <span class="st">&quot;Estimate&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">data =</span> ratings, <span class="dt">x =</span> <span class="op">~</span>date, <span class="dt">y =</span> <span class="op">~</span>net_approval, <span class="dt">name =</span> <span class="st">&quot;Actual&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-bb4caac92e5d879e4a3a" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bb4caac92e5d879e4a3a">{"x":{"visdat":{"cc6831ad5ae0":["function () ","plotlyVisDat"],"cc685e5f5b3b":["function () ","data"]},"cur_data":"cc685e5f5b3b","attrs":{"cc6831ad5ae0":{"x":{},"y":{},"mode":"lines","name":"Estimate","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"cc685e5f5b3b":{"x":{},"y":{},"mode":"lines","name":"Actual","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"ds"},"yaxis":{"domain":[0,1],"automargin":true,"title":"net"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[-1.05842854039599,-3.13375379895513,-2.27756353292462,-2.36234263986443,-3.94689608043669,-4.53168023302914,-6.61624678508935,-5.81873173968435,-7.89388832771132,-7.0375293911448,-6.90933191589961,-8.28090877427496,-8.65250225410408,-10.5239107527285,-9.51257036967325,-11.3735041709582,-10.3029224476531,-10.0625561312446,-11.321964148457,-11.5813414541757,-13.3405337786922,-12.2169558975867,-13.9661857047679,-12.7832354879513,-11.9632930206827,-12.643124887035,-12.3223972045444,-13.5014845408505,-11.7982040568565,-12.9677312611543,-11.2057205329482,-10.3846791759852,-11.06341215326,-10.7423758385313,-11.9211545426007,-10.2178516455768,-11.3873564368393,-9.6253593523502,-8.8043316390967,-9.4832743332619,-9.16244773752582,-10.341972385977,-8.64053082737951,-9.8118969570744,-8.7434055845581,-8.61588358327938,-9.98918990942402,-10.3627269456769,-12.2360790007271,-11.2273494583116,-13.0914276041833,-12.0239902254686,-11.8975222179894,-13.270828544136,-13.6443655803924,-15.517717635444,-14.508988093029,-16.3730662389029,-15.305628860188,-15.1791608527108,-16.5524671788546,-16.926004215108,-18.7993562701601,-17.7906267277463,-19.6547048736228,-18.5872674949053,-18.4607994874263,-19.8341058135733,-20.2076428498276,-22.0809949048783,-21.0722653624618,-22.936343508335,-21.8689061296225,-21.7424381221417,-23.115744448292,-23.4892814845462,-25.3626335395944,-24.3539039971791,-26.217982143055,-25.1505447643347,-25.0240767568577,-26.397383083004,-26.7709201192596,-28.6442721743113,-27.6355426318965,-29.4996207777713,-28.4321833990591,-28.3057153915786,-29.6790217177253,-30.0525587539793,-31.9259108090282,-30.9171812666135,-32.7812594124872,-31.7138220337713,-31.587354026294,-32.9606603524393,-33.3341973886948,-35.2075494437455,-34.1988199013293,-36.0628980472031],"mode":"lines","name":"Estimate","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20"],"y":[0,-1,1,1,-3,-8,-9,-7,-8,-9,-9,-9,-6,-11,-10,-12,-9,-9,-10,-12,-15,-14,-14,-13,-14,-18,-15,-14,-11,-12,-10,-9,-9,-12,-13,-12,-12,-9,-8,-8,-8,-7,-6,-8,-11,-12,-10,-5,-4,-9,-16,-14,-11,-13,-15,-21,-16,-17],"mode":"lines","name":"Actual","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>We have another estimate. But is it an improvement?</p>
+<div id="scoring-the-prophet-round-2" class="section level2">
+<h2>Scoring the Prophet, Round 2</h2>
+<p>Let’s look at the same scoring metric (Mean Absolute Error) to see if the approval-disapproval models fit the data better than the net_approval model. (The lower MAE indicates a better fit.)</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">MAE &lt;-<span class="st"> </span>(ratings<span class="op">$</span>net_approval <span class="op">-</span><span class="st"> </span>temp[<span class="dv">1</span><span class="op">:</span>n,]<span class="op">$</span>net) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw">abs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="st">  </span><span class="kw">mean</span>()</a>
+<a class="sourceLine" id="cb14-4" title="4"></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="kw">tibble</span>(<span class="dt">MAE =</span> MAE) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="st">  </span><span class="kw">pander</span>()</a></code></pre></div>
+<table style="width:11%;">
+<colgroup>
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1.807</td>
+</tr>
+</tbody>
+</table>
+<p>So, approximately a point lower than the single-model approach. At this point, it looks like modeling approval and disapproval separately is probably the better way to go, increasing the fit of the model. Ordinarily, I’d test this with some cross-validation procedure(s), but we’re still working with so little data that cross-validation is difficult.</p>
+<p>Extrapolating from these trends, we have a prediction that by the end of the GJO’s question lifecycle, the net Approval rating will be around -20. This, coincidentally, is what we should predict from our very most blunt approach of predicting what today’s value is for every point in the future. Accordingly, we should place a lot of confidence in the lower-band probability, some in the middle band, and almost none in the upper band.</p>
+<p>I should be able to derive more precise estimates (i.e. real numbers) from this model, but (again) I don’t know enough about the distribution Prophet outputs, so I don’t know how to properly combine the given margins to estimate the distribution of the estimate for the date in question. Just glancing at the margins suggests that Prophet estimates that the middle band covers the upper 20% of outcomes, so there’s an 80% likelihood that the net approval will be in the lower band. Accordingly, my current estimate for the GJO is Low: 80, Mid: 19, Hi: 1.</p>
+<p>This is a bold claim, relative to the <a href="https://www.gjopen.com/questions/384-what-will-gallup-report-president-trump-s-net-approval-rating-to-be-on-28-april-2017/stats">GJO consensus</a>:</p>
+<p><img src="http://aaboyles.github.io/Essays/imgs/Screenshot_2017-03-16_10-49-06.png" /></p>
+<p>Here we can see that my estimate and the consensus are approximately opposites between the low and middle bands, while agreeing that the probability of the high band is vanishingly small. I’d normally be much more conservative with my estimate, but…</p>
+</div>
+</div>
+<div id="the-inside-view" class="section level1">
+<h1>The Inside View</h1>
+<p>…<a href="https://www.google.com/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=Bad+News+for+Trump&amp;safe=off&amp;tbm=nws&amp;tbs=qdr:w&amp;*">isn’t good for the President</a>.</p>
+</div>
+<div id="update-validation" class="section level1">
+<h1>UPDATE: Validation</h1>
+<p>Now that this analysis is pushing three weeks old, we’ve collected enough data that I feel good about doing a bit of new-data validation. To start, let’s compare the simple, one-forecast model with reality:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">n &lt;-<span class="st"> </span><span class="kw">length</span>(approval)</a>
+<a class="sourceLine" id="cb15-2" title="2"></a>
+<a class="sourceLine" id="cb15-3" title="3">updatedRatings &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">date =</span> <span class="kw">ymd</span>(<span class="st">&quot;17/01/21&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span>n, approval, disapproval) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">net_approval =</span> approval <span class="op">-</span><span class="st"> </span>disapproval)</a>
+<a class="sourceLine" id="cb15-5" title="5"></a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="kw">plot_ly</span>(forecast, <span class="dt">x =</span> <span class="op">~</span>ds, <span class="dt">y =</span> <span class="op">~</span>yhat, <span class="dt">name =</span> <span class="st">&quot;Estimate&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">data =</span> updatedRatings, <span class="dt">x =</span> <span class="op">~</span>date, <span class="dt">y =</span> <span class="op">~</span>net_approval, <span class="dt">name =</span> <span class="st">&quot;Actual&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-94935d9af2fa6f66567e" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-94935d9af2fa6f66567e">{"x":{"visdat":{"cc682ce560ce":["function () ","plotlyVisDat"],"cc6828fc330d":["function () ","data"]},"cur_data":"cc6828fc330d","attrs":{"cc682ce560ce":{"x":{},"y":{},"mode":"lines","name":"Estimate","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"cc6828fc330d":{"x":{},"y":{},"mode":"lines","name":"Actual","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"ds"},"yaxis":{"domain":[0,1],"automargin":true,"title":"yhat"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[-4.54753399625883,-6.55271610597732,-5.0499296404588,-4.84387868373478,-6.19512577587806,-6.22888151865933,-8.12164465681683,-6.30030705967556,-8.29987623976449,-6.79147684461165,-6.57025971676682,-7.90634063777467,-7.91710686213978,-9.78820239791535,-7.93482084340054,-9.89562652032015,-8.3484636220021,-8.08032989017654,-9.36949420720391,-9.32486520984045,-11.1405655238908,-9.22279886476838,-11.1313814191225,-9.51276639426808,-9.16488397595683,-10.3742996064985,-10.2565467584062,-11.9991232217258,-10.0187156278182,-11.864657247394,-10.1969301227088,-9.82359294718423,-10.9987679999956,-10.8519522205649,-12.5654657525487,-10.5626392679613,-12.3861619968511,-10.7025797899259,-10.3133875321529,-11.487931160639,-11.3461775767461,-13.0666475588795,-11.0778939711745,-12.9154895969536,-11.2482625670161,-10.8754254862342,-12.0658906623629,-11.940058626125,-13.6745559013009,-11.6949524411762,-13.5416981945297,-11.8804753726497,-11.5136424999222,-12.7041076760533,-12.57827563982,-14.3127729149975,-12.3331694548733,-14.1799152082298,-12.5186923863491,-12.1518595136245,-13.3423246897522,-13.2164926535151,-14.9509899286929,-12.9713864685705,-14.8181322219301,-13.1569094000464,-12.7900765273194,-13.9805417034511,-13.8547096672153,-15.5892069423916,-13.6096034822656,-15.4563492356211,-13.7951264137438,-13.4282935410143,-14.61875871715,-14.4929266809144,-16.227423956087,-14.2478204959627,-16.0945662493214,-14.4333434274347,-14.0665105547096,-15.2569757308404,-15.1311436946064,-16.8656409697836,-14.8860375096598,-16.7327832630172,-15.0715604411405,-14.7047275684115,-15.895192744543,-15.7693607083066,-17.5038579834803,-15.5242545233568,-17.3710002767127,-15.7097774548315,-15.3429445821064,-16.5334097582358,-16.4075777220017,-18.1420749971777,-16.1624715370521,-18.0092172904082],"mode":"lines","name":"Estimate","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01","2017-05-02","2017-05-03","2017-05-04","2017-05-05","2017-05-06","2017-05-07","2017-05-08","2017-05-09","2017-05-10","2017-05-11","2017-05-12","2017-05-13","2017-05-14","2017-05-15","2017-05-16","2017-05-17","2017-05-18","2017-05-19","2017-05-20","2017-05-21","2017-05-22","2017-05-23","2017-05-24","2017-05-25","2017-05-26","2017-05-27","2017-05-28","2017-05-29","2017-05-30","2017-05-31","2017-06-01","2017-06-02","2017-06-03","2017-06-04","2017-06-05","2017-06-06","2017-06-07","2017-06-08","2017-06-09","2017-06-10","2017-06-11","2017-06-12","2017-06-13","2017-06-14","2017-06-15","2017-06-16","2017-06-17","2017-06-18","2017-06-19","2017-06-20","2017-06-21","2017-06-22","2017-06-23","2017-06-24","2017-06-25","2017-06-26","2017-06-27","2017-06-28","2017-06-29","2017-06-30","2017-07-01","2017-07-02","2017-07-03","2017-07-04","2017-07-05","2017-07-06","2017-07-07","2017-07-08","2017-07-09","2017-07-10","2017-07-11","2017-07-12","2017-07-13","2017-07-14","2017-07-15","2017-07-16","2017-07-17","2017-07-18","2017-07-19","2017-07-20","2017-07-21","2017-07-22","2017-07-23","2017-07-24","2017-07-25","2017-07-26","2017-07-27","2017-07-28","2017-07-29","2017-07-30","2017-07-31","2017-08-01","2017-08-02","2017-08-03","2017-08-04","2017-08-05","2017-08-06","2017-08-07","2017-08-08","2017-08-09","2017-08-10","2017-08-11","2017-08-12","2017-08-13","2017-08-14","2017-08-15","2017-08-16","2017-08-17","2017-08-18","2017-08-19","2017-08-20","2017-08-21","2017-08-22","2017-08-23","2017-08-24","2017-08-25","2017-08-26","2017-08-27","2017-08-28","2017-08-29","2017-08-30","2017-08-31","2017-09-01","2017-09-02","2017-09-03","2017-09-04","2017-09-05","2017-09-06","2017-09-07","2017-09-08","2017-09-09","2017-09-10","2017-09-11","2017-09-12","2017-09-13","2017-09-14","2017-09-15","2017-09-16","2017-09-17","2017-09-18","2017-09-19","2017-09-20","2017-09-21","2017-09-22","2017-09-23","2017-09-24","2017-09-25","2017-09-26","2017-09-27","2017-09-28","2017-09-29","2017-09-30","2017-10-01","2017-10-02","2017-10-03","2017-10-04","2017-10-05","2017-10-06","2017-10-07","2017-10-08","2017-10-09","2017-10-10","2017-10-11","2017-10-12","2017-10-13","2017-10-14","2017-10-15","2017-10-16","2017-10-17","2017-10-18","2017-10-19","2017-10-20","2017-10-21","2017-10-22","2017-10-23","2017-10-24","2017-10-25","2017-10-26","2017-10-27","2017-10-28","2017-10-29","2017-10-30","2017-10-31","2017-11-01","2017-11-02","2017-11-03","2017-11-04","2017-11-05","2017-11-06","2017-11-07","2017-11-08","2017-11-09","2017-11-10","2017-11-11","2017-11-12","2017-11-13","2017-11-14","2017-11-15","2017-11-16","2017-11-17","2017-11-18","2017-11-19","2017-11-20","2017-11-21","2017-11-22","2017-11-23","2017-11-24","2017-11-25","2017-11-26","2017-11-27","2017-11-28","2017-11-29","2017-11-30","2017-12-01","2017-12-02","2017-12-03","2017-12-04","2017-12-05","2017-12-06","2017-12-07","2017-12-08","2017-12-09","2017-12-10","2017-12-11","2017-12-12","2017-12-13","2017-12-14","2017-12-15","2017-12-16","2017-12-17","2017-12-18","2017-12-19","2017-12-20","2017-12-21","2017-12-22","2017-12-23"],"y":[0,-1,1,1,-3,-8,-9,-7,-8,-9,-9,-9,-6,-11,-10,-12,-9,-9,-10,-12,-15,-14,-14,-13,-14,-18,-15,-14,-11,-12,-10,-9,-9,-12,-13,-12,-12,-9,-8,-8,-8,-7,-6,-8,-11,-12,-10,-5,-4,-9,-16,-14,-11,-13,-15,-21,-16,-17,-15,-17,-13,-13,-14,-21,-20,-24,-19,-18,-16,-19,-19,-16,-10,-12,-14,-14,-14,-13,-14,-11,-14,-15,-16,-12,-11,-10,-7,-8,-10,-14,-14,-15,-17,-15,-9,-8,-11,-14,-12,-10,-10,-14,-14,-11,-13,-13,-17,-13,-15,-17,-19,-19,-19,-18,-18,-19,-18,-19,-18,-16,-16,-13,-13,-11,-11,-13,-12,-14,-16,-20,-22,-20,-19,-19,-21,-21,-17,-20,-23,-24,-23,-19,-19,-16,-16,-18,-20,-21,-17,-12,-16,-19,-22,-18,-17,-16,-19,-19,-20,-17,-20,-20,-20,-18,-17,-17,-15,-15,-16,-19,-18,-17,-18,-20,-23,-21,-19,-16,-21,-23,-21,-16,-15,-17,-19,-22,-22,-24,-22,-22,-18,-18,-19,-22,-22,-21,-19,-20,-23,-27,-23,-22,-20,-19,-20,-22,-24,-25,-24,-26,-26,-25,-25,-25,-25,-24,-26,-27,-27,-22,-18,-19,-19,-21,-21,-18,-18,-19,-21,-20,-19,-20,-23,-19,-18,-17,-16,-19,-18,-19,-14,-15,-17,-21,-23,-22,-21,-19,-20,-19,-18,-17,-18,-17,-19,-19,-22,-19,-20,-15,-18,-18,-23,-21,-23,-23,-25,-23,-22,-21,-22,-23,-21,-22,-23,-25,-29,-28,-26,-20,-18,-17,-20,-20,-20,-17,-20,-21,-19,-16,-18,-19,-20,-20,-19,-17,-19,-19,-21,-17,-17,-17,-20,-20,-19,-17,-21,-26,-29,-27,-25,-25,-23,-22,-20,-21,-23,-25,-25,-23,-23,-25,-27,-25,-26,-23,-24,-24,-22,-19,-16,-18,-18,-19,-18,-15],"mode":"lines","name":"Actual","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Prophet definitely sniffed out a general trend, but it doesn’t look awesome. To see how it did a little more objectively, let’s fall back on the Mean Absolute Error, which was…</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">MAE &lt;-<span class="st"> </span>(updatedRatings<span class="op">$</span>net_approval <span class="op">-</span><span class="st"> </span>forecast[<span class="dv">1</span><span class="op">:</span>n,]<span class="op">$</span>yhat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="st">  </span><span class="kw">abs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="st">  </span><span class="kw">mean</span>()</a>
+<a class="sourceLine" id="cb16-4" title="4"></a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="kw">tibble</span>(<span class="dt">MAE =</span> MAE) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="st">  </span><span class="kw">pander</span>()</a></code></pre></div>
+<table style="width:8%;">
+<colgroup>
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Actually not terrible. It’s natural for model metrics to degrade as the model outputs are compared to new data. One mark of a really good model is that the validation metrics converge on the training metrics. But this requires patience, careful handling, lots of data, and a really talented modeler (not to mention a cooperative reality to generate the validation data).</p>
+<p>This is nice and interesting, but I based my GJO forecasts on the two-signal model. Thus, the real question is how it has performed. Let’s see:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">plot_ly</span>(temp, <span class="dt">x =</span> <span class="op">~</span>ds, <span class="dt">y =</span> <span class="op">~</span>net, <span class="dt">name =</span> <span class="st">&quot;Estimate&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">data =</span> updatedRatings, <span class="dt">x =</span> <span class="op">~</span>date, <span class="dt">y =</span> <span class="op">~</span>net_approval, <span class="dt">name =</span> <span class="st">&quot;Actual&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-26c0dc7859ece0650044" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-26c0dc7859ece0650044">{"x":{"visdat":{"cc68343170dc":["function () ","plotlyVisDat"],"cc68c733747":["function () ","data"]},"cur_data":"cc68c733747","attrs":{"cc68343170dc":{"x":{},"y":{},"mode":"lines","name":"Estimate","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"cc68c733747":{"x":{},"y":{},"mode":"lines","name":"Actual","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"ds"},"yaxis":{"domain":[0,1],"automargin":true,"title":"net"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[-1.05842854039599,-3.13375379895513,-2.27756353292462,-2.36234263986443,-3.94689608043669,-4.53168023302914,-6.61624678508935,-5.81873173968435,-7.89388832771132,-7.0375293911448,-6.90933191589961,-8.28090877427496,-8.65250225410408,-10.5239107527285,-9.51257036967325,-11.3735041709582,-10.3029224476531,-10.0625561312446,-11.321964148457,-11.5813414541757,-13.3405337786922,-12.2169558975867,-13.9661857047679,-12.7832354879513,-11.9632930206827,-12.643124887035,-12.3223972045444,-13.5014845408505,-11.7982040568565,-12.9677312611543,-11.2057205329482,-10.3846791759852,-11.06341215326,-10.7423758385313,-11.9211545426007,-10.2178516455768,-11.3873564368393,-9.6253593523502,-8.8043316390967,-9.4832743332619,-9.16244773752582,-10.341972385977,-8.64053082737951,-9.8118969570744,-8.7434055845581,-8.61588358327938,-9.98918990942402,-10.3627269456769,-12.2360790007271,-11.2273494583116,-13.0914276041833,-12.0239902254686,-11.8975222179894,-13.270828544136,-13.6443655803924,-15.517717635444,-14.508988093029,-16.3730662389029,-15.305628860188,-15.1791608527108,-16.5524671788546,-16.926004215108,-18.7993562701601,-17.7906267277463,-19.6547048736228,-18.5872674949053,-18.4607994874263,-19.8341058135733,-20.2076428498276,-22.0809949048783,-21.0722653624618,-22.936343508335,-21.8689061296225,-21.7424381221417,-23.115744448292,-23.4892814845462,-25.3626335395944,-24.3539039971791,-26.217982143055,-25.1505447643347,-25.0240767568577,-26.397383083004,-26.7709201192596,-28.6442721743113,-27.6355426318965,-29.4996207777713,-28.4321833990591,-28.3057153915786,-29.6790217177253,-30.0525587539793,-31.9259108090282,-30.9171812666135,-32.7812594124872,-31.7138220337713,-31.587354026294,-32.9606603524393,-33.3341973886948,-35.2075494437455,-34.1988199013293,-36.0628980472031],"mode":"lines","name":"Estimate","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01","2017-05-02","2017-05-03","2017-05-04","2017-05-05","2017-05-06","2017-05-07","2017-05-08","2017-05-09","2017-05-10","2017-05-11","2017-05-12","2017-05-13","2017-05-14","2017-05-15","2017-05-16","2017-05-17","2017-05-18","2017-05-19","2017-05-20","2017-05-21","2017-05-22","2017-05-23","2017-05-24","2017-05-25","2017-05-26","2017-05-27","2017-05-28","2017-05-29","2017-05-30","2017-05-31","2017-06-01","2017-06-02","2017-06-03","2017-06-04","2017-06-05","2017-06-06","2017-06-07","2017-06-08","2017-06-09","2017-06-10","2017-06-11","2017-06-12","2017-06-13","2017-06-14","2017-06-15","2017-06-16","2017-06-17","2017-06-18","2017-06-19","2017-06-20","2017-06-21","2017-06-22","2017-06-23","2017-06-24","2017-06-25","2017-06-26","2017-06-27","2017-06-28","2017-06-29","2017-06-30","2017-07-01","2017-07-02","2017-07-03","2017-07-04","2017-07-05","2017-07-06","2017-07-07","2017-07-08","2017-07-09","2017-07-10","2017-07-11","2017-07-12","2017-07-13","2017-07-14","2017-07-15","2017-07-16","2017-07-17","2017-07-18","2017-07-19","2017-07-20","2017-07-21","2017-07-22","2017-07-23","2017-07-24","2017-07-25","2017-07-26","2017-07-27","2017-07-28","2017-07-29","2017-07-30","2017-07-31","2017-08-01","2017-08-02","2017-08-03","2017-08-04","2017-08-05","2017-08-06","2017-08-07","2017-08-08","2017-08-09","2017-08-10","2017-08-11","2017-08-12","2017-08-13","2017-08-14","2017-08-15","2017-08-16","2017-08-17","2017-08-18","2017-08-19","2017-08-20","2017-08-21","2017-08-22","2017-08-23","2017-08-24","2017-08-25","2017-08-26","2017-08-27","2017-08-28","2017-08-29","2017-08-30","2017-08-31","2017-09-01","2017-09-02","2017-09-03","2017-09-04","2017-09-05","2017-09-06","2017-09-07","2017-09-08","2017-09-09","2017-09-10","2017-09-11","2017-09-12","2017-09-13","2017-09-14","2017-09-15","2017-09-16","2017-09-17","2017-09-18","2017-09-19","2017-09-20","2017-09-21","2017-09-22","2017-09-23","2017-09-24","2017-09-25","2017-09-26","2017-09-27","2017-09-28","2017-09-29","2017-09-30","2017-10-01","2017-10-02","2017-10-03","2017-10-04","2017-10-05","2017-10-06","2017-10-07","2017-10-08","2017-10-09","2017-10-10","2017-10-11","2017-10-12","2017-10-13","2017-10-14","2017-10-15","2017-10-16","2017-10-17","2017-10-18","2017-10-19","2017-10-20","2017-10-21","2017-10-22","2017-10-23","2017-10-24","2017-10-25","2017-10-26","2017-10-27","2017-10-28","2017-10-29","2017-10-30","2017-10-31","2017-11-01","2017-11-02","2017-11-03","2017-11-04","2017-11-05","2017-11-06","2017-11-07","2017-11-08","2017-11-09","2017-11-10","2017-11-11","2017-11-12","2017-11-13","2017-11-14","2017-11-15","2017-11-16","2017-11-17","2017-11-18","2017-11-19","2017-11-20","2017-11-21","2017-11-22","2017-11-23","2017-11-24","2017-11-25","2017-11-26","2017-11-27","2017-11-28","2017-11-29","2017-11-30","2017-12-01","2017-12-02","2017-12-03","2017-12-04","2017-12-05","2017-12-06","2017-12-07","2017-12-08","2017-12-09","2017-12-10","2017-12-11","2017-12-12","2017-12-13","2017-12-14","2017-12-15","2017-12-16","2017-12-17","2017-12-18","2017-12-19","2017-12-20","2017-12-21","2017-12-22","2017-12-23"],"y":[0,-1,1,1,-3,-8,-9,-7,-8,-9,-9,-9,-6,-11,-10,-12,-9,-9,-10,-12,-15,-14,-14,-13,-14,-18,-15,-14,-11,-12,-10,-9,-9,-12,-13,-12,-12,-9,-8,-8,-8,-7,-6,-8,-11,-12,-10,-5,-4,-9,-16,-14,-11,-13,-15,-21,-16,-17,-15,-17,-13,-13,-14,-21,-20,-24,-19,-18,-16,-19,-19,-16,-10,-12,-14,-14,-14,-13,-14,-11,-14,-15,-16,-12,-11,-10,-7,-8,-10,-14,-14,-15,-17,-15,-9,-8,-11,-14,-12,-10,-10,-14,-14,-11,-13,-13,-17,-13,-15,-17,-19,-19,-19,-18,-18,-19,-18,-19,-18,-16,-16,-13,-13,-11,-11,-13,-12,-14,-16,-20,-22,-20,-19,-19,-21,-21,-17,-20,-23,-24,-23,-19,-19,-16,-16,-18,-20,-21,-17,-12,-16,-19,-22,-18,-17,-16,-19,-19,-20,-17,-20,-20,-20,-18,-17,-17,-15,-15,-16,-19,-18,-17,-18,-20,-23,-21,-19,-16,-21,-23,-21,-16,-15,-17,-19,-22,-22,-24,-22,-22,-18,-18,-19,-22,-22,-21,-19,-20,-23,-27,-23,-22,-20,-19,-20,-22,-24,-25,-24,-26,-26,-25,-25,-25,-25,-24,-26,-27,-27,-22,-18,-19,-19,-21,-21,-18,-18,-19,-21,-20,-19,-20,-23,-19,-18,-17,-16,-19,-18,-19,-14,-15,-17,-21,-23,-22,-21,-19,-20,-19,-18,-17,-18,-17,-19,-19,-22,-19,-20,-15,-18,-18,-23,-21,-23,-23,-25,-23,-22,-21,-22,-23,-21,-22,-23,-25,-29,-28,-26,-20,-18,-17,-20,-20,-20,-17,-20,-21,-19,-16,-18,-19,-20,-20,-19,-17,-19,-19,-21,-17,-17,-17,-20,-20,-19,-17,-21,-26,-29,-27,-25,-25,-23,-22,-20,-21,-23,-25,-25,-23,-23,-25,-27,-25,-26,-23,-24,-24,-22,-19,-16,-18,-18,-19,-18,-15],"mode":"lines","name":"Actual","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Here we can see slightly better (if positively biased) performance. But is it actually better?</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">MAE &lt;-<span class="st"> </span>(updatedRatings<span class="op">$</span>net_approval <span class="op">-</span><span class="st"> </span>temp[<span class="dv">1</span><span class="op">:</span>n,]<span class="op">$</span>net) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="st">  </span><span class="kw">abs</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="st">  </span><span class="kw">mean</span>()</a>
+<a class="sourceLine" id="cb18-4" title="4"></a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="kw">tibble</span>(<span class="dt">MAE =</span> MAE) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="st">  </span><span class="kw">pander</span>()</a></code></pre></div>
+<table style="width:8%;">
+<colgroup>
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Here we see the two-signal model has degraded a bit more, though it continues to outperform the one-signal model. What this means is that I was right to trust the two-signal model more than the one-signal, but the difference between them wasn’t all that important in retrospect. Based on current trends, it looks like my daring prediction (80% certainty the net approval will fall below -15) was actually <em>underestimating</em> the low-band probability.</p>
+<div id="updating-the-model" class="section level2">
+<h2>Updating the Model</h2>
+<p>Since I keep concluding that the two-signal model is slightly superior, I’m just going to update that one. Since we have new data to fit, let’s see if Prophet’s extrapolations maintain their general trajectory.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">n &lt;-<span class="st"> </span><span class="kw">length</span>(approval)</a>
+<a class="sourceLine" id="cb19-2" title="2">date &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;17/01/21&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span>n</a>
+<a class="sourceLine" id="cb19-3" title="3">ratings &lt;-<span class="st"> </span><span class="kw">tibble</span>(date, approval, disapproval) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">net_approval =</span> approval <span class="op">-</span><span class="st"> </span>disapproval)</a>
+<a class="sourceLine" id="cb19-5" title="5"></a>
+<a class="sourceLine" id="cb19-6" title="6">dApproval &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ds =</span> date, <span class="dt">y =</span> ratings<span class="op">$</span>approval)</a>
+<a class="sourceLine" id="cb19-7" title="7">m &lt;-<span class="st"> </span><span class="kw">prophet</span>(dApproval, <span class="dt">yearly.seasonality =</span> F)</a>
+<a class="sourceLine" id="cb19-8" title="8">approvalforecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)</a>
+<a class="sourceLine" id="cb19-9" title="9"></a>
+<a class="sourceLine" id="cb19-10" title="10">dDisapproval &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ds =</span> date, <span class="dt">y =</span> ratings<span class="op">$</span>disapproval)</a>
+<a class="sourceLine" id="cb19-11" title="11">m &lt;-<span class="st"> </span><span class="kw">prophet</span>(dDisapproval, <span class="dt">yearly.seasonality =</span> F)</a>
+<a class="sourceLine" id="cb19-12" title="12">disapprovalforecast &lt;-<span class="st"> </span><span class="kw">predict</span>(m, future)</a>
+<a class="sourceLine" id="cb19-13" title="13"></a>
+<a class="sourceLine" id="cb19-14" title="14">temp &lt;-<span class="st"> </span>approvalforecast <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-15" title="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">approval =</span> yhat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-16" title="16"><span class="st">  </span><span class="kw">cbind</span>(<span class="dt">disapproval =</span> disapprovalforecast<span class="op">$</span>yhat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-17" title="17"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">net =</span> approval <span class="op">-</span><span class="st"> </span>disapproval)</a>
+<a class="sourceLine" id="cb19-18" title="18"></a>
+<a class="sourceLine" id="cb19-19" title="19"><span class="kw">plot_ly</span>(temp, <span class="dt">x =</span> <span class="op">~</span>ds, <span class="dt">y =</span> <span class="op">~</span>net, <span class="dt">name =</span> <span class="st">&quot;Estimate&quot;</span>, <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-20" title="20"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">data =</span> ratings, <span class="dt">x =</span> <span class="op">~</span>date, <span class="dt">y =</span> <span class="op">~</span>net_approval, <span class="dt">name =</span> <span class="st">&quot;Actual&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-fc89e9cb799c1134a9b3" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fc89e9cb799c1134a9b3">{"x":{"visdat":{"cc683bc95877":["function () ","plotlyVisDat"],"cc681fc275c1":["function () ","data"]},"cur_data":"cc681fc275c1","attrs":{"cc683bc95877":{"x":{},"y":{},"mode":"lines","name":"Estimate","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"cc681fc275c1":{"x":{},"y":{},"mode":"lines","name":"Actual","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"ds"},"yaxis":{"domain":[0,1],"automargin":true,"title":"net"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01"],"y":[-7.77245686152116,-7.88390882052057,-7.20536161653485,-7.65023672359344,-8.15771492602839,-8.25001249736311,-8.67485503553721,-8.40055111550934,-8.51200307450824,-7.83345587052207,-8.27833097758218,-8.78580918001717,-8.87810663057405,-9.30294904797162,-9.02864500716628,-9.14009684538953,-8.46154952062679,-8.90642450690885,-9.41390258856686,-9.5062000391229,-9.93104245652097,-9.65673841571565,-9.76798199897753,-9.08922641925482,-9.53389315057782,-10.0411629772764,-10.1332521728727,-10.5578863353099,-10.2833740395444,-10.3946176228063,-9.71586204308371,-10.1605287744057,-10.6677986011036,-10.7591109070967,-11.1829681799314,-10.9076789945631,-11.0181456882215,-10.3386132188966,-10.7825030606149,-11.2889959977115,-11.3803083037036,-11.8041655765375,-11.5288763911693,-11.6393430848285,-10.9596950070612,-11.4034692403387,-11.9098465689912,-12.0010432665422,-12.4247849309347,-12.1493801371246,-12.2597312223411,-11.5800831445739,-12.0238573778509,-12.5302347065034,-12.60761050063,-13.0175312615976,-12.7283055643615,-12.8248357461527,-12.1313667649604,-12.5613200948119,-13.0538765200389,-13.1312523141647,-13.541173075132,-13.2519473778964,-13.3484775596887,-12.6374130841887,-13.0497709197333,-13.524731850654,-13.5845121504733,-13.9768374171337,-13.6700162255907,-13.748950913075,-13.0378864375761,-13.4502442731206,-13.9252052040419,-13.9849855038616,-14.3773107701022,-14.0704895781412,-14.1494242652084,-13.4383597892891,-13.8507176244154,-14.3256785549177,-14.3854588543191,-14.7777841205615,-14.4709629286002,-14.5498976156681,-13.8388331425625,-14.2511909805012,-14.7261519138162,-14.7859322160299,-15.1782574850842,-14.8714362959355,-14.9503709858154,-14.2393065127093,-14.651664350649,-15.1266252839631,-15.1864055861774,-15.5787308932367,-15.2719097420926,-15.3508444699767],"mode":"lines","name":"Estimate","type":"scatter","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2017-01-22","2017-01-23","2017-01-24","2017-01-25","2017-01-26","2017-01-27","2017-01-28","2017-01-29","2017-01-30","2017-01-31","2017-02-01","2017-02-02","2017-02-03","2017-02-04","2017-02-05","2017-02-06","2017-02-07","2017-02-08","2017-02-09","2017-02-10","2017-02-11","2017-02-12","2017-02-13","2017-02-14","2017-02-15","2017-02-16","2017-02-17","2017-02-18","2017-02-19","2017-02-20","2017-02-21","2017-02-22","2017-02-23","2017-02-24","2017-02-25","2017-02-26","2017-02-27","2017-02-28","2017-03-01","2017-03-02","2017-03-03","2017-03-04","2017-03-05","2017-03-06","2017-03-07","2017-03-08","2017-03-09","2017-03-10","2017-03-11","2017-03-12","2017-03-13","2017-03-14","2017-03-15","2017-03-16","2017-03-17","2017-03-18","2017-03-19","2017-03-20","2017-03-21","2017-03-22","2017-03-23","2017-03-24","2017-03-25","2017-03-26","2017-03-27","2017-03-28","2017-03-29","2017-03-30","2017-03-31","2017-04-01","2017-04-02","2017-04-03","2017-04-04","2017-04-05","2017-04-06","2017-04-07","2017-04-08","2017-04-09","2017-04-10","2017-04-11","2017-04-12","2017-04-13","2017-04-14","2017-04-15","2017-04-16","2017-04-17","2017-04-18","2017-04-19","2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25","2017-04-26","2017-04-27","2017-04-28","2017-04-29","2017-04-30","2017-05-01","2017-05-02","2017-05-03","2017-05-04","2017-05-05","2017-05-06","2017-05-07","2017-05-08","2017-05-09","2017-05-10","2017-05-11","2017-05-12","2017-05-13","2017-05-14","2017-05-15","2017-05-16","2017-05-17","2017-05-18","2017-05-19","2017-05-20","2017-05-21","2017-05-22","2017-05-23","2017-05-24","2017-05-25","2017-05-26","2017-05-27","2017-05-28","2017-05-29","2017-05-30","2017-05-31","2017-06-01","2017-06-02","2017-06-03","2017-06-04","2017-06-05","2017-06-06","2017-06-07","2017-06-08","2017-06-09","2017-06-10","2017-06-11","2017-06-12","2017-06-13","2017-06-14","2017-06-15","2017-06-16","2017-06-17","2017-06-18","2017-06-19","2017-06-20","2017-06-21","2017-06-22","2017-06-23","2017-06-24","2017-06-25","2017-06-26","2017-06-27","2017-06-28","2017-06-29","2017-06-30","2017-07-01","2017-07-02","2017-07-03","2017-07-04","2017-07-05","2017-07-06","2017-07-07","2017-07-08","2017-07-09","2017-07-10","2017-07-11","2017-07-12","2017-07-13","2017-07-14","2017-07-15","2017-07-16","2017-07-17","2017-07-18","2017-07-19","2017-07-20","2017-07-21","2017-07-22","2017-07-23","2017-07-24","2017-07-25","2017-07-26","2017-07-27","2017-07-28","2017-07-29","2017-07-30","2017-07-31","2017-08-01","2017-08-02","2017-08-03","2017-08-04","2017-08-05","2017-08-06","2017-08-07","2017-08-08","2017-08-09","2017-08-10","2017-08-11","2017-08-12","2017-08-13","2017-08-14","2017-08-15","2017-08-16","2017-08-17","2017-08-18","2017-08-19","2017-08-20","2017-08-21","2017-08-22","2017-08-23","2017-08-24","2017-08-25","2017-08-26","2017-08-27","2017-08-28","2017-08-29","2017-08-30","2017-08-31","2017-09-01","2017-09-02","2017-09-03","2017-09-04","2017-09-05","2017-09-06","2017-09-07","2017-09-08","2017-09-09","2017-09-10","2017-09-11","2017-09-12","2017-09-13","2017-09-14","2017-09-15","2017-09-16","2017-09-17","2017-09-18","2017-09-19","2017-09-20","2017-09-21","2017-09-22","2017-09-23","2017-09-24","2017-09-25","2017-09-26","2017-09-27","2017-09-28","2017-09-29","2017-09-30","2017-10-01","2017-10-02","2017-10-03","2017-10-04","2017-10-05","2017-10-06","2017-10-07","2017-10-08","2017-10-09","2017-10-10","2017-10-11","2017-10-12","2017-10-13","2017-10-14","2017-10-15","2017-10-16","2017-10-17","2017-10-18","2017-10-19","2017-10-20","2017-10-21","2017-10-22","2017-10-23","2017-10-24","2017-10-25","2017-10-26","2017-10-27","2017-10-28","2017-10-29","2017-10-30","2017-10-31","2017-11-01","2017-11-02","2017-11-03","2017-11-04","2017-11-05","2017-11-06","2017-11-07","2017-11-08","2017-11-09","2017-11-10","2017-11-11","2017-11-12","2017-11-13","2017-11-14","2017-11-15","2017-11-16","2017-11-17","2017-11-18","2017-11-19","2017-11-20","2017-11-21","2017-11-22","2017-11-23","2017-11-24","2017-11-25","2017-11-26","2017-11-27","2017-11-28","2017-11-29","2017-11-30","2017-12-01","2017-12-02","2017-12-03","2017-12-04","2017-12-05","2017-12-06","2017-12-07","2017-12-08","2017-12-09","2017-12-10","2017-12-11","2017-12-12","2017-12-13","2017-12-14","2017-12-15","2017-12-16","2017-12-17","2017-12-18","2017-12-19","2017-12-20","2017-12-21","2017-12-22","2017-12-23"],"y":[0,-1,1,1,-3,-8,-9,-7,-8,-9,-9,-9,-6,-11,-10,-12,-9,-9,-10,-12,-15,-14,-14,-13,-14,-18,-15,-14,-11,-12,-10,-9,-9,-12,-13,-12,-12,-9,-8,-8,-8,-7,-6,-8,-11,-12,-10,-5,-4,-9,-16,-14,-11,-13,-15,-21,-16,-17,-15,-17,-13,-13,-14,-21,-20,-24,-19,-18,-16,-19,-19,-16,-10,-12,-14,-14,-14,-13,-14,-11,-14,-15,-16,-12,-11,-10,-7,-8,-10,-14,-14,-15,-17,-15,-9,-8,-11,-14,-12,-10,-10,-14,-14,-11,-13,-13,-17,-13,-15,-17,-19,-19,-19,-18,-18,-19,-18,-19,-18,-16,-16,-13,-13,-11,-11,-13,-12,-14,-16,-20,-22,-20,-19,-19,-21,-21,-17,-20,-23,-24,-23,-19,-19,-16,-16,-18,-20,-21,-17,-12,-16,-19,-22,-18,-17,-16,-19,-19,-20,-17,-20,-20,-20,-18,-17,-17,-15,-15,-16,-19,-18,-17,-18,-20,-23,-21,-19,-16,-21,-23,-21,-16,-15,-17,-19,-22,-22,-24,-22,-22,-18,-18,-19,-22,-22,-21,-19,-20,-23,-27,-23,-22,-20,-19,-20,-22,-24,-25,-24,-26,-26,-25,-25,-25,-25,-24,-26,-27,-27,-22,-18,-19,-19,-21,-21,-18,-18,-19,-21,-20,-19,-20,-23,-19,-18,-17,-16,-19,-18,-19,-14,-15,-17,-21,-23,-22,-21,-19,-20,-19,-18,-17,-18,-17,-19,-19,-22,-19,-20,-15,-18,-18,-23,-21,-23,-23,-25,-23,-22,-21,-22,-23,-21,-22,-23,-25,-29,-28,-26,-20,-18,-17,-20,-20,-20,-17,-20,-21,-19,-16,-18,-19,-20,-20,-19,-17,-19,-19,-21,-17,-17,-17,-20,-20,-19,-17,-21,-26,-29,-27,-25,-25,-23,-22,-20,-21,-23,-25,-25,-23,-23,-25,-27,-25,-26,-23,-24,-24,-22,-19,-16,-18,-18,-19,-18,-15],"mode":"lines","name":"Actual","type":"scatter","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Yup! In spite of the new data, Prophet isn’t changing its projection much. It’s more negative than the original, implying a higher confidence for the low-band prediction. However, this highly confident low-band prediction <em>feels</em> wrong to me, which I take to be an important signal. If you don’t share this feeling of wrongness, here’s my intuition: Prophet is basically predicting a linear degradation of about 2.5 points per week. Predicting out to the end of the month may be fine, but extrapolated further gives us the conclusion that the net approval should bottom out at -100 before the end of the year. Beyond that, Prophet predicts impossible values <em>below</em> -100. Accordingly, we should treat this trend with caution.</p>
+<p>That said, GJO consensus remains that the middle band is likeliest, though the recent run of low-band days has driven the two to begin collapsing toward one another:</p>
+<p><img src="http://aaboyles.github.io/Essays/imgs/Screenshot_2017-04-04_13-44-43.png" /></p>
+<p>Based on these two conflicting patterns, I’m going to update weakly in roughly equal measure and ultimately stand by my prior estimate of Low: 80%, Mid: 19%, High: 1%.</p>
+</div>
+</div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109466857-1');
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

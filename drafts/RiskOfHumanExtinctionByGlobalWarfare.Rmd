@@ -4,16 +4,16 @@ title: "Estimating the Risk of Human Extinction by Catastrophic Global Warfare"
 
 ```{r setup, message=FALSE}
 source("../infobox.R")
-load_package("HistData")
-load_package("readr")
-load_package("readxl")
-load_package("magrittr")
-load_package("dplyr")
-load_package("tidyr")
-load_package("fuzzyjoin")
-load_package("intubate")
-load_package("plotly")
-load_package("ShRoud")
+library("HistData")
+library("readr")
+library("readxl")
+library("magrittr")
+library("dplyr")
+library("tidyr")
+library("fuzzyjoin")
+library("intubate")
+library("plotly")
+library("ShRoud")
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
 
