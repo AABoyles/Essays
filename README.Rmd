@@ -1,5 +1,5 @@
 ---
-title: Meta
+title: "Meta"
 ---
 
 This repository contains my collected essays. It is also a partly self-contained build system for them, using RMarkdown.
