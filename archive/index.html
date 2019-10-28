@@ -12,9 +12,9 @@
 
 
 
-<title>Mere Heroes</title>
+<title>Archive</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -22,6 +22,14 @@
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.9/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -396,44 +404,49 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Mere Heroes</h1>
+<h1 class="title toc-ignore">Archive</h1>
 
 </div>
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">source</span>(<span class="st">&quot;../helpers/infobox.R&quot;</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2">meta &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb1-3" title="3">  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;MereHeroes.Rmd&quot;</span>)<span class="op">$</span>mtime</a>
-<a class="sourceLine" id="cb1-4" title="4">)</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">infobox</span>(meta, tags<span class="op">$</span><span class="kw">tr</span>(tags<span class="op">$</span><span class="kw">td</span>(tags<span class="op">$</span><span class="kw">b</span>(<span class="st">&quot;Note:&quot;</span>), tags<span class="op">$</span><span class="kw">span</span>(<span class="st">&quot;Note: This is a personal re-writing of an essay originally penned by Eliezer Yudkowsky on LessWrong. As such, much of the text is exactly Yudkowsky&#39;s. Since I&#39;m presenting his ideas, I&#39;ve decided to preserve his words as well. Never-the-less, I have changed it, extensively in some ways. I don&#39;t know how to reconcile my ownership of this version of the text with the original, other to admit outright that I am explicitly committing plagiarism. If Yudkowsky himself objects, I will happily remove this essay at his request.&quot;</span>), <span class="dt">colspan=</span><span class="dv">2</span>)))</a></code></pre></div>
-<div class="infobox">
-<table class="infoboxtable table table-striped">
-<tbody>
-<tr>
-<td>
-<b>Last Revision</b>
-</td>
-<td>2019-10-25 16:56:52</td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<td colspan="2">
-<b>Note:</b>
-<span>Note: This is a personal re-writing of an essay originally penned by Eliezer Yudkowsky on LessWrong. As such, much of the text is exactly Yudkowsky's. Since I'm presenting his ideas, I've decided to preserve his words as well. Never-the-less, I have changed it, extensively in some ways. I don't know how to reconcile my ownership of this version of the text with the original, other to admit outright that I am explicitly committing plagiarism. If Yudkowsky himself objects, I will happily remove this essay at his request.</span>
-</td>
-</tr>
-</tfoot>
-</table>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(<span class="st">&quot;htmltools&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=</span><span class="st">&quot;panel panel-danger&quot;</span>,</a>
+<a class="sourceLine" id="cb1-3" title="3">  tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=</span><span class="st">&quot;panel-heading&quot;</span>, <span class="st">&quot;Disclaimer&quot;</span>),</a>
+<a class="sourceLine" id="cb1-4" title="4">  tags<span class="op">$</span><span class="kw">div</span>(<span class="dt">class=</span><span class="st">&quot;panel-body&quot;</span>, <span class="st">&quot;If you&#39;ve stumbled upon this page, well done. This is the archive directory. I have placed thing here which no longer represent my beliefs, or I&#39;m otherwise moderately embarassed by. In the interest of intellectual honesty, I feel it&#39;s important that they remain in existence. That said, I strongly encourage you *not* to read these; if nothing else, you have better things to do.&quot;</span>)</a>
+<a class="sourceLine" id="cb1-5" title="5">)</a></code></pre></div>
+<div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">If you've stumbled upon this page, well done. This is the archive directory. I have placed thing here which no longer represent my beliefs, or I'm otherwise moderately embarassed by. In the interest of intellectual honesty, I feel it's important that they remain in existence. That said, I strongly encourage you *not* to read these; if nothing else, you have better things to do.</div>
 </div>
-<p>As Christians tell the story, Jesus Christ could <a href="https://www.biblegateway.com/passage/?search=Matthew+14%3A22-33&amp;version=NRSV">walk on water</a>, <a href="https://www.biblegateway.com/passage/?search=Mark+4%3A35-41&amp;version=NIV">calm storms</a>, and <a href="https://www.biblegateway.com/passage/?search=Mark+5%3A1-20&amp;version=NRSV">exorcise demons</a>. It must have made for a comfortable life: Followers getting hungry? <a href="https://www.biblegateway.com/passage/?search=Matthew+14%3A13-21&amp;version=NRSV">Break some bread and pass it around</a>. Don’t like a tree? <a href="https://www.biblegateway.com/passage/?search=Mark+11%3A12-14%2C19-25&amp;version=NRSV">Curse it</a>. This charmed life ended, however, when <a href="https://www.biblegateway.com/passage/?search=John+18%3A3-14&amp;version=NRSV">Jesus accepted his arrest</a> and <a href="https://www.biblegateway.com/passage/?search=Luke+23%3A33-46&amp;version=NRSV">subsequent crucifixion</a>. Being nailed to a cross is <a href="https://en.wikipedia.org/wiki/Crucifixion#Details">not a comfortable way to die</a>. But as Christians tell the story, Jesus did this <a href="https://www.biblegateway.com/passage/?search=Luke+18%3A31-33&amp;version=NRSV"><em>knowing</em> he would come back to life three days later</a>, and <a href="https://www.biblegateway.com/passage/?search=John+20%3A17&amp;version=NRSV">then go to Heaven</a>.</p>
-<p>What if Jesus of Nazareth never walked on water, and defied the Judean Temple established by the powers of Rome, <em>in spite of his humanity</em>? Why would that deserve less honor than that which Christians confer to Jesus Christ? As Sam Harris put it in <a href="http://smile.amazon.com/End-Faith-Religion-Terror-Future/dp/0393327655/ref=sr_1_1?ie=UTF8&amp;qid=1451509971&amp;sr=8-1&amp;keywords=The+End+of+Faith">The End of Faith</a>:</p>
-<blockquote>
-<p>It is not enough that Jesus was a man who transformed himself to such a degree that the Sermon on the Mount could be his heart’s confession. He also had to be the Son of God, born of a virgin, and destined to return to earth trailing clouds of glory. The effect of such dogma is to place the example of Jesus forever out of reach. His teaching ceases to become a set of empirical claims about the linkage between ethics and spiritual insight and instead becomes a gratuitous, and rather gruesome, fairy tale. According to the dogma of Christianity, becoming just like Jesus is impossible.</p>
-</blockquote>
-<p>For contrast, let’s consider a mere hero. <a href="http://www.nleomf.org/officers/search/search-results/john-william-perry.html">John Perry</a> was a New York City police officer, and also a transhumanist. He had taken leave from his precinct one Tuesday in order to file his retirement papers. He was leaving the force at the young age of 38, after 8 years of service, to <a href="http://www.nypdangels.com/nypd/perry.htm">start his own law practice</a>. But on that Tuesday morning, John Perry got word that a plane had slammed into the World Trade Center. Instead of filing his retirement papers, John Perry donned his uniform one last time and rushed to Ground Zero to help. He was killed when the north tower fell.</p>
-<p>John Perry <a href="http://www.plumsite.com/johnperry.html">hoped to be cryonically preserved</a>, and had <a href="http://www.alcor.org/problems.html">made the requisite preparations</a>; he had <em>genuine</em> hope of life everlasting. And John Perry put himself in very real, immediate danger anyway. John Perry <em>knew</em> he was risking his life every day on the job. Not because he expected any divine reward, but because there were other people in danger. His life was worth no more than theirs. I did not know John Perry. I do not know if he saw the world this way. But the fact that a transhumanist can still run selflessly into the lobby of a burning building says more about the human spirit than all the martyrs who ever dreamed of rewards in heaven.</p>
-<p>Jesus deserves honor. He probably deserves more honor than Christians would grant him. But Jesus Christ anticipated his soul would survive, and so sacrificed a painful death on a cross and <a href="https://en.wikipedia.org/wiki/Harrowing_of_Hell">three days in hell</a>. John Perry was a transhumanist, and so sacrificed a painful death under a building and an eternity in oblivion. Why do we revere the actions of Jesus Christ, while forgetting the mere heroism of John Perry? Perhaps we judge our heroes by the magnitude of their powers, rather than the magnitude of their sacrifices. And that is a travesty.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(<span class="st">&quot;plyr&quot;</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">library</span>(<span class="st">&quot;magrittr&quot;</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="kw">library</span>(<span class="st">&quot;DT&quot;</span>)</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">library</span>(<span class="st">&quot;stringr&quot;</span>)</a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="kw">cbind</span>(</a>
+<a class="sourceLine" id="cb2-8" title="8">  <span class="dt">Name =</span> <span class="kw">list.files</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>),</a>
+<a class="sourceLine" id="cb2-9" title="9">  <span class="kw">ldply</span>(<span class="kw">list.files</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;*.Rmd&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>), file.info)</a>
+<a class="sourceLine" id="cb2-10" title="10">) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span>Name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index.Rmd&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mtime)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="st">  </span><span class="kw">transmute</span>(</a>
+<a class="sourceLine" id="cb2-14" title="14">    <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span> =<span class="st"> </span><span class="kw">paste0</span>(</a>
+<a class="sourceLine" id="cb2-15" title="15">        <span class="st">&quot;&lt;a href=&#39;https://github.com/aaboyles/Essays/commits/gh-pages/drafts/&quot;</span>, Name, <span class="st">&quot;&#39;&gt;&quot;</span>,</a>
+<a class="sourceLine" id="cb2-16" title="16">        <span class="kw">substr</span>(mtime, <span class="dv">0</span>, <span class="dv">10</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span></a>
+<a class="sourceLine" id="cb2-17" title="17">      ),</a>
+<a class="sourceLine" id="cb2-18" title="18">    <span class="dt">Name =</span> <span class="kw">paste0</span>(</a>
+<a class="sourceLine" id="cb2-19" title="19">      <span class="st">&quot;&lt;a href=&#39;&quot;</span>, <span class="kw">str_sub</span>(Name, <span class="dv">1</span>, <span class="dv">-5</span>), <span class="st">&quot;.html&#39;&gt;&quot;</span>,</a>
+<a class="sourceLine" id="cb2-20" title="20">      Name <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="st">        </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([a-z])([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-22" title="22"><span class="st">        </span><span class="kw">str_replace_all</span>(<span class="st">&quot;([A-Z]+)([A-Z])&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1 </span><span class="ch">\\</span><span class="st">2&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-23" title="23"><span class="st">        </span><span class="kw">str_sub</span>(<span class="dv">1</span>, <span class="dv">-5</span>), <span class="st">&quot;&lt;/a&gt;&quot;</span>),</a>
+<a class="sourceLine" id="cb2-24" title="24">    <span class="st">`</span><span class="dt">Length (bytes)</span><span class="st">`</span> =<span class="st"> </span>size</a>
+<a class="sourceLine" id="cb2-25" title="25">    ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-26" title="26"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Name, <span class="st">`</span><span class="dt">Length (bytes)</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Last Modified</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-27" title="27"><span class="st">  </span><span class="kw">datatable</span>(<span class="dt">escape =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div id="htmlwidget-63e571f057c2621e800e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-63e571f057c2621e800e">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],["<a href='TheTruthAboutTheTrolleyProblem.html'>The Truth About The Trolley Problem<\/a>","<a href='GoodPolicies.html'>Good Policies<\/a>","<a href='CherylsBirthday.html'>Cheryls Birthday<\/a>","<a href='ReviewOfTuftesVizQuantData.html'>Review Of Tuftes Viz Quant Data<\/a>","<a href='PeopleWhoDiedIn2017.html'>People Who Died In2017<\/a>","<a href='GetToItAHomily.html'>Get To It A Homily<\/a>"],[11946,10882,6270,5075,8215,6808],["<a href='https://github.com/aaboyles/Essays/commits/gh-pages/drafts/TheTruthAboutTheTrolleyProblem.Rmd'>2019-10-25<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/drafts/GoodPolicies.Rmd'>2019-10-25<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/drafts/CherylsBirthday.Rmd'>2019-10-25<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/drafts/ReviewOfTuftesVizQuantData.Rmd'>2019-10-25<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/drafts/PeopleWhoDiedIn2017.Rmd'>2019-10-25<\/a>","<a href='https://github.com/aaboyles/Essays/commits/gh-pages/drafts/GetToItAHomily.Rmd'>2019-10-25<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Length (bytes)<\/th>\n      <th>Last Modified<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>

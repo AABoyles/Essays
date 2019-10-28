@@ -1,0 +1,43 @@
+---
+title: "A Hero"
+---
+
+```{r, results='asis'}
+source("../helpers/infobox.R")
+infobox(list(
+  "Last Revision" = file.info("AHero.Rmd")$mtime,
+  "Forked From" = tags$span(tags$a(href="https://www.lesswrong.com/posts/Tv7WWhgbKMWzEnMmx/mere-messiahs", "Mere Messiahs"), "by Eliezer Yudkowsky")
+))
+```
+
+[John William Perry](http://www.nleomf.org/officers/search/search-results/john-william-perry.html) was a New York City police officer. He had taken leave from his precinct one Tuesday to file his retirement papers. At 38 years old, afer 8 years of service, he was leaving the force to take a job at a Manhattan Law firm (http://www.nypdangels.com/nypd/perry.htm). But on that Tuesday morning, John Perry got word that [a plane had slammed into the World Trade Center](https://en.wikipedia.org/wiki/September_11_attacks). So instead of filing his retirement papers, Officer Perry rushed to Ground Zero to help. He was killed when the north tower fell.
+
+* [NYCLU Obituary](https://www.nytimes.com/2001/11/10/classified/paid-notice-deaths-perry-john-w.html)
+* [Family Obituary](https://www.nytimes.com/2001/11/07/classified/paid-notice-deaths-perry-john-w.html)
+* [Officer Down Memorial Page](https://www.odmp.org/officer/15820-police-officer-john-william-perry)
+* [Legacy.com Guestbook](https://www.legacy.com/guestbooks/newsday/john-william-perry-condolences/122581)
+
+## Early Life
+
+John William Perry, was born to James and Patricia Perry. He was raised in Seaford, on Long Island. Apparently, he couldn't tie his shoes or ride a bicycle until he was 9. He spent several early grades in special education classes.
+
+## Career
+
+His story was picked up by the [New York Times](https://www.nytimes.com/2001/11/16/nyregion/the-big-city-a-policeman-for-starters-and-at-the-end.html).
+
+[Newsday 9-11 Victims' Database Entry](https://web.archive.org/web/20150922083609/http://longisland.newsday.com/911-anniversary/victims/John-Perry)
+
+[He was posthumously awarded the New York City Police Department's Medal of Honor for his heroic actions.](https://www.odmp.org/officer/15820-police-officer-john-william-perry)
+
+## Social Life
+
+John Perry was an [Extropian](https://www.wired.com/1994/10/extropians/). He [was interested in cryonics](http://www.plumsite.com/johnperry.html), and it is likely that he had [made the requisite preparations](http://www.alcor.org/problems.html). He had genuine hope of outliving the very oldest people alive today. **And John Perry put himself in very real, immediate danger anyway.**
+
+## (To Investigate)
+
+* Possibly Mentioned in [Report from Ground Zero](https://www.amazon.com/Report-Ground-Zero-Dennis-Smith/dp/0452283957)
+* [Radley Balko on John Perry](https://web.archive.org/web/20130403062556/http://www.theagitator.com/2006/09/11/remembering-john-w-perry/)
+* [His personal Website appears to still exist](http://johnwperry.com/index.html)
+* [on /r/TIL/](https://www.reddit.com/r/todayilearned/comments/2aismi/til_that_on_september_11th_2001_officer_john/)
+* [on /r/ProtectAndServe/](https://np.reddit.com/r/ProtectAndServe/comments/2aidzr/on_91101_officer_john_perry_of_the_40th_precinct/)
+* [Photos](https://www.google.com/search?safe=off&rlz=1C1GCEJ_enUS867US867&biw=1920&bih=969&tbm=isch&sxsrf=ACYBGNSuri5pmfVHPiLyuEMCRoiB7tVHMw%3A1572280643471&sa=1&ei=Qxm3XeWqHMOr5wKK5L_QDw&q=NYPD+Police+Officer+John+W.+Perry&oq=NYPD+Police+Officer+John+W.+Perry&gs_l=img.3...5754.8620..8924...0.0..0.94.527.6......0....1..gws-wiz-img.......35i39.3UawQiuoSrw&ved=0ahUKEwil2Pbpsb_lAhXD1VkKHQryD_oQ4dUDCAc&uact=5)

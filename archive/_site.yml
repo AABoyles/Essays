@@ -1,0 +1,29 @@
+name: Anthony A. Boyles
+output_dir: '.'
+include: '*.Rmd'
+navbar:
+  title: Anthony A. Boyles
+  left:
+  - text: Portfolio
+    href: ../index.html
+  - text: Predictions
+    href: ../predictions/
+  - text: Essays
+    href: ../essays/
+  - text: Code
+    href: ../code.html
+  - text: About
+    href: ../about.html
+  right:
+  - text: Meta
+    href: ../README.html
+output:
+  html_document:
+    theme: paper
+    highlight: pygments
+    css: "site_libs/style.css"
+    code_folding: "hide"
+    include:
+      after_body: "../post.html"
+    lib_dir: site_libs
+    self_contained: no
