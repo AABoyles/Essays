@@ -1,0 +1,23 @@
+---
+title: "Images"
+---
+
+```{r}
+library("htmltools")
+tags$div(class="panel panel-danger",
+  tags$div(class="panel-heading", "Disclaimer"),
+  tags$div(class="panel-body", "If you've stumbled upon this page, well done. This is the images directory. It mostly exists to serve static images to other pages on this site. However, I thought it might be fun to write some R code to show them here.")
+)
+```
+
+```{r, message=FALSE, results='asis'}
+for(file in list.files(".", "*.(png|jpg)")){
+  print(
+    tags$div(style="width: 24%; max-height: 200px; display: inline-block;",
+      tags$a(href=file,
+        tags$img(src=file, title=file)
+      )
+    )
+  )
+}
+```
