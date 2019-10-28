@@ -1,0 +1,32 @@
+---
+title: "Forecasting Resources"
+---
+
+## Classic Reads
+
+* [Superforecasting]()
+* [Expert Political Judgement]()
+* [The Signal and the Noise]()
+
+## Forecasting Tournaments and Prediction Markets
+
+* [Good Judgement Open](https://www.gjopen.com/memberships/4645/scores)
+* [Metaculus](https://www.metaculus.com/accounts/profile/106142/)
+* [Prediction Book](https://predictionbook.com/users/AABoyles)
+* [PredictIt](https://predictit.com/)
+* [PredictWise](https://markets.predictwise.com/markets/)
+
+## Non-crowd forecasts
+
+* [Election Betting Odds](https://electionbettingodds.com/)
+
+## Tools
+
+* [Guesstimate](https://www.getguesstimate.com/users/60) - Specify distributions on outcomes, and the relationships between those outcomes, and hit go. Monte Carlo simulation made dead simple.
+
+## Datasets I Reference Often
+
+* [SSA Actuarial Tables](https://www.ssa.gov/oact/STATS/table4c6.html) - [Clean Version](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7rRJM5TFdRotQZAJnsoDXu7djMHgKZ2esvcvDlvZuLa_qjbBT-d4DbtnzkWC3a7-WvjQkAT5xmbLs/pubhtml?gid=0&single=true) - Most forecasting questions related to individuals will be resolved (implicitly or explicitly) if the individual in question dies--regardless of whether the question is about their longevity. Many forecasters overlook this, and fail to consider the individual's probability of death.
+* [Five Thirty Eight](https://projects.fivethirtyeight.com/) - especially [Polls](https://projects.fivethirtyeight.com/polls/)
+* [Correlates of War](http://www.correlatesofwar.org/data-sets) - especially [Militarized Interstate Disputes](http://www.correlatesofwar.org/data-sets/MIDs).
+* [Archigos](https://www.rochester.edu/college/faculty/hgoemans/data.htm) - 
