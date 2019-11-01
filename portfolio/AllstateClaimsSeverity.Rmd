@@ -4,10 +4,6 @@ title: "AllState Claims Severity Kernel"
 
 [Ed. This is a transcribed and edited version of [a kernel I produced](https://www.kaggle.com/aaboyles/allstate-claims-severity/beginner-friendly-simple-linear-regression/notebook) to compete in the [AllStates Claims Severity Challenge](https://www.kaggle.com/c/allstate-claims-severity).]
 
-```{r}
-knitr::opts_chunk$set(engine.path = list(python = '/usr/bin/python3'))
-```
-
 ## Introduction
 
 There are already a bunch of awesome Scripts, but I wanted to step back and work with some more rudimentary models to make sure I was doing the right data preparation.

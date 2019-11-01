@@ -4,9 +4,15 @@ title: "Forecasting Resources"
 
 ## Classic Reads
 
-* [Superforecasting]()
-* [Expert Political Judgement]()
-* [The Signal and the Noise]()
+### Books
+
+* [Superforecasting](https://www.goodreads.com/book/show/23995360-superforecasting)
+* [Expert Political Judgement](https://www.goodreads.com/book/show/89158.Expert_Political_Judgment)
+* [The Signal and the Noise](https://www.goodreads.com/book/show/13588394-the-signal-and-the-noise)
+
+### Papers
+
+* [Are Talking Heads Blowing Hot air?](https://www.hamilton.edu/documents/Analysis-of-Forcast-Accuracy-in-the-Political-Media.pdf)
 
 ## Forecasting Tournaments and Prediction Markets
 
@@ -29,4 +35,7 @@ title: "Forecasting Resources"
 * [SSA Actuarial Tables](https://www.ssa.gov/oact/STATS/table4c6.html) - [Clean Version](https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7rRJM5TFdRotQZAJnsoDXu7djMHgKZ2esvcvDlvZuLa_qjbBT-d4DbtnzkWC3a7-WvjQkAT5xmbLs/pubhtml?gid=0&single=true) - Most forecasting questions related to individuals will be resolved (implicitly or explicitly) if the individual in question dies--regardless of whether the question is about their longevity. Many forecasters overlook this, and fail to consider the individual's probability of death.
 * [Five Thirty Eight](https://projects.fivethirtyeight.com/) - especially [Polls](https://projects.fivethirtyeight.com/polls/)
 * [Correlates of War](http://www.correlatesofwar.org/data-sets) - especially [Militarized Interstate Disputes](http://www.correlatesofwar.org/data-sets/MIDs).
-* [Archigos](https://www.rochester.edu/college/faculty/hgoemans/data.htm) - 
+* [Archigos](https://www.rochester.edu/college/faculty/hgoemans/data.htm) - A Dataset of national leaders
+* [Global Terrorism Database](https://www.start.umd.edu/gtd/)
+* [Armed Conflict Location and Event Database](https://www.acleddata.com/)
+*

@@ -7,7 +7,6 @@ A common project in early statistics courses is to model house sales, based on [
 So, let's see how well we can predict the sale prices.
 
 ```{r setup, include=FALSE}
-source("../infobox.R")
 library('knitr')
 opts_chunk$set(message=FALSE, warning=FALSE)
 ```
@@ -23,19 +22,7 @@ library('tidyverse')
 
 set.seed(42)
 
-if(!file.exists('../data-cache/HousePricesTrain.csv')){
-  download.file(
-    'https://storage.googleapis.com/kaggle-competitions-data/kaggle/5407/train.csv?GoogleAccessId=competitions-data@kaggle-161607.iam.gserviceaccount.com&Expires=1509220959&Signature=Ojje7az4R2NCwjxqB8RY8XXAVU9IQHi%2B9E6DqyyBwVatSYNLrE1OsAIwWhXgrb9klWQB9%2BtRJIoTeKd%2Fm5aq3mxMi%2B0WD9AbIsNCPDj%2BgYfyX5ESkWCg2a6bnyt328z7BH15vNr%2FUhH%2FF20esJxJnhBApbGO3sIrO10Pq%2FrorEuuM3WCALyOMW6QH5hz5KMMpyBisHbVht0w1qLdcFu%2BZFM3yJgHNHw%2Bvu5bXAfjgc9sncSRPqRn9CkShXaqmpCUjXxuQ4UpMpdKgbfc60ugpUM4CVUgcJyZpbZUg0WzOug6gkCDrADyQ2Yhgh5is2WGV6JWkW8LM2xu4C8nZPxaaw%3D%3D',
-    '../data-cache/HousePricesTrain.csv'
-  )
-}
-
-if(!file.exists('../data-cache/HousePricesTest.csv')){
-  download.file(
-    'https://storage.googleapis.com/kaggle-competitions-data/kaggle/5407/test.csv?GoogleAccessId=competitions-data@kaggle-161607.iam.gserviceaccount.com&Expires=1509221051&Signature=Yyvz9UucDqKB%2FVyMorG2j5xNlwkeYxorrppdCQHEhj7VotSs0WFA1xFv1Rp2m79R3S%2BRN5VapDuA623Fj0ozLmns1b0siriWQaDv1SFhN1edToQSl1bLrzPx0oSobGtwADQoQnNkjisrI7fdIh8W4BQO0ellX5K2nGAjhu7jjpcKP2Ac6Ex6coogwd7x7bhbV5K8bmAxvor8vTnx8ZDBMrMydpRd9HpQ0dNpVaGC4MEdMBTKkU6EQh3BA0jkK%2BcX8nQ5ywJ%2B8hdcM8pabjKi%2BG90AJcGdAJtxA5uqSjJ4TlWqZPttYgHHkQH1cXkttbHwA%2FwarE7ZEjJa%2FHdJXE0gg%3D%3D',
-    '../data-cache/HousePricesTest.csv'
-  )
-}
+# Get the data here: https://www.kaggle.com/c/5407/download-all
 
 training <- read_csv("../data-cache/HousePricesTrain.csv")
 test <- read_csv("../data-cache/HousePricesTest.csv")
@@ -100,9 +87,7 @@ library('ShRoud')
 full %>%
   is.na() %>%
   colSums() %>%
-  tbl_df() %>%
-  mutate(Variable = rownames(.)) %>%
-  filter(value > 0) ->
+  tibble(Variable=names(.), count=.) ->
   VarsWithNAs
 
 for (i in VarsWithNAs$Variable){
@@ -404,10 +389,8 @@ Just as a Sanity check, did we introduce any new missing values?
 full %>%
   is.na() %>%
   colSums() %>%
-  tbl_df %>%
-  mutate(Variable = rownames(.)) ->
+  tibble(Variable=names(.),Missing=.) ->
   temp
-temp$Missing <- temp$value
 temp %>%
   filter(Missing > 0) %>%
   dplyr::select(Variable, Missing) %>%
@@ -540,7 +523,7 @@ Yup. From a predictive perspective, this is actually possibly desirable. If ther
 
 Another piece of information which may benefit us is the time of year. If you ever check on selling a property on Zillow, it will likely serve you a graph that looks something like this:
 
-![](http://anthony.boyles.cc/imgs/zillow.png)
+![](https://aaboyles.github.io/Essays/imgs/zillow.png)
 
 We also know the month in which the houses were sold. If Zillow's estimate is accurate, we may be able to discern some signal from the month of sale:
 
@@ -640,10 +623,7 @@ Also, I'm going to use Caret to fit the hyperparameters on models where that's u
 
 ```{r CVController}
 library('caret')
-library('parallel')
-library('doMC')
 fitControl <- trainControl(method = "repeatedcv", number = 5, repeats = 5)
-registerDoMC(cores = detectCores() - 1)
 ```
 
 ## Linear Model
@@ -720,7 +700,7 @@ test %>%
 # One more thing...
 
 > This is how you win ML competitions: you take other peoples’ work and ensemble them together.
--[Vitaly Kuznetsov](http://cims.nyu.edu/~vitaly/), NIPS2014
+> -**[Vitaly Kuznetsov](http://cims.nyu.edu/~vitaly/), NIPS2014**
 
 I collected the outputs of the four top-scoring public kernels. Let's see how they fare together.
 

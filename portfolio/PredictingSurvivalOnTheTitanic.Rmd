@@ -15,8 +15,6 @@ Among the [many excellent kernels](https://www.kaggle.com/c/titanic/kernels) tha
 ```{r setup, message = FALSE, warning=FALSE}
 set.seed(42)
 
-source("../infobox.R")
-
 library('knitr')
 opts_chunk$set(message = FALSE, warning=FALSE)
 
@@ -166,7 +164,7 @@ The better approach, however, is to try to fill in the blanks.
 Some models don't handle missing values very well. The Titanic dataset has some missing values. So, let's try to take care of them. The values in this dataset aren't missing entries uniformly:
 
 ```{r missingnesstable1}
-full %>% is.na() %>% colSums() %>% tbl_df %>% rename(Missing = value) %>% kable
+full %>% is.na() %>% colSums() %>% tibble(Variable=names(.), Missing=.) %>% kable
 ```
 
 The 418 missing the `Survived` variable are the 418 members of the test set. The 263 missing `Age` are important and interesting, so let's be sure to address them. I doubt `Cabin` will be all that interesting, mostly because it seems to lack enough data for us to extract any credible signal from it. To start, let's focus on `Embarked` and `Fare`.
@@ -271,7 +269,7 @@ TODO: Stop feeling bad about it and actually cross-validate MICE.
 Before we move on again, let's do a quick sanity check that there's no missing data:
 
 ```{r missingDataSanityCheck1}
-full %>% is.na() %>% colSums() %>% tbl_df %>% rename(Missing = value) %>% kable
+full %>% is.na() %>% colSums() %>% tibble(Variable=names(.), Missing=.) %>% kable
 ```
 
 # Second Pass Modeling
@@ -393,7 +391,7 @@ table(full$Mother, full$Survived)
 Now that we're done with feature engineering, let's do a quick sanity check that there's no missing data:
 
 ```{r missingDataSanityCheck}
-full %>% is.na() %>% colSums() %>% tbl_df %>% rename(Missing = value) %>% kable
+full %>% is.na() %>% colSums() %>% tibble(Variable=names(.), Missing=.) %>% kable
 ```
 
 Perfect. Now to update the model!
