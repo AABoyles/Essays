@@ -1,0 +1,113 @@
+---
+title: "The Elon Musk Forecast Correction Function"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+In case you haven't heard, Elon Musk is [the World's Raddest Man](https://waitbutwhy.com/2015/05/elon-musk-the-worlds-raddest-man.html).
+
+He's also something of a master of over-promising and late-delivering. He's reasonably consistent about delivering, just... late. In order to have a problem like this, he must be very good at predicting what *can* be brought to market. His predictions may contain telling information about when we can expect him to deliver something, it's just that the numbers are wrong. And because they're wrong in a biased way (he consistently predicts things will be ready sooner than they are), we can figure out how to *correct* his predictions.
+
+## Assembling His (Falsifiable) Predictions
+
+In science, there's a really really important concept, called [falsifiability](https://en.wikipedia.org/wiki/Falsifiability). Basically, you can make statements like "[Conservatives will win the next election](https://www.metaculus.com/questions/3264/how-many-seats-will-the-conservative-and-unionist-party-win-in-the-next-uk-general-election/)", but we need to figure out some objective criteria for which that statement is true or false. Does winning mean taking a majority of seats? Or a majority of seats in a coalition government? Or is it just the largest plurality, even if they can't form the government? In other words, there are a lot of places we can stick a label like "won the election", but we need to pick one of those in advance of making any predictions. Otherwise, we're just [blowing hot air](https://www.hamilton.edu/documents/Analysis-of-Forcast-Accuracy-in-the-Political-Media.pdf).
+
+So, we need to find predictions that Elon Musk has publicly stated that are more concrete than "Someday, humans will..." For Musk, that generally means timelines. For example, consider this tweet:
+
+[![Pickup truck unveil in 18 to 24 months](https://aaboyles.github.io/Essays/imgs/Elon.PNG)](https://twitter.com/elonmusk/status/852581322451111936)
+
+Here, he is making a concrete prediction that Tesla will unveil a pickup truck in 18 to 24 months. Note that Musk made the tweet on 2017-04-13. 18 months later is 2018-10-13, and 24 months later is 2019-04-13. So, did Tesla unveil the pickup truck within the predicted window? [No.](https://twitter.com/elonmusk/status/1170401244310949888) [He teased, of course](https://twitter.com/elonmusk/status/1106714774694297601/photo/1), but No.
+
+So, let's find as many Elon Musk predictions as we can... Or use some that somebody else has already done for us! Bloomberg assembled [a list](https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json) for their (much goofier) [take on this topic](https://www.bloomberg.com/features/elon-musk-goals/).
+
+```{r}
+library(curl)
+library(jsonlite)
+library(dplyr)
+library(magrittr)
+library(lubridate)
+library(DT)
+
+if(!file.exists('../data-cache/musk.json')){
+  curl_download("https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json", '../data-cache/musk.json')
+}
+
+preds <- read_json('../data-cache/musk.json')$response %>%
+  lapply(function(x) {
+    x[sapply(x, is.null)] <- NA
+    unlist(x)
+  }) %>%
+  do.call("rbind", .) %>%
+  data.frame(stringsAsFactors=FALSE) %>%
+  mutate(
+    AnnouncementDate = dmy(AnnouncementDate),
+    TargetDate = dmy(TargetDate),
+    DateAdjustmentMade = dmy(DateAdjustmentMade),
+    AdjustedDate = dmy(AdjustedDate),
+    Completed  = dmy(Completed)
+  ) %T>%
+  datatable()
+```
+This gives us a jump-start, but the data is still too thin to be of much use.
+
+```{r}
+library(readr)
+if(!file.exists('../data-cache/musk.csv')){
+  write_csv(preds, '../data-cache/musk.csv')
+}
+```
+
+Accordingly, I loaded up the ol' spreadsheet and started manually filling in the blank spaces. This entailed a good deal of manual data cleaning and manipulation. The most important operation was selecting the dates to assign to predictions. For the date on which the prediction was registered, I tried to select the earliest available example of it (almost always [Musk's Twitter feed](https://twitter.com/elonmusk)). For the date he predicted, I used the principle of charity to select the latest possible date. I ignored date ranges (e.g. "Summer 2017") in favor of the terminal date that would indicate (2017-09-21). We might also note that some of the predictions include Adjustments--if his initial estimate was wrong, Musk may have later updated the prediction. But there's nothing privileged these updates--they're predictions unto themselves. Accordingly, I promoted them to sit in-line with the other predictions. [You can view my rendition of the sheet here.](https://docs.google.com/spreadsheets/d/1rRD3CsQLuiglHqma778PCOtAOODcjIs94xcdhRQ6uJE)
+
+```{r}
+library(readr)
+predictions <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vT2680-9o56BFlxnt6pEaX63-3bAJ-YWmDCrDQ-Al6Se_NCMBcznCzQElMLSD5L2NZk_o1psoXkpBXG/pub?gid=0&single=true&output=csv')
+predictions %>%
+  select(-Source:-Description) %>%
+  datatable()
+```
+
+This gives us `r nrow(preds)` predictions. But we can't use all of them, unfortunately.
+
+```{r}
+# TODO: Restructure the data to reflect this.
+B <- preds %>%
+  filter(!is.na(AnnouncementDate))
+```
+
+```{r}
+library(ggplot2)
+ggplot(, aes(predictions$TargetDate-predictions$AnnouncementDate)) + geom_histogram()
+```
+Here we can see that we have many predictions in the time range of zero to three years, and a few longer-term predictions.
+
+```{r}
+predictions %<>%
+  mutate(
+    Length = as.numeric(TargetDate - AnnouncementDate, units="days"),
+    Error = as.numeric(Completed - AnnouncementDate, units="days")
+  )
+
+ggplot(predictions, aes(Length, Error)) + geom_point()
+```
+
+
+Notably, Metaculus has also generated [a comparable tracking of Musk-forecasts](https://www.metaculus.com/visualizations/elon-musk-timeline/), mapped to Metaculus questions regarding his predictions. And [the raw data is available](https://www.metaculus.com/visualizations/elon-musk-timeline/data/).
+
+```{r}
+lm(Error ~ Length, data=predictions) %>% summary
+```
+
+So, there you have it. If there's a prediction coming from the Musk-verse, multiply the (upper-bound of the) amount of time by 1.54, and add 120 days.
+
+## Relevant Markets
+
+[Will SpaceX land humans on Mars by 2030?](https://www.metaculus.com/questions/349/will-spacex-land-people-on-mars-prior-to-2030/)
+
+## Conclusion
+
+It's easy to fault Musk for consistently making poor projections like this. However, I think there's a much more fundamental reason we should celebrate him: he makes public predictions _at all_.
