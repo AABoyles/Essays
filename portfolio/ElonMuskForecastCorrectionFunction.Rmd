@@ -3,7 +3,7 @@ title: "The Elon Musk Forecast Correction Function"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = FALSE)
 ```
 
 ## Introduction
@@ -25,7 +25,6 @@ Here, he is making a concrete prediction that Tesla will unveil a pickup truck i
 So, let's find as many Elon Musk predictions as we can... Or use some that somebody else has already done for us! Bloomberg assembled [a list](https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json) for their (much goofier) [take on this topic](https://www.bloomberg.com/features/elon-musk-goals/).
 
 ```{r}
-library(curl)
 library(jsonlite)
 library(dplyr)
 library(magrittr)
@@ -33,6 +32,7 @@ library(lubridate)
 library(DT)
 
 if(!file.exists('../data-cache/musk.json')){
+  library(curl)
   curl_download("https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json", '../data-cache/musk.json')
 }
 
@@ -49,10 +49,13 @@ preds <- read_json('../data-cache/musk.json')$response %>%
     DateAdjustmentMade = dmy(DateAdjustmentMade),
     AdjustedDate = dmy(AdjustedDate),
     Completed  = dmy(Completed)
-  ) %T>%
+  )
+
+preds %>%
+  select(Company, Prediction, Importance, TextTargetDate, Completed) %>%
   datatable()
 ```
-This gives us a jump-start, but the data is still too thin to be of much use.
+This gives us a jump-start, but the data is still too thin to be of much use. We need to know all salient dates (Date prediction was made, Date predicted, Date event actually ocurred) in order to assess the predictive accuracy. We need these because we want to compare the difference in temporal distances between them.
 
 ```{r}
 library(readr)
@@ -71,40 +74,54 @@ predictions %>%
   datatable()
 ```
 
-This gives us `r nrow(preds)` predictions. But we can't use all of them, unfortunately.
-
-```{r}
-# TODO: Restructure the data to reflect this.
-B <- preds %>%
-  filter(!is.na(AnnouncementDate))
-```
-
-```{r}
-library(ggplot2)
-ggplot(, aes(predictions$TargetDate-predictions$AnnouncementDate)) + geom_histogram()
-```
-Here we can see that we have many predictions in the time range of zero to three years, and a few longer-term predictions.
+This gives us `r nrow(preds)` predictions. The data are still messy and not 100% reliable, but generally accurate and confirmable by the `Source1` and `Source2` columns. Given that most of the date fields are now populated, we can create columns of the temopral distance (number of days) between the dates.
 
 ```{r}
 predictions %<>%
   mutate(
-    Length = as.numeric(TargetDate - AnnouncementDate, units="days"),
-    Error = as.numeric(Completed - AnnouncementDate, units="days")
+    PredictedLength = as.numeric(TargetDate - AnnouncementDate, units="days"),
+    ActualLength = as.numeric(Completed - AnnouncementDate, units="days")
   )
-
-ggplot(predictions, aes(Length, Error)) + geom_point()
+predictions %>%
+  select(Prediction, PredictedLength, ActualLength) %>%
+  datatable()
 ```
 
-
-Notably, Metaculus has also generated [a comparable tracking of Musk-forecasts](https://www.metaculus.com/visualizations/elon-musk-timeline/), mapped to Metaculus questions regarding his predictions. And [the raw data is available](https://www.metaculus.com/visualizations/elon-musk-timeline/data/).
+So, now that we know how far the dates are from one another, what's their distribution?
 
 ```{r}
-lm(Error ~ Length, data=predictions) %>% summary
+library('plotly')
+plot_ly(predictions, alpha=0.6) %>%
+  add_histogram(x = ~PredictedLength, name="Prediction") %>%
+  add_histogram(x = ~ActualLength, name="Actual Time") %>%
+  layout(barmode = "overlay")
 ```
 
-So, there you have it. If there's a prediction coming from the Musk-verse, multiply the (upper-bound of the) amount of time by 1.54, and add 120 days.
+Here we can see that we have many predictions in the time range of zero to three years, and a few longer-term predictions. Importantly, we don't see an obvious rightward-shift in the resolution times of these predictions. That's not to imply it isn't there. To see it, however, let's look at the scatterplot instead.
+
+```{r}
+model <- lm(ActualLength ~ PredictedLength, data=predictions)
+
+predictions %>%
+  filter(
+    !is.na(PredictedLength),
+    !is.na(ActualLength)) %>%
+  plot_ly() %>%
+    add_markers(x=~PredictedLength, y=~ActualLength, text=~Prediction, hoverinfo="text", name="Actual Predictions") %>%
+    add_lines(x=~PredictedLength, y=fitted(model), name="Predictions Line-of-best-fit") %>%
+    add_lines(x=~PredictedLength, y=~PredictedLength, name="Prefect Predictions")
+```
+
+```{r}
+library('pander')
+model %>% summary %>% pander
+```
+
+So, there you have it. If there's a prediction coming from the Musk-verse, multiply the (upper-bound of the) amount of time by `r model$coefficients[2]`, and add `r round(model$coefficients[1])` days.
 
 ## Relevant Markets
+
+Notably, Metaculus has also generated [a comparable tracking of Musk-forecasts](https://www.metaculus.com/visualizations/elon-musk-timeline/), mapped to Metaculus questions regarding his predictions. And [the raw data is available](https://www.metaculus.com/visualizations/elon-musk-timeline/data/).
 
 [Will SpaceX land humans on Mars by 2030?](https://www.metaculus.com/questions/349/will-spacex-land-people-on-mars-prior-to-2030/)
 
