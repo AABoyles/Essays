@@ -119,11 +119,48 @@ model %>% summary %>% pander
 
 So, there you have it. If there's a prediction coming from the Musk-verse, multiply the (upper-bound of the) amount of time by `r model$coefficients[2]`, and add `r round(model$coefficients[1])` days.
 
+To make this trivially easy, here's a little calculator! Enter that date of Musk's Prediction, and it will tell you when it will actually come true:
+
+<div class="jumbotron">
+  <h2>The Elon Musk Prediction Correction Calculator</h2>
+  <form class="form-inline">
+    <p>On <input id="datePredictionMade" class="form-control" type="date">, Elon Musk predicted he'd deliver on <input id="datePredicted" class="form-control" type="date">.</p>
+    <p>He is much more likely to deliver around <span id="predictionResult"></span>.</p>
+  </form>
+  <script>
+$(function(){
+  var msPerDay = 1000*60*60*24;
+  var today = new Date().toISOString().substr(0,10);
+  var threeMonthsFromNow = new Date(90*msPerDay + Date.now()).toISOString().substring(0,10);
+  $('#datePredicted').on('change', function(){
+    $('#datePredictionMade').attr('max', this.value);
+  }).val(threeMonthsFromNow).attr('min', today);
+  $('#datePredictionMade').on('input', function(){
+    $('#datePredicted').attr('min', this.value);
+  }).val(today);
+  $('#datePredictionMade, #datePredicted').on('input', function(){
+    var date1 = new Date($('#datePredictionMade').val());
+    var date2 = new Date($('#datePredicted').val());
+    var days = fit(Math.floor((date2 - date1) / msPerDay));
+    $('#predictionResult').text(format((new Date(date1.getTime() + days*msPerDay)).toLocaleString()));
+  });
+  function fit(days){
+    return `r model$coefficients[2]` * days + `r model$coefficients[1]`;
+  }
+  function format(d){
+    var s = d.toLocaleString();
+    return s.substring(0, s.indexOf(','));
+  }
+});
+  </script>
+</div>
+
 ## Relevant Markets
 
 Notably, Metaculus has also generated [a comparable tracking of Musk-forecasts](https://www.metaculus.com/visualizations/elon-musk-timeline/), mapped to Metaculus questions regarding his predictions. And [the raw data is available](https://www.metaculus.com/visualizations/elon-musk-timeline/data/).
 
-[Will SpaceX land humans on Mars by 2030?](https://www.metaculus.com/questions/349/will-spacex-land-people-on-mars-prior-to-2030/)
+* [Will SpaceX land humans on Mars by 2030?](https://www.metaculus.com/questions/349/will-spacex-land-people-on-mars-prior-to-2030/)
+
 
 ## Conclusion
 
