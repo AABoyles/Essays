@@ -410,8 +410,8 @@ $(document).ready(function () {
 
 
 <p>This is my analysis for <a href="https://www.gjopen.com/questions/1100-will-mick-mulvaney-cease-to-be-white-house-chief-of-staff-before-1-january-2020">This Question</a> on <a href="https://www.gjopen.com/">Good Judgement Open</a>.</p>
-<div id="chiefs-of-staff" class="section level2">
-<h2>Chiefs of Staff</h2>
+<div id="outside-view-the-tenure-of-chiefs-of-staff" class="section level2">
+<h2>Outside View: The Tenure of Chiefs of Staff</h2>
 <p>Wikipedia has already assembled <a href="https://en.wikipedia.org/wiki/White_House_Chief_of_Staff#List_of_White_House_chiefs_of_staff">the list of Chiefs of Staff</a>. All we needed to do was compile it into <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRlBabaJaIBmcqvF4QR4uF2megpcCpffX6doQbJaVWq8fMcfmW_iIdqs7iuYvi6LrtJkG5XjXnrybdg/pubhtml?gid=174141588&amp;single=true">a slightly cleaner format</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(readr)</a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(dplyr)</a>
@@ -421,61 +421,51 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb1-6" title="6"><span class="st">  </span><span class="kw">select</span>(Name, President, EnteredOffice, LeftOffice, TimeInOffice) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-7" title="7"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(EnteredOffice)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb1-8" title="8"><span class="st">  </span><span class="kw">datatable</span>()</a></code></pre></div>
-<div id="htmlwidget-adbde603c69e1063226f" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-adbde603c69e1063226f">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35"],["Mick Mulvaney","John F. Kelly","Reince Priebus","Denis McDonough","Jack Lew","Bill Daley","Pete Rouse","Rahm Emanuel","Joshua Bolten","Andrew Card","John Podesta","Erskine Bowles","Leon Panetta","Mack McLarty","James Baker","Samuel Skinner","John Sununu","Kenneth Duberstein","Howard Baker","Donald Regan","James Baker","Jack Watson","Hamilton Jordan","(Vacant)","Dick Cheney","Donald Rumsfeld","Alexander Haig","(Vacant)","H. R. Haldeman","James R. Jones","Marvin Watson","Kenneth O'Donnell","Wilton Persons","Sherman Adams","John Steelman"],["Donald Trump","Donald Trump","Donald Trump","Barack Obama","Barack Obama","Barack Obama","Barack Obama","Barack Obama","George W. Bush","George W. Bush","Bill Clinton","Bill Clinton","Bill Clinton","Bill Clinton","George H. W. Bush","George H. W. Bush","George H. W. Bush","Ronald Reagan","Ronald Reagan","Ronald Reagan","Ronald Reagan","Jimmy Carter","Jimmy Carter","Jimmy Carter","Gerald Ford","Gerald Ford","Richard Nixon","Richard Nixon","Richard Nixon","Lyndon B. Johnson","Lyndon B. Johnson","John F. Kennedy","Dwight D. Eisenhower","Dwight D. Eisenhower","Harry S Truman"],["2019-01-02","2017-07-31","2017-01-20","2013-01-20","2012-01-27","2011-01-13","2010-10-01","2009-01-20","2006-04-14","2001-01-20","1998-10-20","1997-01-20","1994-07-17","1993-01-20","1992-08-23","1991-12-16","1989-01-20","1988-07-01","1987-02-27","1985-02-04","1981-01-20","1980-06-11","1979-07-18","1977-01-20","1975-11-20","1974-09-21","1973-05-04","1973-04-30","1969-01-20","1968-04-26","1965-02-01","1961-01-20","1958-10-07","1953-01-20","1946-12-12"],[null,"2019-01-02","2017-07-31","2017-01-20","2013-01-20","2012-01-27","2011-01-13","2010-10-01","2009-01-20","2006-04-14","2001-01-20","1998-10-20","1997-01-20","1994-07-17","1993-01-20","1992-08-23","1991-12-16","1989-01-20","1988-07-01","1987-02-27","1985-02-04","1981-01-20","1980-06-11","1979-07-18","1977-01-20","1975-11-20","1974-09-21","1973-05-04","1973-04-30","1969-01-20","1968-04-26","1963-11-22","1961-01-20","1958-10-07","1953-01-20"],[null,520,192,1461,359,379,104,619,1012,1910,823,638,918,543,150,251,1060,203,490,753,1476,223,329,909,427,425,505,4,1561,269,1180,1036,836,2086,2231]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>President<\/th>\n      <th>EnteredOffice<\/th>\n      <th>LeftOffice<\/th>\n      <th>TimeInOffice<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":5},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-</div>
-<div id="munging" class="section level2">
-<h2>Munging</h2>
+<div id="htmlwidget-1d092aa8791b7d049b7e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1d092aa8791b7d049b7e">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35"],["Mick Mulvaney","John F. Kelly","Reince Priebus","Denis McDonough","Jack Lew","Bill Daley","Pete Rouse","Rahm Emanuel","Joshua Bolten","Andrew Card","John Podesta","Erskine Bowles","Leon Panetta","Mack McLarty","James Baker","Samuel Skinner","John Sununu","Kenneth Duberstein","Howard Baker","Donald Regan","James Baker","Jack Watson","Hamilton Jordan","(Vacant)","Dick Cheney","Donald Rumsfeld","Alexander Haig","(Vacant)","H. R. Haldeman","James R. Jones","Marvin Watson","Kenneth O'Donnell","Wilton Persons","Sherman Adams","John Steelman"],["Donald Trump","Donald Trump","Donald Trump","Barack Obama","Barack Obama","Barack Obama","Barack Obama","Barack Obama","George W. Bush","George W. Bush","Bill Clinton","Bill Clinton","Bill Clinton","Bill Clinton","George H. W. Bush","George H. W. Bush","George H. W. Bush","Ronald Reagan","Ronald Reagan","Ronald Reagan","Ronald Reagan","Jimmy Carter","Jimmy Carter","Jimmy Carter","Gerald Ford","Gerald Ford","Richard Nixon","Richard Nixon","Richard Nixon","Lyndon B. Johnson","Lyndon B. Johnson","John F. Kennedy","Dwight D. Eisenhower","Dwight D. Eisenhower","Harry S Truman"],["2019-01-02","2017-07-31","2017-01-20","2013-01-20","2012-01-27","2011-01-13","2010-10-01","2009-01-20","2006-04-14","2001-01-20","1998-10-20","1997-01-20","1994-07-17","1993-01-20","1992-08-23","1991-12-16","1989-01-20","1988-07-01","1987-02-27","1985-02-04","1981-01-20","1980-06-11","1979-07-18","1977-01-20","1975-11-20","1974-09-21","1973-05-04","1973-04-30","1969-01-20","1968-04-26","1965-02-01","1961-01-20","1958-10-07","1953-01-20","1946-12-12"],[null,"2019-01-02","2017-07-31","2017-01-20","2013-01-20","2012-01-27","2011-01-13","2010-10-01","2009-01-20","2006-04-14","2001-01-20","1998-10-20","1997-01-20","1994-07-17","1993-01-20","1992-08-23","1991-12-16","1989-01-20","1988-07-01","1987-02-27","1985-02-04","1981-01-20","1980-06-11","1979-07-18","1977-01-20","1975-11-20","1974-09-21","1973-05-04","1973-04-30","1969-01-20","1968-04-26","1963-11-22","1961-01-20","1958-10-07","1953-01-20"],[null,520,192,1461,359,379,104,619,1012,1910,823,638,918,543,150,251,1060,203,490,753,1476,223,329,909,427,425,505,4,1561,269,1180,1036,836,2086,2231]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>President<\/th>\n      <th>EnteredOffice<\/th>\n      <th>LeftOffice<\/th>\n      <th>TimeInOffice<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":5},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>There are two cases in which the office was vacant: once briefly under Richard Nixon, and for the first 2.5 years of the Carter Administration. It seems like those periods are fundamentally different phenomena than having a Chief of Staff, so we’ll just drop them.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">filtered &lt;-<span class="st"> </span>CoS <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Name <span class="op">!=</span><span class="st"> &quot;(Vacant)&quot;</span>)</a></code></pre></div>
-</div>
-<div id="survival" class="section level2">
-<h2>Survival</h2>
-<p>To compute how long a Chief of Staff’s tenure will be, let’s fit a survival curve!</p>
+<div id="survival" class="section level3">
+<h3>Survival</h3>
+<p>To compute how long a (any) Chief of Staff’s tenure will be, let’s fit a survival curve!</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">library</span>(survival)</a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="kw">library</span>(survminer)</a>
-<a class="sourceLine" id="cb3-3" title="3">curve &lt;-<span class="st"> </span><span class="kw">survfit</span>(<span class="kw">Surv</span>(TimeInOffice) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data=</span>CoS)</a>
-<a class="sourceLine" id="cb3-4" title="4">curve</a></code></pre></div>
-<pre><code>## Call: survfit(formula = Surv(TimeInOffice) ~ 1, data = CoS)
-## 
-##    1 observation deleted due to missingness 
-##       n  events  median 0.95LCL 0.95UCL 
-##      34      34     581     427     918</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">ggsurvplot</span>(curve)</a></code></pre></div>
-<p><img src="MickMulvaneysLongevityAsTrumpsChiefOfStaff_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>Now, since Mulvaney started on 2019-01-02, he’ll need to be in his position 364 days to resolve the question as “No”.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">window &lt;-<span class="st"> </span><span class="kw">summary</span>(curve, <span class="dt">times=</span><span class="dv">364</span>)</a>
-<a class="sourceLine" id="cb6-2" title="2">window</a></code></pre></div>
-<pre><code>## Call: survfit(formula = Surv(TimeInOffice) ~ 1, data = CoS)
-## 
-## 1 observation deleted due to missingness 
-##  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-##   364     24      10    0.706  0.0781        0.568        0.877</code></pre>
-<p>So, the model suggests that he’ll have a 364-day survival probability of 0.7058824, and thus we predict that he’ll be gone with probability 0.2941176</p>
+<a class="sourceLine" id="cb3-3" title="3">curve &lt;-<span class="st"> </span><span class="kw">survfit</span>(<span class="kw">Surv</span>(TimeInOffice) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data=</span>filtered)</a>
+<a class="sourceLine" id="cb3-4" title="4">window &lt;-<span class="st"> </span><span class="kw">summary</span>(curve, <span class="dt">times=</span><span class="dv">364</span>)</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">ggsurvplot</span>(curve)</a></code></pre></div>
+<p><img src="MickMulvaneysLongevityAsTrumpsChiefOfStaff_files/figure-html/survival-1.png" width="672" /></p>
+<p>Now, since Mulvaney started on 2019-01-02, he’ll need to be in his position 364 days to resolve the question as “No”. The model suggests that he’ll have a 364-day survival probability of 0.71875, and thus we predict that he’ll be gone with probability 0.28125</p>
 </div>
-<div id="conditioned-on-his-current-longevity" class="section level2">
-<h2>…Conditioned on his current longevity</h2>
+<div id="conditioned-on-his-current-longevity" class="section level3">
+<h3>…Conditioned on his current longevity</h3>
 <p>If we condition his survival on the amount of time he’s already made it, our estimate should go up. After all, each additional day constitutes additional Bayesian evidence that he will continue to survive.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">#remotes::install_github(&quot;zabore/condsurv&quot;)</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="kw">library</span>(condsurv)</a>
-<a class="sourceLine" id="cb8-3" title="3">csp &lt;-<span class="st"> </span><span class="kw">conditional_surv_est</span>(</a>
-<a class="sourceLine" id="cb8-4" title="4">  <span class="dt">basekm =</span> curve,</a>
-<a class="sourceLine" id="cb8-5" title="5">  <span class="dt">t1 =</span> <span class="kw">as.integer</span>(<span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&#39;2019-01-02&#39;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>), <span class="dt">units=</span><span class="st">&quot;days&quot;</span>)),</a>
-<a class="sourceLine" id="cb8-6" title="6">  <span class="dt">t2 =</span> <span class="dv">364</span></a>
-<a class="sourceLine" id="cb8-7" title="7">)<span class="op">$</span>cs_est</a>
-<a class="sourceLine" id="cb8-8" title="8">csp</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co">#remotes::install_github(&quot;zabore/condsurv&quot;)</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">library</span>(condsurv)</a>
+<a class="sourceLine" id="cb4-3" title="3">csp &lt;-<span class="st"> </span><span class="kw">conditional_surv_est</span>(</a>
+<a class="sourceLine" id="cb4-4" title="4">  <span class="dt">basekm =</span> curve,</a>
+<a class="sourceLine" id="cb4-5" title="5">  <span class="dt">t1 =</span> <span class="kw">as.integer</span>(<span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), <span class="kw">as.POSIXct</span>(<span class="st">&#39;2019-01-02&#39;</span>, <span class="dt">tz=</span><span class="st">&quot;UTC&quot;</span>), <span class="dt">units=</span><span class="st">&quot;days&quot;</span>)),</a>
+<a class="sourceLine" id="cb4-6" title="6">  <span class="dt">t2 =</span> <span class="dv">364</span></a>
+<a class="sourceLine" id="cb4-7" title="7">)<span class="op">$</span>cs_est</a>
+<a class="sourceLine" id="cb4-8" title="8">csp</a></code></pre></div>
 <pre><code>## [1] 0.92</code></pre>
 <p>By this perspective, he’s 92% likely to last through the end of the year, or 8% likely to leave.</p>
 </div>
+</div>
 <div id="inside-view" class="section level2">
 <h2>Inside View</h2>
-<p><strong>(as of 2019-10-25)</strong></p>
+<p><strong>(as of 2019-11-04)</strong></p>
 <p>…suggests we shouldn’t be so confident about his longevity:</p>
-<ul>
-<li>2019-10-22 <a href="https://www.foxnews.com/media/mick-mulvaney-struggles-as-white-house-leaks-say-his-job-is-in-jeopardy">Fox News says his job is in jeopardy</a></li>
-<li>2019-10-23 <a href="https://www.politico.com/news/2019/10/23/trump-replace-chief-of-staff-mulvaney-055585">President Trump Denies Rumors about replacement plans</a></li>
-<li>2019-10-24 <a href="https://www.politico.com/news/2019/10/24/mick-mulvaney-support-conservatives-056618">Conservatives express support for Mulvaney</a></li>
-</ul>
+<p><strong>2019-10-22 <a href="https://www.foxnews.com/media/mick-mulvaney-struggles-as-white-house-leaks-say-his-job-is-in-jeopardy">Fox News says his job is in jeopardy</a></strong></p>
+<p>Fox News says he’s leaving strongly suggests that he’s leaving, <em>even if its just speculation from Fox News</em>. After all, that’s the President’s news service of choice. Strong update toward Mulvaney leaving.</p>
+<p><strong>2019-10-23 <a href="https://www.politico.com/news/2019/10/23/trump-replace-chief-of-staff-mulvaney-055585">President Trump Denies Rumors about replacement plans</a></strong></p>
+<p>Very weak update toward Mulvaney leaving. Trump is an inveterate liar, so much so that <a href="https://www.politifact.com/personalities/donald-trump/">you’re more likely to match a fact by assuming the thing he says is false</a>.</p>
+<p><strong>2019-10-24 <a href="https://www.politico.com/news/2019/10/24/mick-mulvaney-support-conservatives-056618">Conservatives express support for Mulvaney</a></strong></p>
+<p>Mulvaney has powerful Friends that Trump wants to keep happy, weakly updating us towards Mulvaney staying on.</p>
+<p><strong>2019-11-01 <a href="https://www.nbcnews.com/politics/national-security/mulvaney-was-left-dark-al-baghdadi-operation-n1073731">Mulvaney was left in the dark on al-Baghdadi operation</a></strong></p>
+<p>You don’t exclude your Chief of Staff from a Major National Security Operation unless he isn’t your Chief of Staff anymore. Strong update towards a Firing.</p>
+<p><strong>2019-11-01 <a href="https://www.washingtonexaminer.com/news/trump-does-not-defend-mick-mulvaney-amid-speculation-chief-of-staff-is-on-the-way-out">Trump refuses to defend Mick Mulvaney, heightening indications chief of staff on the way out</a></strong></p>
+<p>This one is a tough mix. Trump is often outspoken, both in his defenses of allies and attacks on former allies. So reticence to comment is an ambiguous signal for both interpretations. Speculation beyond this is tantamount to conspiracy theorizing… But let’s just do it anyway. I think <a href="https://www.cnn.com/2019/11/02/politics/robert-blair-mulvaney-aide-declines-to-testify/index.html">Trump is relying on Mulvaney and his network to provide some legal protection in the impeachment investigation</a>, and <a href="https://www.theatlantic.com/politics/archive/2019/10/mick-mulvaney-impeachment/600313/">the consequences of the firing will be more dire</a> than the consequences of just pretending he doesn’t have a Chief of Staff. If this sounds familiar, it was vaguely similar to Trump’s relationship with Robert Mueller, with an important caveat: Mulvaney comes from Trump’s camp, where Mueller was foisted upon Trump. Hence why Trump won’t comment on Mulvaney, where he routinely and publicly called for Mueller to stop investigating.</p>
+<p>Speculation aside, the ambiguity of this evidence means we shouldn’t update either direction based on this information.</p>
 </div>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

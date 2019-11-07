@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE)
 
 This is my analysis for [This Question](https://www.gjopen.com/questions/1100-will-mick-mulvaney-cease-to-be-white-house-chief-of-staff-before-1-january-2020) on [Good Judgement Open](https://www.gjopen.com/).
 
-## Chiefs of Staff
+## Outside View: The Tenure of Chiefs of Staff
 
 Wikipedia has already assembled [the list of Chiefs of Staff](https://en.wikipedia.org/wiki/White_House_Chief_of_Staff#List_of_White_House_chiefs_of_staff). All we needed to do was compile it into [a slightly cleaner format](https://docs.google.com/spreadsheets/d/e/2PACX-1vRlBabaJaIBmcqvF4QR4uF2megpcCpffX6doQbJaVWq8fMcfmW_iIdqs7iuYvi6LrtJkG5XjXnrybdg/pubhtml?gid=174141588&single=true).
 
@@ -27,40 +27,27 @@ CoS %>%
   datatable()
 ```
 
-## Munging
-
 There are two cases in which the office was vacant: once briefly under Richard Nixon, and for the first 2.5 years of the Carter Administration. It seems like those periods are fundamentally different phenomena than having a Chief of Staff, so we'll just drop them.
 
 ```{r}
 filtered <- CoS %>% filter(Name != "(Vacant)")
 ```
 
-## Survival
+### Survival
 
-To compute how long a Chief of Staff's tenure will be, let's fit a survival curve!
+To compute how long a (any) Chief of Staff's tenure will be, let's fit a survival curve!
 
 ```{r survival}
 library(survival)
 library(survminer)
-curve <- survfit(Surv(TimeInOffice) ~ 1, data=CoS)
-curve
-```
-
-
-```{r}
+curve <- survfit(Surv(TimeInOffice) ~ 1, data=filtered)
+window <- summary(curve, times=364)
 ggsurvplot(curve)
 ```
 
-Now, since Mulvaney started on 2019-01-02, he'll need to be in his position 364 days to resolve the question as "No".
+Now, since Mulvaney started on 2019-01-02, he'll need to be in his position 364 days to resolve the question as "No". The model suggests that he'll have a 364-day survival probability of `r window$surv`, and thus we predict that he'll be gone with probability `r 1-window$surv`
 
-```{r continued}
-window <- summary(curve, times=364)
-window
-```
-
-So, the model suggests that he'll have a 364-day survival probability of `r window$surv`, and thus we predict that he'll be gone with probability `r 1-window$surv`
-
-## ...Conditioned on his current longevity
+### ...Conditioned on his current longevity
 
 If we condition his survival on the amount of time he's already made it, our estimate should go up. After all, each additional day constitutes additional Bayesian evidence that he will continue to survive.
 
@@ -83,7 +70,25 @@ By this perspective, he's `r csp*100`% likely to last through the end of the yea
 
 ...suggests we shouldn't be so confident about his longevity:
 
-* 2019-10-22 [Fox News says his job is in jeopardy](https://www.foxnews.com/media/mick-mulvaney-struggles-as-white-house-leaks-say-his-job-is-in-jeopardy)
-* 2019-10-23 [President Trump Denies Rumors about replacement plans](https://www.politico.com/news/2019/10/23/trump-replace-chief-of-staff-mulvaney-055585)
-* 2019-10-24 [Conservatives express support for
-Mulvaney](https://www.politico.com/news/2019/10/24/mick-mulvaney-support-conservatives-056618)
+**2019-10-22 [Fox News says his job is in jeopardy](https://www.foxnews.com/media/mick-mulvaney-struggles-as-white-house-leaks-say-his-job-is-in-jeopardy)**
+
+Fox News says he's leaving strongly suggests that he's leaving, *even if its just speculation from Fox News*. After all, that's the President's news service of choice. Strong update toward Mulvaney leaving.
+
+**2019-10-23 [President Trump Denies Rumors about replacement plans](https://www.politico.com/news/2019/10/23/trump-replace-chief-of-staff-mulvaney-055585)**
+
+Very weak update toward Mulvaney leaving. Trump is an inveterate liar, so much so that [you're more likely to match a fact by assuming the thing he says is false](https://www.politifact.com/personalities/donald-trump/).
+
+**2019-10-24 [Conservatives express support for
+Mulvaney](https://www.politico.com/news/2019/10/24/mick-mulvaney-support-conservatives-056618)**
+
+Mulvaney has powerful Friends that Trump wants to keep happy, weakly updating us towards Mulvaney staying on.
+
+**2019-11-01 [Mulvaney was left in the dark on al-Baghdadi operation](https://www.nbcnews.com/politics/national-security/mulvaney-was-left-dark-al-baghdadi-operation-n1073731)**
+
+You don't exclude your Chief of Staff from a Major National Security Operation unless he isn't your Chief of Staff anymore. Strong update towards a Firing.
+
+**2019-11-01 [Trump refuses to defend Mick Mulvaney, heightening indications chief of staff on the way out](https://www.washingtonexaminer.com/news/trump-does-not-defend-mick-mulvaney-amid-speculation-chief-of-staff-is-on-the-way-out)**
+
+This one is a tough mix. Trump is often outspoken, both in his defenses of allies and attacks on former allies. So reticence to comment is an ambiguous signal for both interpretations. Speculation beyond this is tantamount to conspiracy theorizing... But let's just do it anyway. I think [Trump is relying on Mulvaney and his network to provide some legal protection in the impeachment investigation](https://www.cnn.com/2019/11/02/politics/robert-blair-mulvaney-aide-declines-to-testify/index.html), and [the consequences of the firing will be more dire](https://www.theatlantic.com/politics/archive/2019/10/mick-mulvaney-impeachment/600313/) than the consequences of just pretending he doesn't have a Chief of Staff. If this sounds familiar, it was vaguely similar to Trump's relationship with Robert Mueller, with an important caveat: Mulvaney comes from Trump's camp, where Mueller was foisted upon Trump. Hence why Trump won't comment on Mulvaney, where he routinely and publicly called for Mueller to stop investigating.
+
+Speculation aside, the ambiguity of this evidence means we shouldn't update either direction based on this information.
