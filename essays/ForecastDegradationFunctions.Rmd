@@ -1,0 +1,48 @@
+---
+title: "Forecast Degradation Functions"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Suppose we wanted to forecast the probability of an event occurring sometime in the near future. For example, how likely is it that a given person dies within the next year? We can often estimate what that probability should be over the course of the given timespan. In our example case, we need only [check an actuarial table](https://www.ssa.gov/oact/STATS/table4c6.html). Let's specifically envision we're predicting the longevity of an 86 year old male in the US, circa 2016. He's about 10% likely to die in the next year.
+
+We can (and should) adjust our forecast as time passes. Every day the event doesn't occur is another day in which it no longer can, so probability estimates should go downwards and converge on zero at the moment the forecast window resolves negatively. But how do we decide what the probability should be as a function of the remaining amount of time?
+
+Intuition suggests we might simply draw a straight line, like so:
+
+```{r}
+library(plotly)
+x <- 1:365
+y <- .1*(1-x)/365+.1
+plot_ly() %>% add_lines(x, y)
+```
+
+This is not a terrible strategy, all things considered. However, it isn't strictly *correct*. Let's figure out what the correct function actually is.
+
+Suppose that we believe, on the last day of the challenge, that the probability of a positive resolution is 1%. Not based on any super stong evidence, mind you--you just don't think there's a 0% outcome probability on any given day. So, given this, what should you have predicted the day before?
+
+The outcome probability over the remaining prediction window is the conjunctive probability that it doesn't occur in any of the window's constituent days, so $1-(1-0.01)^2$. We can generalize this in a few ways. Suppose we want to assess that probability over $n$ days--that's given by replacing the exponent ($1-(1-0.01)^n$). And Suppose we want to assess the probability with a variable probability, instead of a constant 0.01. To do this, replace the probability with a variable, $p$, as in $1-(1-p)^n$. So, given this arrangement, what's the probability at the beginning of the year?
+
+```{r}
+x <- 1:365
+y <- 1-(1-0.01)^x
+plot_ly() %>% add_lines(365:1, y)
+```
+
+So, given a daily probability of 0.01, we should start a year-long forecast with a probability of 98%.
+
+...which is fine, but we need to be able to go the opposite direction. If I did my algebra correctly, it the transformed equation looks something like this:
+
+$p_s=1-exp(ln(1-p_w)/n)$
+
+where $p_s$ is the independent probability of the event on each discrete time step, $p_w$ is the annual probability, $n$ is the number of discrete
+
+Given an initial probability over the course of some finite time window, what's the continuous function we need in order to provide an honest degradation of our prediction?
+
+```{r}
+x <- 1:365
+y <- 1-(1-0.002)^x
+plot_ly() %>% add_lines(365:1, y)
+```
