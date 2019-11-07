@@ -4,33 +4,32 @@ title: "The Elon Musk Forecast Correction Function"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = FALSE)
-```
-
-## Introduction
-
-In case you haven't heard, Elon Musk is [the World's Raddest Man](https://waitbutwhy.com/2015/05/elon-musk-the-worlds-raddest-man.html).
-
-He's also something of a master of over-promising and late-delivering. He's reasonably consistent about delivering, just... late. In order to have a problem like this, he must be very good at predicting what *can* be brought to market. His predictions may contain telling information about when we can expect him to deliver something, it's just that the numbers are wrong. And because they're wrong in a biased way (he consistently predicts things will be ready sooner than they are), we can figure out how to *correct* his predictions.
-
-## Assembling His (Falsifiable) Predictions
-
-In science, there's a really really important concept, called [falsifiability](https://en.wikipedia.org/wiki/Falsifiability). Basically, you can make statements like "[Conservatives will win the next election](https://www.metaculus.com/questions/3264/how-many-seats-will-the-conservative-and-unionist-party-win-in-the-next-uk-general-election/)", but we need to figure out some objective criteria for which that statement is true or false. Does winning mean taking a majority of seats? Or a majority of seats in a coalition government? Or is it just the largest plurality, even if they can't form the government? In other words, there are a lot of places we can stick a label like "won the election", but we need to pick one of those in advance of making any predictions. Otherwise, we're just [blowing hot air](https://www.hamilton.edu/documents/Analysis-of-Forcast-Accuracy-in-the-Political-Media.pdf).
-
-So, we need to find predictions that Elon Musk has publicly stated that are more concrete than "Someday, humans will..." For Musk, that generally means timelines. For example, consider this tweet:
-
-[![Pickup truck unveil in 18 to 24 months](https://aaboyles.github.io/Essays/imgs/Elon.PNG)](https://twitter.com/elonmusk/status/852581322451111936)
-
-Here, he is making a concrete prediction that Tesla will unveil a pickup truck in 18 to 24 months. Note that Musk made the tweet on 2017-04-13. 18 months later is 2018-10-13, and 24 months later is 2019-04-13. So, did Tesla unveil the pickup truck within the predicted window? [No.](https://twitter.com/elonmusk/status/1170401244310949888) [He teased, of course](https://twitter.com/elonmusk/status/1106714774694297601/photo/1), but No.
-
-So, let's find as many Elon Musk predictions as we can... Or use some that somebody else has already done for us! Bloomberg assembled [a list](https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json) for their (much goofier) [take on this topic](https://www.bloomberg.com/features/elon-musk-goals/).
-
-```{r}
 library(jsonlite)
 library(dplyr)
 library(magrittr)
 library(lubridate)
 library(DT)
+library(readr)
+library(plotly)
+```
 
+## Introduction
+
+In case you haven't heard, Elon Musk is [the World's Raddest Man](https://waitbutwhy.com/2015/05/elon-musk-the-worlds-raddest-man.html). He also tends to deliver on his promises late. He's reasonably consistent about delivering, just... late. His predictions may contain telling information about when we can expect him to deliver something, it's just that the numbers are very often wrong. And because they're wrong in a biased way (he consistently predicts things will be ready sooner than they are), we can figure out how to *correct* his predictions.
+
+## Assembling His (Falsifiable) Predictions
+
+In science, there's a really really important concept, called [falsifiability](https://en.wikipedia.org/wiki/Falsifiability). Basically, you can make statements like "[Conservatives will win the next election](https://www.metaculus.com/questions/3264/how-many-seats-will-the-conservative-and-unionist-party-win-in-the-next-uk-general-election/)", but we need to figure out some objective criteria for which that statement is true or false. Does winning mean taking a majority of seats? Or a majority of seats in a coalition government? Or is it just the largest plurality, even if they can't form the government? In other words, there are a lot of places we can stick a label like "won the election", but we need to pick one of those in advance of making any predictions. Otherwise, we're just [blowing hot air](https://www.hamilton.edu/documents/Analysis-of-Forcast-Accuracy-in-the-Political-Media.pdf).
+
+So, we need to find predictions that Elon Musk has publicly stated that are more concrete than "Someday, humans will..." Luckily for us, Musk tends For example, consider this tweet:
+
+[![Pickup truck unveil in 18 to 24 months](https://aaboyles.github.io/Essays/imgs/Elon.PNG)](https://twitter.com/elonmusk/status/852581322451111936)
+
+Here, he is making a concrete prediction that Tesla will unveil a pickup truck in 18 to 24 months. Note that Musk made the tweet on 2017-04-13. 18 months later is 2018-10-13, and 24 months later is 2019-04-13. So, did Tesla unveil the pickup truck within the predicted window? [He teased, of course](https://twitter.com/elonmusk/status/1106714774694297601/photo/1), but [No.](https://twitter.com/elonmusk/status/1170401244310949888)
+
+So, let's find as many Elon Musk predictions as we can... Or use some that somebody else has already assembled for us! Bloomberg assembled [a list](https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json) for their (much goofier) [take on this topic](https://www.bloomberg.com/features/elon-musk-goals/). 
+
+```{r}
 if(!file.exists('../data-cache/musk.json')){
   library(curl)
   curl_download("https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json", '../data-cache/musk.json')
@@ -50,15 +49,11 @@ preds <- read_json('../data-cache/musk.json')$response %>%
     AdjustedDate = dmy(AdjustedDate),
     Completed  = dmy(Completed)
   )
-
-preds %>%
-  select(Company, Prediction, Importance, TextTargetDate, Completed) %>%
-  datatable()
 ```
+
 This gives us a jump-start, but the data is still too thin to be of much use. We need to know all salient dates (Date prediction was made, Date predicted, Date event actually ocurred) in order to assess the predictive accuracy. We need these because we want to compare the difference in temporal distances between them.
 
 ```{r}
-library(readr)
 if(!file.exists('../data-cache/musk.csv')){
   write_csv(preds, '../data-cache/musk.csv')
 }
@@ -66,58 +61,59 @@ if(!file.exists('../data-cache/musk.csv')){
 
 Accordingly, I loaded up the ol' spreadsheet and started manually filling in the blank spaces. This entailed a good deal of manual data cleaning and manipulation. The most important operation was selecting the dates to assign to predictions. For the date on which the prediction was registered, I tried to select the earliest available example of it (almost always [Musk's Twitter feed](https://twitter.com/elonmusk)). For the date he predicted, I used the principle of charity to select the latest possible date. I ignored date ranges (e.g. "Summer 2017") in favor of the terminal date that would indicate (2017-09-21). We might also note that some of the predictions include Adjustments--if his initial estimate was wrong, Musk may have later updated the prediction. But there's nothing privileged these updates--they're predictions unto themselves. Accordingly, I promoted them to sit in-line with the other predictions. [You can view my rendition of the sheet here.](https://docs.google.com/spreadsheets/d/1rRD3CsQLuiglHqma778PCOtAOODcjIs94xcdhRQ6uJE)
 
+Notably, Metaculus has also generated [a comparable tracking of Musk-forecasts](https://www.metaculus.com/visualizations/elon-musk-timeline/), mapped to Metaculus questions regarding his predictions. And [the raw data is available](https://www.metaculus.com/visualizations/elon-musk-timeline/data/). I referenced it a bit to fill in the salient details, but really used the Bloomberg data as my jumping-off point.
+
 ```{r}
-library(readr)
-predictions <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vT2680-9o56BFlxnt6pEaX63-3bAJ-YWmDCrDQ-Al6Se_NCMBcznCzQElMLSD5L2NZk_o1psoXkpBXG/pub?gid=0&single=true&output=csv')
+if(file.exists('../data-cache/musk2.csv')){
+  predictions <- read_csv('../data-cache/musk2.csv')
+} else {
+  predictions <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vT2680-9o56BFlxnt6pEaX63-3bAJ-YWmDCrDQ-Al6Se_NCMBcznCzQElMLSD5L2NZk_o1psoXkpBXG/pub?gid=0&single=true&output=csv')
+  write_csv(predictions, '../data-cache/musk2.csv')
+}
+  
 predictions %>%
-  select(-Source:-Description) %>%
+  select(-TextTargetDate, -Adjustment:-Canceled, -Source:-Description) %>%
   datatable()
 ```
 
-This gives us `r nrow(preds)` predictions. The data are still messy and not 100% reliable, but generally accurate and confirmable by the `Source1` and `Source2` columns. Given that most of the date fields are now populated, we can create columns of the temopral distance (number of days) between the dates.
+The data are still messy and not 100% reliable, but generally accurate and confirmable by the `Source` and `Source2` columns. We nominally have `r nrow(predictions)` predictions, but we'll only be able to use those predictions with `AnnouncementDate`s, `TargetDate`s, AND `CompletedDate`s. We need these to derive the values in which we're actually interested: `PredictionLength` and `ActualLength`. Let's take a look at their distribution:
 
 ```{r}
-predictions %<>%
-  mutate(
-    PredictedLength = as.numeric(TargetDate - AnnouncementDate, units="days"),
-    ActualLength = as.numeric(Completed - AnnouncementDate, units="days")
-  )
-predictions %>%
-  select(Prediction, PredictedLength, ActualLength) %>%
-  datatable()
-```
-
-So, now that we know how far the dates are from one another, what's their distribution?
-
-```{r}
-library('plotly')
 plot_ly(predictions, alpha=0.6) %>%
-  add_histogram(x = ~PredictedLength, name="Prediction") %>%
-  add_histogram(x = ~ActualLength, name="Actual Time") %>%
+  add_histogram(x = ~PredictionLength, name="Prediction Length") %>%
+  add_histogram(x = ~ActualLength, name="Actual Length") %>%
   layout(barmode = "overlay")
 ```
 
 Here we can see that we have many predictions in the time range of zero to three years, and a few longer-term predictions. Importantly, we don't see an obvious rightward-shift in the resolution times of these predictions. That's not to imply it isn't there. To see it, however, let's look at the scatterplot instead.
 
 ```{r}
-model <- lm(ActualLength ~ PredictedLength, data=predictions)
+model <- lm(ActualLength ~ PredictionLength, data=predictions)
 
 predictions %>%
   filter(
-    !is.na(PredictedLength),
+    !is.na(PredictionLength),
     !is.na(ActualLength)) %>%
   plot_ly() %>%
-    add_markers(x=~PredictedLength, y=~ActualLength, text=~Prediction, hoverinfo="text", name="Actual Predictions") %>%
-    add_lines(x=~PredictedLength, y=fitted(model), name="Predictions Line-of-best-fit") %>%
-    add_lines(x=~PredictedLength, y=~PredictedLength, name="Prefect Predictions")
+    add_markers(x=~PredictionLength, y=~ActualLength, text=~Prediction, hoverinfo="text", name="Actual Predictions") %>%
+    add_lines(x=~PredictionLength, y=fitted(model), name="Predictions Line-of-best-fit") %>%
+    add_lines(x=~PredictionLength, y=~PredictionLength, name="Prefect Predictions")
 ```
+
+See how the Actual points are almost all *above* the perfect prediction line? That matches the intuition that motivates this exercise: Musk's projections are predominately too short. But by how much, precisely?
 
 ```{r}
 library('pander')
 model %>% summary %>% pander
 ```
 
-So, there you have it. If there's a prediction coming from the Musk-verse, multiply the (upper-bound of the) amount of time by `r model$coefficients[2]`, and add `r round(model$coefficients[1])` days.
+If there's a prediction coming from the Musk-verse, multiply the (upper-bound of the) amount of time by `r round(model$coefficients[2], 3)`, and add `r round(model$coefficients[1])` days.
+
+### Completion Bias
+
+There's an important bias-related consideration we need to address. We can only generate a model of this type on the predictions Musk has made that have already come *true*. There's no sensible way to include plans that never materialized and were subsequently canceled, like the Falcon 5 or the Tesla Minibus. So we could just say "it'll probably happen around the date given by the formula above *conditional on it happening at all*", but that doesn't give us much predictive power.
+
+## My gift to you
 
 To make this trivially easy, here's a little calculator! Enter that date of Musk's Prediction, and it will tell you when it will actually come true:
 
@@ -157,10 +153,28 @@ $(function(){
 
 ## Relevant Markets
 
-Notably, Metaculus has also generated [a comparable tracking of Musk-forecasts](https://www.metaculus.com/visualizations/elon-musk-timeline/), mapped to Metaculus questions regarding his predictions. And [the raw data is available](https://www.metaculus.com/visualizations/elon-musk-timeline/data/).
+Why should we care about this? To win [internet points](https://www.metaculus.com/help/faq/#howscore), of course!
 
+* [Will SpaceX present Mars Plans in 2016-09](https://www.metaculus.com/questions/308/spacexs-blueprint-to-mars-presented-in-late-september/)
+* [Will SpaceX land on a barge by 2016-02-28](https://www.metaculus.com/questions/2/will-spacex-successfully-land-a-falcon-9-rocket-on-a-barge-by-february-28-2016/)
+* [Will Tesla be profitable in 2018 Q3?](https://www.metaculus.com/questions/1041/will-tesla-be-profitable-in-q3-2018/)
+* [Will SpaceX launch for Mars in the 2018 Window?](https://www.metaculus.com/questions/224/will-spacex-launch-for-mars-in-the-2018-window/)
+* [Will SpaceX launch humans into orbit by 2019?](https://www.metaculus.com/questions/646/attempted-manned-spacex-flight-in-2018/)
+* [Will Tesla deliver the $35000 Model 3 in 2019?](https://www.metaculus.com/questions/1533/will-tesla-deliver-first-35000-model-3-in-2019/)
+* [Will Tesla Deliver a light-navigating Autopilot by 2020?](https://www.gjopen.com/questions/1099-before-1-january-2020-will-tesla-release-an-autopilot-feature-designed-to-navigate-traffic-lights)
+* [Will Tesla's Gigafactory 3 in Shanghai deliver its first Model 3 before 2020?](https://www.gjopen.com/questions/1295-before-31-december-2019-will-a-model-3-produced-in-tesla-s-shanghai-gigafactory-3-be-delivered-to-a-customer)
+* [Will SpaceX test Starship before 2020](https://www.metaculus.com/questions/1673/will-spacex-start-testing-a-starship-bfs-before-2020/)
+* [Will SpaceX launch humans into orbit by 2020?](https://www.metaculus.com/questions/1355/attempted-crewed-spacex-flight-prior-to-2020/)
+* [Will SpaceX or Boeing launch humans into space by 2020?](https://www.gjopen.com/questions/1124-before-1-january-2020-will-either-spacex-or-boeing-launch-its-first-crewed-space-mission)
+* [Will SpaceX test Starship by 2020-02-01?](https://www.metaculus.com/questions/3193/will-spacex-test-a-stainless-steel-prototype-starship-by-february-1/)
+* [Will Starlink deployment start before 2021?](https://www.metaculus.com/questions/664/will-skynet-the-spacex-satellite-internet-version-start-deployment-by-2020/)
+* [Will Starship make it to space before 2021?](https://www.metaculus.com/questions/1682/will-spacex-starship-with-or-without-a-booster-reach-space-before-2021/)
+* [Will Tesla Roll Out Autopilot by 2021](https://www.metaculus.com/questions/2631/will-tesla-roll-out-the-fully-autonomous-autopilot-feature-before-2021/)
+* [Will SpaceX test BFR before 2025?](https://www.metaculus.com/questions/612/will-spacex-test-launch-the-bfr-before-2025/)
 * [Will SpaceX land humans on Mars by 2030?](https://www.metaculus.com/questions/349/will-spacex-land-people-on-mars-prior-to-2030/)
-
+* [Will SpaceX land Anything on Mars by 2030?](https://www.metaculus.com/questions/737/will-spacex-land-anything-on-mars-by-2030/)
+* [Will Tesla be the World's largest Auto Manufacturer by 2035?](https://www.metaculus.com/questions/980/will-tesla-become-the-largest-car-company-in-the-world-by-sales-prior-to-2035/)
+* [Will Elon Musk have a Neural Lace by 2040?](https://www.metaculus.com/questions/2955/when-will-elon-musk-have-any-device-such-as-a-brain-machine-interface-surgically-implanted-into-his-brain/)
 
 ## Conclusion
 
