@@ -1,0 +1,137 @@
+---
+title: "Computing Metaculus Priors"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+Imagine there's a prediction game where all questions are of the format "Will X happen by y" where x is some event and y is some date. Given a randomly selected question (that you don't get to read), what should your prediction be?
+
+Given no other information, you should probably guess 50%. But the fact that you can't read the question doesn't mean you don't have any more information. Perhaps none of the events had ever occurred by the dates, meaning you should assign a low probability to your random, unknown question. In other words, you can compute a prior *on the game itself*. Let's give this a try with [Metaculus](https://www.metaculus.com/)!
+
+## API Scraping
+
+To start, we can get the data by querying Metaculus' API for resolved questions. The endpoint (which we can determine by watching XHR requests in our browser when we load lists of questions) is https://www.metaculus.com/api2/questions/, and it accepts the following GET parameters:
+
+* `order_by` - doesn't really matter to us, so we'll leave the default `-activity`
+* `page` - an integer
+* `status` - `resolved` in our case.
+
+```{r}
+library(jsonlite)
+init <- fromJSON('https://www.metaculus.com/api2/questions/?order_by=-activity&page=1&status=resolved')
+names(init)
+```
+
+The returned JSON string contains `next` and `previous`, which are simply URLs for the API calls to get the next (and previous) sets of questions. More importantly, it contains `count` and `results`. We'll use `count` to figure out how many API calls to make, and `results` to actually perform our analysis.
+
+
+```{r}
+library(readr)
+
+if(file.exists('../data-cache/metaculus-questions.csv')){
+  questions <- read_csv('../data-cache/metaculus-questions.csv')
+} else {
+  # we can start from 2 because we already got page 1 in `init`
+  pages <- list(init$results)
+  for(i in 2:floor(init$count/length(init$results))){
+    temp <- fromJSON(paste0('https://www.metaculus.com/api2/questions/?order_by=-activity&page=',i,'&status=resolved'))
+    pages[[i]] <- temp$results
+  }
+  pages %>%
+    rbind_pages() %>%
+    select(-prediction_timeseries, -metaculus_prediction) %>%
+    flatten() %>%
+    write_csv('../data-cache/metaculus-questions.csv')
+}
+```
+
+OK! Let's get to the analytics!
+
+## Binary Frequencies
+
+Not all questions on Metaculus are percentage predictions on discrete events. Sometimes you're predicting a number (e.g. How many X by Y). For simplicity's sake, let's just start with the questions that can be resolved with a simple yes or no.
+
+```{r}
+library(dplyr)
+library(pander)
+
+questions %>%
+  flatten %>%
+  filter(`possibilities.type`=='binary') ->
+  binaryQuestions
+
+binaryQuestions %>%
+  with(table(resolution)) ->
+  frequencies
+
+pander(frequencies)
+```
+
+(0 and 1 correspond to negative and positive resolutions respectively, and -1 consititues an ambiguous resolution.)
+
+So we see that a majority of questions (`r frequencies[2]` out of `r nrow(binaryQuestions)`) ) are resolved negatively. So your prior on a randomly-selected, binary-outcome Metaculus question should be something like the proportion of (unambiguously resolved) questions which resolve positively, or `r round(100*frequencies[3]/(frequencies[2]+frequencies[3]))`%.
+
+Now, ideally resolutions would be uniformly distributed (so you can't exploit information like this), but asking good questions is difficult. Has the Metaculus community gotten better at this over time?
+
+## Binary Frequencies over time
+
+If the distribution is getting closer to 50-50 over time, then eventually leveraging a Metaculus prior won't work. Alternately, Perhaps Metaculus is converging on a specific frequency, in which case this exercise will prove to be **super useful**.
+
+```{r}
+library(plotly)
+
+binaryQuestions %>%
+  filter(resolution >= 0) %>%
+  arrange(resolve_time) %>%
+  mutate(
+    rank = row_number(),
+    resolutions = cumsum(resolution),
+    ratio = resolutions/rank
+  ) %>%
+  plot_ly(x = ~as.Date(resolve_time), y = ~ratio, mode="lines") %>%
+  layout(
+    yaxis = list(title = "Positive Resolution Proportion"),
+    xaxis = list(title = "Time")
+  )
+```
+
+Excitingly, it appears to be the latter! That "Metaculus Prior" of `r round(100*frequencies[3]/(frequencies[2]+frequencies[3]))`% seems to be rather strikingly stable at just below 0.3 over time.
+
+## Continuous Frequencies
+
+But what about those questions that don't resolve with a simple "yes" or "no"? Is there a meaningful prior we can extract from them?
+
+To begin to invesitgate this, let's think about what Metaculus continuous predictions look like.
+
+[![Eurosceptics Elected to 2019 EU Pariament](https://aaboyles.github.io/Essays/imgs/EuroscepticsInEUParliament2019.PNG)](https://www.metaculus.com/questions/1510/how-many-seats-will-the-various-eurosceptic-groups-collectively-achieve-for-the-eu-parliament-election-2019/)
+
+Here's Metaculus' prediction about [the number of Eurosceptics who will be elected to the EU Parliament in 2019](https://www.metaculus.com/questions/1510/how-many-seats-will-the-various-eurosceptic-groups-collectively-achieve-for-the-eu-parliament-election-2019/). Note the bounds on the x-axis. Those numbers make perfect sense for the European Parliament, but wouldn't generalize to a question with a radically different scale (e.g. [How many youtube reviews will Mariah Carey's "All I want for Christmas is you" get?](https://www.metaculus.com/questions/1606/how-many-youtube-views-will-all-i-want-for-christmas-is-you-have-on-january-6th-2019/)). So, to get anything resembling a viable prior, we're going to need to normalize all the ranges to a common set of bounds. 0 to 1, perhaps?
+
+```{r}
+questions %>%
+  filter(
+    possibilities.format=="num",
+    resolution >= 0
+  ) %>%
+  dplyr::mutate(
+    scaleMin = as.numeric(possibilities.scale.min),
+    scaleMax = as.numeric(possibilities.scale.max),
+    range = scaleMax - scaleMin,
+    centered = resolution - scaleMin,
+    scaled = centered / range
+  ) %>%
+  filter(scaled >= 0) ->
+  continuousQuestions
+
+plot_ly(continuousQuestions, x=~scaled) %>% add_histogram()
+```
+
+We don't have a ton of data points to go off of here, but it looks like continuous questions tend resolve around the low end of the scale. Again, don't invest too much in this assessment--there simply aren't enough resolved, continuous questions to go off of with much confidence.
+
+## Conclusion
+
+So, returning to our motivating thought experiment, if you're confronted with a random, binary question, your first guess shouldn't be 50%--it should be `r round(100*frequencies[3]/(frequencies[2]+frequencies[3]))`%. If you're estimating a number, shoot for the low end of the spectrum.
+
+That being said, this is a just a minimally informative prior taken by assessing the outside view on Metaculus itself. Almost literally any information about the specific question should trigger a strong update (relative to the strength of this evidence).
