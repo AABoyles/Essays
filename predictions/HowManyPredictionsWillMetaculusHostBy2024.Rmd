@@ -1,0 +1,75 @@
+---
+title: "How Many Predictions will Metaculus Register by 2024?"
+output: html_document
+---
+
+For the Question ["How many predictions will have been made on Metaculus by the end of 2023?"](https://www.metaculus.com/questions/2944/how-many-predictions-will-have-been-made-on-metaculus-by-the-end-of-2023/)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = FALSE)
+library(readr)
+library(dplyr)
+library(intubate)
+library(pander)
+library(plotly)
+
+counts <- read_csv("https://gist.githubusercontent.com/gimpf/b1a2b749f29d0db1b22d1bb43a17e6bc/raw/6d40cc452d003cb91a160a6a55a923fe5fdfd448/counts.csv")
+
+counts <- counts %>%
+  mutate(
+    row = 1:nrow(counts),
+    rowSq = row*row
+  )
+```
+
+```{r}
+plot_ly(counts, x = ~before, y = ~count) %>% add_lines()
+```
+
+```{r}
+linear <- 
+  counts %>%
+  ntbt_lm(count ~ row)
+
+linear %>%
+  summary %>%
+  pander
+```
+
+```{r}
+quadratic <-
+  counts %>%
+  ntbt_lm(count ~ rowSq)
+
+quadratic %>%
+  summary %>%
+  pander
+```
+
+```{r}
+polynomial <-
+  counts %>%
+  ntbt_lm(count ~ row + rowSq)
+
+polynomial %>%
+  summary %>%
+  pander
+```
+
+```{r}
+future <- counts %>%
+  rbind(tibble(
+    before = seq(as.Date("2019/11/01"), by = "month", length.out = 51),
+    count = NA,
+    row = 47:97,
+    rowSq = row*row
+  ))
+
+plot_ly(future, x=~before) %>%
+  add_lines(y = predict(linear, future), name="Linear") %>%
+  add_lines(y = predict(quadratic, future), name="Quadratic") %>%
+  add_lines(y = predict(polynomial, future), name="Polynomial") %>%
+  add_markers(y = ~count, name="Observed")
+```
+
+Ad the final point estimate is `r round(predict(quadratic, future)[97])`.
