@@ -3,7 +3,6 @@ title: "Essays"
 ---
 
 ```{r, message=FALSE}
-source("../helpers/infobox.R")
 library("plyr")
 library("dplyr")
 library("magrittr")
