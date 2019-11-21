@@ -11,7 +11,7 @@ output:
     self_contained: no
 ---
 
-These are short-form essays I write to "think out loud" in order to generate good forecasts. You can see these forecasts in the wild:
+These are short-form essays (mostly code, actually) I write to "think out loud" in order to generate good forecasts. You can see these forecasts in the wild:
 
 [Metaculus](https://www.metaculus.com/accounts/profile/106142/) / [Good Judgement Open](https://www.gjopen.com/memberships/4645/scores) / [Prediction Book](https://predictionbook.com/users/AABoyles)
 
