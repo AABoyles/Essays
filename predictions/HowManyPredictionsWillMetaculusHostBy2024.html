@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>How Many Predictions will Metaculus Register by 2024?</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs\style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h2 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h3 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h4 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h5 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h6 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../predictions/">Predictions</a>
+</li>
+<li>
+  <a href="../essays/">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">How Many Predictions will Metaculus Register by 2024?</h1>
+
+</div>
+
+
+<p>For the Question <a href="https://www.metaculus.com/questions/2944/how-many-predictions-will-have-been-made-on-metaculus-by-the-end-of-2023/">“How many predictions will have been made on Metaculus by the end of 2023?”</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">plot_ly</span>(counts, <span class="dt">x =</span> <span class="op">~</span>before, <span class="dt">y =</span> <span class="op">~</span>count) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">add_lines</span>()</a></code></pre></div>
+<div id="htmlwidget-6b264cb39defab2f5ffc" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6b264cb39defab2f5ffc">{"x":{"visdat":{"312819485986":["function () ","plotlyVisDat"]},"cur_data":"312819485986","attrs":{"312819485986":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"before"},"yaxis":{"domain":[0,1],"automargin":true,"title":"count"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2016-01-01","2016-02-01","2016-03-01","2016-04-01","2016-05-01","2016-06-01","2016-07-01","2016-08-01","2016-09-01","2016-10-01","2016-11-01","2016-12-01","2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01"],"y":[609,1844,4003,6008,7606,8350,9970,12547,15375,19477,22319,24107,25421,26557,27528,28526,29199,30703,31984,32998,37330,40094,42604,44533,46098,48464,50614,54804,60431,65790,70737,77240,84864,92382,98964,103669,110571,117519,121723,125325,128687,132465,136009,139902,143820,147666],"type":"scatter","mode":"lines","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">linear &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="st">  </span>counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="st">  </span><span class="kw">ntbt_lm</span>(count <span class="op">~</span><span class="st"> </span>row)</a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5">linear <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="st">  </span>summary <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="st">  </span>pander</a></code></pre></div>
+<table style="width:89%;">
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">-19496</td>
+<td align="center">3535</td>
+<td align="center">-5.514</td>
+<td align="center">1.736e-06</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>row</strong></td>
+<td align="center">3316</td>
+<td align="center">131</td>
+<td align="center">25.31</td>
+<td align="center">7.338e-28</td>
+</tr>
+</tbody>
+</table>
+<table style="width:88%;">
+<caption>Fitting linear model: count ~ row</caption>
+<colgroup>
+<col width="20%" />
+<col width="30%" />
+<col width="12%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Observations</th>
+<th align="center">Residual Std. Error</th>
+<th align="center"><span class="math inline">\(R^2\)</span></th>
+<th align="center">Adjusted <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">46</td>
+<td align="center">11794</td>
+<td align="center">0.9357</td>
+<td align="center">0.9343</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">quadratic &lt;-</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span>counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">ntbt_lm</span>(count <span class="op">~</span><span class="st"> </span>rowSq)</a>
+<a class="sourceLine" id="cb3-4" title="4"></a>
+<a class="sourceLine" id="cb3-5" title="5">quadratic <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="st">  </span>summary <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="st">  </span>pander</a></code></pre></div>
+<table style="width:89%;">
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">7191</td>
+<td align="center">1079</td>
+<td align="center">6.665</td>
+<td align="center">3.552e-08</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>rowSq</strong></td>
+<td align="center">70.33</td>
+<td align="center">1.11</td>
+<td align="center">63.36</td>
+<td align="center">7.123e-45</td>
+</tr>
+</tbody>
+</table>
+<table style="width:88%;">
+<caption>Fitting linear model: count ~ rowSq</caption>
+<colgroup>
+<col width="20%" />
+<col width="30%" />
+<col width="12%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Observations</th>
+<th align="center">Residual Std. Error</th>
+<th align="center"><span class="math inline">\(R^2\)</span></th>
+<th align="center">Adjusted <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">46</td>
+<td align="center">4845</td>
+<td align="center">0.9892</td>
+<td align="center">0.9889</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">polynomial &lt;-</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span>counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw">ntbt_lm</span>(count <span class="op">~</span><span class="st"> </span>row <span class="op">+</span><span class="st"> </span>rowSq)</a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5">polynomial <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="st">  </span>summary <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="st">  </span>pander</a></code></pre></div>
+<table style="width:89%;">
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">5642</td>
+<td align="center">2249</td>
+<td align="center">2.508</td>
+<td align="center">0.01599</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>row</strong></td>
+<td align="center">173.4</td>
+<td align="center">220.8</td>
+<td align="center">0.7856</td>
+<td align="center">0.4364</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>rowSq</strong></td>
+<td align="center">66.86</td>
+<td align="center">4.554</td>
+<td align="center">14.68</td>
+<td align="center">2.356e-18</td>
+</tr>
+</tbody>
+</table>
+<table style="width:88%;">
+<caption>Fitting linear model: count ~ row + rowSq</caption>
+<colgroup>
+<col width="20%" />
+<col width="30%" />
+<col width="12%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Observations</th>
+<th align="center">Residual Std. Error</th>
+<th align="center"><span class="math inline">\(R^2\)</span></th>
+<th align="center">Adjusted <span class="math inline">\(R^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">46</td>
+<td align="center">4866</td>
+<td align="center">0.9893</td>
+<td align="center">0.9888</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">future &lt;-<span class="st"> </span>counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">rbind</span>(<span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="dt">before =</span> <span class="kw">seq</span>(<span class="kw">as.Date</span>(<span class="st">&quot;2019/11/01&quot;</span>), <span class="dt">by =</span> <span class="st">&quot;month&quot;</span>, <span class="dt">length.out =</span> <span class="dv">51</span>),</a>
+<a class="sourceLine" id="cb5-4" title="4">    <span class="dt">count =</span> <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb5-5" title="5">    <span class="dt">row =</span> <span class="dv">47</span><span class="op">:</span><span class="dv">97</span>,</a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="dt">rowSq =</span> row<span class="op">*</span>row</a>
+<a class="sourceLine" id="cb5-7" title="7">  ))</a>
+<a class="sourceLine" id="cb5-8" title="8"></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="kw">plot_ly</span>(future, <span class="dt">x=</span><span class="op">~</span>before) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">y =</span> <span class="kw">predict</span>(linear, future), <span class="dt">name=</span><span class="st">&quot;Linear&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">y =</span> <span class="kw">predict</span>(quadratic, future), <span class="dt">name=</span><span class="st">&quot;Quadratic&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="st">  </span><span class="kw">add_lines</span>(<span class="dt">y =</span> <span class="kw">predict</span>(polynomial, future), <span class="dt">name=</span><span class="st">&quot;Polynomial&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="st">  </span><span class="kw">add_markers</span>(<span class="dt">y =</span> <span class="op">~</span>count, <span class="dt">name=</span><span class="st">&quot;Observed&quot;</span>)</a></code></pre></div>
+<div id="htmlwidget-148e4646c02693e13a1c" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-148e4646c02693e13a1c">{"x":{"visdat":{"31283eab26c3":["function () ","plotlyVisDat"]},"cur_data":"31283eab26c3","attrs":{"31283eab26c3":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":[-16180.1128584644,-12864.4402096824,-9548.7675609004,-6233.09491211841,-2917.42226333642,398.250385445579,3713.92303422757,7029.59568300956,10345.2683317916,13660.9409805735,16976.6136293555,20292.2862781375,23607.9589269195,26923.6315757015,30239.3042244835,33554.9768732655,36870.6495220475,40186.3221708295,43501.9948196115,46817.6674683935,50133.3401171755,53449.0127659574,56764.6854147394,60080.3580635214,63396.0307123034,66711.7033610854,70027.3760098674,73343.0486586494,76658.7213074314,79974.3939562134,83290.0666049954,86605.7392537774,89921.4119025594,93237.0845513413,96552.7572001233,99868.4298489053,103184.102497687,106499.775146469,109815.447795251,113131.120444033,116446.793092815,119762.465741597,123078.138390379,126393.811039161,129709.483687943,133025.156336725,136340.828985507,139656.501634289,142972.174283071,146287.846931853,149603.519580635,152919.192229417,156234.864878199,159550.537526981,162866.210175763,166181.882824545,169497.555473327,172813.228122109,176128.900770891,179444.573419673,182760.246068455,186075.918717237,189391.591366019,192707.264014801,196022.936663583,199338.609312365,202654.281961147,205969.954609929,209285.627258711,212601.299907493,215916.972556275,219232.645205057,222548.317853839,225863.990502621,229179.663151403,232495.335800185,235811.008448967,239126.681097749,242442.353746531,245758.026395313,249073.699044095,252389.371692877,255705.044341659,259020.716990441,262336.389639223,265652.062288005,268967.734936787,272283.407585569,275599.080234351,278914.752883133,282230.425531915,285546.098180697,288861.770829479,292177.443478261,295493.116127043,298808.788775825,302124.461424607],"type":"scatter","mode":"lines","name":"Linear","inherit":true},"31283eab26c3.1":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":[7261.00989436069,7471.98520093706,7823.61071189768,8315.88642724254,8948.81234697165,9722.38847108501,10636.6147995826,11691.4913324645,12887.0180697306,14223.1950113809,15700.0221574155,17317.4995078343,19075.6270626374,20974.4048218247,23013.8327853963,25193.9109533521,27514.6393256922,29976.0179024165,32578.0466835251,35320.7256690179,38204.054858895,41228.0342531563,44392.6638518018,47697.9436548316,51143.8736622457,54730.453874044,58457.6842902265,62325.5649107933,66334.0957357443,70483.2767650796,74773.1079987991,79203.5894369029,83774.7210793909,88486.5029262632,93338.9349775197,98332.0172331605,103465.749693185,108740.132357595,114155.165226388,119710.848299566,125407.181577128,131244.165059074,137221.798745405,143340.082636119,149599.016731218,155998.601030702,162538.835534569,169219.720242821,176041.255155457,183003.440272477,190106.275593881,197349.76111967,204733.896849843,212258.6827844,219924.118923342,227730.205266667,235676.941814377,243764.328566472,251992.36552295,260361.052683813,268870.39004906,277520.377618691,286311.015392706,295242.303371106,304314.24155389,313526.829941058,322880.06853261,332373.957328547,342008.496328868,351783.685533573,361699.524942662,371756.014556136,381953.154373994,392290.944396236,402769.384622863,413388.475053873,424148.215689268,435048.606529047,446089.64757321,457271.338821758,468593.68027469,480056.671932006,491660.313793706,503404.605859791,515289.54813026,527315.140605113,539481.38328435,551788.276167972,564235.819255978,576824.012548368,589552.856045142,602422.349746301,615432.493651844,628583.287761771,641874.732076082,655306.826594778,668879.571317857],"type":"scatter","mode":"lines","name":"Quadratic","inherit":true},"31283eab26c3.2":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":[5882.33395004625,6256.34702436016,6764.07189751353,7405.50856950635,8180.65704033863,9089.51731001037,10132.0893785216,11308.3732458722,12618.3689120623,14062.0763770919,15639.495640961,17350.6267036694,19195.4695652174,21174.0242256048,23286.2906848317,25532.268942898,27911.9589998038,30425.360855549,33072.4745101337,35853.2999635579,38767.8372158215,41816.0862669246,44998.0471168671,48313.7197656491,51763.1042132705,55346.2004597315,59063.0085050318,62913.5283491716,66897.7599921509,71015.7034339697,75267.3586746279,79652.7257141255,84171.8045524627,88824.5951896392,93611.0976256553,98531.3118605108,103585.237894206,108772.87572674,114094.225358114,119549.286788327,125138.06001738,130860.545045272,136716.741872004,142706.650497575,148830.270921986,155087.603145236,161478.647167325,168003.402988254,174661.870608023,181454.050026631,188379.941244078,195439.544260365,202632.859075491,209959.885689457,217420.624102262,225015.074313907,232743.236324391,240605.110133715,248600.695741878,256729.99314888,264993.002354722,273389.723359403,281920.156162924,290584.300765285,299382.157166484,308313.725366524,317379.005365402,326577.997163121,335910.700759678,345377.116155075,354977.243349312,364711.082342388,374578.633134303,384579.895725058,394714.870114652,404983.556303086,415385.95429036,425922.064076472,436591.885661425,447395.419045216,458332.664227847,469403.621209318,480608.289989628,491946.670568777,503418.762946766,515024.567123595,526764.083099263,538637.31087377,550644.250447117,562784.901819303,575059.264990329,587467.339960194,600009.126728899,612684.625296443,625493.835662826,638436.757828049,651513.391792112],"type":"scatter","mode":"lines","name":"Polynomial","inherit":true},"31283eab26c3.3":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"y":{},"type":"scatter","mode":"markers","name":"Observed","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"before"},"yaxis":{"domain":[0,1],"automargin":true,"title":"count"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2016-01-01","2016-02-01","2016-03-01","2016-04-01","2016-05-01","2016-06-01","2016-07-01","2016-08-01","2016-09-01","2016-10-01","2016-11-01","2016-12-01","2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01","2019-11-01","2019-12-01","2020-01-01","2020-02-01","2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01","2020-09-01","2020-10-01","2020-11-01","2020-12-01","2021-01-01","2021-02-01","2021-03-01","2021-04-01","2021-05-01","2021-06-01","2021-07-01","2021-08-01","2021-09-01","2021-10-01","2021-11-01","2021-12-01","2022-01-01","2022-02-01","2022-03-01","2022-04-01","2022-05-01","2022-06-01","2022-07-01","2022-08-01","2022-09-01","2022-10-01","2022-11-01","2022-12-01","2023-01-01","2023-02-01","2023-03-01","2023-04-01","2023-05-01","2023-06-01","2023-07-01","2023-08-01","2023-09-01","2023-10-01","2023-11-01","2023-12-01","2024-01-01"],"y":[-16180.1128584644,-12864.4402096824,-9548.7675609004,-6233.09491211841,-2917.42226333642,398.250385445579,3713.92303422757,7029.59568300956,10345.2683317916,13660.9409805735,16976.6136293555,20292.2862781375,23607.9589269195,26923.6315757015,30239.3042244835,33554.9768732655,36870.6495220475,40186.3221708295,43501.9948196115,46817.6674683935,50133.3401171755,53449.0127659574,56764.6854147394,60080.3580635214,63396.0307123034,66711.7033610854,70027.3760098674,73343.0486586494,76658.7213074314,79974.3939562134,83290.0666049954,86605.7392537774,89921.4119025594,93237.0845513413,96552.7572001233,99868.4298489053,103184.102497687,106499.775146469,109815.447795251,113131.120444033,116446.793092815,119762.465741597,123078.138390379,126393.811039161,129709.483687943,133025.156336725,136340.828985507,139656.501634289,142972.174283071,146287.846931853,149603.519580635,152919.192229417,156234.864878199,159550.537526981,162866.210175763,166181.882824545,169497.555473327,172813.228122109,176128.900770891,179444.573419673,182760.246068455,186075.918717237,189391.591366019,192707.264014801,196022.936663583,199338.609312365,202654.281961147,205969.954609929,209285.627258711,212601.299907493,215916.972556275,219232.645205057,222548.317853839,225863.990502621,229179.663151403,232495.335800185,235811.008448967,239126.681097749,242442.353746531,245758.026395313,249073.699044095,252389.371692877,255705.044341659,259020.716990441,262336.389639223,265652.062288005,268967.734936787,272283.407585569,275599.080234351,278914.752883133,282230.425531915,285546.098180697,288861.770829479,292177.443478261,295493.116127043,298808.788775825,302124.461424607],"type":"scatter","mode":"lines","name":"Linear","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2016-01-01","2016-02-01","2016-03-01","2016-04-01","2016-05-01","2016-06-01","2016-07-01","2016-08-01","2016-09-01","2016-10-01","2016-11-01","2016-12-01","2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01","2019-11-01","2019-12-01","2020-01-01","2020-02-01","2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01","2020-09-01","2020-10-01","2020-11-01","2020-12-01","2021-01-01","2021-02-01","2021-03-01","2021-04-01","2021-05-01","2021-06-01","2021-07-01","2021-08-01","2021-09-01","2021-10-01","2021-11-01","2021-12-01","2022-01-01","2022-02-01","2022-03-01","2022-04-01","2022-05-01","2022-06-01","2022-07-01","2022-08-01","2022-09-01","2022-10-01","2022-11-01","2022-12-01","2023-01-01","2023-02-01","2023-03-01","2023-04-01","2023-05-01","2023-06-01","2023-07-01","2023-08-01","2023-09-01","2023-10-01","2023-11-01","2023-12-01","2024-01-01"],"y":[7261.00989436069,7471.98520093706,7823.61071189768,8315.88642724254,8948.81234697165,9722.38847108501,10636.6147995826,11691.4913324645,12887.0180697306,14223.1950113809,15700.0221574155,17317.4995078343,19075.6270626374,20974.4048218247,23013.8327853963,25193.9109533521,27514.6393256922,29976.0179024165,32578.0466835251,35320.7256690179,38204.054858895,41228.0342531563,44392.6638518018,47697.9436548316,51143.8736622457,54730.453874044,58457.6842902265,62325.5649107933,66334.0957357443,70483.2767650796,74773.1079987991,79203.5894369029,83774.7210793909,88486.5029262632,93338.9349775197,98332.0172331605,103465.749693185,108740.132357595,114155.165226388,119710.848299566,125407.181577128,131244.165059074,137221.798745405,143340.082636119,149599.016731218,155998.601030702,162538.835534569,169219.720242821,176041.255155457,183003.440272477,190106.275593881,197349.76111967,204733.896849843,212258.6827844,219924.118923342,227730.205266667,235676.941814377,243764.328566472,251992.36552295,260361.052683813,268870.39004906,277520.377618691,286311.015392706,295242.303371106,304314.24155389,313526.829941058,322880.06853261,332373.957328547,342008.496328868,351783.685533573,361699.524942662,371756.014556136,381953.154373994,392290.944396236,402769.384622863,413388.475053873,424148.215689268,435048.606529047,446089.64757321,457271.338821758,468593.68027469,480056.671932006,491660.313793706,503404.605859791,515289.54813026,527315.140605113,539481.38328435,551788.276167972,564235.819255978,576824.012548368,589552.856045142,602422.349746301,615432.493651844,628583.287761771,641874.732076082,655306.826594778,668879.571317857],"type":"scatter","mode":"lines","name":"Quadratic","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2016-01-01","2016-02-01","2016-03-01","2016-04-01","2016-05-01","2016-06-01","2016-07-01","2016-08-01","2016-09-01","2016-10-01","2016-11-01","2016-12-01","2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01","2019-11-01","2019-12-01","2020-01-01","2020-02-01","2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01","2020-09-01","2020-10-01","2020-11-01","2020-12-01","2021-01-01","2021-02-01","2021-03-01","2021-04-01","2021-05-01","2021-06-01","2021-07-01","2021-08-01","2021-09-01","2021-10-01","2021-11-01","2021-12-01","2022-01-01","2022-02-01","2022-03-01","2022-04-01","2022-05-01","2022-06-01","2022-07-01","2022-08-01","2022-09-01","2022-10-01","2022-11-01","2022-12-01","2023-01-01","2023-02-01","2023-03-01","2023-04-01","2023-05-01","2023-06-01","2023-07-01","2023-08-01","2023-09-01","2023-10-01","2023-11-01","2023-12-01","2024-01-01"],"y":[5882.33395004625,6256.34702436016,6764.07189751353,7405.50856950635,8180.65704033863,9089.51731001037,10132.0893785216,11308.3732458722,12618.3689120623,14062.0763770919,15639.495640961,17350.6267036694,19195.4695652174,21174.0242256048,23286.2906848317,25532.268942898,27911.9589998038,30425.360855549,33072.4745101337,35853.2999635579,38767.8372158215,41816.0862669246,44998.0471168671,48313.7197656491,51763.1042132705,55346.2004597315,59063.0085050318,62913.5283491716,66897.7599921509,71015.7034339697,75267.3586746279,79652.7257141255,84171.8045524627,88824.5951896392,93611.0976256553,98531.3118605108,103585.237894206,108772.87572674,114094.225358114,119549.286788327,125138.06001738,130860.545045272,136716.741872004,142706.650497575,148830.270921986,155087.603145236,161478.647167325,168003.402988254,174661.870608023,181454.050026631,188379.941244078,195439.544260365,202632.859075491,209959.885689457,217420.624102262,225015.074313907,232743.236324391,240605.110133715,248600.695741878,256729.99314888,264993.002354722,273389.723359403,281920.156162924,290584.300765285,299382.157166484,308313.725366524,317379.005365402,326577.997163121,335910.700759678,345377.116155075,354977.243349312,364711.082342388,374578.633134303,384579.895725058,394714.870114652,404983.556303086,415385.95429036,425922.064076472,436591.885661425,447395.419045216,458332.664227847,469403.621209318,480608.289989628,491946.670568777,503418.762946766,515024.567123595,526764.083099263,538637.31087377,550644.250447117,562784.901819303,575059.264990329,587467.339960194,600009.126728899,612684.625296443,625493.835662826,638436.757828049,651513.391792112],"type":"scatter","mode":"lines","name":"Polynomial","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"line":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2016-01-01","2016-02-01","2016-03-01","2016-04-01","2016-05-01","2016-06-01","2016-07-01","2016-08-01","2016-09-01","2016-10-01","2016-11-01","2016-12-01","2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01"],"y":[609,1844,4003,6008,7606,8350,9970,12547,15375,19477,22319,24107,25421,26557,27528,28526,29199,30703,31984,32998,37330,40094,42604,44533,46098,48464,50614,54804,60431,65790,70737,77240,84864,92382,98964,103669,110571,117519,121723,125325,128687,132465,136009,139902,143820,147666],"type":"scatter","mode":"markers","name":"Observed","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"line":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Ad the final point estimate is 6.688810^{5}.</p>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109466857-1');
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

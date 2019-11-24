@@ -1,0 +1,38 @@
+---
+title: "Are Mass Shootings Getting Worse?"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Download data from [Gun Violence Archive](https://www.gunviolencearchive.org/mass-shooting)
+
+```{r cars}
+library(readr)
+shootings <- read_csv('../data-cache/2014.csv')
+for(i in 2015:2019){
+  shootings <- rbind(shootings, read_csv(paste0('../data-cache/',i,'.csv')))
+}
+```
+
+```{r pressure, echo=FALSE}
+library(dplyr)
+library(plotly)
+library(parsedate)
+
+shootings %>%
+  mutate(date = parse_date(str_remove_all(`Incident Date`, ','))) %>%
+  arrange(date) %>%
+  mutate(
+    mostInjuries = cummax(`# Injured`),
+    mostDeaths = cummax(`# Killed`)
+  ) ->
+  shootings
+
+shootings %>%
+  plot_ly(x = ~date) %>%
+  add_lines(y = ~mostInjuries) %>%
+  add_lines(y = ~mostDeaths)
+```

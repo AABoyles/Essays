@@ -1,0 +1,69 @@
+---
+title: "Will Zero Living Humans Have Walked on Another World?"
+---
+
+For the Metaculus Question [Will the number of living humans who have walked on another world fall to zero?](https://www.metaculus.com/questions/615/will-the-number-of-living-humans-who-have-walked-on-another-world-fall-to-zero/)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Based on [this XKCD](https://xkcd.com/893):
+
+![](https://imgs.xkcd.com/comics/65_years.png)
+
+To create it, [Munroe wrote](https://blog.xkcd.com/2012/07/12/a-morbid-python-script/) a nifty little [Python script](https://web.archive.org/web/20120717011906/http://xkcd.com/actuary.py.txt). However, his script uses older actuarial data. Instead of just running it again, let's do the same thing using [fresher data](https://www.ssa.gov/oact/STATS/table4c6.html).
+
+## Astronaut Lifespans
+
+```{python}
+import pandas as pd
+actuarial = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSV_IhE9E6Jc5x-3WRqFcSIAbRpUFUrWrYsIjMta-gCttJ4V4PoYKvQpdgAiDumRl4sm66MAlHfaNUR/pub?gid=0&single=true&output=csv')
+men = actuarial[actuarial['sex'] == "Male"].loc[:,'pDeath'].to_list()
+```
+
+The extant astronauts who've walked the moon are:
+
+* [Harrison Schmitt](https://en.wikipedia.org/wiki/Harrison_Schmitt,), 84
+* [Charles Duke](https://en.wikipedia.org/wiki/Charles_Duke), 84
+* [David Scott](https://en.wikipedia.org/wiki/David_Scott), 87
+* [Buzz Aldrin](https://en.wikipedia.org/wiki/Buzz_Aldrin), 89
+
+To determine their longevity, we'll employ a simple Monte Carlo approach.
+
+```{python}
+from random import random
+from plotnine import *
+
+trials = 100000
+outcomes = []
+for i in range(trials):
+  astronauts = [84, 84, 87, 89]
+  years = 0
+  while any(astronauts):
+    for j in range(len(astronauts)):
+      if astronauts[j]:
+        if random() < men[astronauts[j]]:
+          astronauts[j] = 0
+        else:
+          astronauts[j] = astronauts[j] + 1
+    years = years + 1
+  outcomes.append(years)
+
+log = pd.DataFrame(data = {
+  "i": range(trials),
+  "years": outcomes
+})
+
+(ggplot(log, aes("years")) + geom_histogram())
+```
+
+Based on this, we can be around 50% certain that at least one of these people will be alive for another 10 years. But that's only half the prediction; now we've got to figure out if that's enough time to get back to the moon.
+
+## Return to the Moon
+
+We have one data point for building a moon-landing program: Apollo. It's goal of landing on the moon was famously announced by President Kennedy in 1961. The first lunar landing occurred in 1969, just over 8 years later. So, we have very strong evidence that the requisite lunar mission is *possible*. Unfortunately, the contractor-centric culture that's overtaken the aerospace acquisitions process makes it seem much less achievable by today's US Government. Not for want of trying, mind--NASA is currently targeting a 2025 landing with their [Artemis 3 mission](https://en.wikipedia.org/wiki/Artemis_3). Paired with the conspicuous absence of a technological arms race (in the style of the Cold War Space Race), it's probably not going to be NASA that does the return trip. I'll give it 10% by 2025, 50% by 2032.
+
+Enter Elon Musk. Musk built a space-startup for the explicit purpose of getting humanity to Mars. But more recently, he's added Lunar missions [as an afterthought](https://youtu.be/3ajL0n44Bhc?t=65). Development on SpaceX's interplanetary transit system is being funded at least in part by a commission from Yusaku Maezawa, who plans to use its maiden voyage to [bring a team of artists into lunar orbit](https://dearmoon.earth/). Important note here: lunar *orbit*, not lunar landing. They're targeting a 2023 mission. Musk hasn't given a concrete target date for SpaceX's initial, crewed lunar landings, but [SpaceX's Gwynne Shotwell has](https://techcrunch.com/2019/10/25/spacex-wants-to-land-starship-on-the-moon-before-2022-then-do-cargo-runs-for-2024-human-landing/). She says they're shooting for 2024. Again, I'm not certain I can generalize this prediction to a [Musk Prediction](https://aaboyles.github.io/Essays/portfolio/ElonMuskForecastCorrectionFunction.html), but if it were Musk saying it, it would actually happen closer to Summer of 2027.
+
+2027 is 8 years from now. As a happy coincidence, we *know* that *a lunar landing within 8 years is possible*. Those 8 years cover around 40% of the probability space in which all the old lunar astronauts die. Thus my prediction (as of 2019-11-21) is 40%.

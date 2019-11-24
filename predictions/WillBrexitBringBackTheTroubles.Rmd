@@ -1,0 +1,51 @@
+---
+title: "Will Brexit bring back the Troubles?"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = FALSE)
+```
+
+To answer the Metaculus Question ["If the UK leaves the EU, will there be a resurgence of the Troubles between Ireland and Northern Ireland?"](https://www.metaculus.com/questions/2586/if-the-uk-leaves-the-eu-will-there-be-a-resurgence-of-the-troubles-between-ireland-and-northern-ireland/)
+
+```{r}
+library(readxl)
+gtd <- read_xlsx('../data-cache/globalterrorismdb_0919dist.xlsx')
+
+# For reasons that are utterly mysterious, 1993 is separate
+
+gtd93 <- read_xlsx('../data-cache/gtd1993_0919dist.xlsx')
+
+gtd <- gtd %>% rbind(gtd93)
+```
+
+* https://en.wikipedia.org/wiki/List_of_terrorist_incidents_in_London#Republican_attacks_during_the_Troubles
+* https://en.wikipedia.org/wiki/Good_Friday_Agreement
+* https://en.wikipedia.org/wiki/Real_Irish_Republican_Army
+* https://en.wikipedia.org/wiki/Provisional_Irish_Republican_Army
+
+
+```{r}
+library(dplyr)
+library(stringr)
+troubles <- gtd %>%
+  filter(country_txt == "United Kingdom" | country_txt == "Ireland") %>%
+  mutate(republican = str_detect(summary, '[Rr]epublican')) %>%
+  filter(republican) %>%
+  mutate(date = as.Date(paste(iyear, imonth, iday, sep="-")))
+```
+
+```{r}
+library(plotly)
+plot_ly(troubles) %>% add_histogram(x = ~date)
+```
+
+```{r}
+troubles %>%
+  group_by(date) %>%
+  summarise(Casualties = sum(nkill)) %>%
+  plot_ly() %>%
+  add_bars(~date, ~Casualties)
+```
+
+At this point, I've become so confused about the specifics of the question that I can't hope to generate a viable forecast right now.

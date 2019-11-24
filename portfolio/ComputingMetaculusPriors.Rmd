@@ -10,6 +10,11 @@ Imagine there's a prediction game where all questions are of the format "Will X 
 
 Given no other information, you should probably guess 50%. But the fact that you can't read the question doesn't mean you don't have any more information. Perhaps none of the events had ever occurred by the dates, meaning you should assign a low probability to your random, unknown question. In other words, you can compute a prior *on the game itself*. Let's give this a try with [Metaculus](https://www.metaculus.com/)!
 
+Metaculus itself has done this twice:
+
+* [Which percentage of Metaculus questions resolving from October 1st to December 31st 2018 (inclusive) will resolve positively? ](https://www.metaculus.com/questions/1475/which-percentage-of-metaculus-questions-resolving-from-october-1st-to-december-31st-2018-inclusive-will-resolve-positively/)
+* [Which percentage of Metaculus questions resolving in Q1 2019 will resolve positively?](https://www.metaculus.com/questions/1490/which-percentage-of-metaculus-questions-resolving-in-q1-2019-will-resolve-positively/)
+
 ## API Scraping
 
 To start, we can get the data by querying Metaculus' API for resolved questions. The endpoint (which we can determine by watching XHR requests in our browser when we load lists of questions) is https://www.metaculus.com/api2/questions/, and it accepts the following GET parameters:
@@ -29,6 +34,8 @@ The returned JSON string contains `next` and `previous`, which are simply URLs f
 
 ```{r}
 library(readr)
+library(dplyr)
+library(DT)
 
 if(file.exists('../data-cache/metaculus-questions.csv')){
   questions <- read_csv('../data-cache/metaculus-questions.csv')
@@ -39,12 +46,16 @@ if(file.exists('../data-cache/metaculus-questions.csv')){
     temp <- fromJSON(paste0('https://www.metaculus.com/api2/questions/?order_by=-activity&page=',i,'&status=resolved'))
     pages[[i]] <- temp$results
   }
-  pages %>%
+  questions <- pages %>%
     rbind_pages() %>%
     select(-prediction_timeseries, -metaculus_prediction) %>%
-    flatten() %>%
-    write_csv('../data-cache/metaculus-questions.csv')
+    flatten()
+  write_csv(questions, '../data-cache/metaculus-questions.csv')
 }
+
+questions %>%
+  select(title, resolution, possibilities.type) %>%
+  datatable()
 ```
 
 OK! Let's get to the analytics!
@@ -54,7 +65,6 @@ OK! Let's get to the analytics!
 Not all questions on Metaculus are percentage predictions on discrete events. Sometimes you're predicting a number (e.g. How many X by Y). For simplicity's sake, let's just start with the questions that can be resolved with a simple yes or no.
 
 ```{r}
-library(dplyr)
 library(pander)
 
 questions %>%
@@ -132,6 +142,16 @@ We don't have a ton of data points to go off of here, but it looks like continuo
 
 ## Conclusion
 
-So, returning to our motivating thought experiment, if you're confronted with a random, binary question, your first guess shouldn't be 50%--it should be `r round(100*frequencies[3]/(frequencies[2]+frequencies[3]))`%. If you're estimating a number, shoot for the low end of the spectrum.
+So, returning to our motivating thought experiment, if you're confronted with a random, binary question, your first guess shouldn't be 50%--it should be `r round(100*frequencies[3]/(frequencies[2]+frequencies[3]))`%. If you're estimating a number, shoot for the low end of the spectrum. That being said, this is a just a minimally informative prior taken by assessing the outside view on Metaculus itself. Almost literally any information about the specific question should trigger a strong update (relative to the strength of this evidence).
 
-That being said, this is a just a minimally informative prior taken by assessing the outside view on Metaculus itself. Almost literally any information about the specific question should trigger a strong update (relative to the strength of this evidence).
+Sadly, Metaculus-founder Anthony Aguirre has [noted this trend](https://www.metaculus.com/questions/935/discussion-topic-what-features-should-metaculus-add-may-2018-edition/#comment-6564):
+
+> Our trends of negative resolutions to questions is getting tiresome, and leaving little data at the upper end of the calibration curve. This is a plea/suggestion to when formulating your question consider whether it could be phrased in a way that is equivalent, but where the odds (by your own estimation) are above rather than below 50%. For some questions this is awkward, but for many it could be a small tweak.
+
+[I proposed](https://www.metaculus.com/questions/935/discussion-topic-what-features-should-metaculus-add-may-2018-edition/#comment-18007) that the Moderators could apply a heavier hand to accomplish this:
+
+> Balance the distribution of outcomes. Right now, binary questions on Metaculus are resolved as "No" ~70% of the time. A distribution closer to 50% will be less game-able. One strategy to accomplish this is to flip a coin on every binary question suggestion. If heads, mods could reverse the polarity of the question before publishing it (see Will Ocean Cleanup fail to deliver 60 systems... for an example of what I mean). If they're clever about it, it might not even be obvious to a casual reader that this type of transformation had happened.
+
+> I realize this places an additional burden on the mods, and am very curious if anyone else can think of a way to accomplish roughly the same effect without the costs.
+
+No answers have yet been forthcoming.
