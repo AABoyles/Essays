@@ -29,7 +29,7 @@ Here, he is making a concrete prediction that Tesla will unveil a pickup truck i
 
 So, let's find as many Elon Musk predictions as we can... Or use some that somebody else has already assembled for us! Bloomberg assembled [a list](https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json) for their (much goofier) [take on this topic](https://www.bloomberg.com/features/elon-musk-goals/). 
 
-```{r}
+```{r, eval=FALSE}
 if(!file.exists('../data-cache/musk.json')){
   library(curl)
   curl_download("https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json", '../data-cache/musk.json')
@@ -53,7 +53,7 @@ preds <- read_json('../data-cache/musk.json')$response %>%
 
 This gives us a jump-start, but the data is still too thin to be of much use. We need to know all salient dates (Date prediction was made, Date predicted, Date event actually ocurred) in order to assess the predictive accuracy. We need these because we want to compare the difference in temporal distances between them.
 
-```{r}
+```{r, eval=FALSE}
 if(!file.exists('../data-cache/musk.csv')){
   write_csv(preds, '../data-cache/musk.csv')
 }
@@ -72,7 +72,7 @@ if(file.exists('../data-cache/musk2.csv')){
 }
   
 predictions %>%
-  select(-TextTargetDate, -Adjustment:-Canceled, -Source:-Description) %>%
+  select(Company, Prediction, AnnouncementDate, TargetDate, CompletedDate) %>%
   datatable()
 ```
 
@@ -82,7 +82,7 @@ The data are still messy and not 100% reliable, but generally accurate and confi
 plot_ly(predictions, alpha=0.6) %>%
   add_histogram(x = ~PredictionLength, name="Prediction Length") %>%
   add_histogram(x = ~ActualLength, name="Actual Length") %>%
-  layout(barmode = "overlay")
+  layout(barmode = "overlay", legend = list(x = 0.75, y = 0.9))
 ```
 
 Here we can see that we have many predictions in the time range of zero to three years, and a few longer-term predictions. Importantly, we don't see an obvious rightward-shift in the resolution times of these predictions. That's not to imply it isn't there. To see it, however, let's look at the scatterplot instead.
@@ -95,12 +95,13 @@ predictions %>%
     !is.na(PredictionLength),
     !is.na(ActualLength)) %>%
   plot_ly() %>%
-    add_markers(x=~PredictionLength, y=~ActualLength, text=~Prediction, hoverinfo="text", name="Actual Predictions") %>%
+    add_markers(x=~PredictionLength, y=~ActualLength, text=~Prediction, hoverinfo="text", color=~Company) %>%
     add_lines(x=~PredictionLength, y=fitted(model), name="Predictions Line-of-best-fit") %>%
-    add_lines(x=~PredictionLength, y=~PredictionLength, name="Prefect Predictions")
+    add_lines(x=~PredictionLength, y=~PredictionLength, name="Prefect Predictions") %>%
+    layout(legend = list(x = 0.7, y = 0.95))
 ```
 
-See how the Actual points are almost all *above* the perfect prediction line? That matches the intuition that motivates this exercise: Musk's projections are predominately too short. But by how much, precisely?
+See how the actual points are almost all *above* the perfect prediction line? That matches the intuition that motivates this exercise: Musk's projections are predominately too short. But by how much, precisely?
 
 ```{r}
 library('pander')
@@ -109,11 +110,7 @@ model %>% summary %>% pander
 
 If there's a prediction coming from the Musk-verse, multiply the (upper-bound of the) amount of time by `r round(model$coefficients[2], 3)`, and add `r round(model$coefficients[1])` days.
 
-### Completion Bias
-
-There's an important bias-related consideration we need to address. We can only generate a model of this type on the predictions Musk has made that have already come *true*. There's no sensible way to include plans that never materialized and were subsequently canceled, like the Falcon 5 or the Tesla Minibus. So we could just say "it'll probably happen around the date given by the formula above *conditional on it happening at all*", but that doesn't give us much predictive power.
-
-## My gift to you
+## Calculator
 
 To make this trivially easy, here's a little calculator! Enter that date of Musk's Prediction, and it will tell you when it will actually come true:
 
@@ -151,6 +148,25 @@ $(function(){
   </script>
 </div>
 
+## Criticisms
+
+There's an important bias-related consideration we need to address. We can only generate a model of this type on the predictions Musk has made that have already come *true*. There's no sensible way to include plans that never materialized and were subsequently canceled, like the Falcon 5 or the Tesla Minibus. So we could just say "it'll probably happen around the date given by the formula above *conditional on it happening at all*", but that doesn't give us much predictive power.
+
+Another consideration is that Regression outputs point estimates, which are interesting in a ball-parky sort of way, but don't really give us the tools to 
+
+```{r}
+opposite = function(x){ return(-x) }
+LL <- function(beta0, beta1, mu, sigma) {
+    (predictions$ActualLength - predictions$PredictionLength * beta1 - beta0) %>%
+      dnorm(mu, sigma, log=TRUE) %>%
+      sum %>%
+      opposite %>%
+      return
+}
+model2 <- bbmle::mle2(LL, start = list(beta0 = 100, beta1 = 1.5, mu = 0, sigma=1))
+summary(model2)
+```
+
 ## Relevant Markets
 
 Why should we care about this? To win [internet points](https://www.metaculus.com/help/faq/#howscore), of course!
@@ -178,4 +194,4 @@ Why should we care about this? To win [internet points](https://www.metaculus.co
 
 ## Conclusion
 
-It's easy to fault Musk for consistently making poor projections like this. However, I think there's a much more fundamental reason we should celebrate him: he makes public predictions _at all_.
+It's easy to fault Musk for consistently making poor projections like this. However, I think there's a much more fundamental reason we should celebrate him: he makes public predictions _at all_. I only wish more public personalities would follow suit and put some reputational skin in the game.
