@@ -4,3 +4,4 @@
 .Ruserdata
 data-cache/*.csv
 data-cache/*.xlsx
+data-cache/*.json
