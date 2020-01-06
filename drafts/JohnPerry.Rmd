@@ -1,12 +1,11 @@
 ---
-title: "A Hero"
+title: "John Perry"
 ---
 
 ```{r, results='asis'}
 source("../helpers/infobox.R")
 infobox(list(
-  "Last Revision" = file.info("AHero.Rmd")$mtime,
-  "Forked From" = tags$span(tags$a(href="https://www.lesswrong.com/posts/Tv7WWhgbKMWzEnMmx/mere-messiahs", "Mere Messiahs"), "by Eliezer Yudkowsky")
+  "Last Revision" = file.info("JohnPerry.Rmd")$mtime
 ))
 ```
 
@@ -23,15 +22,23 @@ John William Perry, was born to James and Patricia Perry. He was raised in Seafo
 
 ## Career
 
+### Police
+
+### Acting
+
+### Law
+
+## Personal Life
+
+John Perry was an [Extropian](https://www.wired.com/1994/10/extropians/). He [was interested in cryonics](http://www.plumsite.com/johnperry.html), and it is likely[^1] that he had made the requisite preparations.
+
+## September 11
+
 His story was picked up by the [New York Times](https://www.nytimes.com/2001/11/16/nyregion/the-big-city-a-policeman-for-starters-and-at-the-end.html).
 
 [Newsday 9-11 Victims' Database Entry](https://web.archive.org/web/20150922083609/http://longisland.newsday.com/911-anniversary/victims/John-Perry)
 
 [He was posthumously awarded the New York City Police Department's Medal of Honor for his heroic actions.](https://www.odmp.org/officer/15820-police-officer-john-william-perry)
-
-## Social Life
-
-John Perry was an [Extropian](https://www.wired.com/1994/10/extropians/). He [was interested in cryonics](http://www.plumsite.com/johnperry.html), and it is likely that he had [made the requisite preparations](http://www.alcor.org/problems.html). He had genuine hope of outliving the very oldest people alive today. **And John Perry put himself in very real, immediate danger anyway.**
 
 ## (To Investigate)
 
@@ -41,3 +48,5 @@ John Perry was an [Extropian](https://www.wired.com/1994/10/extropians/). He [wa
 * [on /r/TIL/](https://www.reddit.com/r/todayilearned/comments/2aismi/til_that_on_september_11th_2001_officer_john/)
 * [on /r/ProtectAndServe/](https://np.reddit.com/r/ProtectAndServe/comments/2aidzr/on_91101_officer_john_perry_of_the_40th_precinct/)
 * [Photos](https://www.google.com/search?safe=off&rlz=1C1GCEJ_enUS867US867&biw=1920&bih=969&tbm=isch&sxsrf=ACYBGNSuri5pmfVHPiLyuEMCRoiB7tVHMw%3A1572280643471&sa=1&ei=Qxm3XeWqHMOr5wKK5L_QDw&q=NYPD+Police+Officer+John+W.+Perry&oq=NYPD+Police+Officer+John+W.+Perry&gs_l=img.3...5754.8620..8924...0.0..0.94.527.6......0....1..gws-wiz-img.......35i39.3UawQiuoSrw&ved=0ahUKEwil2Pbpsb_lAhXD1VkKHQryD_oQ4dUDCAc&uact=5)
+
+[^1]: [Alcor notes that there were two future cryonics patients killed in the attacks.](http://www.alcor.org/problems.html)

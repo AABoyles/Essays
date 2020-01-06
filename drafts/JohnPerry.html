@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>John Perry</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="site_libs\style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h2 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h3 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h4 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h5 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h6 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Anthony A. Boyles</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="../index.html">Portfolio</a>
+</li>
+<li>
+  <a href="../predictions/">Predictions</a>
+</li>
+<li>
+  <a href="../essays/">Essays</a>
+</li>
+<li>
+  <a href="../code.html">Code</a>
+</li>
+<li>
+  <a href="../about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../README.html">Meta</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">John Perry</h1>
+
+</div>
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">source</span>(<span class="st">&quot;../helpers/infobox.R&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">infobox</span>(<span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="st">&quot;Last Revision&quot;</span> =<span class="st"> </span><span class="kw">file.info</span>(<span class="st">&quot;JohnPerry.Rmd&quot;</span>)<span class="op">$</span>mtime</a>
+<a class="sourceLine" id="cb1-4" title="4">))</a></code></pre></div>
+<div class="infobox">
+<table class="infoboxtable table table-striped">
+<tbody>
+<tr>
+<td>
+<b>Last Revision</b>
+</td>
+<td>2020-01-02 11:24:46</td>
+</tr>
+</tbody>
+<tfoot></tfoot>
+</table>
+</div>
+<p><a href="http://www.nleomf.org/officers/search/search-results/john-william-perry.html">John William Perry</a> was a New York City police officer. He had taken leave from his precinct one Tuesday to file his retirement papers. At 38 years old, afer 8 years of service, he was leaving the force to take a job at a Manhattan Law firm (<a href="http://www.nypdangels.com/nypd/perry.htm" class="uri">http://www.nypdangels.com/nypd/perry.htm</a>). But on that Tuesday morning, John Perry got word that <a href="https://en.wikipedia.org/wiki/September_11_attacks">a plane had slammed into the World Trade Center</a>. So instead of filing his retirement papers, Officer Perry rushed to Ground Zero to help. He was killed when the north tower fell.</p>
+<ul>
+<li><a href="https://www.nytimes.com/2001/11/10/classified/paid-notice-deaths-perry-john-w.html">NYCLU Obituary</a></li>
+<li><a href="https://www.nytimes.com/2001/11/07/classified/paid-notice-deaths-perry-john-w.html">Family Obituary</a></li>
+<li><a href="https://www.odmp.org/officer/15820-police-officer-john-william-perry">Officer Down Memorial Page</a></li>
+<li><a href="https://www.legacy.com/guestbooks/newsday/john-william-perry-condolences/122581">Legacy.com Guestbook</a></li>
+</ul>
+<div id="early-life" class="section level2">
+<h2>Early Life</h2>
+<p>John William Perry, was born to James and Patricia Perry. He was raised in Seaford, on Long Island. Apparently, he couldn’t tie his shoes or ride a bicycle until he was 9. He spent several early grades in special education classes.</p>
+</div>
+<div id="career" class="section level2">
+<h2>Career</h2>
+<div id="police" class="section level3">
+<h3>Police</h3>
+</div>
+<div id="acting" class="section level3">
+<h3>Acting</h3>
+</div>
+<div id="law" class="section level3">
+<h3>Law</h3>
+</div>
+</div>
+<div id="personal-life" class="section level2">
+<h2>Personal Life</h2>
+<p>John Perry was an <a href="https://www.wired.com/1994/10/extropians/">Extropian</a>. He <a href="http://www.plumsite.com/johnperry.html">was interested in cryonics</a>, and it is likely<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> that he had made the requisite preparations.</p>
+</div>
+<div id="september-11" class="section level2">
+<h2>September 11</h2>
+<p>His story was picked up by the <a href="https://www.nytimes.com/2001/11/16/nyregion/the-big-city-a-policeman-for-starters-and-at-the-end.html">New York Times</a>.</p>
+<p><a href="https://web.archive.org/web/20150922083609/http://longisland.newsday.com/911-anniversary/victims/John-Perry">Newsday 9-11 Victims’ Database Entry</a></p>
+<p><a href="https://www.odmp.org/officer/15820-police-officer-john-william-perry">He was posthumously awarded the New York City Police Department’s Medal of Honor for his heroic actions.</a></p>
+</div>
+<div id="to-investigate" class="section level2">
+<h2>(To Investigate)</h2>
+<ul>
+<li>Possibly Mentioned in <a href="https://www.amazon.com/Report-Ground-Zero-Dennis-Smith/dp/0452283957">Report from Ground Zero</a></li>
+<li><a href="https://web.archive.org/web/20130403062556/http://www.theagitator.com/2006/09/11/remembering-john-w-perry/">Radley Balko on John Perry</a></li>
+<li><a href="http://johnwperry.com/index.html">His personal Website appears to still exist</a></li>
+<li><a href="https://www.reddit.com/r/todayilearned/comments/2aismi/til_that_on_september_11th_2001_officer_john/">on /r/TIL/</a></li>
+<li><a href="https://np.reddit.com/r/ProtectAndServe/comments/2aidzr/on_91101_officer_john_perry_of_the_40th_precinct/">on /r/ProtectAndServe/</a></li>
+<li><a href="https://www.google.com/search?safe=off&amp;rlz=1C1GCEJ_enUS867US867&amp;biw=1920&amp;bih=969&amp;tbm=isch&amp;sxsrf=ACYBGNSuri5pmfVHPiLyuEMCRoiB7tVHMw%3A1572280643471&amp;sa=1&amp;ei=Qxm3XeWqHMOr5wKK5L_QDw&amp;q=NYPD+Police+Officer+John+W.+Perry&amp;oq=NYPD+Police+Officer+John+W.+Perry&amp;gs_l=img.3...5754.8620..8924...0.0..0.94.527.6......0....1..gws-wiz-img.......35i39.3UawQiuoSrw&amp;ved=0ahUKEwil2Pbpsb_lAhXD1VkKHQryD_oQ4dUDCAc&amp;uact=5">Photos</a></li>
+</ul>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="http://www.alcor.org/problems.html">Alcor notes that there were two future cryonics patients killed in the attacks.</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109466857-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109466857-1');
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
