@@ -1,0 +1,48 @@
+---
+title: "Asking Quality Forecasting Questions"
+---
+
+Forecasting is hard. Asking good forecasting questions may be harder. In his [Edge Foundation Master Class on Forecasting](https://soundcloud.com/edgefoundationinc/edgemasterclass2015-class-1-pt-1), Phil Tetlock remarked something to the effect that "Asking good questions is difficult. We're terrible at it."
+
+What makes a good Forecasting question? Some desirable characteristics:
+
+1. Objectively resolvable
+2. Not Obvious (to a thoughtful forecaster)
+3. Outcome-Balanced
+4. Bonus: Not being asked elsewhere
+5. Sanity-checked
+
+## Objectively Resolvable
+
+This is easiest if the question is framed in terms of the claims of the authority in the position to resolve the underlying phenomenon (e.g. "When will the WHO declare Polio eradicated", rather than "When will Polio be eradicated?").
+
+## Non-Obvious (to a thoughtful forecaster)
+
+The answer to a question shouldn't be immediately obvious. There is one way this can be an issue, and one important nuance. The issue is simply that a question may be obvious factual information (or a very simple extrapolation from it). "Will the sun rise tomorrow?" is not a good question because it will with such high probability that placing any credence on the alternative is a waste of effort. So, we should attempt to ask questions that are not obvious.
+
+The aforementioned nuance is that they should be non-obvious *to a thoughtful forecaster*. We can ask an ordinary person to predict an outcome, and they can typically do it successfully, and place very high credence on their prediction. For example, if we ask someone whether their team is going to win the upcoming game, they may express [a confident prediction of impending victory](https://www.lesswrong.com/posts/RmCjazjupRGcHSm5N/professing-and-cheering). How likely are they to be right? Probably about 50%. Most people are very, very good at explaining what's going on, Few people are good at doing so accurately. And as with all good cognitive biases, people already believe this is true *for everyone but themselves*.
+
+By contrast, if we ask a thoughtful forecaster what will happen, we are probably going to receive a quantitative prediction. A thoughtful forecaster will:
+
+1. Get confused.
+2. Note their confusion.
+3. Devise criteria which will resolve their confusion.
+4. Seek data on those criteria.
+5. Update their beliefs accordingly.
+
+To continue with our example of the upcoming ball game, they will begin to ask some questions, like: Are these predictable games? Is one team statistically more competent than the other? This is a procedure which requires some conscious effort, and usually a bit of research.
+
+## Outcome-Balanced
+
+## Bonus: Not being asked elsewhere
+
+When you create forecasting games based on things that are being forecast elsewhere, those other forecasts will be seen by your toughtful forecasters.
+
+## Sanity Checked
+
+* Does the question match its metadata? For example, [Does the internal resolution/close date match the question text?](https://www.metaculus.com/questions/3418/question-writing-checklist/#comment-19005)
+* [Does the question close too early?](https://www.metaculus.com/questions/3418/question-writing-checklist/#comment-19006)
+* [If the question refers to particular points in time, does it do so unambiguously?](https://www.metaculus.com/questions/3418/question-writing-checklist/#comment-19013)  (E.g., not "by March 2023" but "by the start of March 2023" or, better still, "by noon UTC on 2023-03-01".)
+* [Does the resolution criteria agree with the question title?](https://www.metaculus.com/questions/3418/question-writing-checklist/#comment-19008)
+* [What source will adjudicate the question's resolution?](https://www.metaculus.com/questions/3418/question-writing-checklist/#comment-19009)
+* [Is the question written](https://www.metaculus.com/questions/3418/question-writing-checklist/#comment-19010) from a [neutral point of view?](https://en.wikipedia.org/wiki/Wikipedia:Neutral_point_of_view)

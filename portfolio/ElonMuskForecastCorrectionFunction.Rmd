@@ -2,6 +2,13 @@
 title: "The Elon Musk Forecast Correction Function"
 ---
 
+<div class="jumbotron">
+  <form class="form-inline">
+    <p>On <input id="datePredictionMade" class="form-control" type="date">, Elon Musk predicted he'd deliver on <input id="datePredicted" class="form-control" type="date">.</p>
+    <p>He is much more likely to deliver around <span id="predictionResult"></span>.</p>
+  </form>
+</div>
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = FALSE)
 library(jsonlite)
@@ -15,19 +22,19 @@ library(plotly)
 
 ## Introduction
 
-In case you haven't heard, Elon Musk is [the World's Raddest Man](https://waitbutwhy.com/2015/05/elon-musk-the-worlds-raddest-man.html). He also tends to deliver on his promises late. He's reasonably consistent about delivering, just... late. His predictions may contain telling information about when we can expect him to deliver something, it's just that the numbers are very often wrong. And because they're wrong in a biased way (he consistently predicts things will be ready sooner than they are), we can figure out how to *correct* his predictions.
+In case you haven't heard, Elon Musk is [the World's Raddest Man](https://waitbutwhy.com/2015/05/elon-musk-the-worlds-raddest-man.html). He's reasonably consistent about delivering on his promises, too! Just... late. His predictions may contain telling information about when we can expect him to deliver something, it's just that his numbers are very often wrong. And because they're wrong in a biased way (he consistently predicts things will be ready sooner than they are), we can figure out how to *correct* his predictions.
 
 ## Assembling His (Falsifiable) Predictions
 
 In science, there's a really really important concept, called [falsifiability](https://en.wikipedia.org/wiki/Falsifiability). Basically, you can make statements like "[Conservatives will win the next election](https://www.metaculus.com/questions/3264/how-many-seats-will-the-conservative-and-unionist-party-win-in-the-next-uk-general-election/)", but we need to figure out some objective criteria for which that statement is true or false. Does winning mean taking a majority of seats? Or a majority of seats in a coalition government? Or is it just the largest plurality, even if they can't form the government? In other words, there are a lot of places we can stick a label like "won the election", but we need to pick one of those in advance of making any predictions. Otherwise, we're just [blowing hot air](https://www.hamilton.edu/documents/Analysis-of-Forcast-Accuracy-in-the-Political-Media.pdf).
 
-So, we need to find predictions that Elon Musk has publicly stated that are more concrete than "Someday, humans will..." Luckily for us, Musk tends For example, consider this tweet:
+So, we need to find predictions that Elon Musk has publicly stated that are more concrete than "Someday, humans will..." Luckily for us, Musk tends to generate timeline predictions that are concrete enough to objectively resolve. For example, consider this tweet:
 
 [![Pickup truck unveil in 18 to 24 months](https://aaboyles.github.io/Essays/imgs/Elon.PNG)](https://twitter.com/elonmusk/status/852581322451111936)
 
-Here, he is making a concrete prediction that Tesla will unveil a pickup truck in 18 to 24 months. Note that Musk made the tweet on 2017-04-13. 18 months later is 2018-10-13, and 24 months later is 2019-04-13. So, did Tesla unveil the pickup truck within the predicted window? [He teased, of course](https://twitter.com/elonmusk/status/1106714774694297601/photo/1), but [No.](https://twitter.com/elonmusk/status/1170401244310949888)
+Here he is making a concrete prediction that Tesla will unveil a pickup truck in 18 to 24 months. Note that Musk made the tweet on 2017-04-13. 18 months later is 2018-10-13, and 24 months later is 2019-04-13. So, did Tesla unveil the pickup truck within the predicted window? [He teased, of course](https://twitter.com/elonmusk/status/1106714774694297601/photo/1), but [it didn't get revealed until the following November](https://www.cnet.com/roadshow/news/tesla-cybertruck-electric-pickup-truck-livestream-elon-musk/).
 
-So, let's find as many Elon Musk predictions as we can... Or use some that somebody else has already assembled for us! Bloomberg assembled [a list](https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json) for their (much goofier) [take on this topic](https://www.bloomberg.com/features/elon-musk-goals/). 
+So, let's find as many Elon Musk predictions as we can... Or use some that somebody else has already assembled for us! Bloomberg assembled [a list](https://www.bloomberg.com/bbg-gfx/doc-relay/1LbuTU_4Hezk524N_j7hHhDhgbYBuacuX3frK4TzyGrY/data.json) for their (much goofier) [take on this topic](https://www.bloomberg.com/features/elon-musk-goals/).
 
 ```{r, eval=FALSE}
 if(!file.exists('../data-cache/musk.json')){
@@ -49,6 +56,10 @@ preds <- read_json('../data-cache/musk.json')$response %>%
     AdjustedDate = dmy(AdjustedDate),
     Completed  = dmy(Completed)
   )
+
+preds %>%
+  select(Company, Prediction, AnnouncementDate, TargetDate, Completed) %>%
+  datatable()
 ```
 
 This gives us a jump-start, but the data is still too thin to be of much use. We need to know all salient dates (Date prediction was made, Date predicted, Date event actually ocurred) in order to assess the predictive accuracy. We need these because we want to compare the difference in temporal distances between them.
@@ -59,9 +70,9 @@ if(!file.exists('../data-cache/musk.csv')){
 }
 ```
 
-Accordingly, I loaded up the ol' spreadsheet and started manually filling in the blank spaces. This entailed a good deal of manual data cleaning and manipulation. The most important operation was selecting the dates to assign to predictions. For the date on which the prediction was registered, I tried to select the earliest available example of it (almost always [Musk's Twitter feed](https://twitter.com/elonmusk)). For the date he predicted, I used the principle of charity to select the latest possible date. I ignored date ranges (e.g. "Summer 2017") in favor of the terminal date that would indicate (2017-09-21). We might also note that some of the predictions include Adjustments--if his initial estimate was wrong, Musk may have later updated the prediction. But there's nothing privileged these updates--they're predictions unto themselves. Accordingly, I promoted them to sit in-line with the other predictions. [You can view my rendition of the sheet here.](https://docs.google.com/spreadsheets/d/1rRD3CsQLuiglHqma778PCOtAOODcjIs94xcdhRQ6uJE)
+Accordingly, I loaded up [the ol' spreadsheet](https://docs.google.com/spreadsheets/u/0/) and started filling in the blank spaces. This entailed a good deal of research along with manual data cleaning and manipulation. The most important operation was selecting the dates to assign to predictions. For the date on which the prediction was registered, I tried to select the earliest available example of it (almost always [Musk's Twitter feed](https://twitter.com/elonmusk)). For the date he predicted, I selected the latest possible interpretation of his estimated date. I ignored date ranges (e.g. "Summer 2017") in favor of the terminal date that would indicate (2017-09-21). We might also note that some of the predictions include Adjustments--if his initial estimate was wrong, Musk may have later updated the prediction. But there's nothing privileged these updates--they're predictions unto themselves. Accordingly, I promoted them to sit in-line with the other predictions. [You can view my rendition of the sheet here.](https://docs.google.com/spreadsheets/d/1rRD3CsQLuiglHqma778PCOtAOODcjIs94xcdhRQ6uJE)
 
-Notably, Metaculus has also generated [a comparable tracking of Musk-forecasts](https://www.metaculus.com/visualizations/elon-musk-timeline/), mapped to Metaculus questions regarding his predictions. And [the raw data is available](https://www.metaculus.com/visualizations/elon-musk-timeline/data/). I referenced it a bit to fill in the salient details, but really used the Bloomberg data as my jumping-off point.
+Notably, Metaculus has also generated [a comparable tracking of Musk-forecasts](https://www.metaculus.com/visualizations/elon-musk-timeline/), mapped to Metaculus questions regarding his predictions. And [the raw data is available](https://www.metaculus.com/visualizations/elon-musk-timeline/data/). I referenced it a bit to fill in the salient details.
 
 ```{r}
 if(file.exists('../data-cache/musk2.csv')){
@@ -112,64 +123,11 @@ If there's a prediction coming from the Musk-verse, multiply the (upper-bound of
 
 ## Calculator
 
-To make this trivially easy, here's a little calculator! Enter that date of Musk's Prediction, and it will tell you when it will actually come true:
+There's an important bias we need to consider. We can only generate a model of this type on the predictions Musk has made *that have already come true*. There's no sensible way to include plans that never materialized and were subsequently canceled, like the Falcon 5 or the Tesla Minibus. So we could just say "it'll probably happen around the date given by the formula above *conditional on it happening at all*", but that doesn't give us much predictive power.
 
-<div class="jumbotron">
-  <h2>The Elon Musk Prediction Correction Calculator</h2>
-  <form class="form-inline">
-    <p>On <input id="datePredictionMade" class="form-control" type="date">, Elon Musk predicted he'd deliver on <input id="datePredicted" class="form-control" type="date">.</p>
-    <p>He is much more likely to deliver around <span id="predictionResult"></span>.</p>
-  </form>
-  <script>
-$(function(){
-  var msPerDay = 1000*60*60*24;
-  var today = new Date().toISOString().substr(0,10);
-  var threeMonthsFromNow = new Date(90*msPerDay + Date.now()).toISOString().substring(0,10);
-  $('#datePredicted').on('change', function(){
-    $('#datePredictionMade').attr('max', this.value);
-  }).val(threeMonthsFromNow).attr('min', today);
-  $('#datePredictionMade').on('input', function(){
-    $('#datePredicted').attr('min', this.value);
-  }).val(today);
-  $('#datePredictionMade, #datePredicted').on('input', function(){
-    var date1 = new Date($('#datePredictionMade').val());
-    var date2 = new Date($('#datePredicted').val());
-    var days = fit(Math.floor((date2 - date1) / msPerDay));
-    $('#predictionResult').text(format((new Date(date1.getTime() + days*msPerDay)).toLocaleString()));
-  });
-  function fit(days){
-    return `r model$coefficients[2]` * days + `r model$coefficients[1]`;
-  }
-  function format(d){
-    var s = d.toLocaleString();
-    return s.substring(0, s.indexOf(','));
-  }
-});
-  </script>
-</div>
+## The Elon Musk Forecast Correction Calculator
 
-## Criticisms
-
-There's an important bias-related consideration we need to address. We can only generate a model of this type on the predictions Musk has made that have already come *true*. There's no sensible way to include plans that never materialized and were subsequently canceled, like the Falcon 5 or the Tesla Minibus. So we could just say "it'll probably happen around the date given by the formula above *conditional on it happening at all*", but that doesn't give us much predictive power.
-
-Another consideration is that Regression outputs point estimates, which are interesting in a ball-parky sort of way, but don't really give us the tools to 
-
-```{r}
-opposite = function(x){ return(-x) }
-LL <- function(beta0, beta1, mu, sigma) {
-    (predictions$ActualLength - predictions$PredictionLength * beta1 - beta0) %>%
-      dnorm(mu, sigma, log=TRUE) %>%
-      sum %>%
-      opposite %>%
-      return
-}
-model2 <- bbmle::mle2(LL, start = list(beta0 = 100, beta1 = 1.5, mu = 0, sigma=1))
-summary(model2)
-```
-
-## Relevant Markets
-
-Why should we care about this? To win [internet points](https://www.metaculus.com/help/faq/#howscore), of course!
+To make this trivially easy, I wrote the calculator at the top of this article. Enter that date of Musk's Prediction, and it will tell you when it will actually come true. Why is this valuable? To win [meaningless internet points](https://www.metaculus.com/help/faq/#howscore), of course!
 
 * [Will SpaceX present Mars Plans in 2016-09](https://www.metaculus.com/questions/308/spacexs-blueprint-to-mars-presented-in-late-september/)
 * [Will SpaceX land on a barge by 2016-02-28](https://www.metaculus.com/questions/2/will-spacex-successfully-land-a-falcon-9-rocket-on-a-barge-by-february-28-2016/)
@@ -194,4 +152,34 @@ Why should we care about this? To win [internet points](https://www.metaculus.co
 
 ## Conclusion
 
-It's easy to fault Musk for consistently making poor projections like this. However, I think there's a much more fundamental reason we should celebrate him: he makes public predictions _at all_. I only wish more public personalities would follow suit and put some reputational skin in the game.
+It's easy to fault Musk for consistently making poor projections like this. However, I think there's a much more fundamental reason we should celebrate him: he makes public predictions _at all_.
+
+![Never Stop Predicting, @elonmusk](https://aaboyles.github.com/Essays/imgs/NeverStop.PNG)
+
+<script>
+$(function(){
+  var msPerDay = 1000*60*60*24;
+  var today = new Date().toISOString().substr(0,10);
+  var threeMonthsFromNow = new Date(90*msPerDay + Date.now()).toISOString().substring(0,10);
+  $('#datePredicted').on('change', function(){
+    $('#datePredictionMade').attr('max', this.value);
+  }).val(threeMonthsFromNow).attr('min', today);
+  $('#datePredictionMade').on('input', function(){
+    $('#datePredicted').attr('min', this.value);
+  }).val(today);
+  $('#datePredictionMade, #datePredicted').on('input', function(){
+    var date1 = new Date($('#datePredictionMade').val());
+    var date2 = new Date($('#datePredicted').val());
+    var days = fit(Math.floor((date2 - date1) / msPerDay));
+    $('#predictionResult').text(format((new Date(date1.getTime() + days*msPerDay)).toLocaleString()));
+  });
+  function fit(days){
+    return `r model$coefficients[2]` * days + `r model$coefficients[1]`;
+  }
+  function format(d){
+    var s = d.toLocaleString();
+    return s.substring(0, s.indexOf(','));
+  }
+  $('#datePredictionMade, #datePredicted').trigger('input');
+});
+</script>

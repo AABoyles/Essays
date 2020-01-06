@@ -1,0 +1,30 @@
+---
+title: "Audiobooks"
+---
+
+## Why
+
+I read a lot. A lot of that reading is listening to audiobooks.
+
+## How to Listen
+
+One insanely valuable feature of an audiobook play is the ability to control the relative speed at which the book is played. Most audiobooks are recorded at a very intentional, slow pace.
+
+### Overdrive
+
+### Hoopla
+
+### Voice
+
+In contrast to audiobooks from the Public Library (which typically come via Overdrive or Hoopla), or Audiobooks from commercial retailers, you'll need an app to play them. I use (and recommend!) the Free, Open Source [Voice](https://github.com/PaulWoitaschek/Voice).
+
+### Audible
+
+## Free, Worthwile Audiobooks
+
+There are precious few audiobooks out there that are both freely available and worth the time to listen to. So when I find one, I add it to this list.
+
+* [The Life You Can Save](https://www.thelifeyoucansave.org/the-book/) by Peter Singer
+* [Mastering the Core Teachings of the Buddha](https://www.learnoutloud.com/Browse/Religion-and-Spirituality/Prayer-and-Meditation/Mastering-the-Core-Teachings-Of-The-Buddha/73850) by Daniel Ingraham
+
+With a little ingenuity, [you can scrape](https://gist.github.com/AABoyles/da593afbbdea77aaa593b40f375695ca) [Rationality: from AI to Zombies](https://rationalitybook.com/) by Eliezer Yudkowsky

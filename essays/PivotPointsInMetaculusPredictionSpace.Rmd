@@ -1,0 +1,23 @@
+---
+title: "Pivot Points in Metaculus Prediction Space"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Phil Tetlock claims that highly competent forecasters can distinguish between many different degrees of confidence
+
+## For binary questions
+
+* 1% - The minimum prediction
+* 29% - The base rate
+* The minimum prediction such that 
+* The median (recent) prediction
+* 50% - The uniform prior
+* 99% - The maximum confidence
+
+## For numeric range questions
+
+* A single component whose width is set to maximize the outcome space for which

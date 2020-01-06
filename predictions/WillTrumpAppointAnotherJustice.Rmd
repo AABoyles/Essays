@@ -1,0 +1,26 @@
+---
+title: Will Donald Trump appoint at least one more Justice to the Supreme Court before
+  the end of his presidency?
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here's a complex one! [Will Donald Trump appoint at least one more Justice to the Supreme Court before the end of his presidency?](https://www.metaculus.com/questions/1498/will-donald-trump-appoint-at-least-one-more-justice-to-the-supreme-court-before-the-end-of-his-presidency/)
+
+$$
+P(appointment)=\\
+  P(TrumpLoses)*(P(JusticeDies)+P(JusticeRetires)) +\\
+  P(TrumpWins)*(1-(1-P(JusticeDies))^5)+(1-(1-P(JusticeRetires))^5)*P(SenateCooperates)
+$$
+
+## If Trump Loses in 2020
+
+...We only need to assess the longevity of the justices for another year.
+
+```{r}
+
+```
+
+## If Trump Wins in 2020

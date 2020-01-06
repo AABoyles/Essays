@@ -9,7 +9,10 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = FAL
 To answer the Metaculus Question ["If the UK leaves the EU, will there be a resurgence of the Troubles between Ireland and Northern Ireland?"](https://www.metaculus.com/questions/2586/if-the-uk-leaves-the-eu-will-there-be-a-resurgence-of-the-troubles-between-ireland-and-northern-ireland/)
 
 ```{r}
+library(dplyr)
+library(stringr)
 library(readxl)
+
 gtd <- read_xlsx('../data-cache/globalterrorismdb_0919dist.xlsx')
 
 # For reasons that are utterly mysterious, 1993 is separate
@@ -26,8 +29,6 @@ gtd <- gtd %>% rbind(gtd93)
 
 
 ```{r}
-library(dplyr)
-library(stringr)
 troubles <- gtd %>%
   filter(country_txt == "United Kingdom" | country_txt == "Ireland") %>%
   mutate(republican = str_detect(summary, '[Rr]epublican')) %>%

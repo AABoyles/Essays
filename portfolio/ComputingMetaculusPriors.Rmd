@@ -17,20 +17,7 @@ Metaculus itself has done this twice:
 
 ## API Scraping
 
-To start, we can get the data by querying Metaculus' API for resolved questions. The endpoint (which we can determine by watching XHR requests in our browser when we load lists of questions) is https://www.metaculus.com/api2/questions/, and it accepts the following GET parameters:
-
-* `order_by` - doesn't really matter to us, so we'll leave the default `-activity`
-* `page` - an integer
-* `status` - `resolved` in our case.
-
-```{r}
-library(jsonlite)
-init <- fromJSON('https://www.metaculus.com/api2/questions/?order_by=-activity&page=1&status=resolved')
-names(init)
-```
-
-The returned JSON string contains `next` and `previous`, which are simply URLs for the API calls to get the next (and previous) sets of questions. More importantly, it contains `count` and `results`. We'll use `count` to figure out how many API calls to make, and `results` to actually perform our analysis.
-
+To start, we can get the data by querying Metaculus' Track Record API.
 
 ```{r}
 library(readr)
@@ -38,23 +25,17 @@ library(dplyr)
 library(DT)
 
 if(file.exists('../data-cache/metaculus-questions.csv')){
-  questions <- read_csv('../data-cache/metaculus-questions.csv')
+  binaryQuestions <- read_csv('../data-cache/metaculus-questions.csv')
 } else {
-  # we can start from 2 because we already got page 1 in `init`
-  pages <- list(init$results)
-  for(i in 2:floor(init$count/length(init$results))){
-    temp <- fromJSON(paste0('https://www.metaculus.com/api2/questions/?order_by=-activity&page=',i,'&status=resolved'))
-    pages[[i]] <- temp$results
-  }
-  questions <- pages %>%
-    rbind_pages() %>%
-    select(-prediction_timeseries, -metaculus_prediction) %>%
-    flatten()
-  write_csv(questions, '../data-cache/metaculus-questions.csv')
+  library(jsonlite)
+  binaryQuestions <-
+    fromJSON('https://www.metaculus.com/questions/track-record/export/') %>%
+    select(-categories)
+  write_csv(binaryQuestions, '../data-cache/metaculus-questions.csv')
 }
 
-questions %>%
-  select(title, resolution, possibilities.type) %>%
+binaryQuestions %>%
+  select(title, qtype, resolution) %>%
   datatable()
 ```
 
@@ -67,19 +48,20 @@ Not all questions on Metaculus are percentage predictions on discrete events. So
 ```{r}
 library(pander)
 
-questions %>%
-  flatten %>%
-  filter(`possibilities.type`=='binary') ->
-  binaryQuestions
+binaryQuestions <- questions %>%
+  filter(qtype=='binary') 
 
-binaryQuestions %>%
-  with(table(resolution)) ->
-  frequencies
+freqTable <- binaryQuestions %>%
+  group_by(resolution) %>%
+  summarise(count = n())
 
-pander(frequencies)
+frequencies <- freqTable$count
+
+freqTable %>%
+  pander()
 ```
 
-(0 and 1 correspond to negative and positive resolutions respectively, and -1 consititues an ambiguous resolution.)
+(0 and 1 correspond to negative and positive resolutions respectively, and -1 is an ambiguous resolution.)
 
 So we see that a majority of questions (`r frequencies[2]` out of `r nrow(binaryQuestions)`) ) are resolved negatively. So your prior on a randomly-selected, binary-outcome Metaculus question should be something like the proportion of (unambiguously resolved) questions which resolve positively, or `r round(100*frequencies[3]/(frequencies[2]+frequencies[3]))`%.
 
@@ -87,7 +69,7 @@ Now, ideally resolutions would be uniformly distributed (so you can't exploit in
 
 ## Binary Frequencies over time
 
-If the distribution is getting closer to 50-50 over time, then eventually leveraging a Metaculus prior won't work. Alternately, Perhaps Metaculus is converging on a specific frequency, in which case this exercise will prove to be **super useful**.
+If the distribution is getting closer to 50-50 over time, then eventually leveraging a Metaculus prior won't work (or rather, won't improve intuition). Alternately, Perhaps Metaculus is converging on a specific frequency, in which case this exercise will prove to be **super useful**.
 
 ```{r}
 library(plotly)
@@ -122,7 +104,7 @@ Here's Metaculus' prediction about [the number of Eurosceptics who will be elect
 ```{r}
 questions %>%
   filter(
-    possibilities.format=="num",
+    qtype=="num",
     resolution >= 0
   ) %>%
   dplyr::mutate(

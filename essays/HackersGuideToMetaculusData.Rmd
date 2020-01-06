@@ -1,0 +1,102 @@
+---
+title: "A Hacker's Guide to Metaculus Data (in R)"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The Forecasting site Metaculus. You can gain a surprising degree of predictive power by simply [analyzing the distribution of question resolutions](https://aaboyles.github.io/Essays/portfolio/ComputingMetaculusPriors.html). But collecting the data isn't trivial. Designing an API isn't high on the prioritized [list of Metaculus feature requests](https://www.metaculus.com/questions/935/discussion-topic-what-features-should-metaculus-add-may-2018-edition/).
+
+This is a short guide through the kinds of data we can (easily) get out of Metaculus.
+
+## The Secret API
+
+Metaculus exposes [an official-but-unsupported API](https://www.metaculus.com/accounts/profile/5/#comment-6452) with two known endpoints:
+
+*[/accounts/my-profile/track-record-export/](https://www.metaculus.com/accounts/my-profile/track-record-export/)
+*[/questions/track-record/export/](https://www.metaculus.com/questions/track-record/export/)
+
+(Neither requires any arguments. It's unclear whether either accepts any.)
+
+The former has been used in some Metaculus Metaquestions:
+
+* [Which percentage of Metaculus questions resolving from October 1st to December 31st 2018 (inclusive) will resolve positively?](https://www.metaculus.com/questions/1475/which-percentage-of-metaculus-questions-resolving-from-october-1st-to-december-31st-2018-inclusive-will-resolve-positively/)
+* [Which percentage of Metaculus questions resolving in Q1 2019 will resolve positively?](https://www.metaculus.com/questions/1490/which-percentage-of-metaculus-questions-resolving-in-q1-2019-will-resolve-positively/)
+
+### Get Resolved, Binary Questions
+
+Both of the above questions provided [jq](https://stedolan.github.io/jq/) one-liners, like this:
+
+`bash curl --silent https://www.metaculus.com/questions/track-record/export/ | jq 'map(select(.qtype == "binary" and .resolve_time >= "2018-10-01T00:00:00Z" and .resolve_time < "2019-01-01T00:00:00Z" and .resolution != -1)) | (100 *  (map(select(.resolution == 1)) | length) / length)' -`
+
+Note that the `jq` portion of the above command includes a filter for `.qtype="binary"`. This is not actually necessary! To see why, let's get these data in R:
+
+```{r}
+library(jsonlite)
+library(dplyr)
+library(DT)
+questions <- fromJSON("https://www.metaculus.com/questions/track-record/export/")
+questions %>%
+  select(title, qtype, resolution) %>%
+  datatable
+```
+
+Literally all of the questions returned by this API endpoint are binary. The server is already filtering down to just binary questions. If we want other question types, we're going to have to get them [some other way](#get-all-the-questions).
+
+See Also: [gimpf](https://gimpf.org/) has created [a git repository](https://github.com/gimpf/metaculus-question-stats) with a number of jq scripts for playing with these.
+
+### What about the Track Record endpoint?
+
+Track Record data is accessible to each individual. Your track record is not available to me, and vice-versa. That means that you can log in to Metaculus and go to that URL and download your own unique track record, but to access data programmatically you'll need to do submit credentials in tandem with the request. While this is totally possible, it's annoying and difficult enough to walkthrough that I'm not going bother with it. To me, the question data is way more interesting anyway.
+
+## The Public API
+
+Metaculus' Public API is designed to provide raw data to the web frontend, but there's no rule that says we must use it in this way. To start, let
+s take a look at the URL the provides the data to [the Metaculus frontpage](https://metaculus.com/questions/).
+
+    https://www.metaculus.com/api2/questions/?order_by=-activity&page=1&status=resolved
+    
+First few things to note:
+
+* In contrast to the Secret API, this one uses an api-specific subdomain (`/api2`)
+* It takes ordinary GET parameters: `order_by`, `page`, and `status`
+* `order_by` is a string, but can be negated
+* `page` is a positive integer
+* `status` is a string
+
+Now, let's take a look at the structure of the data available at that URL.
+
+```{r}
+library(magrittr)
+init <- fromJSON('https://www.metaculus.com/api2/questions/?order_by=-activity&page=1&status=resolved')
+names(init)
+```
+
+The JSON object contains four attributes:
+
+* `count` - The number of questions available, given the parameters
+* `next` - The URL of the next page of questions
+* `previous` - The URL of the previous page of questions
+* `results` - The array of questions and the data required to display them
+
+`next` and `previous` are simply modifications of the URL we used to get this data, so we don't need to worry about them too much. However, `count` is useful, and `results` is absolutely critical. It's where the data lives!
+
+### Get *all* the questions
+
+For our first trick, let's get *all* the available questions, instead of just those resolved binary questions (which we got from the Secret API, above).
+
+```{r}
+pages <- list(init$results)
+for(i in 2:floor(init$count/length(init$results))){
+  temp <- fromJSON(paste0('https://www.metaculus.com/api2/questions/?order_by=-activity&page=',i))
+  pages[[i]] <- temp$results
+}
+output <- rbind_pages(pages)
+
+flatOutput <- flatten(output)
+
+flatOutput %>%
+  select(title, possibilities.type, resolution) %>%
+  datatable()
+```
