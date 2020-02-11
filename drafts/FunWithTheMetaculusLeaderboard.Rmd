@@ -1,0 +1,102 @@
+---
+title: "Fun with the Metaculus Leaderboard"
+---
+
+
+```{r}
+library(rvest)
+library(dplyr)
+library(magrittr)
+library(stringr)
+library(lubridate)
+library(plotly)
+library(rmarkdown)
+```
+
+## Getting Started
+
+To start, let's just scrape the current [all-time leaderboard](https://www.metaculus.com/rankings/#all).
+
+```{r scrapeRanking}
+rankingsTable <- read_html('https://www.metaculus.com/rankings/#all') %>%
+  html_node('body > div > section > div > div > table')
+
+rankings <- html_table(rankingsTable)
+
+rankings %<>% mutate(
+  profileURL = (rankingsTable %>% html_nodes('a') %>% html_attr('href')),
+  playerNumber = as.integer(substr(profileURL, 19, 24))-100000
+)
+
+paged_table(rankings)
+```
+
+```{r}
+plot_ly(rankings, x = ~Score, y = ~Rank, type = "scatter", text = ~Player)
+```
+
+```{r}
+plot_ly(rankings, x = ~playerNumber, y = ~Score, type = "scatter", text = ~Player)
+```
+
+This is fun! If you divide the space into two equally-sized triangular halves, there's basically no one in the top-right half. If you think about it for a bit, it probably makes sense: Player number is a rough proxy for how long a player has had to make predictions. It takes a while to collect enough points from resolved points to make the leaderboard. Accordingly, there are no players with high player numbers (people who started very recently) and also high scores.
+
+## Going a little deeper
+
+Besides what's available in the raw leaderboard, there's a deeper layer of data available: individual profiles. It's a little rude to the server (since it's a hit on every profile in the leaderboard), but we can scrape these for some additional statistics, including number of questions forecast, number of resolved questions, and comments.
+
+```{r}
+rankings %<>%
+  mutate(
+    memberSince = NULL,
+    predictions = 0,
+    questionsPredicted = 0,
+    resolutions = 0,
+    comments = 0,
+    questionsCommented = 0,
+    questionsAuthored = 0
+  )
+
+for(i in 1:nrow(rankings)){
+  profile <- read_html(paste0('https://www.metaculus.com', rankings$profileURL[i]))
+  matches <- profile %>%
+    html_node("body > div > div.content-wrap > section:nth-child(1) > div > div > div:nth-child(3) > span:nth-child(2)") %>%
+    html_text() %>%
+    mdy()
+  rankings$memberSince[i] <- as.integer(matches[[1]][1])
+  
+  matches <- profile %>%
+    html_node("body > div > div.content-wrap > section:nth-child(2) > div > div > div:nth-child(2) > span:nth-child(2)") %>%
+    html_text() %>%
+    str_extract_all('[0-9]+')
+  rankings$predictions[i] <- as.integer(matches[[1]][1])
+  rankings$questionsPredicted[i] <- as.integer(matches[[1]][2])
+  rankings$resolutions[i] <- as.integer(matches[[1]][3])
+
+  matches <- profile %>%
+    html_node("body > div > div.content-wrap > section:nth-child(2) > div > div > div:nth-child(3) > span:nth-child(2)") %>%
+    html_text() %>%
+    str_extract_all('[0-9]+')
+  rankings$comments[i] <- as.integer(matches[[1]][1])
+  rankings$questionsCommented[i] <- as.integer(matches[[1]][2])
+  
+  matches <- profile %>%
+    html_node("body > div > div.content-wrap > section:nth-child(2) > div > div > div:nth-child(5) > span:nth-child(2) > a") %>%
+    html_text() %>%
+    str_extract_all('[0-9]+')
+  rankings$questionsAuthored[i] <- ifelse(is.na(as.integer(matches[[1]][1])),0,as.integer(matches[[1]][1]))
+}
+
+rankings %>%
+  select(Player, memberSince:questionsAuthored) %>%
+  paged_table()
+```
+
+It's conceivable to me that you can be bad a Metaculus for a long time, and still rise to the top of the leaderboard simply by virtue of having played longer. To avoid this, I'm more interested in a slightly different metric: average points-per-question.
+
+```{r}
+rankings %<>% 
+  dplyr::mutate(pointsPerQuestion = Score/resolutions)
+
+plot_ly(rankings, x = ~pointsPerQuestion, y = ~Rank, type = "scatter", text = ~Player)
+```
