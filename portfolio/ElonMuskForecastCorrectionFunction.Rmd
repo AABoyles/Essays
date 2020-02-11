@@ -121,11 +121,7 @@ model %>% summary %>% pander
 
 If there's a prediction coming from the Musk-verse, multiply the (upper-bound of the) amount of time by `r round(model$coefficients[2], 3)`, and add `r round(model$coefficients[1])` days.
 
-## Calculator
-
-There's an important bias we need to consider. We can only generate a model of this type on the predictions Musk has made *that have already come true*. There's no sensible way to include plans that never materialized and were subsequently canceled, like the Falcon 5 or the Tesla Minibus. So we could just say "it'll probably happen around the date given by the formula above *conditional on it happening at all*", but that doesn't give us much predictive power.
-
-## The Elon Musk Forecast Correction Calculator
+## The Calculator
 
 To make this trivially easy, I wrote the calculator at the top of this article. Enter that date of Musk's Prediction, and it will tell you when it will actually come true. Why is this valuable? To win [meaningless internet points](https://www.metaculus.com/help/faq/#howscore), of course!
 
@@ -150,11 +146,15 @@ To make this trivially easy, I wrote the calculator at the top of this article. 
 * [Will Tesla be the World's largest Auto Manufacturer by 2035?](https://www.metaculus.com/questions/980/will-tesla-become-the-largest-car-company-in-the-world-by-sales-prior-to-2035/)
 * [Will Elon Musk have a Neural Lace by 2040?](https://www.metaculus.com/questions/2955/when-will-elon-musk-have-any-device-such-as-a-brain-machine-interface-surgically-implanted-into-his-brain/)
 
+## Considerations
+
+There's an important bias we need to consider. We can only generate a model of this type on the predictions Musk has made *that have already come true*. There's no sensible way to include plans that never materialized and were subsequently canceled, like the Falcon 5 or the Tesla Minibus. So we could just say "it'll probably happen around the date given by the formula above *conditional on it happening at all*", but that doesn't give us much predictive power. I have yet to account for this fact, so bear this in mind when using the regression's predictions.
+
 ## Conclusion
 
 It's easy to fault Musk for consistently making poor projections like this. However, I think there's a much more fundamental reason we should celebrate him: he makes public predictions _at all_.
 
-![Never Stop Predicting, @elonmusk](https://aaboyles.github.com/Essays/imgs/NeverStop.PNG)
+![](https://aaboyles.github.com/Essays/imgs/NeverStop.PNG)
 
 <script>
 $(function(){
